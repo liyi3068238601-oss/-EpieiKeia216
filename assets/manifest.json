@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "productVersion": "0.0.0",
+  "status": "research_only",
+  "approvedAssets": [],
+  "excludedAssets": [
+    {
+      "id": "herta-character-icons-and-art",
+      "origin": {
+        "repository": "https://github.com/PersonaCLI/Herta",
+        "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "paths": [
+          "packages/gui/build/**",
+          "packages/gui/resources/**"
+        ],
+        "licenseFile": "references/herta-4623df12/LICENSE:7-29"
+      },
+      "reason": "Character likeness artwork is explicitly outside the Herta MIT source-code grant.",
+      "authorization": "not_obtained",
+      "disposition": "exclude_from_project_and_distribution"
+    },
+    {
+      "id": "herta-persona-prompts-and-game-dialogue",
+      "origin": {
+        "repository": "https://github.com/PersonaCLI/Herta",
+        "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "paths": [
+          "packages/herta/prompts/**",
+          "packages/herta/prompts-en/**"
+        ],
+        "licenseFile": "references/herta-4623df12/LICENSE:7-29"
+      },
+      "reason": "Persona material, canon corpora, and quoted in-game dialogue are explicitly excluded from the source-code grant.",
+      "authorization": "not_obtained",
+      "disposition": "exclude_from_project_and_distribution"
+    },
+    {
+      "id": "herta-website-imagery-audio-and-preview-art",
+      "origin": {
+        "repository": "https://github.com/PersonaCLI/Herta",
+        "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "paths": [
+          "website/src/assets/**",
+          "website/public/**"
+        ],
+        "licenseFile": "references/herta-4623df12/LICENSE:7-29"
+      },
+      "reason": "Website imagery, audio, favicon, and link-preview art are explicitly excluded.",
+      "authorization": "not_obtained",
+      "disposition": "exclude_from_project_and_distribution"
+    },
+    {
+      "id": "herta-voice-audio",
+      "origin": {
+        "repository": "https://github.com/PersonaCLI/Herta",
+        "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "paths": ["data/voice/**"],
+        "licenseFile": "references/herta-4623df12/LICENSE:7-29"
+      },
+      "reason": "Herta explicitly excludes voice audio from its source-code license grant.",
+      "authorization": "not_obtained",
+      "disposition": "exclude_from_project_and_distribution"
+    },
+    {
+      "id": "espeak-gpl-voice-runtime-and-model-data",
+      "origin": {
+        "repository": "https://github.com/PersonaCLI/Herta",
+        "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "paths": [
+          "packages/gui/resources/tts-runtime/**",
+          "frontend/espeak-ng-data/**"
+        ],
+        "licenseFile": "references/herta-4623df12/packages/gui/resources/licenses/espeak-ng-LICENSE.txt:1-19",
+        "license": "GPL-3.0-or-later"
+      },
+      "reason": "eSpeak NG is separately GPL-licensed and linked into the neural-voice runtime; the project has not selected this component.",
+      "authorization": "license_identified; not_selected; redistribution_obligations_unverified",
+      "disposition": "exclude_until_gpl_obligations_are_reviewed_for_the_actual_payload"
+    },
+    {
+      "id": "live2d-sdk-model-and-character-assets",
+      "origin": {
+        "licensePolicy": "https://www.live2d.com/en/sdk/license/"
+      },
+      "reason": "Product-use category and applicable SDK/model rights have not been closed; no Live2D SDK or character resource is in this project.",
+      "authorization": "not_obtained",
+      "disposition": "blocked_pending_product_classification_and_rights_review"
+    }
+  ],
+  "candidateScan": {
+    "baselineCommit": "1288e8545ab8d2f39a59de554b2546bb793ff305",
+    "scope": [
+      "assets/**",
+      "src/**",
+      "packages/**",
+      "prompts/**",
+      "characters/**",
+      "public/**",
+      "resources/**"
+    ],
+    "trackedCandidateFilesBeforeThisManifest": 0,
+    "physicalCandidateDirectoriesBeforeThisManifest": [],
+    "command": "git ls-files -- 'assets/**' 'src/**' 'packages/**' 'prompts/**' 'characters/**' 'public/**' 'resources/**'",
+    "exitCode": 0,
+    "result": "No tracked candidate source or asset files were present at the baseline. The manifest is the only asset-ledger file authored by P00-U06."
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "unit": "P00-U06",
+  "status": "ready_for_review",
+  "attemptId": "20261001-01",
+  "productVersion": "0.0.0",
+  "baseline": {
+    "repository": "E:/Xiadie/Xiadie",
+    "branch": "p00-baseline",
+    "commit": "1288e8545ab8d2f39a59de554b2546bb793ff305",
+    "u05Acceptance": {
+      "path": "evidence/P00-U05/20261001-01/acceptance.json",
+      "status": "accepted",
+      "sha256": "4f59ab227d56e62bfe05ff22cc5244e7843e7b939911696d62cb78ec13008db6",
+      "acceptedBaselineCommit": "df0215e9ee0d14206a128448bfd3117653b200ae"
+    },
+    "unitCard": {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U06.md",
+      "sha256": "e4d4f008c871992a218112500bbb1c28034e88d9c22a9646610cf76335e0421d"
+    }
+  },
+  "sourcePins": [
+    {
+      "name": "ZCode",
+      "remote": "https://github.com/zai-org/ZCode.git",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "checkout": "references/zcode-29628c9",
+      "checkoutState": "clean",
+      "files": [
+        {
+          "path": "references/zcode-29628c9/LICENSE",
+          "bytes": 11546,
+          "sha256": "fa36dc312bc4946b1c22dba3c726ad8d3052b353f81424e7b997dbb3d9b40a49",
+          "lines": "90-122,139-142"
+        },
+        {
+          "path": "references/zcode-29628c9/NOTICE.md",
+          "bytes": 27791,
+          "sha256": "349132e10b72086a25bf270ba79e071fdac515f1cebca6268cb0791f97f159dc",
+          "lines": "1"
+        },
+        {
+          "path": "references/zcode-29628c9/THIRD-PARTY-NOTICES.md",
+          "bytes": 1978939,
+          "sha256": "874bf7c10bdcadd0df0b50fc782f39f077669c6e41bbdbccd868409cd714dec3",
+          "lines": "3-5,2421-2489"
+        },
+        {
+          "path": "references/zcode-29628c9/third-party/inventory.json",
+          "bytes": 1442365,
+          "sha256": "e41227056f7bf82854335bf70c0ea70c160d2692a89e995cd30662415bbd6349"
+        }
+      ],
+      "inventoryCounts": {
+        "productionPackages": 1206,
+        "copied": 8,
+        "patches": 3,
+        "embedded": 2,
+        "reviewRequired": 19
+      },
+      "decision": "code not copied; inventory is a workspace-wide production-dependency union, not a project installer SBOM"
+    },
+    {
+      "name": "Herta",
+      "remote": "https://github.com/PersonaCLI/Herta.git",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "checkout": "references/herta-4623df12",
+      "checkoutState": "clean",
+      "files": [
+        {
+          "path": "references/herta-4623df12/LICENSE",
+          "bytes": 2751,
+          "sha256": "bb1f011bb44b82acdcb078fdfcc2f7b6185c930b69a1ee275b518e79e32aea82",
+          "lines": "7-29"
+        },
+        {
+          "path": "references/herta-4623df12/THIRD-PARTY-NOTICES.md",
+          "bytes": 227907,
+          "sha256": "db21d2e69aef53aee3969b91e7d82e55319eb4fb62b2d0c50bf1d1cbcde14fd6",
+          "lines": "64,1776-1796"
+        },
+        {
+          "path": "references/herta-4623df12/packages/gui/resources/licenses/espeak-ng-LICENSE.txt",
+          "bytes": 36446,
+          "sha256": "bd9a0ebca85767af5420fd820343137c1a789dd4d05e9d6cafe75cae44997da5",
+          "lines": "1-19"
+        },
+        {
+          "path": "references/herta-4623df12/packages/gui/scripts/third-party-notices.mjs",
+          "bytes": 16915,
+          "sha256": "64522aeb885217eb9ed1e1d56e65a96df761ece8844f50c914cfc1dd7ae1e0d2",
+          "lines": "310-325"
+        }
+      ],
+      "decision": "no Herta source or assets copied; prompts, art, dialogue, audio, voice runtime and voice data excluded"
+    },
+    {
+      "name": "DeepSeek Harness",
+      "remote": "https://github.com/deepseek-ai/deepseek-harness.git",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "checkout": "references/dsh-639ed015",
+      "checkoutState": "clean",
+      "files": [
+        {
+          "path": "references/dsh-639ed015/LICENSE",
+          "bytes": 1065,
+          "sha256": "ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be"
+        },
+        {
+          "path": "references/dsh-639ed015/THIRD_PARTY_NOTICES.md",
+          "bytes": 23637,
+          "sha256": "c120aadac50ca6679ec5abe51eb94178fd038b29a1237d7a748dd0095a110670",
+          "lines": "8-10,35,152-172,267-289"
+        },
+        {
+          "path": "references/dsh-639ed015/native/system/LICENSE",
+          "bytes": 1523,
+          "sha256": "fed2134d7f6af959ff9fbf2c0a35ea747db10e21d1b5d2d1ac58be88ce43ad90"
+        },
+        {
+          "path": "references/dsh-639ed015/native/system/AGENTS.md",
+          "bytes": 3184,
+          "sha256": "ed6c16cdf91d87e8b66a154d3c63421716da7452177e490cd4d7d213e0d47805",
+          "lines": "9-25"
+        },
+        {
+          "path": "references/dsh-639ed015/.agents/notes/implemented/architecture/2026-09-14-independent-libreoffice-kit.md",
+          "bytes": 2992,
+          "sha256": "414b970574b393f89b42ab247bd24f93ea99cd4ec7692ec3b283aea0da8ddedf",
+          "lines": "11-19"
+        }
+      ],
+      "decision": "no DSH source or payload copied; Claude SDK commercial terms, MPL LibreOffice kit and BSD native packages remain separate conditions"
+    }
+  ],
+  "checks": [
+    {
+      "command": "git rev-parse HEAD",
+      "cwd": "E:/Xiadie/Xiadie",
+      "exitCode": 0,
+      "observed": "1288e8545ab8d2f39a59de554b2546bb793ff305"
+    },
+    {
+      "command": "git -C references/zcode-29628c9 rev-parse HEAD; git -C references/zcode-29628c9 status --short --branch",
+      "cwd": "E:/Xiadie/Xiadie",
+      "exitCode": 0,
+      "observed": "commit 29628c9acdb81b703bbd4080c207a0e7ce5e276e; detached checkout clean"
+    },
+    {
+      "command": "git -C references/herta-4623df12 rev-parse HEAD; git -C references/herta-4623df12 status --short --branch",
+      "cwd": "E:/Xiadie/Xiadie",
+      "exitCode": 0,
+      "observed": "commit 4623df120adf99340ce5f7e25ed829466975e3ae; detached checkout clean"
+    },
+    {
+      "command": "git -C references/dsh-639ed015 rev-parse HEAD; git -C references/dsh-639ed015 status --short --branch",
+      "cwd": "E:/Xiadie/Xiadie",
+      "exitCode": 0,
+      "observed": "commit 639ed015397290b3745d163aafe02ffee4aa3f84; detached checkout clean"
+    },
+    {
+      "command": "git ls-files -- 'assets/**' 'src/**' 'packages/**' 'prompts/**' 'characters/**' 'public/**' 'resources/**'",
+      "cwd": "E:/Xiadie/Xiadie",
+      "exitCode": 0,
+      "observed": "captured output count was 0 before authoring assets/manifest.json; all seven candidate directories were absent"
+    },
+    {
+      "command": "Get-Content -Raw 'assets/manifest.json' | ConvertFrom-Json",
+      "cwd": "E:/Xiadie/Xiadie",
+      "exitCode": 0,
+      "observed": "JSON parsed; approvedAssets count 0; excludedAssets count 6; baseline commit matches"
+    },
+    {
+      "command": "PowerShell byte-read UTF-8 validation, LF detection, trailing-whitespace line scan on three output text files (reuse.md, result.md, manifest.json); git diff --check",
+      "cwd": "E:/Xiadie/Xiadie",
+      "exitCode": 0,
+      "observed": "valid UTF-8; no CRLF/CR; zero trailing-whitespace lines; tracked diff check clean"
+    }
+  ],
+  "outputBindings": [
+    {
+      "path": "docs/legal/reuse.md",
+      "bytes": 8966,
+      "sha256": "1836b866d0e29ca43e0fd4bb549a92e987b759ef94593aa618f45c741904ba90"
+    },
+    {
+      "path": "assets/manifest.json",
+      "bytes": 4304,
+      "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"
+    },
+    {
+      "path": "evidence/P00-U06/20261001-01/result.md",
+      "bytes": 1944,
+      "sha256": "1ad136e11d9c3e26a751fac437ffa4a8f52b9ba66ac465988849adb1b84ae554"
+    }
+  ],
+  "notRun": [
+    "Legal counsel review and any third-party permission request",
+    "Product build, package assembly, installer-specific SBOM generation, or distribution test",
+    "Use or redistribution of Herta/Live2D character assets, Claude SDK payload, LibreOffice kit, native binaries, or GPL voice runtime"
+  ],
+  "releaseDisposition": "blocked_pending_rights_and_per_installer_payload_closure",
+  "rollback": "Remove only docs/legal/reuse.md, assets/manifest.json, and evidence/P00-U06/20261001-01/{result.md,verification.json}; no reference checkout or external system was changed."
+}

@@ -1,0 +1,52 @@
+{
+  "unit": "P00-U06",
+  "reviewer": "root; independent of author",
+  "recommendation": "accept",
+  "scope": "Local research license boundaries only; product distribution remains blocked for unclosed actual payload rights/obligations",
+  "input_bindings": [
+    {
+      "path": "docs/legal/reuse.md",
+      "bytes": 8966,
+      "sha256": "1836b866d0e29ca43e0fd4bb549a92e987b759ef94593aa618f45c741904ba90"
+    },
+    {
+      "path": "assets/manifest.json",
+      "bytes": 4304,
+      "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"
+    },
+    {
+      "path": "evidence/P00-U06/20261001-01/result.md",
+      "bytes": 1944,
+      "sha256": "1ad136e11d9c3e26a751fac437ffa4a8f52b9ba66ac465988849adb1b84ae554"
+    },
+    {
+      "path": "evidence/P00-U06/20261001-01/verification.json",
+      "sha256": "bdec6e53848bcfb78bd14fc56bea8f32a1285488d79575e84fadedb76e52c92a"
+    }
+  ],
+  "checks": {
+    "13_source_files_hash_bytes_match": true,
+    "three_pinned_clean_heads": true,
+    "upstream_inventory_counts": {
+      "packages": 1206,
+      "copied": 8,
+      "patches": 3,
+      "embedded": 2,
+      "reviewRequired": 19
+    },
+    "baseline_tracked_candidate_files": 0,
+    "approved_assets": 0,
+    "excluded_groups": 6,
+    "character_audio_and_GPL_obligations_separated": true,
+    "text_formats_and_output_hashes_match": true
+  },
+  "command": "Independent Python source/hash/inventory/Git-baseline/JSON/format assertions",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "exit_code": 0,
+  "findings": [],
+  "limitations": [
+    "Legal counsel review and any third-party permission request",
+    "Product build, package assembly, installer-specific SBOM generation, or distribution test",
+    "Use or redistribution of Herta/Live2D character assets, Claude SDK payload, LibreOffice kit, native binaries, or GPL voice runtime"
+  ]
+}
