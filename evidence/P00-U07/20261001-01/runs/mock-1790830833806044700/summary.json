@@ -1,0 +1,104 @@
+{
+  "unit": "P00-U07",
+  "mode": "mock",
+  "run_id": "mock-1790830833806044700",
+  "passed": false,
+  "failure": {
+    "type": "AssertionError",
+    "message": "native host exited 1",
+    "traceback": "Traceback (most recent call last):\n  File \"E:\\Xiadie\\Xiadie\\spikes\\zcode-context\\probe.py\", line 174, in <module>\n    assert process.returncode == 0, 'native host exited ' + str(process.returncode)\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: native host exited 1\n"
+  },
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "code_bindings": {
+    "spikes/zcode-context/probe.py": "9c26dce404d813437b06774365ce87b4ccdaf33530bd86ef9000fc0b06dd6c75",
+    "spikes/zcode-context/host.mjs": "0adf1cf0f4a7be3b5f4b8387fe804c53e70d60c74fe3602be05827248a2c3111",
+    "spikes/zcode-context/plugin/.zcode-plugin/plugin.json": "96e68bcee0c08ecbc68cff96a03fea5c09b90ca2ee32e37c2b0f66bc0c2f25f2",
+    "spikes/zcode-context/plugin/hooks/hooks.json": "d56c47249e64fdc10063f1a857ee27d5c4d5efc99aad88e91fa4993c959ff224",
+    "spikes/zcode-context/plugin/hooks/context.mjs": "79f3f5bbeb8605409c12ae07044c1ba428cde5eb1dba7bf850e807977a40f5c0"
+  },
+  "compiled_bindings": {
+    ".runtime/P00/zcode/source/apps/zcode-cli/packages/bootstrap/dist/index.js": "cfffe39e61575a3a6627e8a10153d4ed998d6e48fd774c0195f57f2282074202",
+    ".runtime/P00/zcode/source/apps/zcode-cli/packages/bootstrap/dist/app/create-app.js": "7b647434cc2c298aa1720d32db481c4ccd6d2a49f43eaf1ee50b7dd28e4729f7"
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "E:\\Xiadie\\Xiadie\\spikes\\zcode-context\\host.mjs",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode-context\\mock-1790830833806044700\\spec.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode-context\\mock-1790830833806044700\\fixture",
+  "exit_code": 1,
+  "elapsed_seconds": 0.5,
+  "results": [],
+  "model_calls": 0,
+  "global_before": [
+    {
+      "path": "C:\\Users\\liyi\\.dsh\\settings.yaml",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "path": "C:\\Users\\liyi\\.dsh\\.credentials.yaml",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "path": "C:\\Users\\liyi\\.zcode\\AGENTS.md",
+      "exists": false,
+      "sha256": null
+    },
+    {
+      "path": "C:\\Users\\liyi\\.zcode\\cli\\config.json",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    }
+  ],
+  "global_after": [
+    {
+      "path": "C:\\Users\\liyi\\.dsh\\settings.yaml",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "path": "C:\\Users\\liyi\\.dsh\\.credentials.yaml",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "path": "C:\\Users\\liyi\\.zcode\\AGENTS.md",
+      "exists": false,
+      "sha256": null
+    },
+    {
+      "path": "C:\\Users\\liyi\\.zcode\\cli\\config.json",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    }
+  ],
+  "global_unchanged": true,
+  "artifacts": [
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790830833806044700/requests.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790830833806044700/stderr.log",
+      "sha256": "3b097d4003fc2ce8a5ad5e926b55c6dd658d2b2e4957954815fd4ecf5cbb5262",
+      "bytes": 1220
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790830833806044700/stdout.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "usage": [],
+  "gateway_cost": "mock only; no external model calls",
+  "isolation": {
+    "complete_child_env": true,
+    "HOME": "omitted",
+    "credential_in_child_or_files": false,
+    "standalone_account_import_and_builtin_remote_refresh": false,
+    "os_sandbox_claim": false
+  }
+}

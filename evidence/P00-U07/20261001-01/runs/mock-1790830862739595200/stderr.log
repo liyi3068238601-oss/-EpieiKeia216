@@ -1,0 +1,19 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+'build' !== 'plan'
+
+    at open (E:\Xiadie\Xiadie\spikes\zcode-context\host.mjs:36:10)
+    at async <anonymous> (E:\Xiadie\Xiadie\spikes\zcode-context\host.mjs:56:3) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'build',
+  expected: 'plan',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.16.0

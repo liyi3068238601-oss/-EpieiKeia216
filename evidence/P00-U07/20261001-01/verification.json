@@ -1,0 +1,237 @@
+{
+  "unit": "P00-U07",
+  "status": "ready_for_review",
+  "baseline_commit": "1697826d5f930ab884fd441fe39bf94dea67557e",
+  "prerequisite": {
+    "path": "evidence/P00-U06/20261001-01/acceptance.json",
+    "sha256": "f2084bd60d38b6ed8ba05b3d5eb5128849b3bf90feb4de1e636bb31a759db405"
+  },
+  "source_bindings": [
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/adapters/src/plugins/index.ts",
+      "sha256": "2200a42e9506f92b983207d2fd40b102f7ae16b346f5a8b85e6e0da97d53c0a3"
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/adapters/src/plugins/hook-sources.ts",
+      "sha256": "0ad7e59b8f7a8c91e6348ecfe93a44e1c0e4f97d58ac96ed311fbbcc69dabf17"
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/hooks/configured-runner-input.ts",
+      "sha256": "ba409c54bf3137256b66c0aa75f9d5faa9515e7d03eb1c7acc4217272c710656"
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/methods/hooks.ts",
+      "sha256": "b2a394823d6b325e9f322b2d219d3e12046a2cafc880c0e0aa8b76315be3fa00"
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/methods/turn.ts",
+      "sha256": "a60aebc1e61ef93ec65002ac660980cf3529354461e0a34fe328f68c5b021b9c"
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/methods/resume.ts",
+      "sha256": "df3f7ab0350fa4b53a7c4dc4636cf1736760da85fee096b8c64af40f30cc6160"
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/methods/config.ts",
+      "sha256": "3fdd61914a3755fb4153c62594c9ee086df509668d656919d0171c9689acc324"
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/tool/executor/hook-flow.ts",
+      "sha256": "febcfb35d6d3653b95f3d83c562dbebf160e6eb522ac806d46d800cce7938aa5"
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/permission/service.ts",
+      "sha256": "1f57745cbc4d14378497492cefa21b6f48a94ecc3141e750305f584a29958bda"
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/app/types.ts",
+      "sha256": "38102f760a43ad94bdd13f4f7ab3190bd7017d6caa60c5d5b1d559cc0a58ac26"
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/app/process-provider-registry-runtime.ts",
+      "sha256": "15df5a2a237e3c170f4b131d48ef428a1052841b82a0936e05ec3cf2bebf861a"
+    }
+  ],
+  "additional_execution_dependency": {
+    "path": ".runtime/P00/zcode/source/node_modules/tsx/dist/esm/index.mjs",
+    "sha256": "9fab711543eb155d50fb147f8984e104db348a73b74daee4e3974bec109aa381",
+    "role": "existing tsx ESM resolution; no install"
+  },
+  "scope": "Native bootstrap API harness with official plugin; compiled entry hashes do not cover the full compiled dependency graph",
+  "output_bindings": [
+    {
+      "path": "evidence/P00-U07/20261001-01/result.md",
+      "sha256": "3d90cff88e137fdef2e9c2ddb89c621640ddde1dfa298cafbd00bef815ded83a",
+      "bytes": 5068
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790830833806044700/requests.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790830833806044700/stderr.log",
+      "sha256": "3b097d4003fc2ce8a5ad5e926b55c6dd658d2b2e4957954815fd4ecf5cbb5262",
+      "bytes": 1220
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790830833806044700/stdout.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790830833806044700/summary.json",
+      "sha256": "30657407560f2393c2022deb05c48871f3f7ee77ac7fac0363f9ae6011509714",
+      "bytes": 4152
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790830862739595200/requests.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790830862739595200/stderr.log",
+      "sha256": "1b10039013f86e5a4bf130dadbdf7c27722bbe18beda8a23a2dc12d576332f6d",
+      "bytes": 484
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790830862739595200/stdout.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790830862739595200/summary.json",
+      "sha256": "8e8595ce807238c2f3c1ccad1605b81af8a06572509c4f179c8e0784ba1e89be",
+      "bytes": 4264
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790831051954627900/hooks.jsonl",
+      "sha256": "9e6669de5d8ee44c932a763635b8c73fd6b00bcd99b6ddcc6a4bd1a1aeb5360c",
+      "bytes": 18829
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790831051954627900/requests.json",
+      "sha256": "bf670c0d8f8549ed24e1cd2429b38a5770e60e71c8ebbc6e2e0d70f3a7e3e06c",
+      "bytes": 146440
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790831051954627900/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790831051954627900/stdout.jsonl",
+      "sha256": "ddf0b5d7618da318310f35aa5a8dd76fc86d7710a4dc1b3942dae4ea50cde8bb",
+      "bytes": 247983
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790831051954627900/summary.json",
+      "sha256": "e970839a409c4c7ee8240a052dbedc1b8e970d8f0c25396587d8cd803e98424f",
+      "bytes": 8426
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/hooks.jsonl",
+      "sha256": "24055d906563e9b904f1ee986884bd9b263bd44e5f9ce6761ac652e9004fc34f",
+      "bytes": 4114
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/model-call-ledger.json",
+      "sha256": "9e12b9b94394a014cbedec67bf15e176992d2a291d7d2db91d889d6e6271a7eb",
+      "bytes": 121
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/requests.json",
+      "sha256": "b12249d6a4bef56067470c77ef2e9ea44dbd27920be50a73f51951097caf82a7",
+      "bytes": 13463
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/response.sse",
+      "sha256": "f339e807f1cc73556e3dfec8d2f3ab162b4b90105d103036c05ddea66aac15d9",
+      "bytes": 1986
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/stdout.jsonl",
+      "sha256": "b387e1747af8d306f0493148ad1cd58db93f56e9e790e69899f74318c49259be",
+      "bytes": 33171
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/summary.json",
+      "sha256": "e97293ed391a2fecef6e643ddb347b72134a045bfc1f9dbe2b59b8795c3b8113",
+      "bytes": 5390
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/summary-mock.json",
+      "sha256": "e970839a409c4c7ee8240a052dbedc1b8e970d8f0c25396587d8cd803e98424f",
+      "bytes": 8426
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/summary-real.json",
+      "sha256": "e97293ed391a2fecef6e643ddb347b72134a045bfc1f9dbe2b59b8795c3b8113",
+      "bytes": 5390
+    },
+    {
+      "path": "spikes/zcode-context/host.mjs",
+      "sha256": "3e58ade405de41ec0ffc12d1934e0cdb0e0d2c9246932a386d791eb526c6a800",
+      "bytes": 3382
+    },
+    {
+      "path": "spikes/zcode-context/plugin/.zcode-plugin/plugin.json",
+      "sha256": "96e68bcee0c08ecbc68cff96a03fea5c09b90ca2ee32e37c2b0f66bc0c2f25f2",
+      "bytes": 161
+    },
+    {
+      "path": "spikes/zcode-context/plugin/hooks/context.mjs",
+      "sha256": "79f3f5bbeb8605409c12ae07044c1ba428cde5eb1dba7bf850e807977a40f5c0",
+      "bytes": 1438
+    },
+    {
+      "path": "spikes/zcode-context/plugin/hooks/hooks.json",
+      "sha256": "d56c47249e64fdc10063f1a857ee27d5c4d5efc99aad88e91fa4993c959ff224",
+      "bytes": 736
+    },
+    {
+      "path": "spikes/zcode-context/probe.py",
+      "sha256": "0eb40003f2f3091dff93ebd71a14f9ac313180a00e4a348997d590c4b7691c78",
+      "bytes": 17259
+    },
+    {
+      "path": "spikes/zcode-context/README.md",
+      "sha256": "25929359e1799cef1ec2471f77a6d141aa440a1294bcb29d89952f9300d4631f",
+      "bytes": 2676
+    }
+  ],
+  "failed_run_ids": [
+    "mock-1790830833806044700",
+    "mock-1790830862739595200"
+  ],
+  "accepted_author_run_ids": [
+    "mock-1790831051954627900",
+    "real-1790831125052621600"
+  ],
+  "author_model_calls": 1,
+  "actual_usage": {
+    "prompt_tokens": 2583,
+    "completion_tokens": 10,
+    "total_tokens": 2593
+  },
+  "exact_configured_credential_scan": {
+    "files": 29,
+    "hits": 0,
+    "credential_persisted": false
+  },
+  "test_mapping": {
+    "target": "tests/units/P00-U07.test.ts",
+    "actual": "spikes/zcode-context/probe.py native execution and raw request/event/FS assertions"
+  },
+  "limitations": [
+    "Paid evidence covers a single normal request; other branches have actual native runtime with mock model",
+    "System-level persona identity, bounded Life tokens and all-model identity consistency NOT_RUN",
+    "Memory enabled permissions are a separate U08 experiment",
+    "Full CLI startup, GUI, installer, OS sandbox and full compiled-tree validation NOT_RUN"
+  ]
+}

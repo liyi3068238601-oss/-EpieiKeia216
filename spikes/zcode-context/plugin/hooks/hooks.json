@@ -1,0 +1,8 @@
+{
+  "hooks": {
+    "SessionStart": [{"hooks": [{"type": "process", "command": "C:\\Program Files\\nodejs\\node.exe", "args": ["${ZCODE_PLUGIN_ROOT}/hooks/context.mjs"], "timeoutMs": 5000}]}],
+    "UserPromptSubmit": [{"hooks": [{"type": "process", "command": "C:\\Program Files\\nodejs\\node.exe", "args": ["${ZCODE_PLUGIN_ROOT}/hooks/context.mjs"], "timeoutMs": 5000}]}],
+    "PreToolUse": [{"hooks": [{"type": "process", "command": "C:\\Program Files\\nodejs\\node.exe", "args": ["${ZCODE_PLUGIN_ROOT}/hooks/context.mjs"], "timeoutMs": 5000}]}],
+    "PostToolUseFailure": [{"hooks": [{"type": "process", "command": "C:\\Program Files\\nodejs\\node.exe", "args": ["${ZCODE_PLUGIN_ROOT}/hooks/context.mjs"], "timeoutMs": 5000}]}]
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "task_id": "P00-U07",
+  "attempt_id": "20261001-01",
+  "reviewed_at_utc": "2026-10-01T05:18:02Z",
+  "status": "ready_for_primary_decision",
+  "recommendation": "accept_as_bounded_P00_U07_spike",
+  "product_adoption_approved": false,
+  "scope": "Independent read-only review of the frozen native ZCode plugin/bootstrap spike, its pinned-source bindings, and the original mock and real artifacts. I did not rerun the spike, access credential values, make network calls, or make model calls. This recommendation applies only to P00-U07 research evidence; it does not open P01 or claim product readiness.",
+  "input_bindings": [
+    {
+      "path": "evidence/P00-U07/20261001-01/result.md",
+      "sha256": "3d90cff88e137fdef2e9c2ddb89c621640ddde1dfa298cafbd00bef815ded83a",
+      "bytes": 5068
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/verification.json",
+      "sha256": "596118bb16bd2393fe67134f5be4696162e7810d9d3b32debd29211926420676",
+      "bytes": 9590,
+      "staged_blob_sha1": "d18f80d4ef587e576866a56f4520bbe3b8f77961"
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/summary-mock.json",
+      "sha256": "e970839a409c4c7ee8240a052dbedc1b8e970d8f0c25396587d8cd803e98424f",
+      "bytes": 8426
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/summary-real.json",
+      "sha256": "e97293ed391a2fecef6e643ddb347b72134a045bfc1f9dbe2b59b8795c3b8113",
+      "bytes": 5390
+    },
+    {
+      "path": "spikes/zcode-context/README.md",
+      "sha256": "25929359e1799cef1ec2471f77a6d141aa440a1294bcb29d89952f9300d4631f",
+      "bytes": 2676
+    },
+    {
+      "path": "spikes/zcode-context/probe.py",
+      "sha256": "0eb40003f2f3091dff93ebd71a14f9ac313180a00e4a348997d590c4b7691c78",
+      "bytes": 17259
+    },
+    {
+      "path": "spikes/zcode-context/host.mjs",
+      "sha256": "3e58ade405de41ec0ffc12d1934e0cdb0e0d2c9246932a386d791eb526c6a800",
+      "bytes": 3382
+    },
+    {
+      "path": "spikes/zcode-context/plugin/.zcode-plugin/plugin.json",
+      "sha256": "96e68bcee0c08ecbc68cff96a03fea5c09b90ca2ee32e37c2b0f66bc0c2f25f2",
+      "bytes": 161
+    },
+    {
+      "path": "spikes/zcode-context/plugin/hooks/hooks.json",
+      "sha256": "d56c47249e64fdc10063f1a857ee27d5c4d5efc99aad88e91fa4993c959ff224",
+      "bytes": 736
+    },
+    {
+      "path": "spikes/zcode-context/plugin/hooks/context.mjs",
+      "sha256": "79f3f5bbeb8605409c12ae07044c1ba428cde5eb1dba7bf850e807977a40f5c0",
+      "bytes": 1438
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790831051954627900/requests.json",
+      "sha256": "bf670c0d8f8549ed24e1cd2429b38a5770e60e71c8ebbc6e2e0d70f3a7e3e06c",
+      "bytes": 146440
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790831051954627900/hooks.jsonl",
+      "sha256": "9e6669de5d8ee44c932a763635b8c73fd6b00bcd99b6ddcc6a4bd1a1aeb5360c",
+      "bytes": 18829
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/mock-1790831051954627900/stdout.jsonl",
+      "sha256": "ddf0b5d7618da318310f35aa5a8dd76fc86d7710a4dc1b3942dae4ea50cde8bb",
+      "bytes": 247983
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/requests.json",
+      "sha256": "b12249d6a4bef56067470c77ef2e9ea44dbd27920be50a73f51951097caf82a7",
+      "bytes": 13463
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/hooks.jsonl",
+      "sha256": "24055d906563e9b904f1ee986884bd9b263bd44e5f9ce6761ac652e9004fc34f",
+      "bytes": 4114
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/response.sse",
+      "sha256": "f339e807f1cc73556e3dfec8d2f3ab162b4b90105d103036c05ddea66aac15d9",
+      "bytes": 1986
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/model-call-ledger.json",
+      "sha256": "9e12b9b94394a014cbedec67bf15e176992d2a291d7d2db91d889d6e6271a7eb",
+      "bytes": 121
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/runs/real-1790831125052621600/stdout.jsonl",
+      "sha256": "b387e1747af8d306f0493148ad1cd58db93f56e9e790e69899f74318c49259be",
+      "bytes": 33171
+    }
+  ],
+  "binding_review": {
+    "fixed_source": {
+      "repository": "references/zcode-29628c9",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "head_matches": true,
+      "worktree_clean": true,
+      "author_source_bindings": 11,
+      "current_sha256_matches": 11,
+      "mismatches": 0,
+      "additional_execution_dependency": {
+        "path": ".runtime/P00/zcode/source/node_modules/tsx/dist/esm/index.mjs",
+        "sha256": "9fab711543eb155d50fb147f8984e104db348a73b74daee4e3974bec109aa381",
+        "matches_verification": true
+      },
+      "author_bound_compiled_entries": [
+        {
+          "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/bootstrap/dist/index.js",
+          "sha256": "cfffe39e61575a3a6627e8a10153d4ed998d6e48fd774c0195f57f2282074202",
+          "current_match": true
+        },
+        {
+          "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/bootstrap/dist/app/create-app.js",
+          "sha256": "7b647434cc2c298aa1720d32db481c4ccd6d2a49f43eaf1ee50b7dd28e4729f7",
+          "current_match": true
+        }
+      ],
+      "additional_reviewed_source": [
+        {
+          "path": "references/zcode-29628c9/packages/shared/src/execution-state.ts",
+          "sha256": "fd6d2e070bee90b2bcb7609dc598a903148ccc6570b8085390bb12abb50aca75"
+        },
+        {
+          "path": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/tool/executor/permission-flow.ts",
+          "sha256": "2f2c71e5d5e4d9dc25fc4cad53d51d05c64bdfb8afc16050e02a560257f7565b"
+        },
+        {
+          "path": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/tool/executor/call-runner.ts",
+          "sha256": "3b4e63f1fc4a89902a7b2f1d971855769c089ace5b46fe22465f717f70b049a1"
+        },
+        {
+          "path": "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/app/create-app.ts",
+          "sha256": "a2dc8e9067047a0f9bddadc07d844f8eb8c504077181a3678f994ea68c69ebc0"
+        }
+      ],
+      "compiled_graph_limit": "The two compiled entry hashes do not bind the full loaded dist dependency graph. The result documents this limit; source HEAD and all 11 direct source file hashes match the pinned clean checkout."
+    },
+    "author_outputs": {
+      "verification_binding_count": 29,
+      "current_file_sha256_matches": 29,
+      "cached_git_blob_matches": 29,
+      "git_diff_cached_check_exit_code": 0,
+      "u06_prerequisite_status": "accepted",
+      "u06_prerequisite_sha256_matches": true,
+      "credential_scan_reported_by_author": {
+        "files_scanned": 29,
+        "hits": 0,
+        "reviewer_read_or_emitted_credential_values": false
+      }
+    }
+  },
+  "mock_execution_review": {
+    "status": "PASS",
+    "reviewer_reran": false,
+    "model_calls": 0,
+    "local_mock_requests": 8,
+    "same_session_through_new_compact_postcompact_tool_cases": true,
+    "same_session_id_on_all_six_turns": true,
+    "compact_completed_event": true,
+    "compact_and_postcompact_session_start_hooks": 0,
+    "postcompact_user_prompt_hook_order": [
+      "user",
+      "plugin"
+    ],
+    "postcompact_fresh_packet_before_current_prompt": true,
+    "postcompact_packet_versions_in_provider_body": [
+      "mock-1790831051954627900-postcompact"
+    ],
+    "resume_source": "resume",
+    "resume_uses_same_session_id": true,
+    "read_failure": {
+      "post_tool_use_failure_hook_observed": true,
+      "failure_context_seen_in_next_provider_request": true
+    },
+    "write_permission": {
+      "pre_tool_use_plugin_invocation_observed": true,
+      "bound_hook_source_returns": "allow",
+      "native_permission_denied_event": true,
+      "denial_reason": "Plan mode only allows read-only, non-destructive tools",
+      "forbidden_file_exists": false,
+      "memory_enabled": false,
+      "evidence_limit": "The PreToolUse process stdout was not separately stored; invocation, bound deterministic output code, fixed permission ordering and the native denial event are the recorded evidence. This does not establish the enabled-memory exception or general hardening."
+    },
+    "plan_mode_normalization": "Native execution state represents the plan alias as mode=build plus planEnabled=true; both remain asserted on every mock turn.",
+    "startup_resume_packet_duplication": {
+      "new_turn_packet_entries": 2,
+      "resume_turn_packet_entries": 2,
+      "source": "The same plugin returns the current packet from SessionStart and UserPromptSubmit."
+    },
+    "preserved_failed_attempts": [
+      {
+        "run_id": "mock-1790830833806044700",
+        "reason": "Direct bootstrap import failed before requests; no model request."
+      },
+      {
+        "run_id": "mock-1790830862739595200",
+        "reason": "Incorrect expectation that getMode() returns plan; failed before requests."
+      }
+    ]
+  },
+  "primary_real_execution_review": {
+    "source": "Frozen primary-agent artifacts; reviewer independently checked request, hooks, response SSE, usage and hashes, and did not repeat the call.",
+    "status": "PASS",
+    "model_calls": 1,
+    "http_status": 200,
+    "exit_code": 0,
+    "request_model": "[基元]deepseek-flash",
+    "tools_field_empty": true,
+    "max_tokens": 1024,
+    "current_packet_before_current_prompt": true,
+    "native_system_message_present": true,
+    "user_prompt_hook_order": [
+      "user",
+      "plugin"
+    ],
+    "assistant_response_exact": "synthetic-xiadie|blue-orchid",
+    "usage_from_sse": {
+      "prompt_tokens": 2583,
+      "completion_tokens": 10,
+      "total_tokens": 2593
+    },
+    "response_sse_sha256_matches_summary": true,
+    "gateway_cost": "not returned",
+    "global_selected_file_hashes_unchanged": true,
+    "transport_limit": "The selected configured gateway uses HTTP; this review does not describe it as encrypted transport."
+  },
+  "reviewed_source_conclusions": [
+    {
+      "source": "references/zcode-29628c9/apps/zcode-cli/packages/adapters/src/plugins/index.ts and hook-sources.ts",
+      "finding": "The isolated user plugin layout loaded through the pinned plugin path and generated the recorded event invocations."
+    },
+    {
+      "source": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/methods/hooks.ts:15,109-140",
+      "finding": "Lifecycle hook additional context is attached as a hook-context system reminder and capped at 24,000 characters. The request snapshots show it before the current prompt."
+    },
+    {
+      "source": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/hooks/configured-runner-input.ts:26-29",
+      "finding": "Hook input exposes temporary transcript path aliases; the runner records only synthetic fixture metadata and hashes in this probe."
+    },
+    {
+      "source": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/methods/turn.ts:103-106",
+      "finding": "The native turn path recognizes /compact; the observed compact_completed event is consistent with the direct submitPrompt route."
+    },
+    {
+      "source": "references/zcode-29628c9/packages/shared/src/execution-state.ts:12-23; references/zcode-29628c9/apps/zcode-cli/packages/core/src/permission/service.ts:402-445; references/zcode-29628c9/apps/zcode-cli/packages/core/src/tool/executor/hook-flow.ts:198-231",
+      "finding": "The plan alias normalizes to build plus planEnabled, plan-enabled Write receives a hard deny, and the PreToolUse allow path does not replace an existing deny. The recorded event and absent file match this path."
+    },
+    {
+      "source": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/tool/executor/permission-flow.ts and call-runner.ts",
+      "finding": "The tool call runs PreToolUse and then native permission evaluation before the handler; the failed Read and denied Write did not execute a successful write handler."
+    }
+  ],
+  "follow_up_findings": [
+    {
+      "id": "U07-DUPLICATE-INITIAL-RESUME-PACKET",
+      "severity": "low",
+      "status": "non_blocking_design_follow_up",
+      "finding": "The same packet is attached twice on new and resumed first prompts because SessionStart and UserPromptSubmit both return the full packet. Raw mock and real request indices confirm two entries. The postcompact case correctly has one fresh UserPromptSubmit packet and no SessionStart. Product integration should make these outputs distinct or budget the duplication."
+    }
+  ],
+  "limitations": [
+    "The /compact summary request itself runs no new hook; only the following ordinary prompt proves fresh UserPromptSubmit injection.",
+    "Full compiled dependency graph, complete CLI startup, UI, installer, OS sandbox, malicious plugins, and enabled-memory permissions were not tested.",
+    "One real normal request is supported; compact, recovery and tool failure use mock responses. Gateway billing was not returned.",
+    "The PreToolUse test output is source-derived and its stdout is not separately preserved as raw evidence."
+  ],
+  "overall_spike_recommendation": {
+    "recommendation": "accept_as_bounded_P00_U07_spike",
+    "meaning": "Accept only this pinned-source native plugin/bootstrap integration seam and its documented limits after the coordinator records the decision. Do not infer Windows product readiness, enabled-memory safety, or full compiled-tree equivalence.",
+    "p01_open": false,
+    "g00_remains_later_gate": true,
+    "unit_status_changed_by_reviewer": false
+  },
+  "reviewer_actions": {
+    "model_calls": 0,
+    "network_calls": 0,
+    "project_scripts_rerun": false,
+    "files_written": [
+      "E:/Xiadie/Xiadie/evidence/P00-U07/20261001-01/review.json"
+    ],
+    "author_files_or_status_modified": false
+  }
+}
