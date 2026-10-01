@@ -1,0 +1,649 @@
+{
+  "schema_version": 1,
+  "task": "P00-U01",
+  "subject": "DeepSeek Harness SDK reuse research",
+  "status": "ready_for_review",
+  "accepted": false,
+  "observed_date": "2026-10-01",
+  "scope": {
+    "mode": "read_only_static_source_and_configuration_review",
+    "fixed_official_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+    "executed": {
+      "source_read": true,
+      "sha256_computation": true,
+      "local_git_and_package_metadata_read": true,
+      "configuration_marker_read_without_secret_values": true,
+      "dependency_install": false,
+      "build": false,
+      "tests": false,
+      "dsh_process_start": false,
+      "model_call": false,
+      "gpu_or_comfyui": false
+    },
+    "limitations": [
+      "No runtime behavior, effective permission enforcement, model generation, or approval UI was tested.",
+      "Tests cited below were read as source only and were not executed.",
+      "The machine DSH checkout contains five pre-existing untracked user files; their contents were not opened or modified.",
+      "The adapter compatibility claims were not independently tested."
+    ]
+  },
+  "environment": {
+    "official_checkout": {
+      "path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+      "remote": "https://github.com/deepseek-ai/deepseek-harness.git",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "working_tree": "clean_detached_head",
+      "package_version": "0.2.0-rc.2",
+      "package_manager_declared": "pnpm@11.7.0",
+      "node_engine": "^22.19.0 || >=24.0.0"
+    },
+    "machine_dsh_checkout": {
+      "path": "D:\\Deepseek Harness\\deepseek-harness",
+      "remote": "https://github.com/deepseek-ai/deepseek-harness.git",
+      "commit": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+      "branch_status": "master...origin/master",
+      "preexisting_untracked_files_count": 5,
+      "package_version": "0.1.5-rc.2",
+      "package_json_sha256": "766b5a990aca5d203457c11937f543256725d4a11487a85df5976c2e55a8e967"
+    },
+    "toolchain": {
+      "node": "v24.16.0",
+      "pnpm_installed": "11.16.0",
+      "pnpm_manifest_mismatch": true,
+      "git": "2.54.0.windows.1"
+    },
+    "build_artifact_observation": {
+      "path": "D:\\Deepseek Harness\\deepseek-harness\\.dsh-build\\client-build-environment.json",
+      "exists": true,
+      "size_bytes": 254,
+      "last_write_time": "2026-09-10T23:12:45+08:00",
+      "current_build_success_claimed": false
+    },
+    "production_profile": {
+      "path": "C:\\Users\\liyi\\.dsh",
+      "read_only": true,
+      "modified": false,
+      "credential_values_or_references_recorded": false,
+      "marker_files_examined": [
+        "profiles/web/cordis.patch.yml",
+        "profiles/web/cordis.yml",
+        "profiles/web/settings.yaml"
+      ],
+      "DSH_PERMISSION_MODE": {
+        "process": "unset",
+        "user": "unset",
+        "machine": "unset"
+      },
+      "effective_runtime_permission_claimed": false
+    }
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "claim": "SDK is an owned subprocess using newline-delimited JSON-RPC over stdio.",
+      "sources": [
+        "protocol-readme",
+        "client-launch",
+        "server-entry"
+      ]
+    },
+    {
+      "id": "F2",
+      "claim": "initialize validates/configures the provider/model route and returns serverInfo; the server lazily creates a session for an unknown sessionId on the first session/prompt. The request map has no cancel, session-close, approval/respond, version negotiation, or resume method; generic transport supports server requests, but the SDK server never sends one.",
+      "sources": [
+        "protocol-readme",
+        "protocol-types",
+        "server-entry",
+        "core-resume-api"
+      ]
+    },
+    {
+      "id": "F3",
+      "claim": "messageId is a queued-message receipt and idle is status, not business success or per-prompt turn completion.",
+      "sources": [
+        "protocol-readme",
+        "client-api",
+        "server-tests"
+      ]
+    },
+    {
+      "id": "F4",
+      "claim": "Client abort abandons a local pending request; closing the client tears down the whole child runtime.",
+      "sources": [
+        "protocol-transport",
+        "client-implementation",
+        "transport-tests",
+        "dispose-tests"
+      ]
+    },
+    {
+      "id": "F5",
+      "claim": "The default package-manifest resolver checks SDK client/DSH version equality and supports explicit dshHome; passing explicit dshBin bypasses that version check.",
+      "sources": [
+        "client-launch",
+        "client-types",
+        "machine-dsh-package"
+      ]
+    },
+    {
+      "id": "F6",
+      "claim": "SDK app inherits broad base tools; the generic transport can carry server requests, but the SDK server does not send approval requests. Approval docs say ask without an answerer fails closed.",
+      "sources": [
+        "base-patch",
+        "approval-readme",
+        "protocol-readme"
+      ]
+    },
+    {
+      "id": "F7",
+      "claim": "The root build profile selects the client artifact environment, accepts only its default or official profile, and does not define an SDK profile; the default build runs native-system/lib/web stages. Root postinstall changes Git hook configuration.",
+      "sources": [
+        "build-script",
+        "postinstall-script"
+      ]
+    },
+    {
+      "id": "F8",
+      "claim": "Shared Web adapter differs architecturally and is UNLICENSED with no root LICENSE; source reuse requires permission.",
+      "sources": [
+        "adapter-package",
+        "adapter-readme"
+      ]
+    }
+  ],
+  "recommended_u02": {
+    "status": "NOT_RUN",
+    "gateway_port": 7877,
+    "model_route": "[基元]deepseek-flash",
+    "budget": "unlimited",
+    "operator": "main agent",
+    "steps": [
+      "Use the exact pinned SDK version and a new run-specific DSH_HOME; never use C:\\\\Users\\\\liyi\\\\.dsh.",
+      "Resolve the 0.2.0-rc.2 versus 0.1.5-rc.2 mismatch before default package resolution; if passing explicit dshBin, independently verify its version because that override bypasses the manifest check.",
+      "Use an empty disposable cwd and explicit isolated process environment.",
+      "First use a mock provider to verify process and protocol flow. Before any live model call, use an isolated profile/patch to remove file, shell, web, subagent, and other sensitive tools, then inspect the final tool set sent to the model; prompt wording is not a security boundary.",
+      "Send one serialized prompt with an exact short response criterion; inspect assistant message content and exit status, not receipt or idle alone.",
+      "Observe timeout/abort and whole-client close separately; do not claim per-prompt cancellation.",
+      "Record approval/respond and persistent resume as unsupported unless a later isolated experiment shows an extension."
+    ]
+  },
+  "sources": [
+    {
+      "id": "official-license",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "LICENSE",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\LICENSE",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/LICENSE",
+      "line_count": 21,
+      "line_ranges": [
+        "1-21"
+      ],
+      "sha256": "ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be",
+      "license": "MIT"
+    },
+    {
+      "id": "protocol-readme",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/protocol/README.md",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\protocol\\README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/protocol/README.md",
+      "line_count": 125,
+      "line_ranges": [
+        "30-52",
+        "113-115"
+      ],
+      "sha256": "b076fd21150774051221796c46dba7fea15dc9b70a5e28102cba07fd6e2981d1"
+    },
+    {
+      "id": "protocol-types",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/protocol/src/types.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\protocol\\src\\types.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/protocol/src/types.ts",
+      "line_count": 119,
+      "line_ranges": [
+        "15-119"
+      ],
+      "sha256": "9a9ab6172ff2a45b7a07adf75611aa8f42ae1bb98bd4ad598d8bdc5f618053d7"
+    },
+    {
+      "id": "protocol-transport",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/protocol/src/transport.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\protocol\\src\\transport.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/protocol/src/transport.ts",
+      "line_count": 279,
+      "line_ranges": [
+        "1-279"
+      ],
+      "sha256": "7aed4460d1bccc9bc525d2c54f2220ba5360ae529cb86711eb043ad7471c45ac"
+    },
+    {
+      "id": "transport-tests",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/protocol/tests/transport.spec.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\protocol\\tests\\transport.spec.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/protocol/tests/transport.spec.ts",
+      "line_count": 307,
+      "line_ranges": [
+        "73-83"
+      ],
+      "sha256": "172fbbe8e77fa7ffd8869443cfe3de7130399fbbd7a3863f750f4924af8de5ea"
+    },
+    {
+      "id": "client-api",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/client/src/api.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\client\\src\\api.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/client/src/api.ts",
+      "line_count": 310,
+      "line_ranges": [
+        "176-224",
+        "288-310"
+      ],
+      "sha256": "943f0326dbf1415b50b879fdd538c0bcd38f20bd37ea6fec397b14099c2c8987"
+    },
+    {
+      "id": "client-implementation",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/client/src/client.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\client\\src\\client.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/client/src/client.ts",
+      "line_count": 491,
+      "line_ranges": [
+        "177-184",
+        "320-335",
+        "383-410"
+      ],
+      "sha256": "162a928f45f34acb017e98030392c0825e87f23ceb7533ccc3d25784a79808ad"
+    },
+    {
+      "id": "client-launch",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/client/src/launch.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\client\\src\\launch.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/client/src/launch.ts",
+      "line_count": 157,
+      "line_ranges": [
+        "55-65",
+        "91-108",
+        "122-155"
+      ],
+      "sha256": "d7187537945618d6190bf98ab5893de9a1a059e4e2ec4d3778386eaffe5148af"
+    },
+    {
+      "id": "client-types",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/client/src/types.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\client\\src\\types.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/client/src/types.ts",
+      "line_count": 83,
+      "line_ranges": [
+        "24-53"
+      ],
+      "sha256": "c0aea2b90cccdeb26aaa3840cfd403f082dbc5eae060c4bbfb35d45a5585a0fc"
+    },
+    {
+      "id": "server-readme",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/server/README.md",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\server\\README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/server/README.md",
+      "line_count": 138,
+      "line_ranges": [
+        "28-52",
+        "125-128"
+      ],
+      "sha256": "8927dd81f3f78733e449ab56a39269cf33845e084c5ed8cc911afdafa20ac237"
+    },
+    {
+      "id": "server-entry",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/server/src/server.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\server\\src\\server.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/server/src/server.ts",
+      "line_count": 299,
+      "line_ranges": [
+        "95-129",
+        "137-194",
+        "248-294"
+      ],
+      "sha256": "489ad060e5ca17901ac5336f9b7871b7397d1476e1258f69b0f3b22dba6f4238"
+    },
+    {
+      "id": "server-tests",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/server/tests/server.spec.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\server\\tests\\server.spec.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/server/tests/server.spec.ts",
+      "line_count": 1204,
+      "line_ranges": [
+        "352-372"
+      ],
+      "sha256": "3d230bfe2c694f88da83f7266e47314aed1991cac66f5f7d5fc3e0ee6b65734a"
+    },
+    {
+      "id": "base-patch",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/bundle/base/cordis.patch.yml",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\bundle\\base\\cordis.patch.yml",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/bundle/base/cordis.patch.yml",
+      "line_count": 529,
+      "line_ranges": [
+        "225-273"
+      ],
+      "sha256": "9c2be64f46a193eff3cca190c26e697e8e8eee25c9b40149dfdb56f8142c252d"
+    },
+    {
+      "id": "approval-readme",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/interaction/user-approval/README.md",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\interaction\\user-approval\\README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/interaction/user-approval/README.md",
+      "line_count": 167,
+      "line_ranges": [
+        "28-48"
+      ],
+      "sha256": "baeb9d4c765de81d9637d10a6cd36375ff962312a5360d8e1571036b477d60e0"
+    },
+    {
+      "id": "subagent-sdk-readme",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/subagent/subagent-dsh-sdk/README.md",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\subagent\\subagent-dsh-sdk\\README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/subagent/subagent-dsh-sdk/README.md",
+      "line_count": 190,
+      "line_ranges": [
+        "28-56"
+      ],
+      "sha256": "9789b5850adb36cf2833b371335fdf7b97571a7ff7f6c3866b59dca4f393413b"
+    },
+    {
+      "id": "subagent-sdk-run",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/subagent/subagent-dsh-sdk/src/run.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\subagent\\subagent-dsh-sdk\\src\\run.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/subagent/subagent-dsh-sdk/src/run.ts",
+      "line_count": 359,
+      "line_ranges": [
+        "233-254",
+        "316-359"
+      ],
+      "sha256": "4617a78de8ed877f424cd110890d42c438e7dc9a39e90508f9974c61fcb16fb2"
+    },
+    {
+      "id": "build-script",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "scripts/build.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\scripts\\build.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/scripts/build.ts",
+      "line_count": 53,
+      "line_ranges": [
+        "31-49"
+      ],
+      "sha256": "6afb64c9045c90549ff8201a890d572f8f87dae3eebf9c14e5b6ebfc448b6056"
+    },
+    {
+      "id": "postinstall-script",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "scripts/install-lefthook.mjs",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\scripts\\install-lefthook.mjs",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/scripts/install-lefthook.mjs",
+      "line_count": 769,
+      "line_ranges": [
+        "711-723"
+      ],
+      "sha256": "f3db8265995d47d886e7367035cf46e50be77ec7700eda17d07b3aa22b8f1f20"
+    },
+    {
+      "id": "adapter-package",
+      "repository": "dsh-for-mofox-ada",
+      "commit": "4d833cf8a7eb14e7fa012e5d83e4b7475d79d83c",
+      "path": "package.json",
+      "local_path": "D:\\Mofox\\插件\\dsh_adapter\\work\\extracted\\dsh_adapter\\package.json",
+      "url": "https://github.com/fuilyha56-wq/dsh-for-mofox-ada/blob/4d833cf8a7eb14e7fa012e5d83e4b7475d79d83c/package.json",
+      "line_count": 32,
+      "line_ranges": [
+        "3",
+        "30"
+      ],
+      "sha256": "eed47b7f0a2b9b53d6a1ef3b4751695ff2225d35ec5c59a38239f9ad21689fc0",
+      "package_version": "1.1.0",
+      "license": "UNLICENSED",
+      "root_license_file_present": false
+    },
+    {
+      "id": "client-build-environment",
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "scripts/client-build-environment.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\scripts\\client-build-environment.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/scripts/client-build-environment.ts",
+      "line_count": 395,
+      "line_ranges": [
+        "13-33",
+        "181-208",
+        "276-326",
+        "330-346"
+      ],
+      "sha256": "064ee73384745e7b327c8465fb31b0b99cce5b3824363cdac9eb455ff17b4bb8"
+    }
+  ],
+  "unhashed_read_sources": [
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/README.md",
+      "line_ranges": [
+        "10-12"
+      ],
+      "reason": "Read for stdio host summary; compact hash set retains 20 primary source/test entries.",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/README.md",
+      "line_count": 49
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/bundle/sdk-app/README.md",
+      "line_ranges": [
+        "12",
+        "26",
+        "32-47"
+      ],
+      "reason": "Read to confirm sdk profile inherits base.",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\bundle\\sdk-app\\README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/bundle/sdk-app/README.md",
+      "line_count": 76
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/core/agent/README.md",
+      "line_ranges": [
+        "32-47"
+      ],
+      "reason": "Read to distinguish core resume API from absent SDK wire resume method.",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\core\\agent\\README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/core/agent/README.md",
+      "line_count": 189
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/core/agent-loop/tests/resume.spec.ts",
+      "line_ranges": [
+        "152-159"
+      ],
+      "reason": "Read as core resume test context; not executed.",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\core\\agent-loop\\tests\\resume.spec.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/core/agent-loop/tests/resume.spec.ts",
+      "line_count": 1406
+    },
+    {
+      "repository": "dsh-for-mofox-ada",
+      "commit": "4d833cf8a7eb14e7fa012e5d83e4b7475d79d83c",
+      "path": "API.md",
+      "line_ranges": [
+        "101-156"
+      ],
+      "reason": "Read for shared HTTP/WebSocket RPC and session.cancel catalog.",
+      "local_path": "D:\\Mofox\\插件\\dsh_adapter\\work\\extracted\\dsh_adapter\\API.md",
+      "url": "https://github.com/fuilyha56-wq/dsh-for-mofox-ada/blob/4d833cf8a7eb14e7fa012e5d83e4b7475d79d83c/API.md",
+      "line_count": 244
+    },
+    {
+      "repository": "dsh-for-mofox-ada",
+      "commit": "4d833cf8a7eb14e7fa012e5d83e4b7475d79d83c",
+      "path": "adapter.py",
+      "line_ranges": [
+        "114-224"
+      ],
+      "reason": "Read for approval actor checks and single-use response path.",
+      "local_path": "D:\\Mofox\\插件\\dsh_adapter\\work\\extracted\\dsh_adapter\\adapter.py",
+      "url": "https://github.com/fuilyha56-wq/dsh-for-mofox-ada/blob/4d833cf8a7eb14e7fa012e5d83e4b7475d79d83c/adapter.py",
+      "line_count": 626
+    },
+    {
+      "repository": "dsh-for-mofox-ada",
+      "commit": "4d833cf8a7eb14e7fa012e5d83e4b7475d79d83c",
+      "path": "client.py",
+      "line_ranges": [
+        "97-120"
+      ],
+      "reason": "Read to verify catalog is not used as runtime allowlist.",
+      "local_path": "D:\\Mofox\\插件\\dsh_adapter\\work\\extracted\\dsh_adapter\\client.py",
+      "url": "https://github.com/fuilyha56-wq/dsh-for-mofox-ada/blob/4d833cf8a7eb14e7fa012e5d83e4b7475d79d83c/client.py",
+      "line_count": 305
+    },
+    {
+      "repository": "dsh-for-mofox-ada",
+      "commit": "4d833cf8a7eb14e7fa012e5d83e4b7475d79d83c",
+      "path": "README.md",
+      "local_path": "D:\\Mofox\\插件\\dsh_adapter\\work\\extracted\\dsh_adapter\\README.md",
+      "url": "https://github.com/fuilyha56-wq/dsh-for-mofox-ada/blob/4d833cf8a7eb14e7fa012e5d83e4b7475d79d83c/README.md",
+      "line_count": 311,
+      "line_ranges": [
+        "5-7",
+        "23-26",
+        "83-123",
+        "192-223",
+        "269-305"
+      ],
+      "reason": "Read for the shared HTTP/WebSocket architecture, event routing, and adapter self-reported compatibility."
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/sdk/client/README.md",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\client\\README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/client/README.md",
+      "line_count": 135,
+      "line_ranges": [
+        "48-54",
+        "68-77"
+      ],
+      "reason": "Read for run interval, environment replacement/inheritance, caller-owned credential policy, and subprocess ownership."
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/bundle/base/README.md",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\bundle\\base\\README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/bundle/base/README.md",
+      "line_count": 151,
+      "line_ranges": [
+        "50",
+        "70",
+        "88"
+      ],
+      "reason": "Read for inherited SDK/base tool availability and default permission behavior."
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/subagent/subagent-dsh-sdk/tests/subagent-dsh-sdk.spec.ts",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\subagent\\subagent-dsh-sdk\\tests\\subagent-dsh-sdk.spec.ts",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/subagent/subagent-dsh-sdk/tests/subagent-dsh-sdk.spec.ts",
+      "line_count": 979,
+      "line_ranges": [
+        "513-521",
+        "652-660"
+      ],
+      "reason": "Read as fake-child abort and process-reaping test evidence; not executed."
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "apps/cli/tsconfig.json",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\apps\\cli\\tsconfig.json",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/apps/cli/tsconfig.json",
+      "line_count": 81,
+      "line_ranges": [
+        "1-20",
+        "21-80"
+      ],
+      "reason": "Read for CLI source fallback TypeScript project references and workspace config."
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "tsconfig.base.json",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\tsconfig.base.json",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/tsconfig.base.json",
+      "line_ranges": [
+        "1-10",
+        "27-34",
+        "54-83"
+      ],
+      "reason": "Read for source fallback TypeScript options and workspace paths.",
+      "line_count": 561
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "packages/subprocess/subprocess/README.md",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\subprocess\\subprocess\\README.md",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/subprocess/subprocess/README.md",
+      "line_count": 164,
+      "line_ranges": [
+        "78-84",
+        "150"
+      ],
+      "reason": "Read to distinguish caller-importable environment scrub helper from SDK client behavior."
+    },
+    {
+      "repository": "deepseek-ai/deepseek-harness",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "path": "package.json",
+      "local_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\package.json",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/package.json",
+      "line_ranges": [
+        "19-27",
+        "208",
+        "258"
+      ],
+      "reason": "Read for full build entry, postinstall hook, and root tsx development dependency.",
+      "line_count": 265
+    }
+  ],
+  "source_sha256_count": 20
+}

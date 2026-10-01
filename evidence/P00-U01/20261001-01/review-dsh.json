@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "task": "P00-U01 / independent DSH research review",
+  "reviewed_at": "2026-10-01",
+  "decision": "accepted",
+  "accepted": true,
+  "status": "accepted_research_only",
+  "accepted_scope": "Accepts only the DSH U01 static research report and its source manifest. It does not accept U02, runtime compatibility, model generation, or implementation.",
+  "reviewed_artifacts": {
+    "report": {
+      "path": "E:\\Xiadie\\Xiadie\\docs\\research\\P00\\dsh.md",
+      "sha256": "3b4c0600e46e5e0c06459b6947bc9bae1a96d375b2e20e5e57d6896e56d0b821"
+    },
+    "sources": {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U01\\20261001-01\\dsh-sources.json",
+      "sha256": "06d16bb00358ac9cae4490aaebe51596a7e66479dd93dc2a89a1e50c9cf691ef"
+    }
+  },
+  "verified_checks": {
+    "fixed_source_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+    "checkout": "clean detached HEAD",
+    "source_hash_entries": 20,
+    "source_hash_mismatches": 0,
+    "line_cited_but_unhashed_paths_registered": true,
+    "fake_child_test_path": "packages/subagent/subagent-dsh-sdk/tests/subagent-dsh-sdk.spec.ts",
+    "markdown_trailing_whitespace_matches": 0,
+    "initialization_semantics": "initialize configures route and returns serverInfo; first session/prompt lazily creates the session",
+    "build_semantics": "scripts/build.ts --profile is client artifact build environment selection; sdk is rejected; pnpm run build is full repository build, not SDK-only",
+    "version_validation": "default manifest resolution checks same version; explicit dshBin bypasses check",
+    "env_isolation": "options.env fully replaces inherited env; SDK client does not scrub; helper remains caller-owned",
+    "protocol_request_direction": "generic transport supports server requests, but current SDK server does not issue them; no approval/respond round-trip",
+    "U02_tool_safety": "requires actual isolated profile tool removal or mock provider; prompt wording is not a permission boundary",
+    "toolchain": {
+      "node": "v24.16.0",
+      "pnpm": "11.16.0",
+      "git": "2.54.0.windows.1",
+      "declared_pnpm": "11.7.0"
+    }
+  },
+  "finding_resolutions": [
+    {
+      "id": "DSH-R1",
+      "status": "resolved",
+      "note": "initialize return and lazy session creation now match fixed server source."
+    },
+    {
+      "id": "DSH-R2",
+      "status": "resolved",
+      "note": "client artifact build selector is distinguished from runtime profile; no SDK-only build is claimed."
+    },
+    {
+      "id": "DSH-R3",
+      "status": "resolved",
+      "note": "version guard scope now distinguishes default manifest lookup and explicit dshBin."
+    },
+    {
+      "id": "DSH-R4",
+      "status": "resolved",
+      "note": "environment replacement and caller-owned scrubbing are explicit."
+    },
+    {
+      "id": "DSH-R5",
+      "status": "resolved",
+      "note": "client/base README and full fake-child test path are registered in unhashed_read_sources."
+    },
+    {
+      "id": "DSH-R6",
+      "status": "resolved",
+      "note": "generic transport capability is distinguished from SDK server behavior."
+    },
+    {
+      "id": "DSH-R7",
+      "status": "resolved",
+      "note": "U02 requires actual profile tool removal or mock provider before real model call."
+    }
+  ],
+  "non_execution_boundary": {
+    "build": "NOT_RUN",
+    "tests": "NOT_RUN",
+    "dependency_install": "NOT_RUN",
+    "dsh_start": "NOT_RUN",
+    "model_calls": 0,
+    "accepted_runtime_compatibility": false
+  }
+}

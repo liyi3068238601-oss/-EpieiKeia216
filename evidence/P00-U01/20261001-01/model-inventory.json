@@ -1,0 +1,182 @@
+{
+  "date": "2026-10-01",
+  "read_only": true,
+  "model_calls": 0,
+  "availability_not_tested": true,
+  "providers": [
+    {
+      "runtime": "zcode",
+      "metadata_source": "C:\\Users\\liyi\\.zcode\\v2\\config.json",
+      "provider_id": "builtin:bigmodel",
+      "name": "Bigmodel - API Key",
+      "enabled": false,
+      "kind": "anthropic",
+      "endpoint_host": "open.bigmodel.cn",
+      "credential_present_in_options": false,
+      "model_ids": [
+        "GLM-5.3",
+        "GLM-5.3-Flash"
+      ]
+    },
+    {
+      "runtime": "zcode",
+      "metadata_source": "C:\\Users\\liyi\\.zcode\\v2\\config.json",
+      "provider_id": "builtin:zai",
+      "name": "Z.ai - API Key",
+      "enabled": true,
+      "kind": "anthropic",
+      "endpoint_host": "api.z.ai",
+      "credential_present_in_options": false,
+      "model_ids": [
+        "GLM-5.3",
+        "GLM-5.3-Flash"
+      ]
+    },
+    {
+      "runtime": "zcode",
+      "metadata_source": "C:\\Users\\liyi\\.zcode\\v2\\config.json",
+      "provider_id": "builtin:bigmodel-coding-plan",
+      "name": "BigModel - Coding Plan",
+      "enabled": false,
+      "kind": "anthropic",
+      "endpoint_host": "open.bigmodel.cn",
+      "credential_present_in_options": false,
+      "model_ids": [
+        "GLM-5.3",
+        "GLM-5.3-Flash"
+      ]
+    },
+    {
+      "runtime": "zcode",
+      "metadata_source": "C:\\Users\\liyi\\.zcode\\v2\\config.json",
+      "provider_id": "builtin:bigmodel-start-plan",
+      "name": "BigModel- Coding Plan",
+      "enabled": false,
+      "kind": "anthropic",
+      "endpoint_host": "zcode.z.ai",
+      "credential_present_in_options": false,
+      "model_ids": []
+    },
+    {
+      "runtime": "zcode",
+      "metadata_source": "C:\\Users\\liyi\\.zcode\\v2\\config.json",
+      "provider_id": "builtin:zai-coding-plan",
+      "name": "Z.ai - Coding Plan",
+      "enabled": false,
+      "kind": "anthropic",
+      "endpoint_host": "api.z.ai",
+      "credential_present_in_options": true,
+      "model_ids": [
+        "GLM-5.3",
+        "GLM-5.3-Flash"
+      ]
+    },
+    {
+      "runtime": "zcode",
+      "metadata_source": "C:\\Users\\liyi\\.zcode\\v2\\config.json",
+      "provider_id": "builtin:zai-start-plan",
+      "name": "Z.ai - Coding Plan",
+      "enabled": false,
+      "kind": "anthropic",
+      "endpoint_host": "zcode.z.ai",
+      "credential_present_in_options": true,
+      "model_ids": [
+        "GLM-5.3-Flash"
+      ]
+    },
+    {
+      "runtime": "zcode",
+      "metadata_source": "C:\\Users\\liyi\\.zcode\\v2\\config.json",
+      "provider_id": "f24c47b7-99ed-4a4b-98e3-e88d4879fa72",
+      "name": "deepseek",
+      "enabled": true,
+      "kind": "openai-compatible",
+      "endpoint_host": "api.deepseek.com",
+      "credential_present_in_options": true,
+      "model_ids": [
+        "deepseek-flash",
+        "deepseek-v4-pro"
+      ]
+    },
+    {
+      "runtime": "dsh",
+      "metadata_source": "C:\\Users\\liyi\\.dsh\\settings.yaml",
+      "provider_id": "a7877",
+      "name": "7877",
+      "endpoint_host": "47.108.250.118",
+      "credential_environment_name": "A7877_API_KEY",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "[基元]glm-5.3-flash",
+          "name": "[基元]glm-5.3-flash",
+          "contextWindow": 1000000,
+          "maxTokens": 256000,
+          "input": [
+            "text",
+            "image"
+          ]
+        },
+        {
+          "id": "[基元]deepseek-flash",
+          "name": "[基元]deepseek-flash",
+          "contextWindow": 1000000,
+          "maxTokens": 256000,
+          "input": [
+            "text",
+            "image"
+          ]
+        },
+        {
+          "id": "[基元]deepseek-v4-flash-0731",
+          "name": "[基元]deepseek-v4-flash-0731",
+          "contextWindow": 1000000,
+          "maxTokens": 256000,
+          "input": null
+        },
+        {
+          "id": "[基元]deepseek-v4-pro-0813",
+          "name": "[基元]deepseek-v4-pro-0813",
+          "contextWindow": 1000000,
+          "maxTokens": 256000,
+          "input": null
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "dsh_default_model": {
+    "provider": "a7877",
+    "model": "[基元]deepseek-flash"
+  },
+  "locations": [
+    {
+      "path": "E:\\Xiadie\\Xiadie\\Xiadie-next",
+      "exists": false
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie-next",
+      "exists": false
+    },
+    {
+      "path": "D:\\ZCode",
+      "exists": true
+    },
+    {
+      "path": "D:\\Deepseek Harness\\deepseek-harness",
+      "exists": true
+    },
+    {
+      "path": "C:\\Users\\liyi\\.zcode",
+      "exists": true
+    },
+    {
+      "path": "C:\\Users\\liyi\\.dsh",
+      "exists": true
+    },
+    {
+      "path": "F:\\test\\dsh-comfyui-ctl",
+      "exists": false
+    }
+  ]
+}

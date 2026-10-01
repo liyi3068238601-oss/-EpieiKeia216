@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-01",
+  "goal": "执行P00，有问题随时问我",
+  "project_root": "E:\\Xiadie\\Xiadie",
+  "plan_version": "1.1",
+  "current_task": "P00-U02",
+  "tasks": [
+    {
+      "id": "P00-U01",
+      "title": "现成方案调查与来源比较",
+      "dependencies": [],
+      "status": "accepted",
+      "attempt_id": "20261001-01"
+    },
+    {
+      "id": "P00-U02",
+      "title": "隔离试验与复用决定",
+      "dependencies": [
+        "P00-U01"
+      ],
+      "status": "running",
+      "attempt_id": "20261001-01"
+    },
+    {
+      "id": "P00-U03",
+      "title": "旧工程只读盘点",
+      "dependencies": [
+        "P00-U02"
+      ],
+      "status": "not_started",
+      "attempt_id": null
+    },
+    {
+      "id": "P00-U04",
+      "title": "上游版本和工具链锁定",
+      "dependencies": [
+        "P00-U03"
+      ],
+      "status": "not_started",
+      "attempt_id": null
+    },
+    {
+      "id": "P00-U05",
+      "title": "范围和旧决策替代表",
+      "dependencies": [
+        "P00-U04"
+      ],
+      "status": "not_started",
+      "attempt_id": null
+    },
+    {
+      "id": "P00-U06",
+      "title": "许可证和资产清单",
+      "dependencies": [
+        "P00-U05"
+      ],
+      "status": "not_started",
+      "attempt_id": null
+    },
+    {
+      "id": "P00-U07",
+      "title": "ZCode上下文接缝试验",
+      "dependencies": [
+        "P00-U06"
+      ],
+      "status": "not_started",
+      "attempt_id": null
+    },
+    {
+      "id": "P00-U08",
+      "title": "主会话与子代理Memory试验",
+      "dependencies": [
+        "P00-U07"
+      ],
+      "status": "not_started",
+      "attempt_id": null
+    },
+    {
+      "id": "P00-U09",
+      "title": "DSH协议能力试验",
+      "dependencies": [
+        "P00-U08"
+      ],
+      "status": "not_started",
+      "attempt_id": null
+    },
+    {
+      "id": "P00-U10",
+      "title": "复用路线ADR与开工准入",
+      "dependencies": [
+        "P00-U09"
+      ],
+      "status": "not_started",
+      "attempt_id": null
+    },
+    {
+      "id": "P00-U11",
+      "title": "阶段集成与独立回归",
+      "dependencies": [
+        "P00-U03",
+        "P00-U04",
+        "P00-U05",
+        "P00-U06",
+        "P00-U07",
+        "P00-U08",
+        "P00-U09",
+        "P00-U10"
+      ],
+      "status": "not_started",
+      "attempt_id": null
+    },
+    {
+      "id": "P00-U12",
+      "title": "验收并冻结 0.0.0",
+      "dependencies": [
+        "P00-U11"
+      ],
+      "status": "not_started",
+      "attempt_id": null
+    }
+  ],
+  "model_authorization": {
+    "status": "authorized",
+    "provider": "7877",
+    "model": "[基元]deepseek-flash",
+    "budget_limit": null,
+    "user_reply": "无上限",
+    "selection_basis": "existing configured DSH default; no new model assumed",
+    "calls_made": 0
+  },
+  "product_implementation_started": false
+}

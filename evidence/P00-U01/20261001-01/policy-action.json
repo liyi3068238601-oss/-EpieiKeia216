@@ -1,0 +1,10 @@
+{
+  "action": "remove only empty directories created by an agent under the old project root",
+  "paths": ["E:/Xiadie/docs/research/P00", "E:/Xiadie/docs/research", "E:/Xiadie/docs", "E:/Xiadie/evidence/P00-U01/20261001-01", "E:/Xiadie/evidence/P00-U01", "E:/Xiadie/evidence"],
+  "preconditions_in_command": "absolute containment check; no children; no recursive removal",
+  "tool_result": "Rejected: blocked by policy",
+  "executed": false,
+  "response": "leave empty directories in place; do not retry the rejected removal through another route",
+  "project_files": "already moved to E:/Xiadie/Xiadie with matching SHA-256",
+  "blocks_p00": false
+}

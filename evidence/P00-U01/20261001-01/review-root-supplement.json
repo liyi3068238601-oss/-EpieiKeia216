@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "task_id": "P00-U01",
+  "attempt_id": "20261001-01",
+  "reviewer_role": "有限补充 root review；不复审 DSH/Herta/ZCode 分项结论",
+  "reviewed_at": "2026-10-01",
+  "workspace": {
+    "root": "E:\\Xiadie\\Xiadie",
+    "baseline_commit": "4680700bbaf7f3cd6abf4ed38809ab878d859568"
+  },
+  "extends": {
+    "path": "evidence/P00-U01/20261001-01/review-root.json",
+    "sha256": "87cbdac7f20035f2d6ccec97bad6efa530b72b434964916c88468912eb3e6905",
+    "disposition": "沿用既有 root 自有文件 accepted 的范围；本补充不改变整体 U01 gate"
+  },
+  "reviewed_artifacts": [
+    {
+      "path": "docs/research/P00/isolation-boundaries.md",
+      "sha256": "7be1540bb1ca1d0e127722c9c3d6742119e34fe3856f121e4d376589242d87ff",
+      "bytes": 1516,
+      "line_count": 9,
+      "scope": "全文阅读；复核受控子进程环境与隔离限制"
+    },
+    {
+      "path": "docs/research/P00/verify-herta-report.py",
+      "sha256": "3285fd5a58fd2b10964890e7f6642c26c74b52c67bd47a763027e8b655d0bf62",
+      "bytes": 2119,
+      "line_count": 41,
+      "scope": "静态阅读；未执行；仅检查 receipt/source/report 哈希并写 review-herta.json，不运行产品测试或模型"
+    },
+    {
+      "path": "docs/research/P00/verify-zcode-report.py",
+      "sha256": "ebe1f3a315001868a6b94f56a62cb5006893e44ecc9849f6ba0a131b00a40869",
+      "bytes": 2169,
+      "line_count": 40,
+      "scope": "静态阅读；未执行；检查 receipt/source/report 哈希及 Apache-2.0 标记，并写 review-zcode.json，不运行 ZCode、产品测试或模型"
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/adapters/src/context/index.ts",
+      "sha256": "a8cb549b526bc03744fdfcd1a40b586310236c18c563ee7e0263444fc3e3bbb7",
+      "bytes": 10694,
+      "repository_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "repository_worktree_clean": true,
+      "reviewed_lines": "27-29,38-56,94-116,204-247",
+      "scope": "针对性复读 adapter env、workspace 指令向 projectRoot 上溯、用户 AGENTS 路径解析；未运行测试"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/policy-action.json",
+      "sha256": "d15cca2980e8365f7eb1fe8b38e03805e2b33172e4ade9985d35dfd764750a3c",
+      "bytes": 650,
+      "line_count": 10,
+      "scope": "读取操作记录；记录显示空目录清理命令被策略拒绝且未执行，明确不得改用其他方式重试"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/agent-path-correction.json",
+      "sha256": "f359a89a442727810f460f2e95f3f022414a3e825e25c7a03e856478d6cf5991",
+      "bytes": 549,
+      "line_count": 14,
+      "scope": "读取迁移记录；记录列出的 zcode.md 与 zcode-sources.json 均声明旧/新路径 SHA-256 匹配"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/gateway-input-metadata.json",
+      "metadata_only": {
+        "bytes": 417,
+        "last_write_utc": "2026-10-01T02:40:41.8090688Z"
+      },
+      "content_read": false,
+      "content_parsed": false,
+      "content_hashed": false,
+      "scope": "只读取文件系统元数据；未打开、打印、解析或哈希文件内容，因此不对其 request/output body 作结论"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "ccad808ecac0ec1d366da789c3e18c90bcd16ab4f784c55cc53461699f6fc9e4",
+      "bytes": 222,
+      "line_count": 5,
+      "reviewed_lines": "3",
+      "scope": "复核新增规则 docs/research/P00/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol；git check-attr 确认为 text unset，范围不含 planning/** 或 evidence/**"
+    }
+  ],
+  "findings": [
+    {
+      "id": "S-01",
+      "state": "verified_from_pinned_source",
+      "summary": "ZCode 用户级 AGENTS.md 从 resolveUserHomeDir(env) 下的 .zcode/AGENTS.md 查找；解析顺序为 env.HOME、env.USERPROFILE、os.homedir()，没有使用 ZCODE_DATA_BASE_DIR。仅切换数据基目录或 --cwd 不能隔离用户目录指令。",
+      "references": [
+        "references/zcode-29628c9/apps/zcode-cli/packages/adapters/src/context/index.ts:229-247",
+        "docs/research/P00/isolation-boundaries.md:3"
+      ],
+      "required_isolation": "通过完整受控子进程环境将 HOME 与 USERPROFILE 都指向试验用户目录（或确保 HOME 未继承且回退仍落在隔离用户目录）；ZCODE_DATA_BASE_DIR 单独指向试验数据根，fixture 使用独立 Git 根；不修改系统级/用户级全局环境。"
+    },
+    {
+      "id": "S-02",
+      "state": "verified_as_precondition_only",
+      "summary": "isolation-boundaries.md 将上述配置列为后续试验前置条件，并明确隔离、模型调用和权限效果尚未实测；本轮没有运行隔离试验。",
+      "references": [
+        "docs/research/P00/isolation-boundaries.md:5,9"
+      ]
+    },
+    {
+      "id": "S-03",
+      "state": "record_reviewed",
+      "summary": "policy-action.json 记录旧根内空目录清理被策略拒绝、未执行且不得重试；记录也称项目文件已迁至新根并哈希匹配。该动作不阻塞 P00。",
+      "references": [
+        "evidence/P00-U01/20261001-01/policy-action.json"
+      ]
+    },
+    {
+      "id": "S-04",
+      "state": "record_reviewed",
+      "summary": "agent-path-correction.json 记录 ZCode 报告与来源清单由旧根迁至新根，两个文件的迁移前后 SHA-256 匹配。此处复核迁移记录，不重新审核 ZCode 内容。",
+      "references": [
+        "evidence/P00-U01/20261001-01/agent-path-correction.json"
+      ]
+    },
+    {
+      "id": "S-05",
+      "state": "metadata_only",
+      "summary": "gateway-input-metadata.json 本轮只读取文件长度与修改时间；内容未读、未解析、未哈希，不据此宣称 request/output 内容安全或合规。",
+      "references": [
+        "evidence/P00-U01/20261001-01/gateway-input-metadata.json"
+      ]
+    },
+    {
+      "id": "S-06",
+      "state": "verified_with_scope",
+      "summary": "两份 verifier 是来源回执/报告哈希检查脚本；静态阅读确认其会写各自 review JSON，但脚本执行本身不等于产品测试、运行时兼容或模型调用。本轮未运行任一 verifier。",
+      "references": [
+        "docs/research/P00/verify-herta-report.py:12-20,35-41",
+        "docs/research/P00/verify-zcode-report.py:12-23,34-40"
+      ]
+    },
+    {
+      "id": "S-07",
+      "state": "verified_with_scope",
+      "summary": "新增 .gitattributes 规则为 P00 研究文档关闭 text 转换，避免 Git 默认 text=auto/eol=lf 在后续暂存或检出时改变已审核原始字节与 SHA-256；whitespace 规则允许 CR 行尾检查。git check-attr 显示 text unset，git ls-files --eol 对三份抽查文件显示 i/lf w/lf。规则只匹配 docs/research/P00/**，不改变 planning/** 或 evidence/** 的属性。",
+      "references": [
+        ".gitattributes:3",
+        "docs/research/P00/isolation-boundaries.md",
+        "docs/research/P00/verify-herta-report.py",
+        "docs/research/P00/verify-zcode-report.py"
+      ]
+    }
+  ],
+  "disposition": {
+    "root_supplement": "accepted_with_scope",
+    "overall_u01_status": "draft_waiting_sections",
+    "overall_u01_recommendation": "等待 DSH 修正及其独立审查记录；本补充不代表整体 U01 accepted，不开始 U02。",
+    "dsh_content_reviewed_here": false
+  },
+  "actions": {
+    "product_tests": "NOT_RUN",
+    "isolation_tests": "NOT_RUN",
+    "verification_scripts": "NOT_RUN",
+    "model_calls": 0,
+    "network_or_upstream_refresh": "NOT_RUN",
+    "gateway_input_content_read": false,
+    "task_status_modified": false,
+    "product_code_modified": false
+  }
+}

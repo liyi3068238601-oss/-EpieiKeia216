@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "task": "P00-U01 / ZCode source investigation",
+  "status": "ready_for_review",
+  "accepted": false,
+  "date": "2026-10-01",
+  "workspace_root": "E:\\Xiadie\\Xiadie",
+  "report": "docs/research/P00/zcode.md",
+  "source_repository": {
+    "name": "zai-org/ZCode",
+    "url": "https://github.com/zai-org/ZCode",
+    "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "checkout": "references/zcode-29628c9",
+    "head_verified": true,
+    "working_tree": "clean; detached HEAD",
+    "version_read_from_source": "3.14.3 series"
+  },
+  "hashed_sources": [
+    {
+      "path": "README.md",
+      "sha256": "1883ce9412247e7ff2c2a5d72a24622402e25dd79e9785f9f3ce302f30433e19",
+      "line_refs": "14-32,59-63,82,113-135",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/README.md"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "fa36dc312bc4946b1c22dba3c726ad8d3052b353f81424e7b997dbb3d9b40a49",
+      "line_refs": "whole file",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/LICENSE"
+    },
+    {
+      "path": "mise.toml",
+      "sha256": "5c1639f4a6ac6c3304bab3d8b221f48a662d583edae9f94b41778815ada00f27",
+      "line_refs": "toolchain pins",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/mise.toml"
+    },
+    {
+      "path": "scripts/bootstrap.mjs",
+      "sha256": "a434d8fd5c5441cca542dee34c2a2f8411d05e834ab83e71d8a20cbebcb0f16e",
+      "line_refs": "161-180",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/scripts/bootstrap.mjs"
+    },
+    {
+      "path": "apps/zcode-cli/packages/cli/package.json",
+      "sha256": "8d75287626b1de899a99b406b7e0ce994ae5210602afea2b48804350ba4b2510",
+      "line_refs": "1-24",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/cli/package.json"
+    },
+    {
+      "path": "apps/zcode-cli/packages/cli/src/main.ts",
+      "sha256": "29d9b2265ae3b11b2d19a763249ef0ad5e92b8efc6feb23109a73aac27fe6b6a",
+      "line_refs": "1-70",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/cli/src/main.ts"
+    },
+    {
+      "path": "apps/zcode-cli/packages/cli/src/arguments.ts",
+      "sha256": "1f2a4eeae86229ce6f6b3e75075aaa0a7a2e6c31ea7445f6065dfd2016a1e63e",
+      "line_refs": "30-80,111-116",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/cli/src/arguments.ts"
+    },
+    {
+      "path": "apps/zcode-cli/packages/cli/src/run.ts",
+      "sha256": "6b47b0a46392234fff280ead6b046e738f7448692b72d79df9d8e3305a8ab88a",
+      "line_refs": "136-140,404-522",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/cli/src/run.ts"
+    },
+    {
+      "path": "apps/zcode-cli/packages/cli/src/provider-runtime-env.ts",
+      "sha256": "196a13b6fb7f252c601745d3cf7840724cc5c8fbbf7894e34fc05eb3b4e62f21",
+      "line_refs": "60,112-113",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/cli/src/provider-runtime-env.ts"
+    },
+    {
+      "path": "packages/services/src/paths.ts",
+      "sha256": "c80514af3bd265d87028db449aeedd2b7f77c7f1fe7152dd7cb409bd50993f10",
+      "line_refs": "9-12,28-55",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/packages/services/src/paths.ts"
+    },
+    {
+      "path": "apps/zcode-cli/packages/adapters/src/auth/shared-credentials.ts",
+      "sha256": "061ac71451b0e11a12f42100c876aa70cb24cbcf14eab85527257af13759d5d7",
+      "line_refs": "280-289",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/adapters/src/auth/shared-credentials.ts"
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/runtime/methods/hooks.ts",
+      "sha256": "b2a394823d6b325e9f322b2d219d3e12046a2cafc880c0e0aa8b76315be3fa00",
+      "line_refs": "15,109-157",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/runtime/methods/hooks.ts"
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/hooks/configured-runner-input.ts",
+      "sha256": "ba409c54bf3137256b66c0aa75f9d5faa9515e7d03eb1c7acc4217272c710656",
+      "line_refs": "25-65",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/hooks/configured-runner-input.ts"
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/hooks/configured-runner-callback.ts",
+      "sha256": "450d2e711977431152e1c0ab62c184798eaf69a88e3d3f0289c49d05b502b08c",
+      "line_refs": "66,111,123-153",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/hooks/configured-runner-callback.ts"
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/runtime/methods/turn.ts",
+      "sha256": "a60aebc1e61ef93ec65002ac660980cf3529354461e0a34fe328f68c5b021b9c",
+      "line_refs": "237,364-422,616",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/runtime/methods/turn.ts"
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts",
+      "sha256": "ad3065581cdd09bf4b9268199f52a2d40075dca66ba20cf9b461d50fb8a5cabf",
+      "line_refs": "10,43-55,90-105",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts"
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/runtime/methods/subagent.ts",
+      "sha256": "83775c7a43f2e05b8d913107bdc291235d84ef3cd46659a2b16689cde94cff8c",
+      "line_refs": "131-141,275-328,497-534",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/runtime/methods/subagent.ts"
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/runtime/helpers/runtime-tools.ts",
+      "sha256": "2f115f8cf406302538c37f85ff2892dbeab6aeaeb6c713740204bff91521d5e4",
+      "line_refs": "81-85",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/runtime/helpers/runtime-tools.ts"
+    },
+    {
+      "path": "packages/services/src/memory/memoryService.ts",
+      "sha256": "236ba0649fa32fb859ce281fe551329f0defff7dc5afdaf338b7d690c6f3dac0",
+      "line_refs": "Project Memory API/service entrypoints",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/packages/services/src/memory/memoryService.ts"
+    },
+    {
+      "path": "NOTICE.md",
+      "sha256": "349132e10b72086a25bf270ba79e071fdac515f1cebca6268cb0791f97f159dc",
+      "line_refs": "68-70",
+      "read_status": "READ",
+      "url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/NOTICE.md"
+    }
+  ],
+  "read_without_hash_for_compact_evidence": [
+    "apps/zcode-cli/README.md",
+    "scripts/mise-run.mjs",
+    "apps/zcode-cli/packages/cli/src/sea-runtime-tools.ts",
+    "apps/zcode-cli/packages/core/src/hooks/configured-runner.ts",
+    "apps/zcode-cli/packages/core/src/subagent/persistent-memory-prompt.ts",
+    "apps/zcode-cli/packages/core/src/subagent/profile.ts",
+    "apps/zcode-cli/packages/core/src/subagent/tool-policy.ts",
+    "apps/zcode-cli/packages/core/src/subagent/runner.ts",
+    "apps/zcode-cli/packages/core/src/runtime/helpers/tool-allowlist.ts",
+    "apps/zcode-cli/packages/core/src/runtime/helpers/project-memory.ts",
+    "apps/zcode-cli/packages/core/src/memory/project-root.ts",
+    "apps/zcode-cli/packages/core/src/context/sections/memory.ts",
+    "apps/zcode-cli/packages/adapters/src/plugins/index.ts",
+    "apps/zcode-cli/packages/adapters/src/plugins/hook-sources.ts",
+    "apps/zcode-cli/packages/adapters/src/plugins/plugin-components.ts",
+    "packages/services/src/memory/projectMemoryStableRead.ts",
+    "packages/services/test and packages/ui/test filename inventory",
+    "apps/zcode-cli/packages/core/src/runtime/methods/resume.ts"
+  ],
+  "local_installation": {
+    "path": "D:\\ZCode",
+    "type": "installed application; not a Git repository",
+    "version": "3.14.4.7912",
+    "ZCode.exe": {
+      "sha256": "2cd9f0672841f9a09d00aced4223114c3c7c37cfa8a308e7e79641d617497b0f",
+      "length": 222866328,
+      "status": "READ_AND_HASHED; NOT_RUN"
+    },
+    "resources/app.asar": {
+      "sha256": "172d6f333e61642ce3882250949fafe8180f75b5b8e5552244ca2c59ca05d14e",
+      "length": 326915607,
+      "status": "READ_AND_HASHED; NOT_EXTRACTED_OR_RUN"
+    },
+    "production_data_roots": {
+      "paths": [
+        "C:\\Users\\liyi\\.zcode\\v2",
+        "C:\\Users\\liyi\\.zcode\\cli"
+      ],
+      "status": "existence-only inventory; no credential contents read or changed"
+    }
+  },
+  "external_sources": [
+    {
+      "title": "ZCode Hooks documentation",
+      "url": "https://zcode.z.ai/en/docs/hooks",
+      "access_date": "2026-10-01",
+      "mutable": true,
+      "status": "READ; not a fixed-commit compatibility guarantee",
+      "note": "Current docs say project hooks are ignored and user/plugin hooks are supported; validate against pinned source and actual host."
+    },
+    {
+      "title": "ZCode plugin documentation",
+      "url": "https://zcode.z.ai/en/docs/plugin",
+      "access_date": "2026-10-01",
+      "mutable": true,
+      "status": "READ"
+    },
+    {
+      "title": "ZCode issue #32",
+      "url": "https://github.com/zai-org/feedback/issues/32",
+      "access_date": "2026-10-01",
+      "mutable": true,
+      "status": "READ; user report only, closed not planned, not independently reproduced"
+    },
+    {
+      "title": "Plugin development guide",
+      "url": "https://github.com/zai-org/zcode-plugins/blob/main/docs/PLUGIN_DEVELOPMENT_CN.md",
+      "access_date": "2026-10-01",
+      "mutable": true,
+      "status": "READ"
+    }
+  ],
+  "toolchain_and_commands": {
+    "source_pins": {
+      "node": "24.14",
+      "pnpm": "10.33.2"
+    },
+    "actual_toolchain_probe": "NOT_RUN",
+    "commands": [
+      {
+        "command": "git -C references/zcode-29628c9 rev-parse HEAD",
+        "cwd": "E:\\Xiadie\\Xiadie",
+        "exit_code": 0,
+        "result": "29628c9acdb81b703bbd4080c207a0e7ce5e276e"
+      },
+      {
+        "command": "git -C references/zcode-29628c9 status --short --branch",
+        "cwd": "E:\\Xiadie\\Xiadie",
+        "exit_code": 0,
+        "result": "## HEAD (no branch); no changes"
+      },
+      {
+        "command": "Get-FileHash -Algorithm SHA256 on the listed fixed-source files",
+        "cwd": "E:\\Xiadie\\Xiadie",
+        "exit_code": 0,
+        "result": "hashes recorded in hashed_sources"
+      },
+      {
+        "command": "pnpm --filter @zcode/cli... build",
+        "cwd": "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+        "status": "NOT_RUN"
+      },
+      {
+        "command": "node apps/zcode-cli/packages/cli/dist/zcode.cjs --help",
+        "cwd": "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+        "status": "NOT_RUN; build not run"
+      },
+      {
+        "command": "focused Hook/persistent-memory tests",
+        "cwd": "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+        "status": "NOT_RUN; no focused test files identified"
+      },
+      {
+        "command": "Hook PoC / product launch / plugin install / model generation",
+        "cwd": "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+        "status": "NOT_RUN"
+      },
+      {
+        "command": "rg --files references/zcode-29628c9 | rg \"\\.(test|spec)\\.(ts|tsx)$\"",
+        "cwd": "E:\\Xiadie\\Xiadie",
+        "exit_code": 0,
+        "result": "4 matching test filenames; no focused Hook/plugin/CLI/persistent-memory test filename"
+      }
+    ]
+  },
+  "model_inventory_context": {
+    "source": "parent-stage evidence: evidence/P00-U01/20261001-01/gateway-metadata.json and model-inventory.json",
+    "selected_default_model": "[基元]deepseek-flash",
+    "metadata_probe": "GET /v1/models returned HTTP 200 per parent evidence",
+    "generation_requests": 0,
+    "credentials": "not included in this evidence"
+  },
+  "result_boundary": "Source browsing and hashes are evidence only. Build, test, install, CLI execution, desktop Hook behavior, PoC and model generation remain NOT_RUN.",
+  "license_review": {
+    "spdx": "Apache-2.0",
+    "license_file": "LICENSE",
+    "notice_file": "NOTICE.md",
+    "license_line_refs": "2-4,90-114,190-194",
+    "notice_line_refs": "68-70",
+    "third_party_notices": "THIRD-PARTY-NOTICES.md requires separate review for third-party components",
+    "status": "READ"
+  },
+  "test_inventory": {
+    "search_command": "rg --files references/zcode-29628c9 | rg \"\\.(test|spec)\\.(ts|tsx)$\"",
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "status": "filename inventory searched; tests NOT_RUN",
+    "matches": [
+      "packages/services/test/providerConfigMigration.test.ts",
+      "packages/services/test/nonCliAcpRetirement.test.ts",
+      "packages/services/test/importedClaudeRecovery.test.ts",
+      "packages/ui/test/nonCliAcpRetirement.test.ts"
+    ],
+    "focused_hook_plugin_cli_or_persistent_memory_tests_found": []
+  }
+}

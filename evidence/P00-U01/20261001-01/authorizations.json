@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-01",
+  "entries": [
+    {
+      "scope": "P00",
+      "instruction": "执行P00，有问题随时问我"
+    },
+    {
+      "scope": "project_root",
+      "instruction": "项目内容转移到 E:\\Xiadie\\Xiadie",
+      "status": "completed_sha256_verified"
+    },
+    {
+      "scope": "model_config_inventory",
+      "instruction": "允许；先查可用配置，再让我确认具体模型与费用上限",
+      "status": "inventory_completed_no_calls"
+    },
+    {
+      "scope": "model_runtime",
+      "instruction": "使用 7877 网关；我另行指定模型和预算",
+      "status": "waiting_for_model_and_budget",
+      "calls_made": 0
+    },
+    {
+      "scope": "model_runtime",
+      "instruction": "无上限",
+      "provider": "7877",
+      "model_selected": "[基元]deepseek-flash",
+      "selection_basis": "current configured default",
+      "status": "authorized",
+      "budget_limit": null
+    }
+  ]
+}

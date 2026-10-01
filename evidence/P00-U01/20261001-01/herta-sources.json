@@ -1,0 +1,767 @@
+{
+  "task_id": "P00-U01",
+  "attempt_id": "20261001-01",
+  "status": "ready_for_review",
+  "disposition": "Candidate recommendation only; no product adoption or U02 work",
+  "workspace": {
+    "root": "E:\\Xiadie\\Xiadie",
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "baseline_commit": "4680700bbaf7f3cd6abf4ed38809ab878d859568",
+    "reference_path": "references/herta-4623df12",
+    "reference_repository": "https://github.com/PersonaCLI/Herta",
+    "reference_commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+    "reference_tree": "2077f7e79459ff24996ffab2fb67a8dcb52adc88",
+    "reference_worktree": "clean; detached HEAD at fixed commit"
+  },
+  "source_files": [
+    {
+      "path": "packages/knowledge/src/dream/config.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/config.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 3990,
+      "line_count": 67,
+      "sha256": "f770993a8658940498e8b368e61e511534bb0bddf43bed3264e7187a7576da92",
+      "review_scope": "full file",
+      "reviewed_lines": "3-67",
+      "related_tests": [
+        "packages/knowledge/src/dream/config.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/segment-session.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/segment-session.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 9545,
+      "line_count": 245,
+      "sha256": "73727ce076a15b78c1420ef06dbdd9a87c0bac31aac66c083862031327e41b3f",
+      "review_scope": "full file; boundary and hash behavior",
+      "reviewed_lines": "5-245",
+      "related_tests": [
+        "packages/knowledge/src/dream/segment-session.test.ts",
+        "packages/knowledge/src/dream/segment-session-growth-fuzz.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/select-episodes.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/select-episodes.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 1316,
+      "line_count": 33,
+      "sha256": "20a70844ddc1bf5a988eb47207e427e8f597dc4e74e045a2af5b2c4448a1b347",
+      "review_scope": "full file",
+      "reviewed_lines": "3-33",
+      "related_tests": [
+        "packages/knowledge/src/dream/select-episodes.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/retention.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/retention.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 2184,
+      "line_count": 47,
+      "sha256": "5aff288916a43bc1cb377d7a6d0e38cfc5ed598b0116b51bb9015c9982c2c468",
+      "review_scope": "full file",
+      "reviewed_lines": "3-47",
+      "related_tests": [
+        "packages/knowledge/src/dream/retention.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/manifest.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/manifest.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 12782,
+      "line_count": 325,
+      "sha256": "ad389160795e47928260db61e41ad86a0fe64643b88e95c1720fb50a70416aed",
+      "review_scope": "full file; strict/lenient reads, migration, atomic writer and ranking",
+      "reviewed_lines": "14-325",
+      "related_tests": [
+        "packages/knowledge/src/dream/manifest.test.ts",
+        "packages/knowledge/src/dream/run-dream-pass.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/types.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/types.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 11802,
+      "line_count": 221,
+      "sha256": "74bf19f3c5df736cd9d38225f972951115664a09ab7819963181a01151d0d934",
+      "review_scope": "full Dream type/config declarations",
+      "reviewed_lines": "6-221",
+      "related_tests": []
+    },
+    {
+      "path": "packages/knowledge/src/dream/user-line-gate.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/user-line-gate.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 4584,
+      "line_count": 100,
+      "sha256": "300386010b3691e829cfea7a7561a7c8e12a515c35996665fd7ed608a4d0335e",
+      "review_scope": "full logic",
+      "reviewed_lines": "30-100",
+      "related_tests": [
+        "packages/knowledge/src/dream/user-line-gate.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/echo.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/echo.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 4888,
+      "line_count": 123,
+      "sha256": "f93b7be2977cfebe4a678e48377b12fba6beb188c2515ea81fd5751d0d953724",
+      "review_scope": "full logic",
+      "reviewed_lines": "16-123",
+      "related_tests": [
+        "packages/knowledge/src/dream/echo.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/semanticize.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/semanticize.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 17941,
+      "line_count": 443,
+      "sha256": "4573c481e0815beb47cdf2f9815b48854f6ba1080e0f1a28d461396ff07650c8",
+      "review_scope": "full behavior; file read/validate/backup/rewrite/audit",
+      "reviewed_lines": "96-443",
+      "related_tests": [
+        "packages/knowledge/src/dream/semanticize.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/run-dream-pass.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/run-dream-pass.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 50116,
+      "line_count": 1229,
+      "sha256": "1c2eadf3ff9f6e5bd546a361e65cad890a381d8d0a8a26f5e2680d7172175dec",
+      "review_scope": "main pass control flow and relevant gates",
+      "reviewed_lines": "1-54,384-1229",
+      "related_tests": [
+        "packages/knowledge/src/dream/run-dream-pass.test.ts",
+        "packages/knowledge/src/dream/digest.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/digest.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/digest.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 11081,
+      "line_count": 272,
+      "sha256": "1d671f984259f1307632dbae287482d874149ccee7ca001f6997b523ba4cd323",
+      "review_scope": "full digest behavior",
+      "reviewed_lines": "31-272",
+      "related_tests": [
+        "packages/knowledge/src/dream/digest.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/reconsolidation-junction.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/reconsolidation-junction.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 16226,
+      "line_count": 438,
+      "sha256": "bab711b0ec7aac64061fd766ae048b645848b5f49d1f159782c8484020d5df91",
+      "review_scope": "full junction control flow and merge safeguards",
+      "reviewed_lines": "35-438",
+      "related_tests": [
+        "packages/knowledge/src/dream/reconsolidation-junction.test.ts",
+        "packages/knowledge/src/dream/run-dream-pass.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/distill-prompt.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/distill-prompt.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 120782,
+      "line_count": 1944,
+      "sha256": "3941c81d2a9c50225d7e8586cef44f3b512fd9c07e5ac745c1f078a4fafa884f",
+      "review_scope": "symbol/call-site index only; prompt bodies not reproduced",
+      "reviewed_lines": "1-1944",
+      "related_tests": [
+        "packages/knowledge/src/dream/distill-prompt.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/reconcile.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/reconcile.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 4674,
+      "line_count": 105,
+      "sha256": "c513d307989c9516d25b02b6240157aa75fce68e9ab2fe6aca159f2a66aa3c10",
+      "review_scope": "targeted caller contract",
+      "reviewed_lines": "1-105",
+      "related_tests": [
+        "packages/knowledge/src/dream/reconcile.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/readiness.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/readiness.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 2704,
+      "line_count": 68,
+      "sha256": "6bc1b133d4438e25da0aeaed6ba52eeff813a4f55e29771bc59de6646b591eb7",
+      "review_scope": "targeted caller contract",
+      "reviewed_lines": "1-68",
+      "related_tests": [
+        "packages/knowledge/src/dream/readiness.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/prompt-exclusions.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/prompt-exclusions.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 5441,
+      "line_count": 112,
+      "sha256": "7bc665a3816dd6624047117caf243c11a5499ec43b2d22a77c94a2146edbbce9",
+      "review_scope": "targeted exclusion behavior",
+      "reviewed_lines": "1-112",
+      "related_tests": [
+        "packages/knowledge/src/dream/prompt-exclusions.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/novelty.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/novelty.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 1954,
+      "line_count": 45,
+      "sha256": "977412f19b5f50fef952ff548e525f2c962686b3587e7a4c687a5944f91e5ba0",
+      "review_scope": "targeted caller contract",
+      "reviewed_lines": "1-45",
+      "related_tests": [
+        "packages/knowledge/src/dream/novelty.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/promote.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/promote.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 3736,
+      "line_count": 97,
+      "sha256": "9d1eb8dc7e20e8d118ff14358437624664b4e4d46fc0f97d3c4a112cab8fd5e4",
+      "review_scope": "targeted promotion contract",
+      "reviewed_lines": "1-97",
+      "related_tests": [
+        "packages/knowledge/src/dream/promote.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/lock.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/lock.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 3187,
+      "line_count": 105,
+      "sha256": "e795136087ac15263c6701786c548bab0e8dcd8e8c951cf310203c9220212af3",
+      "review_scope": "targeted lock contract",
+      "reviewed_lines": "1-105",
+      "related_tests": [
+        "packages/knowledge/src/dream/lock.test.ts",
+        "packages/knowledge/src/dream/run-dream-pass.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/llm-json.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/llm-json.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 1571,
+      "line_count": 48,
+      "sha256": "0679647aad2f2d5ee6de9d2eb62eb413bd8acbdf0548af986fdbd1f478552ed3",
+      "review_scope": "targeted transport/parse distinction",
+      "reviewed_lines": "1-48",
+      "related_tests": [
+        "packages/knowledge/src/dream/run-dream-pass.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/feian-format.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/feian-format.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 11414,
+      "line_count": 237,
+      "sha256": "9714bb0e802595224617d135d4b8025996888ef5673ff0b6777d8adc831d627c",
+      "review_scope": "format contract and validator",
+      "reviewed_lines": "1-237",
+      "related_tests": [
+        "packages/knowledge/src/dream/feian-format.test.ts",
+        "packages/knowledge/src/dream/run-dream-pass.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/dream/pass-ops.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/pass-ops.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 4019,
+      "line_count": 119,
+      "sha256": "19cd74a2c2f37a05c8d0a00a2694509bc13ac04e414f171770f57c53ca6e562e",
+      "review_scope": "targeted ledger/pass operations",
+      "reviewed_lines": "1-119",
+      "related_tests": [
+        "packages/knowledge/src/dream/run-dream-pass.test.ts"
+      ]
+    },
+    {
+      "path": "packages/app-server/src/dream-trigger.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/app-server/src/dream-trigger.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 3897,
+      "line_count": 81,
+      "sha256": "036bebdcb0f30849a0e36c3aeaa5d737b0034723cf17a73acd649312fadc7d8f",
+      "review_scope": "full trigger gate",
+      "reviewed_lines": "1-81",
+      "related_tests": [
+        "packages/app-server/src/dream-trigger.test.ts"
+      ]
+    },
+    {
+      "path": "packages/app-server/src/session-host.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/app-server/src/session-host.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 35197,
+      "line_count": 849,
+      "sha256": "9a5efcc8cbc9a80d304d9bb55e8f4c9dca069cd9e56aa7a0ac3d56276f30ad75",
+      "review_scope": "trigger setup and detached pass integration",
+      "reviewed_lines": "99-136,230-339",
+      "related_tests": [
+        "packages/app-server/src/dream-trigger.test.ts"
+      ]
+    },
+    {
+      "path": "packages/knowledge/src/cli/herta-knowledge.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/cli/herta-knowledge.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 50896,
+      "line_count": 1580,
+      "sha256": "040c822f0cb3df62a15e3a3bb79001ec2932310b0eb481392559e1d95acaf6d0",
+      "review_scope": "manual entry, dry-run, cost gate and live call path",
+      "reviewed_lines": "139-159,1263-1421",
+      "related_tests": []
+    },
+    {
+      "path": "packages/herta/src/narrative/prompt-assets.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/herta/src/narrative/prompt-assets.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 763,
+      "line_count": 19,
+      "sha256": "f861b8a9db34fa95b59d66c388d38e3595396d633aea79a4d40c7dd95202fbb6",
+      "review_scope": "prompt bundle selection adapter only",
+      "reviewed_lines": "1-19",
+      "related_tests": []
+    },
+    {
+      "path": "packages/knowledge/src/llm/types.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/llm/types.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 1178,
+      "line_count": 41,
+      "sha256": "65bafcdeb6d77e9289f1499ae0901108ca1d4cb61ef5040cda34ece7371d3667",
+      "review_scope": "DeepSeek client interface",
+      "reviewed_lines": "1-41",
+      "related_tests": []
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/LICENSE",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 2751,
+      "line_count": 54,
+      "sha256": "bb1f011bb44b82acdcb078fdfcc2f7b6185c930b69a1ee275b518e79e32aea82",
+      "review_scope": "full license and excluded asset scope",
+      "reviewed_lines": "1-54",
+      "related_tests": []
+    },
+    {
+      "path": "README.md",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/README.md",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 9282,
+      "line_count": 180,
+      "sha256": "528091dff215c3bbf872971e127fa246179af33bf65b8cd5f6b804f932403645",
+      "review_scope": "install/build commands and runtime data flow",
+      "reviewed_lines": "121-160",
+      "related_tests": []
+    },
+    {
+      "path": "package.json",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/package.json",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 1178,
+      "line_count": 43,
+      "sha256": "d4abd6e904918ea1e1065560f7dcff910ef31a74803a1cfcb4a2a57507419e33",
+      "review_scope": "package manager, engine and script declarations",
+      "reviewed_lines": "1-43",
+      "related_tests": []
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/pnpm-workspace.yaml",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 1195,
+      "line_count": 28,
+      "sha256": "68b2e696804a0d5efa08f6ad30f8c7983d872c6c2a16b023e45ec3f5943c364d",
+      "review_scope": "workspace and built-dependency policy",
+      "reviewed_lines": "1-28",
+      "related_tests": []
+    },
+    {
+      "path": "mise.toml",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/mise.toml",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 355,
+      "line_count": 7,
+      "sha256": "1a81a1f0f641be7254dc6974e970a0ac07039e7dffb25062063ca0ed157eaa62",
+      "review_scope": "pinned toolchain declaration",
+      "reviewed_lines": "1-7",
+      "related_tests": []
+    },
+    {
+      "path": "packages/knowledge/package.json",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/package.json",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 670,
+      "line_count": 33,
+      "sha256": "e8f3d77bb957290af29a1246b9fbd9ff6e3c7a35e6bbd186ab0800d06c2e3721",
+      "review_scope": "runtime dependency declarations",
+      "reviewed_lines": "1-33",
+      "related_tests": []
+    }
+  ],
+  "tests": [
+    {
+      "path": "packages/knowledge/src/dream/config.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/config.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 2178,
+      "line_count": 45,
+      "sha256": "ff6f84bba5ee6446c83446334c3e1855bf31a00f78df59023c4a480133c84aa6",
+      "review_scope": "full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/segment-session.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/segment-session.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 16927,
+      "line_count": 448,
+      "sha256": "21f4a21a5b343da524f1b07a92f81fff1c452663fed8b33992aa829a4d30787a",
+      "review_scope": "full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/segment-session-growth-fuzz.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/segment-session-growth-fuzz.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 40131,
+      "line_count": 980,
+      "sha256": "43ffee28e9f9afeea74d3a906350f35d9de8bea68f986c519e5d492fa9c2c67d",
+      "review_scope": "test inventory and targeted assertions, not line-by-line full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/select-episodes.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/select-episodes.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 4241,
+      "line_count": 116,
+      "sha256": "9e9073872406a0017e4cded0c5b6473169ba3ad152b1d660b41f92972048db1c",
+      "review_scope": "full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/retention.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/retention.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 4959,
+      "line_count": 143,
+      "sha256": "62f44aeb083d1bb0f84719b07f7ef32f4787f842b0eaefe12eb045cf249dca69",
+      "review_scope": "full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/manifest.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/manifest.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 13057,
+      "line_count": 379,
+      "sha256": "0ef38f61a62e2c7fb24601f0fca3a7184b56b879ecd4fbcbfb6d803201b57e93",
+      "review_scope": "full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/semanticize.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/semanticize.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 22368,
+      "line_count": 615,
+      "sha256": "a6847a83b07526cba8f99f91d964e7c1aa2b0010fc97f977e08195f3b394a41e",
+      "review_scope": "full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/user-line-gate.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/user-line-gate.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 4393,
+      "line_count": 132,
+      "sha256": "0f7cf93d560713c79bca6198ab26b47501199e7b0cfcb683b4c1a7a193c2477b",
+      "review_scope": "full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/echo.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/echo.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 6619,
+      "line_count": 205,
+      "sha256": "7535db7f84a76f4121d0b155bbafe0530b3908bc73bf3c6e20a9d31e3d175171",
+      "review_scope": "full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/run-dream-pass.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/run-dream-pass.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 109117,
+      "line_count": 2840,
+      "sha256": "0f01ab79302a9636875a46b460dab84d6037dedbe89444454c4cfad4f4fb8422",
+      "review_scope": "scenario map and targeted sections; not full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/digest.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/digest.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 16898,
+      "line_count": 440,
+      "sha256": "3d7196b942c73c4d717559555a7d304024d2ac4c4da80622ed389b40ba19f288",
+      "review_scope": "relevant test headings/index",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/distill-prompt.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/distill-prompt.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 32315,
+      "line_count": 689,
+      "sha256": "2b949ee35892aeaff54edbb7ae12e8a2f8ac4347ced6416bc2c8dc80f9155726",
+      "review_scope": "stage contract/test-heading index; not full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/reconsolidation-junction.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/reconsolidation-junction.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 1830,
+      "line_count": 57,
+      "sha256": "eca07e8a31be151e471c49ca2e83b0616d9e9c714c0e2e5177d380661026e862",
+      "review_scope": "full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/app-server/src/dream-trigger.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/app-server/src/dream-trigger.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 6494,
+      "line_count": 180,
+      "sha256": "62b21c2a5ceee29960680e712dbeda8d1cff3985620c1018dfce134e5c2931e2",
+      "review_scope": "full read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/reconcile.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/reconcile.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 4829,
+      "line_count": 136,
+      "sha256": "be86f31af3e9108dd3bf1153bc0556dd1db8d30bd95f9bac9f18e1e8ad172f68",
+      "review_scope": "relevant test headings/index",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/readiness.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/readiness.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 4454,
+      "line_count": 121,
+      "sha256": "974c76467f36126230d54ad817ce6601fabcd37da92fa314a4d49380b3402d34",
+      "review_scope": "relevant test headings/index",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/prompt-exclusions.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/prompt-exclusions.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 9486,
+      "line_count": 290,
+      "sha256": "5631c0f517508de204fb81007545840b74983a0dd827b7205e7538d8c762cf67",
+      "review_scope": "relevant test headings/index",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/novelty.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/novelty.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 2076,
+      "line_count": 48,
+      "sha256": "591aa92fa5b0bfb2f6f58236361efcf61a7b64ca302c95b3a5364fe8138d62e6",
+      "review_scope": "relevant test headings/index",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/promote.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/promote.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 4977,
+      "line_count": 150,
+      "sha256": "ff19509920e02c412d2d80d50beb86c771c0eabc3da013db79187b9089f3e433",
+      "review_scope": "relevant test headings/index",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/lock.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/lock.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 3168,
+      "line_count": 100,
+      "sha256": "549c55a6b42a5602a7deffd60d63a8a8c647447201a34b4b4ce11b85aa305cbf",
+      "review_scope": "relevant test headings/index",
+      "execution": "NOT_RUN"
+    },
+    {
+      "path": "packages/knowledge/src/dream/feian-format.test.ts",
+      "url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/feian-format.test.ts",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "bytes": 17798,
+      "line_count": 503,
+      "sha256": "49eec5e68af0f1829e85c2627c90f0a7c949552a8f227b3bf77ad158ed5eefa0",
+      "review_scope": "relevant test headings/index",
+      "execution": "NOT_RUN"
+    }
+  ],
+  "local_contract_refs": [
+    {
+      "path": "planning/Xiadie_V2_v1.1/01_项目计划书.md",
+      "lines": "24-26,51-53,86-98,123-153,382-429",
+      "use": "Life vs Project authority, Herta reuse boundary, proposal snapshots, staged manual/automatic Dream"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/03_代码参考与复用清单.md",
+      "lines": "311-547",
+      "use": "H03-H17 reuse/use limits and NOT_RUN caveats"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/01_worthiness.md",
+      "lines": "1-8",
+      "use": "candidate fields, source refs, attribution, sensitive confirmation and snapshot echoes"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/05_reconsolidation.md",
+      "lines": "1-8",
+      "use": "Xiadie action enum and CoreAnchor review requirement"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/06_semantic-note.md",
+      "lines": "1-8",
+      "use": "proposal-only semantic page behavior"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/07_notes-audit.md",
+      "lines": "1-8",
+      "use": "source deletion and unreadable-page abstain"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/schemas/work-package.schema.json",
+      "lines": "3-16,19-82",
+      "use": "work-package identifiers/budget are not DreamProposal fields"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U01.md",
+      "lines": "1-45",
+      "use": "scope, read/test/license/install requirements and ready_for_review lifecycle"
+    },
+    {
+      "path": "docs/research/P00/local-discovery.md",
+      "lines": "31-35",
+      "use": "model selection/budget update; no request issued"
+    }
+  ],
+  "commands": [
+    {
+      "command": "git rev-parse HEAD; git rev-parse 'HEAD^{tree}'",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0,
+      "output": "4680700bbaf7f3cd6abf4ed38809ab878d859568; b8fd057f9f3ce65a045e86903042be48bae68cdb"
+    },
+    {
+      "command": "git -C references/herta-4623df12 rev-parse HEAD; git -C references/herta-4623df12 rev-parse 'HEAD^{tree}'; git -C references/herta-4623df12 status --short --branch",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0,
+      "output": "4623df120adf99340ce5f7e25ed829466975e3ae; 2077f7e79459ff24996ffab2fb67a8dcb52adc88; clean detached HEAD"
+    },
+    {
+      "command": "Get-FileHash -LiteralPath <each listed source/test file> -Algorithm SHA256; Get-Content to count lines",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0,
+      "output": "Hashes and line counts stored per file above"
+    },
+    {
+      "command": "rg --files references/herta-4623df12 | rg -i '(install|setup).*'",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0,
+      "output": "Only GUI setup-tests.ts and install-mode.ts/test matched; no Dream install routine identified"
+    }
+  ],
+  "non_effectful_read_command_retries": [
+    "Initial PowerShell rev-parse tree expression needed quoting; rerun succeeded, no repository changes.",
+    "A broad search referenced nonexistent root-level prompts/templates/schemas; corrected to planning/Xiadie_V2_v1.1; read-only only.",
+    "A PowerShell rg brace-list expression failed to parse; rerun as explicit file paths; read-only only."
+  ],
+  "actions": {
+    "source_read": "COMPLETED within scopes above",
+    "tests": "NOT_RUN",
+    "dependency_install": "NOT_RUN",
+    "project_scripts": "NOT_RUN",
+    "model_calls": "NOT_RUN",
+    "web_research": "NOT_RUN",
+    "implementation": "NOT_RUN",
+    "character_prompt_or_canon_asset_copied": false
+  },
+  "license": {
+    "file": "LICENSE",
+    "code_license": "MIT; preserve copyright and permission notice if copying source code",
+    "excluded_assets": [
+      "packages/herta/prompts/**",
+      "packages/herta/prompts-en/**",
+      "packages/gui/build/**",
+      "packages/gui/resources/**",
+      "website/src/assets/**",
+      "website/public/**",
+      "data/voice/**"
+    ],
+    "note": "MIT code grant does not grant character/persona/canon dialogue/image/audio rights; third-party package notices remain separate."
+  },
+  "toolchain": {
+    "root_package_manager": "pnpm@9.15.0",
+    "node_requirement": "^20.19.0 || >=22.12.0",
+    "mise_node": "22",
+    "knowledge_dependencies": [
+      "@herta/core workspace",
+      "@herta/herta workspace",
+      "better-sqlite3",
+      "linkedom",
+      "zod"
+    ],
+    "node_modules_present": false,
+    "install_run": "NOT_RUN",
+    "runtime_test_run": "NOT_RUN"
+  },
+  "limitations": [
+    "Static source/test reading at the pinned commit does not establish test pass, runtime compatibility, data correctness, model quality, or permission correctness in Xiadie.",
+    "Large run-dream-pass and growth-fuzz tests were indexed/targeted rather than read line by line in full; exact scope is recorded above.",
+    "No tests, package installation, real model call, or online upstream refresh occurred."
+  ]
+}

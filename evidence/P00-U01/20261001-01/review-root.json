@@ -1,0 +1,370 @@
+{
+  "task_id": "P00-U01",
+  "attempt_id": "20261001-01",
+  "reviewer_role": "independent review of root-owned U01 documents/evidence; source-specific review scopes tracked separately",
+  "root_artifact_decision": "accepted",
+  "overall_u01_status": "draft_waiting_sections",
+  "overall_u01_recommendation": "do not mark accepted or start U02 until DSH independent review is recorded",
+  "reviewed_at": "2026-10-01",
+  "workspace": {
+    "root": "E:\\Xiadie\\Xiadie",
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "baseline_commit": "4680700bbaf7f3cd6abf4ed38809ab878d859568",
+    "tracked_dirty_files": 0,
+    "untracked_files": 26,
+    "runtime_discovery_dir_exists": false
+  },
+  "reviewed_files": [
+    {
+      "path": "docs/research/P00/source-decision.md",
+      "sha256": "b4952feab449edc93b79da92441d5b31a09c26a844951e10262b90a4f23f528a",
+      "bytes": 2607,
+      "line_count": 18,
+      "review_scope": "full read; candidate routes, pinned sources, U01 completion gate and conditional rollback wording"
+    },
+    {
+      "path": "docs/research/P00/local-discovery.md",
+      "sha256": "d29e9dcfc46ad140381128a7e8713045fda383f4c37d64123244aa295705e734",
+      "bytes": 2987,
+      "line_count": 32,
+      "review_scope": "full read; local inventory, migration, model authorization and limitation wording"
+    },
+    {
+      "path": "docs/research/P00/hooks-docs-drift.md",
+      "sha256": "52b62e0807c3b47ed863a7670ca28a37521d0f4ec6ccb2fab101d6761e89cf42",
+      "bytes": 1371,
+      "line_count": 9,
+      "review_scope": "full read; links/commit and stated unverified runtime boundaries; remote content not refreshed in this review"
+    },
+    {
+      "path": "docs/research/P00/installed-cli.md",
+      "sha256": "657e3af1a518600d31da894f64562443044d7728670b48ee0e3d875c782bd49f",
+      "bytes": 718,
+      "line_count": 8,
+      "review_scope": "full read; CLI version cross-checked against fixed ZCode CLI package metadata; commands limited to version/help"
+    },
+    {
+      "path": "docs/research/P00/verify-baseline.py",
+      "sha256": "9733237e95d19a1aeb12683ad5bc2913136338e8ea2c909bf37592cd7a97c7d5",
+      "bytes": 2524,
+      "line_count": 53,
+      "review_scope": "full static read and authorized execution; fixed output path only"
+    },
+    {
+      "path": "docs/research/P00/inventory-runtime.py",
+      "sha256": "cd9f2971ac088a8e4ad71246e5b8a42638c18817bd9244845017649cc0cba492",
+      "bytes": 3346,
+      "line_count": 74,
+      "review_scope": "full static read; allowlisted metadata and no credential values serialized"
+    },
+    {
+      "path": "docs/research/P00/probe-gateway.py",
+      "sha256": "28c219473c3a3bcbf83de965af2ea4e132ee30726693db50b27b827ab52ee3a5",
+      "bytes": 2923,
+      "line_count": 60,
+      "review_scope": "full static read; GET /models metadata only, no generation call"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/result.md",
+      "sha256": "0cb42754b6a053bf5e9bffc7e0950be8898d3b8b07a1695a397173301fe10401",
+      "bytes": 2316,
+      "line_count": 21,
+      "review_scope": "full read; status and independent review gate"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/baseline-verification.json",
+      "sha256": "74c165661e0eb900d6a10edb0a9b3bac424a24e3e2bbecd9ff1df06b26fca7c3",
+      "bytes": 1100,
+      "line_count": 32,
+      "review_scope": "parsed and compared to command output"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/verification-command.json",
+      "sha256": "cfe43c3715b09a4785cdf78d5931374f40c0492e1e2d29d231fb1f0b93087ed8",
+      "bytes": 1186,
+      "line_count": 7,
+      "review_scope": "parsed and compared to command exit/output"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/baseline.json",
+      "sha256": "2cc9f0bb0cf1ca48c33d0306353c440aedaa33b9680c50ae8b1d363f2ecebf07",
+      "bytes": 548,
+      "line_count": 14,
+      "review_scope": "parsed; initial paths treated as historical"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/relocation.json",
+      "sha256": "57d094107c304cd9bde506b1920dac643a08f221dcb5061d55cee74f02d20b7a",
+      "bytes": 2058050,
+      "line_count": 45727,
+      "review_scope": "parsed archive records and migration summary; archive hashes rechecked"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/plan-validation.txt",
+      "sha256": "75f224901617c9e6027986bc479049099dbd188cfaf210cf235fcf18d17da1a2",
+      "bytes": 179,
+      "line_count": 10,
+      "review_scope": "read stored plan validation output"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/authorizations.json",
+      "sha256": "5b681437af3e9a2ad147f25c612ba04bb20986e7d1bcb8c824d985f1c67fca59",
+      "bytes": 981,
+      "line_count": 34,
+      "review_scope": "parsed recursively; sensitive-key fields and common key-like patterns checked without printing values"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/gateway-metadata.json",
+      "sha256": "9ecef05ce641c5f87bb8bb16dfeb008f9a3e165cdf428e07b119e46a473f2ea2",
+      "bytes": 721,
+      "line_count": 22,
+      "review_scope": "parsed; metadata GET evidence only"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/model-inventory.json",
+      "sha256": "ae469c5bf914285fc6e99bd4cba416c4fc72abb6b0ac8fd85d0a450deba06fb2",
+      "bytes": 4936,
+      "line_count": 182,
+      "review_scope": "parsed; credential presence booleans/environment variable name only"
+    },
+    {
+      "path": "evidence/P00/status.json",
+      "sha256": "55f475cbc276cf07ab581139dea91c3036918b545c4ba655cbb930ab99ad1e21",
+      "bytes": 3017,
+      "line_count": 132,
+      "review_scope": "read status only; U01 running, U02 not_started, product implementation not started"
+    }
+  ],
+  "artifact_tracking": [
+    {
+      "path": "docs/research/P00/zcode.md",
+      "exists": true,
+      "sha256": "738024762d482ea1b0fbd627ce8f7bf4fafb6451c77abe3da2ae7b360d67da2b",
+      "bytes": 10615,
+      "disposition": "coordinator reports independently reviewed; content not reviewed in this root-doc review"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/zcode-sources.json",
+      "exists": true,
+      "sha256": "9093f4f0a29130b157f81459fb18b9a9ba01c31ed4566761669a7e6622866471",
+      "bytes": 14361,
+      "disposition": "coordinator reports independently reviewed; content not reviewed in this root-doc review"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/review-zcode.json",
+      "exists": true,
+      "sha256": "da8cbd94e99ed180a7c40a636903f8ee67bf0490e0b5ae8f8026c5b4ff369747",
+      "bytes": 4756,
+      "disposition": "coordinator review artifact; not re-reviewed here"
+    },
+    {
+      "path": "docs/research/P00/dsh.md",
+      "exists": true,
+      "sha256": "1a9e96e8ec109cc5b244ac2546feab8c8b6526d6061e2615928522fea052d1c3",
+      "bytes": 11594,
+      "disposition": "arrived; content review deferred to independent DSH reviewer per coordinator"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/dsh-sources.json",
+      "exists": true,
+      "sha256": "9f31ffb5b2a0b2b88b95346eea9fd3e9956d6fa67191684b41421405da1fb6a8",
+      "bytes": 20201,
+      "disposition": "arrived; content review deferred to independent DSH reviewer per coordinator"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/review-dsh.json",
+      "exists": false,
+      "disposition": "not present at review time; independent DSH review still pending"
+    },
+    {
+      "path": "docs/research/P00/herta.md",
+      "exists": true,
+      "sha256": "f0f0cddcf169fdf6899c1ef8b702e30138c5396b207c9722585d1f759a0ca52f",
+      "bytes": 16074,
+      "disposition": "excluded from this reviewer content scope; coordinator owns independent Herta review"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/herta-sources.json",
+      "exists": true,
+      "sha256": "1ecc3a5e994ce523bad47dac299b92ebf359a43e16ce64ed34ef847ea44e32a2",
+      "bytes": 35513,
+      "disposition": "excluded from this reviewer content scope; coordinator owns independent Herta review"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/review-herta.json",
+      "exists": true,
+      "sha256": "6e55f39dfff75b49679ccc07314661d78495bed2a83aa4ab8e32499e578a9e77",
+      "bytes": 10797,
+      "disposition": "coordinator review artifact; not re-reviewed here"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/agent-path-correction.json",
+      "exists": true,
+      "sha256": "f359a89a442727810f460f2e95f3f022414a3e825e25c7a03e856478d6cf5991",
+      "bytes": 549,
+      "disposition": "path-correction record; presence/hash only in this review"
+    }
+  ],
+  "findings": [
+    {
+      "id": "R-01",
+      "severity": "gate_for_overall_u01",
+      "state": "open",
+      "summary": "Root-owned documents and evidence are accepted within this review scope. The DSH report and source inventory have arrived, but its independent review artifact is absent; retain result.md as draft_waiting_sections until that review is recorded. ZCode and Herta sections were independently reviewed by the coordinator, not by this reviewer.",
+      "references": [
+        "evidence/P00-U01/20261001-01/result.md:3,7",
+        "docs/research/P00/source-decision.md:12"
+      ]
+    },
+    {
+      "id": "R-02",
+      "severity": "informational",
+      "state": "verified",
+      "summary": "Conditional rollback language now matches the current uncommitted state: revert if committed; otherwise remove only files added by this unit.",
+      "references": [
+        "docs/research/P00/source-decision.md:18"
+      ]
+    },
+    {
+      "id": "R-03",
+      "severity": "informational",
+      "state": "verified_with_scope",
+      "summary": "Installed CLI version 0.16.9 matches the fixed ZCode CLI package version. The recorded --version/--help commands are metadata-only; the configured discovery data directory is absent, and no runtime/session compatibility was tested.",
+      "references": [
+        "docs/research/P00/installed-cli.md:3-8",
+        "references/zcode-29628c9/apps/zcode-cli/package.json"
+      ]
+    },
+    {
+      "id": "R-04",
+      "severity": "informational",
+      "state": "verified_with_scope",
+      "summary": "Model authorization/evidence is consistent: provider 7877, selected existing DSH default [基元]deepseek-flash, unlimited budget, GET /models metadata only, generation requests zero. The authorization file contains no sensitive value fields; common key-like pattern scan over the three metadata artifacts found zero matches. This is a scoped check, not a general secret scanner.",
+      "references": [
+        "docs/research/P00/local-discovery.md:17-20,30-32",
+        "evidence/P00-U01/20261001-01/authorizations.json",
+        "evidence/P00-U01/20261001-01/gateway-metadata.json",
+        "evidence/P00-U01/20261001-01/model-inventory.json"
+      ]
+    }
+  ],
+  "verification": {
+    "verify_baseline_command": "python docs/research/P00/verify-baseline.py",
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "baseline_verification_pass": true,
+    "manifest_files_verified": 423,
+    "manifest_failures": 0,
+    "pinned_references": [
+      {
+        "name": "zcode-29628c9",
+        "expected_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "actual_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "clean": true,
+        "tree": "e7458be062f467b465abc91509adb0558e023605"
+      },
+      {
+        "name": "dsh-639ed015",
+        "expected_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+        "actual_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+        "clean": true,
+        "tree": "ac66a6a3e77f6fa396509ddfecc7beacf0cf642a"
+      },
+      {
+        "name": "herta-4623df12",
+        "expected_commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "actual_commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "clean": true,
+        "tree": "2077f7e79459ff24996ffab2fb67a8dcb52adc88"
+      }
+    ],
+    "relocation_files_verified": 9143,
+    "relocation_bytes_verified": 188936024,
+    "zip_records": [
+      {
+        "path": "Xiadie_V2_计划与执行包_v1.1.zip",
+        "expected_sha256": "3fcc323f433c222a3b4c651d0661dfd0f1eeb4577ded0e07436821fc7e9c22ab",
+        "actual_sha256": "3fcc323f433c222a3b4c651d0661dfd0f1eeb4577ded0e07436821fc7e9c22ab",
+        "expected_bytes": 1255465,
+        "actual_bytes": 1255465,
+        "match": true
+      },
+      {
+        "path": "Xiadie_V2_Planning_Package_2026-09-30.zip",
+        "expected_sha256": "6a5a6530601481ac3e9fbf822c36a1530740af34a35112d380386720b67cb5cf",
+        "actual_sha256": "6a5a6530601481ac3e9fbf822c36a1530740af34a35112d380386720b67cb5cf",
+        "expected_bytes": 1570428,
+        "actual_bytes": 1570428,
+        "match": true
+      },
+      {
+        "path": "references\\zcode-29628c9\\apps\\zcode-cli\\dependencies\\native-search\\ripgrep-v14.1.1-1\\ripgrep-v14.1.1-1-aarch64-pc-windows-msvc.zip",
+        "expected_sha256": "88660d96f822d2e0329e254031068e82028f9c13efcec9b2d78c5a19d3f9ac47",
+        "actual_sha256": "88660d96f822d2e0329e254031068e82028f9c13efcec9b2d78c5a19d3f9ac47",
+        "expected_bytes": 1868214,
+        "actual_bytes": 1868214,
+        "match": true
+      },
+      {
+        "path": "references\\zcode-29628c9\\apps\\zcode-cli\\dependencies\\native-search\\ripgrep-v14.1.1-1\\ripgrep-v14.1.1-1-x86_64-pc-windows-msvc.zip",
+        "expected_sha256": "ede1d7f533f30d7e2870f77139d0fb9d7591daad5260b80d6a525e0bb5bd440e",
+        "actual_sha256": "ede1d7f533f30d7e2870f77139d0fb9d7591daad5260b80d6a525e0bb5bd440e",
+        "expected_bytes": 2008214,
+        "actual_bytes": 2008214,
+        "match": true
+      },
+      {
+        "path": "references\\zcode-29628c9\\apps\\zcode-cli\\dependencies\\native-search\\ugrep-v7.8.4-1\\ugrep-v7.8.4-1-aarch64-pc-windows-msvc.zip",
+        "expected_sha256": "e9de73f1b542105203d586b19b4d57b8ecf2bf780f23e86c66a0fb7f56d51024",
+        "actual_sha256": "e9de73f1b542105203d586b19b4d57b8ecf2bf780f23e86c66a0fb7f56d51024",
+        "expected_bytes": 896647,
+        "actual_bytes": 896647,
+        "match": true
+      },
+      {
+        "path": "references\\zcode-29628c9\\apps\\zcode-cli\\dependencies\\native-search\\ugrep-v7.8.4-1\\ugrep-v7.8.4-1-x86_64-pc-windows-msvc.zip",
+        "expected_sha256": "7bbd8e56540d2019a343688f1fc0ddb2ff5f0988090c577d2b9d6f4a8a86be21",
+        "actual_sha256": "7bbd8e56540d2019a343688f1fc0ddb2ff5f0988090c577d2b9d6f4a8a86be21",
+        "expected_bytes": 957259,
+        "actual_bytes": 957259,
+        "match": true
+      }
+    ],
+    "all_zip_records_match": true,
+    "product_tests_run": false,
+    "model_generation_requests": 0,
+    "common_key_pattern_matches": 0,
+    "secret_scan_scope": "authorizations.json, gateway-metadata.json, model-inventory.json; values never printed"
+  },
+  "actions": {
+    "performed": "Root document/evidence review; ran the expressly authorized baseline verifier, which wrote only baseline-verification.json.",
+    "tests": "NOT_RUN",
+    "dependency_install": "NOT_RUN",
+    "model_generation": "NOT_RUN",
+    "external_web_refresh": "NOT_RUN",
+    "product_code_modified": false,
+    "task_status_modified": false
+  },
+  "current_execution_status": {
+    "P00_U01": {
+      "id": "P00-U01",
+      "title": "现成方案调查与来源比较",
+      "dependencies": [],
+      "status": "running",
+      "attempt_id": "20261001-01"
+    },
+    "P00_U02": {
+      "id": "P00-U02",
+      "title": "隔离试验与复用决定",
+      "dependencies": [
+        "P00-U01"
+      ],
+      "status": "not_started",
+      "attempt_id": null
+    },
+    "product_implementation_started": false,
+    "model_calls_made": 0
+  },
+  "herta_scope_note": "Herta content was not independently reviewed here. The coordinator owns review-herta.json.",
+  "decision": "Root-owned files accepted for their stated scope. The overall P00-U01 remains draft_waiting_sections until DSH receives an independent cross-review; the task status file remains unchanged."
+}

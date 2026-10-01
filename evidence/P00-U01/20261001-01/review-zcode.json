@@ -1,0 +1,124 @@
+{
+  "reviewer": "root, not the ZCode report author",
+  "task_id": "P00-U01",
+  "disposition": "accepted research section only",
+  "report_sha256": "738024762d482ea1b0fbd627ce8f7bf4fafb6451c77abe3da2ae7b360d67da2b",
+  "receipt_sha256": "9093f4f0a29130b157f81459fb18b9a9ba01c31ed4566761669a7e6622866471",
+  "hash_checks": [
+    {
+      "path": "README.md",
+      "sha256": "1883ce9412247e7ff2c2a5d72a24622402e25dd79e9785f9f3ce302f30433e19",
+      "match": true
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "fa36dc312bc4946b1c22dba3c726ad8d3052b353f81424e7b997dbb3d9b40a49",
+      "match": true
+    },
+    {
+      "path": "mise.toml",
+      "sha256": "5c1639f4a6ac6c3304bab3d8b221f48a662d583edae9f94b41778815ada00f27",
+      "match": true
+    },
+    {
+      "path": "scripts/bootstrap.mjs",
+      "sha256": "a434d8fd5c5441cca542dee34c2a2f8411d05e834ab83e71d8a20cbebcb0f16e",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/cli/package.json",
+      "sha256": "8d75287626b1de899a99b406b7e0ce994ae5210602afea2b48804350ba4b2510",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/cli/src/main.ts",
+      "sha256": "29d9b2265ae3b11b2d19a763249ef0ad5e92b8efc6feb23109a73aac27fe6b6a",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/cli/src/arguments.ts",
+      "sha256": "1f2a4eeae86229ce6f6b3e75075aaa0a7a2e6c31ea7445f6065dfd2016a1e63e",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/cli/src/run.ts",
+      "sha256": "6b47b0a46392234fff280ead6b046e738f7448692b72d79df9d8e3305a8ab88a",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/cli/src/provider-runtime-env.ts",
+      "sha256": "196a13b6fb7f252c601745d3cf7840724cc5c8fbbf7894e34fc05eb3b4e62f21",
+      "match": true
+    },
+    {
+      "path": "packages/services/src/paths.ts",
+      "sha256": "c80514af3bd265d87028db449aeedd2b7f77c7f1fe7152dd7cb409bd50993f10",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/adapters/src/auth/shared-credentials.ts",
+      "sha256": "061ac71451b0e11a12f42100c876aa70cb24cbcf14eab85527257af13759d5d7",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/runtime/methods/hooks.ts",
+      "sha256": "b2a394823d6b325e9f322b2d219d3e12046a2cafc880c0e0aa8b76315be3fa00",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/hooks/configured-runner-input.ts",
+      "sha256": "ba409c54bf3137256b66c0aa75f9d5faa9515e7d03eb1c7acc4217272c710656",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/hooks/configured-runner-callback.ts",
+      "sha256": "450d2e711977431152e1c0ab62c184798eaf69a88e3d3f0289c49d05b502b08c",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/runtime/methods/turn.ts",
+      "sha256": "a60aebc1e61ef93ec65002ac660980cf3529354461e0a34fe328f68c5b021b9c",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts",
+      "sha256": "ad3065581cdd09bf4b9268199f52a2d40075dca66ba20cf9b461d50fb8a5cabf",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/runtime/methods/subagent.ts",
+      "sha256": "83775c7a43f2e05b8d913107bdc291235d84ef3cd46659a2b16689cde94cff8c",
+      "match": true
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/runtime/helpers/runtime-tools.ts",
+      "sha256": "2f115f8cf406302538c37f85ff2892dbeab6aeaeb6c713740204bff91521d5e4",
+      "match": true
+    },
+    {
+      "path": "packages/services/src/memory/memoryService.ts",
+      "sha256": "236ba0649fa32fb859ce281fe551329f0defff7dc5afdaf338b7d690c6f3dac0",
+      "match": true
+    },
+    {
+      "path": "NOTICE.md",
+      "sha256": "349132e10b72086a25bf270ba79e071fdac515f1cebca6268cb0791f97f159dc",
+      "match": true
+    }
+  ],
+  "pass": true,
+  "critical_claims_checked": [
+    "LICENSE/NOTICE corrected from erroneous MIT to Apache-2.0 before acceptance",
+    "CLI provider and paths use ZCODE_DATA_BASE_DIR separately from cwd",
+    "Hook context cap 24000 and temporary transcript cleanup",
+    "Hook exitCode 2 blocks; ordinary execution failure is recoverable",
+    "persistent memory user/project/local paths and automatic Write/Edit",
+    "unreadable memory index is caught and treated empty by upstream",
+    "fixed tree contains only four test filenames and no focused Hook/memory tests"
+  ],
+  "verification_command": "python docs/research/P00/verify-zcode-report.py",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "tests_run": false,
+  "model_calls": 0,
+  "product_adoption_approved": false
+}
