@@ -1,0 +1,93 @@
+{
+  "schema": "p00-u10-adr-review/v1",
+  "unit": "P00-U10",
+  "status": "ready_for_review",
+  "reviewedAt": "2026-10-01",
+  "scope": {
+    "included": [
+      "主宿主、Core边界、DSH工作包和Herta有限复用路线",
+      "各自研差额的候选方案、拒用依据与后续验收触发条件",
+      "来源/许可、旧工程边界、P00验证限制和U01-U09前置绑定"
+    ],
+    "excluded": [
+      "U11集成运行或U12候选包运行",
+      "P01施工、产品实现、桌面发布或发行许可批准",
+      "重复执行已接受的U01-U09实验"
+    ]
+  },
+  "recommendation": {
+    "decision": "accept_adr_route_with_limits",
+    "blockers": [],
+    "nonBlockingFollowups": [
+      "U11卡片只列R02、R08、R17、R24、R25、R27；immutable requirements.json还将R03列为P00 Must，并映射U01、U02、U12。U11应注明卡片与矩阵差异，利用既有U01/U02证据并保留U12/G00待验，不得改写计划或宣称全部28项产品Must已完成。"
+    ],
+    "rationale": "ADR给出单一ZCode主Runtime，Core负责原创上下文/确定性政策且不路由DSH；DSH通过独立SDK实例承接有界工作包，Herta只作有限机制参考。各候选拒用理由与固定源码及已接受的U01-U09证据相符，且保留了未测边界和停止条件。本文仅作P00路线决定，明确U11/U12/G00前不开放P01。"
+  },
+  "reviewedArtifacts": [
+    {
+      "path": "docs/adr/host-and-reuse.md",
+      "bytes": 9642,
+      "sha256": "2bc0605d0e9eee7bc735626473eb374b601583d948d4b6cfb86e91992184f444"
+    },
+    {
+      "path": "evidence/P00-U10/20261001-01/verification.json",
+      "bytes": 2569,
+      "sha256": "6e247545fbf8d9b5afce0d4b998640a88127b8aafcc8271b6d814b501328b135"
+    },
+    {
+      "path": "evidence/P00-U10/20261001-01/result.md",
+      "bytes": 646,
+      "sha256": "5163142c15ae358d5f1a259176d2b816c16e7963cc9ada3402693e6f90abfd14"
+    }
+  ],
+  "prerequisiteBindings": {
+    "baselineCommit": "a05541f5c87720012b6766d0d84915c88e636d92",
+    "bindingSource": "evidence/P00-U10/20261001-01/verification.json",
+    "boundInputsVerified": 12,
+    "mismatches": [],
+    "acceptedUnits": ["P00-U01", "P00-U02", "P00-U03", "P00-U04", "P00-U05", "P00-U06", "P00-U07", "P00-U08", "P00-U09"],
+    "inputs": [
+      {"path":"docs/sources.lock.json","bytes":18354,"sha256":"009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"},
+      {"path":"docs/legal/reuse.md","bytes":8966,"sha256":"1836b866d0e29ca43e0fd4bb549a92e987b759ef94593aa618f45c741904ba90"},
+      {"path":"assets/manifest.json","bytes":4304,"sha256":"fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"},
+      {"path":"evidence/P00-U01/20261001-01/acceptance.json","bytes":1611,"sha256":"2110187830a3ac42bddd8d9887b824928d837495e0f1e9a55cead1d7cb1292d1"},
+      {"path":"evidence/P00-U02/20261001-01/acceptance.json","bytes":6412,"sha256":"1e72a2725e4740b690dabdc17b0f1a657892eaf6f94de5e5d2034c5db507eae6"},
+      {"path":"evidence/P00-U03/20261001-01/acceptance.json","bytes":604,"sha256":"2ff8eb67d86df08723f614d17b074d9baad698c993b2cfb4118344f868bbfaa8"},
+      {"path":"evidence/P00-U04/20261001-01/acceptance.json","bytes":2456,"sha256":"6e1c6b9663f236e271f943c62e17f5aaa08ecfd32bbde8f96e99b0c8e1de3eaf"},
+      {"path":"evidence/P00-U05/20261001-01/acceptance.json","bytes":1071,"sha256":"4f59ab227d56e62bfe05ff22cc5244e7843e7b939911696d62cb78ec13008db6"},
+      {"path":"evidence/P00-U06/20261001-01/acceptance.json","bytes":1135,"sha256":"f2084bd60d38b6ed8ba05b3d5eb5128849b3bf90feb4de1e636bb31a759db405"},
+      {"path":"evidence/P00-U07/20261001-01/acceptance.json","bytes":4626,"sha256":"49bc5d5071b9fbc2fe1e35ae60dc945023f0e718e6a6a824c86e0d275882d15c"},
+      {"path":"evidence/P00-U08/20261001-01/acceptance.json","bytes":2172,"sha256":"bb75ce501326229293e324020c1924b86e4562da2ae9d3c903ad6aab4fda7e38"},
+      {"path":"evidence/P00-U09/20261001-01/acceptance.json","bytes":2009,"sha256":"f18845beb6aebfb6d46cdd3d2093dd89a3f2e5bc3d4cf4865ec7644c2eb5c177"}
+    ]
+  },
+  "candidateAssessment": [
+    {
+      "area": "主Runtime与ContextPacket",
+      "finding": "复用ZCode原生loop、插件Hook、工具执行和配置有U02/U07实测支持；24,000字符上下文上限、首轮system-reminder重复及ZCode原生system身份被明确保留。无限历史、第二Self Runtime和整仓patch均未作为默认路线；Hook不足时先评估薄服务/最小patch。"
+    },
+    {
+      "area": "身份、权限和Memory",
+      "finding": "ADR准确记录路径hash随移动变化、显式ID共享根、显示名清洗碰撞，以及persistent-memory可能追加Write/Edit、Plan模式存在写入例外。只读方案要求执行端deny/过滤和真实负例；Core保持权威来源、版本和隐私元数据。"
+    },
+    {
+      "area": "DSH与Windows生命周期",
+      "finding": "选官方DSH SDK薄桥接；未复制标为UNLICENSED的共享Web adapter。原生协议没有per-prompt cancel、resume、session-close或审批回传；checkpoint仅限同宿主关闭后读盘。Windows Job仅受信任本机fixture的生命周期原型，不声称OS安全沙箱。"
+    },
+    {
+      "area": "Herta、界面和发行",
+      "finding": "Herta只借鉴有限机制/纯函数，lossy episode hash不作权威来源身份，角色素材批准数为0。P00 headless bootstrap不是桌面UI、安装器或完整产品；UI、打包、签名和payload许可留后续阶段。"
+    }
+  ],
+  "evidenceLimits": [
+    "真实模型仅累计2次、5067 total tokens，网关未返回金额；不代表模型矩阵兼容性。",
+    "U09为loopback假凭据测试；不证明per-prompt取消、崩溃一致性、网络/文件系统隔离或恶意代码防护。",
+    "P00仅证明旧工程保护、隔离和迁移哈希；不等于最终备份恢复能力。"
+  ],
+  "unitBoundary": "建议接受U10的P00路线ADR及其明确限制；该review不接受U11/U12，不授权P01或产品施工。",
+  "reviewMethod": {
+    "mode": "read_only",
+    "networkOrModelCalls": 0,
+    "filesChangedByReviewer": ["evidence/P00-U10/20261001-01/review.json"]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "unit": "P00-U10",
+  "status": "accepted",
+  "accepted_by": "root",
+  "baseline_commit": "a05541f5c87720012b6766d0d84915c88e636d92",
+  "review_path": "evidence/P00-U10/20261001-01/review.json",
+  "review_sha256": "91b96573ea6e17855a7f1d3e51750d887467c08a6229cb0b7ced5b69734d7221",
+  "input_bindings": [
+    {
+      "path": "docs/adr/host-and-reuse.md",
+      "sha256": "2bc0605d0e9eee7bc735626473eb374b601583d948d4b6cfb86e91992184f444",
+      "bytes": 9642
+    },
+    {
+      "path": "evidence/P00-U10/20261001-01/verification.json",
+      "sha256": "6e247545fbf8d9b5afce0d4b998640a88127b8aafcc8271b6d814b501328b135",
+      "bytes": 2569
+    },
+    {
+      "path": "evidence/P00-U10/20261001-01/result.md",
+      "sha256": "5163142c15ae358d5f1a259176d2b816c16e7963cc9ada3402693e6f90abfd14",
+      "bytes": 646
+    }
+  ],
+  "scope": "Unique primary runtime and bounded reuse route ADR; P01 remains closed until G00",
+  "product_implementation_started": false
+}
