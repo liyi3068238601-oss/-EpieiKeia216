@@ -1,0 +1,19 @@
+{
+  "status": "failed",
+  "case": "actual-sdk-loopback-receipt-idle-business-result",
+  "sourceCommit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+  "error": "JsonRpcResponseError: session \"p00-u09-reopen-1790834351801\" already exists",
+  "mockRequests": [
+    {
+      "method": "POST",
+      "path": "/v1/messages",
+      "fakeCredentialHeaderPresent": true,
+      "model": "deepseek-v4-flash",
+      "tools": [],
+      "messageTexts": [
+        "Remember this synthetic checkpoint exactly: CHECKPOINT-ALPHA-42."
+      ]
+    }
+  ],
+  "paidModelCalls": 0
+}

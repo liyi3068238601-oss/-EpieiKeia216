@@ -1,0 +1,500 @@
+{
+  "schema": "p00-u09-verification/v1",
+  "unit": "P00-U09",
+  "status": "ready_for_review",
+  "executionStatus": "passed_with_limit",
+  "source": {
+    "repository": "DeepSeek Harness",
+    "localPath": ".runtime/P00/dsh/source",
+    "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+    "runtime": {
+      "node": "v24.16.0",
+      "platform": "win32",
+      "arch": "x64",
+      "tsx": "4.22.4"
+    },
+    "sha256": [
+      {
+        "path": "packages/sdk/client/src/index.ts",
+        "sha256": "8fbda9de61ad8ef8718455856f12c3cf229668733eb1d78f93fe3ac3690ad5df"
+      },
+      {
+        "path": "packages/sdk/client/src/api.ts",
+        "sha256": "943f0326dbf1415b50b879fdd538c0bcd38f20bd37ea6fec397b14099c2c8987"
+      },
+      {
+        "path": "packages/sdk/client/src/client.ts",
+        "sha256": "162a928f45f34acb017e98030392c0825e87f23ceb7533ccc3d25784a79808ad"
+      },
+      {
+        "path": "packages/sdk/client/src/types.ts",
+        "sha256": "c0aea2b90cccdeb26aaa3840cfd403f082dbc5eae060c4bbfb35d45a5585a0fc"
+      },
+      {
+        "path": "packages/sdk/client/src/launch.ts",
+        "sha256": "d7187537945618d6190bf98ab5893de9a1a059e4e2ec4d3778386eaffe5148af"
+      },
+      {
+        "path": "packages/sdk/client/src/dispose.ts",
+        "sha256": "d1e3321d070a1347d4c973695668ae467f55ce7e85a1c8d32efb8398328906f0"
+      },
+      {
+        "path": "packages/sdk/client/tests/fake-runtime.ts",
+        "sha256": "349cb1c74acd19a1df72a6e77362eb52136e1864b1b3c55307f910a1fa7eb7b0"
+      },
+      {
+        "path": "packages/sdk/server/src/server.ts",
+        "sha256": "489ad060e5ca17901ac5336f9b7871b7397d1476e1258f69b0f3b22dba6f4238"
+      },
+      {
+        "path": "packages/sdk/protocol/src/types.ts",
+        "sha256": "9a9ab6172ff2a45b7a07adf75611aa8f42ae1bb98bd4ad598d8bdc5f618053d7"
+      },
+      {
+        "path": "packages/llm/llm-deepseek/src/config.ts",
+        "sha256": "73f802bf72663ace689782db8a4031791864e9a97c995de620ac4c9ce683a30b"
+      },
+      {
+        "path": "packages/llm/llm-deepseek/src/messages-api.ts",
+        "sha256": "c4f2036fc3b561690f05426f308bbee525a4a5ae121e47ebf61b7bc3a7b8656c"
+      },
+      {
+        "path": "packages/llm/llm-deepseek/src/adapter.ts",
+        "sha256": "68d03fbaa3dd5f04a55ff48d7cd0f2ef125077f8144977459c15432e1464cf8f"
+      },
+      {
+        "path": "packages/llm/llm-deepseek/tests/mock-server.ts",
+        "sha256": "e157eaeba7c95ef78ed4273eddff6dc242aa6ddb241b9cb8a3478eb6e63f9e4f"
+      },
+      {
+        "path": "packages/bundle/sdk-minimal/cordis.patch.yml",
+        "sha256": "a2609189fafaaed862ad9dabdc1c4dd59ab6077b530535e901a32fc23559ca2f"
+      }
+    ],
+    "sourceReferences": [
+      {
+        "path": "packages/sdk/client/src/client.ts",
+        "lines": "180-182,384-408",
+        "claim": "The client documents no wire-level cancel; close requests whole-runtime shutdown then disposes its child."
+      },
+      {
+        "path": "packages/sdk/client/src/client.ts",
+        "lines": "214-218",
+        "claim": "The client directly spawns the configured runtime subprocess with a replacement environment."
+      },
+      {
+        "path": "packages/sdk/client/src/client.ts",
+        "lines": "276-300",
+        "claim": "initialize validates/returns serverInfo; prompt returns messageId and unknown session IDs create a session."
+      },
+      {
+        "path": "packages/sdk/server/src/server.ts",
+        "lines": "137-170,178-205",
+        "claim": "Server initialize returns serverInfo; session creation and user-message enqueue occur in prompt."
+      },
+      {
+        "path": "packages/sdk/client/src/api.ts",
+        "lines": "176-223,300-314",
+        "claim": "High-level run waits for a messageId receipt and idle, then derives finalResponse from assistant events."
+      },
+      {
+        "path": "packages/sdk/protocol/src/types.ts",
+        "lines": "112-119",
+        "claim": "Client request map has only initialize, session/prompt, and shutdown; no resume/cancel/approval response."
+      },
+      {
+        "path": "packages/sdk/client/src/dispose.ts",
+        "lines": "73-98",
+        "claim": "Teardown operates on the SDK-owned child; Windows kill maps to TerminateProcess and the SDK awaits that child."
+      },
+      {
+        "url": "https://github.com/nodejs/node/blob/v24.16.0/deps/uv/src/win/process.c#L988-L1001",
+        "claim": "Detached Windows children skip libuv global Job association."
+      },
+      {
+        "url": "https://github.com/nodejs/node/blob/v24.16.0/deps/uv/src/win/process.c#L1016-L1035",
+        "claim": "Non-detached Windows children are associated with libuv global Job."
+      }
+    ]
+  },
+  "run": {
+    "id": "author-13",
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "command": [
+      "$env:TSX_TSCONFIG_PATH = 'E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source\\packages\\sdk\\client\\tsconfig.json'",
+      "node --import 'file:///E:/Xiadie/Xiadie/.runtime/P00/dsh/source/node_modules/tsx/dist/esm/index.mjs' 'E:\\Xiadie\\Xiadie\\spikes\\dsh-sdk\\probe.ts' --root 'E:\\Xiadie\\Xiadie' --output-dir 'E:\\Xiadie\\Xiadie\\evidence\\P00-U09\\20261001-01\\runs\\author-13'",
+      "$probeExit = $LASTEXITCODE; remove temporary TSX_TSCONFIG_PATH; exit $probeExit"
+    ],
+    "exitCode": 0,
+    "outputFiles": [
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/author-13/probe.json",
+        "bytes": 9252,
+        "sha256": "0b393e25f77ce42573f3c350e1a30eaefb3472e37f72dbe62abe50cf60c123ff"
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/author-13/stdout.txt",
+        "bytes": 7841,
+        "sha256": "029c5afe12773166bc351f4cdfcc32e7fc67be236987eaa84b7b63a0b973afca"
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/author-13/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/author-13/exit-code.txt",
+        "bytes": 1,
+        "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/author-13/host-completed-checkpoint.json",
+        "bytes": 493,
+        "sha256": "a254daea5a9b098fc70c44d0520accf1eac5c3c02f6306bf21a7794b353e0239"
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/author-13/host-unknown-checkpoint.json",
+        "bytes": 369,
+        "sha256": "17352309b166138a4c41bc3f02e7e2ba5c883b4ddc3ecb2ce74552e32be4e20a"
+      }
+    ],
+    "paidModelCalls": 0,
+    "requestsSentToLocalMock": [
+      {
+        "method": "POST",
+        "path": "/v1/messages",
+        "fakeCredentialHeaderPresent": true,
+        "model": "deepseek-v4-flash",
+        "tools": [],
+        "messageTexts": [
+          "Remember this synthetic checkpoint exactly: CHECKPOINT-ALPHA-42."
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/v1/messages",
+        "fakeCredentialHeaderPresent": true,
+        "model": "deepseek-v4-flash",
+        "tools": [],
+        "messageTexts": [
+          "Continue from the checkpoint and answer only the new request."
+        ]
+      }
+    ],
+    "childEnvironment": {
+      "replacesParentEnvironment": true,
+      "HOMEInherited": false,
+      "isolatedDshHome": "E:\\Xiadie\\Xiadie\\evidence\\P00-U09\\20261001-01\\runs\\author-13\\synthetic-dsh-home",
+      "fakeCredentialOnly": true,
+      "credentialValueRecorded": false,
+      "endpoint": "http://127.0.0.1:58764",
+      "profile": "sdk-minimal",
+      "advertisedTools": [],
+      "disabledToolsPatch": "spikes/P00/dsh-runtime/disable-tools.cordis.patch.yml",
+      "disabledToolsPatchSha256": "7fe10b94d6b176ecf10c697cb24d382e814d735accc94f3ef55acff25aafee5a"
+    },
+    "lifecycle": {
+      "initialize": {
+        "name": "deepseek-harness-sdk-runtime",
+        "version": "0.0.1"
+      },
+      "sessionId": "p00-u09-reopen-1790835610642",
+      "messageId": "38a45f83-9752-4976-b0d3-88091c72b96a",
+      "receiptMatched": true,
+      "idle": true,
+      "assistantText": "P00-U09-FIRST-MOCK-ANSWER",
+      "highLevelRun": {
+        "sessionId": "p00-u09-reopen-1790835610642-fresh",
+        "finalResponse": "P00-U09-SECOND-MOCK-ANSWER",
+        "receiptObserved": true,
+        "idleObserved": true
+      },
+      "slowResponse": {
+        "interEventDelayMs": 35,
+        "frameCount": 6,
+        "firstPromptToIdleMs": 269
+      },
+      "protocolFaults": [
+        {
+          "case": "duplicate-receipt",
+          "status": "passed",
+          "source": "fixed SDK client fake-runtime.ts behind a local wrapper; protocol fixture only, not actual server/provider",
+          "receiptNotificationsObserved": 2,
+          "idleObserved": true,
+          "finalResponse": "P00-U09-DUPLICATE-RECEIPT-OK",
+          "observation": "Duplicate durable receipt events are retained in RunResult.events; the duplicate did not prevent idle or the scripted assistant result."
+        },
+        {
+          "case": "no-final",
+          "status": "passed",
+          "source": "fixed SDK client fake-runtime.ts FAKE_EMPTY_MESSAGE fixture; protocol fixture only, not actual server/provider",
+          "idleObserved": true,
+          "assistantEventObserved": true,
+          "finalResponse": "",
+          "interpretation": "Idle plus a messageId receipt does not imply non-empty business output; this fixture emitted an empty assistant content array."
+        },
+        {
+          "case": "dirty-stdout",
+          "status": "passed",
+          "expectedFailure": "RequestTimeoutError: initialize timed out after 600ms waiting for dsh profile \"sdk-minimal\"",
+          "runtimeChildPid": 18848,
+          "runtimeChildExitedAfterClose": true,
+          "interpretation": "A non-JSON stdout banner broke initialize framing; close reaped the directly-owned fake runtime process."
+        },
+        {
+          "case": "forced-direct-child-kill",
+          "status": "passed",
+          "runtimeChildPid": 24132,
+          "eofGraceMs": 200,
+          "closeResolved": true,
+          "closeMs": 217,
+          "runtimeChildExited": true,
+          "platform": "win32",
+          "interpretation": "SDK whole-runtime shutdown escalated against an EOF-ignoring runtime and awaited direct-child exit; it is not per-prompt cancellation."
+        },
+        {
+          "case": "direct-child-vs-grandchild",
+          "status": "passed",
+          "runtimeChildPid": 57148,
+          "ownedGrandchildPid": 41632,
+          "sdkCloseTerminatedDirectChild": true,
+          "grandchildAliveBeforeSdkClose": true,
+          "grandchildAliveAfterSdkClose": true,
+          "grandchildDetachedByLauncher": true,
+          "sdkProvidedProcessTreeGuarantee": false,
+          "cleanup": {
+            "exactOwnedPidOnly": true,
+            "attempted": true,
+            "exited": true
+          },
+          "interpretation": "The fake runtime launched its synthetic helper with detached:true. SDK close reaped the direct runtime child while the detached helper remained alive; the spike immediately terminated only the recorded owned PID. This shows no SDK guarantee for detached descendants and does not characterize every attached child configuration."
+        }
+      ]
+    },
+    "sameIdReopen": {
+      "reusedSameDshHome": true,
+      "reusedSameSessionId": true,
+      "sameIdAttemptRequestCountAfter": 1,
+      "sameIdReopenError": "JsonRpcResponseError: session \"p00-u09-reopen-1790835610642\" already exists",
+      "priorPromptInSecondProviderRequest": false,
+      "priorAssistantAnswerInSecondProviderRequest": false,
+      "sameIdPersistedHistoryObserved": false,
+      "interpretation": "Same-id re-open was rejected before provider dispatch as already existing. No protocol resume method is exposed; persistent history recovery is not available through this SDK path."
+    },
+    "checkpoint": {
+      "implementation": "spike-owned completed-result checkpoint; not a native DSH resume protocol",
+      "file": "host-completed-checkpoint.json",
+      "sha256": "a254daea5a9b098fc70c44d0520accf1eac5c3c02f6306bf21a7794b353e0239",
+      "completedCheckpointRecovered": true,
+      "recoveredOutputText": "P00-U09-FIRST-MOCK-ANSWER",
+      "unknownStateFile": "host-unknown-checkpoint.json",
+      "unknownStateSha256": "17352309b166138a4c41bc3f02e7e2ba5c883b4ddc3ecb2ce74552e32be4e20a",
+      "unknownStatePreserved": true,
+      "providerRequestsAtRecovery": 1,
+      "providerResubmittedDuringRecovery": false,
+      "interpretation": "After SDK close, a new disk read verifies and returns the saved completed result; an unknown-state file remains unknown and is held without auto-retry. This is a spike-owned completed-result checkpoint, not crash-consistency or native DSH same-id resume."
+    },
+    "actualProductRuntimeTest": false
+  },
+  "spikeFiles": [
+    {
+      "path": "spikes/dsh-sdk/probe.ts",
+      "bytes": 34978,
+      "sha256": "21b025015917927a0909d670123c8c6f0f4a9cbaafc434679b112f210f650eec"
+    },
+    {
+      "path": "spikes/dsh-sdk/fake-runtime-launcher.mjs",
+      "bytes": 1800,
+      "sha256": "b80d80a30503d38c58779d23ccc94f24f6fccecc2d6a113c9a9383075473ae19"
+    },
+    {
+      "path": "spikes/dsh-sdk/README.md",
+      "bytes": 2896,
+      "sha256": "c03f5890d0c2c8cd7ef9e5a24aef79851bdd9757eabc2539471d5fe9f0f6963f"
+    },
+    {
+      "path": "spikes/P00/dsh-runtime/disable-tools.cordis.patch.yml",
+      "bytes": 447,
+      "sha256": "7fe10b94d6b176ecf10c697cb24d382e814d735accc94f3ef55acff25aafee5a"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/.gitignore",
+      "bytes": 182,
+      "sha256": "eb14e9327b469b948698b4ccf867aa2a37577ae02e22bbe575fcfb09d5672eae"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/result.md",
+      "bytes": 7827,
+      "sha256": "b80d5b6f9aae654155c9e2156f15efb0b4c95ec7fc2fd8ce34dd77c5ce2de562"
+    }
+  ],
+  "diagnosticRun": {
+    "path": "evidence/P00-U09/20261001-01/runs/author-08/probe.json",
+    "result": {
+      "status": "failed",
+      "case": "actual-sdk-loopback-receipt-idle-business-result",
+      "sourceCommit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "error": "Error: synthetic grandchild did not survive direct-child teardown; descendant boundary was not demonstrated",
+      "mockRequests": [
+        {
+          "method": "POST",
+          "path": "/v1/messages",
+          "fakeCredentialHeaderPresent": true,
+          "model": "deepseek-v4-flash",
+          "tools": [],
+          "messageTexts": [
+            "Remember this synthetic checkpoint exactly: CHECKPOINT-ALPHA-42."
+          ]
+        },
+        {
+          "method": "POST",
+          "path": "/v1/messages",
+          "fakeCredentialHeaderPresent": true,
+          "model": "deepseek-v4-flash",
+          "tools": [],
+          "messageTexts": [
+            "Continue from the checkpoint and answer only the new request."
+          ]
+        }
+      ],
+      "paidModelCalls": 0
+    },
+    "disposition": "Retained diagnostic for attached-grandchild behavior. Node v24.16.0/libuv source documents global Job assignment for non-detached children; final detached-child observation is author-13."
+  },
+  "coordinatorJobEvidence": {
+    "sdkUnderJob": {
+      "executionPath": "evidence/P00-U09/20261001-01/runs/job-sdk-1790834591315205400/execution.json",
+      "executionSha256": "1a296975c0bbbd074e0571ca1558e362dba3b63bf67769dfaf6a1d4dbbe32cee",
+      "runSummary": "evidence/P00-U09/20261001-01/runs/job-sdk-1790834591315205400/job/summary.json",
+      "runSummarySha256": "aec8a69004c6f46131fd2e1508a365e512025439984a068f37d231c2b4fed86d",
+      "nativeProbe": "evidence/P00-U09/20261001-01/runs/job-sdk-1790834591315205400/native/probe.json",
+      "nativeProbeSha256": "56f2b248393828ae401fe33795f81f11dc268a8aaab073354a1aac6b4d060e46",
+      "sourceSnapshotSha256": "8c5312d92d817ce62ab1eb65a1eeb6b75a53a5bf49c86ed2bacce62bde4566d3",
+      "status": "passed",
+      "driverExitCode": 0,
+      "assignedBeforeImport": true,
+      "observedMemberCounts": [
+        1,
+        2,
+        3,
+        4,
+        4,
+        3,
+        3,
+        1
+      ],
+      "membersBeforeJobClose": 0,
+      "externalModelCalls": 0,
+      "scope": "Coordinator-operated earlier core probe snapshot under owned Job; not the final author-13 fault suite."
+    },
+    "genericJobReview": {
+      "path": "evidence/P00-U09/20261001-01/job-review.json",
+      "sha256": "bd7a9b620aabd7e05c0258374da1fd2ae1c6a46853cf250912c2fc84d2be2519",
+      "recommendation": "accept_bounded_generic_job_fixture",
+      "independentRunExitCode": 0,
+      "observed": {
+        "b_all_exited": true,
+        "finalAssertions": 6,
+        "b_members_alive_after_a_close": [
+          true,
+          true
+        ],
+        "assigned_before_gate": true,
+        "status": "passed",
+        "b_members": [
+          24392,
+          30164
+        ],
+        "a_all_exited": true,
+        "original_owner_assigned": false,
+        "structBytes": 144,
+        "a_members": [
+          30360,
+          47108
+        ],
+        "stderrBytes": 0
+      }
+    },
+    "detachedHelper": {
+      "review": "evidence/P00-U09/20261001-01/job-detached-review.json",
+      "reviewSha256": "5115fb026fc7dfca3e2f346c2ca708c83ba717ecde5cead1162318182bde0cf2",
+      "recommendation": "accept_bounded_external_job_detached_fixture",
+      "coordinatorRun": {
+        "summary": "evidence/P00-U09/20261001-01/runs/job-detached-1790835459319740100/summary.json",
+        "summarySha256": "4b64a57f0350485940e0720aa1a322626e885bce13c655dd04ced12223ef5f18",
+        "parentExitCode": 0,
+        "detachedLeafAliveAfterParentExit": true,
+        "leafWaitAfterJobClose": 0,
+        "externalModelCalls": 0
+      },
+      "independentRun": {
+        "summary": "evidence/P00-U09/20261001-01/runs/job-detached-review-20261001-01a0f29e44b1/summary.json",
+        "summarySha256": "c24cffa13d4c5ce3b193d2d6cbe1c809c29e653cd77234fc58e6e0b8aa47f7e2",
+        "exitCode": 0,
+        "detachedLeafAliveAfterParentExit": true,
+        "leafWaitAfterJobClose": 0,
+        "externalModelCalls": 0
+      },
+      "scope": "Independent bounded external Job test for detached Node leaf only; not native SDK behavior."
+    },
+    "finalIndependentFrozenProbe": {
+      "execution": "evidence/P00-U09/20261001-01/runs/root-review-final/execution.json",
+      "executionSha256": "6a689d69c2dd7c5a73d761fd8efffb9fce79ccf1e2defc2e8ad49f63fdb65501",
+      "probe": "evidence/P00-U09/20261001-01/runs/root-review-final/probe.json",
+      "probeSha256": "b2fb3fb847126e8712f51235a7bbe78863619c601fd89245562c4925d16fefa5",
+      "stdout": "evidence/P00-U09/20261001-01/runs/root-review-final/stdout.txt",
+      "stdoutSha256": "e7258d7d2d1e81cfe39012efdceac5151317ad9fefe09bb4fe22e9f26fae1c93",
+      "stderr": "evidence/P00-U09/20261001-01/runs/root-review-final/stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0,
+      "elapsedSeconds": 8.688,
+      "status": "passed_with_limit",
+      "requestCount": 2,
+      "toolCounts": [
+        0,
+        0
+      ],
+      "paidModelCalls": 0,
+      "faultCaseCount": 5,
+      "checkpoint": {
+        "implementation": "spike-owned completed-result checkpoint; not a native DSH resume protocol",
+        "file": "host-completed-checkpoint.json",
+        "sha256": "64519c566815e9b7e1eea323c86c7c1cb6c753bc2bd6b369c9f63393ad2e37df",
+        "completedCheckpointRecovered": true,
+        "recoveredOutputText": "P00-U09-FIRST-MOCK-ANSWER",
+        "unknownStateFile": "host-unknown-checkpoint.json",
+        "unknownStateSha256": "400e52e3781cb54c8c595f93455ac57a1f33f92f439bab21c75627cc98462da7",
+        "unknownStatePreserved": true,
+        "providerRequestsAtRecovery": 1,
+        "providerResubmittedDuringRecovery": false,
+        "interpretation": "After SDK close, a new disk read verifies and returns the saved completed result; an unknown-state file remains unknown and is held without auto-retry. This is a spike-owned completed-result checkpoint, not crash-consistency or native DSH same-id resume."
+      },
+      "sourceHashesMatched": true,
+      "spikeHashesUnchangedBeforeAndAfter": true
+    }
+  },
+  "testMapping": {
+    "target": "tests/units/P00-U09.test.ts",
+    "mapping": "The target tests/units/P00-U09.test.ts is mapped to the branches actually executed by probe.ts and captured source/output/checkpoint hashes, plus the coordinator independent final frozen-probe rerun under normal launch, the earlier SDK-under-Job execution, the generic A/B Job run, and a separate detached-child single-Job run. This is a task-to-evidence mapping, not a product test file; product tests were NOT_RUN.",
+    "productTests": "NOT_RUN"
+  },
+  "limits": [
+    "No native DSH per-prompt cancel, approval round-trip, or session resume method was exercised or claimed.",
+    "Same-session reopen is explicitly rejected; the successful fresh session does not carry history.",
+    "Completed-result checkpoint was read from disk after SDK close in the same host process; no process-crash consistency guarantee was tested.",
+    "Unknown checkpoint is held without automatic provider retry; a host reconciliation/idempotency protocol remains future work.",
+    "Detached synthetic child observation is bounded; attached-child exit is explained by Node/libuv Job behavior and is not attributed to SDK cleanup.",
+    "No production DSH profile, real key, external provider, paid call, product tests, or malicious-process sandbox property was used."
+  ],
+  "noDeletion": "Synthetic homes, child environments, native caches, and raw runs are retained. The attempt .gitignore prevents generated runtime/cache trees from entering source control; nothing was recursively deleted.",
+  "retentionChecks": {
+    "evidenceGitignore": "evidence/P00-U09/20261001-01/.gitignore",
+    "ignoredSyntheticHomeExample": true,
+    "ignoredChildEnvironmentExample": true,
+    "ignoredGeneratedDataExample": true,
+    "ignoredGeneratedCacheExample": true,
+    "rawRunOutputsRetained": true,
+    "recursiveDeletionPerformed": false,
+    "note": "Git ignore rules prevent generated profiles, child environments, temporary data/caches and workspaces from source control. They do not delete files."
+  }
+}

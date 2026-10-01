@@ -1,0 +1,218 @@
+{
+  "schema": "p00-u09-job-review/v1",
+  "status": "ready_for_review",
+  "unit": "P00-U09",
+  "reviewedAt": "2026-10-01",
+  "scope": {
+    "component": "Generic Windows Job Object process-tree lifecycle fixture only",
+    "included": [
+      "Independent review of current windows-job.py and job-gate.mjs",
+      "Independent isolated fixture rerun against current source hashes",
+      "Binding coordinator original generic run and current independent raw output"
+    ],
+    "excluded": [
+      "Native DSH SDK execution under a Job Object; separate parent follow-up, not assessed here",
+      "Overall P00-U09 acceptance",
+      "OS security sandbox or malicious-process guarantees",
+      "Windows package/distribution validation",
+      "job-sdk-bootstrap.mjs; not reviewed",
+      "Module/driver execution branch in windows-job.py (including member-polling addition); not reviewed in this generic-fixture review"
+    ]
+  },
+  "recommendation": {
+    "decision": "accept_bounded_generic_job_fixture",
+    "blockers": [],
+    "rationale": "Current lifecycle source plus independent Windows rerun support assignment-before-gate, isolated A/B Job membership, kill-on-last-handle-close, and cleanup for the trusted synthetic fixture.",
+    "nonBlockingObservations": [
+      "The output fields assigned_before_gate=true and original_owner_assigned=false are literals rather than values derived from explicit assertions. The call order and exact membership assertions support the constrained fixture result, but those two fields are not independent measurements.",
+      "OwnedJob.assign uses CPython Popen._handle, a private handle field; suitable for this prototype run, but a product implementation should pin/test the Python contract or use an explicit stable process-handle abstraction.",
+      "watch_member queries Job PIDs and then calls OpenProcess(SYNCHRONIZE); the retained HANDLE prevents later PID reuse from changing waits, though a query-to-open race remains. The persistent trusted fixture and absence of security claims keep this non-blocking here."
+    ],
+    "requiredFollowup": "Review actual DSH SDK-under-Job behavior separately before drawing any SDK cancellation, protocol, or unit-level acceptance conclusion."
+  },
+  "currentArtifacts": [
+    {
+      "path": "spikes/dsh-sdk/windows-job.py",
+      "sha256": "056d748611f0875de49ec60e44eaeb530afaacb5fa1e37e6b61f5399b7f46cfe",
+      "bytes": 11175,
+      "reviewed": true
+    },
+    {
+      "path": "spikes/dsh-sdk/job-gate.mjs",
+      "sha256": "b3b90e5d6f26348a0b328722e9b7a6e3f7159459fe2cb1030be1e353198b5fb5",
+      "bytes": 1212,
+      "reviewed": true
+    },
+    {
+      "path": "spikes/dsh-sdk/job-sdk-bootstrap.mjs",
+      "reviewed": false,
+      "note": "Added later for SDK-under-Job loader; outside this generic fixture review."
+    }
+  ],
+  "coordinatorOriginalGenericRun": {
+    "summary": "evidence/P00-U09/20261001-01/runs/job-1790834167125153100/summary.json",
+    "summarySha256": "06096b3833fb185754f54ff7d9564c8c28e2c02c29d23aef670c6f672dbf0012",
+    "historicalCodeBindings": {
+      "spikes/dsh-sdk/windows-job.py": "d5fc47d3572c17a1cc81c176697b390df6883e2809394d70c1a1af0c9b2eb7c1",
+      "spikes/dsh-sdk/job-gate.mjs": "b3b90e5d6f26348a0b328722e9b7a6e3f7159459fe2cb1030be1e353198b5fb5"
+    },
+    "codeBindingsMatchAtThatRun": true,
+    "rawFiles": [
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-1790834167125153100/0-stdout.jsonl",
+        "sha256": "6c2b7c9a4b71e3cd66eb79786663dab2576f989b51833bee5a70f501119d19dd",
+        "bytes": 97
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-1790834167125153100/0-stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-1790834167125153100/1-stdout.jsonl",
+        "sha256": "89aae1c04c66478e50889f4e1b6058ac91d01b4b3c230ce657b7685827885400",
+        "bytes": 97
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-1790834167125153100/1-stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    ],
+    "observed": {
+      "status": "passed",
+      "struct_bytes": 144,
+      "assigned_before_gate": true,
+      "b_all_exited": true,
+      "b_members_alive_after_a_close": [
+        true,
+        true
+      ],
+      "external_model_calls": 0,
+      "a_all_exited": true
+    },
+    "interpretation": "Historical evidence for the prior windows-job.py SHA only; not used as evidence against the current source revision."
+  },
+  "independentCurrentRun": {
+    "command": "python spikes/dsh-sdk/windows-job.py --root E:\\Xiadie\\Xiadie --output-dir E:\\Xiadie\\Xiadie\\evidence\\P00-U09\\20261001-01\\runs\\job-review-final-20261001-01a0f29e44b1",
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exitCode": 0,
+    "elapsedSeconds": 0.329,
+    "stdout": "{\"status\": \"passed\", \"summary\": \"E:\\\\Xiadie\\\\Xiadie\\\\evidence\\\\P00-U09\\\\20261001-01\\\\runs\\\\job-review-final-20261001-01a0f29e44b1\\\\summary.json\"}",
+    "externalModelCalls": 0,
+    "installs": 0,
+    "summary": "evidence/P00-U09/20261001-01/runs/job-review-final-20261001-01a0f29e44b1/summary.json",
+    "summarySha256": "2b6892b98bac175d24acc1b558204369219a7c721229b2eb3e72b58afa02556f",
+    "sourceBindingsMatchCurrentFiles": true,
+    "rawFiles": [
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-review-final-20261001-01a0f29e44b1/0-stdout.jsonl",
+        "sha256": "ca1fd7efc5767a7e936262515da6389b4f68c0972c4eceba965c3b3d87777c55",
+        "bytes": 97
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-review-final-20261001-01a0f29e44b1/0-stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-review-final-20261001-01a0f29e44b1/1-stdout.jsonl",
+        "sha256": "e0b9fb3ddc14ec5c8188c43a4ff4da198968b95bd1cced7028a909237e779886",
+        "bytes": 97
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-review-final-20261001-01a0f29e44b1/1-stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-review-final-20261001-01a0f29e44b1/.gitignore",
+        "sha256": "c5049c183f87267ff36ee98b52517e1f78670639f3a060baa89d4093a555f59b",
+        "bytes": 6
+      }
+    ],
+    "observed": {
+      "b_all_exited": true,
+      "finalAssertions": 6,
+      "b_members_alive_after_a_close": [
+        true,
+        true
+      ],
+      "assigned_before_gate": true,
+      "status": "passed",
+      "b_members": [
+        24392,
+        30164
+      ],
+      "a_all_exited": true,
+      "original_owner_assigned": false,
+      "structBytes": 144,
+      "a_members": [
+        30360,
+        47108
+      ],
+      "stderrBytes": 0
+    }
+  },
+  "lifecycleReview": [
+    {
+      "source": "spikes/dsh-sdk/windows-job.py",
+      "lines": "52-75",
+      "finding": "Creates a private Job handle, sets only JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE (0x2000), and closes the owned handle idempotently."
+    },
+    {
+      "source": "spikes/dsh-sdk/windows-job.py",
+      "lines": "98-120",
+      "finding": "Starts the trusted gate with a replacement environment; waits for its ready event; assigns the Popen process HANDLE; verifies initial membership is exactly that child; only then writes the gate command. Failure closes the Job and kills/waits the direct child."
+    },
+    {
+      "source": "spikes/dsh-sdk/job-gate.mjs",
+      "lines": "1-12",
+      "finding": "Gate emits ready and waits for one trusted stdin command before importing the optional driver or spawning the fixture child."
+    },
+    {
+      "source": "spikes/dsh-sdk/job-gate.mjs",
+      "lines": "13-25",
+      "finding": "Synthetic fixture spawns one persistent leaf; the driver path is imported only after assignment gate opens."
+    },
+    {
+      "source": "spikes/dsh-sdk/windows-job.py",
+      "lines": "122-134,172-189",
+      "finding": "Confirms each Job contains exactly its own gate and reported leaf; retains SYNCHRONIZE handles; closes A and waits for both A processes, observes both B handles still alive, then closes B and waits for both B processes."
+    },
+    {
+      "source": "spikes/dsh-sdk/windows-job.py",
+      "lines": "193-202",
+      "finding": "Finally path stops each owned Job, closes retained handles, persists per-child stdout/stderr and summary, and exits nonzero if run status is not passed."
+    },
+    {
+      "source": "spikes/dsh-sdk/windows-job.py",
+      "lines": "81-85,142",
+      "finding": "Current-source harness changes add Git to the child PATH and capture driver arguments with argparse.REMAINDER; generic lifecycle path remains unchanged. Module/driver execution branch is out of review scope."
+    }
+  ],
+  "observedLimitations": [
+    "Windows host and trusted fixture only; no malicious process, filesystem, network, API, credential, or general OS sandbox property established.",
+    "Closing the Job forcibly terminates members; it is not cooperative cancellation, checkpoint flush, or durable recovery.",
+    "Actual DSH SDK-under-Job execution is outside this review and NOT_RUN here.",
+    "Assignment compatibility depends on the host process/job hierarchy and Windows behavior; this single host run does not prove all supported OS/host configurations."
+  ],
+  "officialReferences": [
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/jobapi2/nf-jobapi2-assignprocesstojobobject",
+      "supports": "AssignProcessToJobObject consumes Job and process HANDLEs; assigned process is subject to Job limits; nested-job/host compatibility has constraints."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects",
+      "supports": "Job Objects group processes; child processes join by default; closing the last Job handle with KILL_ON_JOB_CLOSE terminates associated processes."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-jobobject_basic_limit_information",
+      "supports": "Defines JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE as 0x00002000."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-jobobject_extended_limit_information",
+      "supports": "Extended-limit structure layout used by the ctypes declaration."
+    }
+  ]
+}

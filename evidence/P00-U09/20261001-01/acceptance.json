@@ -1,0 +1,57 @@
+{
+  "unit": "P00-U09",
+  "status": "accepted",
+  "accepted_by": "root",
+  "baseline_commit": "90d839ddb154d9925db841b7ca9fdcd5b0149f67",
+  "review_path": "evidence/P00-U09/20261001-01/review.json",
+  "review_sha256": "f95b23b1ab4b419c20cd4095bad72e57757617bfb9bf653724cb576756ed94e5",
+  "input_bindings": [
+    {
+      "path": "evidence/P00-U09/20261001-01/result.md",
+      "bytes": 7827,
+      "sha256": "b80d5b6f9aae654155c9e2156f15efb0b4c95ec7fc2fd8ce34dd77c5ce2de562"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/verification.json",
+      "bytes": 22270,
+      "sha256": "ecc2ba36e189decc9b0753309934f4479b84d5c44a4708d49d6a0d432b122d4a"
+    },
+    {
+      "path": "spikes/dsh-sdk/README.md",
+      "bytes": 2896,
+      "sha256": "c03f5890d0c2c8cd7ef9e5a24aef79851bdd9757eabc2539471d5fe9f0f6963f"
+    },
+    {
+      "path": "spikes/dsh-sdk/probe.ts",
+      "bytes": 34978,
+      "sha256": "21b025015917927a0909d670123c8c6f0f4a9cbaafc434679b112f210f650eec"
+    },
+    {
+      "path": "spikes/dsh-sdk/fake-runtime-launcher.mjs",
+      "bytes": 1800,
+      "sha256": "b80d80a30503d38c58779d23ccc94f24f6fccecc2d6a113c9a9383075473ae19"
+    },
+    {
+      "path": "spikes/dsh-sdk/windows-job.py",
+      "bytes": 11175,
+      "sha256": "056d748611f0875de49ec60e44eaeb530afaacb5fa1e37e6b61f5399b7f46cfe"
+    },
+    {
+      "path": "spikes/dsh-sdk/job-gate.mjs",
+      "bytes": 1212,
+      "sha256": "b3b90e5d6f26348a0b328722e9b7a6e3f7159459fe2cb1030be1e353198b5fb5"
+    },
+    {
+      "path": "spikes/dsh-sdk/job-sdk-bootstrap.mjs",
+      "bytes": 827,
+      "sha256": "2cfccce46f0568f3dcee35a3bd631048098a1eee5d82a43de2a2b42e551e05b3"
+    },
+    {
+      "path": "spikes/dsh-sdk/job-detached-test.py",
+      "bytes": 3408,
+      "sha256": "da65dbc7b43f38eea16ac756b983a79781e6b26cf1a4a2e32516de644cb257ac"
+    }
+  ],
+  "scope": "Native SDK with loopback provider, protocol faults and bounded host checkpoint; independently reviewed external Job fixtures",
+  "product_implementation_started": false
+}

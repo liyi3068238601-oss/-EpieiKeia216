@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "runtimeChildPid": 20780,
+  "ownedGrandchildPid": 44884,
+  "sdkCloseTerminatedDirectChild": true,
+  "grandchildAliveBeforeSdkClose": true,
+  "grandchildAliveAfterSdkClose": true,
+  "grandchildDetachedByLauncher": true,
+  "sdkProvidedProcessTreeGuarantee": false,
+  "cleanup": {
+    "exactOwnedPidOnly": true,
+    "attempted": true,
+    "exited": true
+  },
+  "interpretation": "The fake runtime launched its synthetic helper with detached:true. SDK close reaped the direct runtime child while the detached helper remained alive; the spike immediately terminated only the recorded owned PID. This shows no SDK guarantee for detached descendants and does not characterize every attached child configuration."
+}

@@ -1,0 +1,23 @@
+{
+  "command": [
+    "python",
+    "spikes/dsh-sdk/windows-job.py",
+    "--root",
+    "E:\\Xiadie\\Xiadie",
+    "--output-dir",
+    "E:\\Xiadie\\Xiadie\\evidence\\P00-U09\\20261001-01\\runs\\job-sdk-1790834409718981600\\job",
+    "--driver",
+    "E:\\Xiadie\\Xiadie\\spikes\\dsh-sdk\\job-sdk-bootstrap.mjs",
+    "--driver-args",
+    "--root",
+    "E:\\Xiadie\\Xiadie",
+    "--probe",
+    "E:\\Xiadie\\Xiadie\\evidence\\P00-U09\\20261001-01\\runs\\job-sdk-1790834409718981600\\probe-snapshot.ts",
+    "--output-dir",
+    "E:\\Xiadie\\Xiadie\\evidence\\P00-U09\\20261001-01\\runs\\job-sdk-1790834409718981600\\native"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "exit_code": 1,
+  "original_probe_sha256": "ff96f5b3281d2b38aec7d7311b841c4532cfc99a9a9c22c2b23c3690154b2249",
+  "scope": "Exact author SDK probe snapshot under external owned Job"
+}

@@ -1,0 +1,19 @@
+node:internal/modules/esm/load:199
+    throw new ERR_UNSUPPORTED_ESM_URL_SCHEME(parsed, schemes);
+          ^
+
+Error [ERR_UNSUPPORTED_ESM_URL_SCHEME]: Only URLs with a scheme in: file, data, and node are supported by the default ESM loader. On Windows, absolute paths must be valid file:// URLs. Received protocol 'e:'
+    at throwIfUnsupportedURLScheme (node:internal/modules/esm/load:199:11)
+    at defaultLoadSync (node:internal/modules/esm/load:146:3)
+    at #loadAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:770:12)
+    at nextStep (node:internal/modules/customization_hooks:189:26)
+    at load2 (file:///E:/Xiadie/Xiadie/.runtime/P00/dsh/source/node_modules/.pnpm/tsx@4.22.4/node_modules/tsx/dist/register-CqMfTiWi.mjs:2:5385)
+    at nextStep (node:internal/modules/customization_hooks:189:26)
+    at loadWithHooks (node:internal/modules/customization_hooks:374:18)
+    at #loadSync (node:internal/modules/esm/loader:787:14)
+    at ModuleLoader.load (node:internal/modules/esm/loader:756:26)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:488:31) {
+  code: 'ERR_UNSUPPORTED_ESM_URL_SCHEME'
+}
+
+Node.js v24.16.0

@@ -1,0 +1,170 @@
+{
+  "unit": "P00-U09",
+  "reviewer": "root",
+  "recommendation": "accept_bounded_native_sdk_and_lifecycle_spike",
+  "blockers": [],
+  "execution": {
+    "command": [
+      "node",
+      "--import",
+      "file:///E:/Xiadie/Xiadie/.runtime/P00/dsh/source/node_modules/tsx/dist/esm/index.mjs",
+      "E:\\Xiadie\\Xiadie\\spikes\\dsh-sdk\\probe.ts",
+      "--root",
+      "E:\\Xiadie\\Xiadie",
+      "--output-dir",
+      "E:\\Xiadie\\Xiadie\\evidence\\P00-U09\\20261001-01\\runs\\root-review-final"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "seconds": 8.688,
+    "source_before": {
+      "spikes/dsh-sdk/probe.ts": "21b025015917927a0909d670123c8c6f0f4a9cbaafc434679b112f210f650eec",
+      "spikes/dsh-sdk/fake-runtime-launcher.mjs": "b80d80a30503d38c58779d23ccc94f24f6fccecc2d6a113c9a9383075473ae19"
+    },
+    "source_after": {
+      "spikes/dsh-sdk/probe.ts": "21b025015917927a0909d670123c8c6f0f4a9cbaafc434679b112f210f650eec",
+      "spikes/dsh-sdk/fake-runtime-launcher.mjs": "b80d80a30503d38c58779d23ccc94f24f6fccecc2d6a113c9a9383075473ae19"
+    },
+    "paid_calls": 0
+  },
+  "bindings": [
+    {
+      "path": "evidence/P00-U09/20261001-01/runs/root-review-final/probe.json",
+      "bytes": 9267,
+      "sha256": "b2fb3fb847126e8712f51235a7bbe78863619c601fd89245562c4925d16fefa5"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/runs/root-review-final/execution.json",
+      "bytes": 905,
+      "sha256": "6a689d69c2dd7c5a73d761fd8efffb9fce79ccf1e2defc2e8ad49f63fdb65501"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/runs/root-review-final/stdout.txt",
+      "bytes": 7856,
+      "sha256": "e7258d7d2d1e81cfe39012efdceac5151317ad9fefe09bb4fe22e9f26fae1c93"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/runs/root-review-final/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/runs/root-review-final/host-completed-checkpoint.json",
+      "bytes": 493,
+      "sha256": "64519c566815e9b7e1eea323c86c7c1cb6c753bc2bd6b369c9f63393ad2e37df"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/runs/root-review-final/host-unknown-checkpoint.json",
+      "bytes": 369,
+      "sha256": "400e52e3781cb54c8c595f93455ac57a1f33f92f439bab21c75627cc98462da7"
+    }
+  ],
+  "source_hashes_verified": 14,
+  "source_clean_pin": "639ed015397290b3745d163aafe02ffee4aa3f84",
+  "observed": {
+    "receipt_idle_business_result": true,
+    "loopback_requests": 2,
+    "tools_advertised": 0,
+    "paid_calls": 0,
+    "same_id_reopen_rejected_before_provider": true,
+    "fresh_session_has_no_old_history": true,
+    "slow_response": {
+      "interEventDelayMs": 35,
+      "frameCount": 6,
+      "firstPromptToIdleMs": 274
+    },
+    "faults": [
+      {
+        "case": "duplicate-receipt",
+        "status": "passed",
+        "source": "fixed SDK client fake-runtime.ts behind a local wrapper; protocol fixture only, not actual server/provider",
+        "receiptNotificationsObserved": 2,
+        "idleObserved": true,
+        "finalResponse": "P00-U09-DUPLICATE-RECEIPT-OK",
+        "observation": "Duplicate durable receipt events are retained in RunResult.events; the duplicate did not prevent idle or the scripted assistant result."
+      },
+      {
+        "case": "no-final",
+        "status": "passed",
+        "source": "fixed SDK client fake-runtime.ts FAKE_EMPTY_MESSAGE fixture; protocol fixture only, not actual server/provider",
+        "idleObserved": true,
+        "assistantEventObserved": true,
+        "finalResponse": "",
+        "interpretation": "Idle plus a messageId receipt does not imply non-empty business output; this fixture emitted an empty assistant content array."
+      },
+      {
+        "case": "dirty-stdout",
+        "status": "passed",
+        "expectedFailure": "RequestTimeoutError: initialize timed out after 600ms waiting for dsh profile \"sdk-minimal\"",
+        "runtimeChildPid": 47560,
+        "runtimeChildExitedAfterClose": true,
+        "interpretation": "A non-JSON stdout banner broke initialize framing; close reaped the directly-owned fake runtime process."
+      },
+      {
+        "case": "forced-direct-child-kill",
+        "status": "passed",
+        "runtimeChildPid": 38996,
+        "eofGraceMs": 200,
+        "closeResolved": true,
+        "closeMs": 219,
+        "runtimeChildExited": true,
+        "platform": "win32",
+        "interpretation": "SDK whole-runtime shutdown escalated against an EOF-ignoring runtime and awaited direct-child exit; it is not per-prompt cancellation."
+      },
+      {
+        "case": "direct-child-vs-grandchild",
+        "status": "passed",
+        "runtimeChildPid": 2828,
+        "ownedGrandchildPid": 37440,
+        "sdkCloseTerminatedDirectChild": true,
+        "grandchildAliveBeforeSdkClose": true,
+        "grandchildAliveAfterSdkClose": true,
+        "grandchildDetachedByLauncher": true,
+        "sdkProvidedProcessTreeGuarantee": false,
+        "cleanup": {
+          "exactOwnedPidOnly": true,
+          "attempted": true,
+          "exited": true
+        },
+        "interpretation": "The fake runtime launched its synthetic helper with detached:true. SDK close reaped the direct runtime child while the detached helper remained alive; the spike immediately terminated only the recorded owned PID. This shows no SDK guarantee for detached descendants and does not characterize every attached child configuration."
+      }
+    ],
+    "checkpoint": {
+      "implementation": "spike-owned completed-result checkpoint; not a native DSH resume protocol",
+      "file": "host-completed-checkpoint.json",
+      "sha256": "64519c566815e9b7e1eea323c86c7c1cb6c753bc2bd6b369c9f63393ad2e37df",
+      "completedCheckpointRecovered": true,
+      "recoveredOutputText": "P00-U09-FIRST-MOCK-ANSWER",
+      "unknownStateFile": "host-unknown-checkpoint.json",
+      "unknownStateSha256": "400e52e3781cb54c8c595f93455ac57a1f33f92f439bab21c75627cc98462da7",
+      "unknownStatePreserved": true,
+      "providerRequestsAtRecovery": 1,
+      "providerResubmittedDuringRecovery": false,
+      "interpretation": "After SDK close, a new disk read verifies and returns the saved completed result; an unknown-state file remains unknown and is held without auto-retry. This is a spike-owned completed-result checkpoint, not crash-consistency or native DSH same-id resume."
+    }
+  },
+  "independent_job_reviews": [
+    {
+      "path": "evidence/P00-U09/20261001-01/job-review.json",
+      "bytes": 10799,
+      "sha256": "bd7a9b620aabd7e05c0258374da1fd2ae1c6a46853cf250912c2fc84d2be2519"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/job-sdk-review.json",
+      "bytes": 13633,
+      "sha256": "5e6814a74a40c2439268952f43dd54661266b2318b8e6c41b02555d1178db330"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/job-detached-review.json",
+      "bytes": 6877,
+      "sha256": "5115fb026fc7dfca3e2f346c2ca708c83ba717ecde5cead1162318182bde0cf2"
+    }
+  ],
+  "limits": [
+    "No native cancel/resume/approval RPC; whole-runtime close only.",
+    "Checkpoint readback is completed-result recovery, not process-crash consistency.",
+    "Native SDK detached synthetic helper survives direct-child close then is immediately reaped by test; generic external private Job independently contains detached fixture.",
+    "Node attached-child global Job behavior is not attributed to SDK.",
+    "No product runtime, installer, malicious-process sandbox or new paid model call."
+  ]
+}

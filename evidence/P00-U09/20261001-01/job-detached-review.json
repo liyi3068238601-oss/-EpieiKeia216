@@ -1,0 +1,142 @@
+{
+  "schema": "p00-u09-detached-job-review/v1",
+  "status": "ready_for_review",
+  "unit": "P00-U09",
+  "scope": {
+    "decision": "Review only the generic Node detached-child contrast within the external private Windows Job.",
+    "excluded": [
+      "Native DSH SDK semantics or capability; not reviewed here",
+      "Other runtimes, spawn methods, Windows versions, or arbitrary hostile code",
+      "Changes to frozen job-review.json or Job source files"
+    ]
+  },
+  "recommendation": {
+    "decision": "accept_bounded_external_job_detached_fixture",
+    "blockers": [],
+    "rationale": "On the tested Windows host, the Node driver exits successfully while its detached synthetic leaf remains alive and is the sole member reported by the external private Job; closing that Job makes the retained leaf HANDLE signaled.",
+    "caveats": [
+      "This is a Node v24.16/libuv plus synthetic child observation, not proof about native DSH SDK or every detached-child pathway.",
+      "The Node/libuv global Job and this Python-owned external Job are distinct layers; the fixture demonstrates the external Job cleanup boundary only.",
+      "The result is bounded to the tested host and the current exact source pins."
+    ]
+  },
+  "codeBindings": [
+    {
+      "path": "spikes/dsh-sdk/job-detached-test.py",
+      "sha256": "da65dbc7b43f38eea16ac756b983a79781e6b26cf1a4a2e32516de644cb257ac",
+      "bytes": 3408
+    },
+    {
+      "path": "spikes/dsh-sdk/windows-job.py",
+      "sha256": "056d748611f0875de49ec60e44eaeb530afaacb5fa1e37e6b61f5399b7f46cfe",
+      "bytes": 11175
+    }
+  ],
+  "coordinatorRun": {
+    "summary": "evidence/P00-U09/20261001-01/runs/job-detached-1790835459319740100/summary.json",
+    "summarySha256": "4b64a57f0350485940e0720aa1a322626e885bce13c655dd04ced12223ef5f18",
+    "rawFiles": [
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-detached-1790835459319740100/detached-fixture.mjs",
+        "sha256": "ee14d78632488d273e20f8e685c6e214decf59cc87706c5d3276e50d359e3abc",
+        "bytes": 477
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-detached-1790835459319740100/stdout.jsonl",
+        "sha256": "ddcbb5a13b19d2e247729e740d2d78733ae06c0dd6f05ad4202028daee60ea84",
+        "bytes": 100
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-detached-1790835459319740100/stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    ],
+    "observed": {
+      "externalModelCalls": 0,
+      "parentExitCode": 0,
+      "leafWaitAfterJobClose": 0,
+      "detachedLeafAliveAfterParentExit": true,
+      "membersAfterParentExit": [
+        60120
+      ],
+      "status": "passed"
+    }
+  },
+  "independentRun": {
+    "command": "python spikes/dsh-sdk/job-detached-test.py --root E:\\Xiadie\\Xiadie --output-dir E:\\Xiadie\\Xiadie\\evidence\\P00-U09\\20261001-01\\runs\\job-detached-review-20261001-01a0f29e44b1",
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exitCode": 0,
+    "elapsedSeconds": 0.559,
+    "stdout": "{\"status\": \"passed\", \"summary\": \"E:\\\\Xiadie\\\\Xiadie\\\\evidence\\\\P00-U09\\\\20261001-01\\\\runs\\\\job-detached-review-20261001-01a0f29e44b1\\\\summary.json\"}",
+    "installs": 0,
+    "externalModelCalls": 0,
+    "summary": "evidence/P00-U09/20261001-01/runs/job-detached-review-20261001-01a0f29e44b1/summary.json",
+    "summarySha256": "c24cffa13d4c5ce3b193d2d6cbe1c809c29e653cd77234fc58e6e0b8aa47f7e2",
+    "codeBindingsMatchCurrentFiles": true,
+    "rawFiles": [
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-detached-review-20261001-01a0f29e44b1/detached-fixture.mjs",
+        "sha256": "ee14d78632488d273e20f8e685c6e214decf59cc87706c5d3276e50d359e3abc",
+        "bytes": 477
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-detached-review-20261001-01a0f29e44b1/stdout.jsonl",
+        "sha256": "7294d51c6758194c5ab4f2f337d07fc9a4534f72e16913ed85a7f6220ac21363",
+        "bytes": 100
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-detached-review-20261001-01a0f29e44b1/stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-detached-review-20261001-01a0f29e44b1/.gitignore",
+        "sha256": "c5049c183f87267ff36ee98b52517e1f78670639f3a060baa89d4093a555f59b",
+        "bytes": 6
+      }
+    ],
+    "observed": {
+      "externalModelCalls": 0,
+      "parentExitCode": 0,
+      "leafWaitAfterJobClose": 0,
+      "detachedLeafAliveAfterParentExit": true,
+      "membersAfterParentExit": [
+        56268
+      ],
+      "status": "passed"
+    }
+  },
+  "sourceReview": [
+    {
+      "path": "spikes/dsh-sdk/job-detached-test.py",
+      "lines": "18-30",
+      "finding": "Builds a synthetic Node fixture that spawns a detached child, unrefs it, and lets the driver naturally exit."
+    },
+    {
+      "path": "spikes/dsh-sdk/job-detached-test.py",
+      "lines": "36-49",
+      "finding": "Runs fixture through the trusted gate inside the external owned Job; waits for driver exit; checks the external Job has exactly the leaf PID; observes leaf alive; closes Job and waits on retained process HANDLE for signaled result."
+    },
+    {
+      "path": "spikes/dsh-sdk/job-detached-test.py",
+      "lines": "50-57",
+      "finding": "Finally path closes the owned Job again idempotently, stores raw stdout/stderr and summary, and reports run result."
+    }
+  ],
+  "interpretation": "Node v24.16 libuv assigns non-detached uv_spawn children to its own global Job but skips that assignment for UV_PROCESS_DETACHED. In the cited detached branch it sets DETACHED_PROCESS and CREATE_NEW_PROCESS_GROUP, not CREATE_BREAKAWAY_FROM_JOB. The fixture independently demonstrates that this detached Node leaf remains in the separate external Job on this host and is killed when that external Job is closed.",
+  "officialReferences": [
+    {
+      "url": "https://github.com/nodejs/node/blob/v24.16.0/deps/uv/src/win/process.c#L988-L1001",
+      "supports": "Detached flag uses DETACHED_PROCESS and CREATE_NEW_PROCESS_GROUP; source says it does not set CREATE_BREAKAWAY_FROM_JOB."
+    },
+    {
+      "url": "https://github.com/nodejs/node/blob/v24.16.0/deps/uv/src/win/process.c#L1016-L1035",
+      "supports": "Only non-detached uv_spawn children are explicitly assigned to libuv global Job; assignment failure behavior is documented in source."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects",
+      "supports": "Windows Job Objects manage process groups, default child association, and kill-on-close behavior."
+    }
+  ]
+}

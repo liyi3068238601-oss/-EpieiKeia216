@@ -1,0 +1,242 @@
+{
+  "schema": "p00-u09-job-sdk-review/v1",
+  "status": "ready_for_review",
+  "unit": "P00-U09",
+  "reviewedAt": "2026-10-01",
+  "scope": {
+    "component": "Frozen native DSH SDK probe module branch under the Windows Job Object wrapper",
+    "included": [
+      "Exact author probe snapshot and execution binding",
+      "SDK source commit and 13 recorded source SHA-256 values",
+      "TSX loader, explicit tsconfig, pnpm lockfile, and tool version",
+      "Assignment-before-import ordering and normal SDK/Job teardown",
+      "Independent replay of the frozen probe with loopback-only synthetic provider responses"
+    ],
+    "excluded": [
+      "Overall P00-U09 acceptance or author fault-case code",
+      "Paid/model gateway calls",
+      "Published/bundled product installation or release validation",
+      "Mid-request forced Job close, cooperative cancellation, checkpoint flush, or crash recovery",
+      "Security sandbox, filesystem/API/network isolation, or malicious-child guarantees"
+    ]
+  },
+  "recommendation": {
+    "decision": "accept_actual_sdk_success_case_under_job_with_limits",
+    "blockers": [],
+    "rationale": "The frozen native SDK source probe completed twice under the current Windows Job module branch. In the independent replay, the trusted gate was assigned before the module import, the SDK used only a local synthetic provider, the expected receipt/idle/business events and finalResponse were observed, and the SDK runtime had exited before the Job was closed.",
+    "requiredLimits": [
+      "The same session id after closing and reopening the SDK runtime is rejected as already existing before another provider request; no resume or persisted-history recovery is demonstrated. The fresh-id request does not carry prior prompt history.",
+      "The high-level finalResponse is derived from observed session events after the prompt receipt and through idle; this single non-concurrent synthetic case does not establish strong per-prompt attribution under overlapping activity.",
+      "This imports pinned SDK TypeScript source through TSX; it is not a published package or full product-runtime test. The probe explicitly records actualProductRuntimeTest=false.",
+      "The run exercises normal close after idle. It does not measure forcible mid-request Job termination, cancellation propagation, durable flush, or recovery."
+    ],
+    "nonBlockingObservations": [
+      "The original execution manifest binds the exact probe snapshot and bootstrap SHA, but does not itself record the TSX entry, tsconfig, or lockfile hashes. This review records those hashes and independently reruns the same snapshot against the same clean fixed source commit.",
+      "The review replay generated 289 untracked files below its native output directory, including TSX temporary cache and synthetic DSH-home data. The wrapper's job-local .gitignore covers job/data only, not the sibling native directory; these files were left intact and were not individually reviewed as product artifacts."
+    ],
+    "unitBoundary": "This recommendation covers only the frozen SDK success path and normal cleanup under Job. It does not accept overall U09 or any cancellation/recovery claim."
+  },
+  "currentCode": [
+    {
+      "path": "spikes/dsh-sdk/windows-job.py",
+      "bytes": 11175,
+      "sha256": "056d748611f0875de49ec60e44eaeb530afaacb5fa1e37e6b61f5399b7f46cfe"
+    },
+    {
+      "path": "spikes/dsh-sdk/job-gate.mjs",
+      "bytes": 1212,
+      "sha256": "b3b90e5d6f26348a0b328722e9b7a6e3f7159459fe2cb1030be1e353198b5fb5"
+    },
+    {
+      "path": "spikes/dsh-sdk/job-sdk-bootstrap.mjs",
+      "bytes": 827,
+      "sha256": "2cfccce46f0568f3dcee35a3bd631048098a1eee5d82a43de2a2b42e551e05b3"
+    }
+  ],
+  "coordinatorFrozenRun": {
+    "execution": {
+      "path": "evidence/P00-U09/20261001-01/runs/job-sdk-1790834591315205400/execution.json",
+      "bytes": 927,
+      "sha256": "1a296975c0bbbd074e0571ca1558e362dba3b63bf67769dfaf6a1d4dbbe32cee",
+      "exitCode": 0,
+      "probeSnapshotSha256Bound": "8c5312d92d817ce62ab1eb65a1eeb6b75a53a5bf49c86ed2bacce62bde4566d3",
+      "bootstrapSha256Bound": "2cfccce46f0568f3dcee35a3bd631048098a1eee5d82a43de2a2b42e551e05b3"
+    },
+    "probeSnapshot": {
+      "path": "evidence/P00-U09/20261001-01/runs/job-sdk-1790834591315205400/probe-snapshot.ts",
+      "bytes": 19283,
+      "sha256": "8c5312d92d817ce62ab1eb65a1eeb6b75a53a5bf49c86ed2bacce62bde4566d3"
+    },
+    "probeResult": {
+      "path": "evidence/P00-U09/20261001-01/runs/job-sdk-1790834591315205400/native/probe.json",
+      "bytes": 5570,
+      "sha256": "56f2b248393828ae401fe33795f81f11dc268a8aaab073354a1aac6b4d060e46",
+      "status": "passed_with_limit",
+      "paidModelCalls": 0
+    },
+    "jobSummary": {
+      "path": "evidence/P00-U09/20261001-01/runs/job-sdk-1790834591315205400/job/summary.json",
+      "bytes": 1811,
+      "sha256": "aec8a69004c6f46131fd2e1508a365e512025439984a068f37d231c2b4fed86d",
+      "status": "passed",
+      "assignedBeforeImport": true,
+      "membersBeforeJobClose": []
+    }
+  },
+  "sourceAndLoaderVerification": {
+    "sourceRoot": ".runtime/P00/dsh/source",
+    "sourceCommit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+    "sourceTreeClean": true,
+    "recordedSourceHashesCompared": 13,
+    "sourceHashMismatches": [],
+    "sourceSha256": {
+      "packages/sdk/client/src/index.ts": "8fbda9de61ad8ef8718455856f12c3cf229668733eb1d78f93fe3ac3690ad5df",
+      "packages/sdk/client/src/api.ts": "943f0326dbf1415b50b879fdd538c0bcd38f20bd37ea6fec397b14099c2c8987",
+      "packages/sdk/client/src/client.ts": "162a928f45f34acb017e98030392c0825e87f23ceb7533ccc3d25784a79808ad",
+      "packages/sdk/client/src/types.ts": "c0aea2b90cccdeb26aaa3840cfd403f082dbc5eae060c4bbfb35d45a5585a0fc",
+      "packages/sdk/client/src/launch.ts": "d7187537945618d6190bf98ab5893de9a1a059e4e2ec4d3778386eaffe5148af",
+      "packages/sdk/client/src/dispose.ts": "d1e3321d070a1347d4c973695668ae467f55ce7e85a1c8d32efb8398328906f0",
+      "packages/sdk/server/src/server.ts": "489ad060e5ca17901ac5336f9b7871b7397d1476e1258f69b0f3b22dba6f4238",
+      "packages/sdk/protocol/src/types.ts": "9a9ab6172ff2a45b7a07adf75611aa8f42ae1bb98bd4ad598d8bdc5f618053d7",
+      "packages/llm/llm-deepseek/src/config.ts": "73f802bf72663ace689782db8a4031791864e9a97c995de620ac4c9ce683a30b",
+      "packages/llm/llm-deepseek/src/messages-api.ts": "c4f2036fc3b561690f05426f308bbee525a4a5ae121e47ebf61b7bc3a7b8656c",
+      "packages/llm/llm-deepseek/src/adapter.ts": "68d03fbaa3dd5f04a55ff48d7cd0f2ef125077f8144977459c15432e1464cf8f",
+      "packages/llm/llm-deepseek/tests/mock-server.ts": "e157eaeba7c95ef78ed4273eddff6dc242aa6ddb241b9cb8a3478eb6e63f9e4f",
+      "packages/bundle/sdk-minimal/cordis.patch.yml": "a2609189fafaaed862ad9dabdc1c4dd59ab6077b530535e901a32fc23559ca2f"
+    },
+    "toolchain": {
+      "node": "24.16.0",
+      "nodeAbi": "137",
+      "napi": "10",
+      "nodeExecutable": "C:/Program Files/nodejs/node.exe",
+      "tsxVersion": "4.22.4",
+      "tsxPackageSha256": "b0d63b124b9b85b53d09cff256fa7832cb6a774f8b90ae1353e63df5275824b2",
+      "tsxApiEntry": ".runtime/P00/dsh/source/node_modules/tsx/dist/esm/api/index.mjs",
+      "tsxApiEntrySha256": "6108c0ae308c9399e240e9d6cb43d2a291f4a55418c982f3ae017f9357a86053",
+      "tsconfig": ".runtime/P00/dsh/source/packages/sdk/client/tsconfig.json",
+      "tsconfigSha256": "8bc1fbe7575e579ba08cf6ae17d9a308e238d5e730c24be8ea51776a717acfce",
+      "lockfile": ".runtime/P00/dsh/source/pnpm-lock.yaml",
+      "lockfileSha256": "80fe05eae33582ae26839afd05f1965f9b0e4be11034ddf9797af6085d5ba9b1",
+      "lockEntry": "tsx@4.22.4"
+    },
+    "toolsPatch": {
+      "path": "spikes/P00/dsh-runtime/disable-tools.cordis.patch.yml",
+      "sha256": "7fe10b94d6b176ecf10c697cb24d382e814d735accc94f3ef55acff25aafee5a"
+    }
+  },
+  "independentReplay": {
+    "command": [
+      "python",
+      "spikes/dsh-sdk/windows-job.py",
+      "--root",
+      "E:\\Xiadie\\Xiadie",
+      "--output-dir",
+      "E:\\Xiadie\\Xiadie\\evidence\\P00-U09\\20261001-01\\runs\\job-sdk-review-20261001-01\\job",
+      "--driver",
+      "E:\\Xiadie\\Xiadie\\spikes\\dsh-sdk\\job-sdk-bootstrap.mjs",
+      "--driver-args",
+      "--root",
+      "E:\\Xiadie\\Xiadie",
+      "--probe",
+      "E:\\Xiadie\\Xiadie\\evidence\\P00-U09\\20261001-01\\runs\\job-sdk-1790834591315205400\\probe-snapshot.ts",
+      "--output-dir",
+      "E:\\Xiadie\\Xiadie\\evidence\\P00-U09\\20261001-01\\runs\\job-sdk-review-20261001-01\\native"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "python": "3.12",
+    "node": "24.16.0",
+    "exitCode": 0,
+    "elapsedMilliseconds": 7730,
+    "paidModelCalls": 0,
+    "networkScope": "Two HTTP requests to an ephemeral 127.0.0.1 loopback mock; no external model endpoint",
+    "probe": {
+      "path": "evidence/P00-U09/20261001-01/runs/job-sdk-review-20261001-01/native/probe.json",
+      "bytes": 5568,
+      "sha256": "fba077269556fcc10d2ccd0a53948c7325bb943f08ea9ecefa1ed8ae25d86446",
+      "status": "passed_with_limit",
+      "requests": 2,
+      "toolsAdvertised": 0,
+      "fakeCredentialOnly": true,
+      "actualProductRuntimeTest": false
+    },
+    "jobSummary": {
+      "path": "evidence/P00-U09/20261001-01/runs/job-sdk-review-20261001-01/job/summary.json",
+      "bytes": 1914,
+      "sha256": "3fa7071b1c8bdd8c592b3c44f4cbda06f2b68d8eccef69290d2bb49206b53683",
+      "status": "passed",
+      "assignedBeforeImport": true,
+      "driverExitCode": 0,
+      "membersBeforeJobClose": []
+    },
+    "rawOutput": [
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-sdk-review-20261001-01/job/0-stdout.jsonl",
+        "bytes": 4712,
+        "sha256": "5e49a2278cb888f0f24988cf29331b58f9a53d9c5b23a8a82d3e5ed39b74bbe9"
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-sdk-review-20261001-01/job/0-stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/runs/job-sdk-review-20261001-01/job/.gitignore",
+        "bytes": 6,
+        "sha256": "c5049c183f87267ff36ee98b52517e1f78670639f3a060baa89d4093a555f59b"
+      }
+    ],
+    "replayResults": {
+      "matchedFixedSnapshotSha256": true,
+      "all13SourceHashesMatch": true,
+      "sessionPromptReceiptMatched": true,
+      "matchingIdleObserved": true,
+      "firstSyntheticAssistantText": "P00-U09-FIRST-MOCK-ANSWER",
+      "sameIdReopenError": "JsonRpcResponseError: session already exists",
+      "sameIdAttemptReachedProvider": false,
+      "freshIdFinalResponse": "P00-U09-SECOND-MOCK-ANSWER",
+      "freshIdCarriedPriorPrompt": false,
+      "clientCloseResolved": true
+    }
+  },
+  "sourceReview": [
+    {
+      "source": "spikes/dsh-sdk/windows-job.py",
+      "lines": "52-85,98-120,162-177,200-209",
+      "finding": "Creates a Job with KILL_ON_JOB_CLOSE and no breakaway, starts the gate with a replacement environment, waits for the ready marker, assigns the direct process handle, checks exact initial membership, and only then opens stdin. The module branch polls owned members, closes the Job after the driver exits, and reaps the owner in finally. This is trusted-fixture process containment, not a general OS sandbox."
+    },
+    {
+      "source": "spikes/dsh-sdk/job-gate.mjs",
+      "lines": "1-24",
+      "finding": "The gate emits ready and blocks on one stdin command before importing the SDK bootstrap; the module import occurs only after the Python runner assigns the owner process to the Job."
+    },
+    {
+      "source": "spikes/dsh-sdk/job-sdk-bootstrap.mjs",
+      "lines": "5-14",
+      "finding": "Loads TSX API from the pinned source tree by file URL, selects the SDK client tsconfig explicitly, and tsImports the probe snapshot. No global TSX executable or build artifact is used."
+    },
+    {
+      "source": "evidence/P00-U09/20261001-01/runs/job-sdk-1790834591315205400/probe-snapshot.ts",
+      "lines": "111-136,147-207,223-254,255-286,294-329,389-404",
+      "finding": "Imports the fixed SDK client and DeepSeek mock-server fixture, asserts the source commit, starts a loopback HTTP/SSE provider with a fake credential, uses isolated DSH_HOME and child environment, exercises initialize/prompt/receipt/idle/business text and high-level run, probes same-id then fresh-id behavior, and closes client/server in finally."
+    },
+    {
+      "source": ".runtime/P00/dsh/source/packages/sdk/server/src/server.ts",
+      "lines": "137-170,178-195,208-257,261-282",
+      "finding": "initialize validates and configures a route then returns serverInfo; session/prompt obtains/creates a session, queues content, and returns messageId; exposed protocol methods are initialize, session/prompt, shutdown."
+    },
+    {
+      "source": ".runtime/P00/dsh/source/packages/sdk/client/src/client.ts",
+      "lines": "276-298,383-410",
+      "finding": "Client initialize returns server identity, prompt returns the durable queued message id, and close requests protocol shutdown then runs the process-disposal ladder; close is idempotent."
+    },
+    {
+      "source": ".runtime/P00/dsh/source/packages/sdk/client/src/api.ts",
+      "lines": "176-223,300-309",
+      "finding": "High-level run begins collecting after receipt correlation and finishes at session idle; finalResponse is the last assistant message in the collected session events. The one-prompt fixture passes, but does not test overlapping activity or independently establish stronger per-prompt causality."
+    }
+  ],
+  "reviewerFilesCreated": [
+    "evidence/P00-U09/20261001-01/job-sdk-review.json"
+  ],
+  "gitOrGlobalChanges": "none"
+}
