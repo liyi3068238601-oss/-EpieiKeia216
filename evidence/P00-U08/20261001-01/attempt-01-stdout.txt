@@ -1,0 +1,15 @@
+node:internal/fs/promises:785
+  return await PromisePrototypeThen(
+         ^
+
+Error: ENOENT: no such file or directory, rename 'E:\Xiadie\Xiadie\evidence\P00-U08\20261001-01\runs\attempt-01\fixtures\worktree-a\TwinProject' -> 'E:\Xiadie\Xiadie\evidence\P00-U08\20261001-01\runs\attempt-01\fixtures\moved\TwinProject'
+    at async rename (node:internal/fs/promises:785:10)
+    at async <anonymous> (E:\Xiadie\Xiadie\spikes\zcode-memory\probe.mjs:358:1) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'rename',
+  path: 'E:\\Xiadie\\Xiadie\\evidence\\P00-U08\\20261001-01\\runs\\attempt-01\\fixtures\\worktree-a\\TwinProject',
+  dest: 'E:\\Xiadie\\Xiadie\\evidence\\P00-U08\\20261001-01\\runs\\attempt-01\\fixtures\\moved\\TwinProject'
+}
+
+Node.js v24.16.0

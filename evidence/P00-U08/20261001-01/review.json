@@ -1,0 +1,74 @@
+{
+  "unit": "P00-U08",
+  "status": "reviewed",
+  "recommendation": "accept_bounded_native_helpers_and_executor_probe",
+  "reviewer": "root",
+  "input_bindings": [
+    {
+      "path": "evidence/P00-U08/20261001-01/result.md",
+      "bytes": 7355,
+      "sha256": "11eccb9b2cf966a552b90ee00d2b2d4910e5ca282ecf5383f6026a290cbe6707"
+    },
+    {
+      "path": "evidence/P00-U08/20261001-01/verification.json",
+      "bytes": 18347,
+      "sha256": "2c62236ccddc33ad1af9f1abf7eac47de4a546391f88967f3c53136b9c38489c"
+    },
+    {
+      "path": "evidence/P00-U08/20261001-01/test-mapping.md",
+      "bytes": 2692,
+      "sha256": "572de1d2f156fc9fc9f2c7bd8d74be54d1f5f762b19d016eac6fdf39e182ac82"
+    },
+    {
+      "path": "spikes/zcode-memory/probe.mjs",
+      "bytes": 24255,
+      "sha256": "5a44150ab792c8e3c960d972f30ae4ae4175214e07e4864825ed68f13604cc96"
+    },
+    {
+      "path": "spikes/zcode-memory/README.md",
+      "bytes": 2815,
+      "sha256": "bfd82f58b52b68cb8fe25f8396eff4e53cbf133d25fb51fae6f0756de0af577c"
+    },
+    {
+      "path": "evidence/P00-U08/20261001-01/runs/root-review-1790833030958361000/probe-results.json",
+      "bytes": 26643,
+      "sha256": "cd371a4ce194e2c2d48d861e23044609ae1ad545df3f701762ba51bb4c4e2d36"
+    },
+    {
+      "path": "evidence/P00-U08/20261001-01/root-review-1790833030958361000-execution.json",
+      "bytes": 718,
+      "sha256": "bc8b295cea598c2dbc5ecb9cd93950b9f4c242539ac889e8f89621d33d955ce9"
+    },
+    {
+      "path": "evidence/P00-U08/20261001-01/root-review-1790833030958361000-stdout.txt",
+      "bytes": 1076,
+      "sha256": "7fa90699e1d754c8e9e8b6ef3e82adfc26af656a32296f363e6527e503a6e6ec"
+    },
+    {
+      "path": "evidence/P00-U08/20261001-01/root-review-1790833030958361000-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "independent_execution": {
+    "command_record": "evidence/P00-U08/20261001-01/root-review-1790833030958361000-execution.json",
+    "exit_code": 0,
+    "assertions": 18,
+    "passed": 18,
+    "source_files_verified": 17,
+    "runtime_entries_verified": 10,
+    "source_clean_and_pin_matches": true
+  },
+  "findings": [
+    "Six real native Write handler/FS writes to user/project/local roots; actual A/B Git worktrees and worktree move.",
+    "Explicit Write/Edit deny persists across memory exception; Edit actual before/after/moved bytes identical.",
+    "Read-only child filtered registry rejects Write as TOOL_NOT_FOUND.",
+    "Main session roots are resolver-level evidence; source does not automatically share worktree identity.",
+    "Sanitized profile-name collision is a known native limitation: downstream stable unique keys required."
+  ],
+  "limits": [
+    "No full subagent LLM dispatch, MEMORY.md retrieval/hydration, full main memory service, OS sandbox or product package test.",
+    "Plan alone permits memory Markdown writes; readonly profiles must explicitly deny Write/Edit."
+  ],
+  "product_implementation_started": false
+}
