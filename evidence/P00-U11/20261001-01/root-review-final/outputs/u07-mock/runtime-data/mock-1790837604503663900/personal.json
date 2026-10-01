@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "config": {
+    "providerOrder": [
+      "p00-fixture"
+    ],
+    "providerConfigRules": {
+      "providerRules": [
+        {
+          "providerId": "p00-fixture",
+          "providerName": "P00 synthetic relay",
+          "enabled": true,
+          "config": {
+            "group": "standard-personal",
+            "access": {
+              "type": "api-key",
+              "apiKey": "p00-fixture-key"
+            },
+            "api": {
+              "type": "openai-chat-completions",
+              "baseUrl": "http://127.0.0.1:50927/v1"
+            },
+            "personalModelIds": [
+              "[基元]deepseek-flash"
+            ]
+          }
+        }
+      ]
+    },
+    "modelConfigRules": {
+      "providerModelRules": [
+        {
+          "modelId": "[基元]deepseek-flash",
+          "config": {
+            "properties": {
+              "supportsToolCall": true
+            },
+            "optionSpecs": {
+              "reasoningLevel": {
+                "values": [
+                  "disabled"
+                ],
+                "map": "{\"thinking\": {\"type\": \"disabled\"}}"
+              },
+              "maxOutputTokens": {
+                "max": 1024,
+                "map": "{\"max_tokens\": maxOutputTokens}"
+              }
+            }
+          },
+          "providerId": "p00-fixture"
+        }
+      ],
+      "manualProviderModelRules": []
+    },
+    "defaultModelSelection": {
+      "providerId": "p00-fixture",
+      "modelId": "[基元]deepseek-flash",
+      "options": {
+        "reasoningLevel": "disabled"
+      }
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schema": "p00-u11-verification/v1",
+  "unit": "P00-U11",
+  "status": "ready_for_review",
+  "baselineCommit": "1ea91865318b020629535ba572c88440731797f4",
+  "productImplementationStarted": false,
+  "acceptedPrerequisites": [
+    "P00-U01",
+    "P00-U02",
+    "P00-U03",
+    "P00-U04",
+    "P00-U05",
+    "P00-U06",
+    "P00-U07",
+    "P00-U08",
+    "P00-U09",
+    "P00-U10"
+  ],
+  "authorRun": {
+    "command": [
+      "python",
+      "tests/integration/P00/run.py",
+      "--root",
+      "E:\\Xiadie\\Xiadie",
+      "--output-dir",
+      "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exitCode": 0,
+    "status": "passed_with_limits",
+    "commandsPassed": 6,
+    "assertionsPassed": 19,
+    "paidModelCalls": 0,
+    "outputSummary": {
+      "path": "evidence/P00-U11/20261001-01/replay-02/runner-summary.json",
+      "bytes": 17490,
+      "sha256": "aa52c5313337496028fe51ef1372594a448a9d024de851baddbfb2f5cc1c7097"
+    }
+  },
+  "independentReview": {
+    "path": "evidence/P00-U11/20261001-01/root-review.json",
+    "bytes": 3402,
+    "sha256": "7bf38917666ee8c3af3378157ca6a6ef5fc11a6f93b7f6597dc4cb48420131e2",
+    "recommendation": "accept_bounded_stage_integration",
+    "blockers": [],
+    "verifiedInputSourceOutputBindings": 55,
+    "sourceAfter": [
+      {
+        "path": ".runtime/P00/zcode/source",
+        "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "clean": true
+      },
+      {
+        "path": ".runtime/P00/dsh/source",
+        "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+        "clean": true
+      },
+      {
+        "path": "references/herta-4623df12",
+        "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "clean": true
+      }
+    ],
+    "jobAssignedBeforeImport": true,
+    "jobMembersAfterDriverExit": [],
+    "paidCalls": 0,
+    "productRuntimeOrInstaller": "NOT_RUN"
+  },
+  "artifactBindings": [
+    {
+      "path": "tests/integration/P00/run.py",
+      "bytes": 15575,
+      "sha256": "9465aab5c672af23efcf29dff8dc5d465f26897ba591f1eb2269d75aee242af7"
+    },
+    {
+      "path": "tests/integration/P00/u07_mock_probe.py",
+      "bytes": 14685,
+      "sha256": "644b38ef8bedae08884a6588e68feb49b77cf5134e77181ae91aadc82877da1e"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/u07-copy.diff",
+      "bytes": 18100,
+      "sha256": "03c7026dd7e15813176d36b250dccc5fb386a43688d4093121943d6c8d4f799c"
+    },
+    {
+      "path": "docs/evals/P00/integration-evaluation.md",
+      "bytes": 3419,
+      "sha256": "c497e5fe05c90538657b136cde966015f00b33c73801a98ac5b2be8e2cce0554"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/result.md",
+      "bytes": 4446,
+      "sha256": "5dde93fe7fa75116a8fecb1183fea760dd4073e65d1f6a43bba41d2f384be373"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/.gitignore",
+      "bytes": 404,
+      "sha256": "e0207197d44f8e6d17e285ac1167defa461985545b3292e1993a4cadb6f3b703"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/replay-01/preflight-failure.json",
+      "bytes": 685,
+      "sha256": "00dc9086f62e2f0ae8986f040e225aa16d9df8e66ec79370257617124bd35cd6"
+    }
+  ],
+  "mustCoverage": {
+    "p00Musts": [
+      "R02",
+      "R03",
+      "R08",
+      "R17",
+      "R24",
+      "R25",
+      "R27"
+    ],
+    "matrixVsCard": {
+      "cardOmits": [
+        "R03"
+      ],
+      "matrixMapsR03To": [
+        "P00-U01",
+        "P00-U02",
+        "P00-U12"
+      ]
+    },
+    "evaluation": "docs/evals/P00/integration-evaluation.md",
+    "allFinalProductMustsComplete": false
+  },
+  "boundaries": [
+    "U07 integration copy is mock-only and contains no real gateway or credential-reading branch. Its synthetic personal.json intentionally contains fake p00-fixture-key; globals_snapshot returns an empty list, so this run is not a global config enumeration/hash audit.",
+    "DSH whole-runtime/owned-Job shutdown is not per-prompt cancellation. Completed checkpoint readback is spike-owned and not crash consistency/native session resume; unknown work is held without automatic retry.",
+    "Herta recovery evidence is pure-function recomputation from fresh input, not persistent database recovery.",
+    "R24 evidence retains only old-project protection and bounded checkpoint observations; final backup/restore acceptance remains pending.",
+    "U12 candidate smoke and G00 are pending; P01 remains closed. Windows installer/package and product-runtime tests are NOT_RUN."
+  ],
+  "preflightFailure": {
+    "path": "evidence/P00-U11/20261001-01/replay-01/preflight-failure.json",
+    "probesStarted": false,
+    "externalCalls": 0,
+    "repairedBeforeFinalReplay": true
+  },
+  "testMapping": "tests/integration/P00/run.py is the executed integration runner; no product test framework or release package was run."
+}

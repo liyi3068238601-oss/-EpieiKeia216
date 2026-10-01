@@ -1,0 +1,41 @@
+{
+  "scope": "External Windows Job containment; not native SDK cancel or a security sandbox",
+  "status": "passed",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "root": "E:\\Xiadie\\Xiadie",
+  "output_dir": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\root-review-final\\outputs\\u09-job-ab",
+  "code_bindings": {
+    "spikes/dsh-sdk/windows-job.py": "056d748611f0875de49ec60e44eaeb530afaacb5fa1e37e6b61f5399b7f46cfe",
+    "spikes/dsh-sdk/job-gate.mjs": "b3b90e5d6f26348a0b328722e9b7a6e3f7159459fe2cb1030be1e353198b5fb5"
+  },
+  "struct_bytes": 144,
+  "external_model_calls": 0,
+  "official_sources": [
+    "https://learn.microsoft.com/en-us/windows/win32/api/jobapi2/nf-jobapi2-assignprocesstojobobject",
+    "https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects",
+    "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-jobobject_extended_limit_information"
+  ],
+  "limits": [
+    "Windows host only",
+    "Gate is trusted original fixture; no runtime imports/spawns before assignment",
+    "Forced close is not cooperative checkpoint flush; durable recovery is tested separately",
+    "No API/filesystem/credential sandbox, no arbitrary malicious process security claim"
+  ],
+  "assigned_before_gate": true,
+  "a_members": [
+    63252,
+    26972
+  ],
+  "b_members": [
+    65480,
+    52940
+  ],
+  "a_all_exited": true,
+  "b_members_alive_after_a_close": [
+    true,
+    true
+  ],
+  "b_all_exited": true,
+  "original_owner_assigned": false,
+  "final_assertions": 6
+}

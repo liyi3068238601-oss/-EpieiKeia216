@@ -1,0 +1,225 @@
+{
+  "unit": "P00-U11-U07-copy",
+  "mode": "mock",
+  "run_id": "mock-1790837604503663900",
+  "passed": true,
+  "failure": null,
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "code_bindings": {
+    "tests/integration/P00/u07_mock_probe.py": "644b38ef8bedae08884a6588e68feb49b77cf5134e77181ae91aadc82877da1e",
+    "spikes/zcode-context/host.mjs": "3e58ade405de41ec0ffc12d1934e0cdb0e0d2c9246932a386d791eb526c6a800",
+    "spikes/zcode-context/plugin/.zcode-plugin/plugin.json": "96e68bcee0c08ecbc68cff96a03fea5c09b90ca2ee32e37c2b0f66bc0c2f25f2",
+    "spikes/zcode-context/plugin/hooks/hooks.json": "d56c47249e64fdc10063f1a857ee27d5c4d5efc99aad88e91fa4993c959ff224",
+    "spikes/zcode-context/plugin/hooks/context.mjs": "79f3f5bbeb8605409c12ae07044c1ba428cde5eb1dba7bf850e807977a40f5c0"
+  },
+  "compiled_bindings": {
+    ".runtime/P00/zcode/source/apps/zcode-cli/packages/bootstrap/dist/index.js": "cfffe39e61575a3a6627e8a10153d4ed998d6e48fd774c0195f57f2282074202",
+    ".runtime/P00/zcode/source/apps/zcode-cli/packages/bootstrap/dist/app/create-app.js": "7b647434cc2c298aa1720d32db481c4ccd6d2a49f43eaf1ee50b7dd28e4729f7"
+  },
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--import",
+    "file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/node_modules/tsx/dist/esm/index.mjs",
+    "E:\\Xiadie\\Xiadie\\spikes\\zcode-context\\host.mjs",
+    "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\root-review-final\\outputs\\u07-mock\\runtime-data\\mock-1790837604503663900\\spec.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\root-review-final\\outputs\\u07-mock\\runtime-data\\mock-1790837604503663900\\fixture",
+  "exit_code": 0,
+  "elapsed_seconds": 8.546,
+  "results": [
+    {
+      "kind": "turn_result",
+      "phase": "new",
+      "session_id": "sess_413f8756-b489-4602-9efa-4480e2178e78",
+      "mode": "build",
+      "plan_enabled": true,
+      "response": "U07_MOCK_OK",
+      "event_types": [
+        "turn_started",
+        "model_request",
+        "model_network_status",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_network_status",
+        "model_complete",
+        "turn_complete"
+      ]
+    },
+    {
+      "kind": "turn_result",
+      "phase": "compact",
+      "session_id": "sess_413f8756-b489-4602-9efa-4480e2178e78",
+      "mode": "build",
+      "plan_enabled": true,
+      "response": "Compacted",
+      "event_types": [
+        "turn_started",
+        "compact_started",
+        "model_request",
+        "model_network_status",
+        "model_network_status",
+        "model_complete",
+        "compact_boundary",
+        "compact_completed",
+        "turn_complete"
+      ]
+    },
+    {
+      "kind": "turn_result",
+      "phase": "postcompact",
+      "session_id": "sess_413f8756-b489-4602-9efa-4480e2178e78",
+      "mode": "build",
+      "plan_enabled": true,
+      "response": "U07_MOCK_OK",
+      "event_types": [
+        "turn_started",
+        "model_request",
+        "model_network_status",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_network_status",
+        "model_complete",
+        "turn_complete"
+      ]
+    },
+    {
+      "kind": "turn_result",
+      "phase": "tool_failure",
+      "session_id": "sess_413f8756-b489-4602-9efa-4480e2178e78",
+      "mode": "build",
+      "plan_enabled": true,
+      "response": "U07_MOCK_OK",
+      "event_types": [
+        "turn_started",
+        "model_request",
+        "model_network_status",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "streaming_tool_ledger_updated",
+        "tool_call_scheduled",
+        "model_streaming",
+        "streaming_tool_ledger_updated",
+        "streaming_tool_ledger_updated",
+        "model_network_status",
+        "model_complete",
+        "tool_batch_complete",
+        "stream_recovery_anchor_created",
+        "streaming_tool_ledger_updated",
+        "model_request",
+        "model_network_status",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_network_status",
+        "model_complete",
+        "turn_complete"
+      ]
+    },
+    {
+      "kind": "turn_result",
+      "phase": "permission",
+      "session_id": "sess_413f8756-b489-4602-9efa-4480e2178e78",
+      "mode": "build",
+      "plan_enabled": true,
+      "response": "U07_MOCK_OK",
+      "event_types": [
+        "turn_started",
+        "model_request",
+        "model_network_status",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_network_status",
+        "model_complete",
+        "streaming_tool_ledger_updated",
+        "tool_call_scheduled",
+        "streaming_tool_ledger_updated",
+        "streaming_tool_ledger_updated",
+        "tool_batch_complete",
+        "stream_recovery_anchor_created",
+        "streaming_tool_ledger_updated",
+        "model_request",
+        "model_network_status",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_network_status",
+        "model_complete",
+        "turn_complete"
+      ]
+    },
+    {
+      "kind": "turn_result",
+      "phase": "resume",
+      "session_id": "sess_413f8756-b489-4602-9efa-4480e2178e78",
+      "mode": "build",
+      "plan_enabled": true,
+      "response": "U07_MOCK_OK",
+      "event_types": [
+        "turn_started",
+        "model_request",
+        "model_network_status",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_streaming",
+        "model_network_status",
+        "model_complete",
+        "turn_complete"
+      ]
+    }
+  ],
+  "model_calls": 0,
+  "global_files_read": false,
+  "global_before": [],
+  "global_after": [],
+  "global_unchanged": true,
+  "artifacts": [
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-final/outputs/u07-mock/runs/mock-1790837604503663900/hooks.jsonl",
+      "sha256": "feb49e4ebcec3c3e642dc2dd47d2498cde672e5ea922414f34262ca4fc57b10a",
+      "bytes": 22015
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-final/outputs/u07-mock/runs/mock-1790837604503663900/requests.json",
+      "sha256": "dc6429c1ea1fd51386f2ddbb31247d6c3899d486261773959ca84a9c68d18984",
+      "bytes": 147892
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-final/outputs/u07-mock/runs/mock-1790837604503663900/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-final/outputs/u07-mock/runs/mock-1790837604503663900/stdout.jsonl",
+      "sha256": "65ad06175a8180a7a38b81a3236f5bd1c484b6069f8275998d7d016a10b1e03c",
+      "bytes": 251205
+    }
+  ],
+  "usage": [],
+  "gateway_cost": "mock only; no external model calls",
+  "isolation": {
+    "complete_child_env": true,
+    "HOME": "omitted",
+    "credential_in_child_or_files": false,
+    "standalone_account_import_and_builtin_remote_refresh": false,
+    "os_sandbox_claim": false
+  }
+}

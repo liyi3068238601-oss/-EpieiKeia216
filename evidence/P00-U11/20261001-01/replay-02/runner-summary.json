@@ -1,0 +1,512 @@
+{
+  "unit": "P00-U11",
+  "status": "passed_with_limits",
+  "baselineCommit": "1ea91865318b020629535ba572c88440731797f4",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "outputDir": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02",
+  "execution": "author integration replay; no commit or status-file update",
+  "sourcePinsBefore": {
+    ".runtime/P00/zcode/source": {
+      "expected": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "head": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "clean": true,
+      "headCommand": {
+        "args": [
+          "rev-parse",
+          "HEAD"
+        ],
+        "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source",
+        "exitCode": 0,
+        "stdout": "29628c9acdb81b703bbd4080c207a0e7ce5e276e\n",
+        "stderr": ""
+      },
+      "statusCommand": {
+        "args": [
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    ".runtime/P00/dsh/source": {
+      "expected": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "head": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "clean": true,
+      "headCommand": {
+        "args": [
+          "rev-parse",
+          "HEAD"
+        ],
+        "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source",
+        "exitCode": 0,
+        "stdout": "639ed015397290b3745d163aafe02ffee4aa3f84\n",
+        "stderr": ""
+      },
+      "statusCommand": {
+        "args": [
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    "references/herta-4623df12": {
+      "expected": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "head": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "clean": true,
+      "headCommand": {
+        "args": [
+          "rev-parse",
+          "HEAD"
+        ],
+        "cwd": "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+        "exitCode": 0,
+        "stdout": "4623df120adf99340ce5f7e25ed829466975e3ae\n",
+        "stderr": ""
+      },
+      "statusCommand": {
+        "args": [
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    }
+  },
+  "sourceBindings": [
+    {
+      "path": "tests/integration/P00/run.py",
+      "bytes": 15575,
+      "sha256": "9465aab5c672af23efcf29dff8dc5d465f26897ba591f1eb2269d75aee242af7"
+    },
+    {
+      "path": "tests/integration/P00/u07_mock_probe.py",
+      "bytes": 14685,
+      "sha256": "644b38ef8bedae08884a6588e68feb49b77cf5134e77181ae91aadc82877da1e"
+    },
+    {
+      "path": "spikes/zcode-context/probe.py",
+      "bytes": 17259,
+      "sha256": "0eb40003f2f3091dff93ebd71a14f9ac313180a00e4a348997d590c4b7691c78"
+    },
+    {
+      "path": "spikes/zcode-context/host.mjs",
+      "bytes": 3382,
+      "sha256": "3e58ade405de41ec0ffc12d1934e0cdb0e0d2c9246932a386d791eb526c6a800"
+    },
+    {
+      "path": "spikes/zcode-context/plugin/hooks/context.mjs",
+      "bytes": 1438,
+      "sha256": "79f3f5bbeb8605409c12ae07044c1ba428cde5eb1dba7bf850e807977a40f5c0"
+    },
+    {
+      "path": "spikes/zcode-memory/probe.mjs",
+      "bytes": 24255,
+      "sha256": "5a44150ab792c8e3c960d972f30ae4ae4175214e07e4864825ed68f13604cc96"
+    },
+    {
+      "path": "spikes/dsh-sdk/probe.ts",
+      "bytes": 34978,
+      "sha256": "21b025015917927a0909d670123c8c6f0f4a9cbaafc434679b112f210f650eec"
+    },
+    {
+      "path": "spikes/dsh-sdk/windows-job.py",
+      "bytes": 11175,
+      "sha256": "056d748611f0875de49ec60e44eaeb530afaacb5fa1e37e6b61f5399b7f46cfe"
+    },
+    {
+      "path": "spikes/dsh-sdk/job-gate.mjs",
+      "bytes": 1212,
+      "sha256": "b3b90e5d6f26348a0b328722e9b7a6e3f7159459fe2cb1030be1e353198b5fb5"
+    },
+    {
+      "path": "spikes/dsh-sdk/job-sdk-bootstrap.mjs",
+      "bytes": 827,
+      "sha256": "2cfccce46f0568f3dcee35a3bd631048098a1eee5d82a43de2a2b42e551e05b3"
+    },
+    {
+      "path": "spikes/dsh-sdk/job-detached-test.py",
+      "bytes": 3408,
+      "sha256": "da65dbc7b43f38eea16ac756b983a79781e6b26cf1a4a2e32516de644cb257ac"
+    },
+    {
+      "path": "spikes/P00/herta-pure/poc.mjs",
+      "bytes": 6924,
+      "sha256": "dc7d8e2d7a49b61ea492bfdd0041b7d0264782febfcb2eecf36a6ceb0c1f8b3d"
+    }
+  ],
+  "inputBindings": [
+    {
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    {
+      "path": "docs/legal/reuse.md",
+      "bytes": 8966,
+      "sha256": "1836b866d0e29ca43e0fd4bb549a92e987b759ef94593aa618f45c741904ba90"
+    },
+    {
+      "path": "assets/manifest.json",
+      "bytes": 4304,
+      "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"
+    },
+    {
+      "path": "docs/adr/host-and-reuse.md",
+      "bytes": 9642,
+      "sha256": "2bc0605d0e9eee7bc735626473eb374b601583d948d4b6cfb86e91992184f444"
+    },
+    {
+      "path": "evidence/P00/final-baseline-confirmation.json",
+      "bytes": 733,
+      "sha256": "188e040757c13b8d0f318821fc711bc9168861e7098fd29a597949d87feeefb7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/requirements.json",
+      "bytes": 21995,
+      "sha256": "3d3a89844ecc1a71efb1a49094762ec1826dfb4e66dcc76802fe91b497fc3505"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U11.md",
+      "bytes": 3146,
+      "sha256": "edd098ce4479553ea999945f866d679c82494ce4372276d8ab95d75139e8796a"
+    },
+    {
+      "path": "evidence/P00-U01/20261001-01/acceptance.json",
+      "bytes": 1611,
+      "sha256": "2110187830a3ac42bddd8d9887b824928d837495e0f1e9a55cead1d7cb1292d1",
+      "status": "accepted"
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/acceptance.json",
+      "bytes": 6412,
+      "sha256": "1e72a2725e4740b690dabdc17b0f1a657892eaf6f94de5e5d2034c5db507eae6",
+      "status": "accepted"
+    },
+    {
+      "path": "evidence/P00-U03/20261001-01/acceptance.json",
+      "bytes": 604,
+      "sha256": "2ff8eb67d86df08723f614d17b074d9baad698c993b2cfb4118344f868bbfaa8",
+      "status": "accepted"
+    },
+    {
+      "path": "evidence/P00-U04/20261001-01/acceptance.json",
+      "bytes": 2456,
+      "sha256": "6e1c6b9663f236e271f943c62e17f5aaa08ecfd32bbde8f96e99b0c8e1de3eaf",
+      "status": "accepted"
+    },
+    {
+      "path": "evidence/P00-U05/20261001-01/acceptance.json",
+      "bytes": 1071,
+      "sha256": "4f59ab227d56e62bfe05ff22cc5244e7843e7b939911696d62cb78ec13008db6",
+      "status": "accepted"
+    },
+    {
+      "path": "evidence/P00-U06/20261001-01/acceptance.json",
+      "bytes": 1135,
+      "sha256": "f2084bd60d38b6ed8ba05b3d5eb5128849b3bf90feb4de1e636bb31a759db405",
+      "status": "accepted"
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/acceptance.json",
+      "bytes": 4626,
+      "sha256": "49bc5d5071b9fbc2fe1e35ae60dc945023f0e718e6a6a824c86e0d275882d15c",
+      "status": "accepted"
+    },
+    {
+      "path": "evidence/P00-U08/20261001-01/acceptance.json",
+      "bytes": 2172,
+      "sha256": "bb75ce501326229293e324020c1924b86e4562da2ae9d3c903ad6aab4fda7e38",
+      "status": "accepted"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/acceptance.json",
+      "bytes": 2009,
+      "sha256": "f18845beb6aebfb6d46cdd3d2093dd89a3f2e5bc3d4cf4865ec7644c2eb5c177",
+      "status": "accepted"
+    },
+    {
+      "path": "evidence/P00-U10/20261001-01/acceptance.json",
+      "bytes": 964,
+      "sha256": "a87df8fe2a7efc5b5a49d3b5bfb733f94d4ac45ec2f6e86c62a56d059a76aedc",
+      "status": "accepted"
+    }
+  ],
+  "requirements": {
+    "p00Musts": [
+      "R02",
+      "R03",
+      "R08",
+      "R17",
+      "R24",
+      "R25",
+      "R27"
+    ],
+    "u11CardMusts": [
+      "R02",
+      "R08",
+      "R17",
+      "R24",
+      "R25",
+      "R27"
+    ],
+    "cardMatrixDifference": {
+      "omittedFromCard": [
+        "R03"
+      ],
+      "matrixR03Tasks": [
+        "P00-U01",
+        "P00-U02",
+        "P00-U12"
+      ],
+      "handling": "U01/U02 evidence is bound; U12 remains pending and is required before G00."
+    }
+  },
+  "commands": {
+    "u07_mock": {
+      "command": [
+        "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "E:\\Xiadie\\Xiadie\\tests\\integration\\P00\\u07_mock_probe.py",
+        "--root",
+        "E:\\Xiadie\\Xiadie",
+        "--output-dir",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u07-mock"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 23.328,
+      "stdout": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/u07_mock.stdout",
+        "bytes": 100,
+        "sha256": "658e226606c80343486254775041bea99cc882a5b8b2c3baa0d82e08406c8370"
+      },
+      "stderr": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/u07_mock.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "assertions": {
+      "u07_mock_exit_zero": {
+        "passed": true,
+        "detail": "Mock-only copied native ZCode loop completed"
+      },
+      "u07_no_global_credential_reads": {
+        "passed": true,
+        "detail": "The integration copy reads no global config or credential files"
+      },
+      "u07_success_failure_compact_resume_permission": {
+        "passed": true,
+        "detail": "New, compact/postcompact, Read failure, denied Write and same-session resume ran with zero model calls"
+      },
+      "u07_local_only_requests": {
+        "passed": true,
+        "detail": "Requests use the copied probe's synthetic loopback provider; no upstream calls are possible"
+      },
+      "u08_all_18_assertions": {
+        "passed": true,
+        "detail": "Fresh integration output reproduced all 18 source-pinned Memory/executor assertions"
+      },
+      "u08_scope_and_permission_negative": {
+        "passed": true,
+        "detail": "Six synthetic writes completed while Plan/out-of-memory negative was denied"
+      },
+      "u09_independent_jobs": {
+        "passed": true,
+        "detail": "Closing Job A terminated A members while Job B remained alive, then closed independently"
+      },
+      "u09_external_job_closes_detached_leaf": {
+        "passed": true,
+        "detail": "Detached synthetic leaf outlived its parent and was closed by the owning Job"
+      },
+      "u09_native_sdk_loopback_success": {
+        "passed": true,
+        "detail": "Pinned DSH SDK returned receipt/idle/business result through loopback under an assigned Windows Job"
+      },
+      "u09_whole_instance_close_not_prompt_cancel": {
+        "passed": true,
+        "detail": "Forced case closes/reaps the whole owned runtime; no per-prompt cancellation claim"
+      },
+      "u09_completed_recovery_and_unknown_hold": {
+        "passed": true,
+        "detail": "Completed synthetic result is read after close; unknown remains held without retry"
+      },
+      "u09_fault_cases": {
+        "passed": true,
+        "detail": "Duplicate receipt, empty final, dirty stdout, forced close and detached-child contrast retained"
+      },
+      "herta_pure_function_recompute": {
+        "passed": true,
+        "detail": "Fresh Herta pure-function input recomputed selection; this is not database recovery"
+      },
+      "u07_mock_command_exit_zero": {
+        "passed": true,
+        "detail": "Actual command completed with exit code zero"
+      },
+      "u08_memory_command_exit_zero": {
+        "passed": true,
+        "detail": "Actual command completed with exit code zero"
+      },
+      "u09_job_ab_command_exit_zero": {
+        "passed": true,
+        "detail": "Actual command completed with exit code zero"
+      },
+      "u09_detached_leaf_command_exit_zero": {
+        "passed": true,
+        "detail": "Actual command completed with exit code zero"
+      },
+      "u09_native_sdk_job_command_exit_zero": {
+        "passed": true,
+        "detail": "Actual command completed with exit code zero"
+      },
+      "herta_pure_functions_command_exit_zero": {
+        "passed": true,
+        "detail": "Actual command completed with exit code zero"
+      }
+    },
+    "u08_memory": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/node_modules/tsx/dist/esm/index.mjs",
+        "spikes/zcode-memory/probe.mjs",
+        "--root",
+        "E:\\Xiadie\\Xiadie",
+        "--output-dir",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 2.328,
+      "stdout": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/u08_memory.stdout",
+        "bytes": 1062,
+        "sha256": "f62784603316d35fb7bc11ef6b858c4ec4d38882aee71b84ad1cc7dab9d66564"
+      },
+      "stderr": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/u08_memory.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "u09_job_ab": {
+      "command": [
+        "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "spikes/dsh-sdk/windows-job.py",
+        "--root",
+        "E:\\Xiadie\\Xiadie",
+        "--output-dir",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u09-job-ab"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.25,
+      "stdout": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/u09_job_ab.stdout",
+        "bytes": 133,
+        "sha256": "8b46e9d2fe2bd95b9e7ac3c5702b90f1656ccad4e77aacf85ee550ffa2b7b198"
+      },
+      "stderr": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/u09_job_ab.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "u09_detached_leaf": {
+      "command": [
+        "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "spikes/dsh-sdk/job-detached-test.py",
+        "--root",
+        "E:\\Xiadie\\Xiadie",
+        "--output-dir",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u09-detached"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.438,
+      "stdout": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/u09_detached_leaf.stdout",
+        "bytes": 135,
+        "sha256": "72a554ee7219dd01348ce908dc0e73f171bf99abbe4afa90924dd73fb33097e5"
+      },
+      "stderr": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/u09_detached_leaf.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "u09_native_sdk_job": {
+      "command": [
+        "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "spikes/dsh-sdk/windows-job.py",
+        "--root",
+        "E:\\Xiadie\\Xiadie",
+        "--output-dir",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u09-native-sdk-job",
+        "--driver",
+        "E:\\Xiadie\\Xiadie\\spikes\\dsh-sdk\\job-sdk-bootstrap.mjs",
+        "--driver-args",
+        "--root",
+        "E:\\Xiadie\\Xiadie",
+        "--probe",
+        "E:\\Xiadie\\Xiadie\\spikes\\dsh-sdk\\probe.ts",
+        "--output-dir",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u09-native-sdk-job\\native"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 9.5,
+      "stdout": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/u09_native_sdk_job.stdout",
+        "bytes": 141,
+        "sha256": "cd4d43541c629ea486c38dcea8d69f410e3eea701f6f1fd6f478f95ec3031377"
+      },
+      "stderr": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/u09_native_sdk_job.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "herta_pure_functions": {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--experimental-strip-types",
+        "spikes/P00/herta-pure/poc.mjs"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.078,
+      "stdout": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/herta_pure_functions.stdout",
+        "bytes": 790,
+        "sha256": "67815f96841306dbdec444339802111da1fd02ab9e6c85c86290638b5da97358"
+      },
+      "stderr": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/commands/herta_pure_functions.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "failures": [],
+  "paidModelCalls": 0,
+  "networkScope": "Only 127.0.0.1 synthetic relays in ZCode/DSH fixtures; Herta pure functions have no network path.",
+  "globalCredentialFilesRead": false,
+  "packageOrInstallerTest": "NOT_RUN; no Windows release/package claim",
+  "productImplementationStarted": false
+}

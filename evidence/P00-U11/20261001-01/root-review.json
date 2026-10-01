@@ -1,0 +1,90 @@
+{
+  "unit": "P00-U11",
+  "reviewer": "root",
+  "recommendation": "accept_bounded_stage_integration",
+  "blockers": [],
+  "source_output_input_bindings_verified": 55,
+  "bindings": [
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-final/runner-summary.json",
+      "bytes": 17645,
+      "sha256": "f46bf96721451d2ac180ca167efa91fc7bd69bf7fb4fa5848b09a5d03f6ae288"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-execution.json",
+      "bytes": 797,
+      "sha256": "64af12b0021e965ccef34abe0fc636bc6fb9d3cbda2915420f968b3d14e46b1f"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-stdout.txt",
+      "bytes": 182,
+      "sha256": "aa6ef0295a3a56b1a8a6ffcebbfa858adea3185f8dca3cc7e41623bc00e37bcf"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-final/outputs/u08-memory/probe-results.json",
+      "bytes": 26584,
+      "sha256": "8493ad02d51a17f79a8f199a5a6fd64c1ea799ca47e4a309deb1f965a373f1e4"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-final/outputs/u09-native-sdk-job/summary.json",
+      "bytes": 2196,
+      "sha256": "ff490188c8e05dabac88450353aa0ec6111d93809689e7cb96fd14adf7473d69"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-final/outputs/u09-native-sdk-job/native/probe.json",
+      "bytes": 9331,
+      "sha256": "70880207975ee28e28b5369410440e62bb2f75c2d3a3f53ada40c6a082647ec7"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-final/outputs/u09-job-ab/summary.json",
+      "bytes": 1497,
+      "sha256": "1e7a9c8246cdce21378813f605becc748d9fde0456a79892921f5edb588d1957"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-final/outputs/u09-detached/summary.json",
+      "bytes": 758,
+      "sha256": "85bd378e5b1491c76605456072cecdb10aa66bfc8df7b1f3e7e4b58eaf244a2d"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/root-review-final/outputs/u07-mock/summary-mock.json",
+      "bytes": 7451,
+      "sha256": "5b576e17a40b0e51becca4db55859ef220e093bc8c539ea4b15bdffb37359e1c"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": ".runtime/P00/zcode/source",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "clean": true
+    },
+    {
+      "path": ".runtime/P00/dsh/source",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "clean": true
+    },
+    {
+      "path": "references/herta-4623df12",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "clean": true
+    }
+  ],
+  "actualCommands": 6,
+  "assertions": 19,
+  "nativeMemoryAssertions": 18,
+  "jobAssignedBeforeImport": true,
+  "jobMembersAfterDriverExit": [],
+  "paidCalls": 0,
+  "productRuntimeOrInstaller": "NOT_RUN; future-stage scope",
+  "R03": "U01/U02 evidence bound; U12 candidate/G00 still pending",
+  "limits": [
+    "Normal/source-pinned native runtime with scripted loopback provider is distinct from paid model tests.",
+    "Whole owned runtime/Job shutdown is tested; native per-prompt cancellation/approval/resume not provided.",
+    "Completed result checkpoint readback not process-crash consistency; unknown held without auto-retry.",
+    "P00 stage Must evidence does not complete all 28 final product Must."
+  ]
+}

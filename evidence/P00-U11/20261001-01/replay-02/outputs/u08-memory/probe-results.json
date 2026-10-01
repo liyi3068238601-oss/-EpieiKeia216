@@ -1,0 +1,564 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "sourceCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "sourceGitBefore": {
+    "head": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "status": "",
+    "commands": [
+      {
+        "executable": "git",
+        "args": [
+          "rev-parse",
+          "HEAD"
+        ],
+        "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source",
+        "exitCode": 0,
+        "stdout": "29628c9acdb81b703bbd4080c207a0e7ce5e276e\n",
+        "stderr": ""
+      },
+      {
+        "executable": "git",
+        "args": [
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ]
+  },
+  "sourceGitAfter": {
+    "head": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "status": "",
+    "commands": [
+      {
+        "executable": "git",
+        "args": [
+          "rev-parse",
+          "HEAD"
+        ],
+        "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source",
+        "exitCode": 0,
+        "stdout": "29628c9acdb81b703bbd4080c207a0e7ce5e276e\n",
+        "stderr": ""
+      },
+      {
+        "executable": "git",
+        "args": [
+          "status",
+          "--porcelain"
+        ],
+        "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ]
+  },
+  "sourceTreeUnchanged": true,
+  "workspaceRoot": "E:\\Xiadie\\Xiadie",
+  "outputDir": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory",
+  "run": {
+    "node": "v24.16.0",
+    "platform": "win32",
+    "arch": "x64",
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "externalModelCalls": 0,
+    "installs": 0
+  },
+  "scopeMatrix": [
+    {
+      "project": "A",
+      "projectBasename": "TwinProject",
+      "scope": "user",
+      "agentName": "Memory Keeper",
+      "rootDir": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\user-storage\\agent-memory\\Memory-Keeper",
+      "promptMentionsRoot": true
+    },
+    {
+      "project": "B",
+      "projectBasename": "TwinProject",
+      "scope": "user",
+      "agentName": "Memory Keeper",
+      "rootDir": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\user-storage\\agent-memory\\Memory-Keeper",
+      "promptMentionsRoot": true
+    },
+    {
+      "project": "A",
+      "projectBasename": "TwinProject",
+      "scope": "project",
+      "agentName": "Memory Keeper",
+      "rootDir": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject\\.zcode\\agent-memory\\Memory-Keeper",
+      "promptMentionsRoot": true
+    },
+    {
+      "project": "B",
+      "projectBasename": "TwinProject",
+      "scope": "project",
+      "agentName": "Memory Keeper",
+      "rootDir": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-b\\TwinProject\\.zcode\\agent-memory\\Memory-Keeper",
+      "promptMentionsRoot": true
+    },
+    {
+      "project": "A",
+      "projectBasename": "TwinProject",
+      "scope": "local",
+      "agentName": "Memory Keeper",
+      "rootDir": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject\\.zcode\\agent-memory-local\\Memory-Keeper",
+      "promptMentionsRoot": true
+    },
+    {
+      "project": "B",
+      "projectBasename": "TwinProject",
+      "scope": "local",
+      "agentName": "Memory Keeper",
+      "rootDir": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-b\\TwinProject\\.zcode\\agent-memory-local\\Memory-Keeper",
+      "promptMentionsRoot": true
+    }
+  ],
+  "profileProjection": {
+    "user": {
+      "before": [
+        "Read"
+      ],
+      "after": [
+        "Read",
+        "Write",
+        "Edit"
+      ],
+      "disallowedTools": []
+    },
+    "project": {
+      "before": [
+        "Read"
+      ],
+      "after": [
+        "Read",
+        "Write",
+        "Edit"
+      ],
+      "disallowedTools": []
+    },
+    "local": {
+      "before": [
+        "Read"
+      ],
+      "after": [
+        "Read",
+        "Write",
+        "Edit"
+      ],
+      "disallowedTools": []
+    }
+  },
+  "assertions": {
+    "sameNameProjectsShareUserRoot": true,
+    "sameNameProjectsSeparateProjectRoots": true,
+    "sameNameProjectsSeparateLocalRoots": true,
+    "projectAndLocalMarkersIsolated": true,
+    "userScopeShared": true,
+    "planModeAllowsMarkdownMemoryWrite": true,
+    "planModeDeniesWorkspaceWriteOutsideMemory": true,
+    "explicitDisallowedWriteAndEditDenied": true,
+    "childFilterRemovesWriteAndEdit": true,
+    "executorRejectsFilteredChildWrite": true,
+    "movingWorkspaceCarriesProjectAndLocalMemory": true,
+    "movingWorkspacePreservesUserScope": true,
+    "worktreesWithoutIdentityHaveDifferentMainMemoryRoots": true,
+    "mainMemoryWorkspacePathChangeWithoutIdentity": true,
+    "explicitWorkspaceIdentitySharesMainRootAcrossWorktrees": true,
+    "distinctWorkspaceIdentitySeparatesMainRoots": true,
+    "differentAgentNamesSeparateProjectMemoryRoots": true,
+    "sanitizedProfileNameCollisionObserved": true
+  },
+  "writes": [
+    {
+      "project": "A",
+      "scope": "user",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\user-storage\\agent-memory\\Memory-Keeper\\user-from-A.md",
+      "success": true,
+      "output": {
+        "type": "create",
+        "filePath": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\user-storage\\agent-memory\\Memory-Keeper\\user-from-A.md",
+        "content": "P00-U08 synthetic user marker from A\n",
+        "structuredPatch": [],
+        "originalFile": null,
+        "userModified": false
+      },
+      "error": null,
+      "actualText": "P00-U08 synthetic user marker from A\n"
+    },
+    {
+      "project": "A",
+      "scope": "project",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject\\.zcode\\agent-memory\\Memory-Keeper\\scope-marker.md",
+      "success": true,
+      "output": {
+        "type": "create",
+        "filePath": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject\\.zcode\\agent-memory\\Memory-Keeper\\scope-marker.md",
+        "content": "P00-U08 synthetic project marker from A\n",
+        "structuredPatch": [],
+        "originalFile": null,
+        "userModified": false
+      },
+      "error": null,
+      "actualText": "P00-U08 synthetic project marker from A\n"
+    },
+    {
+      "project": "A",
+      "scope": "local",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject\\.zcode\\agent-memory-local\\Memory-Keeper\\scope-marker.md",
+      "success": true,
+      "output": {
+        "type": "create",
+        "filePath": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject\\.zcode\\agent-memory-local\\Memory-Keeper\\scope-marker.md",
+        "content": "P00-U08 synthetic local marker from A\n",
+        "structuredPatch": [],
+        "originalFile": null,
+        "userModified": false
+      },
+      "error": null,
+      "actualText": "P00-U08 synthetic local marker from A\n"
+    },
+    {
+      "project": "B",
+      "scope": "user",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\user-storage\\agent-memory\\Memory-Keeper\\user-from-B.md",
+      "success": true,
+      "output": {
+        "type": "create",
+        "filePath": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\user-storage\\agent-memory\\Memory-Keeper\\user-from-B.md",
+        "content": "P00-U08 synthetic user marker from B\n",
+        "structuredPatch": [],
+        "originalFile": null,
+        "userModified": false
+      },
+      "error": null,
+      "actualText": "P00-U08 synthetic user marker from B\n"
+    },
+    {
+      "project": "B",
+      "scope": "project",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-b\\TwinProject\\.zcode\\agent-memory\\Memory-Keeper\\scope-marker.md",
+      "success": true,
+      "output": {
+        "type": "create",
+        "filePath": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-b\\TwinProject\\.zcode\\agent-memory\\Memory-Keeper\\scope-marker.md",
+        "content": "P00-U08 synthetic project marker from B\n",
+        "structuredPatch": [],
+        "originalFile": null,
+        "userModified": false
+      },
+      "error": null,
+      "actualText": "P00-U08 synthetic project marker from B\n"
+    },
+    {
+      "project": "B",
+      "scope": "local",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-b\\TwinProject\\.zcode\\agent-memory-local\\Memory-Keeper\\scope-marker.md",
+      "success": true,
+      "output": {
+        "type": "create",
+        "filePath": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-b\\TwinProject\\.zcode\\agent-memory-local\\Memory-Keeper\\scope-marker.md",
+        "content": "P00-U08 synthetic local marker from B\n",
+        "structuredPatch": [],
+        "originalFile": null,
+        "userModified": false
+      },
+      "error": null,
+      "actualText": "P00-U08 synthetic local marker from B\n"
+    }
+  ],
+  "negativeCases": {
+    "planOutsideMemory": {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject\\outside-memory-plan-denied.md",
+      "success": false,
+      "output": null,
+      "error": {
+        "type": "permission_denied",
+        "message": "Plan mode only allows read-only, non-destructive tools",
+        "code": "PERMISSION_DENIED",
+        "stack": "Error: Plan mode only allows read-only, non-destructive tools\n    at createCoreError (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/contracts/dist/errors/index.js:47:19)\n    at createPermissionErrorResult (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/errors.js:73:40)\n    at resolveToolPermission (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/permission-flow.js:95:21)\n    at async executeToolCallImpl (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/call-runner.js:178:30)\n    at async <anonymous> (E:\\Xiadie\\Xiadie\\spikes\\zcode-memory\\probe.mjs:348:23)"
+      },
+      "actualText": null
+    },
+    "explicitWrite": {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject\\.zcode\\agent-memory\\Memory-Keeper\\explicit-deny.md",
+      "success": false,
+      "output": null,
+      "error": {
+        "type": "permission_denied",
+        "message": "Tool Write is explicitly disallowed",
+        "code": "PERMISSION_DENIED",
+        "stack": "Error: Tool Write is explicitly disallowed\n    at createCoreError (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/contracts/dist/errors/index.js:47:19)\n    at createPermissionErrorResult (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/errors.js:73:40)\n    at resolveToolPermission (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/permission-flow.js:95:21)\n    at async executeToolCallImpl (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/call-runner.js:178:30)\n    at async <anonymous> (E:\\Xiadie\\Xiadie\\spikes\\zcode-memory\\probe.mjs:362:29)"
+      },
+      "actualText": null
+    },
+    "explicitEdit": {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject\\.zcode\\agent-memory\\Memory-Keeper\\scope-marker.md",
+      "before": "P00-U08 synthetic project marker from A\n",
+      "success": false,
+      "output": null,
+      "error": {
+        "type": "permission_denied",
+        "message": "Tool Edit is explicitly disallowed",
+        "code": "PERMISSION_DENIED",
+        "stack": "Error: Tool Edit is explicitly disallowed\n    at createCoreError (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/contracts/dist/errors/index.js:47:19)\n    at createPermissionErrorResult (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/errors.js:73:40)\n    at resolveToolPermission (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/permission-flow.js:95:21)\n    at async executeToolCallImpl (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/call-runner.js:178:30)\n    at async <anonymous> (E:\\Xiadie\\Xiadie\\spikes\\zcode-memory\\probe.mjs:371:28)"
+      },
+      "afterBeforeMove": "P00-U08 synthetic project marker from A\n",
+      "afterAtMovedPath": "P00-U08 synthetic project marker from A\n"
+    },
+    "filteredChildWrite": {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject\\.zcode\\agent-memory\\Memory-Keeper\\filtered-child-deny.md",
+      "visibleTools": [
+        "Read"
+      ],
+      "success": false,
+      "output": null,
+      "error": {
+        "type": "tool_not_found",
+        "message": "Tool not found: Write",
+        "code": "TOOL_NOT_FOUND",
+        "stack": "Error: Tool not found: Write\n    at createCoreError (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/contracts/dist/errors/index.js:47:19)\n    at executeToolCallImpl (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/call-runner.js:58:52)\n    at file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/call-runner.js:29:86\n    at runToolCallWithTelemetry (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/telemetry.js:7:16)\n    at executeToolCall (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/call-runner.js:29:12)\n    at ToolExecutorImpl.execute (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/impl.js:75:16)\n    at execute (E:\\Xiadie\\Xiadie\\spikes\\zcode-memory\\probe.mjs:241:19)\n    at <anonymous> (E:\\Xiadie\\Xiadie\\spikes\\zcode-memory\\probe.mjs:404:35)"
+      },
+      "actualText": null
+    }
+  },
+  "move": {
+    "originalWorkspace": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject",
+    "movedWorkspace": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\moved\\TwinProject",
+    "oldWorkspaceExists": false,
+    "movedRoots": {
+      "user": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\user-storage\\agent-memory\\Memory-Keeper",
+      "project": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\moved\\TwinProject\\.zcode\\agent-memory\\Memory-Keeper",
+      "local": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\moved\\TwinProject\\.zcode\\agent-memory-local\\Memory-Keeper"
+    }
+  },
+  "profileNameCollision": {
+    "names": [
+      "Researcher/QA",
+      "Researcher:QA"
+    ],
+    "sameResolvedRoot": true,
+    "rootDir": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-b\\TwinProject\\.zcode\\agent-memory\\Researcher-QA"
+  },
+  "mainMemoryRootIdentity": {
+    "withoutIdentityBeforeMove": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\main-memory-storage\\memories\\projects\\twinproject-2cb941d58d8e8bdc\\memory",
+    "withoutIdentityAfterMove": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\main-memory-storage\\memories\\projects\\twinproject-285e48fd9afcf2b2\\memory",
+    "withoutIdentityOtherWorktree": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\main-memory-storage\\memories\\projects\\twinproject-d3912956705a4404\\memory",
+    "stableIdentityMovedWorkspace": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\main-memory-storage\\memories\\projects\\project-02e2c57ba30b05e7\\memory",
+    "stableIdentityOtherWorktree": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\main-memory-storage\\memories\\projects\\project-02e2c57ba30b05e7\\memory",
+    "differentIdentity": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\main-memory-storage\\memories\\projects\\project-8d648ba74df58c5e\\memory",
+    "differentAgentNameProjectMemoryRoot": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\moved\\TwinProject\\.zcode\\agent-memory\\Memory-Observer"
+  },
+  "gitCommands": [
+    {
+      "executable": "git",
+      "args": [
+        "-c",
+        "user.name=P00-U08 fixture",
+        "-c",
+        "user.email=p00-u08@example.invalid",
+        "init",
+        "-q"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\seed-repository",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "add",
+        "fixture.txt"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\seed-repository",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "-c",
+        "user.name=P00-U08 fixture",
+        "-c",
+        "user.email=p00-u08@example.invalid",
+        "commit",
+        "-m",
+        "Create isolated U08 fixture"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\seed-repository",
+      "exitCode": 0,
+      "stdout": "[master (root-commit) 945305e] Create isolated U08 fixture\n 1 file changed, 1 insertion(+)\n create mode 100644 fixture.txt\n",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "args": [
+        "worktree",
+        "add",
+        "--detach",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject",
+        "HEAD"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\seed-repository",
+      "exitCode": 0,
+      "stdout": "HEAD is now at 945305e Create isolated U08 fixture\n",
+      "stderr": "Preparing worktree (detached HEAD 945305e)\n"
+    },
+    {
+      "executable": "git",
+      "args": [
+        "worktree",
+        "add",
+        "--detach",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-b\\TwinProject",
+        "HEAD"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\seed-repository",
+      "exitCode": 0,
+      "stdout": "HEAD is now at 945305e Create isolated U08 fixture\n",
+      "stderr": "Preparing worktree (detached HEAD 945305e)\n"
+    },
+    {
+      "executable": "git",
+      "args": [
+        "worktree",
+        "move",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\worktree-a\\TwinProject",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\moved\\TwinProject"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02\\outputs\\u08-memory\\fixtures\\seed-repository",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts",
+      "sha256": "ad3065581cdd09bf4b9268199f52a2d40075dca66ba20cf9b461d50fb8a5cabf"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/subagent/persistent-memory-prompt.ts",
+      "sha256": "0d406d7f174c6525f7dc1647d526fed49e507509f551241520ffe49303447f8b"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/subagent/profile.ts",
+      "sha256": "73d6f1b3e0e9664a36a045cba2d6cc3b0d74ef509cada439d17b55b633d3c88a"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/subagent/tool-policy.ts",
+      "sha256": "c763564b7a93b818a0f4622785c35f354b884e0b733eac91d3af59d9f3afd877"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/memory/project-root.ts",
+      "sha256": "74f06347723934dfc28b04076fb41c094d0cd30454d88e6b6672588ac904d90f"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/runtime/helpers/project-memory.ts",
+      "sha256": "57d2fd1b332a73dd9b1cc7884ab65e42dfebad67cf574b0634d474e648ae0113"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/tool/executor/impl.ts",
+      "sha256": "ef85544692b4317dab486f126ceb6f66f7d485ced487cd88fe5752b620ec2c04"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/tool/executor/permission-flow.ts",
+      "sha256": "2f2c71e5d5e4d9dc25fc4cad53d51d05c64bdfb8afc16050e02a560257f7565b"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/tool/executor/memory-file-permission.ts",
+      "sha256": "cf41003e12fa14410d270d144b11e4e38b35de7c6f54113a64b0a14e20e9b5aa"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/permission/service.ts",
+      "sha256": "1f57745cbc4d14378497492cefa21b6f48a94ecc3141e750305f584a29958bda"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/tool/handlers/write.ts",
+      "sha256": "849afdde84015663cbdc06663c57b9dd909b55cc7d1238bdaf0bf351c6639618"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/tool/handlers/edit.ts",
+      "sha256": "5ad9f1504955c34bf9028fcf20501c6fac09a12d557a097bcd719c9261edbed3"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/tool/handlers/read.ts",
+      "sha256": "460a2d3be820a6c55600e5132e406186228f919d482be132f36166d6b9e351e8"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/tool/path-policy.ts",
+      "sha256": "1418854411bbd6bdf44b30add0712d018d0eba1c8c0266afe7d6f589726b8a16"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/memory/memory-file-path.ts",
+      "sha256": "1b4fa7da38916a5fa6822808d94631188bd55a6419ea09b696e530527744177e"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/tool/registry.ts",
+      "sha256": "897bd2ea25f18ab9f45d3152cc014ddce5f75e06f7b0a12423a726c1b4bffd5d"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/adapters/src/fs/index.ts",
+      "sha256": "45aa38bc10e85666512fa105b74406b9a02320c9890171e96101b8f256295082"
+    }
+  ],
+  "runtimeHashes": [
+    {
+      "module": "executor",
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/executor/impl.js",
+      "sha256": "bd47e74f6a85f71bd89d8247f534d12029cfd90fef250383c278a32b72c55557"
+    },
+    {
+      "module": "registry",
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/registry.js",
+      "sha256": "5624187844ff98a4e686b0ea346fc2d6db1ed6ce1ba098b3c828d207f1488aed"
+    },
+    {
+      "module": "permission",
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/permission/service.js",
+      "sha256": "fac054115b91831acbae910bcff4053ab13712184ffde67ea3166f828a764824"
+    },
+    {
+      "module": "write",
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/handlers/write.js",
+      "sha256": "2ae08122f39c6e636413bd329750a496b3a3d673c43a9e042577531d8596254f"
+    },
+    {
+      "module": "edit",
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/handlers/edit.js",
+      "sha256": "cb738f5d81fab598f068a3a68913f1582e171a94f9c98bd87e0c223a9a9c4183"
+    },
+    {
+      "module": "read",
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/tool/handlers/read.js",
+      "sha256": "173490e56fe37b672c62546ac88491f5edaaf8ca9760a97e001378ecfb6a0c00"
+    },
+    {
+      "module": "persistentMemory",
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/subagent/persistent-memory.js",
+      "sha256": "16b097c223c91cff67c18a709bb32f19a49d1892fcb156cf5b80170dd19854c7"
+    },
+    {
+      "module": "projectMemoryRoot",
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/memory/project-root.js",
+      "sha256": "3d5bdb8239c073705d4eb0a6371b7462f329607b695ec5dca9f243b58c543d15"
+    },
+    {
+      "module": "childPolicy",
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/dist/subagent/tool-policy.js",
+      "sha256": "a83740896864e934224298d3f92c7468655720171f1811450abd2b597cf4c59c"
+    },
+    {
+      "module": "fileSystem",
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/adapters/dist/fs/index.js",
+      "sha256": "cacf443a8b636ac36832c70261989fa66ef9d7bc18f24da6b85df4a0e6699dd6"
+    }
+  ]
+}

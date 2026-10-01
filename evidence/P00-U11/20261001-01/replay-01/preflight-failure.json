@@ -1,0 +1,19 @@
+{
+  "status": "preflight_failed_before_probe_commands",
+  "command": [
+    "python",
+    "tests/integration/P00/run.py",
+    "--root",
+    "E:\\Xiadie\\Xiadie",
+    "--output-dir",
+    "E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-01"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "exitCode": 1,
+  "failure": "The task-card requirement parser retained the final Chinese punctuation after R27 and failed its exact-set assertion.",
+  "probesStarted": false,
+  "externalModelCalls": 0,
+  "credentialFilesRead": false,
+  "sourceChanges": false,
+  "fix": "Strip the final punctuation from task-card requirement tokens before comparing the card against immutable requirements.json."
+}

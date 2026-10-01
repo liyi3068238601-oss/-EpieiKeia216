@@ -1,0 +1,156 @@
+{
+  "schema": "p00-u11-integration-review/v1",
+  "unit": "P00-U11",
+  "status": "ready_for_review",
+  "reviewedAt": "2026-10-01",
+  "scope": {
+    "included": [
+      "Frozen U11 runner and U07 mock-only copy",
+      "Author replay-02 raw output, result, verification, evaluation, and isolation rules",
+      "Root independent replay and source/output bindings",
+      "P00 Must mapping and the U07, U08, U09, and Herta scope boundaries"
+    ],
+    "excluded": [
+      "Re-running the integration suite or changing author files",
+      "Re-auditing accepted U01-U10 source investigations",
+      "Product implementation, P01, model calls, or package/install testing"
+    ]
+  },
+  "recommendation": {
+    "decision": "accept_bounded_stage_integration",
+    "blockers": [],
+    "nonBlockingFollowups": [
+      "U12 candidate smoke and G00 remain pending; P01 stays closed until those gates pass.",
+      "U07 first-turn/recovery duplicate system-reminder behavior remains the documented low-risk follow-up.",
+      "Product runtime, UI, installer/Windows package, final backup/restore, OS sandbox, and distribution-payload rights are later-stage work and remain NOT_RUN here."
+    ],
+    "rationale": "The frozen author runner and independent root replay both completed all six commands with zero exit codes and their integration assertions passed. The report binds the selected synthetic outputs, correctly records the R03 card/matrix mismatch and pending U12 gate, and distinguishes mock/loopback evidence from product, paid-model, persistence, and release claims."
+  },
+  "findings": [
+    {
+      "area": "P00 Must coverage",
+      "result": "The immutable P00 Must set is R02, R03, R08, R17, R24, R25, R27. The U11 card lists six and omits R03; result, verification, and evaluation preserve the discrepancy, bind accepted U01/U02 evidence, and leave U12/G00 pending.",
+      "references": [
+        "tests/integration/P00/run.py:79-85",
+        "planning/Xiadie_V2_v1.1/tasks/P00-U11.md:35",
+        "planning/Xiadie_V2_v1.1/04_需求追踪矩阵.md:21-27",
+        "docs/evals/P00/integration-evaluation.md"
+      ]
+    },
+    {
+      "area": "U07 mock, settings, and credentials",
+      "result": "The copied probe accepts mock mode only, uses a fresh child environment and isolated profile/data paths, and sends its eight captured requests to a synthetic 127.0.0.1 relay. Its personal.json contains the explicit fake p00-fixture-key sentinel, not a real credential. globals_snapshot() returns an empty list by construction; the report accurately says this is not a global-file enumeration or before/after hash audit. No OS isolation claim is made.",
+      "references": [
+        "tests/integration/P00/u07_mock_probe.py:30-35",
+        "tests/integration/P00/u07_mock_probe.py:46-60",
+        "tests/integration/P00/u07_mock_probe.py:116-135",
+        "evidence/P00-U11/20261001-01/result.md",
+        "evidence/P00-U11/20261001-01/verification.json",
+        "docs/evals/P00/integration-evaluation.md"
+      ]
+    },
+    {
+      "area": "Memory and permission negatives",
+      "result": "The author and root outputs each show 18 U08 assertions and six synthetic writes. Plan outside-memory, explicit Write/Edit, and filtered-child negatives reach the actual executor and preserve the target files.",
+      "references": [
+        "tests/integration/P00/run.py:136-143",
+        "evidence/P00-U11/20261001-01/replay-02/outputs/u08-memory/probe-results.json",
+        "evidence/P00-U11/20261001-01/root-review-final/outputs/u08-memory/probe-results.json"
+      ]
+    },
+    {
+      "area": "DSH loopback and Job lifecycle",
+      "result": "The replay records Job assignment before SDK import, successful normal synthetic assistant text with receipt and idle, driver exit, and an empty owned-Job member list before Job close. A/B isolation and detached-leaf contrast pass. The empty-final fault deliberately returns an empty business result despite receipt/idle; unknown checkpoint state remains held without automatic provider resubmission. These results do not claim per-prompt cancellation, native session resume, crash consistency, or process-tree/OS sandbox guarantees.",
+      "references": [
+        "tests/integration/P00/run.py:145-171",
+        "spikes/dsh-sdk/probe.ts:402-415",
+        "spikes/dsh-sdk/probe.ts:481-503",
+        "evidence/P00-U11/20261001-01/replay-02/outputs/u09-native-sdk-job/summary.json",
+        "evidence/P00-U11/20261001-01/replay-02/outputs/u09-native-sdk-job/native/probe.json",
+        "evidence/P00-U11/20261001-01/root-review.json"
+      ]
+    },
+    {
+      "area": "Source state and format-only exception",
+      "result": "The author replay binds the three fixed source pins before execution; the independent root review verifies those same pins are clean after execution. A path-specific .gitattributes exception disables only blank-at-end checking for the unified-diff artifact so its required blank context markers remain intact; the cached diff check passed and no runtime code changed.",
+      "references": [
+        "tests/integration/P00/run.py:55-68",
+        "evidence/P00-U11/20261001-01/root-review.json",
+        ".gitattributes"
+      ]
+    },
+    {
+      "area": "Herta, recovery, and later-stage limits",
+      "result": "Herta evidence is fixed pure-function recomputation on fresh input, not product persistence or database recovery. R24 is limited to old-project protection and the spike-owned close/read checkpoint. Product installer/package and final distribution rights are explicitly NOT_RUN and are future-stage boundaries, not U11 passes or failures.",
+      "references": [
+        "tests/integration/P00/run.py:173-185",
+        "docs/evals/P00/integration-evaluation.md",
+        "evidence/P00-U11/20261001-01/result.md"
+      ]
+    }
+  ],
+  "executions": {
+    "author": {
+      "command": "python tests/integration/P00/run.py --root E:\\Xiadie\\Xiadie --output-dir E:\\Xiadie\\Xiadie\\evidence\\P00-U11\\20261001-01\\replay-02",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exitCode": 0,
+      "commandsPassed": 6,
+      "assertionsPassed": 19,
+      "paidModelCalls": 0,
+      "summary": {
+        "path": "evidence/P00-U11/20261001-01/replay-02/runner-summary.json",
+        "bytes": 17490,
+        "sha256": "aa52c5313337496028fe51ef1372594a448a9d024de851baddbfb2f5cc1c7097"
+      }
+    },
+    "independentRoot": {
+      "recommendation": "accept_bounded_stage_integration",
+      "blockers": [],
+      "commandsPassed": 6,
+      "assertionsPassed": 19,
+      "sourceInputOutputBindingsVerified": 55,
+      "fixedSourcesAfterRunClean": true,
+      "jobAssignedBeforeImport": true,
+      "jobMembersAfterDriverExit": [],
+      "paidModelCalls": 0,
+      "binding": {
+        "path": "evidence/P00-U11/20261001-01/root-review.json",
+        "bytes": 3402,
+        "sha256": "7bf38917666ee8c3af3378157ca6a6ef5fc11a6f93b7f6597dc4cb48420131e2"
+      }
+    },
+    "reviewerRerun": false
+  },
+  "reviewedArtifacts": [
+    {"path":"tests/integration/P00/run.py","bytes":15575,"sha256":"9465aab5c672af23efcf29dff8dc5d465f26897ba591f1eb2269d75aee242af7"},
+    {"path":"tests/integration/P00/u07_mock_probe.py","bytes":14685,"sha256":"644b38ef8bedae08884a6588e68feb49b77cf5134e77181ae91aadc82877da1e"},
+    {"path":"evidence/P00-U11/20261001-01/u07-copy.diff","bytes":18100,"sha256":"03c7026dd7e15813176d36b250dccc5fb386a43688d4093121943d6c8d4f799c"},
+    {"path":"docs/evals/P00/integration-evaluation.md","bytes":3419,"sha256":"c497e5fe05c90538657b136cde966015f00b33c73801a98ac5b2be8e2cce0554"},
+    {"path":"evidence/P00-U11/20261001-01/result.md","bytes":4446,"sha256":"5dde93fe7fa75116a8fecb1183fea760dd4073e65d1f6a43bba41d2f384be373"},
+    {"path":"evidence/P00-U11/20261001-01/verification.json","bytes":4813,"sha256":"314b5abb115d0681b75bdb0caf319276718afff0fad2073a1f3dadea95bd5a58"},
+    {"path":"evidence/P00-U11/20261001-01/.gitignore","bytes":404,"sha256":"e0207197d44f8e6d17e285ac1167defa461985545b3292e1993a4cadb6f3b703"},
+    {"path":".gitattributes","bytes":652,"sha256":"ad78875424cb833f5e1d1671fc51aa3b42b79cb68a3030d4b8653f347076ca75"},
+    {"path":"evidence/P00-U11/20261001-01/replay-02/runner-summary.json","bytes":17490,"sha256":"aa52c5313337496028fe51ef1372594a448a9d024de851baddbfb2f5cc1c7097"},
+    {"path":"evidence/P00-U11/20261001-01/root-review.json","bytes":3402,"sha256":"7bf38917666ee8c3af3378157ca6a6ef5fc11a6f93b7f6597dc4cb48420131e2"},
+    {"path":"evidence/P00-U11/20261001-01/root-review-final/runner-summary.json","bytes":17645,"sha256":"f46bf96721451d2ac180ca167efa91fc7bd69bf7fb4fa5848b09a5d03f6ae288"},
+    {"path":"evidence/P00-U11/20261001-01/root-review-execution.json","bytes":797,"sha256":"64af12b0021e965ccef34abe0fc636bc6fb9d3cbda2915420f968b3d14e46b1f"},
+    {"path":"evidence/P00-U11/20261001-01/replay-02/outputs/u07-mock/summary-mock.json","bytes":7403,"sha256":"1d4802cc7299712c6f37f85078399eb97b74eeea8603cdc31220fb8fddbcc650"},
+    {"path":"evidence/P00-U11/20261001-01/replay-02/outputs/u08-memory/probe-results.json","bytes":26216,"sha256":"7cf1b0cf20c514d7941fdf5ac4486da29bcc24bda842d94421453a8ac75661e8"},
+    {"path":"evidence/P00-U11/20261001-01/replay-02/outputs/u09-job-ab/summary.json","bytes":1487,"sha256":"c6d7417a30783b265b66634f01d51a81089b08ca401e6110ac6ea0d53d1006bc"},
+    {"path":"evidence/P00-U11/20261001-01/replay-02/outputs/u09-detached/summary.json","bytes":750,"sha256":"5c6eb3b6ac58c6165b620c382e0529a6ee0543f064635abc6eeacb85ed37365c"},
+    {"path":"evidence/P00-U11/20261001-01/replay-02/outputs/u09-native-sdk-job/summary.json","bytes":2141,"sha256":"ef884e09def797330fcbb76444ed5abb232af8a1864561513bb2541dfb3ea817"},
+    {"path":"evidence/P00-U11/20261001-01/replay-02/outputs/u09-native-sdk-job/native/probe.json","bytes":9314,"sha256":"e0efac6fc6de49919c9161931d4983cd2e223081ed0f238864be09bb8328cff3"},
+    {"path":"evidence/P00-U11/20261001-01/root-review-final/outputs/u07-mock/summary-mock.json","bytes":7451,"sha256":"5b576e17a40b0e51becca4db55859ef220e093bc8c539ea4b15bdffb37359e1c"},
+    {"path":"evidence/P00-U11/20261001-01/root-review-final/outputs/u08-memory/probe-results.json","bytes":26584,"sha256":"8493ad02d51a17f79a8f199a5a6fd64c1ea799ca47e4a309deb1f965a373f1e4"},
+    {"path":"evidence/P00-U11/20261001-01/root-review-final/outputs/u09-job-ab/summary.json","bytes":1497,"sha256":"1e7a9c8246cdce21378813f605becc748d9fde0456a79892921f5edb588d1957"},
+    {"path":"evidence/P00-U11/20261001-01/root-review-final/outputs/u09-detached/summary.json","bytes":758,"sha256":"85bd378e5b1491c76605456072cecdb10aa66bfc8df7b1f3e7e4b58eaf244a2d"},
+    {"path":"evidence/P00-U11/20261001-01/root-review-final/outputs/u09-native-sdk-job/summary.json","bytes":2196,"sha256":"ff490188c8e05dabac88450353aa0ec6111d93809689e7cb96fd14adf7473d69"},
+    {"path":"evidence/P00-U11/20261001-01/root-review-final/outputs/u09-native-sdk-job/native/probe.json","bytes":9331,"sha256":"70880207975ee28e28b5369410440e62bb2f75c2d3a3f53ada40c6a082647ec7"}
+  ],
+  "reviewMethod": {
+    "mode": "read_only",
+    "reviewerRerun": false,
+    "networkOrModelCalls": 0,
+    "filesChangedByReviewer": ["evidence/P00-U11/20261001-01/review.json"]
+  }
+}

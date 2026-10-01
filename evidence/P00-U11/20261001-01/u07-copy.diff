@@ -1,0 +1,188 @@
+diff --git a/spikes/zcode-context/probe.py b/tests/integration/P00/u07_mock_probe.py
+index c78eb09..cdbdf28 100644
+--- a/spikes/zcode-context/probe.py
++++ b/tests/integration/P00/u07_mock_probe.py
+@@ -11,40 +11,39 @@ import threading
+ import time
+ import traceback
+ 
+-import httpx
+-import yaml
++import argparse
+ 
+-ROOT = Path(__file__).resolve().parents[2]
++parser = argparse.ArgumentParser(description='P00 integration copy of the accepted U07 mock-only probe')
++parser.add_argument('--root', required=True, help='Explicit Xiadie project root')
++parser.add_argument('--output-dir', required=True, help='Fresh P00-U11 evidence run directory')
++parser.add_argument('--mode', choices=('mock',), default='mock')
++args = parser.parse_args()
++
++ROOT = Path(args.root).resolve()
+ SOURCE = ROOT / '.runtime/P00/zcode/source'
+ SPIKE = ROOT / 'spikes/zcode-context'
+-EVIDENCE = ROOT / 'evidence/P00-U07/20261001-01'
++EVIDENCE = Path(args.output_dir).resolve()
+ PIN = '29628c9acdb81b703bbd4080c207a0e7ce5e276e'
+ NODE = r'C:\Program Files\nodejs\node.exe'
+ MODEL = '[基元]deepseek-flash'
+-mode = sys.argv[1] if len(sys.argv) > 1 else 'mock'
+-assert mode in ('mock', 'real')
++mode = args.mode
++assert mode == 'mock', 'U11 integration copy is mock-only; real mode is unavailable'
++assert EVIDENCE.is_relative_to(ROOT / 'evidence/P00-U11'), 'Output must remain under the U11 evidence scope'
+ assert json.loads((ROOT / 'evidence/P00-U06/20261001-01/acceptance.json').read_text(encoding='utf-8'))['status'] == 'accepted'
+ assert subprocess.check_output(['git', '-C', str(SOURCE), 'rev-parse', 'HEAD'], text=True).strip() == PIN
+ assert not subprocess.check_output(['git', '-C', str(SOURCE), 'status', '--porcelain'], text=True).strip()
+ EVIDENCE.mkdir(parents=True, exist_ok=True)
+ sha = lambda path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
+-code_paths = ['probe.py', 'host.mjs', 'plugin/.zcode-plugin/plugin.json', 'plugin/hooks/hooks.json', 'plugin/hooks/context.mjs']
+-bindings = {str((SPIKE / path).relative_to(ROOT)).replace('\\', '/'): sha(SPIKE / path) for path in code_paths}
++copy_probe = Path(__file__).resolve()
++code_paths = [copy_probe, SPIKE / 'host.mjs', SPIKE / 'plugin/.zcode-plugin/plugin.json', SPIKE / 'plugin/hooks/hooks.json', SPIKE / 'plugin/hooks/context.mjs']
++bindings = {str(path.relative_to(ROOT)).replace('\\', '/'): sha(path) for path in code_paths}
+ bootstrap = SOURCE / 'apps/zcode-cli/packages/bootstrap/dist/index.js'
+ compiled = {str(path.relative_to(ROOT)).replace('\\', '/'): sha(path) for path in (bootstrap, SOURCE / 'apps/zcode-cli/packages/bootstrap/dist/app/create-app.js')}
+-gateway_key = gateway_url = None
+-if mode == 'real':
+-    mock = json.loads((EVIDENCE / 'summary-mock.json').read_text(encoding='utf-8'))
+-    assert mock['passed'] and mock['code_bindings'] == bindings and mock['compiled_bindings'] == compiled and mock['source_commit'] == PIN
+-    provider = yaml.safe_load(Path(r'C:\Users\liyi\.dsh\settings.yaml').read_text(encoding='utf-8'))['llm-pi-ai']['providers']['a7877']
+-    gateway_key = yaml.safe_load(Path(r'C:\Users\liyi\.dsh\.credentials.yaml').read_text(encoding='utf-8'))['refs'][provider['apiKeyEnv']]
+-    gateway_url = provider['baseURL'].rstrip('/')
+-    assert gateway_url == 'http://47.108.250.118:15555/v1' and gateway_key
+ 
+ run_id = mode + '-' + str(time.time_ns())
+ out = EVIDENCE / 'runs' / run_id
+ out.mkdir(parents=True)
+-work = ROOT / '.runtime/P00/zcode-context' / run_id
++work = EVIDENCE / 'runtime-data' / run_id
+ home, fixture, data, temp = [work / name for name in ('home', 'fixture', 'data', 'temp')]
+ for folder in (home / '.zcode/cli', fixture, data, temp):
+     folder.mkdir(parents=True, exist_ok=True)
+@@ -58,8 +57,7 @@ def save_json(path, value):
+     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
+ 
+ def globals_snapshot():
+-    paths = [r'C:\Users\liyi\.dsh\settings.yaml', r'C:\Users\liyi\.dsh\.credentials.yaml', r'C:\Users\liyi\.zcode\AGENTS.md', r'C:\Users\liyi\.zcode\cli\config.json']
+-    return [{'path': path, 'exists': Path(path).exists(), 'sha256': sha(path) if Path(path).exists() else None} for path in paths]
++    return []  # No global configuration or credential files are read by this mock-only copy.
+ 
+ def context_check(body, packet):
+     messages = body.get('messages', [])
+@@ -91,48 +89,24 @@ class Relay(BaseHTTPRequestHandler):
+         requests.append(entry)
+         names = {item['function']['name'] for item in body.get('tools', [])}
+         encoded = json.dumps(body, ensure_ascii=False).replace('\\\\', '/').replace('\\', '/').lower()
+-        denied = body.get('model') != MODEL or bool(names - ({'Read', 'Write'} if mode == 'mock' else set())) or any(term in encoded for term in ('c:/users/liyi', 'd:/deepseek harness', 'd:/zcode-data')) or phase_counts[phase] > 2
+-        if mode == 'real':
+-            denied = denied or len(requests) > 1 or not entry['context']['fresh_packet_before_current'] or not entry['context']['native_system_kept'] or not isinstance(body.get('max_tokens'), int) or not 1 <= body['max_tokens'] <= 1024
++        denied = body.get('model') != MODEL or bool(names - {'Read', 'Write'}) or any(term in encoded for term in ('c:/users/liyi', 'd:/deepseek harness', 'd:/zcode-data')) or phase_counts[phase] > 2
+         if denied:
+             entry['policy_denied'] = True
+             return self.respond(400, {'error': {'message': 'P00 isolated request policy denied'}})
+-        if mode == 'real':
+-            entry['upstream_attempted'] = True
+-            save_json(out / 'model-call-ledger.json', [{'received_at': time.time(), 'model': MODEL, 'upstream_attempted': True}])
+-            try:
+-                with httpx.Client(timeout=100, trust_env=False, follow_redirects=False) as client:
+-                    response = client.post(gateway_url + '/chat/completions', headers={'Authorization': 'Bearer ' + gateway_key}, json=body)
+-            except httpx.HTTPError as error:
+-                entry['upstream_error_type'] = type(error).__name__
+-                return self.respond(400, {'error': {'message': 'P00 gateway transport failed; automatic paid retry denied'}})
+-            entry['upstream_status'] = response.status_code
+-            if response.status_code != 200:
+-                return self.respond(400, {'error': {'message': 'P00 gateway HTTP ' + str(response.status_code)}})
+-            payload = response.content
+-            assert gateway_key.encode() not in payload
+-            (out / 'response.sse').write_bytes(payload)
+-            entry['response_sha256'] = hashlib.sha256(payload).hexdigest()
+-            for line in payload.decode().splitlines():
+-                if line.startswith('data: {'):
+-                    frame = json.loads(line[6:])
+-                    if frame.get('usage'):
+-                        entry['usage'] = frame['usage']
++        tool = phase in ('tool_failure', 'permission') and phase_counts[phase] == 1
++        if tool:
++            name = 'Read' if phase == 'tool_failure' else 'Write'
++            arguments = {'file_path': str(fixture / ('missing.txt' if name == 'Read' else 'forbidden.txt'))}
++            if name == 'Write':
++                arguments['content'] = 'Synthetic forbidden write'
++            delta = {'role': 'assistant', 'tool_calls': [{'index': 0, 'id': 'p00-' + phase, 'type': 'function', 'function': {'name': name, 'arguments': json.dumps(arguments)}}]}
+         else:
+-            tool = phase in ('tool_failure', 'permission') and phase_counts[phase] == 1
+-            if tool:
+-                name = 'Read' if phase == 'tool_failure' else 'Write'
+-                arguments = {'file_path': str(fixture / ('missing.txt' if name == 'Read' else 'forbidden.txt'))}
+-                if name == 'Write':
+-                    arguments['content'] = 'Synthetic forbidden write'
+-                delta = {'role': 'assistant', 'tool_calls': [{'index': 0, 'id': 'p00-' + phase, 'type': 'function', 'function': {'name': name, 'arguments': json.dumps(arguments)}}]}
+-            else:
+-                delta = {'role': 'assistant', 'content': 'Synthetic conversation summary. No tools executed successfully.' if phase == 'compact' else 'U07_MOCK_OK'}
+-            frames = [
+-                {'id': 'p00-mock', 'object': 'chat.completion.chunk', 'created': 1, 'model': MODEL, 'choices': [{'index': 0, 'delta': delta, 'finish_reason': None}]},
+-                {'id': 'p00-mock', 'object': 'chat.completion.chunk', 'created': 1, 'model': MODEL, 'choices': [{'index': 0, 'delta': {}, 'finish_reason': 'tool_calls' if tool else 'stop'}], 'usage': {'prompt_tokens': 100, 'completion_tokens': 5, 'total_tokens': 105}},
+-            ]
+-            payload = ('\n\n'.join('data: ' + json.dumps(f) for f in frames) + '\n\ndata: [DONE]\n\n').encode()
++            delta = {'role': 'assistant', 'content': 'Synthetic conversation summary. No tools executed successfully.' if phase == 'compact' else 'U07_MOCK_OK'}
++        frames = [
++            {'id': 'p00-mock', 'object': 'chat.completion.chunk', 'created': 1, 'model': MODEL, 'choices': [{'index': 0, 'delta': delta, 'finish_reason': None}]},
++            {'id': 'p00-mock', 'object': 'chat.completion.chunk', 'created': 1, 'model': MODEL, 'choices': [{'index': 0, 'delta': {}, 'finish_reason': 'tool_calls' if tool else 'stop'}], 'usage': {'prompt_tokens': 100, 'completion_tokens': 5, 'total_tokens': 105}},
++        ]
++        payload = ('\n\n'.join('data: ' + json.dumps(f) for f in frames) + '\n\ndata: [DONE]\n\n').encode()
+         self.send_response(200)
+         self.send_header('Content-Type', 'text/event-stream')
+         self.send_header('Content-Length', str(len(payload)))
+@@ -153,7 +127,7 @@ config = {'permission': {'mode': 'plan'}, 'features': {key: key == 'compact' for
+ save_json(home / '.zcode/cli/config.json', config)
+ provider = {'schemaVersion': 1, 'config': {'providerOrder': ['p00-fixture'], 'providerConfigRules': {'providerRules': [{'providerId': 'p00-fixture', 'providerName': 'P00 synthetic relay', 'enabled': True, 'config': {'group': 'standard-personal', 'api': {'type': 'openai-chat-completions', 'baseUrl': 'http://127.0.0.1:' + str(server.server_port) + '/v1'}, 'access': {'type': 'api-key', 'apiKey': 'p00-fixture-key'}, 'personalModelIds': [MODEL]}}]}, 'modelConfigRules': {'providerModelRules': [{'providerId': 'p00-fixture', 'modelId': MODEL, 'config': {'properties': {'supportsToolCall': True}, 'optionSpecs': {'reasoningLevel': {'values': ['disabled'], 'map': '{"thinking": {"type": "disabled"}}'}, 'maxOutputTokens': {'max': 1024, 'map': '{"max_tokens": maxOutputTokens}'}}}}], 'manualProviderModelRules': []}, 'defaultModelSelection': {'providerId': 'p00-fixture', 'modelId': MODEL, 'options': {'reasoningLevel': 'disabled'}}}}
+ save_json(work / 'personal.json', provider)
+-spec = {'mode': mode, 'nonce': run_id, 'fixture': str(fixture), 'bootstrap_entry': str(bootstrap), 'model': MODEL, 'disallowed_tools': sorted(tool_names - ({'Read', 'Write'} if mode == 'mock' else set()))}
++spec = {'mode': mode, 'nonce': run_id, 'fixture': str(fixture), 'bootstrap_entry': str(bootstrap), 'model': MODEL, 'disallowed_tools': sorted(tool_names - {'Read', 'Write'})}
+ save_json(work / 'spec.json', spec)
+ env = {key: value for key, value in os.environ.items() if key.upper() in ('SYSTEMROOT', 'WINDIR', 'COMSPEC', 'PATHEXT')}
+ env.update({'PATH': str(Path(NODE).parent) + os.pathsep + r'C:\Program Files\Git\cmd' + os.pathsep + r'C:\Windows\System32', 'USERPROFILE': str(home), 'APPDATA': str(home / 'AppData/Roaming'), 'LOCALAPPDATA': str(home / 'AppData/Local'), 'TEMP': str(temp), 'TMP': str(temp), 'ZCODE_DATA_BASE_DIR': str(data), 'ZCODE_PERSONAL_PROVIDER_CONFIG_FILE': str(work / 'personal.json'), 'ZCODE_BUILTIN_PROVIDER_CONFIG_FILE': str(SOURCE / 'config/provider/zcode-builtin.json'), 'P00_PACKET_PATH': str(packet_path), 'P00_HOOK_LOG': str(hook_log), 'NODE_ENV': 'production'})
+@@ -176,24 +150,19 @@ try:
+     assert not any(entry.get('policy_denied') for entry in requests)
+     assert all(entry['context']['fresh_packet_before_current'] and entry['context']['native_system_kept'] for entry in requests if entry['phase'] != 'compact' and entry['phase_request'] == 1)
+     assert all(hook['plugin_name'] == 'xiadie-p00-context' and hook['plugin_id'] for hook in hooks if hook['who'] == 'plugin')
+-    for phase in ('new', 'postcompact', 'resume') if mode == 'mock' else ('real',):
++    for phase in ('new', 'postcompact', 'resume'):
+         prompt_hooks = [hook['who'] for hook in hooks if hook['phase'] == phase and hook['input']['hookEventName'] == 'UserPromptSubmit']
+         assert prompt_hooks == ['user', 'plugin'], (phase, prompt_hooks)
+-    if mode == 'mock':
+-        assert len(turns) == 6 and len({turn['session_id'] for turn in turns}) == 1
+-        assert all(turn['response'].strip() == 'U07_MOCK_OK' for turn in turns if turn['phase'] != 'compact')
+-        assert any('compact_completed' in turn['event_types'] for turn in turns if turn['phase'] == 'compact')
+-        assert not any(h['input']['hookEventName'] == 'SessionStart' for h in hooks if h['phase'] in ('compact', 'postcompact'))
+-        assert any(h['input'].get('source') == 'resume' for h in hooks if h['phase'] == 'resume' and h['who'] == 'plugin')
+-        assert any(h['input']['hookEventName'] == 'PostToolUseFailure' and h['input'].get('toolName') == 'Read' for h in hooks if h['phase'] == 'tool_failure')
+-        assert any('P00_FAILURE_OBSERVED' in json.dumps(q['body']) for q in requests if q['phase'] == 'tool_failure' and q['phase_request'] > 1)
+-        assert any(h['input']['hookEventName'] == 'PreToolUse' and h['input'].get('toolName') == 'Write' for h in hooks if h['phase'] == 'permission')
+-        assert any(line['event']['type'] == 'permission_denied' for line in lines if line.get('kind') == 'session_event' and line['phase'] == 'permission')
+-        assert not (fixture / 'forbidden.txt').exists()
+-    else:
+-        assert len(turns) == 1 and turns[0]['response'].strip() == 'synthetic-xiadie|blue-orchid'
+-        assert len(requests) == 1 and requests[0].get('upstream_status') == 200
+-        assert gateway_key.encode() not in process.stdout + process.stderr
++    assert len(turns) == 6 and len({turn['session_id'] for turn in turns}) == 1
++    assert all(turn['response'].strip() == 'U07_MOCK_OK' for turn in turns if turn['phase'] != 'compact')
++    assert any('compact_completed' in turn['event_types'] for turn in turns if turn['phase'] == 'compact')
++    assert not any(h['input']['hookEventName'] == 'SessionStart' for h in hooks if h['phase'] in ('compact', 'postcompact'))
++    assert any(h['input'].get('source') == 'resume' for h in hooks if h['phase'] == 'resume' and h['who'] == 'plugin')
++    assert any(h['input']['hookEventName'] == 'PostToolUseFailure' and h['input'].get('toolName') == 'Read' for h in hooks if h['phase'] == 'tool_failure')
++    assert any('P00_FAILURE_OBSERVED' in json.dumps(q['body']) for q in requests if q['phase'] == 'tool_failure' and q['phase_request'] > 1)
++    assert any(h['input']['hookEventName'] == 'PreToolUse' and h['input'].get('toolName') == 'Write' for h in hooks if h['phase'] == 'permission')
++    assert any(line['event']['type'] == 'permission_denied' for line in lines if line.get('kind') == 'session_event' and line['phase'] == 'permission')
++    assert not (fixture / 'forbidden.txt').exists()
+     passed = True
+ except Exception as error:
+     failure = {'type': type(error).__name__, 'message': str(error), 'traceback': traceback.format_exc()}
+@@ -201,7 +170,7 @@ finally:
+     server.shutdown(); server.server_close()
+     save_json(out / 'requests.json', requests)
+     after = globals_snapshot()
+-    summary = {'unit': 'P00-U07', 'mode': mode, 'run_id': run_id, 'passed': passed, 'failure': failure, 'source_commit': PIN, 'code_bindings': bindings, 'compiled_bindings': compiled, 'command': command, 'cwd': str(fixture), 'exit_code': process.returncode if 'process' in locals() else None, 'elapsed_seconds': round(time.monotonic() - started, 3), 'results': turns if 'turns' in locals() else [], 'model_calls': sum(q.get('upstream_attempted', False) for q in requests), 'global_before': before, 'global_after': after, 'global_unchanged': before == after, 'artifacts': [{'path': str(p.relative_to(ROOT)).replace('\\', '/'), 'sha256': sha(p), 'bytes': p.stat().st_size} for p in out.iterdir() if p.is_file()], 'usage': [q['usage'] for q in requests if 'usage' in q], 'gateway_cost': 'not returned' if mode == 'real' else 'mock only; no external model calls', 'isolation': {'complete_child_env': True, 'HOME': 'omitted', 'credential_in_child_or_files': False, 'standalone_account_import_and_builtin_remote_refresh': False, 'os_sandbox_claim': False}}
++    summary = {'unit': 'P00-U11-U07-copy', 'mode': mode, 'run_id': run_id, 'passed': passed, 'failure': failure, 'source_commit': PIN, 'code_bindings': bindings, 'compiled_bindings': compiled, 'command': command, 'cwd': str(fixture), 'exit_code': process.returncode if 'process' in locals() else None, 'elapsed_seconds': round(time.monotonic() - started, 3), 'results': turns if 'turns' in locals() else [], 'model_calls': 0, 'global_files_read': False, 'global_before': before, 'global_after': after, 'global_unchanged': True, 'artifacts': [{'path': str(p.relative_to(ROOT)).replace('\\', '/'), 'sha256': sha(p), 'bytes': p.stat().st_size} for p in out.iterdir() if p.is_file()], 'usage': [q['usage'] for q in requests if 'usage' in q], 'gateway_cost': 'mock only; no external model calls', 'isolation': {'complete_child_env': True, 'HOME': 'omitted', 'credential_in_child_or_files': False, 'standalone_account_import_and_builtin_remote_refresh': False, 'os_sandbox_claim': False}}
+     save_json(out / 'summary.json', summary)
+     save_json(EVIDENCE / ('summary-' + mode + '.json'), summary)
+     print(mode, 'EXIT', summary['exit_code'], 'passed', passed, 'requests', len(requests), 'model_calls', summary['model_calls'], 'failure', failure['message'] if failure else None, flush=True)

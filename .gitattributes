@@ -6,3 +6,5 @@ evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eo
 # SSE terminates each frame with an intentional blank line, including the last.
 *.sse -text whitespace=blank-at-eol,space-before-tab,cr-at-eol,-blank-at-eof
 *.zip -text
+# A unified diff retains the required context marker on otherwise blank lines.
+evidence/P00-U11/20261001-01/u07-copy.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
