@@ -190,10 +190,8 @@ export function inspectCoreImportBoundaries(repoRoot, coreRelative = "packages/c
         });
         continue;
       }
-      if (resolution.kind !== "local") continue;
-
-      const targetDisplay = relativePosix(root, resolution.filename);
       if (resolution.kind === "symlink") {
+        const targetDisplay = relativePosix(root, resolution.filename);
         addViolation(violations, {
           code: "SYMLINK_SOURCE_UNSUPPORTED",
           file: display,
@@ -204,6 +202,9 @@ export function inspectCoreImportBoundaries(repoRoot, coreRelative = "packages/c
         });
         continue;
       }
+      if (resolution.kind !== "local") continue;
+
+      const targetDisplay = relativePosix(root, resolution.filename);
 
       const targetForbidden = forbiddenPathReason(targetDisplay);
       if (targetForbidden !== undefined) {
@@ -421,23 +422,29 @@ function resolveModule(specifier, containingFile, root, compilerOptions) {
   const result = ts.resolveModuleName(
     specifier,
     containingFile,
-    compilerOptions,
+    { ...compilerOptions, preserveSymlinks: true },
     ts.sys,
   ).resolvedModule;
   if (result !== undefined) {
     const sourcePath = path.resolve(result.resolvedFileName);
     const filename = resolveRealPath(sourcePath);
+    const canonicalTarget = isPathInside(root, filename)
+      ? relativePosix(root, filename)
+      : filename;
+    const forbiddenTarget = forbiddenPathReason(canonicalTarget);
+    if (
+      isPathInside(root, filename) &&
+      hasPathSegment(sourcePath, "node_modules") &&
+      hasPathSegment(filename, "node_modules") &&
+      forbiddenTarget === undefined
+    ) {
+      return { kind: "external" };
+    }
     const symlink = isPathInside(root, sourcePath)
       ? findSymlinkBelow(root, sourcePath)
       : undefined;
     if (symlink !== undefined) {
       return { kind: "symlink", filename, symlink: relativePosix(root, symlink) };
-    }
-    if (
-      hasPathSegment(sourcePath, "node_modules") &&
-      hasPathSegment(filename, "node_modules")
-    ) {
-      return { kind: "external" };
     }
     return { kind: "local", filename };
   }

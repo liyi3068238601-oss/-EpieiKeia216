@@ -44,6 +44,16 @@ function writeFile(root, relativePath, contents) {
   fs.writeFileSync(filename, contents);
 }
 
+function createDirectoryJunction(root, linkRelative, targetRelative) {
+  const link = path.join(root, linkRelative);
+  const target = path.join(root, targetRelative);
+  fs.mkdirSync(target, { recursive: true });
+  fs.mkdirSync(path.dirname(link), { recursive: true });
+  fs.symlinkSync(target, link, "junction");
+  assert.equal(fs.lstatSync(link).isSymbolicLink(), true);
+  return link;
+}
+
 test("accepts local re-exports and Node built-ins", () => {
   const report = withFixture(
     (root) => {
@@ -220,4 +230,245 @@ test("test runner exits nonzero for an unknown command-line task selector", () =
   );
   assert.equal(result.status, 2);
   assert.match(result.stderr, /unknown task selector/);
+});
+
+test("rejects a Core directory junction", () => {
+  const report = withFixture(
+    (root) => {
+      writeFile(root, "actual-core/index.ts", "export const value = 1;\n");
+      createDirectoryJunction(root, "packages/core", "actual-core");
+    },
+    (root) => inspectCoreImportBoundaries(root),
+  );
+
+  const violation = report.violations.find(
+    (item) =>
+      item.code === "SYMLINK_SOURCE_UNSUPPORTED" &&
+      item.file === "packages/core",
+  );
+  assert.ok(violation);
+  assert.equal(report.scannedFiles, 0);
+});
+
+test("rejects a source junction located inside Core", () => {
+  const report = withFixture(
+    (root) => {
+      writeFile(
+        root,
+        "packages/core/index.ts",
+        'export { value } from "./linked/bridge.ts";\n',
+      );
+      writeFile(root, "actual-source/bridge.ts", "export const value = 1;\n");
+      createDirectoryJunction(root, "packages/core/linked", "actual-source");
+    },
+    (root) => inspectCoreImportBoundaries(root),
+  );
+
+  assert.ok(
+    report.violations.some(
+      (item) =>
+        item.code === "SYMLINK_SOURCE_UNSUPPORTED" &&
+        item.file === "packages/core/linked",
+    ),
+  );
+});
+
+test("rejects a wrapper import that crosses a directory junction", () => {
+  for (const targetDirectory of ["references/upstream", "adapters"]) {
+    const report = withFixture(
+      (root) => {
+        fs.writeFileSync(
+          path.join(root, "tsconfig.json"),
+          JSON.stringify({
+            compilerOptions: {
+              module: "NodeNext",
+              moduleResolution: "NodeNext",
+              strict: true,
+              preserveSymlinks: true,
+            },
+          }),
+        );
+        writeFile(
+          root,
+          "packages/core/index.ts",
+          'export { value } from "../../shared/wrapper.ts";\n',
+        );
+        writeFile(
+          root,
+          "shared/wrapper.ts",
+          'export { value } from "./junction/bridge.ts";\n',
+        );
+        writeFile(
+          root,
+          path.join(targetDirectory, "bridge.ts"),
+          "export const value = 1;\n",
+        );
+        createDirectoryJunction(root, "shared/junction", targetDirectory);
+      },
+      (root) => inspectCoreImportBoundaries(root),
+    );
+
+    const violation = report.violations.find(
+      (item) =>
+        item.code === "SYMLINK_SOURCE_UNSUPPORTED" &&
+        item.file === "shared/wrapper.ts",
+    );
+    assert.ok(
+      violation,
+      "expected junction into " + targetDirectory + " to be rejected",
+    );
+    assert.equal(violation.target, "shared/junction");
+    assert.match(violation.chain.join(" -> "), /packages\/core\/index\.ts/);
+    assert.match(violation.chain.join(" -> "), /shared\/wrapper\.ts/);
+  }
+});
+
+test("allows a pnpm-style dependency junction whose canonical target stays under node_modules", () => {
+  const report = withFixture(
+    (root) => {
+      writeFile(
+        root,
+        "packages/core/index.ts",
+        'import { value } from "fixture-package";\nexport { value };\n',
+      );
+      writeFile(
+        root,
+        "node_modules/.pnpm/fixture-package@1.0.0/node_modules/fixture-package/package.json",
+        JSON.stringify({ name: "fixture-package", types: "index.d.ts" }),
+      );
+      writeFile(
+        root,
+        "node_modules/.pnpm/fixture-package@1.0.0/node_modules/fixture-package/index.d.ts",
+        "export declare const value: string;\n",
+      );
+      createDirectoryJunction(
+        root,
+        "node_modules/fixture-package",
+        "node_modules/.pnpm/fixture-package@1.0.0/node_modules/fixture-package",
+      );
+    },
+    (root) => inspectCoreImportBoundaries(root),
+  );
+
+  assert.equal(report.status, "scanned");
+  assert.equal(report.scannedFiles, 1);
+  assert.deepEqual(report.violations, []);
+});
+
+test("rejects pnpm-style junctions whose canonical targets enter forbidden paths", () => {
+  const forbiddenTargets = [
+    "references/upstream/node_modules/fixture-package",
+    "adapters/node_modules/fixture-package",
+    ".runtime/store/node_modules/fixture-package",
+    "node_modules/.pnpm/fixture-package@1.0.0/node_modules/electron",
+  ];
+
+  for (const targetDirectory of forbiddenTargets) {
+    const report = withFixture(
+      (root) => {
+        writeFile(
+          root,
+          "packages/core/index.ts",
+          'import "safe-package";\n',
+        );
+        writeFile(
+          root,
+          path.join(targetDirectory, "package.json"),
+          JSON.stringify({ name: "safe-package", types: "index.d.ts" }),
+        );
+        writeFile(
+          root,
+          path.join(targetDirectory, "index.d.ts"),
+          "export {};\n",
+        );
+        createDirectoryJunction(
+          root,
+          "node_modules/safe-package",
+          targetDirectory,
+        );
+      },
+      (root) => inspectCoreImportBoundaries(root),
+    );
+
+    assert.ok(
+      report.violations.some(
+        (item) =>
+          item.code === "SYMLINK_SOURCE_UNSUPPORTED" &&
+          item.target === "node_modules/safe-package",
+      ),
+      "expected canonical target " + targetDirectory + " to be rejected",
+    );
+  }
+});
+
+test("rejects a node_modules junction whose canonical target is outside the repository", () => {
+  const externalRoot = fs.mkdtempSync(
+    path.join(os.tmpdir(), TEMP_PREFIX + "external-"),
+  );
+  try {
+    const report = withFixture(
+      (root) => {
+        fs.writeFileSync(
+          path.join(root, "tsconfig.json"),
+          JSON.stringify({
+            compilerOptions: {
+              module: "NodeNext",
+              moduleResolution: "NodeNext",
+              strict: true,
+              preserveSymlinks: true,
+            },
+          }),
+        );
+        writeFile(
+          root,
+          "packages/core/index.ts",
+          'import "fixture-package";\n',
+        );
+        writeFile(
+          externalRoot,
+          "node_modules/fixture-package/package.json",
+          JSON.stringify({ name: "fixture-package", types: "index.d.ts" }),
+        );
+        writeFile(
+          externalRoot,
+          "node_modules/fixture-package/index.d.ts",
+          "export {};\n",
+        );
+        const link = path.join(root, "node_modules/fixture-package");
+        fs.mkdirSync(path.dirname(link), { recursive: true });
+        fs.symlinkSync(
+          path.join(externalRoot, "node_modules/fixture-package"),
+          link,
+          "junction",
+        );
+        assert.equal(fs.lstatSync(link).isSymbolicLink(), true);
+      },
+      (root) => inspectCoreImportBoundaries(root),
+    );
+
+    assert.ok(
+      report.violations.some(
+        (item) =>
+          item.code === "SYMLINK_SOURCE_UNSUPPORTED" &&
+          item.target === "node_modules/fixture-package",
+      ),
+    );
+    assert.ok(
+      fs.existsSync(path.join(externalRoot, "node_modules/fixture-package/index.d.ts")),
+      "fixture cleanup must not follow the junction outside its root",
+    );
+  } finally {
+    const expectedTempRoot = path.resolve(os.tmpdir());
+    const resolvedExternalRoot = path.resolve(externalRoot);
+    if (
+      path.dirname(resolvedExternalRoot) !== expectedTempRoot ||
+      !path.basename(resolvedExternalRoot).startsWith(TEMP_PREFIX + "external-")
+    ) {
+      throw new Error(
+        "refusing to remove unexpected external fixture path: " +
+          resolvedExternalRoot,
+      );
+    }
+    fs.rmSync(resolvedExternalRoot, { recursive: true, force: true });
+  }
 });

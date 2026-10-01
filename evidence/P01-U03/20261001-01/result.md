@@ -20,22 +20,23 @@
 
 固定工具链为 Node `v24.14.0`、pnpm `10.33.2`、TypeScript `6.0.2`。完整干净副本位于 `E:/Xiadie/Xiadie/.runtime/P01/clean-install-u03-20261001-03`，独立 pnpm store 位于 `E:/Xiadie/Xiadie/.runtime/P01/pnpm-store-u03-20261001`。安装使用 `pnpm install --frozen-lockfile --ignore-scripts --store-dir ...`；未安装或修改全局工具。
 
-最终可复现日志在 `logs/attempt-3/`：
+基础验证日志保存在 `logs/attempt-3/`；junction 修复迭代保存在 `logs/attempt-4/` 至 `logs/attempt-7/`；最终定向复核保存在 `logs/attempt-8/`：
 
 | 命令 | 结果 |
 | --- | ---: |
 | 干净安装（冻结 lockfile、忽略生命周期脚本） | 0 |
-| `pnpm run check` | 0 |
+| `pnpm run check`（attempt-3 与 attempt-8） | 均为 0 |
 | `pnpm run build` | 0 |
 | `pnpm run test:unit` | 0，3 项通过 |
 | `pnpm run test:contract` | 0，1 项通过 |
-| `pnpm run test:integration` | 0，9 项通过 |
+| `logs/attempt-3/` 的 `pnpm run test:integration` | 0，9 项通过 |
+| `logs/attempt-8/` 的 `pnpm run test:integration` 与 `-- P01-U03` | 均为 0，各 15 项通过 |
 | 三个测试套件各自 `-- P01-U03` | 均为 0 |
 | `pnpm run test:unit -- P99-U99` | 2，预期的未知选择器拒绝 |
 | pnpm 简写 `pnpm test:unit -- P01-U03` / `pnpm test:unit -- P99-U99` | 分别为 0 / 2 |
 | `pnpm run test:eval`、`pnpm run test:e2e` | 均为 2，预期的 `NOT_IMPLEMENTED` |
 
-`check` 的边界命令明确报告 `BOUNDARY_SCAN_NOT_RUN: packages/core is absent`。integration 测试证明的是 checker policy fixtures，不是产品 Core 已通过边界审计。`logs/test-integration.*` 保留了首轮 4/5 失败记录；修正断言与补齐边界后，attempt-3 的 9 项全部通过。首次 lock-generation 失败的原始 stdout/stderr 未能保留；观察到的错误文本、原因和记录缺口见 `initial-failure-note.json`，不提供伪造的原始日志 hash。
+attempt-4 与 attempt-5 加入真实 Windows directory junction 负例，覆盖 Core 目录 junction、Core 内源码 junction，以及 Core 导入的本地 wrapper 再导入 junction（preserveSymlinks: true）；junction 指向 references/upstream 或 adapters 时均要求报告 SYMLINK_SOURCE_UNSUPPORTED。attempt-6 验证普通 pnpm-style node_modules 包 junction 可作为 external 接受。attempt-7 加入 canonical target 位于 references、adapters、.runtime 或禁 framework 路径时的 junction 负例。attempt-8 增加 canonical target 在仓库外、但 source 与 target 都含 node_modules 的真实 junction 负例，确认它不会被外部依赖例外吞掉；check 和两种 integration 命令均通过，15 项无 skip。check 的边界命令明确报告 BOUNDARY_SCAN_NOT_RUN: packages/core is absent。integration 测试证明的是 checker policy fixtures，不是产品 Core 已通过边界审计。logs/test-integration.* 保留了首轮 4/5 失败记录；attempt-3 的 9 项、attempt-4/5 的 12 项、attempt-6 的 13 项、attempt-7 的 14 项、attempt-8 的 15 项结果均保留在独立日志目录。首次 lock-generation 失败的原始 stdout/stderr 未能保留；观察到的错误文本、原因和记录缺口见 initial-failure-note.json，不提供伪造的原始日志 hash。
 
 ## 限制与回滚
 

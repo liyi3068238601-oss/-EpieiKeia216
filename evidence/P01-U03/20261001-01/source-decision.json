@@ -54,7 +54,8 @@
       "task_selector": "P01-U03",
       "planned_path_mapping": "The planned tests/units/P01-U03.test.ts maps to the actual Node built-in tests above."
     },
-    "boundary_checker": "tools/check-import-boundaries.mjs recursively follows local TypeScript-resolved import, export, import-type, import-equals, dynamic-import, and require edges reachable from packages/core; computed import/require targets fail closed.",
+    "boundary_checker": "tools/check-import-boundaries.mjs recursively follows local TypeScript-resolved import, export, import-type, import-equals, dynamic-import, and require edges reachable from packages/core; computed import/require targets fail closed. It resolves with preserveSymlinks enabled so junction paths remain visible, classifies only safe in-repository node_modules junctions as external, and rejects all other workspace symlink edges.",
+    "symlink_policy_fixtures": "Real Windows directory junction tests reject a Core-root junction, a source junction inside Core, and transitive Core-to-local-wrapper imports through junctions into references/upstream or adapters with preserveSymlinks enabled. A pnpm-style node_modules package junction is accepted as external only when source and canonical target both remain inside the repository node_modules tree and the target has no forbidden path or framework segment. Negative fixtures cover references, adapters, .runtime, a framework path, and an outside-repository node_modules target.",
     "boundary_status": "Policy fixtures are tested. There is no product packages/core yet, so check reports BOUNDARY_SCAN_NOT_RUN for product Core coverage.",
     "future_tests": {
       "test:eval": "Explicit NOT_IMPLEMENTED exit code 2.",
