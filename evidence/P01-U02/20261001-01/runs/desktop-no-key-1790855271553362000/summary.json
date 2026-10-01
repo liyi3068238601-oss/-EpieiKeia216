@@ -1,0 +1,122 @@
+{
+  "run_id": "desktop-no-key-1790855271553362000",
+  "passed": false,
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "E:\\Xiadie\\Xiadie\\spikes\\P01\\desktop-ui.mjs",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-no-key-1790855271553362000\\spec.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\spikes\\P01",
+  "exit_code": 1,
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "elapsed_seconds": 197.829,
+  "production_unchanged": true,
+  "production_before": [
+    {
+      "label": "production-0",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "label": "production-1",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "label": "production-2",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    },
+    {
+      "label": "production-3",
+      "exists": true,
+      "sha256": "b39155fc95f2af2024ec3e311b59b5ebe03998fff061527e093fe338fbb07ea6"
+    },
+    {
+      "label": "production-4",
+      "exists": true,
+      "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+    }
+  ],
+  "production_after": [
+    {
+      "label": "production-0",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "label": "production-1",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "label": "production-2",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    },
+    {
+      "label": "production-3",
+      "exists": true,
+      "sha256": "b39155fc95f2af2024ec3e311b59b5ebe03998fff061527e093fe338fbb07ea6"
+    },
+    {
+      "label": "production-4",
+      "exists": true,
+      "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+    }
+  ],
+  "model_requests": 0,
+  "runtime_kind": "actual Electron Desktop, renderer/preload/host, two launches and native local settings persistence",
+  "isolation": "fresh profile + complete env; main/utility Node socket/fetch, Electron net and webRequest instrumentation; not OS sandbox",
+  "guard_processes": [
+    {
+      "pid": 57052,
+      "process_type": "browser",
+      "kind": "guard_loaded"
+    },
+    {
+      "pid": 56724,
+      "kind": "guard_loaded"
+    }
+  ],
+  "blocked_requests": 2,
+  "compiled": {
+    "packages/desktop/out/main/index.js": "7cec241038c7d022f69b0927b41358ddbcedc225688a6f84eb5ba25d0ed0c32c",
+    "packages/desktop/out/host/index.js": "8b48375fd9cb63159e0d2c7fbdcbba60552ed3a4c68bd06c937b6e55fc68210a",
+    "packages/desktop/out/preload/index.cjs": "b082ca4d0ce75460f5fbcc9e946a8be55fea7fd9ed318bf7f4f1948e95338678",
+    "packages/desktop/out/renderer/index.html": "a219d33c44c2fe599115bc3b8acdb69bde62d12b15a9ac6a0cf6f71236c691ed"
+  },
+  "code_bindings": {
+    "desktop-guard.cjs": "1000a66280bb1e6a02f082dfa3af29cc67724aa7a63b9e97b51a0297cd894bc2",
+    "desktop-ui.mjs": "b0ec37b13273a2e35c7fb3e466eb1e2ba79da9fd30543280626e33f3efd209cb",
+    "run-desktop-ui.py": "c7fa8a6099553329387245c752d790aac8747da8898c45a05164710750643769"
+  },
+  "code_unchanged_during_run": true,
+  "artifacts": [
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790855271553362000/launch-1-entry.txt",
+      "bytes": 137,
+      "sha256": "25ee034b1770d57339c2e1457f12227fe2a4cda2add5b4c3e38aaac11d0dc861"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790855271553362000/listeners-before.json",
+      "bytes": 6485,
+      "sha256": "c916d1c6db9e3aab9e7d811fa87f9ae6fc788ad492eb12785942948fee343eda"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790855271553362000/network.jsonl",
+      "bytes": 65755,
+      "sha256": "4618a45a1d1c5b3e9cf59ee50aca68b57c845b1dec5219fdece889384bafff19"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790855271553362000/stderr.bin",
+      "bytes": 29309,
+      "sha256": "b04947738c8afc4816f35c2b0a9fe727b726510159f836aa934b819bdad2af8c"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790855271553362000/stdout.bin",
+      "bytes": 21156,
+      "sha256": "a75de90b55e334fc2a386bdbd3c72593196007a8277debff457af477b5edae10"
+    }
+  ]
+}

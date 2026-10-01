@@ -1,0 +1,55 @@
+[2026-10-01 19:54:23.752] [pid:21528] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:54:24.412] [pid:21528] [main] [renderer-action-trace] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:54:24.414] [pid:21528] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:54:24.422] [pid:21528] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:54:24.736] [pid:21528] [main] [host-log] (local-1) [host] [2026-10-01 19:54:24.730] [pid:25684] [zcode-host] ExperimentalWarning: SQLite is an experimental feature and might change at any time
+[2026-10-01 19:54:26.650] [pid:21528] [main] [host-log] (local-1) [host] [2026-10-01 19:54:26.625] [pid:25684] [codingPlanSubscription] 动态工作流灰度配置读取失败，按关闭处理 {"errorMessage":"fetch failed"}
+[2026-10-01 19:54:26.757] [pid:21528] [main] [host-log] (local-1) [host] [2026-10-01 19:54:26.756] [pid:25684] [provider-config] ZCode Built-in Config 远端刷新失败 {"error":{}}
+[2026-10-01 19:54:26.827] [pid:21528] [main] [host-log] (local-1) [host] [2026-10-01 19:54:26.827] [pid:25684] [zcode-host] [rpc:call] provider-settings.refresh FAIL (206.3ms) {"name":"Error","message":"ZCode Built-in client-config: invalid response","stack":"Error: ZCode Built-in client-config: invalid response\n    at downloadZCodeBuiltinRelease (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:71461)\n    at async #r (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:73689)"}
+[2026-10-01 19:54:26.828] [pid:21528] [main] [host-log] (local-1) [host] [2026-10-01 19:54:26.827] [pid:25684] [zcode-host] [rpc:call] provider-settings.refresh FAIL (62.6ms) {"name":"Error","message":"ZCode Built-in client-config: invalid response","stack":"Error: ZCode Built-in client-config: invalid response\n    at downloadZCodeBuiltinRelease (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:71461)\n    at async #r (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:73689)"}
+[2026-10-01 19:54:46.122] [pid:21528] [main] [host-log] (local-1) [host] [2026-10-01 19:54:46.122] [pid:25684] [zcode-host] [rpc:call] client-scenes.list FAIL (1.5ms) {"name":"ApiError","message":"fetch failed","stack":"ApiError: fetch failed\n    at NodeApiClient.request (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:153:88531)\n    at async readApiJson (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:153:27766)\n    at async NetworkTelemetryServerChannel.call (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-XPU7OCSY.js:3:3883)\n    at async LoggingServerChannel.call (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-XPU7OCSY.js:3:2318)","cause":{"name":"TypeError","message":"fetch failed","stack":"TypeError: fetch failed","cause":{"name":"Error","message":"bad port","stack":"Error: bad port\n    at makeNetworkError (node:internal/deps/undici/undici:10797:35)\n    at mainFetch (node:internal/deps/undici/undici:12173:22)\n    at fetching (node:internal/deps/undici/undici:12160:7)\n    at fetch (node:internal/deps/undici/undici:12031:20)\n    at fetch (node:internal/deps/undici/undici:16555:10)\n    at fetch (node:internal/bootstrap/web/exposed-window-or-worker:83:12)\n    at fetch (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:153:90402)\n    at async NodeApiClient.request (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:153:88050)\n    at async readApiJson (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:153:27766)\n    at async NetworkTelemetryServerChannel.call (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-XPU7OCSY.js:3:3883)"}}}
+[2026-10-01 19:54:46.140] [pid:21528] [main] [community] failed to fetch remote config: Error: net::ERR_UNSAFE_PORT
+    at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+    at SimpleURLLoaderWrapper.emit (node:events:508:28)
+[2026-10-01 19:54:46.193] [pid:21528] [main] [host-log] (local-1) [host] [2026-10-01 19:54:46.193] [pid:25684] [zcode-host] [rpc:call] zcode-agent.subscribeSessionsIndexV4 FAIL (0.2ms) {"name":"Error","message":"ZCode Agent runtime is not running.","stack":"Error: ZCode Agent runtime is not running.\n    at createRuntimeUnavailableError (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:79:31197)\n    at getReadOnlyClient (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:79:64440)\n    at Object.subscribeSessionsIndexV4 (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:79:101526)\n    at Proxy.subscribeSessionsIndexV4 (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-QER3M7XR.js:1:77911)\n    at Object.call (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-XPU7OCSY.js:3:4653)\n    at NetworkTelemetryServerChannel.call (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-XPU7OCSY.js:3:3900)\n    at LoggingServerChannel.call (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-XPU7OCSY.js:3:2335)\n    at ChannelServer.onPromise (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-XPU7OCSY.js:1:9500)\n    at ChannelServer.onRawMessage (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-XPU7OCSY.js:1:9170)\n    at file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-XPU7OCSY.js:1:8527"}
+[2026-10-01 19:54:58.239] [pid:21528] [main] [community] failed to fetch remote config: Error: net::ERR_UNSAFE_PORT
+    at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+    at SimpleURLLoaderWrapper.emit (node:events:508:28)
+[2026-10-01 19:54:58.322] [pid:21528] [main] [host-log] (local-1) [host] [2026-10-01 19:54:58.323] [pid:25684] [zcode-host] [rpc:call] provider-settings.refresh FAIL (45.0ms) {"name":"Error","message":"ZCode Built-in client-config: invalid response","stack":"Error: ZCode Built-in client-config: invalid response\n    at downloadZCodeBuiltinRelease (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:71461)\n    at async #r (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:73689)\n    at async Promise.allSettled (index 0)\n    at async Object.refreshSources (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:153:129727)\n    at async ProviderSettingsFacade.refresh (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:55937)\n    at async NetworkTelemetryServerChannel.call (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-XPU7OCSY.js:3:3883)\n    at async LoggingServerChannel.call (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/chunk-XPU7OCSY.js:3:2318)"}
+Debugger ending on ws://127.0.0.1:51459/0c694ac4-8ca1-4c44-a23f-e658ba3d29ab
+For help, see: https://nodejs.org/en/docs/inspector
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Host egress guard was not loaded
+    at file:///E:/Xiadie/Xiadie/spikes/P01/desktop-ui.mjs:106:12 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.14.0

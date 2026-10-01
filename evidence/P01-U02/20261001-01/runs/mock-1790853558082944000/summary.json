@@ -1,0 +1,807 @@
+{
+  "mode": "mock",
+  "model": "[基元]deepseek-flash",
+  "run_id": "mock-1790853558082944000",
+  "passed": false,
+  "failure": {
+    "type": "AssertionError",
+    "message": "read-ok: missing native tool evidence"
+  },
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "code_bindings": {
+    "probe.py": "6639f5efc61181f6c702deaee260effc9bce5c7bd6b16fdf25a0e61ee2a3a5ed",
+    "host.mjs": "98dd942e131ad6a674d70f194b21e3e8612b493ab9a2b5cc931591981a58e303",
+    "plugin/.zcode-plugin/plugin.json": "720d77c272bb39bacae412be574fe6b6e9012b84ae3799758e85ad07995a829d",
+    "plugin/hooks/hooks.json": "d56c47249e64fdc10063f1a857ee27d5c4d5efc99aad88e91fa4993c959ff224",
+    "plugin/hooks/context.mjs": "175ad1d699704820e8ce6c86db07d84c4b85005dbca0b113ab095443182e33ae"
+  },
+  "role_sha256": "d17b290e585cc8954321e4a0e6881823dcd221e6dff8e82223a506090ab3433f",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--import",
+    "file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/node_modules/tsx/dist/esm/index.mjs",
+    "E:\\Xiadie\\Xiadie\\spikes\\P01\\host.mjs",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\mock-1790853558082944000\\spec.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\mock-1790853558082944000\\fixture",
+  "exit_code": 0,
+  "elapsed_seconds": 7.157,
+  "production_unchanged": true,
+  "production_before": [
+    {
+      "label": "production-0",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "label": "production-1",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "label": "production-2",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    },
+    {
+      "label": "production-3",
+      "exists": true,
+      "sha256": "b39155fc95f2af2024ec3e311b59b5ebe03998fff061527e093fe338fbb07ea6"
+    },
+    {
+      "label": "production-4",
+      "exists": true,
+      "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+    }
+  ],
+  "production_after": [
+    {
+      "label": "production-0",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "label": "production-1",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "label": "production-2",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    },
+    {
+      "label": "production-3",
+      "exists": true,
+      "sha256": "b39155fc95f2af2024ec3e311b59b5ebe03998fff061527e093fe338fbb07ea6"
+    },
+    {
+      "label": "production-4",
+      "exists": true,
+      "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+    }
+  ],
+  "turns": [
+    {
+      "type": "turn_result",
+      "phase": "read-ok",
+      "session_id": "sess_a7460a12-4495-4b7b-a998-7fc4f8beb71e",
+      "response": "Fixture value: orchid-42.",
+      "events": [
+        {
+          "type": "turn_started"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-read-ok",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-read-ok"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-read-ok"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-read-ok",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-read-ok",
+          "tool_name": "Read"
+        },
+        {
+          "type": "tool_call_scheduled",
+          "tool_call_id": "p01-read-ok",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-read-ok",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-read-ok",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "tool_batch_complete"
+        },
+        {
+          "type": "stream_recovery_anchor_created",
+          "tool_call_id": "p01-read-ok",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-read-ok",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "turn_complete"
+        }
+      ]
+    },
+    {
+      "type": "turn_result",
+      "phase": "read-fail",
+      "session_id": "sess_a7460a12-4495-4b7b-a998-7fc4f8beb71e",
+      "response": "This read failed or was denied; it is not complete.",
+      "events": [
+        {
+          "type": "turn_started"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-read-fail",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-read-fail"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-read-fail"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-read-fail",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-read-fail",
+          "tool_name": "Read"
+        },
+        {
+          "type": "tool_call_scheduled",
+          "tool_call_id": "p01-read-fail",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-read-fail",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-read-fail",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "tool_batch_complete"
+        },
+        {
+          "type": "stream_recovery_anchor_created",
+          "tool_call_id": "p01-read-fail",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-read-fail",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "turn_complete"
+        }
+      ]
+    },
+    {
+      "type": "turn_result",
+      "phase": "scope-denied",
+      "session_id": "sess_a7460a12-4495-4b7b-a998-7fc4f8beb71e",
+      "response": "This read failed or was denied; it is not complete.",
+      "events": [
+        {
+          "type": "turn_started"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-scope-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-scope-denied"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-scope-denied"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-scope-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-scope-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "tool_call_scheduled",
+          "tool_call_id": "p01-scope-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-scope-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-scope-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "tool_batch_complete"
+        },
+        {
+          "type": "stream_recovery_anchor_created",
+          "tool_call_id": "p01-scope-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-scope-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "turn_complete"
+        }
+      ]
+    },
+    {
+      "type": "turn_result",
+      "phase": "symlink-denied",
+      "session_id": "sess_a7460a12-4495-4b7b-a998-7fc4f8beb71e",
+      "response": "This read failed or was denied; it is not complete.",
+      "events": [
+        {
+          "type": "turn_started"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-symlink-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-symlink-denied"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-symlink-denied"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-symlink-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-symlink-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "tool_call_scheduled",
+          "tool_call_id": "p01-symlink-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-symlink-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-symlink-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "tool_batch_complete"
+        },
+        {
+          "type": "stream_recovery_anchor_created",
+          "tool_call_id": "p01-symlink-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-symlink-denied",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "turn_complete"
+        }
+      ]
+    },
+    {
+      "type": "turn_result",
+      "phase": "compact",
+      "session_id": "sess_a7460a12-4495-4b7b-a998-7fc4f8beb71e",
+      "response": "Compacted",
+      "events": [
+        {
+          "type": "turn_started"
+        },
+        {
+          "type": "compact_started"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "compact_boundary"
+        },
+        {
+          "type": "compact_completed"
+        },
+        {
+          "type": "turn_complete"
+        }
+      ]
+    },
+    {
+      "type": "turn_result",
+      "phase": "resume",
+      "session_id": "sess_a7460a12-4495-4b7b-a998-7fc4f8beb71e",
+      "response": "Fixture value: orchid-42.",
+      "events": [
+        {
+          "type": "turn_started"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-resume",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-resume"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-resume"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-resume",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-resume",
+          "tool_name": "Read"
+        },
+        {
+          "type": "tool_call_scheduled",
+          "tool_call_id": "p01-resume",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-resume",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-resume",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "tool_batch_complete"
+        },
+        {
+          "type": "stream_recovery_anchor_created",
+          "tool_call_id": "p01-resume",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-resume",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "turn_complete"
+        }
+      ]
+    },
+    {
+      "type": "turn_result",
+      "phase": "disabled",
+      "session_id": "sess_da768f48-6beb-47ff-a482-14189dd1ee13",
+      "response": "Fixture value: orchid-42.",
+      "events": [
+        {
+          "type": "turn_started"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-disabled",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-disabled"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-disabled"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "p01-disabled",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-disabled",
+          "tool_name": "Read"
+        },
+        {
+          "type": "tool_call_scheduled",
+          "tool_call_id": "p01-disabled",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-disabled",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-disabled",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "tool_batch_complete"
+        },
+        {
+          "type": "stream_recovery_anchor_created",
+          "tool_call_id": "p01-disabled",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "p01-disabled",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "turn_complete"
+        }
+      ]
+    }
+  ],
+  "model_calls": 0,
+  "usage": [],
+  "gateway_cost": "no paid model calls",
+  "runtime_kind": "actual pinned ZCode bootstrap, provider, plugin Hook, Loop, executor and SQLite; mock/real provider recorded separately",
+  "artifacts": [
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/mock-1790853558082944000/hooks.jsonl",
+      "bytes": 3342,
+      "sha256": "3a92151a2faf6f0ad69fc17ce3cd72adbce1887e7489f7862d98338c36ad17dc"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/mock-1790853558082944000/requests.json",
+      "bytes": 323769,
+      "sha256": "21c2e945b2864691a0fcc0ccf8ff2bf5f9c03d4d16e8a497427a1201b3f1be91"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/mock-1790853558082944000/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/mock-1790853558082944000/stdout.jsonl",
+      "bytes": 54734,
+      "sha256": "ae86b6ab8c9f77e630d57de4a84faac754a6a4ecf64544512d825007bcd9ac15"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+
+> @zcode/desktop@ prepare:runtime-assets E:\Xiadie\Xiadie\.runtime\P01\desktop-source\packages\desktop
+> node scripts/prepare-runtime-assets.mjs
+
+[prepare:runtime-assets] skip prepare:remote-assets (ZCODE_SKIP_REMOTE_ASSETS=1)
+[ci][timer] prepare-runtime-assets:prepare:agent-bundle start
+
+> @zcode/desktop@ prepare:agent-bundle E:\Xiadie\Xiadie\.runtime\P01\desktop-source\packages\desktop
+> node scripts/prepare-agent-node-bundle.mjs
+
+[prepare:agent-bundle] building zcode-cli app-server bundle ...
+
+> @zcode/shared-types@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\shared-types
+> tsc
+
+
+> @zcode/contracts@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\contracts
+> tsc
+
+
+> @zcode/dynamic-workflow@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\dynamic-workflow
+> node scripts/generate-libs.mjs && tsc
+
+generate-libs: wrote 57 lib files for typescript@5.9.3
+
+> @zcode/dynamic-workflow-runtime@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\dynamic-workflow-runtime
+> tsc
+
+
+> @zcode/core@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\core
+> tsc
+
+
+> @zcode/adapters@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\adapters
+> tsc
+
+
+> @zcode/i18n@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\i18n
+> tsc
+
+
+> @zcode/telemetry@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\telemetry
+> tsc
+
+
+> @zcode/bootstrap@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\bootstrap
+> tsc
+
+
+> @zcode/node-repl-host@0.6.0 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\node-repl-host
+> tsc && node scripts/build.mjs
+
+[node-repl-host] E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\node-repl-host\dist\mcp\server.js
+
+> @zcode/browser-use-plugin@0.5.1 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\browser-use-plugin
+> tsc && node scripts/build.mjs
+
+
+> @zcode/cli@0.1.0 build:desktop-agent E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\cli
+> node scripts/build.mjs --desktop-agent
+
+[stage:agent-bundle] staged E:\Xiadie\Xiadie\.runtime\P01\desktop-source\packages\desktop\bundled-agents\win32-x64\glm\zcode.cjs
+[prepare:agent-bundle] building @zcode/browser-use-plugin runtime ...
+
+> @zcode/browser-use-plugin@0.5.1 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\browser-use-plugin
+> tsc && node scripts/build.mjs
+
+[prepare:agent-bundle] building @zcode/node-repl-host runtime ...
+
+> @zcode/node-repl-host@0.6.0 build E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\node-repl-host
+> tsc && node scripts/build.mjs
+
+[node-repl-host] E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\packages\node-repl-host\dist\mcp\server.js
+[stage:agent-bundle] staged E:\Xiadie\Xiadie\.runtime\P01\desktop-source\packages\desktop\bundled-agents\win32-x64\glm\zcode.cjs
+[prepare:agent-bundle] staged official plugin packages/browser-use-plugin
+[prepare:agent-bundle] staged official plugin packages/node-repl-host
+[prepare:agent-bundle] staged bundled skill pack packages/bundled-skills
+[ci][timer] prepare-runtime-assets:prepare:agent-bundle end duration_ms=64297
+[ci][timer] prepare-runtime-assets:prepare:native-search start
+
+> @zcode/desktop@ prepare:native-search E:\Xiadie\Xiadie\.runtime\P01\desktop-source\packages\desktop
+> node ../../scripts/prepare-native-search-tools.mjs
+
+==> Preparing native search tools from repository archives
+    platform: win32-x64
+    target:   E:\Xiadie\Xiadie\.runtime\P01\desktop-source\packages\desktop\bundled-tools\win32-x64
+    [extract] E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\dependencies\native-search\ugrep-v7.8.4-1\ugrep-v7.8.4-1-x86_64-pc-windows-msvc.zip
+    [extract] E:\Xiadie\Xiadie\.runtime\P01\desktop-source\apps\zcode-cli\dependencies\native-search\ripgrep-v14.1.1-1\ripgrep-v14.1.1-1-x86_64-pc-windows-msvc.zip
+==> Done! native search tools (win32-x64) -> E:\Xiadie\Xiadie\.runtime\P01\desktop-source\packages\desktop\bundled-tools\win32-x64
+[ci][timer] prepare-runtime-assets:prepare:native-search end duration_ms=3157

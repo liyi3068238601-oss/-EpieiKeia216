@@ -1,0 +1,42 @@
+[2026-10-01 19:36:11.651] [pid:13136] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:36:12.295] [pid:13136] [main] [renderer-action-trace] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:36:12.297] [pid:13136] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:36:12.303] [pid:13136] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:36:12.648] [pid:13136] [main] [host-log] (local-1) [host] [2026-10-01 19:36:12.641] [pid:34876] [zcode-host] ExperimentalWarning: SQLite is an experimental feature and might change at any time
+[2026-10-01 19:36:12.650] [pid:13136] [main] [host-log] (local-1) [host] [2026-10-01 19:36:12.645] [pid:34876] [zcode-host] [cua-pip-session] focus event dropped: service unavailable
+[2026-10-01 19:36:14.612] [pid:13136] [main] [host-log] (local-1) [host] [2026-10-01 19:36:14.577] [pid:34876] [codingPlanSubscription] 动态工作流灰度配置读取失败，按关闭处理 {"errorMessage":"fetch failed"}
+[2026-10-01 19:36:14.616] [pid:13136] [main] [host-log] (local-1) [host] [2026-10-01 19:36:14.597] [pid:34876] [cua-pip-session] [cua-pip-session] event delivery dropped {"kind":"focus-changed","revision":3,"sessionId":null,"sourceWindowId":"window-1","skipReason":"service-disabled"}
+[2026-10-01 19:36:14.718] [pid:13136] [main] [host-log] (local-1) [host] [2026-10-01 19:36:14.716] [pid:34876] [provider-config] ZCode Built-in Config 远端刷新失败 {"error":{}}
+[2026-10-01 19:36:14.803] [pid:13136] [main] [host-log] (local-1) [host] [2026-10-01 19:36:14.802] [pid:34876] [zcode-host] [rpc:call] provider-settings.refresh FAIL (223.2ms) {"name":"Error","message":"ZCode Built-in client-config: invalid response","stack":"Error: ZCode Built-in client-config: invalid response\n    at downloadZCodeBuiltinRelease (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:71461)\n    at async #r (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:73689)"}
+[2026-10-01 19:36:14.803] [pid:13136] [main] [host-log] (local-1) [host] [2026-10-01 19:36:14.802] [pid:34876] [zcode-host] [rpc:call] provider-settings.refresh FAIL (76.6ms) {"name":"Error","message":"ZCode Built-in client-config: invalid response","stack":"Error: ZCode Built-in client-config: invalid response\n    at downloadZCodeBuiltinRelease (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:71461)\n    at async #r (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:73689)"}
+Debugger ending on ws://127.0.0.1:50228/f4e69170-227e-47fa-8cc4-75e5829e5c97
+For help, see: https://nodejs.org/en/docs/inspector
+file:///E:/Xiadie/Xiadie/spikes/P01/desktop-ui.mjs:23
+  throw new Error('Actual SettingsPage did not become reachable');
+        ^
+
+Error: Actual SettingsPage did not become reachable
+    at openSettings (file:///E:/Xiadie/Xiadie/spikes/P01/desktop-ui.mjs:23:9)
+    at async file:///E:/Xiadie/Xiadie/spikes/P01/desktop-ui.mjs:44:22
+
+Node.js v24.16.0

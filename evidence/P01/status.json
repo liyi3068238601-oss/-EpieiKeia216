@@ -33,7 +33,54 @@
         "P01-U01"
       ],
       "status": "running",
-      "card_sha256": "f65e1a36fb777b7f722a020a6366befc53e095965569b7c14ef0f6dfb4717d6f"
+      "card_sha256": "f65e1a36fb777b7f722a020a6366befc53e095965569b7c14ef0f6dfb4717d6f",
+      "checks": {
+        "no_key_control": {
+          "status": "pass",
+          "evidence": {
+            "path": "evidence/P01-U02/20261001-01/summary-no-key-control.json",
+            "bytes": 3471,
+            "sha256": "3b5fff94ffd19b05307c61450a54536bfb165f539088e002f5cd724cb4b07dec"
+          }
+        },
+        "no_key_desktop": {
+          "status": "pass",
+          "evidence": {
+            "path": "evidence/P01-U02/20261001-01/summary-no-key-ui.json",
+            "bytes": 6028,
+            "sha256": "e53f3e02f051bc009c89d33dde003bccd652c5c76d7c1a5c599bf4c25ffe0550"
+          }
+        },
+        "mock_native_loop": {
+          "status": "pass",
+          "evidence": {
+            "path": "evidence/P01-U02/20261001-01/summary-mock.json",
+            "bytes": 75416,
+            "sha256": "d0c1f1854ba49f51cd9ca94b2aba4ce1154f82a164c5b15f8500a79b59eb4be1"
+          }
+        },
+        "startup_port_isolation": {
+          "status": "pass",
+          "evidence": {
+            "path": "evidence/P01-U02/20261001-01/startup-port-verification.json",
+            "bytes": 3304,
+            "sha256": "002d214c16262f634e2bc08617223db7b2dd94159f2612b678f1ff34b1df13d8"
+          }
+        },
+        "visual_acceptance": {
+          "status": "NOT_RUN",
+          "reason": "Hidden native capture timed out; functional DOM/settings persistence only"
+        },
+        "real_model_routes": {
+          "status": "NOT_RUN",
+          "generation_calls_made": 0,
+          "reason": "Pending user choice of gateway credential transport"
+        },
+        "independent_acceptance": {
+          "status": "pending",
+          "reason": "U02 is not yet ready_for_review"
+        }
+      }
     },
     {
       "id": "P01-U03",
@@ -134,7 +181,12 @@
     "initial_request_limit": 18,
     "generation_calls_made": 0,
     "scope": "P01 role and synthetic read-only tests; actual credentials in parent memory only",
-    "user_reply": "授权这两个模型用于 P01"
+    "user_reply": "授权这两个模型用于 P01",
+    "transport_decision": {
+      "path": "evidence/P01/transport-decision.json",
+      "bytes": 760,
+      "sha256": "0bae555e15b21b5c6898b3e985fc1737d1dab30cc3c27e3989d7e82ab6e24ed6"
+    }
   },
   "persona_asset_state": "v3 clarifies user-approved v2; all four versions preserved; runtime asset not yet created",
   "product_implementation_started": false,
@@ -145,5 +197,21 @@
     "path": "docs/research/P01/persona-versions.json",
     "bytes": 2110,
     "sha256": "5dfad32babc70012f8b2dd1c9d26714a12080cfbbd2f8faa3f84e7eeb092b467"
+  },
+  "startup_port_policy": {
+    "user_reply": "启动时占用端口不要和本机zcode一样",
+    "strategy": "loopback OS-allocated ports; disable native fixed 9229",
+    "verified_launches": 2,
+    "ports": [
+      [
+        63946,
+        63948
+      ],
+      [
+        63103,
+        63105
+      ]
+    ],
+    "product_launcher_enforcement": "required in dependent implementation; product not yet started"
   }
 }

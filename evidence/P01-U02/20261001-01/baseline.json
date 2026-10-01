@@ -1,0 +1,79 @@
+{
+  "task": "P01-U02",
+  "status": "running",
+  "author_base_commit": "3b5f634bf9722216edb169210c94147212734f48",
+  "accepted_P00_commit": "7ab0e81f63e9559a1b182f43b9e242e8a8e703fa",
+  "plan": "planning/Xiadie_V2_v1.1",
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P01-U02.md",
+    "bytes": 2841,
+    "sha256": "f65e1a36fb777b7f722a020a6366befc53e095965569b7c14ef0f6dfb4717d6f"
+  },
+  "prerequisite_author_commit": "15ef754b7ef6803348deacede06b73dfd77e7e82",
+  "prerequisite_acceptance": {
+    "path": "evidence/P01-U01/20261001-01/acceptance.json",
+    "bytes": 3861,
+    "sha256": "8af63d14b538aaab562efabad4d97c9b1c4cff4346403a3b87fb5f5ec9d30d0e"
+  },
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "desktop_build": {
+    "path": "evidence/P01-U02/20261001-01/desktop-build/manifest.json",
+    "bytes": 1486077,
+    "sha256": "6d060e455a009323321ff2caea755bb08f4a6e7940f86140d685ebb554cc92d2"
+  },
+  "role": {
+    "path": "docs/research/P01/persona-from-mofox-v3.md",
+    "bytes": 5632,
+    "sha256": "d17b290e585cc8954321e4a0e6881823dcd221e6dff8e82223a506090ab3433f"
+  },
+  "checks": {
+    "no_key_control": {
+      "status": "pass",
+      "evidence": {
+        "path": "evidence/P01-U02/20261001-01/summary-no-key-control.json",
+        "bytes": 3471,
+        "sha256": "3b5fff94ffd19b05307c61450a54536bfb165f539088e002f5cd724cb4b07dec"
+      }
+    },
+    "no_key_desktop": {
+      "status": "pass",
+      "evidence": {
+        "path": "evidence/P01-U02/20261001-01/summary-no-key-ui.json",
+        "bytes": 6028,
+        "sha256": "e53f3e02f051bc009c89d33dde003bccd652c5c76d7c1a5c599bf4c25ffe0550"
+      }
+    },
+    "mock_native_loop": {
+      "status": "pass",
+      "evidence": {
+        "path": "evidence/P01-U02/20261001-01/summary-mock.json",
+        "bytes": 75416,
+        "sha256": "d0c1f1854ba49f51cd9ca94b2aba4ce1154f82a164c5b15f8500a79b59eb4be1"
+      }
+    },
+    "startup_port_isolation": {
+      "status": "pass",
+      "evidence": {
+        "path": "evidence/P01-U02/20261001-01/startup-port-verification.json",
+        "bytes": 3304,
+        "sha256": "002d214c16262f634e2bc08617223db7b2dd94159f2612b678f1ff34b1df13d8"
+      }
+    },
+    "visual_acceptance": {
+      "status": "NOT_RUN",
+      "reason": "Hidden native capture timed out; functional DOM/settings persistence only"
+    },
+    "real_model_routes": {
+      "status": "NOT_RUN",
+      "generation_calls_made": 0,
+      "reason": "Pending user choice of gateway credential transport"
+    },
+    "independent_acceptance": {
+      "status": "pending",
+      "reason": "U02 is not yet ready_for_review"
+    }
+  },
+  "approved_reuse_decision": "pending real route and independent review",
+  "product_implementation_started": false,
+  "P02_started": false
+}

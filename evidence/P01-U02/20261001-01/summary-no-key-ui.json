@@ -1,0 +1,174 @@
+{
+  "run_id": "desktop-no-key-1790856449203452900",
+  "passed": true,
+  "command": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "E:\\Xiadie\\Xiadie\\spikes\\P01\\desktop-ui.mjs",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-no-key-1790856449203452900\\spec.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\spikes\\P01",
+  "exit_code": 0,
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "elapsed_seconds": 67.391,
+  "timed_out": false,
+  "production_unchanged": true,
+  "production_before": [
+    {
+      "label": "production-0",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "label": "production-1",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "label": "production-2",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    },
+    {
+      "label": "production-3",
+      "exists": true,
+      "sha256": "b39155fc95f2af2024ec3e311b59b5ebe03998fff061527e093fe338fbb07ea6"
+    },
+    {
+      "label": "production-4",
+      "exists": true,
+      "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+    }
+  ],
+  "production_after": [
+    {
+      "label": "production-0",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "label": "production-1",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "label": "production-2",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    },
+    {
+      "label": "production-3",
+      "exists": true,
+      "sha256": "b39155fc95f2af2024ec3e311b59b5ebe03998fff061527e093fe338fbb07ea6"
+    },
+    {
+      "label": "production-4",
+      "exists": true,
+      "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+    }
+  ],
+  "model_requests": 0,
+  "runtime_kind": "actual Electron Desktop, renderer/preload/host, two launches and native local settings persistence",
+  "isolation": "fresh profile + complete env; main/utility Node socket/fetch, Electron net and webRequest instrumentation; not OS sandbox",
+  "guard_processes": [
+    {
+      "pid": 41268,
+      "process_type": "browser",
+      "kind": "guard_loaded"
+    },
+    {
+      "pid": 14444,
+      "process_type": "utility",
+      "kind": "guard_loaded"
+    },
+    {
+      "pid": 14444,
+      "kind": "guard_loaded"
+    },
+    {
+      "pid": 10208,
+      "process_type": "utility",
+      "kind": "guard_loaded"
+    },
+    {
+      "pid": 48196,
+      "process_type": "browser",
+      "kind": "guard_loaded"
+    },
+    {
+      "pid": 62868,
+      "process_type": "utility",
+      "kind": "guard_loaded"
+    },
+    {
+      "pid": 62868,
+      "kind": "guard_loaded"
+    },
+    {
+      "pid": 26260,
+      "process_type": "utility",
+      "kind": "guard_loaded"
+    }
+  ],
+  "blocked_requests": 16,
+  "offline_endpoint": "http://127.0.0.1:52627",
+  "offline_endpoint_forwarding": false,
+  "compiled": {
+    "packages/desktop/out/main/index.js": "7cec241038c7d022f69b0927b41358ddbcedc225688a6f84eb5ba25d0ed0c32c",
+    "packages/desktop/out/host/index.js": "8b48375fd9cb63159e0d2c7fbdcbba60552ed3a4c68bd06c937b6e55fc68210a",
+    "packages/desktop/out/preload/index.cjs": "b082ca4d0ce75460f5fbcc9e946a8be55fea7fd9ed318bf7f4f1948e95338678",
+    "packages/desktop/out/renderer/index.html": "a219d33c44c2fe599115bc3b8acdb69bde62d12b15a9ac6a0cf6f71236c691ed"
+  },
+  "code_bindings": {
+    "desktop-guard.cjs": "8bf2787315f194f17ff4fa199a738244de1c21717787d23dd51185617cc683c8",
+    "desktop-ui.mjs": "55a6130044c8c8f7a6f419527f3e5c78b44b40712b161a6186d919e58ee961b5",
+    "run-desktop-ui.py": "5bf5788d7c0efb323512cb2839a00faab0059d7964ce3d463b26ca41ea25c662"
+  },
+  "code_unchanged_during_run": true,
+  "artifacts": [
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/launch-1-entry.txt",
+      "bytes": 137,
+      "sha256": "25ee034b1770d57339c2e1457f12227fe2a4cda2add5b4c3e38aaac11d0dc861"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/launch-1-settings.txt",
+      "bytes": 4762,
+      "sha256": "977fad1c4f11f87f21d7f77c1a2b3be807dd3b7b9343d627b07f2d4e7c10fc84"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/launch-2-entry.txt",
+      "bytes": 118,
+      "sha256": "6d86d4f2b42cd43adf9aaf36220b88e6d8ff3627c3999adb8e1695b99c5c9d12"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/launch-2-settings.txt",
+      "bytes": 4623,
+      "sha256": "02dc03fd858cc5c27fbd7b0dcd87f51bc679e5b2596521d4b32772ece799294d"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/listeners-before.json",
+      "bytes": 6485,
+      "sha256": "c916d1c6db9e3aab9e7d811fa87f9ae6fc788ad492eb12785942948fee343eda"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/network.jsonl",
+      "bytes": 133967,
+      "sha256": "d7426a7c83d897d77c6726e9fb4d66b6403e753264e91ac85cea8d0c2cdef82d"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/stderr.bin",
+      "bytes": 19349,
+      "sha256": "0e7cededdaf8610f78d36fc6e947a95fbd2a45f73e77dc6b55d27caca1acfcf8"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/stdout.bin",
+      "bytes": 72724,
+      "sha256": "20f8ce068571b364e7ea336df36c9c4061674975c045b3045f1a2af7120169f0"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/ui-result.json",
+      "bytes": 3108,
+      "sha256": "8add47405c4882c20adea635ebf20fd844e7df024fb770b339d77fb4ee02fbc0"
+    }
+  ]
+}

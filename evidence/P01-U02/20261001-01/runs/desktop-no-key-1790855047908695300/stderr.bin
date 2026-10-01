@@ -1,0 +1,54 @@
+[2026-10-01 19:44:08.993] [pid:64076] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:44:09.627] [pid:64076] [main] [renderer-action-trace] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:44:09.628] [pid:64076] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:44:09.634] [pid:64076] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:44:09.954] [pid:64076] [main] [host-log] (local-1) [host] [2026-10-01 19:44:09.947] [pid:42080] [zcode-host] ExperimentalWarning: SQLite is an experimental feature and might change at any time
+[2026-10-01 19:44:11.858] [pid:64076] [main] [host-log] (local-1) [host] [2026-10-01 19:44:11.832] [pid:42080] [codingPlanSubscription] 动态工作流灰度配置读取失败，按关闭处理 {"errorMessage":"fetch failed"}
+[2026-10-01 19:44:11.969] [pid:64076] [main] [host-log] (local-1) [host] [2026-10-01 19:44:11.967] [pid:42080] [provider-config] ZCode Built-in Config 远端刷新失败 {"error":{}}
+[2026-10-01 19:44:12.039] [pid:64076] [main] [host-log] (local-1) [host] [2026-10-01 19:44:12.039] [pid:42080] [zcode-host] [rpc:call] provider-settings.refresh FAIL (205.8ms) {"name":"Error","message":"ZCode Built-in client-config: invalid response","stack":"Error: ZCode Built-in client-config: invalid response\n    at downloadZCodeBuiltinRelease (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:71461)\n    at async #r (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:73689)"}
+[2026-10-01 19:44:12.040] [pid:64076] [main] [host-log] (local-1) [host] [2026-10-01 19:44:12.039] [pid:42080] [zcode-host] [rpc:call] provider-settings.refresh FAIL (61.7ms) {"name":"Error","message":"ZCode Built-in client-config: invalid response","stack":"Error: ZCode Built-in client-config: invalid response\n    at downloadZCodeBuiltinRelease (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:71461)\n    at async #r (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:73689)"}
+[2026-10-01 19:45:08.995] [pid:64076] [main] [renderer-action-trace] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+Debugger ending on ws://127.0.0.1:57412/387d03fc-ebd6-42be-95b8-c8cdbadc784d
+For help, see: https://nodejs.org/en/docs/inspector
+[64076:1001/194512.181:ERROR:gpu\ipc\client\command_buffer_proxy_impl.cc:484] GPU state invalid after WaitForGetOffsetInRange.
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.screenshot: Timeout 30000ms exceeded.
+Call log:
+[2m  - taking page screenshot[22m
+[2m  - waiting for fonts to load...[22m
+[2m  - fonts loaded[22m
+
+    at checkpoint (E:\Xiadie\Xiadie\spikes\P01\desktop-ui.mjs:12:14)
+    at async file:///E:/Xiadie/Xiadie/spikes/P01/desktop-ui.mjs:36:5 {
+  name: 'TimeoutError'
+}
+
+Node.js v24.16.0

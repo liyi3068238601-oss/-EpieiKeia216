@@ -1,0 +1,39 @@
+[2026-10-01 19:52:15.596] [pid:14552] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:52:16.291] [pid:14552] [main] [renderer-action-trace] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:52:16.294] [pid:14552] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:52:16.301] [pid:14552] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: net::ERR_UNSAFE_PORT
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134569)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-01 19:52:16.634] [pid:14552] [main] [host-log] (local-1) [host] [2026-10-01 19:52:16.627] [pid:63428] [zcode-host] ExperimentalWarning: SQLite is an experimental feature and might change at any time
+[2026-10-01 19:52:18.544] [pid:14552] [main] [host-log] (local-1) [host] [2026-10-01 19:52:18.521] [pid:63428] [codingPlanSubscription] 动态工作流灰度配置读取失败，按关闭处理 {"errorMessage":"fetch failed"}
+[2026-10-01 19:52:18.655] [pid:14552] [main] [host-log] (local-1) [host] [2026-10-01 19:52:18.653] [pid:63428] [provider-config] ZCode Built-in Config 远端刷新失败 {"error":{}}
+[2026-10-01 19:52:18.727] [pid:14552] [main] [host-log] (local-1) [host] [2026-10-01 19:52:18.726] [pid:63428] [zcode-host] [rpc:call] provider-settings.refresh FAIL (207.4ms) {"name":"Error","message":"ZCode Built-in client-config: invalid response","stack":"Error: ZCode Built-in client-config: invalid response\n    at downloadZCodeBuiltinRelease (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:71461)\n    at async #r (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:73689)"}
+[2026-10-01 19:52:18.727] [pid:14552] [main] [host-log] (local-1) [host] [2026-10-01 19:52:18.726] [pid:63428] [zcode-host] [rpc:call] provider-settings.refresh FAIL (64.3ms) {"name":"Error","message":"ZCode Built-in client-config: invalid response","stack":"Error: ZCode Built-in client-config: invalid response\n    at downloadZCodeBuiltinRelease (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:71461)\n    at async #r (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:3:73689)"}
+file:///E:/Xiadie/Xiadie/spikes/P01/desktop-ui.mjs:19
+    new Promise((_, reject) => setTimeout(() => reject(new Error('Native hidden capture timed out')), 10000)),
+                                                       ^
+
+Error: Native hidden capture timed out
+    at Timeout._onTimeout (file:///E:/Xiadie/Xiadie/spikes/P01/desktop-ui.mjs:19:56)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7)
+
+Node.js v24.14.0

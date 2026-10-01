@@ -1,0 +1,126 @@
+Command palette
+
+Search and run commands available in this workspace.
+
+New task
+Ctrl+N
+Search
+Ctrl+K
+Automations
+Plugin Marketplace
+Group
+Project
+Projects
+No open projects
+Tasks
+No tasks yet
+Connect
+Mobile remote control
+
+Evening, nice work today
+
+No model available. Upgrade or set a custom model.
+Upgrade
+Set
+Select project
+
+
+
+
+Ask ZCode anything, @ to add context, / for commands or capabilities
+Add context
+Ask before changes
+管理模型
+Manage models
+Send
+Back to workspace
+Basics
+General
+Appearance
+Model settings
+Browser Use
+Keyboard Shortcuts
+Agent capabilities
+Memory
+Subagents
+Plugins
+MCP Servers
+Skills
+Commands
+Hooks
+Data and statistics
+Usage stats
+Onboard
+Connect
+General
+English
+Language
+Choose the display language used by the application UI.
+English
+Interface mode
+Office mode focuses on summaries and results. Coding mode shows commands, output, and code changes.
+Coding mode
+Proactive task suggestions
+Available only in Office mode.
+Inherit system terminal profile
+When launching the built-in terminal, inherit login shell environment, proxy, Kubernetes variables, and local terminal font when possible.
+Terminal font
+Leave blank to auto-detect system terminal settings; set a value to override the ZCode terminal font.
+Save
+Integrated terminal shell
+Applies to new sessions only. On Windows, Bash uses this shell; Auto tries Git Bash, then cmd.exe.
+Auto
+Enhanced Find and Grep
+Use enhanced Find and Grep in new sessions and sessions restored after an app restart. Active sessions keep their current setting; Find remains unchanged on Windows.
+HTTP Proxy
+Route model, MCP, command-tool, and app renderer egress traffic through this proxy; system environment variables are not read. Leave blank and that traffic connects directly, while the embedded browser follows your system proxy settings. Restart the app to take effect.
+Save
+No proxy
+Requests matching these hosts connect directly instead of using the HTTP proxy. Separate rules with commas. Restart the app to take effect.
+Save
+Custom certificate
+Optional. Set a PEM root certificate path to inject it as NODE_EXTRA_CA_CERTS for models, MCP, and command tools, and to trust it in renderer certificate verification. Restart the app to take effect.
+Save
+Chrome hardware acceleration
+Turn this off to work around blank windows, crashes, or rendering issues caused by some GPUs or drivers. Restart the app to take effect.
+Receive preview updates early
+When enabled, you will get the earliest access to new features and improvements. When disabled, you will receive update pushes according to the regular release schedule.
+Automatically download and install updates
+When enabled, updates start downloading as soon as they are found. Restart still requires confirmation when tasks are running.
+Task notifications
+Send desktop notifications when a task completes, fails, or needs approval.
+Notification sound
+When notifications are enabled, you can mute the task notification sound separately.
+Hide to tray when closing window
+Windows only. The close button and close-window shortcut hide the window, while Quit from the tray still exits the app.
+Keep computer running
+Prevent the system from sleeping due to idle. You can still sleep manually or by closing the lid. Desktop only.
+Interaction behavior
+While ZCode is running, add follow-up actions to the queue or guide them to run after the next tool call.
+Queue
+Automatically continue questions
+When enabled, Agent questions automatically continue after 5 minutes without an answer. When disabled, current and future questions wait for your response.
+Keep complete model I/O
+Keep complete model requests and responses without compression, size limits, or automatic deletion.
+Show reasoning
+Show full reasoning inside the message stream. When off, the first reasoning item in each turn remains visible.
+Show todos
+Show Todo tool cards inside the message stream.
+Group exploration tools
+Group consecutive reads and searches into an Explore section.
+Group terminal commands
+Group consecutive non-read-only shell commands into a Terminal section.
+Group file changes
+Group consecutive Write, Edit, and ApplyPatch calls into a Changes section.
+Auto-archive old tasks
+Periodically scan recently opened workspaces and automatically archive completed, unread-free, unpinned tasks after the retention window.
+Archive retention
+A task becomes eligible for auto-archive only after its last update is older than this window.
+Archive after 7 days
+Data storage path
+Root directory for app data (defaults to user home directory). Existing data will be copied to the new location. The .zcode/v2 suffix cannot be changed.
+Choose folder
+Save
+Onboard
+Choose your role, interface mode, and preferences again. Use Migration settings to import data.
+Open onboarding

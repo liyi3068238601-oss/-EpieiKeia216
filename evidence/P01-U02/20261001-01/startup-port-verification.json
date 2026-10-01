@@ -1,0 +1,99 @@
+{
+  "status": "pass",
+  "run_id": "desktop-no-key-1790856449203452900",
+  "launches": [
+    {
+      "launch": 1,
+      "owned_pids": [
+        10208,
+        14444,
+        41268
+      ],
+      "listeners": [
+        {
+          "LocalAddress": "127.0.0.1",
+          "LocalPort": 63948,
+          "OwningProcess": 41268
+        },
+        {
+          "LocalAddress": "127.0.0.1",
+          "LocalPort": 63946,
+          "OwningProcess": 41268
+        }
+      ],
+      "overlap_with_existing_ports": [],
+      "fixed_9229_disabled": true,
+      "egress_canary_denied_for_each_owned_process": true
+    },
+    {
+      "launch": 2,
+      "owned_pids": [
+        26260,
+        48196,
+        62868
+      ],
+      "listeners": [
+        {
+          "LocalAddress": "127.0.0.1",
+          "LocalPort": 63105,
+          "OwningProcess": 48196
+        },
+        {
+          "LocalAddress": "127.0.0.1",
+          "LocalPort": 63103,
+          "OwningProcess": 48196
+        }
+      ],
+      "overlap_with_existing_ports": [],
+      "fixed_9229_disabled": true,
+      "egress_canary_denied_for_each_owned_process": true
+    }
+  ],
+  "existing_listener_count": 72,
+  "model_requests": 0,
+  "production_unchanged": true,
+  "scope": "Recorded experiment Main/Host/Scheduler listener snapshots; future product startup must preserve this policy",
+  "visual_acceptance": "NOT_RUN; functional DOM/settings evidence only",
+  "artifacts": [
+    {
+      "path": "evidence/P01-U02/20261001-01/summary-no-key-ui.json",
+      "bytes": 6028,
+      "sha256": "e53f3e02f051bc009c89d33dde003bccd652c5c76d7c1a5c599bf4c25ffe0550"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/ui-result.json",
+      "bytes": 3108,
+      "sha256": "8add47405c4882c20adea635ebf20fd844e7df024fb770b339d77fb4ee02fbc0"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/listeners-before.json",
+      "bytes": 6485,
+      "sha256": "c916d1c6db9e3aab9e7d811fa87f9ae6fc788ad492eb12785942948fee343eda"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/network.jsonl",
+      "bytes": 133967,
+      "sha256": "d7426a7c83d897d77c6726e9fb4d66b6403e753264e91ac85cea8d0c2cdef82d"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/utility-guards/47e60f4f019ee1da57541272296778a497103be3b75d9de1dc9d67d81147f8b6.mjs",
+      "bytes": 167,
+      "sha256": "bd528083b8a32bcb73664f4b9671ac6b4997ae4a67a12e4990779c145981388b"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/desktop-no-key-1790856449203452900/utility-guards/bad145341e6eeb0a84e7722b60a1d247cfdec924cf82e6d39c741533f3de284e.mjs",
+      "bytes": 162,
+      "sha256": "afd3a8b6e15d8d24f1d67d91c66853067b85dbb58b5e45ad766a3b8b61e912f2"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/desktop-build/manifest.json",
+      "bytes": 1486077,
+      "sha256": "6d060e455a009323321ff2caea755bb08f4a6e7940f86140d685ebb554cc92d2"
+    },
+    {
+      "path": "spikes/P01/verify-ports.py",
+      "bytes": 3826,
+      "sha256": "1cfd237bb255726783af59fec23bb9625015f7ff83d91482f5a1c05bbd6835e5"
+    }
+  ]
+}

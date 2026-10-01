@@ -9,3 +9,5 @@ Preserve existing projects, production runtime profiles, credentials, and user d
 Record actual commands, cwd, exit codes, source commits, hashes, failures, limitations, and rollback. Distinguish mock, real runtime, real model, and Windows package evidence. `NOT_RUN` is not a pass.
 
 Keep execution status separately from the immutable plan. Authors submit `ready_for_review`; independent reviewers verify exact artifacts or commits before acceptance. Respect task dependencies and one writer per scope.
+
+The user requires startup ports to remain separate from the installed ZCode. Bind experiment services to loopback with OS-allocated free ports; record them and check existing listeners before starting. Desktop experiments must set `ZCODE_DISABLE_FIXED_REMOTE_DEBUGGING_PORT=1` and use dynamic inspector/CDP ports instead of native fixed 9229. Never stop or reconfigure the installed ZCode to free a port.
