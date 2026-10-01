@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "status": "ready_for_review",
+  "product_version": "0.0.0",
+  "plan_document_version": "1.1",
+  "created_at_utc": "2026-10-01T04:09:50.126017+00:00",
+  "baseline_commit": "b6573b0a12c21748b55efab00a4cf7d681ed7143",
+  "sources": [
+    {
+      "id": "zcode",
+      "repository": "https://github.com/zai-org/ZCode.git",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "tree": "e7458be062f467b465abc91509adb0558e023605",
+      "root_package_version": "3.14.3",
+      "package_manager": "pnpm@10.33.2",
+      "node_engine": ">=24.0.0",
+      "files": [
+        {
+          "path": "references/zcode-29628c9/package.json",
+          "bytes": 4265,
+          "filesystem_sha256": "d610f59469cc29e8a687a8e5f9f6d7573d71d45add7f4893756d13c32d6793f0",
+          "git_blob_sha256": "1c8de5f20a664c0dc3071ca4d58ae55f4282cb671c529d2ea5f2b0879638b64c",
+          "fixed_url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/package.json"
+        },
+        {
+          "path": "references/zcode-29628c9/pnpm-lock.yaml",
+          "bytes": 671466,
+          "filesystem_sha256": "e30f59a8dbd8563bb34bd766f3391036a8858fc0a8fcd16a7604ad9308efe3d6",
+          "git_blob_sha256": "7d40b0231089692a91eb39f73b212f7eae86ee9402c360139216cff577e9583c",
+          "fixed_url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/pnpm-lock.yaml"
+        },
+        {
+          "path": "references/zcode-29628c9/pnpm-workspace.yaml",
+          "bytes": 522,
+          "filesystem_sha256": "4ef03f490e5269c7c184deaffa8375c37b4edd95bfa999d0a2731955c1ddc4f7",
+          "git_blob_sha256": "f18a18233e82cda1dc40be61bf2ad1bc99de25de63ad0be64bc652761a638372",
+          "fixed_url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/pnpm-workspace.yaml"
+        },
+        {
+          "path": "references/zcode-29628c9/LICENSE",
+          "bytes": 11546,
+          "filesystem_sha256": "fa36dc312bc4946b1c22dba3c726ad8d3052b353f81424e7b997dbb3d9b40a49",
+          "git_blob_sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b",
+          "fixed_url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/LICENSE"
+        },
+        {
+          "path": "references/zcode-29628c9/mise.toml",
+          "bytes": 1302,
+          "filesystem_sha256": "5c1639f4a6ac6c3304bab3d8b221f48a662d583edae9f94b41778815ada00f27",
+          "git_blob_sha256": "966668b82d73c22be1a0c9eaae166a7233a9f39b0b1042eece44578c04c8d23c",
+          "fixed_url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/mise.toml"
+        },
+        {
+          "path": "references/zcode-29628c9/.nvmrc",
+          "bytes": 4,
+          "filesystem_sha256": "f6bca0e7f46a94bd3349fdb86511cbec4a9091e409b62dd2d6b8c1fdb9a3ce00",
+          "git_blob_sha256": "68ca3fba3b7e864770cb61aeb306d4bd4354b68ab4dd38450860c5d823e42a53",
+          "fixed_url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/.nvmrc"
+        },
+        {
+          "path": "references/zcode-29628c9/apps/zcode-cli/packages/cli/package.json",
+          "bytes": 1335,
+          "filesystem_sha256": "8d75287626b1de899a99b406b7e0ce994ae5210602afea2b48804350ba4b2510",
+          "git_blob_sha256": "81a0c3dbdff4fb6598ac5b7336578de102c54eef914e06f0f3a65bc1b6e734b9",
+          "fixed_url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/cli/package.json"
+        },
+        {
+          "path": "references/zcode-29628c9/apps/zcode-cli/package.json",
+          "bytes": 2018,
+          "filesystem_sha256": "cd12d626b9f169e40b74d0063e92500afbb5985964fa94de1fdd49f3716d0ddb",
+          "git_blob_sha256": "6c48017b05d8a7215c5bf7dea12f50edd1487bf5b8b22e11c21703d32e8f7742",
+          "fixed_url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/package.json"
+        }
+      ],
+      "fixed_refetch_file": "README.md",
+      "rollback": {
+        "checkout": "git checkout --detach 29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "recreate": "git clone --no-hardlinks https://github.com/zai-org/ZCode.git NEW_EMPTY_ISOLATED_PATH; checkout exact commit; frozen install with per-source pnpm; never reset a user checkout"
+      },
+      "transitive_dependencies": "Exact pnpm-lock.yaml blob SHA above; no floating latest installation is permitted.",
+      "fixed_refetch": {
+        "url": "https://raw.githubusercontent.com/zai-org/ZCode/29628c9acdb81b703bbd4080c207a0e7ce5e276e/README.md",
+        "http_status": 200,
+        "bytes": 10808,
+        "remote_sha256": "1f28af42a078a1accd16ee432784e54652e83cb808cdb572a1c3d3052bc434ae",
+        "git_blob_sha256": "1f28af42a078a1accd16ee432784e54652e83cb808cdb572a1c3d3052bc434ae",
+        "byte_exact_match": true
+      },
+      "floating_check": {
+        "observed_remote_head": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "selected_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "follow_latest": false,
+        "decision": "Selected immutable pin retained regardless of remote movement."
+      },
+      "cli_workspace_declarations": {
+        "version": "0.16.9",
+        "packageManager": "pnpm@10.33.2",
+        "engines": {
+          "node": "24.14.0"
+        }
+      }
+    },
+    {
+      "id": "dsh",
+      "repository": "https://github.com/deepseek-ai/deepseek-harness.git",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "tree": "ac66a6a3e77f6fa396509ddfecc7beacf0cf642a",
+      "root_package_version": "0.2.0-rc.2",
+      "package_manager": "pnpm@11.7.0",
+      "node_engine": "^22.19.0 || >=24.0.0",
+      "files": [
+        {
+          "path": "references/dsh-639ed015/package.json",
+          "bytes": 17200,
+          "filesystem_sha256": "a303ffb8994be8e7a874bc887db1abd47a77a6e08872e65f1d65281f43eab91b",
+          "git_blob_sha256": "a303ffb8994be8e7a874bc887db1abd47a77a6e08872e65f1d65281f43eab91b",
+          "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/package.json"
+        },
+        {
+          "path": "references/dsh-639ed015/pnpm-lock.yaml",
+          "bytes": 1020774,
+          "filesystem_sha256": "80fe05eae33582ae26839afd05f1965f9b0e4be11034ddf9797af6085d5ba9b1",
+          "git_blob_sha256": "80fe05eae33582ae26839afd05f1965f9b0e4be11034ddf9797af6085d5ba9b1",
+          "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/pnpm-lock.yaml"
+        },
+        {
+          "path": "references/dsh-639ed015/pnpm-workspace.yaml",
+          "bytes": 5411,
+          "filesystem_sha256": "8486cab8bfbba2b0f740eac3d5109132b18a3bd53d3b07aebf441e4f1462eb4e",
+          "git_blob_sha256": "8486cab8bfbba2b0f740eac3d5109132b18a3bd53d3b07aebf441e4f1462eb4e",
+          "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/pnpm-workspace.yaml"
+        },
+        {
+          "path": "references/dsh-639ed015/LICENSE",
+          "bytes": 1065,
+          "filesystem_sha256": "ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be",
+          "git_blob_sha256": "ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be",
+          "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/LICENSE"
+        },
+        {
+          "path": "references/dsh-639ed015/packages/sdk/client/package.json",
+          "bytes": 1262,
+          "filesystem_sha256": "59c49c60bfb4c93088d0dc60af4786bd76a6b683ba4330b7e02998111ebe8e21",
+          "git_blob_sha256": "59c49c60bfb4c93088d0dc60af4786bd76a6b683ba4330b7e02998111ebe8e21",
+          "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/client/package.json"
+        },
+        {
+          "path": "references/dsh-639ed015/packages/sdk/protocol/package.json",
+          "bytes": 1237,
+          "filesystem_sha256": "867cb30d0f83652f1d7e9874acbfeed3fe09d83f77674f0df7a6bc2cf3d84a34",
+          "git_blob_sha256": "867cb30d0f83652f1d7e9874acbfeed3fe09d83f77674f0df7a6bc2cf3d84a34",
+          "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/protocol/package.json"
+        },
+        {
+          "path": "references/dsh-639ed015/packages/sdk/server/package.json",
+          "bytes": 2041,
+          "filesystem_sha256": "de9c72d68b3c55d5ff6594964f97e1eedeab5565cfd8a6b3bac2812d41186fba",
+          "git_blob_sha256": "de9c72d68b3c55d5ff6594964f97e1eedeab5565cfd8a6b3bac2812d41186fba",
+          "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/server/package.json"
+        }
+      ],
+      "fixed_refetch_file": "README.md",
+      "rollback": {
+        "checkout": "git checkout --detach 639ed015397290b3745d163aafe02ffee4aa3f84",
+        "recreate": "git clone --no-hardlinks https://github.com/deepseek-ai/deepseek-harness.git NEW_EMPTY_ISOLATED_PATH; checkout exact commit; frozen install with per-source pnpm; never reset a user checkout"
+      },
+      "transitive_dependencies": "Exact pnpm-lock.yaml blob SHA above; no floating latest installation is permitted.",
+      "fixed_refetch": {
+        "url": "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/639ed015397290b3745d163aafe02ffee4aa3f84/README.md",
+        "http_status": 200,
+        "bytes": 2673,
+        "remote_sha256": "0f5516be2acde776f05572cbc8c3093c90549afe04ce118e11157d073d5d15f4",
+        "git_blob_sha256": "0f5516be2acde776f05572cbc8c3093c90549afe04ce118e11157d073d5d15f4",
+        "byte_exact_match": true
+      },
+      "floating_check": {
+        "observed_remote_head": "639ed015397290b3745d163aafe02ffee4aa3f84",
+        "selected_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+        "follow_latest": false,
+        "decision": "Selected immutable pin retained regardless of remote movement."
+      }
+    },
+    {
+      "id": "herta",
+      "repository": "https://github.com/PersonaCLI/Herta.git",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "tree": "2077f7e79459ff24996ffab2fb67a8dcb52adc88",
+      "root_package_version": "0.0.0",
+      "package_manager": "pnpm@9.15.0",
+      "node_engine": "^20.19.0 || >=22.12.0",
+      "files": [
+        {
+          "path": "references/herta-4623df12/package.json",
+          "bytes": 1178,
+          "filesystem_sha256": "d4abd6e904918ea1e1065560f7dcff910ef31a74803a1cfcb4a2a57507419e33",
+          "git_blob_sha256": "d4abd6e904918ea1e1065560f7dcff910ef31a74803a1cfcb4a2a57507419e33",
+          "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/package.json"
+        },
+        {
+          "path": "references/herta-4623df12/pnpm-lock.yaml",
+          "bytes": 190788,
+          "filesystem_sha256": "6f03c59fc3e9c329cfd18ca8408965f4998fd9b37b60efe7440f3d458ae1ad24",
+          "git_blob_sha256": "6f03c59fc3e9c329cfd18ca8408965f4998fd9b37b60efe7440f3d458ae1ad24",
+          "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/pnpm-lock.yaml"
+        },
+        {
+          "path": "references/herta-4623df12/pnpm-workspace.yaml",
+          "bytes": 1195,
+          "filesystem_sha256": "68b2e696804a0d5efa08f6ad30f8c7983d872c6c2a16b023e45ec3f5943c364d",
+          "git_blob_sha256": "68b2e696804a0d5efa08f6ad30f8c7983d872c6c2a16b023e45ec3f5943c364d",
+          "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/pnpm-workspace.yaml"
+        },
+        {
+          "path": "references/herta-4623df12/LICENSE",
+          "bytes": 2751,
+          "filesystem_sha256": "bb1f011bb44b82acdcb078fdfcc2f7b6185c930b69a1ee275b518e79e32aea82",
+          "git_blob_sha256": "bb1f011bb44b82acdcb078fdfcc2f7b6185c930b69a1ee275b518e79e32aea82",
+          "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/LICENSE"
+        },
+        {
+          "path": "references/herta-4623df12/mise.toml",
+          "bytes": 355,
+          "filesystem_sha256": "1a81a1f0f641be7254dc6974e970a0ac07039e7dffb25062063ca0ed157eaa62",
+          "git_blob_sha256": "1a81a1f0f641be7254dc6974e970a0ac07039e7dffb25062063ca0ed157eaa62",
+          "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/mise.toml"
+        },
+        {
+          "path": "references/herta-4623df12/.node-version",
+          "bytes": 3,
+          "filesystem_sha256": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56",
+          "git_blob_sha256": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56",
+          "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/.node-version"
+        },
+        {
+          "path": "references/herta-4623df12/packages/gui/package.json",
+          "bytes": 3911,
+          "filesystem_sha256": "65541b38db2e761dd7281d835cd2ac99f57cf625fcc7aabcd054d02df7ae35d7",
+          "git_blob_sha256": "65541b38db2e761dd7281d835cd2ac99f57cf625fcc7aabcd054d02df7ae35d7",
+          "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/gui/package.json"
+        },
+        {
+          "path": "references/herta-4623df12/packages/knowledge/package.json",
+          "bytes": 670,
+          "filesystem_sha256": "e8f3d77bb957290af29a1246b9fbd9ff6e3c7a35e6bbd186ab0800d06c2e3721",
+          "git_blob_sha256": "e8f3d77bb957290af29a1246b9fbd9ff6e3c7a35e6bbd186ab0800d06c2e3721",
+          "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/package.json"
+        }
+      ],
+      "fixed_refetch_file": "packages/knowledge/src/dream/config.ts",
+      "rollback": {
+        "checkout": "git checkout --detach 4623df120adf99340ce5f7e25ed829466975e3ae",
+        "recreate": "git clone --no-hardlinks https://github.com/PersonaCLI/Herta.git NEW_EMPTY_ISOLATED_PATH; checkout exact commit; frozen install with per-source pnpm; never reset a user checkout"
+      },
+      "transitive_dependencies": "Exact pnpm-lock.yaml blob SHA above; no floating latest installation is permitted.",
+      "fixed_refetch": {
+        "url": "https://raw.githubusercontent.com/PersonaCLI/Herta/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/config.ts",
+        "http_status": 200,
+        "bytes": 3990,
+        "remote_sha256": "f770993a8658940498e8b368e61e511534bb0bddf43bed3264e7187a7576da92",
+        "git_blob_sha256": "f770993a8658940498e8b368e61e511534bb0bddf43bed3264e7187a7576da92",
+        "byte_exact_match": true
+      },
+      "floating_check": {
+        "observed_remote_head": "a9bdad09e147724512d66d97fbcd3ef27a9f7d6a",
+        "selected_commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "follow_latest": false,
+        "decision": "Selected immutable pin retained regardless of remote movement."
+      }
+    }
+  ],
+  "experiment_toolchain": {
+    "node_executable": "C:\\Program Files\\nodejs\\node.exe",
+    "node_executable_sha256": "b3094d0b49f9ad602262a9921551737bb97637c05dd357a06ae98188d7290aa3",
+    "node": {
+      "version": "v24.16.0",
+      "modules": "137",
+      "napi": "10",
+      "platform": "win32",
+      "arch": "x64"
+    },
+    "pnpm": [
+      {
+        "runtime": "zcode",
+        "pnpm_version": "10.33.2",
+        "entry": ".runtime/P00/zcode/tools/package/bin/pnpm.cjs",
+        "entry_sha256": "b276da51dc8ca5b0d3ee3371695b50fc8b3244b281b091c63a3f082a88dadeb9",
+        "install_integrity_receipt": "evidence/P00-U02/20261001-01/zcode-tool-download.json"
+      },
+      {
+        "runtime": "dsh",
+        "pnpm_version": "11.7.0",
+        "entry": ".runtime/P00/dsh/tools/bin/pnpm.mjs",
+        "entry_sha256": "ff3224d46b47fbb24a7e9fe15fededef7e00892d07d4e376b6762d4899906bfd",
+        "install_integrity_receipt": "evidence/P00-U02/20261001-01/dsh-runtime-run.json"
+      }
+    ],
+    "global_pnpm_used": false,
+    "python": {
+      "version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+      "executable": "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "executable_sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+      "existing_test_driver_dependencies": {
+        "httpx": "0.28.1",
+        "PyYAML": "6.0.3"
+      },
+      "dependency_policy": "Existing test tools only; no Python product runtime or installation was introduced. Restore drivers with these exact versions in an isolated uv environment if needed."
+    }
+  },
+  "upstream_toolchain_notes": {
+    "zcode": "mise.toml/.nvmrc/CLI manifest pin Node 24.14.0 and pnpm 10.33.2. P00 actually used Node 24.16.0; this delta is recorded, not erased.",
+    "dsh": "Per-source pnpm 11.7.0; declared Node range accepts actual Node 24.16.0. SDK source fallback only; native/desktop build NOT_RUN.",
+    "herta": "pnpm 9.15.0; .node-version/mise reference Node 22; engine range in source above. Pure functions only, no install/native execution. Any future SQLite/Electron runtime needs its own exact Node/Electron ABI and native rebuild."
+  },
+  "process_boundaries": "ZCode native main runtime; dedicated DSH process; Herta bounded pure-function/design reference. Do not force three runtime dependency graphs into one process.",
+  "native_abi_policy": "Observed Node ABI 137/N-API 10 applies only to this Node executable. Electron, node-addon-system and better-sqlite3 compatibility/package ABI are NOT_RUN; no cross-runtime binary reuse accepted.",
+  "floating_policy": "No latest/^/~ dependency is resolved outside the pinned source lockfiles. Manifest ranges inside pinned upstream trees are constrained by those exact lockfiles; upgrades require a new reviewed lock and replay.",
+  "limitations": [
+    "This locks P00 source and experiment inputs, not a Windows product distribution or Herta runtime.",
+    "Node is an existing global binary invoked by explicit path; child configuration/data and pnpm tools are isolated, not an OS sandbox."
+  ]
+}

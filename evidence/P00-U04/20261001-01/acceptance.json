@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "unit": "P00-U04",
+  "status": "accepted",
+  "scope": "Pinned source and toolchain research only; P01 remains closed",
+  "review_path": "evidence/P00-U04/20261001-01/review.json",
+  "review_sha256": "98d18842b10d986a8ecbb5f596abf431ffef88e96bfa1f01f31d1114daaa43cd",
+  "input_bindings": [
+    {
+      "path": "docs/sources.lock.json",
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e",
+      "index_blob_sha1": "0e5b63b779c36588e3df7334446517b79d5aac12",
+      "index_matches_worktree": true
+    },
+    {
+      "path": "evidence/P00-U04/20261001-01/probe.py",
+      "sha256": "ac1c3f2b74cfd4358b474a0675ac6b97067fa53ba4218da69c773493aeddbd10",
+      "index_blob_sha1": "0d981573dcd66d5cc0dd31d7bf0702c856135897",
+      "index_matches_worktree": true
+    },
+    {
+      "path": "evidence/P00-U04/20261001-01/commands.json",
+      "sha256": "f16bb54b8853ef48e7e4299c2811afef65e7fab0e29d08c7595449a5763e467e",
+      "index_blob_sha1": "9c6a7e39d6e5634119836afef976e818f6feab81",
+      "index_matches_worktree": true
+    },
+    {
+      "path": "evidence/P00-U04/20261001-01/verification.json",
+      "sha256": "249e176cee0e27fab6aec76a273efb111203884071c694e61926217aef326d78",
+      "index_blob_sha1": "0177e32731b25039895f7aeb124f801bbb7484c5",
+      "index_matches_worktree": true
+    },
+    {
+      "path": "evidence/P00-U04/20261001-01/result.md",
+      "sha256": "622ad029dfe3965caa1fa601ac68d11e8950a9525d0fe4e5655faec579073556",
+      "index_blob_sha1": "9fb95b7240a474be518fe6c06080da732e181aca",
+      "index_matches_worktree": true
+    }
+  ],
+  "accepted_by": "root",
+  "baseline_commit": "b6573b0a12c21748b55efab00a4cf7d681ed7143",
+  "limitations": [
+    "Only one exact raw file was refetched per upstream; all 23 locked files were independently matched against their fixed local commit blobs and working-tree SHA-256 values.",
+    "Observed Node ABI 137/N-API 10 applies only to this Node executable. Electron, DSH native add-ons, and Herta SQLite/native compatibility were not run or inferred.",
+    "Herta remains a pure-function/reference check without install or GUI/native execution; DSH evidence remains the SDK source fallback, not a complete native or desktop build.",
+    "The lock rollback entries recreate the reviewed pinned source in a fresh detached checkout/clone; a prior product-runtime rollback was not exercised and belongs to a later implementation decision."
+  ]
+}

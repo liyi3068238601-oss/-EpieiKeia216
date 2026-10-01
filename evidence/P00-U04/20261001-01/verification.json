@@ -1,0 +1,44 @@
+{
+  "status": "ready_for_review",
+  "source_count": 3,
+  "fixed_refetch": [
+    {
+      "url": "https://raw.githubusercontent.com/zai-org/ZCode/29628c9acdb81b703bbd4080c207a0e7ce5e276e/README.md",
+      "http_status": 200,
+      "bytes": 10808,
+      "remote_sha256": "1f28af42a078a1accd16ee432784e54652e83cb808cdb572a1c3d3052bc434ae",
+      "git_blob_sha256": "1f28af42a078a1accd16ee432784e54652e83cb808cdb572a1c3d3052bc434ae",
+      "byte_exact_match": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/639ed015397290b3745d163aafe02ffee4aa3f84/README.md",
+      "http_status": 200,
+      "bytes": 2673,
+      "remote_sha256": "0f5516be2acde776f05572cbc8c3093c90549afe04ce118e11157d073d5d15f4",
+      "git_blob_sha256": "0f5516be2acde776f05572cbc8c3093c90549afe04ce118e11157d073d5d15f4",
+      "byte_exact_match": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/PersonaCLI/Herta/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/config.ts",
+      "http_status": 200,
+      "bytes": 3990,
+      "remote_sha256": "f770993a8658940498e8b368e61e511534bb0bddf43bed3264e7187a7576da92",
+      "git_blob_sha256": "f770993a8658940498e8b368e61e511534bb0bddf43bed3264e7187a7576da92",
+      "byte_exact_match": true
+    }
+  ],
+  "node_abi": {
+    "version": "v24.16.0",
+    "modules": "137",
+    "napi": "10",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "lock_sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e",
+  "probe_sha256": "ac1c3f2b74cfd4358b474a0675ac6b97067fa53ba4218da69c773493aeddbd10",
+  "model_calls": 0,
+  "source_writes": 0,
+  "coordinator_format_note": "Writer explicitly uses LF for future runs; existing source/link/tool checks unchanged. Final lock normalized to LF before review.",
+  "locked_file_count": 23,
+  "review_correction": "Added exact ZCode CLI workspace manifest with real git show byte/hash evidence; no source/runtime changes."
+}

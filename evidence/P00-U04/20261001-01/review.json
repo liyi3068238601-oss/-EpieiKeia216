@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "unit": "P00-U04",
+  "review_status": "ready_for_review",
+  "recommendation": "accept",
+  "recommendation_scope": "P00-U04 research and source/toolchain lock only; this review does not open P01.",
+  "input_bindings": [
+    {"path":"docs/sources.lock.json","sha256":"009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e","index_blob_sha1":"0e5b63b779c36588e3df7334446517b79d5aac12","index_matches_worktree":true},
+    {"path":"evidence/P00-U04/20261001-01/probe.py","sha256":"ac1c3f2b74cfd4358b474a0675ac6b97067fa53ba4218da69c773493aeddbd10","index_blob_sha1":"0d981573dcd66d5cc0dd31d7bf0702c856135897","index_matches_worktree":true},
+    {"path":"evidence/P00-U04/20261001-01/commands.json","sha256":"f16bb54b8853ef48e7e4299c2811afef65e7fab0e29d08c7595449a5763e467e","index_blob_sha1":"9c6a7e39d6e5634119836afef976e818f6feab81","index_matches_worktree":true},
+    {"path":"evidence/P00-U04/20261001-01/verification.json","sha256":"249e176cee0e27fab6aec76a273efb111203884071c694e61926217aef326d78","index_blob_sha1":"0177e32731b25039895f7aeb124f801bbb7484c5","index_matches_worktree":true},
+    {"path":"evidence/P00-U04/20261001-01/result.md","sha256":"622ad029dfe3965caa1fa601ac68d11e8950a9525d0fe4e5655faec579073556","index_blob_sha1":"9fb95b7240a474be518fe6c06080da732e181aca","index_matches_worktree":true}
+  ],
+  "source_pins": [
+    {"id":"zcode","commit":"29628c9acdb81b703bbd4080c207a0e7ce5e276e","tree":"e7458be062f467b465abc91509adb0558e023605","head_matches":true,"tree_matches":true,"working_tree_clean":true,"locked_file_count":8},
+    {"id":"dsh","commit":"639ed015397290b3745d163aafe02ffee4aa3f84","tree":"ac66a6a3e77f6fa396509ddfecc7beacf0cf642a","head_matches":true,"tree_matches":true,"working_tree_clean":true,"locked_file_count":7},
+    {"id":"herta","commit":"4623df120adf99340ce5f7e25ed829466975e3ae","tree":"2077f7e79459ff24996ffab2fb67a8dcb52adc88","head_matches":true,"tree_matches":true,"working_tree_clean":true,"locked_file_count":8}
+  ],
+  "hash_audit": {
+    "locked_files": 23,
+    "git_blob_content_sha256_matches": 23,
+    "filesystem_sha256_matches": 23,
+    "filesystem_byte_counts_match": 23,
+    "method": "Read each exact commit:path blob and local file as bytes; compare each SHA-256 with its separately recorded Git-content and filesystem hashes. ZCode CRLF working-tree bytes are intentionally not conflated with canonical Git blob bytes."
+  },
+  "fixed_refetch": {
+    "pinned_raw_files_checked": 3,
+    "http_200": 3,
+    "byte_exact_to_pinned_git_blob": 3,
+    "verification_lock_and_probe_hash_bindings_match": true
+  },
+  "toolchain_hashes": [
+    {"tool":"Node","version":"v24.16.0","path":"C:/Program Files/nodejs/node.exe","sha256":"b3094d0b49f9ad602262a9921551737bb97637c05dd357a06ae98188d7290aa3","matches":true,"runtime_observation":"win32 x64; modules ABI 137; N-API 10"},
+    {"tool":"ZCode pnpm entry","version":"10.33.2","path":".runtime/P00/zcode/tools/package/bin/pnpm.cjs","sha256":"b276da51dc8ca5b0d3ee3371695b50fc8b3244b281b091c63a3f082a88dadeb9","matches":true},
+    {"tool":"DSH pnpm entry","version":"11.7.0","path":".runtime/P00/dsh/tools/bin/pnpm.mjs","sha256":"ff3224d46b47fbb24a7e9fe15fededef7e00892d07d4e376b6762d4899906bfd","matches":true},
+    {"tool":"Python test driver","version":"3.12.10","path":"C:/Users/liyi/AppData/Local/Programs/Python/Python312/python.exe","sha256":"4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a","matches":true,"dependencies":"existing httpx 0.28.1 and PyYAML 6.0.3 are recorded as test-driver-only"}
+  ],
+  "command_evidence": {
+    "recorded_commands": 39,
+    "exit_zero": 39,
+    "pinned_git_show_records": 23,
+    "ls_remote_head_records": 3,
+    "node_abi_probe_records": 1,
+    "isolated_pnpm_version_records": 2,
+    "install_or_build_commands": 0
+  },
+  "resolved_observations": [
+    "The initial inventory omitted references/zcode-29628c9/apps/zcode-cli/package.json. The frozen lock now includes its exact file hashes and extracted version 0.16.9, packageManager pnpm@10.33.2, and Node 24.14.0 engine; commands.json records the successful pinned git show and its output bytes/SHA. No remaining finding from this correction."
+  ],
+  "limitations": [
+    "Only one exact raw file was refetched per upstream; all 23 locked files were independently matched against their fixed local commit blobs and working-tree SHA-256 values.",
+    "Observed Node ABI 137/N-API 10 applies only to this Node executable. Electron, DSH native add-ons, and Herta SQLite/native compatibility were not run or inferred.",
+    "Herta remains a pure-function/reference check without install or GUI/native execution; DSH evidence remains the SDK source fallback, not a complete native or desktop build.",
+    "The lock rollback entries recreate the reviewed pinned source in a fresh detached checkout/clone; a prior product-runtime rollback was not exercised and belongs to a later implementation decision."
+  ],
+  "findings": []
+}

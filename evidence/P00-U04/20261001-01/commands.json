@@ -1,0 +1,577 @@
+[
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 41,
+    "stdout_sha256": "c9e9c065dbc732368bcfa1e6f610926a03a210632eab5cf2b4bc167dc3ad3de7",
+    "stdout": "29628c9acdb81b703bbd4080c207a0e7ce5e276e\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+      "show",
+      "29628c9acdb81b703bbd4080c207a0e7ce5e276e:package.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 4172,
+    "stdout_sha256": "1c8de5f20a664c0dc3071ca4d58ae55f4282cb671c529d2ea5f2b0879638b64c",
+    "stdout": "Large source output retained in pinned Git object; byte count and SHA above.",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+      "show",
+      "29628c9acdb81b703bbd4080c207a0e7ce5e276e:pnpm-lock.yaml"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 652214,
+    "stdout_sha256": "7d40b0231089692a91eb39f73b212f7eae86ee9402c360139216cff577e9583c",
+    "stdout": "Large source output retained in pinned Git object; byte count and SHA above.",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+      "show",
+      "29628c9acdb81b703bbd4080c207a0e7ce5e276e:pnpm-workspace.yaml"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 491,
+    "stdout_sha256": "f18a18233e82cda1dc40be61bf2ad1bc99de25de63ad0be64bc652761a638372",
+    "stdout": "packages:\n  - packages/*\n  - apps/zcode-cli\n  - apps/zcode-cli/packages/*\n  - apps/zcode-cli/tools/*\nsupportedArchitectures:\n  os:\n    - current\n    - darwin\n    - linux\n    - win32\n  cpu:\n    - current\n    - x64\n    - arm64\n  libc:\n    - current\n    - glibc\nallowBuilds:\n  cpu-features: true\n  edgedriver: true\n  electron: true\n  electron-winstaller: true\n  esbuild: true\n  geckodriver: true\n  koffi: true\n  msw: true\n  node-pty: true\n  protobufjs: true\n  ssh2: true\n  unsafe-pointer: true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+      "show",
+      "29628c9acdb81b703bbd4080c207a0e7ce5e276e:LICENSE"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 11344,
+    "stdout_sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b",
+    "stdout": "Large source output retained in pinned Git object; byte count and SHA above.",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+      "show",
+      "29628c9acdb81b703bbd4080c207a0e7ce5e276e:mise.toml"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 1265,
+    "stdout_sha256": "966668b82d73c22be1a0c9eaae166a7233a9f39b0b1042eece44578c04c8d23c",
+    "stdout": "[tools]\nnode = \"24.14.0\"\npnpm = \"10.33.2\"\n\n[env]\nCOREPACK_ENABLE_PROJECT_SPEC = \"0\"\nELECTRON_MIRROR = \"https://npmmirror.com/mirrors/electron/\"\n\n[tasks.install]\ndescription = \"Install root workspace dependencies with the pinned pnpm.\"\nrun = \"mise exec -- node scripts/mise-run.mjs pnpm install\"\n\n[tasks.bootstrap]\ndescription = \"Run the repository bootstrap script after installing dependencies.\"\ndepends = [\"install\"]\nrun = \"mise exec -- node scripts/mise-run.mjs pnpm bootstrap\"\n\n[tasks.dev]\ndescription = \"Start the desktop app in an isolated local test environment.\"\nenv = { ZCODE_DATA_BASE_DIR = \"{{env.HOME}}/.zcode-dev-home\" }\nrun = \"mise exec -- node scripts/mise-run.mjs pnpm dev:desktop:test\"\n\n[tasks.dev-desktop-prod]\ndescription = \"Start the desktop app against the production environment.\"\nrun = \"mise exec -- node scripts/mise-run.mjs pnpm dev:desktop:prod\"\n\n[tasks.dev-web]\ndescription = \"Start the server and web client dev servers.\"\nrun = \"mise exec -- node scripts/mise-run.mjs pnpm dev:web\"\n\n[tasks.typecheck]\ndescription = \"Run the root TypeScript project references check.\"\nrun = \"mise exec -- node scripts/mise-run.mjs pnpm typecheck\"\n\n[tasks.lint]\ndescription = \"Run the root linter.\"\nrun = \"mise exec -- node scripts/mise-run.mjs pnpm lint\"\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+      "show",
+      "29628c9acdb81b703bbd4080c207a0e7ce5e276e:.nvmrc"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 3,
+    "stdout_sha256": "68ca3fba3b7e864770cb61aeb306d4bd4354b68ab4dd38450860c5d823e42a53",
+    "stdout": "24\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+      "show",
+      "29628c9acdb81b703bbd4080c207a0e7ce5e276e:apps/zcode-cli/packages/cli/package.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 1295,
+    "stdout_sha256": "81a0c3dbdff4fb6598ac5b7336578de102c54eef914e06f0f3a65bc1b6e734b9",
+    "stdout": "{\n  \"name\": \"@zcode/cli\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"description\": \"Main CLI application for zcode\",\n  \"bin\": {\n    \"zcode\": \"./dist/zcode.cjs\"\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"type\": \"module\",\n  \"main\": \"./dist/zcode.cjs\",\n  \"scripts\": {\n    \"build\": \"node scripts/build.mjs\",\n    \"build:desktop-agent\": \"node scripts/build.mjs --desktop-agent\",\n    \"build:sea\": \"pnpm --dir ../../../.. exec turbo --skip-infer --cwd apps/zcode-cli run build --filter=!@zcode/cli --force && pnpm build && node scripts/build-sea.mjs --all\",\n    \"sea\": \"node scripts/build-sea.mjs\",\n    \"upload:sea\": \"node scripts/upload-sea-smb.mjs\",\n    \"clean\": \"node ../../scripts/clean-dist.mjs\",\n    \"dev\": \"tsx src/main.ts\",\n    \"typecheck\": \"tsc --noEmit\",\n    \"lint\": \"oxlint src\",\n    \"lint:fix\": \"oxlint --write src\"\n  },\n  \"dependencies\": {\n    \"@zcode/adapters\": \"workspace:*\",\n    \"@zcode/bootstrap\": \"workspace:*\",\n    \"@zcode/contracts\": \"workspace:*\",\n    \"@zcode/core\": \"workspace:*\",\n    \"@zcode/dynamic-workflow-runtime\": \"workspace:*\",\n    \"@zcode/i18n\": \"workspace:*\",\n    \"@zcode/provider-node\": \"workspace:*\",\n    \"@zcode/shared\": \"workspace:*\",\n    \"@zcode/shared-types\": \"workspace:*\",\n    \"@zcode/tui\": \"workspace:*\",\n    \"dotenv\": \"^17.4.2\",\n    \"playwright-core\": \"1.59.1\"\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+      "rev-parse",
+      "HEAD^{tree}"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 41,
+    "stdout_sha256": "9bea79afa76ff85c47ea3307dc80e5a5977b03edc31ca14fda6be32f6f402dca",
+    "stdout": "e7458be062f467b465abc91509adb0558e023605\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 41,
+    "stdout_sha256": "cbc3e0967a38594c578aa682932dc6b341e1dd73a4315e38f8940dc1cb7cf601",
+    "stdout": "639ed015397290b3745d163aafe02ffee4aa3f84\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+      "show",
+      "639ed015397290b3745d163aafe02ffee4aa3f84:package.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 17200,
+    "stdout_sha256": "a303ffb8994be8e7a874bc887db1abd47a77a6e08872e65f1d65281f43eab91b",
+    "stdout": "Large source output retained in pinned Git object; byte count and SHA above.",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+      "show",
+      "639ed015397290b3745d163aafe02ffee4aa3f84:pnpm-lock.yaml"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 1020774,
+    "stdout_sha256": "80fe05eae33582ae26839afd05f1965f9b0e4be11034ddf9797af6085d5ba9b1",
+    "stdout": "Large source output retained in pinned Git object; byte count and SHA above.",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+      "show",
+      "639ed015397290b3745d163aafe02ffee4aa3f84:pnpm-workspace.yaml"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 5411,
+    "stdout_sha256": "8486cab8bfbba2b0f740eac3d5109132b18a3bd53d3b07aebf441e4f1462eb4e",
+    "stdout": "Large source output retained in pinned Git object; byte count and SHA above.",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+      "show",
+      "639ed015397290b3745d163aafe02ffee4aa3f84:LICENSE"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 1065,
+    "stdout_sha256": "ebb4f09972aee8608be255debaf78451a68e95c290f55c240dec2ecfa16ea6be",
+    "stdout": "MIT License\n\nCopyright (c) 2026 DeepSeek\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+      "show",
+      "639ed015397290b3745d163aafe02ffee4aa3f84:packages/sdk/client/package.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 1262,
+    "stdout_sha256": "59c49c60bfb4c93088d0dc60af4786bd76a6b683ba4330b7e02998111ebe8e21",
+    "stdout": "{\n  \"name\": \"@deepseek-ai/dsh-sdk-client\",\n  \"description\": \"TypeScript client SDK for driving a DeepSeek Harness runtime subprocess over stdio JSON-RPC: the DeepSeekHarness high-level turns API and the lower-level HarnessClient\",\n  \"version\": \"0.2.0-rc.2\",\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/deepseek-ai/deepseek-harness.git\",\n    \"directory\": \"packages/sdk/client\"\n  },\n  \"type\": \"module\",\n  \"main\": \"lib/index.js\",\n  \"types\": \"lib/types/index.d.ts\",\n  \"exports\": {\n    \".\": {\n      \"types\": \"./lib/types/index.d.ts\",\n      \"default\": \"./lib/index.js\"\n    },\n    \"./package.json\": \"./package.json\"\n  },\n  \"files\": [\n    \"lib/index.js\",\n    \"lib/types/**/*.d.ts\"\n  ],\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"@deepseek-ai/dsh\": \"workspace:*\"\n  },\n  \"peerDependencies\": {\n    \"@deepseek-ai/dsh-llm\": \"workspace:*\",\n    \"@deepseek-ai/dsh-sdk-protocol\": \"workspace:*\",\n    \"@deepseek-ai/dsh-session\": \"workspace:*\",\n    \"@deepseek-ai/cordis\": \"workspace:~\"\n  },\n  \"devDependencies\": {\n    \"@deepseek-ai/dsh-llm\": \"workspace:*\",\n    \"@deepseek-ai/dsh-sdk-protocol\": \"workspace:*\",\n    \"@deepseek-ai/dsh-session\": \"workspace:*\",\n    \"@deepseek-ai/cordis\": \"workspace:~\"\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+      "show",
+      "639ed015397290b3745d163aafe02ffee4aa3f84:packages/sdk/protocol/package.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 1237,
+    "stdout_sha256": "867cb30d0f83652f1d7e9874acbfeed3fe09d83f77674f0df7a6bc2cf3d84a34",
+    "stdout": "{\n  \"name\": \"@deepseek-ai/dsh-sdk-protocol\",\n  \"description\": \"Shared wire protocol for the DeepSeek Harness SDK runtime: the newline-delimited JSON-RPC stdio transport and the named request, result, and notification types spoken between the runtime server and SDK clients\",\n  \"version\": \"0.2.0-rc.2\",\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/deepseek-ai/deepseek-harness.git\",\n    \"directory\": \"packages/sdk/protocol\"\n  },\n  \"type\": \"module\",\n  \"main\": \"lib/index.js\",\n  \"types\": \"lib/types/index.d.ts\",\n  \"exports\": {\n    \".\": {\n      \"types\": \"./lib/types/index.d.ts\",\n      \"default\": \"./lib/index.js\"\n    },\n    \"./package.json\": \"./package.json\"\n  },\n  \"files\": [\n    \"lib/index.js\",\n    \"lib/types/**/*.d.ts\"\n  ],\n  \"license\": \"MIT\",\n  \"peerDependencies\": {\n    \"@deepseek-ai/dsh-llm\": \"workspace:*\",\n    \"@deepseek-ai/dsh-session\": \"workspace:*\",\n    \"@deepseek-ai/dsh-subagent\": \"workspace:*\",\n    \"@deepseek-ai/cordis\": \"workspace:~\"\n  },\n  \"devDependencies\": {\n    \"@deepseek-ai/dsh-llm\": \"workspace:*\",\n    \"@deepseek-ai/dsh-session\": \"workspace:*\",\n    \"@deepseek-ai/dsh-subagent\": \"workspace:*\",\n    \"@deepseek-ai/cordis\": \"workspace:~\"\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+      "show",
+      "639ed015397290b3745d163aafe02ffee4aa3f84:packages/sdk/server/package.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 2041,
+    "stdout_sha256": "de9c72d68b3c55d5ff6594964f97e1eedeab5565cfd8a6b3bac2812d41186fba",
+    "stdout": "{\n  \"name\": \"@deepseek-ai/dsh-sdk-jsonrpc-server\",\n  \"description\": \"Stdio JSON-RPC server plugin for out-of-process DeepSeek Harness SDK clients\",\n  \"version\": \"0.2.0-rc.2\",\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/deepseek-ai/deepseek-harness.git\",\n    \"directory\": \"packages/sdk/server\"\n  },\n  \"type\": \"module\",\n  \"main\": \"lib/index.js\",\n  \"types\": \"lib/types/index.d.ts\",\n  \"exports\": {\n    \".\": {\n      \"types\": \"./lib/types/index.d.ts\",\n      \"default\": \"./lib/index.js\"\n    },\n    \"./src/*\": \"./src/*\",\n    \"./package.json\": \"./package.json\"\n  },\n  \"files\": [\n    \"lib/index.js\",\n    \"lib/types/**/*.d.ts\"\n  ],\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"@deepseek-ai/dsh-brand\": \"workspace:*\",\n    \"@deepseek-ai/schemastery\": \"workspace:~\"\n  },\n  \"peerDependencies\": {\n    \"@deepseek-ai/cordis\": \"workspace:~\",\n    \"@deepseek-ai/dsh-agent\": \"workspace:*\",\n    \"@deepseek-ai/dsh-attachment\": \"workspace:*\",\n    \"@deepseek-ai/dsh-llm\": \"workspace:*\",\n    \"@deepseek-ai/dsh-llm-deepseek-api-key\": \"workspace:*\",\n    \"@deepseek-ai/dsh-scope\": \"workspace:*\",\n    \"@deepseek-ai/dsh-sdk-protocol\": \"workspace:*\",\n    \"@deepseek-ai/dsh-session\": \"workspace:*\",\n    \"@deepseek-ai/dsh-subagent\": \"workspace:*\"\n  },\n  \"devDependencies\": {\n    \"@deepseek-ai/cordis\": \"workspace:~\",\n    \"@deepseek-ai/cordis-plugin-loader\": \"workspace:~\",\n    \"@deepseek-ai/dsh-agent\": \"workspace:*\",\n    \"@deepseek-ai/dsh-agent-loop\": \"workspace:*\",\n    \"@deepseek-ai/dsh-agent-loop-testkit\": \"workspace:*\",\n    \"@deepseek-ai/dsh-attachment\": \"workspace:*\",\n    \"@deepseek-ai/dsh-llm\": \"workspace:*\",\n    \"@deepseek-ai/dsh-llm-deepseek-api-key\": \"workspace:*\",\n    \"@deepseek-ai/dsh-scope\": \"workspace:*\",\n    \"@deepseek-ai/dsh-sdk-protocol\": \"workspace:*\",\n    \"@deepseek-ai/dsh-session\": \"workspace:*\",\n    \"@deepseek-ai/dsh-session-persistence-jsonl\": \"workspace:*\",\n    \"@deepseek-ai/dsh-session-projection\": \"workspace:*\",\n    \"@deepseek-ai/dsh-subagent\": \"workspace:*\"\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+      "rev-parse",
+      "HEAD^{tree}"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 41,
+    "stdout_sha256": "ce8da79d4e158b13e1d3abfe51d1929db5623641b1d9bce04720f7e395547ce0",
+    "stdout": "ac66a6a3e77f6fa396509ddfecc7beacf0cf642a\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 41,
+    "stdout_sha256": "732f480b97c203346cf91ecf14b4827635683c1727e3d4cdaef704ac76f7bc15",
+    "stdout": "4623df120adf99340ce5f7e25ed829466975e3ae\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+      "show",
+      "4623df120adf99340ce5f7e25ed829466975e3ae:package.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 1178,
+    "stdout_sha256": "d4abd6e904918ea1e1065560f7dcff910ef31a74803a1cfcb4a2a57507419e33",
+    "stdout": "{\n  \"name\": \"herta-monorepo\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"license\": \"MIT\",\n  \"type\": \"module\",\n  \"packageManager\": \"pnpm@9.15.0\",\n  \"engines\": {\n    \"node\": \"^20.19.0 || >=22.12.0\"\n  },\n  \"scripts\": {\n    \"build\": \"tsc -b\",\n    \"build:clean\": \"tsc -b --clean\",\n    \"test\": \"vitest run\",\n    \"test:watch\": \"vitest\",\n    \"test:changed\": \"vitest run --changed\",\n    \"test:branch\": \"vitest run --changed origin/main\",\n    \"lint\": \"biome check .\",\n    \"format\": \"biome format --write .\",\n    \"typecheck:apps\": \"pnpm --filter @herta/gui typecheck && pnpm --filter @herta/website typecheck\",\n    \"check\": \"pnpm build && pnpm typecheck:apps && pnpm lint && pnpm test\",\n    \"dev:gui\": \"pnpm --filter @herta/gui dev\",\n    \"build:gui\": \"pnpm --filter @herta/gui build\",\n    \"herta\": \"node packages/cli/dist/bin.js\"\n  },\n  \"devDependencies\": {\n    \"@biomejs/biome\": \"^2.0.0\",\n    \"@types/node\": \"^22.0.0\",\n    \"typescript\": \"^5.7.0\",\n    \"vitest\": \"^3.2.6\"\n  },\n  \"pnpm\": {\n    \"peerDependencyRules\": {\n      \"ignoreMissing\": [\n        \"electron-builder-squirrel-windows\"\n      ]\n    },\n    \"overrides\": {\n      \"@napi-rs/canvas\": \"-\",\n      \"js-yaml\": \"^4.3.2\"\n    }\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+      "show",
+      "4623df120adf99340ce5f7e25ed829466975e3ae:pnpm-lock.yaml"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 190788,
+    "stdout_sha256": "6f03c59fc3e9c329cfd18ca8408965f4998fd9b37b60efe7440f3d458ae1ad24",
+    "stdout": "Large source output retained in pinned Git object; byte count and SHA above.",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+      "show",
+      "4623df120adf99340ce5f7e25ed829466975e3ae:pnpm-workspace.yaml"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 1195,
+    "stdout_sha256": "68b2e696804a0d5efa08f6ad30f8c7983d872c6c2a16b023e45ec3f5943c364d",
+    "stdout": "﻿packages:\n  - \"packages/*\"\n  - \"website\"\n\n# pnpm 10+ blocks dependency build scripts by default and (v11) ignores the\n# package.json \"pnpm\" field entirely — without this allow-list, a plain-pnpm\n# install skips electron's postinstall, the binary never downloads, and\n# `electron-vite dev` dies with \"Error: Electron uninstall\". The corepack-\n# pinned pnpm 9.15 ignores these keys (it runs build scripts by default).\nonlyBuiltDependencies:\n  - electron\n  - esbuild\n  - better-sqlite3\n\n# Home of the setting pnpm 11 reports as ignored in package.json\n# (\"pnpm.peerDependencyRules\" — kept there too for pnpm 9).\npeerDependencyRules:\n  ignoreMissing:\n    - electron-builder-squirrel-windows\n\n# ADR 0038: pdfjs-dist lists @napi-rs/canvas as an optional NATIVE dependency\n# for rendering. Text extraction never uses it, the packaged app ships no\n# node_modules so it could never load it — and its presence in dev only would\n# have hidden that pdfjs needs a DOMMatrix stub (works on every dev machine,\n# throws in every installed copy). \"-\" removes it from the graph. Duplicated in\n# package.json's pnpm.overrides for pnpm 9, which ignores this file's key.\noverrides:\n  \"@napi-rs/canvas\": \"-\"\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+      "show",
+      "4623df120adf99340ce5f7e25ed829466975e3ae:LICENSE"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 2751,
+    "stdout_sha256": "bb1f011bb44b82acdcb078fdfcc2f7b6185c930b69a1ee275b518e79e32aea82",
+    "stdout": "Large source output retained in pinned Git object; byte count and SHA above.",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+      "show",
+      "4623df120adf99340ce5f7e25ed829466975e3ae:mise.toml"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 355,
+    "stdout_sha256": "1a81a1f0f641be7254dc6974e970a0ac07039e7dffb25062063ca0ed157eaa62",
+    "stdout": "# Node 22 LTS. mise reads this ahead of ~/.config/mise/config.toml — a config\n# file outranks the idiomatic .node-version beside it. Node 26 and newer cannot\n# install this workspace: better-sqlite3 11.x ships no prebuilt binary for that\n# ABI and its C++ does not compile against Node 26's V8, so `pnpm install`\n# dies in node-gyp.\n[tools]\nnode = \"22\"\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+      "show",
+      "4623df120adf99340ce5f7e25ed829466975e3ae:.node-version"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 3,
+    "stdout_sha256": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56",
+    "stdout": "22\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+      "show",
+      "4623df120adf99340ce5f7e25ed829466975e3ae:packages/gui/package.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 3911,
+    "stdout_sha256": "65541b38db2e761dd7281d835cd2ac99f57cf625fcc7aabcd054d02df7ae35d7",
+    "stdout": "Large source output retained in pinned Git object; byte count and SHA above.",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+      "show",
+      "4623df120adf99340ce5f7e25ed829466975e3ae:packages/knowledge/package.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 670,
+    "stdout_sha256": "e8f3d77bb957290af29a1246b9fbd9ff6e3c7a35e6bbd186ab0800d06c2e3721",
+    "stdout": "{\n  \"name\": \"@herta/knowledge\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"license\": \"MIT\",\n  \"type\": \"module\",\n  \"sideEffects\": false,\n  \"exports\": {\n    \".\": \"./dist/index.js\",\n    \"./dream-prompt\": \"./dist/dream-prompt.js\"\n  },\n  \"bin\": {\n    \"herta-knowledge\": \"./dist/cli/herta-knowledge-bin.js\"\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"scripts\": {\n    \"build\": \"tsc -b\",\n    \"test\": \"vitest run\"\n  },\n  \"dependencies\": {\n    \"@herta/core\": \"workspace:*\",\n    \"@herta/herta\": \"workspace:*\",\n    \"better-sqlite3\": \"^11.5.0\",\n    \"linkedom\": \"^0.18.0\",\n    \"zod\": \"^3.23.0\"\n  },\n  \"devDependencies\": {\n    \"@types/better-sqlite3\": \"^7.6.0\",\n    \"vitest\": \"^3.2.6\"\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+      "rev-parse",
+      "HEAD^{tree}"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 41,
+    "stdout_sha256": "688d8b8e0ec19131f16b654cba5a4f926a4dc21e19c9f247cd58e860d532dab3",
+    "stdout": "2077f7e79459ff24996ffab2fb67a8dcb52adc88\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "ls-remote",
+      "https://github.com/zai-org/ZCode.git",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 46,
+    "stdout_sha256": "601a3383c6b1e8f7d617a92d2a62704966d9bc5aee8eca4d25702c30aee24255",
+    "stdout": "29628c9acdb81b703bbd4080c207a0e7ce5e276e\tHEAD\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "ls-remote",
+      "https://github.com/deepseek-ai/deepseek-harness.git",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 46,
+    "stdout_sha256": "112a4eca87f68fb14c2247be8b213d40534a9958696b839c613b3fa22797c8a0",
+    "stdout": "639ed015397290b3745d163aafe02ffee4aa3f84\tHEAD\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "ls-remote",
+      "https://github.com/PersonaCLI/Herta.git",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 46,
+    "stdout_sha256": "242dff76cda7c43e4b3dfe379b8e92a8ea340bd700de2670b058f2d4979787a1",
+    "stdout": "a9bdad09e147724512d66d97fbcd3ef27a9f7d6a\tHEAD\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "-p",
+      "JSON.stringify({version:process.version,modules:process.versions.modules,napi:process.versions.napi,platform:process.platform,arch:process.arch})"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 83,
+    "stdout_sha256": "2fd71ce6c55c609ea7fa55ecb3df5a73270ab337396080e277e5d70bf46e5199",
+    "stdout": "{\"version\":\"v24.16.0\",\"modules\":\"137\",\"napi\":\"10\",\"platform\":\"win32\",\"arch\":\"x64\"}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\tools\\package\\bin\\pnpm.cjs",
+      "--version"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 8,
+    "stdout_sha256": "abb3ce293b7ae818d9d22051b093e51415a4de46f6dd529189c4feb458037cb5",
+    "stdout": "10.33.2\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\tools\\bin\\pnpm.mjs",
+      "--version"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 7,
+    "stdout_sha256": "d7c27e39e223d95b17ed257f80e9e4a27633549a13b62a189d3a17d05f9b1816",
+    "stdout": "11.7.0\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 41,
+    "stdout_sha256": "0e4363646acd2e175c3c6bd3c05b48d0a349abce1d88ccb38cece351e6acc89f",
+    "stdout": "b6573b0a12c21748b55efab00a4cf7d681ed7143\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+      "show",
+      "29628c9acdb81b703bbd4080c207a0e7ce5e276e:apps/zcode-cli/package.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "stdout_bytes": 1968,
+    "stdout_sha256": "6c48017b05d8a7215c5bf7dea12f50edd1487bf5b8b22e11c21703d32e8f7742",
+    "stdout": "{\n  \"name\": \"zcode-cli\",\n  \"version\": \"0.16.9\",\n  \"private\": true,\n  \"description\": \"A cross-platform TypeScript Node.js CLI with a small TUI and optional SEA packaging.\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"build\": \"turbo run build\",\n    \"build:sea\": \"pnpm --filter @zcode/cli build:sea\",\n    \"check\": \"pnpm registry:check && turbo run typecheck\",\n    \"clean\": \"turbo run clean\",\n    \"cli:build\": \"pnpm --filter @zcode/cli build\",\n    \"cli:dev\": \"pnpm --filter @zcode/cli dev\",\n    \"cli:upload-sea\": \"pnpm --filter @zcode/cli upload:sea\",\n    \"dev\": \"pnpm --filter @zcode/cli dev\",\n    \"format\": \"oxfmt --write package.json \\\"packages/**/*.json\\\" \\\"packages/**/*.ts\\\" \\\"packages/**/*.mjs\\\"\",\n    \"format:check\": \"oxfmt --check package.json \\\"packages/**/*.json\\\" \\\"packages/**/*.ts\\\" \\\"packages/**/*.mjs\\\"\",\n    \"lint\": \"turbo run lint\",\n    \"lint:count\": \"node scripts/count-ts-lines.mjs\",\n    \"lint:fix\": \"turbo run lint:fix\",\n    \"prompt-trajectory:model-io\": \"pnpm --filter @zcode/prompt-trajectory model-io --\",\n    \"prompt-trajectory:prompt\": \"pnpm --filter @zcode/prompt-trajectory record:prompt --\",\n    \"registry:check\": \"node scripts/generate-bash-command-registry.mjs --check\",\n    \"registry:generate\": \"node scripts/generate-bash-command-registry.mjs\",\n    \"release\": \"node ../../node_modules/release-it/bin/release-it.js --config .release-it.json\",\n    \"release:dry\": \"pnpm run release --release-version\",\n    \"sea\": \"pnpm --filter @zcode/cli sea\",\n    \"typecheck\": \"turbo run typecheck\"\n  },\n  \"dependencies\": {\n    \"dotenv\": \"^17.4.2\",\n    \"proxy-agent\": \"^8.0.1\"\n  },\n  \"devDependencies\": {\n    \"@withfig/autocomplete\": \"2.692.3\",\n    \"@types/node\": \"^24.0.0\",\n    \"c8\": \"^11.0.0\",\n    \"esbuild\": \"^0.25.0\",\n    \"oxfmt\": \"^0.47.0\",\n    \"oxlint\": \"^1.62.0\",\n    \"postject\": \"^1.0.0-alpha.6\",\n    \"tsx\": \"^4.20.0\",\n    \"turbo\": \"^2.4.0\",\n    \"typescript\": \"^5.9.0\"\n  },\n  \"engines\": {\n    \"node\": \"24.14.0\"\n  },\n  \"packageManager\": \"pnpm@10.33.2\"\n}\n",
+    "stderr": "",
+    "note": "Supplemental exact CLI workspace manifest after independent review finding."
+  }
+]
