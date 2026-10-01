@@ -1,0 +1,48 @@
+APICallError2 [AI_APICallError]: P00_SYNTHETIC_FAILURE
+    at E:\Xiadie\Xiadie\.runtime\P00\zcode\source\apps\zcode-cli\packages\cli\dist\zcode.cjs:166173:18
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async postToApi2 (E:\Xiadie\Xiadie\.runtime\P00\zcode\source\apps\zcode-cli\packages\cli\dist\zcode.cjs:166099:32)
+    at async OpenAICompatibleChatLanguageModel.doStream (E:\Xiadie\Xiadie\.runtime\P00\zcode\source\apps\zcode-cli\packages\cli\dist\zcode.cjs:167058:54)
+    at async fn (E:\Xiadie\Xiadie\.runtime\P00\zcode\source\apps\zcode-cli\packages\cli\dist\zcode.cjs:179477:31)
+    at async E:\Xiadie\Xiadie\.runtime\P00\zcode\source\apps\zcode-cli\packages\cli\dist\zcode.cjs:173922:24
+    at async _retryWithExponentialBackoff (E:\Xiadie\Xiadie\.runtime\P00\zcode\source\apps\zcode-cli\packages\cli\dist\zcode.cjs:174192:12)
+    at async streamStep (E:\Xiadie\Xiadie\.runtime\P00\zcode\source\apps\zcode-cli\packages\cli\dist\zcode.cjs:179434:21)
+    at async fn (E:\Xiadie\Xiadie\.runtime\P00\zcode\source\apps\zcode-cli\packages\cli\dist\zcode.cjs:179846:13)
+    at async E:\Xiadie\Xiadie\.runtime\P00\zcode\source\apps\zcode-cli\packages\cli\dist\zcode.cjs:173922:24 {
+  cause: undefined,
+  url: 'http://127.0.0.1:63167/v1/chat/completions',
+  requestBodyValues: {
+    model: '[基元]deepseek-flash',
+    user: undefined,
+    max_tokens: undefined,
+    temperature: undefined,
+    top_p: undefined,
+    frequency_penalty: undefined,
+    presence_penalty: undefined,
+    response_format: undefined,
+    stop: undefined,
+    seed: undefined,
+    reasoning_effort: undefined,
+    verbosity: undefined,
+    messages: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+    tools: undefined,
+    tool_choice: undefined,
+    stream: true,
+    stream_options: { include_usage: true }
+  },
+  statusCode: 400,
+  responseHeaders: {
+    'content-length': '80',
+    'content-type': 'application/json',
+    date: 'Thu, 01 Oct 2026 03:17:32 GMT',
+    server: 'BaseHTTP/0.6 Python/3.12.10'
+  },
+  responseBody: '{"error": {"message": "P00_SYNTHETIC_FAILURE", "type": "invalid_request_error"}}',
+  isRetryable: false,
+  data: {
+    error: { message: 'P00_SYNTHETIC_FAILURE', type: 'invalid_request_error' }
+  },
+  Symbol(vercel.ai.error): true,
+  Symbol(vercel.ai.error.AI_APICallError): true
+}
+Error: Turn execution failed (traceId: 1b906cfc-666d-4968-952b-bd3a00973f82)

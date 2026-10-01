@@ -1,0 +1,33 @@
+{
+  "task_id": "P00-U02",
+  "attempt_id": "20261001-01",
+  "status": "ready_for_review",
+  "execution_kind": "fixed-source pure-function PoC; NOT product/runtime compatibility",
+  "started_at_utc": "2026-10-01T03:09:22Z",
+  "finished_at_utc": "2026-10-01T03:09:22Z",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "spikes/P00/herta-pure/poc.mjs"
+  ],
+  "command_display": "node --experimental-strip-types spikes/P00/herta-pure/poc.mjs",
+  "node_version": "v24.16.0",
+  "exit_code": 0,
+  "stdout": "{\"status\":\"PASS\",\"scope\":\"fixed Herta pure functions via Node 24 TypeScript stripping\",\"scenarios\":{\"config\":{\"defaultAutoDreamEnabled\":false,\"resolvedAutoDreamEnabled\":false,\"syntheticMinEpisodeChars\":10},\"normal\":{\"segmentedEpisodes\":2,\"selectedEpisodes\":2,\"bounds\":[{\"startIndex\":0,\"endIndex\":3,\"settled\":true},{\"startIndex\":3,\"endIndex\":6,\"settled\":true}]},\"failure\":{\"malformedTimestampTailSettled\":false,\"malformedTimestampSelected\":0,\"chromeInflatedSelection\":0},\"recovery\":{\"openTailInitiallySelected\":0,\"resumedTailHashStable\":true,\"selectedAfterResume\":2,\"retentionScoreAfterReactivationExceedsAged\":true},\"retention\":{\"freshScore\":0.8,\"oneHalfLifeScore\":0.4,\"malformedAnchorFinite\":true,\"reactivatedScore\":1.0772588722239782}},\"modelCalls\":0,\"persistenceOrProductRuntime\":false}",
+  "stderr": "",
+  "model_calls": 0,
+  "network_calls": 0,
+  "dependency_install": "NOT_RUN",
+  "upstream_test_suite": "NOT_RUN",
+  "persistent_storage_used": false,
+  "environment_overrides": [],
+  "global_or_user_settings_changed": false,
+  "source_commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+  "source_tree_clean_before_and_after": true,
+  "source_manifest_checks": {
+    "selected_source_files": 4,
+    "selected_test_files": 4,
+    "all_match_accepted_u01_manifest": true
+  }
+}

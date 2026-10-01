@@ -1,0 +1,48 @@
+apps/zcode-cli                           |  WARN  Unsupported engine: wanted: {"node":"24.14.0"} (current: {"node":"v24.16.0","pnpm":"10.33.2"})
+Scope: 17 of 33 workspace projects
+packages/model-option-map build$ tsc
+apps/zcode-cli/packages/dynamic-workflow build$ node scripts/generate-libs.mjs && tsc
+apps/zcode-cli/packages/dynamic-workflow build: generate-libs: wrote 57 lib files for typescript@5.9.3
+packages/model-option-map build: Done
+packages/formal-proof build$ vite build
+packages/formal-proof build: [36mvite v8.0.8 [32mbuilding client environment for production...[36m[39m
+packages/formal-proof build: [2K
+apps/zcode-cli/packages/dynamic-workflow build: Done
+apps/zcode-cli/packages/shared-types build$ tsc
+apps/zcode-cli/packages/shared-types build: Done
+packages/formal-proof build: transforming...✓ 572 modules transformed.
+packages/formal-proof build: rendering chunks...
+packages/formal-proof build: computing gzip size...
+packages/formal-proof build: dist/index.html                  0.42 kB │ gzip:  0.28 kB
+packages/formal-proof build: dist/assets/index-Cbvbq-qX.css   7.21 kB │ gzip:  2.08 kB
+packages/formal-proof build: dist/assets/index-D-OJ9snz.js   76.64 kB │ gzip: 25.80 kB
+packages/formal-proof build: [32m✓ built in 1.46s[39m
+packages/formal-proof build: Done
+.../packages/dynamic-workflow-runtime build$ tsc
+.../packages/dynamic-workflow-runtime build: Done
+packages/provider build$ tsc
+apps/zcode-cli/packages/contracts build$ tsc
+packages/provider build: Done
+apps/zcode-cli/packages/contracts build: Done
+apps/zcode-cli/packages/core build$ tsc
+apps/zcode-cli/packages/adapters build$ tsc
+apps/zcode-cli/packages/adapters build: Done
+apps/zcode-cli/packages/i18n build$ tsc
+apps/zcode-cli/packages/core build: Done
+packages/provider-node build$ tsc
+apps/zcode-cli/packages/i18n build: Done
+apps/zcode-cli/packages/telemetry build$ tsc
+packages/provider-node build: Done
+apps/zcode-cli/packages/telemetry build: Done
+apps/zcode-cli/packages/tui build$ tsc && node scripts/build.mjs
+apps/zcode-cli/packages/bootstrap build$ tsc
+apps/zcode-cli/packages/tui build:   dist\index.js      2.1mb
+apps/zcode-cli/packages/tui build:   dist\index.js.map  4.6mb
+apps/zcode-cli/packages/tui build: Done in 447ms
+apps/zcode-cli/packages/tui build: Done
+apps/zcode-cli/packages/bootstrap build: Done
+apps/zcode-cli/packages/cli build$ node scripts/build.mjs
+apps/zcode-cli/packages/cli build:   dist\zcode.cjs      29.7mb
+apps/zcode-cli/packages/cli build:   dist\zcode.cjs.map  50.1mb
+apps/zcode-cli/packages/cli build: Done in 1682ms
+apps/zcode-cli/packages/cli build: Done

@@ -1,0 +1,19 @@
+# U02 isolated initialize-only runtime. Remove every capability exposed by
+# sdk-minimal that can execute commands or publish optional tool surfaces.
+- id: sandbox-policy
+  config:
+    mode: read-only
+- id: terminal-bash
+  disabled: true
+- id: terminal-pwsh
+  disabled: true
+- id: persistent-bash
+  disabled: true
+- id: persistent-pwsh
+  disabled: true
+- id: mcp-resources
+  disabled: true
+- id: jobs
+  disabled: true
+- id: timer
+  disabled: true

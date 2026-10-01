@@ -1,0 +1,229 @@
+{
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "source_tree_clean": true,
+  "cli_sha256": "69095103dc8f6c865502b1d6da274285ce118da5788afd5a47240216cc88cf09",
+  "runner_sha256": "17b98504866873206dab1d8877e9bb5b0eb7d7a7babaef7947536710e661f17a",
+  "hook_sha256": "87fa1ad8afbee7250524593090632709f4d0d9b169856b1d48dad48e313fc713",
+  "mode": "mock",
+  "passed": true,
+  "recovery_scope": "fresh CLI process and fresh fixture after injected model HTTP400; no same-session recovery claim",
+  "results": [
+    {
+      "case": "normal",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "--cwd",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\normal-1790824649686831600\\fixture",
+        "--mode",
+        "plan",
+        "--disallowed-tools",
+        "Agent,AmendWorkflow,ApplyPatch,AskUserQuestion,Bash,CreateWorkflow,Edit,EnterPlanMode,EvalWorkflowSnippet,ExitPlanMode,GetWorkflowRun,Glob,Grep,ListModels,ListSavedWorkflows,ListWorkflowRuns,NodeRepl,Read,ReadSessionContext,ResolveWorkflowQuestion,RespondToCoordinator,ResumeWorkflowRun,SaveWorkflow,SendMessage,Skill,TaskOutput,TaskStop,TodoRead,TodoWrite,ToolSearch,WebFetch,WebSearch,Write,escalate,submit_result",
+        "--output-format",
+        "stream-json",
+        "--prompt",
+        "This is a synthetic P00 integration test. Read the P00_CONTEXT marker supplied by hooks. Reply exactly P00_ZCODE_OK. No tools."
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\normal-1790824649686831600\\fixture",
+      "exit_code": 0,
+      "elapsed_seconds": 1.375,
+      "request_count": 1,
+      "config_sha256": "bd2bda768e0470828754297a41ebbee069c2e03e7daa59974fe5d989dcb51c97",
+      "personal_fixture_sha256": "ae38aa0243ec2f1ee3dadd2fc11763822f81a4353c16a5a7d394b6631265ed22",
+      "stdout": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-normal-stdout.log",
+        "sha256": "4aa79866872f860260d9906edd2bec3cb39f0b05fcf6ff8c4dd7a04eb78dbc11",
+        "bytes": 13898
+      },
+      "stderr": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-normal-stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "events_last": {
+        "type": "result",
+        "sessionId": "sess_e96e185c-a876-462c-9fe4-d7be4175cc51",
+        "traceId": "c4ba1a3c-a7ab-445d-ac81-57040b3a231b",
+        "turnId": "turn_54008159-0308-4088-a869-e2e0f6d5e674",
+        "response": "P00_ZCODE_OK",
+        "usage": {
+          "source": "provider",
+          "modelRequestCount": 1,
+          "inputTokens": 100,
+          "outputTokens": 5,
+          "totalTokens": 105,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "reasoningTokens": 0,
+          "webFetchRequests": 0,
+          "webSearchRequests": 0
+        },
+        "eventCount": 11,
+        "projection": {
+          "status": "idle",
+          "turnCount": 1,
+          "totalTokenCount": 105,
+          "contextUsed": 105,
+          "contextWindow": 200000
+        }
+      },
+      "marker_present": true,
+      "failure_present": false,
+      "hooks": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-normal-hooks.jsonl",
+        "sha256": "f42b93ff029e35c041d7587283a883e94f87ff626bbad35cd092a8f3aabab2b6"
+      }
+    },
+    {
+      "case": "failure",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "--cwd",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\failure-1790824651123547700\\fixture",
+        "--mode",
+        "plan",
+        "--disallowed-tools",
+        "Agent,AmendWorkflow,ApplyPatch,AskUserQuestion,Bash,CreateWorkflow,Edit,EnterPlanMode,EvalWorkflowSnippet,ExitPlanMode,GetWorkflowRun,Glob,Grep,ListModels,ListSavedWorkflows,ListWorkflowRuns,NodeRepl,Read,ReadSessionContext,ResolveWorkflowQuestion,RespondToCoordinator,ResumeWorkflowRun,SaveWorkflow,SendMessage,Skill,TaskOutput,TaskStop,TodoRead,TodoWrite,ToolSearch,WebFetch,WebSearch,Write,escalate,submit_result",
+        "--output-format",
+        "stream-json",
+        "--prompt",
+        "This is a synthetic P00 integration test. Read the P00_CONTEXT marker supplied by hooks. Reply exactly P00_ZCODE_OK. No tools."
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\failure-1790824651123547700\\fixture",
+      "exit_code": 1,
+      "elapsed_seconds": 1.375,
+      "request_count": 1,
+      "config_sha256": "fbafa66e203dce9134f61392333b833bb4b2fb2583009e0274384fc978661951",
+      "personal_fixture_sha256": "ae38aa0243ec2f1ee3dadd2fc11763822f81a4353c16a5a7d394b6631265ed22",
+      "stdout": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-failure-stdout.log",
+        "sha256": "ac90ca0585164c1380808dac657526567a7d7866620f8b823c1355eead71c77a",
+        "bytes": 11618
+      },
+      "stderr": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-failure-stderr.log",
+        "sha256": "8bbb459163f3015486acd938773863e14d038a839bb954dc1ee603998ddf5758",
+        "bytes": 2427
+      },
+      "events_last": {
+        "eventId": "0d306e66-f368-4f83-9f35-4c4f785066d6",
+        "payload": {
+          "error": {
+            "type": "unknown_error",
+            "attribution": {
+              "source": "provider",
+              "reason": "invalid_request",
+              "errorPhase": "stream",
+              "exceptionKind": "api_call",
+              "providerId": "p00-fixture",
+              "modelId": "[基元]deepseek-flash",
+              "providerKind": "openai-compatible",
+              "transport": "sse",
+              "statusCode": 400,
+              "retryable": false
+            },
+            "code": "invalid_model_request",
+            "message": "Provider rejected the model request.",
+            "detail": "Turn execution failed\nprovider=p00-fixture model=[基元]deepseek-flash request=274ee989-5c22-4b38-b04e-c6301d3677aa reason=invalid_request status=400 retryable=false\nP00_SYNTHETIC_FAILURE",
+            "underlyingErrorMessage": "P00_SYNTHETIC_FAILURE",
+            "stack": "Error: Turn execution failed\n    at createCoreError (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:58122:19)\n    at createTurnFailureError (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:511980:10)\n    at E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:527069:25\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async AgentRuntime.runRuntimeCommand (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:518885:24)\n    at async AgentRuntime.drainRuntimeCommandQueue (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:518787:7)"
+          },
+          "turnPhase": "processing_input"
+        },
+        "seq": 10,
+        "sessionId": "sess_8ccf7e40-a6c9-4f97-b672-f0cf4fe9a16a",
+        "timestamp": 1790824652501,
+        "traceId": "1b906cfc-666d-4968-952b-bd3a00973f82",
+        "turnId": "turn_2a1719c0-3149-45da-aad6-209091a8ab0f",
+        "type": "turn.failed"
+      },
+      "marker_present": false,
+      "failure_present": true,
+      "hooks": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-failure-hooks.jsonl",
+        "sha256": "22c48ef9b61aa224b6b7b668d0a62584aa1b618089d98164e512d9175fb418a2"
+      }
+    },
+    {
+      "case": "recovery",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "--cwd",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\recovery-1790824652547273300\\fixture",
+        "--mode",
+        "plan",
+        "--disallowed-tools",
+        "Agent,AmendWorkflow,ApplyPatch,AskUserQuestion,Bash,CreateWorkflow,Edit,EnterPlanMode,EvalWorkflowSnippet,ExitPlanMode,GetWorkflowRun,Glob,Grep,ListModels,ListSavedWorkflows,ListWorkflowRuns,NodeRepl,Read,ReadSessionContext,ResolveWorkflowQuestion,RespondToCoordinator,ResumeWorkflowRun,SaveWorkflow,SendMessage,Skill,TaskOutput,TaskStop,TodoRead,TodoWrite,ToolSearch,WebFetch,WebSearch,Write,escalate,submit_result",
+        "--output-format",
+        "stream-json",
+        "--prompt",
+        "This is a synthetic P00 integration test. Read the P00_CONTEXT marker supplied by hooks. Reply exactly P00_ZCODE_OK. No tools."
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\recovery-1790824652547273300\\fixture",
+      "exit_code": 0,
+      "elapsed_seconds": 1.375,
+      "request_count": 1,
+      "config_sha256": "ca63663609bc2b110b18f32581f2e387b031e6822d2005fff4dc75930f3e7f7f",
+      "personal_fixture_sha256": "ae38aa0243ec2f1ee3dadd2fc11763822f81a4353c16a5a7d394b6631265ed22",
+      "stdout": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-recovery-stdout.log",
+        "sha256": "13d8c647dcc44c44f5964c36e43ce2d53fca0f8151515713b8a9bd66c8328a34",
+        "bytes": 13915
+      },
+      "stderr": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-recovery-stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "events_last": {
+        "type": "result",
+        "sessionId": "sess_d934ac2b-1f83-4686-9904-821ca24525a0",
+        "traceId": "51dc3ef2-344b-43c1-b8a2-491e53cab8a0",
+        "turnId": "turn_ef24f6ec-d8d0-493c-9998-217e47535273",
+        "response": "P00_ZCODE_OK",
+        "usage": {
+          "source": "provider",
+          "modelRequestCount": 1,
+          "inputTokens": 100,
+          "outputTokens": 5,
+          "totalTokens": 105,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "reasoningTokens": 0,
+          "webFetchRequests": 0,
+          "webSearchRequests": 0
+        },
+        "eventCount": 11,
+        "projection": {
+          "status": "idle",
+          "turnCount": 1,
+          "totalTokenCount": 105,
+          "contextUsed": 105,
+          "contextWindow": 200000
+        }
+      },
+      "marker_present": true,
+      "failure_present": false,
+      "hooks": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-recovery-hooks.jsonl",
+        "sha256": "35327ec2e300ebd6beaaa96805be978adc644196f2c2bee74bfadad35067f719"
+      }
+    }
+  ],
+  "model_calls": 0,
+  "request_count": 3,
+  "request_artifact": {
+    "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-requests.json",
+    "sha256": "56522ad599489a4358b2742a94b98a5be81488294e99a908df845aca4a076f16"
+  },
+  "cost": "0; mock only",
+  "isolation": {
+    "HOME": "omitted",
+    "USERPROFILE": "per-case synthetic home",
+    "cwd": "per-case fixture with own Git root",
+    "real_credential_in_child": false,
+    "real_credential_persisted": false
+  }
+}

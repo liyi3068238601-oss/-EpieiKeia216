@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "task_id": "P00-U02",
+  "attempt_id": "20261001-01",
+  "reviewed_at_utc": "2026-10-01T03:46:02Z",
+  "review_scope": "只读复核总 result.md 的状态与事实分类，并与其 summary/review 对照；未重审完整源码或全量上游报告。",
+  "result_binding": {
+    "path": "evidence/P00-U02/20261001-01/result.md",
+    "sha256": "c61abcc2add1132b6a31ba29ff107ab47df67c00ef91cfb8982f4f3efaf49809",
+    "bytes": 4224,
+    "status_line": 3,
+    "status": "ready_for_review",
+    "p01_open": false
+  },
+  "review_artifacts": {
+    "pure_components": {
+      "path": "evidence/P00-U02/20261001-01/review-pure-components.json",
+      "sha256": "c2f95d1c90ee35ac3b7cda35e8b326beffa87e23601e8846f12e241f71f9a88f",
+      "status": "accepted_component_only",
+      "finding_count": 0,
+      "binding_count": 15,
+      "current_binding_matches": 15,
+      "scope": "Herta fixed pure function PoC and DSH fixed transport with mock peer; actual independent rerun exit 0"
+    },
+    "dsh_runtime": {
+      "path": "evidence/P00-U02/20261001-01/review-dsh-runtime.json",
+      "sha256": "90e0fb2547bbbe23087d4b211ea9b5fbae287252f298347e1fa783f434618753",
+      "status": "accepted_component_only",
+      "finding_count": 0,
+      "binding_count": 5,
+      "current_binding_matches": 5,
+      "reviewer_executions": [
+        {
+          "case": "normal",
+          "exit_code": 0
+        },
+        {
+          "case": "failure",
+          "exit_code": 0
+        },
+        {
+          "case": "recovery",
+          "exit_code": 0
+        }
+      ],
+      "model_calls": 0,
+      "scope": "Actual SDK source-fallback initialize and close; normal/bad route/fresh client recovery. No prompt, model, permission execution or process-tree cancellation claim."
+    },
+    "zcode_spike": {
+      "path": "evidence/P00-U02/20261001-01/review-zcode-spike.json",
+      "sha256": "0e8b28abf36d3b92b612dee00061d2d28c4aee6c0f5d49d34ecb775c72e57470",
+      "status": "ready_for_review",
+      "disposition": "ready for primary decision with documented transport and isolation limits",
+      "product_adoption_approved": false,
+      "reviewed_artifact_count": 13,
+      "selected_summary_binding_checks": {
+        "zcode-mock-summary.json": {
+          "expected_sha256": "4bea4b5c6fb7fb3a41eac153d47c4db3d64b53b1f8e88dcd4d56f7bf38424e2e",
+          "actual_sha256": "4bea4b5c6fb7fb3a41eac153d47c4db3d64b53b1f8e88dcd4d56f7bf38424e2e",
+          "match": true
+        },
+        "zcode-real-summary.json": {
+          "expected_sha256": "ca064d1a4a79ef685cdf2f7192a186fc565504fc5826eac314f2464bebc656dd",
+          "actual_sha256": "ca064d1a4a79ef685cdf2f7192a186fc565504fc5826eac314f2464bebc656dd",
+          "match": true
+        }
+      },
+      "security_and_isolation_items": [
+        {
+          "id": "ZCODE-U02-HTTP-BEARER",
+          "status": "known_residual_risk"
+        },
+        {
+          "id": "ZCODE-U02-OS-BOUNDARY",
+          "status": "scope_limitation"
+        },
+        {
+          "id": "ZCODE-U02-CONFIG-HASHES",
+          "status": "evidence_only_not_a_preflight_gate"
+        }
+      ]
+    }
+  },
+  "fact_classification_checks": [
+    {
+      "claim": "Herta and DSH transport are accepted component-only pure/mock evidence; no product or persistent-storage recovery is claimed.",
+      "result": "consistent",
+      "references": [
+        "evidence/P00-U02/20261001-01/result.md:11-12,26",
+        "evidence/P00-U02/20261001-01/review-pure-components.json"
+      ]
+    },
+    {
+      "claim": "DSH SDK runs demonstrate source-fallback initialize/close and caught route failure only; no prompt, model, or business-success evidence.",
+      "result": "consistent",
+      "references": [
+        "evidence/P00-U02/20261001-01/result.md:13,26",
+        "evidence/P00-U02/20261001-01/dsh-runtime-report.md:3",
+        "evidence/P00-U02/20261001-01/review-dsh-runtime.json"
+      ]
+    },
+    {
+      "claim": "ZCode mock is normal/failure/fresh-process-recovery with exit 0/1/0 and zero real model calls; recovery is not same-session.",
+      "result": "consistent",
+      "references": [
+        "evidence/P00-U02/20261001-01/result.md:14,26",
+        "evidence/P00-U02/20261001-01/zcode-mock-summary.json",
+        "evidence/P00-U02/20261001-01/review-zcode-spike.json"
+      ]
+    },
+    {
+      "claim": "ZCode real evidence is one normal HTTP 200 CLI success using the user-selected 7877 alias, exact marker, no tools field, and 2474 reported tokens; gateway monetary cost was not returned.",
+      "result": "consistent",
+      "references": [
+        "evidence/P00-U02/20261001-01/result.md:15,20,24",
+        "evidence/P00-U02/20261001-01/zcode-real-summary.json",
+        "evidence/P00-U02/20261001-01/review-zcode-spike.json"
+      ]
+    },
+    {
+      "claim": "Windows distribution package and complete product are NOT_RUN; P01 remains closed, and G00 remains the later admission gate.",
+      "result": "consistent",
+      "references": [
+        "evidence/P00-U02/20261001-01/result.md:3,16,32",
+        "docs/adr/P00-reuse.md:3"
+      ]
+    }
+  ],
+  "recovery_scope": {
+    "herta": "pure-function input recomputation and stable episode hash only; not persistence/ledger recovery",
+    "dsh_transport": "in-memory mock transport protocol error/recovery only",
+    "dsh_sdk": "fresh-client/initialize-close recovery only; prompt/model/business path NOT_RUN",
+    "zcode": "mock recovery uses a new CLI process and fixture; real path has one normal sample only",
+    "same_session_or_durable_recovery_claimed": false
+  },
+  "limitations": [
+    "ZCode review artifact remains ready_for_review and does not approve product adoption; HTTP bearer transport is plaintext and the reviewer records this residual risk.",
+    "ZCode real evidence is one normal sample; no real failure/recovery sequence is demonstrated.",
+    "Windows distribution package/full product validation is NOT_RUN; no P01 framework is created or authorized by this review.",
+    "The SDK initialize/close evidence does not demonstrate prompt execution, model response, or business success.",
+    "Gateway billing was not returned; do not call the real sample free or estimate cost from a public price list."
+  ],
+  "overall_spike_recommendation": {
+    "recommendation": "accept_as_bounded_P00_U02_spike",
+    "meaning": "Accept only the scoped isolated spike evidence and reuse-route recommendation after the coordinator records its decision; do not infer product readiness or Windows package acceptance.",
+    "p01_open": false,
+    "g00_remains_later_gate": true
+  },
+  "supporting_artifacts": [
+    {
+      "path": "evidence/P00-U02/20261001-01/herta-result.md",
+      "sha256": "3d23fa51fee7d469fad554d453482640cb6c72752b25afbb60bad660ad382425",
+      "bytes": 2594
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/herta-run.json",
+      "sha256": "e1a80115d5bfbfa04f0a0f6e714eee025260da26fb74505166d044cf5b4ede01",
+      "bytes": 1933
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/protocol-report.md",
+      "sha256": "11aa11b63dd49fb52c8fff3f28a5da5d44df21f7b97c4c682b74a73945cce838",
+      "bytes": 2502
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/protocol-run.json",
+      "sha256": "5dfae6914942aa998b49689423fbbdcc0f3fbee403015d7cb909d8cbbac4fb8f",
+      "bytes": 5648
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/dsh-runtime-report.md",
+      "sha256": "48e67b6dcbaff5a5170e8f3dc0cdf510226daa309ac8d41c8241bfab51377bf7",
+      "bytes": 6602
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/dsh-runtime-run.json",
+      "sha256": "aa521907b2dfd51908ed2e522e7372414d67ac13b209f4f5c4b121eb27cab3b1",
+      "bytes": 6898
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/review-pure-components.json",
+      "sha256": "c2f95d1c90ee35ac3b7cda35e8b326beffa87e23601e8846f12e241f71f9a88f",
+      "bytes": 3227
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/review-dsh-runtime.json",
+      "sha256": "90e0fb2547bbbe23087d4b211ea9b5fbae287252f298347e1fa783f434618753",
+      "bytes": 3861
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/review-zcode-spike.json",
+      "sha256": "0e8b28abf36d3b92b612dee00061d2d28c4aee6c0f5d49d34ecb775c72e57470",
+      "bytes": 9307
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/zcode-result.md",
+      "sha256": "12cbffcb8bb5b8d5c1e46de4a55f208f1f4ab78b6144aedd603963730aa3f9d9",
+      "bytes": 3729
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/zcode-mock-summary.json",
+      "sha256": "4bea4b5c6fb7fb3a41eac153d47c4db3d64b53b1f8e88dcd4d56f7bf38424e2e",
+      "bytes": 11397
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/zcode-real-summary.json",
+      "sha256": "ca064d1a4a79ef685cdf2f7192a186fc565504fc5826eac314f2464bebc656dd",
+      "bytes": 4064
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/model-call-ledger.json",
+      "sha256": "2bf8ed7fac0136a94054fcd861b312f1583b6b37ec5505a9deb0ff52df817600",
+      "bytes": 128
+    },
+    {
+      "path": "docs/adr/P00-reuse.md",
+      "sha256": "f0017ae6ac3d367399c8b560214ee6696d368bdc62ce07c01c4b39722a1e4072",
+      "bytes": 3389
+    }
+  ],
+  "actions": {
+    "full_source_review": "NOT_RUN",
+    "model_calls": 0,
+    "dependency_install": "NOT_RUN",
+    "result_or_status_modified": false,
+    "files_written": [
+      "evidence/P00-U02/20261001-01/review-final.json"
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+native/system/packages/darwin-arm64      | [WARN] Unsupported platform: wanted: {"cpu":["arm64"],"os":["darwin"],"libc":["any"]} (current: {"os":"win32","cpu":"x64","libc":"unknown"})
+native/system/packages/darwin-x64        | [WARN] Unsupported platform: wanted: {"cpu":["x64"],"os":["darwin"],"libc":["any"]} (current: {"os":"win32","cpu":"x64","libc":"unknown"})
+native/system/packages/linux-arm64       | [WARN] Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["any"]} (current: {"os":"win32","cpu":"x64","libc":"unknown"})
+native/system/packages/linux-x64         | [WARN] Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["any"]} (current: {"os":"win32","cpu":"x64","libc":"unknown"})
+Scope: 306 of 339 workspace projects
+.                                        | [WARN] There are cyclic workspace dependencies: E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\sdk\client, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\apps\cli; E:\Xiadie\Xiadie\.runtime\P00\dsh\source\vendor\cordis, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\vendor\include; E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\subagent\subagent, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\schedule\schedule, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\api\session-controller, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\test-support\client-runtime, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\bundle\base, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\subagent\subagent-fork-in-process, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\subagent\subagent-in-process-driver; E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\preset\agent-preset-registry, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\core\agent-loop, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\llm\llm-deepseek-api-key, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\llm\llm-deepseek, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\llm\plugin-package-inventory-deepseek; E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\settings\settings, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\core\agent-default-model; E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\session\session-persistence-jsonl, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\session\session-format-catalog, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\compaction\compaction-image-offload, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\compaction\compaction-basic, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\llm\llm-retry; E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\client\file-upload, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\api\remotes, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\client\ui-plugin-manager, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\client\ui-sidebar, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\client\ui-workspace, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\client\ui-conversation; E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\sandbox\sandbox-local, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\sandbox\sandbox-windows-acl; E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\subagent\subagent-spawn-in-process, E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\subagent\tool-subagent
+? Verifying lockfile against supply-chain policies (1685 entries)...
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+.                                        |    +1127 ++++++++++++++++++++++++++++
+Progress: resolved 1127, reused 0, downloaded 0, added 0
+
+   ╭─────────────────────────────────────────╮
+   │                                         │
+   │   Update available! 11.7.0 → 12.8.1.    │
+   │   Changelog: https://pnpm.io/v/12.8.1   │
+   │    To update, run: pnpm self-update     │
+   │                                         │
+   ╰─────────────────────────────────────────╯
+
+Progress: resolved 1127, reused 0, downloaded 59, added 58
+Progress: resolved 1127, reused 0, downloaded 175, added 118
+Progress: resolved 1127, reused 0, downloaded 262, added 192
+Progress: resolved 1127, reused 0, downloaded 359, added 244
+Progress: resolved 1127, reused 0, downloaded 468, added 311
+Progress: resolved 1127, reused 0, downloaded 580, added 337
+Progress: resolved 1127, reused 0, downloaded 682, added 397
+Progress: resolved 1127, reused 0, downloaded 790, added 457
+Progress: resolved 1127, reused 0, downloaded 898, added 484
+Progress: resolved 1127, reused 0, downloaded 1006, added 521
+Progress: resolved 1127, reused 0, downloaded 1087, added 583
+Progress: resolved 1127, reused 0, downloaded 1115, added 613
+Progress: resolved 1127, reused 0, downloaded 1120, added 710
+Progress: resolved 1127, reused 0, downloaded 1120, added 753
+Progress: resolved 1127, reused 0, downloaded 1121, added 810
+Progress: resolved 1127, reused 0, downloaded 1122, added 944
+Progress: resolved 1127, reused 0, downloaded 1122, added 1072
+Progress: resolved 1127, reused 0, downloaded 1122, added 1123
+Progress: resolved 1127, reused 0, downloaded 1122, added 1125
+Progress: resolved 1127, reused 0, downloaded 1122, added 1126
+Progress: resolved 1127, reused 0, downloaded 1122, added 1127
+Progress: resolved 1127, reused 0, downloaded 1122, added 1127, done
+[WARN] Request took 14151ms: https://registry.npmjs.org/es-toolkit
+✓ Lockfile passes supply-chain policies (1685 entries in 24s)
+[WARN] Failed to create bin at E:\Xiadie\Xiadie\.runtime\P00\dsh\source\packages\sdk\client\node_modules\.bin\dsh. ENOENT: no such file or directory, stat 'E:\Xiadie\Xiadie\.runtime\P00\dsh\source\apps\cli\lib\bin.js.EXE'
+Done in 37s using pnpm v11.7.0

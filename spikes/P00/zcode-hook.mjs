@@ -1,0 +1,10 @@
+import { appendFile, readFile } from 'node:fs/promises';
+const chunks = [];
+for await (const chunk of process.stdin) chunks.push(chunk);
+const input = JSON.parse(Buffer.concat(chunks).toString('utf8'));
+const transcript = input.transcriptPath ?? input.transcript_path;
+let transcriptBytes = null;
+if (transcript) transcriptBytes = (await readFile(transcript)).length;
+await appendFile(process.argv[2], JSON.stringify({ input, transcriptBytes }) + '\n');
+const event = input.hookEventName ?? input.hook_event_name;
+process.stdout.write(JSON.stringify({ hookSpecificOutput: { hookEventName: event, additionalContext: 'P00_CONTEXT: synthetic fixture only; requested marker P00_ZCODE_OK.' } }));

@@ -1,0 +1,81 @@
+{
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "runtime_root": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode",
+  "node_version": "v24.16.0",
+  "pnpm_version": "10.33.2",
+  "environment": {
+    "inherited_allowlist": [
+      "SYSTEMROOT",
+      "WINDIR",
+      "COMSPEC",
+      "PATHEXT",
+      "NUMBER_OF_PROCESSORS",
+      "PROCESSOR_ARCHITECTURE"
+    ],
+    "HOME": "omitted",
+    "USERPROFILE": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\home",
+    "ZCODE_DATA_BASE_DIR": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\data",
+    "real_credentials": "omitted"
+  },
+  "commands": [
+    {
+      "command": [
+        "git",
+        "clone",
+        "--no-hardlinks",
+        "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0,
+      "log": "evidence\\P00-U02\\20261001-01\\zcode-clone.log",
+      "log_sha256": "df335c4ad772dd39cb2f5581bb4fe8c4c7b219da7847d7fa207eb560114e3ef1"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\tools\\package\\bin\\pnpm.cjs",
+        "--config.manage-package-manager-versions=false",
+        "--filter",
+        "@zcode/cli...",
+        "install",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--store-dir",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\store",
+        "--reporter",
+        "append-only"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source",
+      "exit_code": 0,
+      "log": "evidence\\P00-U02\\20261001-01\\zcode-install.log",
+      "log_sha256": "5003040ef79a2ac95e3a2bb54a57e797a98f86752a43033926bb3f70e031968a"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\tools\\package\\bin\\pnpm.cjs",
+        "--config.manage-package-manager-versions=false",
+        "--filter",
+        "@zcode/cli...",
+        "--workspace-concurrency=2",
+        "build"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source",
+      "exit_code": 0,
+      "log": "evidence\\P00-U02\\20261001-01\\zcode-build.log",
+      "log_sha256": "0097f438ae6c913c535c36f5c38e285fbafcf0bded0b36b4e89cb42d065961c0"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "--version"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source",
+      "exit_code": 0,
+      "log": "evidence\\P00-U02\\20261001-01\\zcode-version.log",
+      "log_sha256": "5dd0ca386ae83caaa4d32488cec1f155c8a4caae321e1689b6ffba3c45bd9b61"
+    }
+  ]
+}

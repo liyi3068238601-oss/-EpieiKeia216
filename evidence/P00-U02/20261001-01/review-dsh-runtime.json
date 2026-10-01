@@ -1,0 +1,76 @@
+{
+  "task_id": "P00-U02",
+  "reviewer": "root",
+  "status": "accepted_component_only",
+  "source_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+  "source_tree_clean_before_after": true,
+  "bindings": [
+    {
+      "path": "spikes/P00/dsh-runtime/init-only.ts",
+      "sha256": "bd2c1e44301111e7c043275d1026c2a574f195aac126574295d18702736594d9"
+    },
+    {
+      "path": "spikes/P00/dsh-runtime/disable-tools.cordis.patch.yml",
+      "sha256": "7fe10b94d6b176ecf10c697cb24d382e814d735accc94f3ef55acff25aafee5a"
+    },
+    {
+      "path": "spikes/P00/dsh-runtime/package.json",
+      "sha256": "609158e6c5fbc237939fa3ddf7faab80ab690bdc0c8d584414a885130103c4e8"
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/dsh-runtime-report.md",
+      "sha256": "48e67b6dcbaff5a5170e8f3dc0cdf510226daa309ac8d41c8241bfab51377bf7"
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/dsh-runtime-config.yaml",
+      "sha256": "a8edd0b4b54768cfb39983a73395a590aa7171a32f7fd1314cfec6fe6954dea4"
+    }
+  ],
+  "executions": [
+    {
+      "case": "normal",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx/esm",
+        "E:\\Xiadie\\Xiadie\\spikes\\P00\\dsh-runtime\\init-only.ts",
+        "good"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"initialize_ok\",\"result\":{\"serverInfo\":{\"name\":\"deepseek-harness-sdk-runtime\",\"version\":\"0.0.1\"}},\"route\":{\"provider\":\"deepseek-official\",\"model\":\"deepseek-v4-flash\"},\"profile\":\"sdk-minimal\",\"modelCall\":\"NOT_SENT\",\"prompt\":\"NOT_SENT\",\"isolatedHome\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P00\\\\dsh\\\\dsh-home\",\"isolatedWorkspace\":\"E:\\\\Xiadie\\\\Xiadie\\\\spikes\\\\P00\\\\dsh-runtime\\\\workspace\",\"homeVariablePresent\":false,\"fakeCredentialUsed\":true,\"apiEndpoint\":\"http://127.0.0.1:9\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "failure",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx/esm",
+        "E:\\Xiadie\\Xiadie\\spikes\\P00\\dsh-runtime\\init-only.ts",
+        "bad"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"expected_initialize_failure\",\"route\":{\"provider\":\"p00-u02-missing-provider\",\"model\":\"p00-u02-invalid-model\"},\"errorName\":\"JsonRpcResponseError\",\"errorMessage\":\"no adapter registered for provider \\\"p00-u02-missing-provider\\\"\",\"profile\":\"sdk-minimal\",\"modelCall\":\"NOT_SENT\",\"prompt\":\"NOT_SENT\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "recovery",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx/esm",
+        "E:\\Xiadie\\Xiadie\\spikes\\P00\\dsh-runtime\\init-only.ts",
+        "good"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"initialize_ok\",\"result\":{\"serverInfo\":{\"name\":\"deepseek-harness-sdk-runtime\",\"version\":\"0.0.1\"}},\"route\":{\"provider\":\"deepseek-official\",\"model\":\"deepseek-v4-flash\"},\"profile\":\"sdk-minimal\",\"modelCall\":\"NOT_SENT\",\"prompt\":\"NOT_SENT\",\"isolatedHome\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P00\\\\dsh\\\\dsh-home\",\"isolatedWorkspace\":\"E:\\\\Xiadie\\\\Xiadie\\\\spikes\\\\P00\\\\dsh-runtime\\\\workspace\",\"homeVariablePresent\":false,\"fakeCredentialUsed\":true,\"apiEndpoint\":\"http://127.0.0.1:9\"}\n",
+      "stderr": ""
+    }
+  ],
+  "model_calls": 0,
+  "scope": "Actual SDK source-fallback initialize and close; normal/bad route/fresh client recovery. No prompt, model, permission execution or process-tree cancellation claim.",
+  "findings": []
+}

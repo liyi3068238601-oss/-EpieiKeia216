@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "task": "P00-U02",
+  "status": "ready_for_review",
+  "accepted": false,
+  "observed_date": "2026-10-01",
+  "source": {
+    "repository": "https://github.com/deepseek-ai/deepseek-harness.git",
+    "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+    "checkout_path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+    "isolated_clone_path": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source",
+    "clone_method": "git clone --no-hardlinks",
+    "clone_worktree": "clean_detached_head"
+  },
+  "source_files": [
+    {
+      "path": "package.json",
+      "sha256": "a303ffb8994be8e7a874bc887db1abd47a77a6e08872e65f1d65281f43eab91b",
+      "line_refs": [
+        "7-9",
+        "21-27"
+      ],
+      "supports": "Pinned package manager, Node engine, and build scripts."
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "80fe05eae33582ae26839afd05f1965f9b0e4be11034ddf9797af6085d5ba9b1",
+      "line_refs": [
+        "1"
+      ],
+      "supports": "Frozen workspace dependency lock used by install."
+    },
+    {
+      "path": "apps/cli/src/bin.ts",
+      "sha256": "7081b6503a635eb6c6d9c3e4619e740afe157252b246aa17acbf1a1ceec54c88",
+      "line_refs": [
+        "12-28",
+        "77"
+      ],
+      "supports": "CLI source entry and runCli dispatch."
+    },
+    {
+      "path": "apps/cli/src/sdk-source.cordis.patch.yml",
+      "sha256": "f62a5f47337fe3d241d650db43bd93c867fbec9d32d7a5cc9c89c1be6bbcddee",
+      "line_refs": [
+        "1-5"
+      ],
+      "supports": "Source CLI compatibility patch for typert-loader."
+    },
+    {
+      "path": "apps/cli/tsconfig.json",
+      "sha256": "ef84f62faf08d5bbb231e1e0af7ca6b8ff5fda934f30d48e2968110769057c05",
+      "line_refs": [
+        "1-18"
+      ],
+      "supports": "CLI tsconfig used by TSX source fallback."
+    },
+    {
+      "path": "tsconfig.base.json",
+      "sha256": "4fc5b3db05aab29ec95258d045900f95b6123c1f951c86c342a04dfd32e220c5",
+      "line_refs": [
+        "316-317",
+        "447"
+      ],
+      "supports": "Source path aliases for SDK client, protocol, and sdk-minimal."
+    },
+    {
+      "path": "packages/sdk/client/src/launch.ts",
+      "sha256": "d7187537945618d6190bf98ab5893de9a1a059e4e2ec4d3778386eaffe5148af",
+      "line_refs": [
+        "55-65",
+        "91-108",
+        "128-149"
+      ],
+      "supports": "Manifest version check, source fallback files/loader, and dshBin override branch."
+    },
+    {
+      "path": "packages/sdk/client/src/client.ts",
+      "sha256": "162a928f45f34acb017e98030392c0825e87f23ceb7533ccc3d25784a79808ad",
+      "line_refs": [
+        "201-216",
+        "276-282",
+        "291-294",
+        "390-407"
+      ],
+      "supports": "Subprocess start, initialize validation, prompt request, and close/teardown."
+    },
+    {
+      "path": "packages/sdk/client/src/types.ts",
+      "sha256": "c0aea2b90cccdeb26aaa3840cfd403f082dbc5eae060c4bbfb35d45a5585a0fc",
+      "line_refs": [
+        "34-43"
+      ],
+      "supports": "env replaces complete child environment when explicitly provided."
+    },
+    {
+      "path": "packages/sdk/protocol/src/types.ts",
+      "sha256": "9a9ab6172ff2a45b7a07adf75611aa8f42ae1bb98bd4ad598d8bdc5f618053d7",
+      "line_refs": [
+        "30-42",
+        "112-118"
+      ],
+      "supports": "Initialize returns serverInfo; session prompt is a separate request."
+    },
+    {
+      "path": "packages/sdk/server/src/server.ts",
+      "sha256": "489ad060e5ca17901ac5336f9b7871b7397d1476e1258f69b0f3b22dba6f4238",
+      "line_refs": [
+        "137-194",
+        "261-294"
+      ],
+      "supports": "Initialize resolves route and returns identity; first prompt lazily creates session."
+    },
+    {
+      "path": "packages/sdk/server/tests/server.spec.ts",
+      "sha256": "3d230bfe2c694f88da83f7266e47314aed1991cac66f5f7d5fc3e0ee6b65734a",
+      "line_refs": [
+        "112-157"
+      ],
+      "supports": "Mock HTTP call is asserted after session/prompt, not initialize."
+    },
+    {
+      "path": "packages/sdk/client/tests/launch.spec.ts",
+      "sha256": "3385df311f4ee39e33978098b7f1c7b2b6964664dc44b5f03eec3b64d9c1c08e",
+      "line_refs": [
+        "80-109"
+      ],
+      "supports": "Source fallback test asserts tsx loader, patch, and TSX_TSCONFIG_PATH."
+    },
+    {
+      "path": "packages/bundle/sdk-minimal/cordis.patch.yml",
+      "sha256": "a2609189fafaaed862ad9dabdc1c4dd59ab6077b530535e901a32fc23559ca2f",
+      "line_refs": [
+        "1-158"
+      ],
+      "supports": "Complete sdk-minimal profile rows and default capabilities."
+    },
+    {
+      "path": "packages/bundle/sdk-minimal/README.md",
+      "sha256": "2b2cdfc28cd6edadd1f85ad2a7d213c6695442145b27b094a04eb51dfa87de6d",
+      "line_refs": [
+        "12"
+      ],
+      "supports": "Profile exclusions and default danger-full-access warning."
+    },
+    {
+      "path": "packages/bundle/sdk-minimal/tests/sdk-minimal.spec.ts",
+      "sha256": "f2d3e33d2b7c9049fd6b018f135e8a1c3befe5ab52af600e0fbd6cb58786bd8d",
+      "line_refs": [
+        "30-85"
+      ],
+      "supports": "Exact profile rows, disabled platform terminals, and empty agent list."
+    },
+    {
+      "path": "packages/llm/llm-deepseek/src/config.ts",
+      "sha256": "73f802bf72663ace689782db8a4031791864e9a97c995de620ac4c9ce683a30b",
+      "line_refs": [
+        "106-109",
+        "287-297"
+      ],
+      "supports": "DEEPSEEK_BASE_URL environment lookup and validation."
+    },
+    {
+      "path": "packages/sandbox/sandbox-policy/README.md",
+      "sha256": "950fc77d728ccbfae7721c6d5d5675ce99483d48aba0f3316b86f44128ed6523",
+      "line_refs": [
+        "36-48"
+      ],
+      "supports": "read-only is a validated deployment sandbox mode."
+    }
+  ],
+  "spike_and_evidence_artifacts": [
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\dsh-runtime-report.md",
+      "sha256": "48e67b6dcbaff5a5170e8f3dc0cdf510226daa309ac8d41c8241bfab51377bf7",
+      "size_bytes": 6602
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\dsh-runtime-config.yaml",
+      "sha256": "a8edd0b4b54768cfb39983a73395a590aa7171a32f7fd1314cfec6fe6954dea4",
+      "size_bytes": 5038
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\dsh-runtime-config.stderr.log",
+      "sha256": "a0dde16199a9107e3814a2988ad0ca5a1f5df1eb7a3124a665b1c1689354dbe1",
+      "size_bytes": 129
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\dsh-runtime-pnpm-install.log",
+      "sha256": "daa65becb2ba18fe03b4ab3930a9d66c327d79bb74f2fb513d4fd3bf4d4b9a3c",
+      "size_bytes": 5899
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\dsh-runtime-init-bad.stdout.log",
+      "sha256": "e8a8dc15d151454e3feb2e502a0f0650715efce0f05d7e8edfe49d8d7fb61c94",
+      "size_bytes": 304
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\dsh-runtime-init-bad.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\dsh-runtime-init-good.stdout.log",
+      "sha256": "f768c77b40c0c7cc6cf317527640e9acd9114b044ee3064253a128d5935f622a",
+      "size_bytes": 478
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\dsh-runtime-init-good.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "spikes\\P00\\dsh-runtime\\disable-tools.cordis.patch.yml",
+      "sha256": "7fe10b94d6b176ecf10c697cb24d382e814d735accc94f3ef55acff25aafee5a",
+      "size_bytes": 447
+    },
+    {
+      "path": "spikes\\P00\\dsh-runtime\\init-only.ts",
+      "sha256": "bd2c1e44301111e7c043275d1026c2a574f195aac126574295d18702736594d9",
+      "size_bytes": 2819
+    },
+    {
+      "path": "spikes\\P00\\dsh-runtime\\package.json",
+      "sha256": "609158e6c5fbc237939fa3ddf7faab80ab690bdc0c8d584414a885130103c4e8",
+      "size_bytes": 42
+    }
+  ]
+}

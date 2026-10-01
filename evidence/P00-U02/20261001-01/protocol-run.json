@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "task": "P00-U02 fixed DSH JSON-RPC line transport mock PoC",
+  "status": "ready_for_review",
+  "accepted": false,
+  "source": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "url": "https://github.com/deepseek-ai/deepseek-harness",
+    "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+    "checkout": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015",
+    "working_tree": "clean detached HEAD",
+    "files": [
+      {
+        "path": "packages/sdk/protocol/src/transport.ts",
+        "line_ranges": [
+          "1-279"
+        ],
+        "sha256": "7aed4460d1bccc9bc525d2c54f2220ba5360ae529cb86711eb043ad7471c45ac",
+        "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/protocol/src/transport.ts"
+      },
+      {
+        "path": "packages/sdk/protocol/src/types.ts",
+        "line_ranges": [
+          "1-119"
+        ],
+        "sha256": "9a9ab6172ff2a45b7a07adf75611aa8f42ae1bb98bd4ad598d8bdc5f618053d7",
+        "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/protocol/src/types.ts"
+      },
+      {
+        "path": "packages/sdk/protocol/tests/transport.spec.ts",
+        "line_ranges": [
+          "1-307"
+        ],
+        "sha256": "172fbbe8e77fa7ffd8869443cfe3de7130399fbbd7a3863f750f4924af8de5ea",
+        "url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/protocol/tests/transport.spec.ts"
+      }
+    ]
+  },
+  "artifacts": {
+    "harness": {
+      "path": "E:\\Xiadie\\Xiadie\\spikes\\P00\\dsh-protocol\\protocol-poc.mjs",
+      "sha256": "2f7453cf9fc0e59fe357f9a405df99407c009707d96b6d72d1bbae1b8a4f2c20"
+    },
+    "report": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\protocol-report.md"
+  },
+  "toolchain": {
+    "node_version": "v24.16.0",
+    "transform_types_flag": "--experimental-transform-types",
+    "dependencies_installed": false,
+    "package_build_run": false
+  },
+  "executions": [
+    {
+      "purpose": "initial smoke run",
+      "command": "node --experimental-transform-types 'E:\\Xiadie\\Xiadie\\spikes\\P00\\dsh-protocol\\protocol-poc.mjs'",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0,
+      "combined_output": "(node:43460) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n{\n  \"status\": \"PASS\",\n  \"scope\": \"fixed JsonRpcLineTransport source with in-memory PassThrough mock peer; not DSH SDK or product runtime\",\n  \"checks\": [\n    \"mock peer request receipt, handler error mapping, and notification\",\n    \"malformed-frame recovery, fragmented UTF-8, newline framing, and omitted params\",\n    \"close rejects pending request, detaches listeners, and preserves caller-owned streams\"\n  ]\n}"
+    },
+    {
+      "purpose": "same command rerun to capture streams separately",
+      "command": "node --experimental-transform-types 'E:\\Xiadie\\Xiadie\\spikes\\P00\\dsh-protocol\\protocol-poc.mjs'",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"scope\": \"fixed JsonRpcLineTransport source with in-memory PassThrough mock peer; not DSH SDK or product runtime\",\n  \"checks\": [\n    \"mock peer request receipt, handler error mapping, and notification\",\n    \"malformed-frame recovery, fragmented UTF-8, newline framing, and omitted params\",\n    \"close rejects pending request, detaches listeners, and preserves caller-owned streams\"\n  ]\n}",
+      "stderr": "(node:25760) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)"
+    }
+  ],
+  "scope": {
+    "fixed_transport_imported_directly": true,
+    "streams": "Node PassThrough in-memory byte streams",
+    "peer": "mock JSON-RPC peer implemented with the fixed JsonRpcLineTransport class",
+    "dsh_sdk_client_or_server_started": false,
+    "dsh_product_started": false,
+    "model_calls": 0,
+    "official_test_suite_executed": false,
+    "references_modified": false,
+    "production_config_read_or_modified": false
+  },
+  "assertions": [
+    {
+      "name": "request receipt and notification",
+      "result": "PASS",
+      "details": "Mock session/prompt returns a receipt-shaped object; mock host.notice handler sees the emitted notification."
+    },
+    {
+      "name": "JSON-RPC handler error",
+      "result": "PASS",
+      "details": "Mock peer handler error maps to JsonRpcResponseError code -32603 with the message preserved."
+    },
+    {
+      "name": "malformed-line recovery and fragmented UTF-8",
+      "result": "PASS",
+      "details": "Malformed JSON, blank line, null and non-frame object are ignored; split multibyte UTF-8 notification is intact; later valid notification arrives with params normalized to {}."
+    },
+    {
+      "name": "pending request close behavior",
+      "result": "PASS",
+      "details": "close rejects pending request, detaches input listeners and leaves caller-owned streams alive."
+    }
+  ],
+  "limitations": [
+    "This executes only fixed JsonRpcLineTransport with a mock peer; it is not DSH SDK/product integration.",
+    "No SDK client/server, DSH process, model, install, build, or existing Vitest suite was run.",
+    "No real process stdio, persistent queue, approval, cancellation or recovery behavior was tested."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "command": "python spikes/P00/zcode-runtime.py real",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "exit_code": 1,
+  "failure": "AssertionError: relay_endpoint did not match the initially assumed no-port URL",
+  "actual_configured_endpoint": "http://47.108.250.118:15555/v1",
+  "model_calls": 0,
+  "server_started": false,
+  "correction": "Read allowlisted URL metadata from existing settings; fix exact endpoint assertion, rerun mock, then real succeeded once.",
+  "secret_values_recorded": false
+}

@@ -1,0 +1,92 @@
+{
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "source_tree_clean": true,
+  "cli_sha256": "69095103dc8f6c865502b1d6da274285ce118da5788afd5a47240216cc88cf09",
+  "runner_sha256": "17b98504866873206dab1d8877e9bb5b0eb7d7a7babaef7947536710e661f17a",
+  "hook_sha256": "87fa1ad8afbee7250524593090632709f4d0d9b169856b1d48dad48e313fc713",
+  "mode": "real",
+  "passed": true,
+  "recovery_scope": "fresh CLI process and fresh fixture after injected model HTTP400; no same-session recovery claim",
+  "results": [
+    {
+      "case": "normal",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "--cwd",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-real\\normal-1790824710063342600\\fixture",
+        "--mode",
+        "plan",
+        "--disallowed-tools",
+        "Agent,AmendWorkflow,ApplyPatch,AskUserQuestion,Bash,CreateWorkflow,Edit,EnterPlanMode,EvalWorkflowSnippet,ExitPlanMode,GetWorkflowRun,Glob,Grep,ListModels,ListSavedWorkflows,ListWorkflowRuns,NodeRepl,Read,ReadSessionContext,ResolveWorkflowQuestion,RespondToCoordinator,ResumeWorkflowRun,SaveWorkflow,SendMessage,Skill,TaskOutput,TaskStop,TodoRead,TodoWrite,ToolSearch,WebFetch,WebSearch,Write,escalate,submit_result",
+        "--output-format",
+        "stream-json",
+        "--prompt",
+        "This is a synthetic P00 integration test. Read the P00_CONTEXT marker supplied by hooks. Reply exactly P00_ZCODE_OK. No tools."
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-real\\normal-1790824710063342600\\fixture",
+      "exit_code": 0,
+      "elapsed_seconds": 2.812,
+      "request_count": 1,
+      "config_sha256": "eca2cd5d9abda539a19027e2ca8fce4f3e9ac71140e27bd494741b2cf490821e",
+      "personal_fixture_sha256": "8fec276a371e81e03400390313dd47940edf9665fea0a52660b88d3a6e5cae88",
+      "stdout": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-real-normal-stdout.log",
+        "sha256": "d9eb83e2b64e54466747877dcdef48ce4dff94d04326327b359f3e4b78092121",
+        "bytes": 14317
+      },
+      "stderr": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-real-normal-stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "events_last": {
+        "type": "result",
+        "sessionId": "sess_fffcbb62-ec31-4cff-ab68-d06bfe87ee7b",
+        "traceId": "19e2d1c1-d4cf-4d3f-b126-bb91a13f4ebb",
+        "turnId": "turn_e14691f5-2eb3-4e39-82f2-4fda6455617a",
+        "response": "P00_ZCODE_OK",
+        "usage": {
+          "source": "provider",
+          "modelRequestCount": 1,
+          "inputTokens": 2469,
+          "outputTokens": 5,
+          "totalTokens": 2474,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "reasoningTokens": 0,
+          "webFetchRequests": 0,
+          "webSearchRequests": 0
+        },
+        "eventCount": 12,
+        "projection": {
+          "status": "idle",
+          "turnCount": 1,
+          "totalTokenCount": 2474,
+          "contextUsed": 2474,
+          "contextWindow": 200000
+        }
+      },
+      "marker_present": true,
+      "failure_present": false,
+      "hooks": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-real-normal-hooks.jsonl",
+        "sha256": "f890e37c24fe0f4ad5dd8d458b88b24042a9663e396df1e0109a4a04a653c211"
+      }
+    }
+  ],
+  "model_calls": 1,
+  "request_count": 1,
+  "request_artifact": {
+    "path": "evidence\\P00-U02\\20261001-01\\zcode-real-requests.json",
+    "sha256": "4cd99fc6434a6ee2ddff58a28496724de19180648f66735d93b9221346594857"
+  },
+  "cost": "gateway billing not returned; no monetary estimate",
+  "isolation": {
+    "HOME": "omitted",
+    "USERPROFILE": "per-case synthetic home",
+    "cwd": "per-case fixture with own Git root",
+    "real_credential_in_child": false,
+    "real_credential_persisted": false
+  }
+}

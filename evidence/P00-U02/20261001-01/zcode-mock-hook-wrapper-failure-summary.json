@@ -1,0 +1,239 @@
+{
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "source_tree_clean": true,
+  "cli_sha256": "69095103dc8f6c865502b1d6da274285ce118da5788afd5a47240216cc88cf09",
+  "runner_sha256": "e6888f2796ac270b9eb1d134a12e009fa77b14890e1695713f7f8ca98e3ddbda",
+  "hook_sha256": "87fa1ad8afbee7250524593090632709f4d0d9b169856b1d48dad48e313fc713",
+  "mode": "mock",
+  "passed": false,
+  "recovery_scope": "fresh CLI process and fresh fixture after injected model HTTP400; no same-session recovery claim",
+  "results": [
+    {
+      "case": "normal",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "--cwd",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\normal-1790824611232813600\\fixture",
+        "--mode",
+        "plan",
+        "--disallowed-tools",
+        "Agent,AmendWorkflow,ApplyPatch,AskUserQuestion,Bash,CreateWorkflow,Edit,EnterPlanMode,EvalWorkflowSnippet,ExitPlanMode,GetWorkflowRun,Glob,Grep,ListModels,ListSavedWorkflows,ListWorkflowRuns,NodeRepl,Read,ReadSessionContext,ResolveWorkflowQuestion,RespondToCoordinator,ResumeWorkflowRun,SaveWorkflow,SendMessage,Skill,TaskOutput,TaskStop,TodoRead,TodoWrite,ToolSearch,WebFetch,WebSearch,Write,escalate,submit_result",
+        "--output-format",
+        "stream-json",
+        "--prompt",
+        "This is a synthetic P00 integration test. Read the P00_CONTEXT marker supplied by hooks. Reply exactly P00_ZCODE_OK. No tools."
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\normal-1790824611232813600\\fixture",
+      "exit_code": 1,
+      "elapsed_seconds": 1.375,
+      "request_count": 1,
+      "config_sha256": "e1f601362a59d551cad490343c65dda9c5350bfa3ede1c49e5b0c1fc78e89b14",
+      "personal_fixture_sha256": "e89afec5f80e44c5e403aea7226e3ffff9db8376ff4a30e8135a50eadad61883",
+      "stdout": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-normal-stdout.log",
+        "sha256": "6cd4a25f6a8e077ca4f1d54ce2b527d06968ddd0372848691ccdffbec2455485",
+        "bytes": 11636
+      },
+      "stderr": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-normal-stderr.log",
+        "sha256": "05a287468d77f7e21083c287cf14ee758981b605d3da0c2d4d958362c5277f00",
+        "bytes": 2482
+      },
+      "events_last": {
+        "eventId": "ba38b9e4-47c8-4eff-a5ec-781a6681ab50",
+        "payload": {
+          "error": {
+            "type": "unknown_error",
+            "attribution": {
+              "source": "provider",
+              "reason": "invalid_request",
+              "errorPhase": "stream",
+              "exceptionKind": "api_call",
+              "providerId": "p00-fixture",
+              "modelId": "[基元]deepseek-flash",
+              "providerKind": "openai-compatible",
+              "transport": "sse",
+              "statusCode": 400,
+              "retryable": false
+            },
+            "code": "invalid_model_request",
+            "message": "Provider rejected the model request.",
+            "detail": "Turn execution failed\nprovider=p00-fixture model=[基元]deepseek-flash request=deef97be-a2a1-4f63-8ebc-99e002706672 reason=invalid_request status=400 retryable=false\nP00 isolated request policy denied",
+            "underlyingErrorMessage": "P00 isolated request policy denied",
+            "stack": "Error: Turn execution failed\n    at createCoreError (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:58122:19)\n    at createTurnFailureError (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:511980:10)\n    at E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:527069:25\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async AgentRuntime.runRuntimeCommand (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:518885:24)\n    at async AgentRuntime.drainRuntimeCommandQueue (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:518787:7)"
+          },
+          "turnPhase": "processing_input"
+        },
+        "seq": 10,
+        "sessionId": "sess_4263371a-a159-48d5-9405-cfffdf1e1ab9",
+        "timestamp": 1790824612608,
+        "traceId": "4712d7a6-379d-4248-a984-cb658309bb78",
+        "turnId": "turn_023a41e3-cf30-41f4-8bde-da8f949b5848",
+        "type": "turn.failed"
+      },
+      "marker_present": false,
+      "failure_present": false,
+      "hooks": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-normal-hooks.jsonl",
+        "sha256": "02d09af8842ae479d7c175ed8b818210e612e06c4d5444f2176a9bab11f3deb6"
+      }
+    },
+    {
+      "case": "failure",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "--cwd",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\failure-1790824612657758800\\fixture",
+        "--mode",
+        "plan",
+        "--disallowed-tools",
+        "Agent,AmendWorkflow,ApplyPatch,AskUserQuestion,Bash,CreateWorkflow,Edit,EnterPlanMode,EvalWorkflowSnippet,ExitPlanMode,GetWorkflowRun,Glob,Grep,ListModels,ListSavedWorkflows,ListWorkflowRuns,NodeRepl,Read,ReadSessionContext,ResolveWorkflowQuestion,RespondToCoordinator,ResumeWorkflowRun,SaveWorkflow,SendMessage,Skill,TaskOutput,TaskStop,TodoRead,TodoWrite,ToolSearch,WebFetch,WebSearch,Write,escalate,submit_result",
+        "--output-format",
+        "stream-json",
+        "--prompt",
+        "This is a synthetic P00 integration test. Read the P00_CONTEXT marker supplied by hooks. Reply exactly P00_ZCODE_OK. No tools."
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\failure-1790824612657758800\\fixture",
+      "exit_code": 1,
+      "elapsed_seconds": 1.344,
+      "request_count": 1,
+      "config_sha256": "1160cf2d2fe362dc846468cef07a1eafbea8b38ba0d05dc400cc0a76d55ef887",
+      "personal_fixture_sha256": "e89afec5f80e44c5e403aea7226e3ffff9db8376ff4a30e8135a50eadad61883",
+      "stdout": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-failure-stdout.log",
+        "sha256": "27b90dbc6aaed9cc02427406a0e11bdbe6749bfcfe255137ec02113ef1c7e01a",
+        "bytes": 11644
+      },
+      "stderr": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-failure-stderr.log",
+        "sha256": "44943c187aa53356ce696e2bf2a67a3b4be008fcea2e018bb335c46fbac59a77",
+        "bytes": 2482
+      },
+      "events_last": {
+        "eventId": "3e9dddea-e0dc-47cf-a65b-b50af04c7fa0",
+        "payload": {
+          "error": {
+            "type": "unknown_error",
+            "attribution": {
+              "source": "provider",
+              "reason": "invalid_request",
+              "errorPhase": "stream",
+              "exceptionKind": "api_call",
+              "providerId": "p00-fixture",
+              "modelId": "[基元]deepseek-flash",
+              "providerKind": "openai-compatible",
+              "transport": "sse",
+              "statusCode": 400,
+              "retryable": false
+            },
+            "code": "invalid_model_request",
+            "message": "Provider rejected the model request.",
+            "detail": "Turn execution failed\nprovider=p00-fixture model=[基元]deepseek-flash request=da2554f5-bb88-4d04-bfcf-bfc4af544931 reason=invalid_request status=400 retryable=false\nP00 isolated request policy denied",
+            "underlyingErrorMessage": "P00 isolated request policy denied",
+            "stack": "Error: Turn execution failed\n    at createCoreError (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:58122:19)\n    at createTurnFailureError (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:511980:10)\n    at E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:527069:25\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async AgentRuntime.runRuntimeCommand (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:518885:24)\n    at async AgentRuntime.drainRuntimeCommandQueue (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:518787:7)"
+          },
+          "turnPhase": "processing_input"
+        },
+        "seq": 10,
+        "sessionId": "sess_2ef6dbfd-a179-4de7-ad72-0617d2075f56",
+        "timestamp": 1790824614011,
+        "traceId": "32e13e52-6ee1-4187-82fb-bc365edfda5c",
+        "turnId": "turn_e8e329b9-c638-4e00-a0bf-59b091ef1470",
+        "type": "turn.failed"
+      },
+      "marker_present": false,
+      "failure_present": false,
+      "hooks": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-failure-hooks.jsonl",
+        "sha256": "0d6ca6ed36d25c8b0dbd0b342e414681d62f4a8abfc4208996cb8aa0f86e4579"
+      }
+    },
+    {
+      "case": "recovery",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "--cwd",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\recovery-1790824614057492100\\fixture",
+        "--mode",
+        "plan",
+        "--disallowed-tools",
+        "Agent,AmendWorkflow,ApplyPatch,AskUserQuestion,Bash,CreateWorkflow,Edit,EnterPlanMode,EvalWorkflowSnippet,ExitPlanMode,GetWorkflowRun,Glob,Grep,ListModels,ListSavedWorkflows,ListWorkflowRuns,NodeRepl,Read,ReadSessionContext,ResolveWorkflowQuestion,RespondToCoordinator,ResumeWorkflowRun,SaveWorkflow,SendMessage,Skill,TaskOutput,TaskStop,TodoRead,TodoWrite,ToolSearch,WebFetch,WebSearch,Write,escalate,submit_result",
+        "--output-format",
+        "stream-json",
+        "--prompt",
+        "This is a synthetic P00 integration test. Read the P00_CONTEXT marker supplied by hooks. Reply exactly P00_ZCODE_OK. No tools."
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\recovery-1790824614057492100\\fixture",
+      "exit_code": 1,
+      "elapsed_seconds": 1.343,
+      "request_count": 1,
+      "config_sha256": "b13046f085fbe0eefb6af98ad30c7d2eb58894f6b2522d4f9147e332cb1d968a",
+      "personal_fixture_sha256": "e89afec5f80e44c5e403aea7226e3ffff9db8376ff4a30e8135a50eadad61883",
+      "stdout": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-recovery-stdout.log",
+        "sha256": "c30c94ae5094e3b75cc349776bafa52d31c681a5272182fa1f69b8a7d1140b46",
+        "bytes": 11652
+      },
+      "stderr": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-recovery-stderr.log",
+        "sha256": "c8252152fc9640cb57d14977abef9d8de1e73a2ddf91f7d255f895e247d06d5f",
+        "bytes": 2482
+      },
+      "events_last": {
+        "eventId": "f850d5b2-e1e1-4ab8-bc54-fd65dd8c0827",
+        "payload": {
+          "error": {
+            "type": "unknown_error",
+            "attribution": {
+              "source": "provider",
+              "reason": "invalid_request",
+              "errorPhase": "stream",
+              "exceptionKind": "api_call",
+              "providerId": "p00-fixture",
+              "modelId": "[基元]deepseek-flash",
+              "providerKind": "openai-compatible",
+              "transport": "sse",
+              "statusCode": 400,
+              "retryable": false
+            },
+            "code": "invalid_model_request",
+            "message": "Provider rejected the model request.",
+            "detail": "Turn execution failed\nprovider=p00-fixture model=[基元]deepseek-flash request=33013b6a-c0f9-4964-baf8-b86ac26cbdab reason=invalid_request status=400 retryable=false\nP00 isolated request policy denied",
+            "underlyingErrorMessage": "P00 isolated request policy denied",
+            "stack": "Error: Turn execution failed\n    at createCoreError (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:58122:19)\n    at createTurnFailureError (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:511980:10)\n    at E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:527069:25\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async AgentRuntime.runRuntimeCommand (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:518885:24)\n    at async AgentRuntime.drainRuntimeCommandQueue (E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs:518787:7)"
+          },
+          "turnPhase": "processing_input"
+        },
+        "seq": 10,
+        "sessionId": "sess_b9487644-372c-4c79-9dd4-b2943f7d9083",
+        "timestamp": 1790824615411,
+        "traceId": "887ea1f1-4746-4240-82b6-957aed26e3d8",
+        "turnId": "turn_237950d2-a72e-46a6-9ee3-aa0c2ccb3b0b",
+        "type": "turn.failed"
+      },
+      "marker_present": false,
+      "failure_present": false,
+      "hooks": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-recovery-hooks.jsonl",
+        "sha256": "94ac25a48b473f6b304bb9063ae735aaf04d6e9f55129e56cfd63e4b37df9e60"
+      }
+    }
+  ],
+  "model_calls": 0,
+  "request_count": 3,
+  "request_artifact": {
+    "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-requests.json",
+    "sha256": "d0328aa8ff872e410226691d36e79c2e0930d13643e09f229fce8484f0ee4d2f"
+  },
+  "cost": "0; mock only",
+  "isolation": {
+    "HOME": "omitted",
+    "USERPROFILE": "per-case synthetic home",
+    "cwd": "per-case fixture with own Git root",
+    "real_credential_in_child": false,
+    "real_credential_persisted": false
+  }
+}

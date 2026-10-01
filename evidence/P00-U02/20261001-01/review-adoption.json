@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent subagent /root/execution_plan",
+  "task_id": "P00-U02 adoption and raw-byte rule review",
+  "status": "reviewed",
+  "disposition": "recommend_accept_adoption_for_P00_verification_only",
+  "p00_u02_overall_acceptance": "not_decided_by_this_review",
+  "p01_construction_approved": false,
+  "reviewed_inputs": [
+    {
+      "path": "E:\\Xiadie\\Xiadie\\docs\\adr\\P00-reuse.md",
+      "sha256": "f0017ae6ac3d367399c8b560214ee6696d368bdc62ce07c01c4b39722a1e4072",
+      "status": "staged_addition"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\zcode-result.md",
+      "sha256": "12cbffcb8bb5b8d5c1e46de4a55f208f1f4ab78b6144aedd603963730aa3f9d9",
+      "status": "staged_and_worktree_match"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.gitattributes",
+      "sha256": "b1a6964f9ff49cdbef2e94158accbd4fc776a34d135676f3233097ed2086350d",
+      "status": "staged_change"
+    }
+  ],
+  "plan_baseline": {
+    "path": "planning/Xiadie_V2_v1.1",
+    "references": [
+      {
+        "path": "01_项目计划书.md",
+        "lines": "10,18-22,55-78,265-267",
+        "relevant_rule": "ZCode is the only primary runtime; Core defines identity/memory/context and does not route DSH; DSH is an external work-package team; first validate the low-cost ZCode context path; P01 product construction follows G00."
+      },
+      {
+        "path": "tasks/P00-U02.md",
+        "lines": "7-33",
+        "relevant_rule": "Isolated spike; mock before an authorized real path; preserve success/failure/recovery/cost evidence; decide one default route; authors submit ready_for_review and independent review precedes acceptance."
+      },
+      {
+        "path": "02_计划执行书.md",
+        "lines": "45-48,84-108,419-423",
+        "relevant_rule": "G00 blocks product construction until scope, version, seams, and license boundaries have evidence; the plan is not an implementation status record."
+      }
+    ],
+    "plan_copy_modified": false
+  },
+  "adoption_review": {
+    "aligned_with_v1_1": true,
+    "approved_scope_recommendation": "Continue P00 seam verification with ZCode native Loop as the sole main runtime, Core-provided identity/memory context, and an independently scoped DSH work-package process when delegated. Use Herta only as a bounded design/compliant-pure-function reference.",
+    "not_approved": [
+      "P01 implementation or product-framework construction before G00/P00-U10",
+      "a Core-level DSH route or a second Self Runtime",
+      "full ZCode/DSH/Herta product integration based on these component spikes",
+      "native same-session DSH cancellation, approval return, or resume claims"
+    ],
+    "adr_assessment": "P00-reuse.md:3,5,11-21 keeps the decision in ready_for_review, selects the v1.1 default seam for further P00 validation, records U07/U08/U09 limitations, and leaves final admission to P00-U10/G00. This is consistent with the plan and does not open P01.",
+    "zcode_result_assessment": "zcode-result.md:7-17,21,25-27 distinguishes filtered CLI build, mock error and fresh-process recovery, one real model call, selected-config hash checks, the HTTP transport risk, retained failed attempts, and pending U07/U08. The corrected credential statement accurately says the secret is sent in an Authorization header and is not persisted to config/evidence/log/Git.",
+    "dsh_boundary": "ADR line 12 is supported only as a component report: review-dsh-runtime.json records accepted source-fallback initialize/close and explicitly excludes prompt/model, process-tree cancellation, and complete integration. U09 remains pending; this does not support product-adoption claims.",
+    "herta_boundary": "ADR line 13 matches the component-only pure-function evidence; it does not adopt Herta as a runtime or import excluded character assets."
+  },
+  "evidence_bindings": [
+    {
+      "path": "evidence/P00-U02/20261001-01/zcode-real-summary.json",
+      "sha256": "ca064d1a4a79ef685cdf2f7192a186fc565504fc5826eac314f2464bebc656dd",
+      "relevant_fact": "One real request, HTTP 200, CLI exit 0, exact assistant marker, two hook contexts, no tools; usage 2469 input/5 output/2474 total; no gateway amount returned."
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/zcode-mock-summary.json",
+      "sha256": "4bea4b5c6fb7fb3a41eac153d47c4db3d64b53b1f8e88dcd4d56f7bf38424e2e",
+      "relevant_fact": "Mock normal/failure/fresh-process-recovery cases exit 0/1/0; mock model calls 0."
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/review-zcode-spike.json",
+      "sha256": "0e8b28abf36d3b92b612dee00061d2d28c4aee6c0f5d49d34ecb775c72e57470",
+      "relevant_fact": "Independent script/source/evidence review; known HTTP and OS-isolation limits remain explicit."
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/review-dsh-runtime.json",
+      "sha256": "90e0fb2547bbbe23087d4b211ea9b5fbae287252f298347e1fa783f434618753",
+      "relevant_fact": "Accepted component only: fixed-source initialize/close; no prompt/model or broader SDK/product claim."
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/review-pure-components.json",
+      "sha256": "c2f95d1c90ee35ac3b7cda35e8b326beffa87e23601e8846f12e241f71f9a88f",
+      "relevant_fact": "Accepted component-only Herta pure-function and DSH transport PoCs."
+    }
+  ],
+  "raw_byte_rule_review": {
+    "effective_attributes_checked": true,
+    "spikes_and_evidence": "Git reports text unset (no normalization) with the explicit whitespace checks; representative staged script, request JSON, and log blob IDs matched hashes computed over their raw worktree bytes.",
+    "sse": {
+      "effective_text_attribute": "unset",
+      "effective_whitespace_attribute": "blank-at-eol,space-before-tab,cr-at-eol,-blank-at-eof",
+      "actual_response_sha256": "58dbccd40a7aa26908e584188dd6c2ae9b0773bb52593187b74b550041328628",
+      "raw_blob_matches_index": true,
+      "ending_bytes": "0a0a",
+      "assessment": "The last SSE event remains terminated by its required blank line; disabling blank-at-eof for *.sse allows this framing while -text preserves bytes. No raw SSE trimming or rewriting was observed."
+    },
+    "git_diff_check_exit_code": 0,
+    "git_diff_cached_check_exit_code": 0
+  },
+  "review_notes": [
+    {
+      "severity": "known_risk",
+      "status": "documented_and_authorized_route",
+      "finding": "The selected gateway route uses HTTP, so the Authorization credential is not encrypted in transit. zcode-result.md:17 states this limitation; this review does not certify the transport as secure or authorize any gateway change."
+    },
+    {
+      "severity": "scope_boundary",
+      "status": "confirmed",
+      "finding": "P00 component evidence supports continued seam validation only. It is not G00 completion, full U02 integration acceptance, or P01 construction approval."
+    }
+  ],
+  "reviewer_actions": {
+    "model_calls": 0,
+    "network_calls": 0,
+    "main_documents_modified": false,
+    "only_output_written": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\review-adoption.json"
+  }
+}

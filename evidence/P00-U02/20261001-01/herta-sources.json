@@ -1,0 +1,103 @@
+{
+  "task_id": "P00-U02",
+  "attempt_id": "20261001-01",
+  "status": "ready_for_review",
+  "workspace_root": "E:\\Xiadie\\Xiadie",
+  "workspace_baseline_commit": "4eb4fbee15645d8d7c74239813f7da759983eb89",
+  "reference": {
+    "repository": "https://github.com/PersonaCLI/Herta",
+    "path": "references/herta-4623df12",
+    "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+    "tree": "2077f7e79459ff24996ffab2fb67a8dcb52adc88",
+    "worktree_clean": true,
+    "license": {
+      "path": "references/herta-4623df12/LICENSE",
+      "sha256": "bb1f011bb44b82acdcb078fdfcc2f7b6185c930b69a1ee275b518e79e32aea82",
+      "scope": "MIT source-code grant as recorded in the accepted P00-U01 report; no prompt/persona/art/voice assets copied."
+    }
+  },
+  "accepted_u01_provenance": {
+    "report_path": "docs/research/P00/herta.md",
+    "report_sha256": "f0f0cddcf169fdf6899c1ef8b702e30138c5396b207c9722585d1f759a0ca52f",
+    "manifest_path": "evidence/P00-U01/20261001-01/herta-sources.json",
+    "manifest_sha256": "1ecc3a5e994ce523bad47dac299b92ebf359a43e16ce64ed34ef847ea44e32a2"
+  },
+  "imported_source_modules": [
+    {
+      "path": "packages/knowledge/src/dream/config.ts",
+      "sha256": "f770993a8658940498e8b368e61e511534bb0bddf43bed3264e7187a7576da92",
+      "manifest_sha256": "f770993a8658940498e8b368e61e511534bb0bddf43bed3264e7187a7576da92",
+      "lines": "3-72",
+      "use": "DEFAULT_DREAM_CONFIG、resolveDreamConfig"
+    },
+    {
+      "path": "packages/knowledge/src/dream/retention.ts",
+      "sha256": "5aff288916a43bc1cb377d7a6d0e38cfc5ed598b0116b51bb9015c9982c2c468",
+      "manifest_sha256": "5aff288916a43bc1cb377d7a6d0e38cfc5ed598b0116b51bb9015c9982c2c468",
+      "lines": "26-47",
+      "use": "computeStrength"
+    },
+    {
+      "path": "packages/knowledge/src/dream/select-episodes.ts",
+      "sha256": "20a70844ddc1bf5a988eb47207e427e8f597dc4e74e045a2af5b2c4448a1b347",
+      "manifest_sha256": "20a70844ddc1bf5a988eb47207e427e8f597dc4e74e045a2af5b2c4448a1b347",
+      "lines": "8-33",
+      "use": "selectEpisodes"
+    },
+    {
+      "path": "packages/knowledge/src/dream/segment-session.ts",
+      "sha256": "73727ce076a15b78c1420ef06dbdd9a87c0bac31aac66c083862031327e41b3f",
+      "manifest_sha256": "73727ce076a15b78c1420ef06dbdd9a87c0bac31aac66c083862031327e41b3f",
+      "lines": "47-69,158-245",
+      "use": "settled 判定、稳定 Episode hash、segmentSession"
+    }
+  ],
+  "related_tests_read_not_run": [
+    {
+      "path": "packages/knowledge/src/dream/config.test.ts",
+      "sha256": "ff6f84bba5ee6446c83446334c3e1855bf31a00f78df59023c4a480133c84aa6",
+      "manifest_sha256": "ff6f84bba5ee6446c83446334c3e1855bf31a00f78df59023c4a480133c84aa6",
+      "lines": "4-45",
+      "cases": "default off、局部覆盖"
+    },
+    {
+      "path": "packages/knowledge/src/dream/retention.test.ts",
+      "sha256": "62f44aeb083d1bb0f84719b07f7ef32f4787f842b0eaefe12eb045cf249dca69",
+      "manifest_sha256": "62f44aeb083d1bb0f84719b07f7ef32f4787f842b0eaefe12eb045cf249dca69",
+      "lines": "27-139",
+      "cases": "半衰期、坏时间戳、reactivation、边界保护"
+    },
+    {
+      "path": "packages/knowledge/src/dream/select-episodes.test.ts",
+      "sha256": "9e9073872406a0017e4cded0c5b6473169ba3ad152b1d660b41f92972048db1c",
+      "manifest_sha256": "9e9073872406a0017e4cded0c5b6473169ba3ad152b1d660b41f92972048db1c",
+      "lines": "26-112",
+      "cases": "settled/voice/长度门、system chrome 不充当发言"
+    },
+    {
+      "path": "packages/knowledge/src/dream/segment-session.test.ts",
+      "sha256": "21f4a21a5b343da524f1b07a92f81fff1c452663fed8b33992aa829a4d30787a",
+      "manifest_sha256": "21f4a21a5b343da524f1b07a92f81fff1c452663fed8b33992aa829a4d30787a",
+      "lines": "37-56,200-290,333-343",
+      "cases": "gap 分段、尾段 unsettled、silence settle、恢复后 hash 稳定、坏时间戳"
+    }
+  ],
+  "poc": {
+    "path": "spikes/P00/herta-pure/poc.mjs",
+    "sha256": "dc7d8e2d7a49b61ea492bfdd0041b7d0264782febfcb2eecf36a6ceb0c1f8b3d",
+    "mode": "imports fixed upstream TypeScript modules directly; source implementation is not copied into Xiadie"
+  },
+  "runtime_dependencies": [
+    "Node.js built-in TypeScript type stripping",
+    "node:assert/strict",
+    "node:crypto (used by the imported Herta segment-session module)"
+  ],
+  "not_copied": [
+    "Herta prompts",
+    "character/persona corpus",
+    "artwork",
+    "website assets",
+    "voice assets",
+    "Herta manifest/storage implementation"
+  ]
+}

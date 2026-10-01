@@ -1,0 +1,80 @@
+{
+  "task_id": "P00-U02",
+  "reviewer": "root",
+  "status": "accepted_component_only",
+  "bindings": [
+    {
+      "path": "references\\herta-4623df12\\packages\\knowledge\\src\\dream\\config.ts",
+      "sha256": "f770993a8658940498e8b368e61e511534bb0bddf43bed3264e7187a7576da92"
+    },
+    {
+      "path": "references\\herta-4623df12\\packages\\knowledge\\src\\dream\\retention.ts",
+      "sha256": "5aff288916a43bc1cb377d7a6d0e38cfc5ed598b0116b51bb9015c9982c2c468"
+    },
+    {
+      "path": "references\\herta-4623df12\\packages\\knowledge\\src\\dream\\select-episodes.ts",
+      "sha256": "20a70844ddc1bf5a988eb47207e427e8f597dc4e74e045a2af5b2c4448a1b347"
+    },
+    {
+      "path": "references\\herta-4623df12\\packages\\knowledge\\src\\dream\\segment-session.ts",
+      "sha256": "73727ce076a15b78c1420ef06dbdd9a87c0bac31aac66c083862031327e41b3f"
+    },
+    {
+      "path": "references\\dsh-639ed015\\packages\\sdk\\protocol\\src\\transport.ts",
+      "sha256": "7aed4460d1bccc9bc525d2c54f2220ba5360ae529cb86711eb043ad7471c45ac"
+    },
+    {
+      "path": "references\\dsh-639ed015\\packages\\sdk\\protocol\\src\\types.ts",
+      "sha256": "9a9ab6172ff2a45b7a07adf75611aa8f42ae1bb98bd4ad598d8bdc5f618053d7"
+    },
+    {
+      "path": "references\\dsh-639ed015\\packages\\sdk\\protocol\\tests\\transport.spec.ts",
+      "sha256": "172fbbe8e77fa7ffd8869443cfe3de7130399fbbd7a3863f750f4924af8de5ea"
+    },
+    {
+      "path": "spikes\\P00\\dsh-protocol\\protocol-poc.mjs",
+      "sha256": "2f7453cf9fc0e59fe357f9a405df99407c009707d96b6d72d1bbae1b8a4f2c20"
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\herta-run.json",
+      "sha256": "e1a80115d5bfbfa04f0a0f6e714eee025260da26fb74505166d044cf5b4ede01"
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\herta-sources.json",
+      "sha256": "1e1e1ac6bddd0d10aedcee725ad8c994d34f42ef9a190c4abc50bacfa09c86ae"
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\herta-result.md",
+      "sha256": "3d23fa51fee7d469fad554d453482640cb6c72752b25afbb60bad660ad382425"
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\protocol-run.json",
+      "sha256": "5dfae6914942aa998b49689423fbbdcc0f3fbee403015d7cb909d8cbbac4fb8f"
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\protocol-report.md",
+      "sha256": "11aa11b63dd49fb52c8fff3f28a5da5d44df21f7b97c4c682b74a73945cce838"
+    },
+    {
+      "path": "evidence\\P00-U02\\20261001-01\\root-pure-validation.json",
+      "sha256": "40f6daa8a0a59aa50da39a3d75280657b347d98ed58fface9ca34a47f6b5c612"
+    },
+    {
+      "path": "spikes\\P00\\herta-pure\\poc.mjs",
+      "sha256": "dc7d8e2d7a49b61ea492bfdd0041b7d0264782febfcb2eecf36a6ceb0c1f8b3d"
+    }
+  ],
+  "findings": [],
+  "scope": "Herta fixed pure function PoC and DSH fixed transport with mock peer; actual independent rerun exit 0",
+  "excluded": [
+    "DSH SDK runtime",
+    "real model",
+    "persistence recovery",
+    "Windows product package"
+  ],
+  "criteria": [
+    "meaningful normal/fault/recovery assertions inspected",
+    "source hash receipts matched actual readonly sources",
+    "both reference HEAD and clean state verified"
+  ]
+}

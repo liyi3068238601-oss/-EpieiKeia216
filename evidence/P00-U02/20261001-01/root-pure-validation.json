@@ -1,0 +1,22 @@
+{
+  "reviewer": "root",
+  "scope": "Independent read of authored PoCs and actual rerun against fixed sources; no SDK/model/persistence/product claims",
+  "commands": [
+    {
+      "component": "herta-pure",
+      "chunk_id": "15c38d",
+      "wall_time_seconds": 0.290815,
+      "exit_code": 0,
+      "original_token_count": 198,
+      "output": "{\"status\":\"PASS\",\"scope\":\"fixed Herta pure functions via Node 24 TypeScript stripping\",\"scenarios\":{\"config\":{\"defaultAutoDreamEnabled\":false,\"resolvedAutoDreamEnabled\":false,\"syntheticMinEpisodeChars\":10},\"normal\":{\"segmentedEpisodes\":2,\"selectedEpisodes\":2,\"bounds\":[{\"startIndex\":0,\"endIndex\":3,\"settled\":true},{\"startIndex\":3,\"endIndex\":6,\"settled\":true}]},\"failure\":{\"malformedTimestampTailSettled\":false,\"malformedTimestampSelected\":0,\"chromeInflatedSelection\":0},\"recovery\":{\"openTailInitiallySelected\":0,\"resumedTailHashStable\":true,\"selectedAfterResume\":2,\"retentionScoreAfterReactivationExceedsAged\":true},\"retention\":{\"freshScore\":0.8,\"oneHalfLifeScore\":0.4,\"malformedAnchorFinite\":true,\"reactivatedScore\":1.0772588722239782}},\"modelCalls\":0,\"persistenceOrProductRuntime\":false}\n"
+    },
+    {
+      "component": "dsh-protocol",
+      "chunk_id": "e96ba9",
+      "wall_time_seconds": 0.4776009,
+      "exit_code": 0,
+      "original_token_count": 148,
+      "output": "(node:8580) ExperimentalWarning: Transform Types is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n{\n  \"status\": \"PASS\",\n  \"scope\": \"fixed JsonRpcLineTransport source with in-memory PassThrough mock peer; not DSH SDK or product runtime\",\n  \"checks\": [\n    \"mock peer request receipt, handler error mapping, and notification\",\n    \"malformed-frame recovery, fragmented UTF-8, newline framing, and omitted params\",\n    \"close rejects pending request, detaches listeners, and preserves caller-owned streams\"\n  ]\n}\n"
+    }
+  ]
+}

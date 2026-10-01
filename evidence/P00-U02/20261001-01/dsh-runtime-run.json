@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "task": "P00-U02",
+  "status": "ready_for_review",
+  "accepted": false,
+  "observed_date": "2026-10-01",
+  "source": {
+    "remote": "https://github.com/deepseek-ai/deepseek-harness.git",
+    "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+    "version": "0.2.0-rc.2",
+    "clone_path": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source",
+    "clone_command": "git clone --no-hardlinks E:\\Xiadie\\Xiadie\\references\\dsh-639ed015 E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source",
+    "git_status": "clean",
+    "cli_built_bin_present": false,
+    "source_fallback_inputs": {
+      "cli_entry": "apps/cli/src/bin.ts",
+      "source_patch": "apps/cli/src/sdk-source.cordis.patch.yml",
+      "tsconfig": "apps/cli/tsconfig.json",
+      "all_present": true
+    },
+    "sdk_client_dshBin": "omitted",
+    "sdk_client_default_manifest_version_check": true,
+    "source_fallback_actually_initialized": true
+  },
+  "toolchain": {
+    "node": "v24.16.0",
+    "git": "2.54.0.windows.1",
+    "system_pnpm": "11.16.0 (not used for install)",
+    "isolated_pnpm": "11.7.0",
+    "pnpm_metadata_url": "https://registry.npmjs.org/pnpm/11.7.0",
+    "pnpm_tarball_url": "https://registry.npmjs.org/pnpm/-/pnpm-11.7.0.tgz",
+    "pnpm_tarball_path": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\tools\\pnpm-11.7.0.tgz",
+    "pnpm_integrity_sri": "sha512-GcyFLBIMcSV2DyRD7mvgyltA+fUFmN4aCaHxd1A+AQ5Xwjx3ZG4B52HeWb+HT7IqM5jDOrlpH8E+uUa28PTWIA==",
+    "pnpm_tarball_sha256": "deafa7ec98a1218b6a047289b92fbe2395c1e22d3495bb711653013218ee15ee"
+  },
+  "install": {
+    "command": "node E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\tools\\bin\\pnpm.mjs install --filter @deepseek-ai/dsh-sdk-client... --ignore-scripts --frozen-lockfile --store-dir E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\store --registry https://registry.npmjs.org",
+    "working_directory": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source",
+    "exit_code": 0,
+    "duration_seconds": 37,
+    "workspace_scope": "306 of 339",
+    "packages_added": 1127,
+    "packages_downloaded": 1122,
+    "lockfile_entries": 1685,
+    "lockfile_sha256": "80fe05eae33582ae26839afd05f1965f9b0e4be11034ddf9797af6085d5ba9b1",
+    "lifecycle_scripts": "ignored",
+    "root_postinstall": "NOT_RUN",
+    "full_build": "NOT_RUN",
+    "tests": "NOT_RUN",
+    "warnings": [
+      "pnpm warned the unbuilt apps/cli/lib/bin.js.EXE target was absent while linking dsh; this is expected for source fallback.",
+      "One registry request to es-toolkit took 14.151s; install completed successfully."
+    ]
+  },
+  "configuration": {
+    "profile": "sdk-minimal",
+    "patch": "spikes/P00/dsh-runtime/disable-tools.cordis.patch.yml",
+    "dump_config_exit_code": 0,
+    "dump_config": "evidence/P00-U02/20261001-01/dsh-runtime-config.yaml",
+    "plugin_rows": 32,
+    "disabled_rows": [
+      "terminal-bash",
+      "terminal-pwsh",
+      "persistent-bash",
+      "persistent-pwsh",
+      "mcp-resources",
+      "jobs",
+      "timer"
+    ],
+    "sandbox_mode": "read-only",
+    "agent_loop_agents": [],
+    "file_web_subagent_tools_present": false,
+    "default_sdk_source_patch_warning": "Direct dump-config reported typert-loader not found because sdk-minimal is a standalone tree without that row; the actual SDK client captures child stderr internally and does not forward it, so occurrence on the SDK child was not independently confirmed."
+  },
+  "environment": {
+    "dsh_home": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\dsh-home",
+    "workspace": "spikes/P00/dsh-runtime/workspace",
+    "child_environment_explicit_replacement": true,
+    "home_variable_present": false,
+    "userprofile": "isolated under .runtime/P00/dsh/env",
+    "real_credentials_used": false,
+    "fake_credential_value_recorded": true,
+    "deepseek_base_url": "http://127.0.0.1:9",
+    "base_url_env_read_by_fixed_adapter": true,
+    "prompt_sent": false,
+    "session_created": false,
+    "api_request_observed": false,
+    "cost": 0
+  },
+  "runs": [
+    {
+      "case": "bad_route",
+      "command": "node --import tsx/esm E:\\Xiadie\\Xiadie\\spikes\\P00\\dsh-runtime\\init-only.ts bad",
+      "exit_code": 0,
+      "initialize_result": "expected JsonRpcResponseError",
+      "error": "no adapter registered for provider \"p00-u02-missing-provider\"",
+      "prompt_sent": false,
+      "model_call": false,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source"
+    },
+    {
+      "case": "corrected_route",
+      "command": "node --import tsx/esm E:\\Xiadie\\Xiadie\\spikes\\P00\\dsh-runtime\\init-only.ts good",
+      "exit_code": 0,
+      "initialize_result": {
+        "serverInfo_name": "deepseek-harness-sdk-runtime",
+        "serverInfo_version": "0.0.1"
+      },
+      "prompt_sent": false,
+      "model_call": false,
+      "shutdown_completed": true,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source"
+    }
+  ],
+  "harness_setup_recovery": "First helper execution failed because tsx treated the spike .ts file as CommonJS and rejected top-level await; added spike-local package.json with type=module, then bad-route and corrected-route runs both exited 0.",
+  "limitations": [
+    "No prompt/model request, so no model-visible tool list was requested.",
+    "sandbox read-only was confirmed in composed config but no sandbox operation was attempted.",
+    "Full build, unit tests, approval flow, cancel/resume, and runtime tool-enumeration were not run."
+  ],
+  "production_profile_touched": false,
+  "reference_checkout_touched": false,
+  "report_path_correction": {
+    "sequence": [
+      "Created report at docs/research/P00/dsh-runtime-U02.md outside the permitted artifact locations.",
+      "Deleted that first file before transferring it.",
+      "Created the final report under evidence/P00-U02/20261001-01.",
+      "On parent follow-up, copied the evidence report to the exact former path for a hash check; both hashes were E5237FC2F580466DC5424442B6923073FCCE5E47E620FF37FEDDB5041B515911 at that time.",
+      "Removed only that temporary file with Remove-Item -LiteralPath; verified it no longer exists.",
+      "Updated this evidence report afterward to record the sequence; no U01 file was touched."
+    ],
+    "temporary_copy_sha256_match": true,
+    "temporary_copy_removed": true,
+    "final_retained_report": "evidence/P00-U02/20261001-01/dsh-runtime-report.md",
+    "final_report_sha256": "48e67b6dcbaff5a5170e8f3dc0cdf510226daa309ac8d41c8241bfab51377bf7",
+    "deleted_original_path_absent": true
+  },
+  "coordinator_metadata_correction": "Resolve the pnpm tool argument to the absolute tools path already shown in the author report (not source/tools); add per-run cwd; public fake credential appears in the fixture script, no real credential is recorded. Runtime/source artifacts unchanged."
+}

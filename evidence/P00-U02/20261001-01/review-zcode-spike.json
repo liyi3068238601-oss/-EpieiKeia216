@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "reviewer": "independent subagent /root/execution_plan",
+  "task_id": "P00-U02 ZCode isolated CLI runtime spike",
+  "status": "ready_for_review",
+  "disposition": "ready for primary decision with documented transport and isolation limits",
+  "product_adoption_approved": false,
+  "scope": "Read-only review of the ZCode preparation/runtime/hook scripts, the fixed source checkout, mock request/response evidence, one primary-agent real-call evidence set, and before/after global-config hash evidence. Reviewer made no model or network calls, modified no scripts/references/configuration, and did not rerun the spike.",
+  "source": {
+    "repository": "E:\\Xiadie\\Xiadie\\references\\zcode-29628c9",
+    "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "runtime_clone_head": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "runtime_clone_worktree": "clean",
+    "source_modified": false
+  },
+  "reviewed_artifacts": [
+    {
+      "path": "E:\\Xiadie\\Xiadie\\spikes\\P00\\prepare-zcode.py",
+      "sha256": "fb8dc7f9a3d955dcbbcf00b4aba34916b39bd0dcdd93816cb0f1a4c8fb7f15e4",
+      "reviewed_lines": "1-75"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\spikes\\P00\\zcode-runtime.py",
+      "sha256": "17b98504866873206dab1d8877e9bb5b0eb7d7a7babaef7947536710e661f17a",
+      "reviewed_lines": "1-190"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\spikes\\P00\\zcode-hook.mjs",
+      "sha256": "87fa1ad8afbee7250524593090632709f4d0d9b169856b1d48dad48e313fc713",
+      "reviewed_lines": "1-10"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+      "sha256": "69095103dc8f6c865502b1d6da274285ce118da5788afd5a47240216cc88cf09"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\zcode-preparation.json",
+      "sha256": "335ad915e1e86421d34a213ae56b3160601097760f02d07fd6126976a0c8fd1c"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\zcode-mock-summary.json",
+      "sha256": "4bea4b5c6fb7fb3a41eac153d47c4db3d64b53b1f8e88dcd4d56f7bf38424e2e"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\zcode-mock-requests.json",
+      "sha256": "56522ad599489a4358b2742a94b98a5be81488294e99a908df845aca4a076f16"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\zcode-real-summary.json",
+      "sha256": "ca064d1a4a79ef685cdf2f7192a186fc565504fc5826eac314f2464bebc656dd"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\zcode-real-requests.json",
+      "sha256": "4cd99fc6434a6ee2ddff58a28496724de19180648f66735d93b9221346594857"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\zcode-real-response-1.sse",
+      "sha256": "58dbccd40a7aa26908e584188dd6c2ae9b0773bb52593187b74b550041328628"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\global-config-before.json",
+      "sha256": "6ba3e422310acc36119cd95ce315582347d9a119b158ec82f41ef4c1673731dd"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\global-config-after.json",
+      "sha256": "4bceb8968353dd85ff68491f352077aed8dee62473d7c93af78eac3f61366f54"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\model-call-ledger.json",
+      "sha256": "2bf8ed7fac0136a94054fcd861b312f1583b6b37ec5505a9deb0ff52df817600"
+    }
+  ],
+  "mock_execution_review": {
+    "status": "PASS",
+    "mock_model_calls": 0,
+    "requests": 3,
+    "cases": [
+      {
+        "case": "normal",
+        "exit_code": 0,
+        "request_count": 1,
+        "assistant_marker_exact": true
+      },
+      {
+        "case": "failure",
+        "exit_code": 1,
+        "request_count": 1,
+        "synthetic_http_400_observed": true,
+        "assistant_marker_absent": true
+      },
+      {
+        "case": "recovery",
+        "exit_code": 0,
+        "request_count": 1,
+        "assistant_marker_exact": true
+      }
+    ],
+    "effective_tool_policy": "The CLI receives --disallowed-tools for the discovered tool names; each captured request omitted the tools field. The relay also rejects any truthy tools field.",
+    "hook_delivery_policy": "The relay requires two hook-context messages with the unique fixture phrase, system-reminder wrapper, and both SessionStart/UserPromptSubmit event labels. The three captured mock requests each record hook_context_messages=2.",
+    "request_limits": "The relay requires the pinned model, max_tokens in 1..1024, the two hook contexts, and rejects known global/user data paths; real mode denies requests after the third.",
+    "recovery_scope": "The recovery case launches a fresh CLI process with a fresh fixture after the injected HTTP 400. It does not establish recovery within the same session or process.",
+    "config_hash_scope": "Per-run CLI config and personal provider fixture SHA-256 values are recorded in the case results; the real-mode preflight does not compare those fields. The preflight does bind the pinned source/clean tree, CLI binary, runner script, and hook script hashes, and the real request is checked again by the relay."
+  },
+  "primary_real_execution_review": {
+    "source": "Primary-agent evidence, independently read and hash-checked; reviewer did not execute the model call.",
+    "status": "PASS",
+    "model_calls": 1,
+    "http_status": 200,
+    "cli_exit_code": 0,
+    "assistant_response_exact": "P00_ZCODE_OK",
+    "request_model": "[基元]deepseek-flash",
+    "tools_field_present": false,
+    "hook_context_messages": 2,
+    "usage": {
+      "prompt_tokens": 2469,
+      "completion_tokens": 5,
+      "total_tokens": 2474,
+      "reasoning_tokens": 0,
+      "cached_tokens": 0
+    },
+    "cost": "Gateway billing was not returned; no zero-cost claim is made.",
+    "global_config_guard": {
+      "before_after_unchanged": true,
+      "files_checked": [
+        "C:\\Users\\liyi\\.dsh\\settings.yaml",
+        "C:\\Users\\liyi\\.dsh\\.credentials.yaml",
+        "C:\\Users\\liyi\\.zcode\\AGENTS.md",
+        "C:\\Users\\liyi\\.zcode\\cli\\config.json"
+      ],
+      "secret_values_or_file_hashes_reproduced_in_this_review": false
+    }
+  },
+  "security_and_isolation_findings": [
+    {
+      "id": "ZCODE-U02-HTTP-BEARER",
+      "severity": "high",
+      "status": "known_residual_risk",
+      "source_location": "spikes/P00/zcode-runtime.py:46-52,77-83",
+      "finding": "The relay loads the configured credential in its Python process and sends it as an Authorization bearer header to the configured HTTP endpoint. The real credential is absent from the CLI child environment and saved evidence, but HTTP does not protect the credential in transit.",
+      "transport_probe": "Primary agent reports a no-credential HTTPS probe failed with ConnectError and the configured HTTP route returned 401 without credentials. This reviewer did not repeat network probes or inspect credential values.",
+      "decision_context": "The primary agent reports the user explicitly selected this existing provider/credential route and chose to proceed with one short call. Record this as an authorized but materially weaker transport boundary; do not describe it as secure transport."
+    },
+    {
+      "id": "ZCODE-U02-OS-BOUNDARY",
+      "severity": "medium",
+      "status": "scope_limitation",
+      "source_location": "spikes/P00/prepare-zcode.py:24-27,46-73; spikes/P00/zcode-runtime.py:131-160",
+      "finding": "The runner isolates environment variables, USERPROFILE, APPDATA, LOCALAPPDATA, temp/data/cache paths, provider config, and fixture cwd. It does not create a Windows filesystem sandbox or network egress allowlist; the CLI still runs with the invoking Windows account's OS permissions. The observed real request had no model tools and no real credential in the child, which materially narrows the tested path but is not an OS security boundary."
+    },
+    {
+      "id": "ZCODE-U02-CONFIG-HASHES",
+      "severity": "low",
+      "status": "evidence_only_not_a_preflight_gate",
+      "source_location": "spikes/P00/zcode-runtime.py:40-45,159-160",
+      "finding": "Generated CLI-config and provider-fixture hashes are recorded for each mock case, but the real-mode preflight does not compare them. The runtime code hash is pinned to the mock evidence and the actual real request passed through the relay checks; describe these file hashes as trace evidence, not as a preflight hash gate."
+    }
+  ],
+  "preparation_and_secret_handling": {
+    "toolchain": "Node v24.16.0 and local pnpm 10.33.2; pnpm tarball integrity is checked before extracting under .runtime.",
+    "build": "Clone/install/build/version commands in zcode-preparation.json all exited 0. Install used --frozen-lockfile and --ignore-scripts; build ran against the pinned clean checkout.",
+    "global_install": false,
+    "real_credential_in_cli_child": false,
+    "real_credential_persisted_by_runner": false,
+    "model_request_artifacts_include_authorization_header": false,
+    "global_config_modified": false
+  },
+  "reviewer_actions": {
+    "model_calls": 0,
+    "network_calls": 0,
+    "tests_or_scripts_rerun": false,
+    "files_written": [
+      "E:\\Xiadie\\Xiadie\\evidence\\P00-U02\\20261001-01\\review-zcode-spike.json"
+    ]
+  }
+}

@@ -3,7 +3,7 @@
   "goal": "执行P00，有问题随时问我",
   "project_root": "E:\\Xiadie\\Xiadie",
   "plan_version": "1.1",
-  "current_task": "P00-U02",
+  "current_task": "P00-U03",
   "tasks": [
     {
       "id": "P00-U01",
@@ -18,7 +18,7 @@
       "dependencies": [
         "P00-U01"
       ],
-      "status": "running",
+      "status": "accepted",
       "attempt_id": "20261001-01"
     },
     {
@@ -27,8 +27,8 @@
       "dependencies": [
         "P00-U02"
       ],
-      "status": "not_started",
-      "attempt_id": null
+      "status": "running",
+      "attempt_id": "20261001-01"
     },
     {
       "id": "P00-U04",
@@ -126,7 +126,19 @@
     "budget_limit": null,
     "user_reply": "无上限",
     "selection_basis": "existing configured DSH default; no new model assumed",
-    "calls_made": 0
+    "calls_made": 1,
+    "usage_totals": {
+      "completion_tokens": 5,
+      "prompt_tokens": 2469,
+      "total_tokens": 2474,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "cost_reported": false
   },
   "product_implementation_started": false
 }

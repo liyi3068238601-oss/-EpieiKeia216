@@ -1,0 +1,127 @@
+{
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "cli_sha256": "69095103dc8f6c865502b1d6da274285ce118da5788afd5a47240216cc88cf09",
+  "mode": "mock",
+  "passed": false,
+  "results": [
+    {
+      "case": "normal",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "--cwd",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\normal\\fixture",
+        "--mode",
+        "plan",
+        "--output-format",
+        "stream-json",
+        "--prompt",
+        "This is a synthetic P00 integration test. Read the P00_CONTEXT marker supplied by hooks. Reply exactly P00_ZCODE_OK. No tools."
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\normal\\fixture",
+      "exit_code": 1,
+      "elapsed_seconds": 1.328,
+      "request_count": 0,
+      "stdout": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-normal-stdout.log",
+        "sha256": "d0def4d4d821bfed91d2792cff41cf6959fb192e8873e40a198951597f891a40",
+        "bytes": 6754
+      },
+      "stderr": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-normal-stderr.log",
+        "sha256": "bae80725183d02a3343df306c7f70d000fdae33afa636022da31d8c9e53c680a",
+        "bytes": 77
+      },
+      "marker_present": true,
+      "failure_present": false,
+      "hooks": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-normal-hooks.jsonl",
+        "sha256": "eb862237bc04606426826af3fad98903c4e28d3207c19278da693cba6aeba99f"
+      }
+    },
+    {
+      "case": "failure",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "--cwd",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\failure\\fixture",
+        "--mode",
+        "plan",
+        "--output-format",
+        "stream-json",
+        "--prompt",
+        "This is a synthetic P00 integration test. Read the P00_CONTEXT marker supplied by hooks. Reply exactly P00_ZCODE_OK. No tools."
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\failure\\fixture",
+      "exit_code": 1,
+      "elapsed_seconds": 1.297,
+      "request_count": 0,
+      "stdout": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-failure-stdout.log",
+        "sha256": "592d37cb0f4f3133619c677581ff388039271540244269012800f385a8142ad2",
+        "bytes": 6762
+      },
+      "stderr": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-failure-stderr.log",
+        "sha256": "9f2b1848c500bf11f483eafc48da056347d2c5610322d85793a12d1ea1b73b5d",
+        "bytes": 77
+      },
+      "marker_present": true,
+      "failure_present": false,
+      "hooks": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-failure-hooks.jsonl",
+        "sha256": "d6bddd57853cf0af3babe6cc1e93ba219534e0d6abaea3a2355f8bf0d40a20d6"
+      }
+    },
+    {
+      "case": "recovery",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "--cwd",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\recovery\\fixture",
+        "--mode",
+        "plan",
+        "--output-format",
+        "stream-json",
+        "--prompt",
+        "This is a synthetic P00 integration test. Read the P00_CONTEXT marker supplied by hooks. Reply exactly P00_ZCODE_OK. No tools."
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\runs-mock\\recovery\\fixture",
+      "exit_code": 1,
+      "elapsed_seconds": 1.343,
+      "request_count": 0,
+      "stdout": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-recovery-stdout.log",
+        "sha256": "5b1b34063f289af0e8e04856989e064e431982ac52f1cc0d6f00a9653d6f977d",
+        "bytes": 6769
+      },
+      "stderr": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-recovery-stderr.log",
+        "sha256": "3b59f03947391c2df5452b8caa66f665221de03dd99d40de12ecb4618d1b4178",
+        "bytes": 77
+      },
+      "marker_present": true,
+      "failure_present": false,
+      "hooks": {
+        "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-recovery-hooks.jsonl",
+        "sha256": "ffaf68161981397a049a8c1df4fe3d5e0a0d41e18c8fe47cfe0de918047c63b8"
+      }
+    }
+  ],
+  "model_calls": 0,
+  "request_count": 0,
+  "request_artifact": {
+    "path": "evidence\\P00-U02\\20261001-01\\zcode-mock-requests.json",
+    "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+  },
+  "cost": "0; mock only",
+  "isolation": {
+    "HOME": "omitted",
+    "USERPROFILE": "per-case synthetic home",
+    "cwd": "per-case fixture with own Git root",
+    "real_credential_in_child": false,
+    "real_credential_persisted": false
+  }
+}

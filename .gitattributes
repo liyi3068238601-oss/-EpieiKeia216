@@ -1,5 +1,8 @@
 * text=auto eol=lf
 planning/** -text
 docs/research/P00/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+spikes/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# SSE terminates each frame with an intentional blank line, including the last.
+*.sse -text whitespace=blank-at-eol,space-before-tab,cr-at-eol,-blank-at-eof
 *.zip -text
