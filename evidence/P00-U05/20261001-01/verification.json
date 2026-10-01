@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "unit_id": "P00-U05",
+  "attempt_id": "20261001-01",
+  "status": "ready_for_review",
+  "baseline_head": "df0215e9ee0d14206a128448bfd3117653b200ae",
+  "working_directory": "E:\\Xiadie\\Xiadie",
+  "authority": {
+    "task_card": "planning/Xiadie_V2_v1.1/tasks/P00-U05.md",
+    "accepted_dependencies": [
+      {
+        "unit_id": "P00-U03",
+        "acceptance": "evidence/P00-U03/20261001-01/acceptance.json",
+        "sha256": "2ff8eb67d86df08723f614d17b074d9baad698c993b2cfb4118344f868bbfaa8"
+      },
+      {
+        "unit_id": "P00-U04",
+        "acceptance": "evidence/P00-U04/20261001-01/acceptance.json",
+        "sha256": "6e1c6b9663f236e271f943c62e17f5aaa08ecfd32bbde8f96e99b0c8e1de3eaf"
+      }
+    ]
+  },
+  "input_bindings": [
+    {
+      "path": "planning/Xiadie_V2_v1.1/requirements.json",
+      "sha256": "3d3a89844ecc1a71efb1a49094762ec1826dfb4e66dcc76802fe91b497fc3505"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/01_项目计划书.md",
+      "sha256": "77e4265fb3ee9278c088b3147c8c106eb9462dd7795cd7da8e433a581d7a48a7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/04_需求追踪矩阵.md",
+      "sha256": "99ee9e66febd42aa4b11a10e783fc8b980df68002884dd874070c7110b829f2f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U05.md",
+      "sha256": "3f1c9ee77f2c60031e86baa472b7110ee95801955ca456da989c88ba7cb392b5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/03_代码参考与复用清单.md",
+      "sha256": "ddf362b98f53530307473d04e3056886e45da27bbe298ac115dcf40793a36145"
+    },
+    {
+      "path": "docs/research/P00/source-decision.md",
+      "sha256": "b4952feab449edc93b79da92441d5b31a09c26a844951e10262b90a4f23f528a"
+    },
+    {
+      "path": "evidence/P00-U03/20261001-01/acceptance.json",
+      "sha256": "2ff8eb67d86df08723f614d17b074d9baad698c993b2cfb4118344f868bbfaa8"
+    },
+    {
+      "path": "evidence/P00-U04/20261001-01/acceptance.json",
+      "sha256": "6e1c6b9663f236e271f943c62e17f5aaa08ecfd32bbde8f96e99b0c8e1de3eaf"
+    }
+  ],
+  "output_bindings": [
+    {
+      "path": "docs/requirements.md",
+      "sha256": "f3d94b4225e343f0af0708c081e241d2bc5f8995f28952f1e1f99a001d79a9cd",
+      "bytes": 21002
+    },
+    {
+      "path": "docs/adr/scope.md",
+      "sha256": "5c482e8ded4ec436bd0106238a4e845b83e8f48b4302652a5aeb95077c99ef52",
+      "bytes": 5479
+    },
+    {
+      "path": "evidence/P00-U05/20261001-01/result.md",
+      "sha256": "63b575ccbdf5f1608324d12eb3be4aafe04a2a633962756a22f1883b4f74267b",
+      "bytes": 3565
+    }
+  ],
+  "mapping_validation": {
+    "source": "planning/Xiadie_V2_v1.1/requirements.json",
+    "appendix": "docs/requirements.md#来源与原始映射",
+    "source_records": 28,
+    "appendix_records": 28,
+    "fields_preserved": [
+      "id",
+      "title",
+      "stages",
+      "tasks",
+      "status",
+      "priority"
+    ],
+    "normalized_json_equal": true,
+    "all_priority_must": true,
+    "all_status_not_started": true,
+    "requirement_table_rows": 28,
+    "table_titles_match_source": true,
+    "final_version": "1.0.0",
+    "final_version_origin": "execution mapping inference from plan scope and P15/P16 gates; not an original requirements.json field"
+  },
+  "checks": [
+    {
+      "name": "requirement_mapping_and_document_invariants",
+      "command": "PowerShell inline read-only validation: parse source and appendix JSON, compare normalized records, check 28 table rows/titles and Must/not_started values, assert R02/R13/R22 criteria and scope wording, then check UTF-8, LF-only and no trailing whitespace.",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0,
+      "stdout": [
+        "table_rows=28",
+        "appendix_records=28",
+        "source_mapping_exact=true",
+        "all_priority_must_status_not_started=true",
+        "r02_r13_r22_and_scope_architecture=true",
+        "utf8_no_bom_lf_only_no_trailing_whitespace=true",
+        "title_rows_match_original_json=true"
+      ]
+    },
+    {
+      "name": "appendix_generation",
+      "command": "PowerShell ConvertFrom-Json requirements.json; serialize each of 28 requirement records with ConvertTo-Json -Compress -Depth 20; replace the appendix placeholder and write UTF-8 without BOM using LF.",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0,
+      "stdout": [
+        "requirements=28",
+        "appendix_records=28",
+        "bytes=20842 before final criterion wording edits"
+      ]
+    },
+    {
+      "name": "worktree_sha256",
+      "command": "PowerShell Get-FileHash -Algorithm SHA256 on the two document outputs and result.md after final writes.",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0,
+      "stdout": [
+        "docs/requirements.md f3d94b4225e343f0af0708c081e241d2bc5f8995f28952f1e1f99a001d79a9cd bytes=21002",
+        "docs/adr/scope.md 5c482e8ded4ec436bd0106238a4e845b83e8f48b4302652a5aeb95077c99ef52 bytes=5479",
+        "evidence/P00-U05/20261001-01/result.md 63b575ccbdf5f1608324d12eb3be4aafe04a2a633962756a22f1883b4f74267b bytes=3565"
+      ]
+    }
+  ],
+  "product_execution": {
+    "product_tests": "NOT_RUN",
+    "model_calls": "NOT_RUN",
+    "installation_or_global_changes": "NOT_RUN",
+    "Windows_distribution_or_application": "NOT_RUN",
+    "Live2D_voice_or_license_runtime_verification": "NOT_RUN"
+  },
+  "review_state": "author_ready_for_review; not accepted"
+}
