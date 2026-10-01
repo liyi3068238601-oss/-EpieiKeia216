@@ -7,7 +7,7 @@
   "product_version": "0.1.0",
   "stage": "P01",
   "stage_status": "running",
-  "current_task": "P01-U04",
+  "current_task": "P01-U05",
   "G00": "pass",
   "G01": "pending",
   "tasks": [
@@ -167,15 +167,20 @@
       "dependencies": [
         "P01-U03"
       ],
-      "status": "ready_for_review",
+      "status": "accepted",
       "card_sha256": "011b011490d5826fa37e80b24c22c75f1e57bbe0314f359fd89805b17ff44f28",
       "accepted_prerequisite": "P01-U03:cf407f278fea36fa7e1f48d154e0ae0720c1ef88",
       "author_commit": "122d3028385469a3704249f8df17e013cf880456",
       "evidence": "evidence/P01-U04/20261001-01/result.md",
       "review": {
-        "status": "running",
+        "status": "pass",
         "reviewer": "u04_review",
-        "reviewed_commit": "122d3028385469a3704249f8df17e013cf880456"
+        "reviewed_commit": "122d3028385469a3704249f8df17e013cf880456",
+        "evidence": {
+          "path": "evidence/P01-U04/20261001-01/review-final.json",
+          "bytes": 8959,
+          "sha256": "bddec52b548b7f621e54f7e769dc100a45f2fa52777388148971fe2b5e7e8fd5"
+        }
       },
       "tests": {
         "check": 0,
@@ -185,7 +190,13 @@
         "fail": 0,
         "skipped": 0,
         "inherited_U03_regression": "pass"
-      }
+      },
+      "acceptance": {
+        "path": "evidence/P01-U04/20261001-01/acceptance.json",
+        "bytes": 3120,
+        "sha256": "2b9a858886656c7fa38af0fd6d0da600948a32d05bcc4575be978c942f5700cf"
+      },
+      "followup_required": "U06 actual model tools/invalid identity blocking"
     },
     {
       "id": "P01-U05",
@@ -193,8 +204,9 @@
       "dependencies": [
         "P01-U04"
       ],
-      "status": "not_started",
-      "card_sha256": "a1e3de1e6bc42e47694c06959fb708e3b8008fc9c1046983e6a93b389e60fcc8"
+      "status": "running",
+      "card_sha256": "a1e3de1e6bc42e47694c06959fb708e3b8008fc9c1046983e6a93b389e60fcc8",
+      "accepted_prerequisite": "P01-U04:122d3028385469a3704249f8df17e013cf880456"
     },
     {
       "id": "P01-U06",
@@ -289,7 +301,7 @@
       "sha256": "a527ab46e12bb3c70930e3ea4ea41135f15eceded8266887238c90847b78656b"
     }
   },
-  "persona_asset_state": "v3 runtime asset created, hash-pinned and validated; independent U04 review pending; all prior versions preserved",
+  "persona_asset_state": "v3 runtime asset accepted; six source-bound fields, hash-pinned/read-only loader; all prior versions preserved",
   "product_implementation_started": true,
   "next_stage_started": false,
   "persona_source_sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978",

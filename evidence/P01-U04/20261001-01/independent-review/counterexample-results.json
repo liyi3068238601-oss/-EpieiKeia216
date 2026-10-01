@@ -1,0 +1,48 @@
+{
+  "schema": "p01-u04-counterexample-results/v1",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "node": "v24.14.0",
+  "pinnedContentSha256": "a688c669c4f556495131ac69cdc868a5b2ee93614eff814fc0793b1690c99bb4",
+  "apiExports": [
+    "APPROVED_CHARACTER",
+    "CHARACTER_FIELDS",
+    "CharacterAssetError",
+    "FIELD_BYTE_LIMITS",
+    "isApprovedCharacter",
+    "loadCharacter",
+    "validateCharacterAsset"
+  ],
+  "junctionAttempted": true,
+  "fixtureRoot": "temporary; created and removed under .runtime/P01/review-u04",
+  "results": [
+    {
+      "name": "approved-loader-snapshot-is-deep-frozen-read-only-and-authorized",
+      "result": "pass"
+    },
+    {
+      "name": "missing-root-and-path-like-identity-fail-closed",
+      "result": "pass"
+    },
+    {
+      "name": "wrongly-named-manifest-or-persona-rejects-loading",
+      "result": "pass"
+    },
+    {
+      "name": "tampered-content-and-self-reported-hash-cannot-get-approved",
+      "result": "pass"
+    },
+    {
+      "name": "oversized-manifest-and-persona-reject-before-parse",
+      "result": "pass"
+    },
+    {
+      "name": "schema-required-fields-and-utf8-byte-limits-reject",
+      "result": "pass"
+    },
+    {
+      "name": "real-windows-directory-junction-is-rejected-with-outside-copy-intact",
+      "result": "pass"
+    }
+  ],
+  "result": "pass"
+}

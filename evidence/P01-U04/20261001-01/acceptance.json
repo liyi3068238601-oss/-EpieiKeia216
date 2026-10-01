@@ -1,0 +1,73 @@
+{
+  "task_id": "P01-U04",
+  "attempt_id": "20261001-01",
+  "status": "accepted",
+  "coordinator": "root",
+  "accepted_at_utc": "2026-10-01T15:23:41.437799+00:00",
+  "author_commit": "122d3028385469a3704249f8df17e013cf880456",
+  "baseline_commit": "11c0cbc8248b7bb407458b3995057fd7881d708d",
+  "independent_review": {
+    "path": "evidence/P01-U04/20261001-01/review-final.json",
+    "bytes": 8959,
+    "sha256": "bddec52b548b7f621e54f7e769dc100a45f2fa52777388148971fe2b5e7e8fd5"
+  },
+  "independent_artifacts": [
+    {
+      "path": "evidence/P01-U04/20261001-01/independent-review/manifest-verification.json",
+      "bytes": 3820,
+      "sha256": "1b1b9cb74270fe78dfc1c964a139005860581941b1dfdf78d717f6dc77b0839d"
+    },
+    {
+      "path": "evidence/P01-U04/20261001-01/independent-review/counterexample-results.json",
+      "bytes": 1314,
+      "sha256": "6fa4964b316fcc91970951b9065c967d4f14912600a916b04f6a6e4a31761cd7"
+    },
+    {
+      "path": "evidence/P01-U04/20261001-01/independent-review/counterexamples.mjs",
+      "bytes": 6984,
+      "sha256": "8bca00c3c28f99661e2da61db9431dd82aca686dfd732b450451c49a89c50ebb"
+    },
+    {
+      "path": "evidence/P01-U04/20261001-01/independent-review/audit-manifest-final.mjs",
+      "bytes": 7319,
+      "sha256": "b8bc801ed4ece9780b9b50bc791d4a3464d6f60156412bf6f0e5fdac35c5e02c"
+    },
+    {
+      "path": "evidence/P01-U04/20261001-01/independent-review/unit-selector.stdout.log",
+      "bytes": 580,
+      "sha256": "a75ea3bbafe2cf4191b7f1ee68be9efc78b63ac4cb4fc182c8955645ceeb68cd"
+    },
+    {
+      "path": "evidence/P01-U04/20261001-01/independent-review/contract-selector.stdout.log",
+      "bytes": 213,
+      "sha256": "9cef530c47a2173d1c5f673e2f390f695c2a205ee64e599b446df0ccdbf8fbf8"
+    },
+    {
+      "path": "evidence/P01-U04/20261001-01/independent-review/integration-selector.stdout.log",
+      "bytes": 801,
+      "sha256": "b26cc945fec05e08948de7f071c5cffc1eeb5a79091d2f2aaab32e35a6965be9"
+    }
+  ],
+  "author_manifest": {
+    "path": "evidence/P01-U04/20261001-01/manifest.json",
+    "bytes": 11057,
+    "sha256": "4eda9739d8a388bd029d48d971259ffb046b3ec682bad37ca16d870d9019a4e6"
+  },
+  "root_manifest_check": {
+    "files": 57,
+    "disk_and_author_git_blob_mismatches": 0
+  },
+  "unit_tests": 6,
+  "contract_tests": 1,
+  "integration_tests": 8,
+  "independent_counterexample_groups": 7,
+  "generation_calls_by_unit": 0,
+  "generation_calls_stage_total": 4,
+  "scope": "Asset loader/API only; no P01/G01 acceptance",
+  "required_followup": "U06 must prove actual model tool permissions and invalid-persona turn blocking; U05 must require isApprovedCharacter for instruction provenance.",
+  "limitations": [
+    "U04 is an asset loader/API unit. It is not wired to the product Hook or model tools yet; actual model authorization and invalid-persona turn blocking remain U06 runtime checks.",
+    "Static path and junction checks do not eliminate replacement by a hostile local process between path checks and open; the author documents this race.",
+    "No Desktop, Core, model, full build, or end-to-end runtime was started or claimed."
+  ]
+}

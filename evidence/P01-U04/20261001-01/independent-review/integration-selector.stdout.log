@@ -1,0 +1,16 @@
+✔ approved asset loads as an immutable snapshot with no writer capability (7.666ms)
+✔ schema validity and copied source hashes cannot forge an approved snapshot (3.9057ms)
+✔ missing and wrongly named asset files reject loading (26.1378ms)
+✔ wrong identity and path-like selection are rejected before file access (0.307ms)
+✔ tampered content and malformed JSON cannot silently fall back (33.8172ms)
+✔ editing both content and its self-reported hash does not grant approval (19.3725ms)
+✔ oversized files are rejected before unbounded reading or parsing (21.623ms)
+✔ real directory junction cannot redirect asset reads outside the configured root (10.8594ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 236.4724

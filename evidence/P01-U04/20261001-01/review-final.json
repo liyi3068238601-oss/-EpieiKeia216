@@ -1,0 +1,215 @@
+{
+  "schema": "p01-independent-review/v1",
+  "task_id": "P01-U04",
+  "decision": "pass",
+  "reviewed_at_utc": "2026-10-01T15:16:20Z",
+  "review_target": {
+    "author_commit": "122d3028385469a3704249f8df17e013cf880456",
+    "baseline_commit": "11c0cbc8248b7bb407458b3995057fd7881d708d",
+    "worktree_clean_at_review": true,
+    "scope": "Only P01-U04; read the frozen author tree and its stated evidence."
+  },
+  "prerequisite": {
+    "task_id": "P01-U03",
+    "accepted_author_commit": "cf407f278fea36fa7e1f48d154e0ae0720c1ef88",
+    "accepted": true,
+    "commit_is_ancestor_of_baseline": true,
+    "acceptance_record": {
+      "path": "evidence/P01-U03/20261001-01/acceptance.json",
+      "bytes": 1934,
+      "sha256": "ba24f38938d91a3c199186baa59698ad8f2ff9ca8a3ffbb7acaf29fbe378e397",
+      "worktree_and_baseline_git_blob_match": true
+    }
+  },
+  "manifest_audit": {
+    "result": "pass",
+    "declared_files": 57,
+    "enumerated_files": 57,
+    "baseline_to_author_commit_changed_files": 59,
+    "changed_files_covered_excluding_manifest_and_its_sidecar": 57,
+    "disk_bytes_and_sha256_match": 57,
+    "disk_git_blob_ids_match": 57,
+    "disk_git_blob_ids_match_frozen_commit": 57,
+    "manifest_sha256": "4eda9739d8a388bd029d48d971259ffb046b3ec682bad37ca16d870d9019a4e6",
+    "sidecar_matches": true,
+    "mismatches": []
+  },
+  "persona_review": {
+    "source_path": "docs/research/P01/persona-from-mofox-v3.md",
+    "source_sha256": "d17b290e585cc8954321e4a0e6881823dcd221e6dff8e82223a506090ab3433f",
+    "source_disk_and_frozen_git_blob_match": true,
+    "all_six_asset_texts_match_their_source_sections_exactly": true,
+    "total_field_utf8_bytes": 3353,
+    "fields": [
+      {
+        "name": "identity",
+        "source_section": "身份",
+        "source_text_exact": true,
+        "utf8_bytes": 372,
+        "field_byte_limit": 2048,
+        "license": "user-approved-persona-adaptation; public-rights-unverified",
+        "fiction": true
+      },
+      {
+        "name": "voice",
+        "source_section": "表达",
+        "source_text_exact": true,
+        "utf8_bytes": 506,
+        "field_byte_limit": 2048,
+        "license": "user-approved-persona-adaptation; public-rights-unverified",
+        "fiction": true
+      },
+      {
+        "name": "values",
+        "source_section": "性格与价值",
+        "source_text_exact": true,
+        "utf8_bytes": 488,
+        "field_byte_limit": 2048,
+        "license": "user-approved-persona-adaptation; public-rights-unverified",
+        "fiction": true
+      },
+      {
+        "name": "boundaries",
+        "source_section": "边界与事实",
+        "source_text_exact": true,
+        "utf8_bytes": 594,
+        "field_byte_limit": 4096,
+        "license": "user-approved-persona-adaptation; public-rights-unverified",
+        "fiction": false
+      },
+      {
+        "name": "canon",
+        "source_section": "少量背景细节",
+        "source_text_exact": true,
+        "utf8_bytes": 512,
+        "field_byte_limit": 4096,
+        "license": "user-approved-persona-adaptation; public-rights-unverified",
+        "fiction": true
+      },
+      {
+        "name": "examples",
+        "source_section": "虚构风格示例",
+        "source_text_exact": true,
+        "utf8_bytes": 881,
+        "field_byte_limit": 4096,
+        "license": "project-authored-style-examples; local-use",
+        "fiction": true
+      }
+    ],
+    "rights_and_fiction_assessment": "The reviewed v3 source records the user's local-use selection, does not claim the game character is original, does not assert public distribution rights, and says canon has not been independently checked. Examples are labeled as new fictional style samples. The asset contains no Herta or 昔涟 text. No original Neo-MoFox full text, private v0 content, or credentials were read."
+  },
+  "implementation_review": {
+    "fixed_identity_version_manifest_and_content_pins": "pass",
+    "wrong_name_and_path_like_identity_rejection": "pass",
+    "missing_file_and_root_failure": "pass; throws CharacterAssetError, no generic identity fallback",
+    "junction_and_realpath_containment": "pass for a static in-tree directory junction",
+    "manifest_and_persona_file_limits": {
+      "manifest_bytes": 4096,
+      "persona_file_bytes": 32768,
+      "approved_persona_bytes": 5580
+    },
+    "schema_limits": {
+      "identity_voice_values_bytes": 2048,
+      "boundaries_canon_examples_bytes": 4096,
+      "total_text_bytes": 16384
+    },
+    "sha256_and_schema_validation": "pass; approved manifest and content digests are hardcoded outside model-editable assets",
+    "read_only_and_authority_boundary": "pass for this API; files open read-only, snapshots are deeply frozen, the public API has no write/save/persist export, and only loader-produced WeakSet snapshots pass isApprovedCharacter",
+    "schema_only_validation_does_not_grant_approval": true
+  },
+  "verification": {
+    "runtime": "Node.js v24.14.0 at .runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe",
+    "path_prefix": [
+      ".runtime/P01/desktop-build-evidence/bin",
+      ".runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64"
+    ],
+    "pnpm_invoked": false,
+    "selectors": [
+      {
+        "suite": "unit",
+        "command": "node tools/run-tests.mjs unit P01-U04",
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "exit_code": 0,
+        "log_sha256": "a75ea3bbafe2cf4191b7f1ee68be9efc78b63ac4cb4fc182c8955645ceeb68cd"
+      },
+      {
+        "suite": "contract",
+        "command": "node tools/run-tests.mjs contract P01-U04",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "exit_code": 0,
+        "log_sha256": "9cef530c47a2173d1c5f673e2f390f695c2a205ee64e599b446df0ccdbf8fbf8"
+      },
+      {
+        "suite": "integration",
+        "command": "node tools/run-tests.mjs integration P01-U04",
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "exit_code": 0,
+        "log_sha256": "b26cc945fec05e08948de7f071c5cffc1eeb5a79091d2f2aaab32e35a6965be9"
+      }
+    ],
+    "independent_counterexamples": {
+      "result": "pass",
+      "groups_passed": 7,
+      "real_windows_directory_junction_created_and_probed": true,
+      "junction_rejected_with": "ASSET_PATH_ESCAPE",
+      "outside_copy_remained_readable": true,
+      "fixture_created_and_cleaned_under_review_directory": true,
+      "result_sha256": "6fa4964b316fcc91970951b9065c967d4f14912600a916b04f6a6e4a31761cd7"
+    }
+  },
+  "compiled_test_artifact": {
+    "source": "Existing dist output, reported built by the pinned toolchain before this review; no rebuild was run.",
+    "modules": [
+      {
+        "path": "dist/packages/character/src/index.js",
+        "bytes": 198,
+        "sha256": "b530ca68c84a7a70c45a2fcf86b76145f9c53811b56e76392191a87f2b524367"
+      },
+      {
+        "path": "dist/packages/character/src/loader.js",
+        "bytes": 5392,
+        "sha256": "9eea2dd6ae21d8a0a9d55163b212c421f288682a6a197297276a333fa8ee89b4"
+      },
+      {
+        "path": "dist/packages/character/src/schema.js",
+        "bytes": 3572,
+        "sha256": "aa5afe369629f0b18daf4b1d47c74b66ab72476609206dfedef57059152b3eaa"
+      }
+    ]
+  },
+  "limitations": [
+    "U04 is an asset loader/API unit. It is not wired to the product Hook or model tools yet; actual model authorization and invalid-persona turn blocking remain U06 runtime checks.",
+    "Static path and junction checks do not eliminate replacement by a hostile local process between path checks and open; the author documents this race.",
+    "No Desktop, Core, model, full build, or end-to-end runtime was started or claimed."
+  ],
+  "findings": [],
+  "superseded_reviewer_artifact": {
+    "path": ".runtime/P01/review-u04/manifest-verification-attempt-1.json",
+    "reason": "The first reviewer script incorrectly required current HEAD to equal the frozen author commit and only recognized LF headings. It was superseded by a target-commit disk/blob audit, which verified all 57 files and all six source sections. This was a reviewer-script issue, not a project finding."
+  },
+  "review_artifacts": {
+    "manifest_verification": {
+      "path": ".runtime/P01/review-u04/manifest-verification.json",
+      "bytes": 3820,
+      "sha256": "1b1b9cb74270fe78dfc1c964a139005860581941b1dfdf78d717f6dc77b0839d"
+    },
+    "counterexample_results": {
+      "path": ".runtime/P01/review-u04/counterexample-results.json",
+      "bytes": 1314,
+      "sha256": "6fa4964b316fcc91970951b9065c967d4f14912600a916b04f6a6e4a31761cd7"
+    },
+    "selector_logs": [
+      ".runtime/P01/review-u04/unit-selector.stdout.log",
+      ".runtime/P01/review-u04/contract-selector.stdout.log",
+      ".runtime/P01/review-u04/integration-selector.stdout.log"
+    ],
+    "counterexample_runner": ".runtime/P01/review-u04/counterexamples.mjs",
+    "manifest_audit_runner": ".runtime/P01/review-u04/audit-manifest-final.mjs"
+  }
+}
