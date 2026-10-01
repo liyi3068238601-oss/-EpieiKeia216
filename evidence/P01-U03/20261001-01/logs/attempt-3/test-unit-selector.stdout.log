@@ -1,0 +1,19 @@
+
+> xiadie@0.1.0 test:unit E:\Xiadie\Xiadie\.runtime\P01\clean-install-u03-20261001-03
+> pnpm run build && node tools/run-tests.mjs unit "--" "P01-U03"
+
+
+> xiadie@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\clean-install-u03-20261001-03
+> tsc --project tsconfig.json
+
+✔ accepts ordinary JSON values and shared non-cyclic references (0.5705ms)
+✔ rejects values JSON.stringify would omit, coerce, or fail to encode (0.1003ms)
+✔ rejects cycles, sparse arrays, accessors, symbols, and hidden fields (0.0938ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 54.3666

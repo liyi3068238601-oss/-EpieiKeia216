@@ -1,0 +1,21 @@
+
+> xiadie@0.1.0 test:integration E:\Xiadie\Xiadie\.runtime\P01\clean-install-u03-20261001-02
+> node tools/run-tests.mjs integration "--" "P01-U03"
+
+✔ accepts local re-exports and Node built-ins (15.7055ms)
+✔ does not mistake a worktree located under .runtime for a Core dependency (5.3265ms)
+✔ follows a local wrapper and transitive re-export to forbidden Electron (5.9969ms)
+✔ rejects a transitive import into adapters even through a local wrapper (7.433ms)
+✔ fails closed for computed dynamic import and require targets (9.8747ms)
+✔ rejects configured local aliases that resolve into references (6.0417ms)
+✔ rejects file URLs and absolute Windows module paths (3.797ms)
+✔ maps the U03 task selector and rejects unknown selectors (0.4673ms)
+✔ test runner exits nonzero for an unknown command-line task selector (41.5863ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 303.0304

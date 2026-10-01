@@ -1,0 +1,68 @@
+{
+  "schema": "p01-u03-source-decision/v1",
+  "task_id": "P01-U03",
+  "attempt_id": "20261001-01",
+  "status": "ready_for_review",
+  "baseline_commit": "46099706bc6f2c041d7f0a704bbb7bd04635d6e6",
+  "decision": "Create one private root TypeScript project compiling only packages/contracts; do not create a pnpm workspace or Core runtime yet.",
+  "adopted": [
+    {
+      "source": "P01-U02 accepted native-reuse decision",
+      "commit": "46099706bc6f2c041d7f0a704bbb7bd04635d6e6",
+      "scope": "Keep the pinned ZCode Runtime/Loop as the only runtime and reserve a bounded Core/Hook boundary.",
+      "effect_on_u03": "The contract surface and import checker have no ZCode, DSH, or Electron package dependencies."
+    },
+    {
+      "source": "ZCode",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "license": "Apache-2.0",
+      "use": "Architecture constraint only; no upstream source copied or imported."
+    },
+    {
+      "source": "Herta",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "license": "MIT code; character assets excluded",
+      "use": "No code or asset copied for U03."
+    },
+    {
+      "source": "Node.js built-in test runner and assertions",
+      "version": "24.14.0",
+      "license": "Node.js MIT license",
+      "use": "Use node:test and node:assert/strict; add no test framework dependency."
+    },
+    {
+      "source": "TypeScript compiler and compiler API",
+      "version": "6.0.2",
+      "license": "Apache-2.0",
+      "use": "Use the pinned compiler for the root contracts build and static import graph resolution."
+    }
+  ],
+  "implementation_mapping": {
+    "root_compile_scope": "packages/contracts/src/**/*.ts",
+    "workspace": "No pnpm-workspace.yaml; future packages remain in the root TypeScript compile until a later accepted task requires package workspaces.",
+    "task_test_mapping": {
+      "test:unit": [
+        "packages/contracts/test/json-value.test.mjs"
+      ],
+      "test:contract": [
+        "packages/contracts/test/contracts.test.mjs",
+        "packages/contracts/test/json-value.type-fixture.ts"
+      ],
+      "test:integration": [
+        "packages/contracts/test/import-boundaries.test.mjs"
+      ],
+      "task_selector": "P01-U03",
+      "planned_path_mapping": "The planned tests/units/P01-U03.test.ts maps to the actual Node built-in tests above."
+    },
+    "boundary_checker": "tools/check-import-boundaries.mjs recursively follows local TypeScript-resolved import, export, import-type, import-equals, dynamic-import, and require edges reachable from packages/core; computed import/require targets fail closed. It resolves with preserveSymlinks enabled so junction paths remain visible, classifies only safe in-repository node_modules junctions as external, and rejects all other workspace symlink edges.",
+    "symlink_policy_fixtures": "Real Windows directory junction tests reject a Core-root junction, a source junction inside Core, and transitive Core-to-local-wrapper imports through junctions into references/upstream or adapters with preserveSymlinks enabled. A pnpm-style node_modules package junction is accepted as external only when source and canonical target both remain inside the repository node_modules tree and the target has no forbidden path or framework segment. Negative fixtures cover references, adapters, .runtime, a framework path, and an outside-repository node_modules target.",
+    "boundary_status": "Policy fixtures are tested. There is no product packages/core yet, so check reports BOUNDARY_SCAN_NOT_RUN for product Core coverage.",
+    "future_tests": {
+      "test:eval": "Explicit NOT_IMPLEMENTED exit code 2.",
+      "test:e2e": "Explicit NOT_IMPLEMENTED exit code 2."
+    },
+    "byte_preservation": "Root package/build files and source paths use .gitattributes -text attributes; evidence uses the repository existing evidence/** -text rule. This preserves byte-level hashes when committed under core.autocrlf=true."
+  },
+  "license_and_asset_boundary": "No character assets, persona text, upstream product source, or user configuration is included in U03.",
+  "rollback": "Revert only the isolated P01-U03 author commit; clean-install copies and the pnpm store are separate ignored runtime artifacts."
+}

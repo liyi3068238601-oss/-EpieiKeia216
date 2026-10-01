@@ -1,0 +1,41 @@
+
+> xiadie@0.1.0 test:integration E:\Xiadie\Xiadie\.runtime\P01\clean-install-u03-20261001-01
+> node --test packages/contracts/test/import-boundaries.test.mjs
+
+✔ accepts local re-exports and Node built-ins (29.6209ms)
+✔ follows a local wrapper and transitive re-export to forbidden Electron (11.1008ms)
+✖ rejects a transitive import into adapters even through a local wrapper (13.3739ms)
+✔ fails closed for computed dynamic import and require targets (17.0455ms)
+✔ rejects configured local aliases that resolve into references (13.6182ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 325.6009
+
+✖ failing tests:
+
+test at packages\contracts\test\import-boundaries.test.mjs:93:1
+✖ rejects a transitive import into adapters even through a local wrapper (13.3739ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(report.violations.some((item) => item.code === "FORBIDDEN_LOCAL_PATH"))
+  
+      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/clean-install-u03-20261001-01/packages/contracts/test/import-boundaries.test.mjs:111:10)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+ ELIFECYCLE  Command failed with exit code 1.
