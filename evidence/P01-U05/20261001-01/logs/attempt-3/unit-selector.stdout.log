@@ -1,0 +1,26 @@
+✔ six-field approved schema preserves provenance and fictional example labels (1.8493ms)
+✔ missing, empty and unknown fields fail validation (2.0045ms)
+✔ wrong character, name and version cannot become a generic identity (0.8664ms)
+✔ source, license and fiction metadata must match the approved schema (0.9638ms)
+✔ field and total limits count UTF-8 bytes (0.8294ms)
+✔ accessors and cycles are rejected without invoking asset code (0.622ms)
+✔ constructs immutable instructions only from the approved snapshot and puts canon in fictional state (7.2147ms)
+✔ schema-only and copied role values cannot create instruction packets (4.0136ms)
+✔ hostile memory and trusted facts stay in their data partitions (2.9952ms)
+✔ stable serialization sorts nested object keys and correctly escapes strings (5.2101ms)
+✔ rejects structurally valid packets copied or deserialized outside the builder (2.1883ms)
+✔ rejects missing references, invalid scope and caller-supplied instruction keys (2.2822ms)
+✔ rejects accessor input without invoking it and enforces finite payload limits (2.4194ms)
+✔ input mutation cannot alter the packet snapshot or rendered bytes (2.0658ms)
+✔ budget is checked against the whole serialized packet and never returns a partial string (3.6734ms)
+✔ accepts ordinary JSON values and shared non-cyclic references (0.8597ms)
+✔ rejects values JSON.stringify would omit, coerce, or fail to encode (0.1646ms)
+✔ rejects cycles, sparse arrays, accessors, symbols, and hidden fields (0.9231ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 124.3244
