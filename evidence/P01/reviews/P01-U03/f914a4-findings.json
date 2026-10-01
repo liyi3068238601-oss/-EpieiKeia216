@@ -1,0 +1,22 @@
+{
+  "task": "P01-U03",
+  "author_commit": "f914a4c4c54990f841c030ec7d09500530a7474f",
+  "status": "needs_changes",
+  "independent_reviewer": "p01_u03_review",
+  "root_confirmed": true,
+  "code_sha256": "751806c25af35413f6c198571c3510f4b0a856837d0fb5632010e14d3e9234bd",
+  "finding": "kind symlink is skipped by non-local filter before symlink violation branch; imported junction can falsely pass",
+  "independent_reproduction": {
+    "reported_fixture": ".runtime/P01/review-u03/audit-f914a4",
+    "kind": "real Windows directory junction",
+    "target": "fixture references/upstream",
+    "preserveSymlinks": true,
+    "observed_result": {
+      "status": "scanned",
+      "scannedFiles": 1,
+      "violations": []
+    }
+  },
+  "coordination": "Not cherry-picked, not accepted; author repair requested; no external blocker",
+  "evidence_limit": "Reproduction details are reviewer message; final report will bind actual artifacts"
+}

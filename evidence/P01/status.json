@@ -141,7 +141,13 @@
       "card_sha256": "e5641391e17900de2bc954b1b7cbf23e83e25225ebf9a6c61f75f99d527afe7a",
       "author_worktree": ".runtime/P01/worktrees/u03",
       "author_branch": "p01-u03",
-      "accepted_prerequisite": "evidence/P01-U02/20261001-01/acceptance.json"
+      "accepted_prerequisite": "evidence/P01-U02/20261001-01/acceptance.json",
+      "review": {
+        "status": "needs_changes",
+        "author_commit": "f914a4c4c54990f841c030ec7d09500530a7474f",
+        "finding_evidence": "evidence/P01/reviews/P01-U03/f914a4-findings.json",
+        "fix_in_progress": true
+      }
     },
     {
       "id": "P01-U04",
@@ -255,7 +261,7 @@
     }
   },
   "persona_asset_state": "v3 clarifies user-approved v2; all four versions preserved; runtime asset not yet created",
-  "product_implementation_started": false,
+  "product_implementation_started": true,
   "next_stage_started": false,
   "persona_source_sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978",
   "persona_scope_deviation": "User approved retained game background in current draft; do not label the character original or assert public distribution rights",
