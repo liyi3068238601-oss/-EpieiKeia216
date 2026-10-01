@@ -1,0 +1,1322 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>执行单元索引</title><style>*{box-sizing:border-box}body{margin:0;background:#f1f3f8;color:#25283c;font:16px/1.8 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}a{color:#59478e;text-decoration:none}a:hover{text-decoration:underline}header{position:sticky;top:0;padding:12px 26px;background:#29223f;color:#fff;z-index:3;display:flex;justify-content:space-between;font-size:13px}header a{color:#ede8ff}.layout{display:grid;grid-template-columns:250px minmax(0,1000px);gap:26px;max-width:1320px;margin:28px auto;padding:0 24px}nav{position:sticky;top:68px;max-height:85vh;overflow:auto;font-size:13px}nav a{display:block;padding:5px 10px;border-left:2px solid transparent}nav a:hover{border-color:#59478e;background:#e9e4f4}nav input{width:100%;padding:8px;border:1px solid #d7daea;border-radius:6px;margin-bottom:12px}main{padding:36px 44px;background:#fff;border:1px solid #dde1ed;border-radius:12px;min-width:0}h1{font-size:30px;line-height:1.35;color:#35264d}h2{font-size:23px;margin-top:36px;border-top:1px solid #e1e3ed;padding-top:20px}h3{font-size:19px;margin-top:28px}h1,h2,h3{scroll-margin-top:78px}p{margin:14px 0}table{border-collapse:collapse;display:block;overflow:auto;width:100%;font-size:14px;margin:20px 0}th,td{border:1px solid #dde1ed;padding:9px 12px;min-width:85px;vertical-align:top;overflow-wrap:anywhere}th{background:#ede9f5;text-align:left}pre{padding:16px 20px;background:#272a3c;color:#f0f2fa;overflow:auto;border-radius:8px;font-size:13px}code{font:13px/1.6 ui-monospace,Consolas,monospace;overflow-wrap:anywhere;background:#f1eef7;padding:2px 4px;border-radius:3px}pre code{padding:0;background:transparent;color:inherit}li{margin:6px 0}hr{border:0;border-top:1px dashed #d9dceb;margin:30px 0}.kicker{font-size:12px;color:#71738c;letter-spacing:.1em;border-bottom:1px solid #e1e3ed;padding-bottom:12px;margin-bottom:25px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:#eeeaf7;padding:14px;border-radius:8px}.stat b{display:block;font-size:28px}.note{border:1px solid #d5c9e9;background:#f7f4fb;padding:14px 18px;border-radius:8px}.footer{border-top:1px solid #e1e3ed;padding-top:16px;margin-top:36px;font-size:12px;color:#76798e}@media(max-width:900px){.layout{display:block;margin:12px auto;padding:0 12px}nav{position:static;max-height:180px;margin-bottom:15px}main{padding:22px}header{padding:10px 14px}.stats{grid-template-columns:repeat(2,1fr)}}@media print{header,nav{display:none}.layout{display:block;margin:0;padding:0}main{padding:0;border:0}body{background:white;font-size:10pt}h1,h2,h3{break-after:avoid}pre,tr{break-inside:avoid}table{display:table;font-size:9pt}}</style></head><body><header><a href="index.html">XIADIE / V2 · 文档1.1</a><span>2026-09-30 · 实施状态：未开始</span></header><div class="layout"><nav><input id="filter" placeholder="筛选章节 / 任务编号" aria-label="筛选目录"><a href="#执行单元索引">执行单元索引</a><a href="#p00-0-0-0-来源与可行性基线">P00｜0.0.0 来源与可行性基线</a><a href="#p01-0-1-0-最小骨架与遐蝶角色">P01｜0.1.0 最小骨架与遐蝶角色</a><a href="#p02-0-2-0-事件与可恢复数据">P02｜0.2.0 事件与可恢复数据</a><a href="#p03-0-3-0-项目记忆与工程档案">P03｜0.3.0 项目记忆与工程档案</a><a href="#p04-0-4-0-life与有界上下文">P04｜0.4.0 Life与有界上下文</a><a href="#p05-0-5-0-手动dream内容流水线">P05｜0.5.0 手动Dream内容流水线</a><a href="#p06-0-6-0-机会式dream与退出恢复">P06｜0.6.0 机会式Dream与退出恢复</a><a href="#p07-0-7-0-zcode到dsh受限桥接">P07｜0.7.0 ZCode到DSH受限桥接</a><a href="#p08-0-8-0-多团队项目协作">P08｜0.8.0 多团队项目协作</a><a href="#p09-0-9-0-隐私治理与安全">P09｜0.9.0 隐私治理与安全</a><a href="#p10-0-10-0-正式桌面与固定live2d">P10｜0.10.0 正式桌面与固定Live2D</a><a href="#p11-0-11-0-个人任务与文件知识">P11｜0.11.0 个人任务与文件知识</a><a href="#p12-0-12-0-语音与角色联动">P12｜0.12.0 语音与角色联动</a><a href="#p13-0-13-0-模型与受控外部扩展">P13｜0.13.0 模型与受控外部扩展</a><a href="#p14-0-14-0-beta稳定性与发行准备">P14｜0.14.0 Beta稳定性与发行准备</a><a href="#p15-1-0-0-rc-1-正式候选验收">P15｜1.0.0-rc.1 正式候选验收</a><a href="#p16-1-0-0-正式交付与维护基线">P16｜1.0.0 正式交付与维护基线</a></nav><main><div class="kicker">PLANNING / EXECUTION / EVIDENCE</div><h1 id="执行单元索引">执行单元索引</h1>
+<p>所有状态not_started。独立任务卡只加载本单元和必要前置。</p>
+<h2 id="p00-0-0-0-来源与可行性基线">P00｜0.0.0 来源与可行性基线</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P00-U01.html">P00-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>无</td>
+</tr>
+<tr>
+<td><a href="tasks/P00-U02.html">P00-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P00-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P00-U03.html">P00-U03</a></td>
+<td>旧工程只读盘点</td>
+<td>implementation</td>
+<td>P00-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P00-U04.html">P00-U04</a></td>
+<td>上游版本和工具链锁定</td>
+<td>implementation</td>
+<td>P00-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P00-U05.html">P00-U05</a></td>
+<td>范围和旧决策替代表</td>
+<td>implementation</td>
+<td>P00-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P00-U06.html">P00-U06</a></td>
+<td>许可证和资产清单</td>
+<td>implementation</td>
+<td>P00-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P00-U07.html">P00-U07</a></td>
+<td>ZCode上下文接缝试验</td>
+<td>implementation</td>
+<td>P00-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P00-U08.html">P00-U08</a></td>
+<td>主会话与子代理Memory试验</td>
+<td>implementation</td>
+<td>P00-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P00-U09.html">P00-U09</a></td>
+<td>DSH协议能力试验</td>
+<td>implementation</td>
+<td>P00-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P00-U10.html">P00-U10</a></td>
+<td>复用路线ADR与开工准入</td>
+<td>implementation</td>
+<td>P00-U09</td>
+</tr>
+<tr>
+<td><a href="tasks/P00-U11.html">P00-U11</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P00-U03, P00-U04, P00-U05, P00-U06, P00-U07, P00-U08, P00-U09, P00-U10</td>
+</tr>
+<tr>
+<td><a href="tasks/P00-U12.html">P00-U12</a></td>
+<td>验收并冻结 0.0.0</td>
+<td>gate</td>
+<td>P00-U11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p01-0-1-0-最小骨架与遐蝶角色">P01｜0.1.0 最小骨架与遐蝶角色</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P01-U01.html">P01-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P00-U12</td>
+</tr>
+<tr>
+<td><a href="tasks/P01-U02.html">P01-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P01-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P01-U03.html">P01-U03</a></td>
+<td>最小TypeScript工作区</td>
+<td>implementation</td>
+<td>P01-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P01-U04.html">P01-U04</a></td>
+<td>原创角色资产与加载器</td>
+<td>implementation</td>
+<td>P01-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P01-U05.html">P01-U05</a></td>
+<td>ContextPacket契约</td>
+<td>implementation</td>
+<td>P01-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P01-U06.html">P01-U06</a></td>
+<td>ZCode插件薄接入</td>
+<td>implementation</td>
+<td>P01-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P01-U07.html">P01-U07</a></td>
+<td>主回复与证据投影</td>
+<td>implementation</td>
+<td>P01-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P01-U08.html">P01-U08</a></td>
+<td>开发配置与凭据隔离</td>
+<td>implementation</td>
+<td>P01-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P01-U09.html">P01-U09</a></td>
+<td>人格与失败基线评测</td>
+<td>implementation</td>
+<td>P01-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P01-U10.html">P01-U10</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P01-U03, P01-U04, P01-U05, P01-U06, P01-U07, P01-U08, P01-U09</td>
+</tr>
+<tr>
+<td><a href="tasks/P01-U11.html">P01-U11</a></td>
+<td>验收并冻结 0.1.0</td>
+<td>gate</td>
+<td>P01-U10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p02-0-2-0-事件与可恢复数据">P02｜0.2.0 事件与可恢复数据</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P02-U01.html">P02-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P01-U11</td>
+</tr>
+<tr>
+<td><a href="tasks/P02-U02.html">P02-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P02-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P02-U03.html">P02-U03</a></td>
+<td>事件ID和终态契约</td>
+<td>implementation</td>
+<td>P02-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P02-U04.html">P02-U04</a></td>
+<td>transcript摄取</td>
+<td>implementation</td>
+<td>P02-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P02-U05.html">P02-U05</a></td>
+<td>规范化事件存储</td>
+<td>implementation</td>
+<td>P02-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P02-U06.html">P02-U06</a></td>
+<td>工作证据报告</td>
+<td>implementation</td>
+<td>P02-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P02-U07.html">P02-U07</a></td>
+<td>运行恢复与未知效果</td>
+<td>implementation</td>
+<td>P02-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P02-U08.html">P02-U08</a></td>
+<td>一致性备份和迁移</td>
+<td>implementation</td>
+<td>P02-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P02-U09.html">P02-U09</a></td>
+<td>诊断与来源追踪</td>
+<td>implementation</td>
+<td>P02-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P02-U10.html">P02-U10</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P02-U03, P02-U04, P02-U05, P02-U06, P02-U07, P02-U08, P02-U09</td>
+</tr>
+<tr>
+<td><a href="tasks/P02-U11.html">P02-U11</a></td>
+<td>验收并冻结 0.2.0</td>
+<td>gate</td>
+<td>P02-U10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p03-0-3-0-项目记忆与工程档案">P03｜0.3.0 项目记忆与工程档案</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P03-U01.html">P03-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P02-U11</td>
+</tr>
+<tr>
+<td><a href="tasks/P03-U02.html">P03-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P03-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P03-U03.html">P03-U03</a></td>
+<td>稳定项目ID与路径映射</td>
+<td>implementation</td>
+<td>P03-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P03-U04.html">P03-U04</a></td>
+<td>MEMORY索引和主题读取</td>
+<td>implementation</td>
+<td>P03-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P03-U05.html">P03-U05</a></td>
+<td>工程事实优先级</td>
+<td>implementation</td>
+<td>P03-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P03-U06.html">P03-U06</a></td>
+<td>项目记忆移动导出</td>
+<td>implementation</td>
+<td>P03-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P03-U07.html">P03-U07</a></td>
+<td>子任务最小知识包</td>
+<td>implementation</td>
+<td>P03-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P03-U08.html">P03-U08</a></td>
+<td>旧项目新鲜度与再开</td>
+<td>implementation</td>
+<td>P03-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P03-U09.html">P03-U09</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P03-U03, P03-U04, P03-U05, P03-U06, P03-U07, P03-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P03-U10.html">P03-U10</a></td>
+<td>验收并冻结 0.3.0</td>
+<td>gate</td>
+<td>P03-U09</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p04-0-4-0-life与有界上下文">P04｜0.4.0 Life与有界上下文</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P04-U01.html">P04-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P03-U10</td>
+</tr>
+<tr>
+<td><a href="tasks/P04-U02.html">P04-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P04-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P04-U03.html">P04-U03</a></td>
+<td>Life数据schema</td>
+<td>implementation</td>
+<td>P04-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P04-U04.html">P04-U04</a></td>
+<td>记忆确认和纠错命令</td>
+<td>implementation</td>
+<td>P04-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P04-U05.html">P04-U05</a></td>
+<td>核心锚点与语义页</td>
+<td>implementation</td>
+<td>P04-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P04-U06.html">P04-U06</a></td>
+<td>live shelf可读视图</td>
+<td>implementation</td>
+<td>P04-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P04-U07.html">P04-U07</a></td>
+<td>上下文预算器</td>
+<td>implementation</td>
+<td>P04-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P04-U08.html">P04-U08</a></td>
+<td>按需档案检索</td>
+<td>implementation</td>
+<td>P04-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P04-U09.html">P04-U09</a></td>
+<td>Memory黄金样本</td>
+<td>implementation</td>
+<td>P04-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P04-U10.html">P04-U10</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P04-U03, P04-U04, P04-U05, P04-U06, P04-U07, P04-U08, P04-U09</td>
+</tr>
+<tr>
+<td><a href="tasks/P04-U11.html">P04-U11</a></td>
+<td>验收并冻结 0.4.0</td>
+<td>gate</td>
+<td>P04-U10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p05-0-5-0-手动dream内容流水线">P05｜0.5.0 手动Dream内容流水线</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P05-U01.html">P05-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P04-U11</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U02.html">P05-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P05-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U03.html">P05-U03</a></td>
+<td>Episode分段与摘要</td>
+<td>implementation</td>
+<td>P05-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U04.html">P05-U04</a></td>
+<td>Worthiness候选gate</td>
+<td>implementation</td>
+<td>P05-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U05.html">P05-U05</a></td>
+<td>同事件与独立证据</td>
+<td>implementation</td>
+<td>P05-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U06.html">P05-U06</a></td>
+<td>第一人称生成与原话校验</td>
+<td>implementation</td>
+<td>P05-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U07.html">P05-U07</a></td>
+<td>强化与再巩固</td>
+<td>implementation</td>
+<td>P05-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U08.html">P05-U08</a></td>
+<td>保留强度和容量</td>
+<td>implementation</td>
+<td>P05-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U09.html">P05-U09</a></td>
+<td>有界语义fold和矛盾核查</td>
+<td>implementation</td>
+<td>P05-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U10.html">P05-U10</a></td>
+<td>提案与事务提交</td>
+<td>implementation</td>
+<td>P05-U09</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U11.html">P05-U11</a></td>
+<td>质量和成本对照</td>
+<td>implementation</td>
+<td>P05-U10</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U12.html">P05-U12</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P05-U03, P05-U04, P05-U05, P05-U06, P05-U07, P05-U08, P05-U09, P05-U10, P05-U11</td>
+</tr>
+<tr>
+<td><a href="tasks/P05-U13.html">P05-U13</a></td>
+<td>验收并冻结 0.5.0</td>
+<td>gate</td>
+<td>P05-U12</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p06-0-6-0-机会式dream与退出恢复">P06｜0.6.0 机会式Dream与退出恢复</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P06-U01.html">P06-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P05-U13</td>
+</tr>
+<tr>
+<td><a href="tasks/P06-U02.html">P06-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P06-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P06-U03.html">P06-U03</a></td>
+<td>队列选择与薄适配</td>
+<td>implementation</td>
+<td>P06-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P06-U04.html">P06-U04</a></td>
+<td>积压和就绪条件</td>
+<td>implementation</td>
+<td>P06-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P06-U05.html">P06-U05</a></td>
+<td>启动补查与空闲策略</td>
+<td>implementation</td>
+<td>P06-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P06-U06.html">P06-U06</a></td>
+<td>步骤检查点与租约</td>
+<td>implementation</td>
+<td>P06-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P06-U07.html">P06-U07</a></td>
+<td>预算与资源仲裁</td>
+<td>implementation</td>
+<td>P06-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P06-U08.html">P06-U08</a></td>
+<td>让路退出与子进程清理</td>
+<td>implementation</td>
+<td>P06-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P06-U09.html">P06-U09</a></td>
+<td>Dream控制面板</td>
+<td>implementation</td>
+<td>P06-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P06-U10.html">P06-U10</a></td>
+<td>跨退出周期故障演练</td>
+<td>implementation</td>
+<td>P06-U09</td>
+</tr>
+<tr>
+<td><a href="tasks/P06-U11.html">P06-U11</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P06-U03, P06-U04, P06-U05, P06-U06, P06-U07, P06-U08, P06-U09, P06-U10</td>
+</tr>
+<tr>
+<td><a href="tasks/P06-U12.html">P06-U12</a></td>
+<td>验收并冻结 0.6.0</td>
+<td>gate</td>
+<td>P06-U11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p07-0-7-0-zcode到dsh受限桥接">P07｜0.7.0 ZCode到DSH受限桥接</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P07-U01.html">P07-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P06-U12</td>
+</tr>
+<tr>
+<td><a href="tasks/P07-U02.html">P07-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P07-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P07-U03.html">P07-U03</a></td>
+<td>工作包和结果协议</td>
+<td>implementation</td>
+<td>P07-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P07-U04.html">P07-U04</a></td>
+<td>ZCode委托MCP入口</td>
+<td>implementation</td>
+<td>P07-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P07-U05.html">P07-U05</a></td>
+<td>DSH专属进程客户端</td>
+<td>implementation</td>
+<td>P07-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P07-U06.html">P07-U06</a></td>
+<td>通知与完成证据适配</td>
+<td>implementation</td>
+<td>P07-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P07-U07.html">P07-U07</a></td>
+<td>跨Runtime执行权限</td>
+<td>implementation</td>
+<td>P07-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P07-U08.html">P07-U08</a></td>
+<td>取消与检查点重启</td>
+<td>implementation</td>
+<td>P07-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P07-U09.html">P07-U09</a></td>
+<td>已有ComfyUI插件纵向试验</td>
+<td>implementation</td>
+<td>P07-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P07-U10.html">P07-U10</a></td>
+<td>角色连续性与故障降级</td>
+<td>implementation</td>
+<td>P07-U09</td>
+</tr>
+<tr>
+<td><a href="tasks/P07-U11.html">P07-U11</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P07-U03, P07-U04, P07-U05, P07-U06, P07-U07, P07-U08, P07-U09, P07-U10</td>
+</tr>
+<tr>
+<td><a href="tasks/P07-U12.html">P07-U12</a></td>
+<td>验收并冻结 0.7.0</td>
+<td>gate</td>
+<td>P07-U11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p08-0-8-0-多团队项目协作">P08｜0.8.0 多团队项目协作</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P08-U01.html">P08-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P07-U12</td>
+</tr>
+<tr>
+<td><a href="tasks/P08-U02.html">P08-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P08-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P08-U03.html">P08-U03</a></td>
+<td>单一协调账本选型</td>
+<td>implementation</td>
+<td>P08-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P08-U04.html">P08-U04</a></td>
+<td>任务DAG租约与移交</td>
+<td>implementation</td>
+<td>P08-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P08-U05.html">P08-U05</a></td>
+<td>每写者工作树与资产锁</td>
+<td>implementation</td>
+<td>P08-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P08-U06.html">P08-U06</a></td>
+<td>任务级消息与检查点</td>
+<td>implementation</td>
+<td>P08-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P08-U07.html">P08-U07</a></td>
+<td>团队预算与递归上限</td>
+<td>implementation</td>
+<td>P08-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P08-U08.html">P08-U08</a></td>
+<td>版本化审查与单点集成</td>
+<td>implementation</td>
+<td>P08-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P08-U09.html">P08-U09</a></td>
+<td>项目知识候选回流</td>
+<td>implementation</td>
+<td>P08-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P08-U10.html">P08-U10</a></td>
+<td>长项目协作演练</td>
+<td>implementation</td>
+<td>P08-U09</td>
+</tr>
+<tr>
+<td><a href="tasks/P08-U11.html">P08-U11</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P08-U03, P08-U04, P08-U05, P08-U06, P08-U07, P08-U08, P08-U09, P08-U10</td>
+</tr>
+<tr>
+<td><a href="tasks/P08-U12.html">P08-U12</a></td>
+<td>验收并冻结 0.8.0</td>
+<td>gate</td>
+<td>P08-U11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p09-0-9-0-隐私治理与安全">P09｜0.9.0 隐私治理与安全</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P09-U01.html">P09-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P08-U12</td>
+</tr>
+<tr>
+<td><a href="tasks/P09-U02.html">P09-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P09-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P09-U03.html">P09-U03</a></td>
+<td>记忆管理与注入解释</td>
+<td>implementation</td>
+<td>P09-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P09-U04.html">P09-U04</a></td>
+<td>源删除和派生传播</td>
+<td>implementation</td>
+<td>P09-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P09-U05.html">P09-U05</a></td>
+<td>旧备份恢复对账</td>
+<td>implementation</td>
+<td>P09-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P09-U06.html">P09-U06</a></td>
+<td>Prompt与执行权限隔离</td>
+<td>implementation</td>
+<td>P09-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P09-U07.html">P09-U07</a></td>
+<td>凭据网络和插件信任</td>
+<td>implementation</td>
+<td>P09-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P09-U08.html">P09-U08</a></td>
+<td>独立安全审查</td>
+<td>implementation</td>
+<td>P09-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P09-U09.html">P09-U09</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P09-U03, P09-U04, P09-U05, P09-U06, P09-U07, P09-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P09-U10.html">P09-U10</a></td>
+<td>验收并冻结 0.9.0</td>
+<td>gate</td>
+<td>P09-U09</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p10-0-10-0-正式桌面与固定live2d">P10｜0.10.0 正式桌面与固定Live2D</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P10-U01.html">P10-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P09-U10</td>
+</tr>
+<tr>
+<td><a href="tasks/P10-U02.html">P10-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P10-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P10-U03.html">P10-U03</a></td>
+<td>独立产品呈现接缝</td>
+<td>implementation</td>
+<td>P10-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P10-U04.html">P10-U04</a></td>
+<td>主窗口托盘与入口</td>
+<td>implementation</td>
+<td>P10-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P10-U05.html">P10-U05</a></td>
+<td>聊天审批与证据卡</td>
+<td>implementation</td>
+<td>P10-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P10-U06.html">P10-U06</a></td>
+<td>会话和消息操作</td>
+<td>implementation</td>
+<td>P10-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P10-U07.html">P10-U07</a></td>
+<td>固定Live2D适配</td>
+<td>implementation</td>
+<td>P10-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P10-U08.html">P10-U08</a></td>
+<td>轻量状态与任务侧栏</td>
+<td>implementation</td>
+<td>P10-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P10-U09.html">P10-U09</a></td>
+<td>设置与可访问性</td>
+<td>implementation</td>
+<td>P10-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P10-U10.html">P10-U10</a></td>
+<td>资产许可与下游补丁审计</td>
+<td>implementation</td>
+<td>P10-U09</td>
+</tr>
+<tr>
+<td><a href="tasks/P10-U11.html">P10-U11</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P10-U03, P10-U04, P10-U05, P10-U06, P10-U07, P10-U08, P10-U09, P10-U10</td>
+</tr>
+<tr>
+<td><a href="tasks/P10-U12.html">P10-U12</a></td>
+<td>验收并冻结 0.10.0</td>
+<td>gate</td>
+<td>P10-U11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p11-0-11-0-个人任务与文件知识">P11｜0.11.0 个人任务与文件知识</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P11-U01.html">P11-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P10-U12</td>
+</tr>
+<tr>
+<td><a href="tasks/P11-U02.html">P11-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P11-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P11-U03.html">P11-U03</a></td>
+<td>个人待办与工程task边界</td>
+<td>implementation</td>
+<td>P11-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P11-U04.html">P11-U04</a></td>
+<td>待办创建完成今日卡</td>
+<td>implementation</td>
+<td>P11-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P11-U05.html">P11-U05</a></td>
+<td>非常驻提醒</td>
+<td>implementation</td>
+<td>P11-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P11-U06.html">P11-U06</a></td>
+<td>受控文件导入</td>
+<td>implementation</td>
+<td>P11-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P11-U07.html">P11-U07</a></td>
+<td>检索问答与引用</td>
+<td>implementation</td>
+<td>P11-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P11-U08.html">P11-U08</a></td>
+<td>知识更新删除与恢复</td>
+<td>implementation</td>
+<td>P11-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P11-U09.html">P11-U09</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P11-U03, P11-U04, P11-U05, P11-U06, P11-U07, P11-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P11-U10.html">P11-U10</a></td>
+<td>验收并冻结 0.11.0</td>
+<td>gate</td>
+<td>P11-U09</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p12-0-12-0-语音与角色联动">P12｜0.12.0 语音与角色联动</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P12-U01.html">P12-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P11-U10</td>
+</tr>
+<tr>
+<td><a href="tasks/P12-U02.html">P12-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P12-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P12-U03.html">P12-U03</a></td>
+<td>音频接口和资源选择</td>
+<td>implementation</td>
+<td>P12-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P12-U04.html">P12-U04</a></td>
+<td>手动朗读与播放</td>
+<td>implementation</td>
+<td>P12-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P12-U05.html">P12-U05</a></td>
+<td>显式录音和ASR</td>
+<td>implementation</td>
+<td>P12-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P12-U06.html">P12-U06</a></td>
+<td>语音会话和打断</td>
+<td>implementation</td>
+<td>P12-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P12-U07.html">P12-U07</a></td>
+<td>口型状态与资源仲裁</td>
+<td>implementation</td>
+<td>P12-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P12-U08.html">P12-U08</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P12-U03, P12-U04, P12-U05, P12-U06, P12-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P12-U09.html">P12-U09</a></td>
+<td>验收并冻结 0.12.0</td>
+<td>gate</td>
+<td>P12-U08</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p13-0-13-0-模型与受控外部扩展">P13｜0.13.0 模型与受控外部扩展</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P13-U01.html">P13-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P12-U09</td>
+</tr>
+<tr>
+<td><a href="tasks/P13-U02.html">P13-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P13-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P13-U03.html">P13-U03</a></td>
+<td>模型配置和能力矩阵</td>
+<td>implementation</td>
+<td>P13-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P13-U04.html">P13-U04</a></td>
+<td>跨模型身份和记忆回归</td>
+<td>implementation</td>
+<td>P13-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P13-U05.html">P13-U05</a></td>
+<td>视觉附件和浏览器接入</td>
+<td>implementation</td>
+<td>P13-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P13-U06.html">P13-U06</a></td>
+<td>外部草稿与审批发送</td>
+<td>implementation</td>
+<td>P13-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P13-U07.html">P13-U07</a></td>
+<td>第三方扩展权限与卸载</td>
+<td>implementation</td>
+<td>P13-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P13-U08.html">P13-U08</a></td>
+<td>最终能力范围核对</td>
+<td>implementation</td>
+<td>P13-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P13-U09.html">P13-U09</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P13-U03, P13-U04, P13-U05, P13-U06, P13-U07, P13-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P13-U10.html">P13-U10</a></td>
+<td>验收并冻结 0.13.0</td>
+<td>gate</td>
+<td>P13-U09</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p14-0-14-0-beta稳定性与发行准备">P14｜0.14.0 Beta稳定性与发行准备</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P14-U01.html">P14-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P13-U10</td>
+</tr>
+<tr>
+<td><a href="tasks/P14-U02.html">P14-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P14-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P14-U03.html">P14-U03</a></td>
+<td>工具链与Runtime产物锁定</td>
+<td>implementation</td>
+<td>P14-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P14-U04.html">P14-U04</a></td>
+<td>Windows安装更新回退</td>
+<td>implementation</td>
+<td>P14-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P14-U05.html">P14-U05</a></td>
+<td>规模性能与预算基准</td>
+<td>implementation</td>
+<td>P14-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P14-U06.html">P14-U06</a></td>
+<td>故障与多年模拟</td>
+<td>implementation</td>
+<td>P14-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P14-U07.html">P14-U07</a></td>
+<td>上游升级回归流程</td>
+<td>implementation</td>
+<td>P14-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P14-U08.html">P14-U08</a></td>
+<td>Beta帮助与诊断包</td>
+<td>implementation</td>
+<td>P14-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P14-U09.html">P14-U09</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P14-U03, P14-U04, P14-U05, P14-U06, P14-U07, P14-U08</td>
+</tr>
+<tr>
+<td><a href="tasks/P14-U10.html">P14-U10</a></td>
+<td>验收并冻结 0.14.0</td>
+<td>gate</td>
+<td>P14-U09</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p15-1-0-0-rc-1-正式候选验收">P15｜1.0.0-rc.1 正式候选验收</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P15-U01.html">P15-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P14-U10</td>
+</tr>
+<tr>
+<td><a href="tasks/P15-U02.html">P15-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P15-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P15-U03.html">P15-U03</a></td>
+<td>需求与证据追踪审计</td>
+<td>implementation</td>
+<td>P15-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P15-U04.html">P15-U04</a></td>
+<td>最终用户旅程</td>
+<td>implementation</td>
+<td>P15-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P15-U05.html">P15-U05</a></td>
+<td>人格事实与记忆评测</td>
+<td>implementation</td>
+<td>P15-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P15-U06.html">P15-U06</a></td>
+<td>安全许可与供应链</td>
+<td>implementation</td>
+<td>P15-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P15-U07.html">P15-U07</a></td>
+<td>RC修复与封版</td>
+<td>implementation</td>
+<td>P15-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P15-U08.html">P15-U08</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P15-U03, P15-U04, P15-U05, P15-U06, P15-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P15-U09.html">P15-U09</a></td>
+<td>验收并冻结 1.0.0-rc.1</td>
+<td>gate</td>
+<td>P15-U08</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p16-1-0-0-正式交付与维护基线">P16｜1.0.0 正式交付与维护基线</h2>
+<table>
+<thead>
+<tr>
+<th>单元</th>
+<th>任务</th>
+<th>类型</th>
+<th>前置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tasks/P16-U01.html">P16-U01</a></td>
+<td>现成方案调查与来源比较</td>
+<td>research</td>
+<td>P15-U09</td>
+</tr>
+<tr>
+<td><a href="tasks/P16-U02.html">P16-U02</a></td>
+<td>隔离试验与复用决定</td>
+<td>spike</td>
+<td>P16-U01</td>
+</tr>
+<tr>
+<td><a href="tasks/P16-U03.html">P16-U03</a></td>
+<td>发布物料与来源清单</td>
+<td>implementation</td>
+<td>P16-U02</td>
+</tr>
+<tr>
+<td><a href="tasks/P16-U04.html">P16-U04</a></td>
+<td>发布批准与安装包验证</td>
+<td>implementation</td>
+<td>P16-U03</td>
+</tr>
+<tr>
+<td><a href="tasks/P16-U05.html">P16-U05</a></td>
+<td>数据与旧工程交接</td>
+<td>implementation</td>
+<td>P16-U04</td>
+</tr>
+<tr>
+<td><a href="tasks/P16-U06.html">P16-U06</a></td>
+<td>稳定维护与范围变更</td>
+<td>implementation</td>
+<td>P16-U05</td>
+</tr>
+<tr>
+<td><a href="tasks/P16-U07.html">P16-U07</a></td>
+<td>最终执行证据封存</td>
+<td>implementation</td>
+<td>P16-U06</td>
+</tr>
+<tr>
+<td><a href="tasks/P16-U08.html">P16-U08</a></td>
+<td>阶段集成与独立回归</td>
+<td>integration</td>
+<td>P16-U03, P16-U04, P16-U05, P16-U06, P16-U07</td>
+</tr>
+<tr>
+<td><a href="tasks/P16-U09.html">P16-U09</a></td>
+<td>验收并冻结 1.0.0</td>
+<td>gate</td>
+<td>P16-U08</td>
+</tr>
+</tbody>
+</table>
+<div class="footer">此为重建修订计划，不代表产品PoC已通过。源码、许可和真实运行证据分级记录。离线阅读不加载外部字体或脚本。</div></main></div><script>document.getElementById('filter').addEventListener('input',function(){let q=this.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>a.style.display=a.textContent.toLowerCase().includes(q)?'block':'none')});</script></body></html>

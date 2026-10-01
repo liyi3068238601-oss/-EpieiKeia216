@@ -1,0 +1,395 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>代码参考与复用清单</title><style>*{box-sizing:border-box}body{margin:0;background:#f1f3f8;color:#25283c;font:16px/1.8 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}a{color:#59478e;text-decoration:none}a:hover{text-decoration:underline}header{position:sticky;top:0;padding:12px 26px;background:#29223f;color:#fff;z-index:3;display:flex;justify-content:space-between;font-size:13px}header a{color:#ede8ff}.layout{display:grid;grid-template-columns:250px minmax(0,1000px);gap:26px;max-width:1320px;margin:28px auto;padding:0 24px}nav{position:sticky;top:68px;max-height:85vh;overflow:auto;font-size:13px}nav a{display:block;padding:5px 10px;border-left:2px solid transparent}nav a:hover{border-color:#59478e;background:#e9e4f4}nav input{width:100%;padding:8px;border:1px solid #d7daea;border-radius:6px;margin-bottom:12px}main{padding:36px 44px;background:#fff;border:1px solid #dde1ed;border-radius:12px;min-width:0}h1{font-size:30px;line-height:1.35;color:#35264d}h2{font-size:23px;margin-top:36px;border-top:1px solid #e1e3ed;padding-top:20px}h3{font-size:19px;margin-top:28px}h1,h2,h3{scroll-margin-top:78px}p{margin:14px 0}table{border-collapse:collapse;display:block;overflow:auto;width:100%;font-size:14px;margin:20px 0}th,td{border:1px solid #dde1ed;padding:9px 12px;min-width:85px;vertical-align:top;overflow-wrap:anywhere}th{background:#ede9f5;text-align:left}pre{padding:16px 20px;background:#272a3c;color:#f0f2fa;overflow:auto;border-radius:8px;font-size:13px}code{font:13px/1.6 ui-monospace,Consolas,monospace;overflow-wrap:anywhere;background:#f1eef7;padding:2px 4px;border-radius:3px}pre code{padding:0;background:transparent;color:inherit}li{margin:6px 0}hr{border:0;border-top:1px dashed #d9dceb;margin:30px 0}.kicker{font-size:12px;color:#71738c;letter-spacing:.1em;border-bottom:1px solid #e1e3ed;padding-bottom:12px;margin-bottom:25px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:#eeeaf7;padding:14px;border-radius:8px}.stat b{display:block;font-size:28px}.note{border:1px solid #d5c9e9;background:#f7f4fb;padding:14px 18px;border-radius:8px}.footer{border-top:1px solid #e1e3ed;padding-top:16px;margin-top:36px;font-size:12px;color:#76798e}@media(max-width:900px){.layout{display:block;margin:12px auto;padding:0 12px}nav{position:static;max-height:180px;margin-bottom:15px}main{padding:22px}header{padding:10px 14px}.stats{grid-template-columns:repeat(2,1fr)}}@media print{header,nav{display:none}.layout{display:block;margin:0;padding:0}main{padding:0;border:0}body{background:white;font-size:10pt}h1,h2,h3{break-after:avoid}pre,tr{break-inside:avoid}table{display:table;font-size:9pt}}</style></head><body><header><a href="index.html">XIADIE / V2 · 文档1.1</a><span>2026-09-30 · 实施状态：未开始</span></header><div class="layout"><nav><input id="filter" placeholder="筛选章节 / 任务编号" aria-label="筛选目录"><a href="#代码参考与复用清单">代码参考与复用清单</a><a href="#z01-zcode总体与构建">Z01｜ZCode总体与构建</a><a href="#z02-zcode插件-mcp-hook">Z02｜ZCode插件/MCP/Hook</a><a href="#z03-zcode项目记忆">Z03｜ZCode项目记忆</a><a href="#z04-zcode子代理持久记忆">Z04｜ZCode子代理持久记忆</a><a href="#z05-记忆索引预算">Z05｜记忆索引预算</a><a href="#z06-项目memory服务">Z06｜项目Memory服务</a><a href="#z07-子代理memory提示">Z07｜子代理Memory提示</a><a href="#z08-zcode许可证">Z08｜ZCode许可证</a><a href="#z09-zcode官方插件模板">Z09｜ZCode官方插件模板</a><a href="#z10-zcode官方hook文档">Z10｜ZCode官方Hook文档</a><a href="#z11-zcode插件说明">Z11｜ZCode插件说明</a><a href="#d01-dsh总览">D01｜DSH总览</a><a href="#d02-dsh公开sdk协议">D02｜DSH公开SDK协议</a><a href="#d03-dsh-ts-sdk-client">D03｜DSH TS SDK client</a><a href="#d04-dsh-sdk-server">D04｜DSH SDK server</a><a href="#d05-dsh子代理">D05｜DSH子代理</a><a href="#d06-dsh-sdk概览">D06｜DSH SDK概览</a><a href="#h01-herta总体">H01｜Herta总体</a><a href="#h02-herta设计哲学">H02｜Herta设计哲学</a><a href="#h03-herta-dream默认配置">H03｜Herta Dream默认配置</a><a href="#h04-episode分段">H04｜Episode分段</a><a href="#h05-episode预筛">H05｜Episode预筛</a><a href="#h06-dream流程">H06｜Dream流程</a><a href="#h07-dream提示构建">H07｜Dream提示构建</a><a href="#h08-再巩固">H08｜再巩固</a><a href="#h09-记忆强度计算">H09｜记忆强度计算</a><a href="#h10-语义化">H10｜语义化</a><a href="#h11-manifest">H11｜Manifest</a><a href="#h12-dream触发器">H12｜Dream触发器</a><a href="#h13-静态叙述前缀">H13｜静态叙述前缀</a><a href="#h14-actor-prompt">H14｜Actor Prompt</a><a href="#h15-用户原话检查">H15｜用户原话检查</a><a href="#h16-herta许可排除">H16｜Herta许可排除</a><a href="#h17-回声强化">H17｜回声强化</a><a href="#c01-已有comfyui插件">C01｜已有ComfyUI插件</a><a href="#c02-cyrene角色体验">C02｜Cyrene角色体验</a><a href="#q01-delaykit候选">Q01｜DelayKit候选</a><a href="#q02-lite-q候选">Q02｜lite-q候选</a><a href="#q03-mcp-agent-mail候选">Q03｜MCP Agent Mail候选</a><a href="#q04-rhizome-mcp候选">Q04｜Rhizome MCP候选</a><a href="#q05-solo候选">Q05｜Solo候选</a><a href="#t01-mcp官方sdk">T01｜MCP官方SDK</a><a href="#t02-git-worktree">T02｜Git worktree</a><a href="#t03-electron安全">T03｜Electron安全</a><a href="#t04-electron-safestorage">T04｜Electron safeStorage</a><a href="#t05-sqlite备份api">T05｜SQLite备份API</a><a href="#t06-live2d许可">T06｜Live2D许可</a><a href="#u01-旧最终产品需求">U01｜旧最终产品需求</a><a href="#u02-旧foundation候选">U02｜旧Foundation候选</a></nav><main><div class="kicker">PLANNING / EXECUTION / EVIDENCE</div><h1 id="代码参考与复用清单">代码参考与复用清单</h1>
+<p>文档1.1；调查锚点2026-09-30。以下49项不等于49项都已实跑。PoC当前均NOT_RUN。移植前完整复核imports、测试、许可、版本与维护风险，任何排除素材不能自动复制。</p>
+<p><a id="z01"></a></p>
+<h2 id="z01-zcode总体与构建">Z01｜ZCode总体与构建</h2>
+<p><strong>来源：</strong> <a href="https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/README.md">https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/README.md</a></p>
+<p><strong>版本：</strong> <code>29628c9acdb81b703bbd4080c207a0e7ce5e276e</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 使用原生桌面/Server/CLI与依赖构建。</p>
+<p><strong>不要拿/限制：</strong> 不把公开源码目录视为长期稳定SDK。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="z02"></a></p>
+<h2 id="z02-zcode插件-mcp-hook">Z02｜ZCode插件/MCP/Hook</h2>
+<p><strong>来源：</strong> <a href="https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/README.md">https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/README.md</a></p>
+<p><strong>版本：</strong> <code>29628c9acdb81b703bbd4080c207a0e7ce5e276e</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 用官方扩展入口与测试。</p>
+<p><strong>不要拿/限制：</strong> 不重写工具注册和Agent Loop。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="z03"></a></p>
+<h2 id="z03-zcode项目记忆">Z03｜ZCode项目记忆</h2>
+<p><strong>来源：</strong> <a href="https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/context/sections/memory.ts">https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/context/sections/memory.ts</a></p>
+<p><strong>版本：</strong> <code>29628c9acdb81b703bbd4080c207a0e7ce5e276e</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 原生MEMORY索引+主题事实文件。</p>
+<p><strong>不要拿/限制：</strong> user/feedback/project/reference不等于天然只含工程信息。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="z04"></a></p>
+<h2 id="z04-zcode子代理持久记忆">Z04｜ZCode子代理持久记忆</h2>
+<p><strong>来源：</strong> <a href="https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts">https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts</a></p>
+<p><strong>版本：</strong> <code>29628c9acdb81b703bbd4080c207a0e7ce5e276e</code></p>
+<p><strong>证据级别：</strong> 本轮固定提交源码已重新读取；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 验证user/project/local scope与真实权限。</p>
+<p><strong>不要拿/限制：</strong> 启用profile.memory可能补入Write/Edit；只读审查不能只信profile工具表。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="z05"></a></p>
+<h2 id="z05-记忆索引预算">Z05｜记忆索引预算</h2>
+<p><strong>来源：</strong> <a href="https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/memory/index-content.ts">https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/memory/index-content.ts</a></p>
+<p><strong>版本：</strong> <code>29628c9acdb81b703bbd4080c207a0e7ce5e276e</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 借用截断提示与索引限制。</p>
+<p><strong>不要拿/限制：</strong> 不把索引内容当全部知识。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="z06"></a></p>
+<h2 id="z06-项目memory服务">Z06｜项目Memory服务</h2>
+<p><strong>来源：</strong> <a href="https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/packages/services/src/memory/memoryService.ts">https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/packages/services/src/memory/memoryService.ts</a></p>
+<p><strong>版本：</strong> <code>29628c9acdb81b703bbd4080c207a0e7ce5e276e</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 核查路径与导出服务边界。</p>
+<p><strong>不要拿/限制：</strong> 不硬编码home；不可读不应当空页覆盖。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="z07"></a></p>
+<h2 id="z07-子代理memory提示">Z07｜子代理Memory提示</h2>
+<p><strong>来源：</strong> <a href="https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/subagent/persistent-memory-prompt.ts">https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/core/src/subagent/persistent-memory-prompt.ts</a></p>
+<p><strong>版本：</strong> <code>29628c9acdb81b703bbd4080c207a0e7ce5e276e</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 理解局部索引与内容职责。</p>
+<p><strong>不要拿/限制：</strong> 不默认所有agent共享所有记忆。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="z08"></a></p>
+<h2 id="z08-zcode许可证">Z08｜ZCode许可证</h2>
+<p><strong>来源：</strong> <a href="https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/LICENSE">https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/LICENSE</a></p>
+<p><strong>版本：</strong> <code>29628c9acdb81b703bbd4080c207a0e7ce5e276e</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 核查Apache-2.0及NOTICE再使用代码。</p>
+<p><strong>不要拿/限制：</strong> 不包含商标和第三方角色资产的当然授权。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="z09"></a></p>
+<h2 id="z09-zcode官方插件模板">Z09｜ZCode官方插件模板</h2>
+<p><strong>来源：</strong> <a href="https://github.com/zai-org/zcode-plugins/blob/main/docs/PLUGIN_DEVELOPMENT_CN.md">https://github.com/zai-org/zcode-plugins/blob/main/docs/PLUGIN_DEVELOPMENT_CN.md</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 官方example-plugin起步。</p>
+<p><strong>不要拿/限制：</strong> 移动main须开工锁定。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="z10"></a></p>
+<h2 id="z10-zcode官方hook文档">Z10｜ZCode官方Hook文档</h2>
+<p><strong>来源：</strong> <a href="https://zcode.z.ai/en/docs/hooks">https://zcode.z.ai/en/docs/hooks</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 检查additionalContext、transcript有效期和生效scope。</p>
+<p><strong>不要拿/限制：</strong> 必须与锁定源码比较，不能猜配置路径已被加载。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="z11"></a></p>
+<h2 id="z11-zcode插件说明">Z11｜ZCode插件说明</h2>
+<p><strong>来源：</strong> <a href="https://zcode.z.ai/cn/docs/plugin">https://zcode.z.ai/cn/docs/plugin</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> skills/commands/agents/hooks/MCP入口。</p>
+<p><strong>不要拿/限制：</strong> 插件代码执行权限需单独审核。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="d01"></a></p>
+<h2 id="d01-dsh总览">D01｜DSH总览</h2>
+<p><strong>来源：</strong> <a href="https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/README.md">https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/README.md</a></p>
+<p><strong>版本：</strong> <code>639ed015397290b3745d163aafe02ffee4aa3f84</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 作为独立外部工作运行时。</p>
+<p><strong>不要拿/限制：</strong> Developer Preview不应浮动latest。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="d02"></a></p>
+<h2 id="d02-dsh公开sdk协议">D02｜DSH公开SDK协议</h2>
+<p><strong>来源：</strong> <a href="https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/protocol/README.md">https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/protocol/README.md</a></p>
+<p><strong>版本：</strong> <code>639ed015397290b3745d163aafe02ffee4aa3f84</code></p>
+<p><strong>证据级别：</strong> 本轮固定提交协议已重新读取；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 采用官方JSON-RPC和通知语义。</p>
+<p><strong>不要拿/限制：</strong> 只有initialize、session/prompt、shutdown；回执非完成；无单session cancel/close与完整审批回传。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="d03"></a></p>
+<h2 id="d03-dsh-ts-sdk-client">D03｜DSH TS SDK client</h2>
+<p><strong>来源：</strong> <a href="https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/client/README.md">https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/client/README.md</a></p>
+<p><strong>版本：</strong> <code>639ed015397290b3745d163aafe02ffee4aa3f84</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 优先官方客户端。</p>
+<p><strong>不要拿/限制：</strong> 不自己写JSON-RPC分帧器。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="d04"></a></p>
+<h2 id="d04-dsh-sdk-server">D04｜DSH SDK server</h2>
+<p><strong>来源：</strong> <a href="https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/server/README.md">https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/server/README.md</a></p>
+<p><strong>版本：</strong> <code>639ed015397290b3745d163aafe02ffee4aa3f84</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 独立进程边界。</p>
+<p><strong>不要拿/限制：</strong> SDK外部接口不等于内部所有服务能力。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="d05"></a></p>
+<h2 id="d05-dsh子代理">D05｜DSH子代理</h2>
+<p><strong>来源：</strong> <a href="https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/docs/subsystems/subagent.md">https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/docs/subsystems/subagent.md</a></p>
+<p><strong>版本：</strong> <code>639ed015397290b3745d163aafe02ffee4aa3f84</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 内部组长/工作者与provider语义。</p>
+<p><strong>不要拿/限制：</strong> 禁止无界反向委托ZCode。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="d06"></a></p>
+<h2 id="d06-dsh-sdk概览">D06｜DSH SDK概览</h2>
+<p><strong>来源：</strong> <a href="https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/README.md">https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/README.md</a></p>
+<p><strong>版本：</strong> <code>639ed015397290b3745d163aafe02ffee4aa3f84</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 核查profile与client职责。</p>
+<p><strong>不要拿/限制：</strong> 恢复以实际PoC为准，不伪装native resume。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h01"></a></p>
+<h2 id="h01-herta总体">H01｜Herta总体</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/README.md">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/README.md</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 生活记忆/执行分层参考。</p>
+<p><strong>不要拿/限制：</strong> 不是完整Xiadie功能清单。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h02"></a></p>
+<h2 id="h02-herta设计哲学">H02｜Herta设计哲学</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/PHILOSOPHY.md">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/PHILOSOPHY.md</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 有限连续上下文的设计思想。</p>
+<p><strong>不要拿/限制：</strong> 不把工程设计称为意识科学证明。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h03"></a></p>
+<h2 id="h03-herta-dream默认配置">H03｜Herta Dream默认配置</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/config.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/config.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 作为参数对照组。</p>
+<p><strong>不要拿/限制：</strong> 90天/27条/600字符不是Xiadie已证最优值。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h04"></a></p>
+<h2 id="h04-episode分段">H04｜Episode分段</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/segment-session.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/segment-session.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 纯逻辑与边界测试可移植。</p>
+<p><strong>不要拿/限制：</strong> 不把Fragment/Saga冒充当前实现。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h05"></a></p>
+<h2 id="h05-episode预筛">H05｜Episode预筛</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/select-episodes.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/select-episodes.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 确定性预筛降低模型开销。</p>
+<p><strong>不要拿/限制：</strong> 大量工具日志不等于人生重要。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h06"></a></p>
+<h2 id="h06-dream流程">H06｜Dream流程</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/run-dream-pass.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/run-dream-pass.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> gate、来源、让路、ledger思路。</p>
+<p><strong>不要拿/限制：</strong> 不整个import其coding runtime。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h07"></a></p>
+<h2 id="h07-dream提示构建">H07｜Dream提示构建</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/distill-prompt.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/distill-prompt.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 借判断结构，原创中性提示。</p>
+<p><strong>不要拿/限制：</strong> 不复制角色语料；缺评分不得放行。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h08"></a></p>
+<h2 id="h08-再巩固">H08｜再巩固</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/reconsolidation-junction.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/reconsolidation-junction.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 同事件和新解释版本化。</p>
+<p><strong>不要拿/限制：</strong> 重复摘要不是独立新证据。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h09"></a></p>
+<h2 id="h09-记忆强度计算">H09｜记忆强度计算</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/retention.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/retention.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 纯函数、注入时钟与测试。</p>
+<p><strong>不要拿/限制：</strong> voice评分不等于事实可信度；不用于项目记忆。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h10"></a></p>
+<h2 id="h10-语义化">H10｜语义化</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/semanticize.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/semanticize.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 有界页、读取错误保护、备份。</p>
+<p><strong>不要拿/限制：</strong> 语义页也可能错误，不能永远不可纠正。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h11"></a></p>
+<h2 id="h11-manifest">H11｜Manifest</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/manifest.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/manifest.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 持久ledger与pendingFold。</p>
+<p><strong>不要拿/限制：</strong> 单一水位不能跳过并发失败条目。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h12"></a></p>
+<h2 id="h12-dream触发器">H12｜Dream触发器</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/app-server/src/dream-trigger.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/app-server/src/dream-trigger.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> idle/busy/cooldown/yield。</p>
+<p><strong>不要拿/限制：</strong> 不能只有固定长空闲触发导致短会话饥饿。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h13"></a></p>
+<h2 id="h13-静态叙述前缀">H13｜静态叙述前缀</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/herta/src/narrative/static-prefix.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/herta/src/narrative/static-prefix.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 固定身份与有限live shelf。</p>
+<p><strong>不要拿/限制：</strong> 不是普通Top-K RAG；语料资产不直接复制。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h14"></a></p>
+<h2 id="h14-actor-prompt">H14｜Actor Prompt</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/herta/src/narrative/actor-prompt.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/herta/src/narrative/actor-prompt.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 快照、近期记录与recap分开。</p>
+<p><strong>不要拿/限制：</strong> 不强加Herta专用completion协议，不存隐藏推理。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h15"></a></p>
+<h2 id="h15-用户原话检查">H15｜用户原话检查</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/user-line-gate.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/user-line-gate.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 回源校验思想。</p>
+<p><strong>不要拿/限制：</strong> 字符串通过不保证所有语义正确。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h16"></a></p>
+<h2 id="h16-herta许可排除">H16｜Herta许可排除</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/LICENSE">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/LICENSE</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 本轮固定提交许可范围已重新读取；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 源代码MIT，保留版权与修改记录。</p>
+<p><strong>不要拿/限制：</strong> 角色prompts、图、音、游戏对白不随代码授予。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="h17"></a></p>
+<h2 id="h17-回声强化">H17｜回声强化</h2>
+<p><strong>来源：</strong> <a href="https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/echo.ts">https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/src/dream/echo.ts</a></p>
+<p><strong>版本：</strong> <code>4623df120adf99340ce5f7e25ed829466975e3ae</code></p>
+<p><strong>证据级别：</strong> 前序核查资料；本轮未逐文件重读，移植前须复核；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 研究是否被使用的诊断信号。</p>
+<p><strong>不要拿/限制：</strong> 自我复述不能提高事实真实性；默认关闭或仅诊断。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="c01"></a></p>
+<h2 id="c01-已有comfyui插件">C01｜已有ComfyUI插件</h2>
+<p><strong>来源：</strong> <a href="https://github.com/liyi3068238601-oss/dsh-comfyui-ctl">https://github.com/liyi3068238601-oss/dsh-comfyui-ctl</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 复用client/safety/mock/plugin。</p>
+<p><strong>不要拿/限制：</strong> 多实例issue设想不当已发布能力。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="c02"></a></p>
+<h2 id="c02-cyrene角色体验">C02｜Cyrene角色体验</h2>
+<p><strong>来源：</strong> <a href="https://github.com/Playa-0v0/Cyrene-Agent">https://github.com/Playa-0v0/Cyrene-Agent</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 仅参考角色工作状态与交互。</p>
+<p><strong>不要拿/限制：</strong> 不fork主体、不继承人设资源。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="q01"></a></p>
+<h2 id="q01-delaykit候选">Q01｜DelayKit候选</h2>
+<p><strong>来源：</strong> <a href="https://github.com/delaykit/delaykit">https://github.com/delaykit/delaykit</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 本地SQLite作业候选。</p>
+<p><strong>不要拿/限制：</strong> 先审查版本和故障恢复，不当已选方案。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="q02"></a></p>
+<h2 id="q02-lite-q候选">Q02｜lite-q候选</h2>
+<p><strong>来源：</strong> <a href="https://github.com/iikareem/liteQ">https://github.com/iikareem/liteQ</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 本地队列候选。</p>
+<p><strong>不要拿/限制：</strong> at-least-once不等于副作用恰好一次。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="q03"></a></p>
+<h2 id="q03-mcp-agent-mail候选">Q03｜MCP Agent Mail候选</h2>
+<p><strong>来源：</strong> <a href="https://github.com/dicklesworthstone/mcp_agent_mail">https://github.com/dicklesworthstone/mcp_agent_mail</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 消息线程/预约协议。</p>
+<p><strong>不要拿/限制：</strong> advisory lease非沙箱；先审安装副作用。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="q04"></a></p>
+<h2 id="q04-rhizome-mcp候选">Q04｜Rhizome MCP候选</h2>
+<p><strong>来源：</strong> <a href="https://github.com/Odrin/rhizome-mcp">https://github.com/Odrin/rhizome-mcp</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> task claim/checkpoint/review版本。</p>
+<p><strong>不要拿/限制：</strong> 工具可见面不等于权限保证。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="q05"></a></p>
+<h2 id="q05-solo候选">Q05｜Solo候选</h2>
+<p><strong>来源：</strong> <a href="https://github.com/v1truv1us/Solo">https://github.com/v1truv1us/Solo</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> task/worktree/handoff。</p>
+<p><strong>不要拿/限制：</strong> 失败工作树不能未经允许清理。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="t01"></a></p>
+<h2 id="t01-mcp官方sdk">T01｜MCP官方SDK</h2>
+<p><strong>来源：</strong> <a href="https://modelcontextprotocol.io/docs/sdk">https://modelcontextprotocol.io/docs/sdk</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 官方SDK固定版本。</p>
+<p><strong>不要拿/限制：</strong> 不重造传输与工具发现。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="t02"></a></p>
+<h2 id="t02-git-worktree">T02｜Git worktree</h2>
+<p><strong>来源：</strong> <a href="https://git-scm.com/docs/git-worktree">https://git-scm.com/docs/git-worktree</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 工作副本隔离与生命周期。</p>
+<p><strong>不要拿/限制：</strong> worktree lock不是防agent写入的权限锁。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="t03"></a></p>
+<h2 id="t03-electron安全">T03｜Electron安全</h2>
+<p><strong>来源：</strong> <a href="https://www.electronjs.org/docs/latest/tutorial/security">https://www.electronjs.org/docs/latest/tutorial/security</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 本轮官方文档已打开；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 受限IPC/隔离渲染/CSP。</p>
+<p><strong>不要拿/限制：</strong> 渲染进程沙箱不保证任意Node插件安全。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="t04"></a></p>
+<h2 id="t04-electron-safestorage">T04｜Electron safeStorage</h2>
+<p><strong>来源：</strong> <a href="https://www.electronjs.org/docs/latest/api/safe-storage">https://www.electronjs.org/docs/latest/api/safe-storage</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 密钥引用与OS存储。</p>
+<p><strong>不要拿/限制：</strong> 必须验证平台可用性与降级。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="t05"></a></p>
+<h2 id="t05-sqlite备份api">T05｜SQLite备份API</h2>
+<p><strong>来源：</strong> <a href="https://www.sqlite.org/backup.html">https://www.sqlite.org/backup.html</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 本轮官方文档已打开；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 一致性在线备份/恢复。</p>
+<p><strong>不要拿/限制：</strong> 不可直接拷活跃db主文件就当完整备份。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="t06"></a></p>
+<h2 id="t06-live2d许可">T06｜Live2D许可</h2>
+<p><strong>来源：</strong> <a href="https://www.live2d.com/en/sdk/license/">https://www.live2d.com/en/sdk/license/</a></p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序发现的参考；本轮未重新运行或验证；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> SDK与模型资产分别审查。</p>
+<p><strong>不要拿/限制：</strong> SDK许可不自动授予角色/模型/声音再分发。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="u01"></a></p>
+<h2 id="u01-旧最终产品需求">U01｜旧最终产品需求</h2>
+<p><strong>来源：</strong> <code>library:遐蝶Agent_产品需求说明书_最终形态版_v1.0.docx</code>（用户Library文档定位，不是可下载网络链接）</p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 前序已读；本轮采用本对话保留的需求内容；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 保留单主窗口/固定角色/后期语音等终局方向。</p>
+<p><strong>不要拿/限制：</strong> 旧Python技术选型不强制带入新架构。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<p><a id="u02"></a></p>
+<h2 id="u02-旧foundation候选">U02｜旧Foundation候选</h2>
+<p><strong>来源：</strong> <code>library:2026-08-09-xiadie-mastra-foundation-design(2).md</code>（用户Library文档定位，不是可下载网络链接）</p>
+<p><strong>版本：</strong> <code>未锁定；开工必须核查</code></p>
+<p><strong>证据级别：</strong> 本轮Library检索核实定位；正文沿用前序内容；<strong>PoC：NOT_RUN</strong>。</p>
+<p><strong>拿/用/借：</strong> 保留来源、幂等、数据独立和恢复原则。</p>
+<p><strong>不要拿/限制：</strong> 旧Mastra/双Self调用不是本轮必选。</p>
+<p><strong>采用前检查：</strong> 固定来源＋许可范围＋调用接口＋关联测试＋正常/失败/恢复试验＋本地修改记录。候选不适配时仍登记可借鉴设计，不自动升级为自研批准。</p>
+<div class="footer">此为重建修订计划，不代表产品PoC已通过。源码、许可和真实运行证据分级记录。离线阅读不加载外部字体或脚本。</div></main></div><script>document.getElementById('filter').addEventListener('input',function(){let q=this.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>a.style.display=a.textContent.toLowerCase().includes(q)?'block':'none')});</script></body></html>

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Xiadie planned WorkPackage (not DSH SDK method)",
+  "type": "object",
+  "required": [
+    "task_id",
+    "attempt_id",
+    "project_id",
+    "goal",
+    "allowed_paths",
+    "allowed_tools",
+    "network_scope",
+    "budget",
+    "acceptance",
+    "evidence_refs",
+    "lease_generation"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "attempt_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "goal": {
+      "type": "string"
+    },
+    "allowed_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "allowed_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "network_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "budget": {
+      "type": "object",
+      "required": [
+        "max_descendants",
+        "max_depth"
+      ],
+      "properties": {
+        "max_descendants": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_depth": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "acceptance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lease_generation": {
+      "type": "integer",
+      "minimum": 1
+    }
+  }
+}

@@ -1,0 +1,6966 @@
+{
+  "document_version": "1.1",
+  "implementation_status": "not_started",
+  "tasks": [
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P00/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "检查本地旧工程、上游固定提交、插件/MCP/SDK和已有文档",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "Z01",
+        "Z02",
+        "Z04",
+        "D02",
+        "H03",
+        "H16",
+        "U01",
+        "U02"
+      ],
+      "id": "P00-U01",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P00/; docs/adr/P00-reuse.md",
+      "inputs": "P00-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "独立数据根、合成资料、无副作用工具；先mock再在授权范围真机验证",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "Z01",
+        "Z02",
+        "Z04",
+        "D02",
+        "H03",
+        "H16",
+        "U01",
+        "U02"
+      ],
+      "id": "P00-U02",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "旧工程只读盘点",
+      "scope": "docs/baseline/local-inventory.md",
+      "steps": [
+        "检查历史E:/Xiadie/Xiadie-next是否存在并记录分支/未提交改动",
+        "区分资料、人格资产、旧数据库与不可覆盖内容",
+        "输出脱敏清单不移动旧文件"
+      ],
+      "test": "盘点前后git status一致；不存在路径标unknown",
+      "done": "没有写入旧项目或全局配置，来源与授权范围明确",
+      "refs": [
+        "U01",
+        "U02"
+      ],
+      "inputs": "用户授权路径与本对话需求",
+      "kind": "implementation",
+      "id": "P00-U03",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U02"
+      ],
+      "requirements": [
+        "R02",
+        "R08",
+        "R17",
+        "R24",
+        "R25",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "上游版本和工具链锁定",
+      "scope": "docs/sources.lock.json",
+      "steps": [
+        "核查各仓库commit与锁文件",
+        "分别记录Node/pnpm/原生ABI版本，不强迫三运行时同进程",
+        "保存源码hash和固定链接"
+      ],
+      "test": "固定链接重取一致；floating latest检查",
+      "done": "每个直接依赖有精确版本和回退入口",
+      "refs": [
+        "Z01",
+        "D01",
+        "H03"
+      ],
+      "inputs": "公开仓库可读与基础许可",
+      "kind": "implementation",
+      "id": "P00-U04",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U03"
+      ],
+      "requirements": [
+        "R02",
+        "R08",
+        "R17",
+        "R24",
+        "R25",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "范围和旧决策替代表",
+      "scope": "docs/requirements.md; docs/adr/scope.md",
+      "steps": [
+        "按本轮明确要求优先建立需求ID",
+        "把旧Mastra/Python选型标替代，把Live2D/语音标后期",
+        "定义1.0最终范围与条件外部资源"
+      ],
+      "test": "逐项检查旧功能去向，不允许悄悄删困难需求",
+      "done": "每项Must有版本和可核验标准",
+      "refs": [
+        "U01",
+        "U02"
+      ],
+      "inputs": "前序产品需求与本轮讨论",
+      "kind": "implementation",
+      "id": "P00-U05",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U04"
+      ],
+      "requirements": [
+        "R02",
+        "R08",
+        "R17",
+        "R24",
+        "R25",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "许可证和资产清单",
+      "scope": "docs/legal/reuse.md; assets/manifest.json",
+      "steps": [
+        "全文审查LICENSE/NOTICE及第三方依赖",
+        "明确Herta角色prompts图音排除范围",
+        "为代码移植与角色资源分开建台账"
+      ],
+      "test": "扫描候选复制路径；无授权资产阻断打包",
+      "done": "代码可用不被误当人物资源可分发",
+      "refs": [
+        "H16",
+        "Z08",
+        "T06"
+      ],
+      "inputs": "固定源码和待用资产目录",
+      "kind": "implementation",
+      "id": "P00-U06",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U05"
+      ],
+      "requirements": [
+        "R02",
+        "R08",
+        "R17",
+        "R24",
+        "R25",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "ZCode上下文接缝试验",
+      "scope": "spikes/zcode-context/",
+      "steps": [
+        "从官方模板启用SessionStart/UserPromptSubmit",
+        "核实上下文顺序和真实权限不被覆盖",
+        "比较插件直注入与必要时薄UI适配"
+      ],
+      "test": "新会话/恢复/compact/工具失败；记录实际请求快照",
+      "done": "至少一条不重写Loop的路线跑通；其余限制明确",
+      "refs": [
+        "Z02",
+        "Z09",
+        "Z10",
+        "H13"
+      ],
+      "inputs": "已批准隔离目录和试验Key",
+      "kind": "implementation",
+      "id": "P00-U07",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U06"
+      ],
+      "requirements": [
+        "R02",
+        "R08",
+        "R17",
+        "R24",
+        "R25",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "主会话与子代理Memory试验",
+      "scope": "spikes/zcode-memory/",
+      "steps": [
+        "建立A/B虚拟项目与user/project/local profiles",
+        "核查启用memory后是否自动加入Write/Edit",
+        "验证同名项目/worktree/移动与只读审查权限"
+      ],
+      "test": "冲突测试值不串域；read-only越权写被执行端拒绝",
+      "done": "形成实际scope/权限矩阵，不依赖提示词承诺",
+      "refs": [
+        "Z03",
+        "Z04",
+        "Z06",
+        "Z07"
+      ],
+      "inputs": "隔离ZCode配置和两个fixture仓库",
+      "kind": "implementation",
+      "id": "P00-U08",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U07"
+      ],
+      "requirements": [
+        "R02",
+        "R08",
+        "R17",
+        "R24",
+        "R25",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "DSH协议能力试验",
+      "scope": "spikes/dsh-sdk/",
+      "steps": [
+        "仅调用实际存在的initialize/session-prompt/shutdown",
+        "区分messageId回执、idle和业务结果",
+        "测试专属进程关闭/子进程树及可恢复检查点"
+      ],
+      "test": "慢响应/脏stdout/重复通知/强杀/无final",
+      "done": "不编造session/cancel或审批回传；能力清单支持/不支持清楚",
+      "refs": [
+        "D02",
+        "D03",
+        "D04"
+      ],
+      "inputs": "隔离SDK profile与无副作用输入",
+      "kind": "implementation",
+      "id": "P00-U09",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U08"
+      ],
+      "requirements": [
+        "R02",
+        "R08",
+        "R17",
+        "R24",
+        "R25",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "复用路线ADR与开工准入",
+      "scope": "docs/adr/host-and-reuse.md",
+      "steps": [
+        "汇总全部PoC与来源限制",
+        "按依赖/适配/移植/借鉴/自研差额选择唯一默认路线",
+        "明确失败退出和重新选型条件"
+      ],
+      "test": "每个自研项有已查候选和拒用证据",
+      "done": "不把三套仓库硬融合；Core不做DSH能力路由",
+      "refs": [
+        "Z01",
+        "D02",
+        "H02"
+      ],
+      "inputs": "前面所有基线与试验结果",
+      "kind": "implementation",
+      "id": "P00-U10",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U09"
+      ],
+      "requirements": [
+        "R02",
+        "R08",
+        "R17",
+        "R24",
+        "R25",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P00/; docs/evals/P00/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G00：范围、版本、接缝与许可边界有证据；关键PoC未通过不得进入产品施工。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "Z01",
+        "Z02",
+        "Z04",
+        "D02",
+        "H03",
+        "H16",
+        "U01",
+        "U02"
+      ],
+      "id": "P00-U11",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U03",
+        "P00-U04",
+        "P00-U05",
+        "P00-U06",
+        "P00-U07",
+        "P00-U08",
+        "P00-U09",
+        "P00-U10"
+      ],
+      "requirements": [
+        "R02",
+        "R08",
+        "R17",
+        "R24",
+        "R25",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U11/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U11.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.0.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.0.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G00：范围、版本、接缝与许可边界有证据；关键PoC未通过不得进入产品施工。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "Z01",
+        "Z02",
+        "Z04",
+        "D02",
+        "H03",
+        "H16",
+        "U01",
+        "U02"
+      ],
+      "id": "P00-U12",
+      "stage": "P00",
+      "version": "0.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U11"
+      ],
+      "requirements": [
+        "R02",
+        "R03",
+        "R08",
+        "R17",
+        "R24",
+        "R25",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P00-U12/<attempt-id>/result.md",
+      "fixture": "tests/units/P00-U12.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P01/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "复用官方插件/配置/模型客户端，清点原有人格材料",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "Z01",
+        "Z02",
+        "Z09",
+        "Z10",
+        "H13",
+        "U02"
+      ],
+      "id": "P01-U01",
+      "stage": "P01",
+      "version": "0.1.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P00-U12"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P01-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P01-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P01/; docs/adr/P01-reuse.md",
+      "inputs": "P01-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "先无Key启动设置，再授权模型与只读工具；不默认启动DSH/Dream",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "Z01",
+        "Z02",
+        "Z09",
+        "Z10",
+        "H13",
+        "U02"
+      ],
+      "id": "P01-U02",
+      "stage": "P01",
+      "version": "0.1.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P01-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P01-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P01-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "最小TypeScript工作区",
+      "scope": "package.json; packages/contracts/; tools/",
+      "steps": [
+        "只创建当前阶段需要的包",
+        "建立check/test:unit/test:contract/test:integration/build脚本",
+        "缺少测试套件明确not_implemented不伪绿"
+      ],
+      "test": "干净安装与边界import负例",
+      "done": "Core不能深依赖ZCode/DSH/Electron；命令入口真实存在",
+      "refs": [
+        "Z01",
+        "U02"
+      ],
+      "inputs": "G00通过与新工作区",
+      "kind": "implementation",
+      "id": "P01-U03",
+      "stage": "P01",
+      "version": "0.1.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P01-U02"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R05",
+        "R06",
+        "R13"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P01-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P01-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "原创角色资产与加载器",
+      "scope": "assets/character/; packages/character/",
+      "steps": [
+        "整理identity/voice/values/boundaries/canon/examples",
+        "逐项标许可及虚构示例，不混昔涟/黑塔",
+        "加载时校验必需字段长度和hash"
+      ],
+      "test": "缺文件/错名/路径越界/超长资产",
+      "done": "无效身份不能静默成为通用助手；模型无写权",
+      "refs": [
+        "H13",
+        "H16",
+        "U02"
+      ],
+      "inputs": "已审核人格素材",
+      "kind": "implementation",
+      "id": "P01-U04",
+      "stage": "P01",
+      "version": "0.1.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P01-U03"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R05",
+        "R06",
+        "R13"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P01-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P01-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "ContextPacket契约",
+      "scope": "packages/contracts/context.ts; packages/context/",
+      "steps": [
+        "分instruction/state/evidence/content",
+        "带source_refs/scope/version与token预算",
+        "固定相同输入的渲染顺序"
+      ],
+      "test": "重复输入逐字一致；恶意记忆不进指令区",
+      "done": "可信事实不等于有指令权限",
+      "refs": [
+        "H14",
+        "U02"
+      ],
+      "inputs": "原始角色资产与预算配置",
+      "kind": "implementation",
+      "id": "P01-U05",
+      "stage": "P01",
+      "version": "0.1.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P01-U04"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R05",
+        "R06",
+        "R13"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P01-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P01-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "ZCode插件薄接入",
+      "scope": "plugins/xiadie/; packages/adapters/zcode/",
+      "steps": [
+        "使用G00实际跑通manifest/Hook",
+        "注入有限身份并保留原生工具与项目规则",
+        "Hook临时transcript及时读出不长期仅存路径"
+      ],
+      "test": "安装/禁用/恢复/compact/超时和坏JSON",
+      "done": "插件数据写独立数据根，不改Loop和用户全局配置",
+      "refs": [
+        "Z02",
+        "Z09",
+        "Z10"
+      ],
+      "inputs": "可用Hook试验报告",
+      "kind": "implementation",
+      "id": "P01-U06",
+      "stage": "P01",
+      "version": "0.1.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P01-U05"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R05",
+        "R06",
+        "R13"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P01-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P01-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "主回复与证据投影",
+      "scope": "packages/application/turn-projection.ts",
+      "steps": [
+        "区分角色文本与工具状态",
+        "完成声明要求结果证据",
+        "默认不增加一次纯人格改写模型调用"
+      ],
+      "test": "只读工具成功/失败/取消/部分完成",
+      "done": "模型自述不是执行证明；角色前后连续",
+      "refs": [
+        "Z02",
+        "H14"
+      ],
+      "inputs": "ContextPacket和事件草案",
+      "kind": "implementation",
+      "id": "P01-U07",
+      "stage": "P01",
+      "version": "0.1.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P01-U06"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R05",
+        "R06",
+        "R13"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P01-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P01-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "开发配置与凭据隔离",
+      "scope": "packages/config/; packages/secrets/",
+      "steps": [
+        "新profile独立数据根",
+        "密钥仅保存引用并按授权传入",
+        "无Key可开设置读本地记录"
+      ],
+      "test": "异常栈/env dump/配置导出秘密扫描",
+      "done": "不开启未授权联网或付费，配置可迁移",
+      "refs": [
+        "T04",
+        "Z01"
+      ],
+      "inputs": "已定数据路径",
+      "kind": "implementation",
+      "id": "P01-U08",
+      "stage": "P01",
+      "version": "0.1.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P01-U07"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R05",
+        "R06",
+        "R13"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P01-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P01-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "人格与失败基线评测",
+      "scope": "tests/evals/persona/",
+      "steps": [
+        "建立日常/分歧/技术/拒绝/失败样本",
+        "同一资产在两条获授权真实模型路线测",
+        "保存输出与人审标准"
+      ],
+      "test": "身份混淆/假共同历史/假成功是硬失败",
+      "done": "只报告实测，缺Key标blocked_external",
+      "refs": [
+        "H02",
+        "U02"
+      ],
+      "inputs": "可运行最小角色与gold样本",
+      "kind": "implementation",
+      "id": "P01-U09",
+      "stage": "P01",
+      "version": "0.1.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P01-U08"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R05",
+        "R06",
+        "R13"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P01-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P01-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P01/; docs/evals/P01/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G01：身份资产可验证，主交互可运行，失败不报成功，禁用扩展不破坏原生Runtime。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "Z01",
+        "Z02",
+        "Z09",
+        "Z10",
+        "H13",
+        "U02"
+      ],
+      "id": "P01-U10",
+      "stage": "P01",
+      "version": "0.1.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P01-U03",
+        "P01-U04",
+        "P01-U05",
+        "P01-U06",
+        "P01-U07",
+        "P01-U08",
+        "P01-U09"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R05",
+        "R06",
+        "R13"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P01-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P01-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.1.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.1.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G01：身份资产可验证，主交互可运行，失败不报成功，禁用扩展不破坏原生Runtime。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "Z01",
+        "Z02",
+        "Z09",
+        "Z10",
+        "H13",
+        "U02"
+      ],
+      "id": "P01-U11",
+      "stage": "P01",
+      "version": "0.1.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P01-U10"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R03",
+        "R05",
+        "R06",
+        "R13"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P01-U11/<attempt-id>/result.md",
+      "fixture": "tests/units/P01-U11.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P02/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "先查Runtime transcript/event出口和现成SQLite迁移备份组件",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "Z02",
+        "Z10",
+        "H11",
+        "H14",
+        "T05",
+        "U02"
+      ],
+      "id": "P02-U01",
+      "stage": "P02",
+      "version": "0.2.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P01-U11"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P02-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P02-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P02/; docs/adr/P02-reuse.md",
+      "inputs": "P02-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "覆盖临时文件失效、乱序、重复、断电窗口和未知外部效果",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "Z02",
+        "Z10",
+        "H11",
+        "H14",
+        "T05",
+        "U02"
+      ],
+      "id": "P02-U02",
+      "stage": "P02",
+      "version": "0.2.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P02-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P02-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P02-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "事件ID和终态契约",
+      "scope": "packages/contracts/events.ts",
+      "steps": [
+        "定义turn/run/task/attempt/event/operation_id",
+        "区分事件发生时间与观测时间、来源sequence",
+        "终态互斥，迟到事件只审计"
+      ],
+      "test": "乱序/重复/同ID不同载荷/迟到success",
+      "done": "失败和取消可记录事实，半句草稿不当正式回复",
+      "refs": [
+        "U02",
+        "D02"
+      ],
+      "inputs": "现有Runtime事件样例",
+      "kind": "implementation",
+      "id": "P02-U03",
+      "stage": "P02",
+      "version": "0.2.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P02-U02"
+      ],
+      "requirements": [
+        "R04",
+        "R05",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P02-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P02-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "transcript摄取",
+      "scope": "packages/adapters/zcode/transcript.ts",
+      "steps": [
+        "在Hook有效期内读取材料",
+        "保存必要原文定位hash与脱敏证据",
+        "有界写入队列，不在Hook跑Dream"
+      ],
+      "test": "返回后删除临时目录；超大/半写/不可读输入",
+      "done": "没有悬空来源路径；前台不等待长后台推理",
+      "refs": [
+        "Z10",
+        "H14"
+      ],
+      "inputs": "Hook验证报告",
+      "kind": "implementation",
+      "id": "P02-U04",
+      "stage": "P02",
+      "version": "0.2.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P02-U03"
+      ],
+      "requirements": [
+        "R04",
+        "R05",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P02-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P02-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "规范化事件存储",
+      "scope": "packages/storage/events/; migrations/",
+      "steps": [
+        "选用成熟SQLite绑定",
+        "唯一键和事务写来源/事件/派生引用",
+        "Runtime原日志与规范化投影有origin映射不争夺权威"
+      ],
+      "test": "重复写只有一条；同ID冲突拒绝；强杀恢复",
+      "done": "存储失败不能宣称已保存",
+      "refs": [
+        "T05",
+        "U02"
+      ],
+      "inputs": "事件schema和测试db",
+      "kind": "implementation",
+      "id": "P02-U05",
+      "stage": "P02",
+      "version": "0.2.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P02-U04"
+      ],
+      "requirements": [
+        "R04",
+        "R05",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P02-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P02-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "工作证据报告",
+      "scope": "packages/application/evidence/",
+      "steps": [
+        "从退出码/工具结果/文件hash形成EvidenceReport",
+        "状态与业务验收分开",
+        "详细日志按需引用而非全部注入"
+      ],
+      "test": "假成功文本/文件缺失/测试commit不匹配",
+      "done": "idle和enqueue均不能推导business success",
+      "refs": [
+        "D02",
+        "H14"
+      ],
+      "inputs": "标准事件与artifact读口",
+      "kind": "implementation",
+      "id": "P02-U06",
+      "stage": "P02",
+      "version": "0.2.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P02-U05"
+      ],
+      "requirements": [
+        "R04",
+        "R05",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P02-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P02-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "运行恢复与未知效果",
+      "scope": "packages/application/recovery/",
+      "steps": [
+        "重启标记interrupted/needs_review",
+        "恢复已有记录而非自动重做写操作",
+        "用operation_id查receipt后才判断重试"
+      ],
+      "test": "提交后丢回包/取消同时完成/旧attempt迟到",
+      "done": "未知副作用明确unknown；不重复生成或发送",
+      "refs": [
+        "D02",
+        "U02"
+      ],
+      "inputs": "事件store与恢复fixture",
+      "kind": "implementation",
+      "id": "P02-U07",
+      "stage": "P02",
+      "version": "0.2.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P02-U06"
+      ],
+      "requirements": [
+        "R04",
+        "R05",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P02-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P02-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "一致性备份和迁移",
+      "scope": "packages/storage/backup/; migrations/",
+      "steps": [
+        "采用SQLite支持的快照备份",
+        "迁移前备份，未来schema拒绝旧版写",
+        "在全新数据根恢复核对hash"
+      ],
+      "test": "WAL活跃/磁盘满/锁文件/迁移中断",
+      "done": "不能只复制db主文件当完整备份",
+      "refs": [
+        "T05"
+      ],
+      "inputs": "可写测试目录与备份清单",
+      "kind": "implementation",
+      "id": "P02-U08",
+      "stage": "P02",
+      "version": "0.2.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P02-U07"
+      ],
+      "requirements": [
+        "R04",
+        "R05",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P02-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P02-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "诊断与来源追踪",
+      "scope": "packages/diagnostics/",
+      "steps": [
+        "用turn_id串起消息工具和记忆候选",
+        "脱敏导出版本/命令/错误",
+        "原文需要单独授权，隐藏推理不默认保存"
+      ],
+      "test": "从结果反查来源；导出无Key和无关Life",
+      "done": "用户无需公开全部聊天即可定位故障",
+      "refs": [
+        "U02",
+        "T04"
+      ],
+      "inputs": "事件/证据索引",
+      "kind": "implementation",
+      "id": "P02-U09",
+      "stage": "P02",
+      "version": "0.2.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P02-U08"
+      ],
+      "requirements": [
+        "R04",
+        "R05",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P02-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P02-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P02/; docs/evals/P02/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G02：原始来源可追、已提交事实可恢复、失败重试不伪造历史。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "Z02",
+        "Z10",
+        "H11",
+        "H14",
+        "T05",
+        "U02"
+      ],
+      "id": "P02-U10",
+      "stage": "P02",
+      "version": "0.2.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P02-U03",
+        "P02-U04",
+        "P02-U05",
+        "P02-U06",
+        "P02-U07",
+        "P02-U08",
+        "P02-U09"
+      ],
+      "requirements": [
+        "R04",
+        "R05",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P02-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P02-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.2.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.2.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G02：原始来源可追、已提交事实可恢复、失败重试不伪造历史。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "Z02",
+        "Z10",
+        "H11",
+        "H14",
+        "T05",
+        "U02"
+      ],
+      "id": "P02-U11",
+      "stage": "P02",
+      "version": "0.2.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P02-U10"
+      ],
+      "requirements": [
+        "R03",
+        "R04",
+        "R05",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P02-U11/<attempt-id>/result.md",
+      "fixture": "tests/units/P02-U11.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P03/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "核查原生MEMORY路径、索引、迁移和子代理scope；找成熟ADR/交接模板",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "Z03",
+        "Z04",
+        "Z05",
+        "Z06",
+        "Z07",
+        "T02"
+      ],
+      "id": "P03-U01",
+      "stage": "P03",
+      "version": "0.3.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P02-U11"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P03-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P03-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P03/; docs/adr/P03-reuse.md",
+      "inputs": "P03-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "两个项目、多个worktree、一次移动、三年模拟旧记录与新源码冲突",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "Z03",
+        "Z04",
+        "Z05",
+        "Z06",
+        "Z07",
+        "T02"
+      ],
+      "id": "P03-U02",
+      "stage": "P03",
+      "version": "0.3.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P03-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P03-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P03-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "稳定项目ID与路径映射",
+      "scope": "packages/projects/registry.ts",
+      "steps": [
+        "生成稳定project_id",
+        "登记原生Runtime key/alias/worktree-parent",
+        "同名repo和fork不自动合并"
+      ],
+      "test": "同名不同repo/复制目录/换盘符",
+      "done": "只存映射，不复制第二套项目知识库",
+      "refs": [
+        "Z06",
+        "T02"
+      ],
+      "inputs": "原生路径PoC",
+      "kind": "implementation",
+      "id": "P03-U03",
+      "stage": "P03",
+      "version": "0.3.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P03-U02"
+      ],
+      "requirements": [
+        "R07",
+        "R08",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P03-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P03-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "MEMORY索引和主题读取",
+      "scope": "packages/adapters/zcode/project-memory.ts",
+      "steps": [
+        "优先受支持service否则受限只读adapter",
+        "按主题读小文件并保留frontmatter",
+        "不存在/不可读/损坏三态分开"
+      ],
+      "test": "索引超限/坏链接/权限拒绝",
+      "done": "不会因读取失败清空旧记忆；索引不是正文",
+      "refs": [
+        "Z03",
+        "Z05",
+        "Z06"
+      ],
+      "inputs": "项目ID和允许路径",
+      "kind": "implementation",
+      "id": "P03-U04",
+      "stage": "P03",
+      "version": "0.3.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P03-U03"
+      ],
+      "requirements": [
+        "R07",
+        "R08",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P03-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P03-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": [
+        "通过选定adapter取得当前project_id的原生memory根；用允许路径的真实路径解析检查边界，不从会话文本接受任意memoryRoot。只读取索引及任务选中的主题文件，不递归灌入全部历史。",
+        "返回kind=present/absent/unreadable/corrupt和source_hash；unreadable/corrupt不得触发“新建空记忆”或覆盖旧页。索引引用不存在的主题先报告失效指针，不让模型补出事实。",
+        "测试数据：A项目索引指向topicA，B项目同名文件写相反值；分别断开主题文件权限、截断frontmatter和制造相对路径逃逸。预期是明确错误/拒绝，A绝不读B。"
+      ]
+    },
+    {
+      "title": "工程事实优先级",
+      "scope": "docs/policies/project-memory.md; templates/project-note.md",
+      "steps": [
+        "定义源码/测试/已合并ADR为工程事实",
+        "Memory存非显然经验与指针",
+        "实时Owner/进度归task ledger"
+      ],
+      "test": "放入过时schema记忆，检查继续工作先核源码",
+      "done": "旧Memory不覆盖新事实，AGENTS不膨胀成人生档案",
+      "refs": [
+        "Z03",
+        "U02"
+      ],
+      "inputs": "真实repo与坏记忆fixture",
+      "kind": "implementation",
+      "id": "P03-U05",
+      "stage": "P03",
+      "version": "0.3.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P03-U04"
+      ],
+      "requirements": [
+        "R07",
+        "R08",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P03-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P03-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "项目记忆移动导出",
+      "scope": "packages/projects/export.ts; packages/projects/relocate.ts",
+      "steps": [
+        "显式打包原生Memory及mapping",
+        "移动先确认归属再更新指针",
+        "冲突生成diff不覆盖原件"
+      ],
+      "test": "新目录/换机器数据根/两份同名项目/失败回滚",
+      "done": "repo保留不被误当全局Memory必然存在",
+      "refs": [
+        "Z06",
+        "T05"
+      ],
+      "inputs": "项目mapping和导出授权",
+      "kind": "implementation",
+      "id": "P03-U06",
+      "stage": "P03",
+      "version": "0.3.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P03-U05"
+      ],
+      "requirements": [
+        "R07",
+        "R08",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P03-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P03-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "子任务最小知识包",
+      "scope": "packages/work/handoff-context.ts",
+      "steps": [
+        "摘取适用AGENTS/工程事实/任务证据",
+        "带base_commit与source版本",
+        "子代理局部笔记仅作线索"
+      ],
+      "test": "同任务送ZCode与DSH mock，必要事实一致，无Life隐私",
+      "done": "read-only审查不因启用memory暗获无界写权",
+      "refs": [
+        "Z04",
+        "Z07"
+      ],
+      "inputs": "原生记忆scope矩阵",
+      "kind": "implementation",
+      "id": "P03-U07",
+      "stage": "P03",
+      "version": "0.3.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P03-U06"
+      ],
+      "requirements": [
+        "R07",
+        "R08",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P03-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P03-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": [
+        "知识包逐项带project_id、base_commit、source_hash、适用paths和取样时间；只包含本工作包需要的约束、未解决依赖与验收，Life语义页和其它项目不发送。",
+        "创建审查profile后检查最终投影工具列表，而非创建前配置。启用memory可能加Write/Edit：未证明执行端能限制notes-only目录前，关闭审查者持久memory。只读代码审查不得获得Shell/任意插件绕行写能力。",
+        "让fixture审查者尝试写仓库文件、共享接口与允许的审查结果目录：前两者必须拒绝，最后一项按明确单独授权处理并留日志。"
+      ]
+    },
+    {
+      "title": "旧项目新鲜度与再开",
+      "scope": "packages/projects/freshness.ts",
+      "steps": [
+        "按commit/hash标stale/superseded而非半衰期",
+        "三年后打开先展示需核对项",
+        "只在证据更新后修订正式笔记"
+      ],
+      "test": "未变repo与已变repo两组时间模拟",
+      "done": "长期知识不因未提及消失；不确定保持unknown",
+      "refs": [
+        "Z03",
+        "Z06"
+      ],
+      "inputs": "真实文件hash和项目快照",
+      "kind": "implementation",
+      "id": "P03-U08",
+      "stage": "P03",
+      "version": "0.3.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P03-U07"
+      ],
+      "requirements": [
+        "R07",
+        "R08",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P03-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P03-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P03/; docs/evals/P03/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G03：项目记忆不自然衰减、目录迁移可追、原生与应用数据没有双写权威。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "Z03",
+        "Z04",
+        "Z05",
+        "Z06",
+        "Z07",
+        "T02"
+      ],
+      "id": "P03-U09",
+      "stage": "P03",
+      "version": "0.3.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P03-U03",
+        "P03-U04",
+        "P03-U05",
+        "P03-U06",
+        "P03-U07",
+        "P03-U08"
+      ],
+      "requirements": [
+        "R07",
+        "R08",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P03-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P03-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.3.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.3.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G03：项目记忆不自然衰减、目录迁移可追、原生与应用数据没有双写权威。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "Z03",
+        "Z04",
+        "Z05",
+        "Z06",
+        "Z07",
+        "T02"
+      ],
+      "id": "P03-U10",
+      "stage": "P03",
+      "version": "0.3.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P03-U09"
+      ],
+      "requirements": [
+        "R03",
+        "R07",
+        "R08",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P03-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P03-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P04/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "比较Herta有限shelf、最小带来源store和现有检索；避免先造多层数据库",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "H03",
+        "H09",
+        "H13",
+        "H14",
+        "H16",
+        "Z03"
+      ],
+      "id": "P04-U01",
+      "stage": "P04",
+      "version": "0.4.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P03-U10"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P04-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P04-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P04/; docs/adr/P04-reuse.md",
+      "inputs": "P04-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "20条合成经历：常驻小核心+有限shelf+按需档案；测预算与纠错",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "H03",
+        "H09",
+        "H13",
+        "H14",
+        "H16",
+        "Z03"
+      ],
+      "id": "P04-U02",
+      "stage": "P04",
+      "version": "0.4.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P04-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P04-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P04-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "Life数据schema",
+      "scope": "packages/contracts/life.ts; migrations/",
+      "steps": [
+        "定义CoreAnchor/LifeEpisode/SemanticNote/ArchiveRef",
+        "事实与解释分字段，记录version/epoch/supersedes",
+        "SQLite或选定store唯一权威"
+      ],
+      "test": "缺来源/未来日期/跨profile/事实归因错误",
+      "done": "不必先造Belief/Saga/Self多个数据库",
+      "refs": [
+        "H13",
+        "U02"
+      ],
+      "inputs": "已提交事件和角色资产",
+      "kind": "implementation",
+      "id": "P04-U03",
+      "stage": "P04",
+      "version": "0.4.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P04-U02"
+      ],
+      "requirements": [
+        "R01",
+        "R09",
+        "R13",
+        "R16"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P04-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P04-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "记忆确认和纠错命令",
+      "scope": "packages/life/commands.ts",
+      "steps": [
+        "save_candidate/confirm/correct/archive/delete走受控service",
+        "明确助手建议不等于用户决定",
+        "一次明确纠正即时生效不等Dream"
+      ],
+      "test": "用户说未决定；重复请求；纠错后旧引用",
+      "done": "核心提升须用户确认，纠错带来源版本",
+      "refs": [
+        "U02",
+        "H15"
+      ],
+      "inputs": "Life schema与授权策略",
+      "kind": "implementation",
+      "id": "P04-U04",
+      "stage": "P04",
+      "version": "0.4.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P04-U03"
+      ],
+      "requirements": [
+        "R01",
+        "R09",
+        "R13",
+        "R16"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P04-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P04-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "核心锚点与语义页",
+      "scope": "packages/life/anchors.ts; packages/life/semantic.ts",
+      "steps": [
+        "固定角色与核心经历分开",
+        "core条数和token双上限",
+        "语义页只沉淀获授权互动认识"
+      ],
+      "test": "模型提出改名/排他关系/情绪诊断",
+      "done": "核心不自然衰减但可删改；不自动计算亲密度",
+      "refs": [
+        "H10",
+        "H13"
+      ],
+      "inputs": "确认命令与固定身份",
+      "kind": "implementation",
+      "id": "P04-U05",
+      "stage": "P04",
+      "version": "0.4.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P04-U04"
+      ],
+      "requirements": [
+        "R01",
+        "R09",
+        "R13",
+        "R16"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P04-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P04-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "live shelf可读视图",
+      "scope": "packages/life/shelf.ts; packages/life/export.ts",
+      "steps": [
+        "生成短叙述和来源档案两个视图",
+        "Markdown导出带hash/version",
+        "手改文件只能经显式import审核"
+      ],
+      "test": "导出被修改/同时编辑/版本不匹配",
+      "done": "无数据库与自由Markdown双写争用",
+      "refs": [
+        "H13",
+        "H11"
+      ],
+      "inputs": "已确认Life与导出路径",
+      "kind": "implementation",
+      "id": "P04-U06",
+      "stage": "P04",
+      "version": "0.4.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P04-U05"
+      ],
+      "requirements": [
+        "R01",
+        "R09",
+        "R13",
+        "R16"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P04-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P04-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "上下文预算器",
+      "scope": "packages/context/budget.ts",
+      "steps": [
+        "优先身份边界/当前用户请求/审批证据",
+        "常驻小核心与有限shelf，总预算硬上限",
+        "省略重复/无关历史并记录理由"
+      ],
+      "test": "小窗口/工具schema超长/用户输入过大",
+      "done": "不静默截断当前需求；字数不是token",
+      "refs": [
+        "H13",
+        "H14",
+        "Z05"
+      ],
+      "inputs": "模型窗口与token计数方法",
+      "kind": "implementation",
+      "id": "P04-U07",
+      "stage": "P04",
+      "version": "0.4.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P04-U06"
+      ],
+      "requirements": [
+        "R01",
+        "R09",
+        "R13",
+        "R16"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P04-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P04-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": [
+        "先计算provider上下文窗口减预留输出减工具schema减必需系统规则，得到当前可用预算。能精确计数用已支持tokenizer，只有估算时留保守余量并标记estimated。",
+        "优先放当前用户请求和必要执行证据，再放有界身份/核心及本轮相关项目材料；按来源hash和事实簇去重复。不能因压缩文本而把“未完成”变“完成”。",
+        "输出selected[]、omitted[{id,reason}]、budget_breakdown和context_version。最低必需信息也装不下时返回explicit_overflow，不截掉当前请求后继续推理。",
+        "黄金测试分别构造大工具schema、特别长用户输入、重复生活记忆和更小窗口；检查每个选择/省略理由与最终真实请求一致。"
+      ]
+    },
+    {
+      "title": "按需档案检索",
+      "scope": "packages/life/archive-query.ts",
+      "steps": [
+        "先关键词/时间/project/source再决定embedding",
+        "问原话返回源消息",
+        "查到归档内容不伪装始终牢记"
+      ],
+      "test": "问现在进度/当年原话/改变原因分别走相应层",
+      "done": "查不到就说明，不补场景和日期",
+      "refs": [
+        "H14",
+        "Z03"
+      ],
+      "inputs": "归档索引和授权范围",
+      "kind": "implementation",
+      "id": "P04-U08",
+      "stage": "P04",
+      "version": "0.4.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P04-U07"
+      ],
+      "requirements": [
+        "R01",
+        "R09",
+        "R13",
+        "R16"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P04-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P04-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "Memory黄金样本",
+      "scope": "tests/evals/memory-gold/",
+      "steps": [
+        "标注明确决定/建议/反话/临时要求/更正/外部注入",
+        "记录样本hash和人工真值",
+        "测假记与预算而非只看模型自评"
+      ],
+      "test": "审查高风险阳性样本与漏记案例",
+      "done": "为自动Dream提供可复现基线",
+      "refs": [
+        "H15",
+        "U02"
+      ],
+      "inputs": "Life存取与Context快照",
+      "kind": "implementation",
+      "id": "P04-U09",
+      "stage": "P04",
+      "version": "0.4.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P04-U08"
+      ],
+      "requirements": [
+        "R01",
+        "R09",
+        "R13",
+        "R16"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P04-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P04-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P04/; docs/evals/P04/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G04：生活/项目/虚构角色数据分开，能看改删，单轮注入有来源和预算。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "H03",
+        "H09",
+        "H13",
+        "H14",
+        "H16",
+        "Z03"
+      ],
+      "id": "P04-U10",
+      "stage": "P04",
+      "version": "0.4.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P04-U03",
+        "P04-U04",
+        "P04-U05",
+        "P04-U06",
+        "P04-U07",
+        "P04-U08",
+        "P04-U09"
+      ],
+      "requirements": [
+        "R01",
+        "R09",
+        "R13",
+        "R16"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P04-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P04-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.4.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.4.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G04：生活/项目/虚构角色数据分开，能看改删，单轮注入有来源和预算。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "H03",
+        "H09",
+        "H13",
+        "H14",
+        "H16",
+        "Z03"
+      ],
+      "id": "P04-U11",
+      "stage": "P04",
+      "version": "0.4.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P04-U10"
+      ],
+      "requirements": [
+        "R01",
+        "R03",
+        "R09",
+        "R13",
+        "R16"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P04-U11/<attempt-id>/result.md",
+      "fixture": "tests/units/P04-U11.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P05/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "逐函数核查Herta与测试，保留来源；借结构重新写中性Prompt",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "H04",
+        "H05",
+        "H06",
+        "H07",
+        "H08",
+        "H09",
+        "H10",
+        "H11",
+        "H15",
+        "H17"
+      ],
+      "id": "P05-U01",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P04-U11"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P05/; docs/adr/P05-reuse.md",
+      "inputs": "P05-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "同一固定Episode集比较无Dream/分阶段Dream，先事实性后风格",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "H04",
+        "H05",
+        "H06",
+        "H07",
+        "H08",
+        "H09",
+        "H10",
+        "H11",
+        "H15",
+        "H17"
+      ],
+      "id": "P05-U02",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "Episode分段与摘要",
+      "scope": "packages/dream/segment.ts; packages/dream/digest.ts",
+      "steps": [
+        "迁移纯分段逻辑并适配Event",
+        "保持请求结果与主回复因果窗口",
+        "工具流水噪声不当语言回合"
+      ],
+      "test": "跨午夜/取消/长任务/缺时间戳/追加会话",
+      "done": "settled段hash稳定；不每句调用一个Observer",
+      "refs": [
+        "H04",
+        "H05",
+        "H06"
+      ],
+      "inputs": "事件fixture与上游单测",
+      "kind": "implementation",
+      "id": "P05-U03",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U02"
+      ],
+      "requirements": [
+        "R09",
+        "R10",
+        "R11",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "Worthiness候选gate",
+      "scope": "packages/dream/gates/worthiness.ts; prompts/",
+      "steps": [
+        "原创受限Prompt输出候选与source_span",
+        "empty合法",
+        "敏感或不明确记录待确认"
+      ],
+      "test": "建议/戏谑/假设不升级长期决定",
+      "done": "模型无数据库写权，缺来源拒绝",
+      "refs": [
+        "H07",
+        "H15"
+      ],
+      "inputs": "gold集与候选schema",
+      "kind": "implementation",
+      "id": "P05-U04",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U03"
+      ],
+      "requirements": [
+        "R09",
+        "R10",
+        "R11",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "同事件与独立证据",
+      "scope": "packages/dream/gates/reactivation.ts",
+      "steps": [
+        "hash和引用链先去重复",
+        "仅必要时让模型判断同一occasion",
+        "不同事件同主题不能误并"
+      ],
+      "test": "同消息被三份摘要重复引用",
+      "done": "matched_id存在有效；重复不造多数证据",
+      "refs": [
+        "H08",
+        "H11",
+        "H17"
+      ],
+      "inputs": "已有记忆与新Episode",
+      "kind": "implementation",
+      "id": "P05-U05",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U04"
+      ],
+      "requirements": [
+        "R09",
+        "R10",
+        "R11",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "第一人称生成与原话校验",
+      "scope": "packages/dream/generate.ts; packages/dream/validate.ts",
+      "steps": [
+        "仅基于通过的事实写短回忆",
+        "禁止补用户台词/地点/情绪/离线活动",
+        "程序引语回源且faithfulness缺失拒绝"
+      ],
+      "test": "文笔好但虚构/缺评分/无source/超长",
+      "done": "风格不抵消事实错误，解释与事实标记分开",
+      "refs": [
+        "H07",
+        "H15",
+        "H16"
+      ],
+      "inputs": "原创角色规则与事实候选",
+      "kind": "implementation",
+      "id": "P05-U06",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U05"
+      ],
+      "requirements": [
+        "R09",
+        "R10",
+        "R11",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "强化与再巩固",
+      "scope": "packages/dream/reconsolidate.ts",
+      "steps": [
+        "显著性强化不改变真值",
+        "新理解生成superseding版本保留旧史",
+        "默认关自回声可信度提升"
+      ],
+      "test": "模型反复复述错记/一次用户更正/并发版本竞争",
+      "done": "独立证据有来源；核心修改只提案",
+      "refs": [
+        "H08",
+        "H17"
+      ],
+      "inputs": "同事件结果与版本store",
+      "kind": "implementation",
+      "id": "P05-U07",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U06"
+      ],
+      "requirements": [
+        "R09",
+        "R10",
+        "R11",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "保留强度和容量",
+      "scope": "packages/dream/retention.ts",
+      "steps": [
+        "可注入clock/半衰期参数",
+        "Life按强度和token容量归档",
+        "core/project永久排除自然衰减函数"
+      ],
+      "test": "0/90/180/365/1095天、负时间、满容量",
+      "done": "90天不是保证寿命；归档可查，项目不删",
+      "refs": [
+        "H03",
+        "H09"
+      ],
+      "inputs": "保留政策与shelf预算",
+      "kind": "implementation",
+      "id": "P05-U08",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U07"
+      ],
+      "requirements": [
+        "R09",
+        "R10",
+        "R11",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "有界语义fold和矛盾核查",
+      "scope": "packages/dream/semanticize.ts",
+      "steps": [
+        "旧页读不到即停止",
+        "新页候选只吸收可证明意义并遵守预算",
+        "pendingFold与旧版备份持久化"
+      ],
+      "test": "超长/空模型输出/读错/用户更正",
+      "done": "失败不清旧页，不承诺所有经历意义必留",
+      "refs": [
+        "H10",
+        "H11"
+      ],
+      "inputs": "已验证候选与旧页read_status",
+      "kind": "implementation",
+      "id": "P05-U09",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U08"
+      ],
+      "requirements": [
+        "R09",
+        "R10",
+        "R11",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "提案与事务提交",
+      "scope": "packages/dream/proposals.ts; packages/storage/commit.ts",
+      "steps": [
+        "生成/审核/提交分开",
+        "提交前验source仍在、epoch、version、lease",
+        "结果和进度同事务，文件视图可重建"
+      ],
+      "test": "生成时删除源/修改旧记忆/旧worker迟到",
+      "done": "没有半提交和删除复活，不称分布式两阶段提交",
+      "refs": [
+        "H06",
+        "H11",
+        "U02"
+      ],
+      "inputs": "job快照和Life store",
+      "kind": "implementation",
+      "id": "P05-U10",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U09"
+      ],
+      "requirements": [
+        "R09",
+        "R10",
+        "R11",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": [
+        "生成后候选仍是pending；审核后进入validated。提交前重新读当前privacy_epoch、source状态、目标memory_version与job lease_generation，而非使用生成时快照的缓存结果。",
+        "若Life和作业ledger在同一数据库，可在一个事务写memory新版本、proposal结果和消费记录。若采用的队列独立存储，则Life+durable outbox同事务，随后幂等确认队列；不能宣称两个库天然原子。",
+        "唯一proposal_key由source集hash、操作类型、base_version及prompt版本构成。同key同payload重复返回原结果；同key不同payload拒绝。用户删除源后，即使模型迟到返回高分也不得commit。",
+        "故障点覆盖Life提交前、Life提交后queue确认前、outbox消费一半、旧worker迟到；恢复后最多一个有效记忆版本，不复活已删内容。"
+      ]
+    },
+    {
+      "title": "质量和成本对照",
+      "scope": "tests/evals/dream/",
+      "steps": [
+        "比较一强模型多阶段与小筛选+强生成",
+        "保存prompt/model/输入hash/token和拒绝理由",
+        "人审事实结果"
+      ],
+      "test": "假原话零漏过固定关键样本；失败统计",
+      "done": "报告实测，不把评审分数当客观概率",
+      "refs": [
+        "H07",
+        "H15"
+      ],
+      "inputs": "可运行手动Dream与授权Key",
+      "kind": "implementation",
+      "id": "P05-U11",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U10"
+      ],
+      "requirements": [
+        "R09",
+        "R10",
+        "R11",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U11/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U11.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P05/; docs/evals/P05/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G05：缺证据、假原话、旧版本和缺评分不能提交；中途失败可解释。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "H04",
+        "H05",
+        "H06",
+        "H07",
+        "H08",
+        "H09",
+        "H10",
+        "H11",
+        "H15",
+        "H17"
+      ],
+      "id": "P05-U12",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U03",
+        "P05-U04",
+        "P05-U05",
+        "P05-U06",
+        "P05-U07",
+        "P05-U08",
+        "P05-U09",
+        "P05-U10",
+        "P05-U11"
+      ],
+      "requirements": [
+        "R09",
+        "R10",
+        "R11",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U12/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U12.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.5.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.5.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G05：缺证据、假原话、旧版本和缺评分不能提交；中途失败可解释。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "H04",
+        "H05",
+        "H06",
+        "H07",
+        "H08",
+        "H09",
+        "H10",
+        "H11",
+        "H15",
+        "H17"
+      ],
+      "id": "P05-U13",
+      "stage": "P05",
+      "version": "0.5.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U12"
+      ],
+      "requirements": [
+        "R03",
+        "R09",
+        "R10",
+        "R11",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P05-U13/<attempt-id>/result.md",
+      "fixture": "tests/units/P05-U13.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P06/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "试现成SQLite队列与Herta manifest；不默认自研调度引擎",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "H03",
+        "H06",
+        "H11",
+        "H12",
+        "Q01",
+        "Q02",
+        "T05"
+      ],
+      "id": "P06-U01",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P05-U13"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P06/; docs/adr/P06-reuse.md",
+      "inputs": "P06-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "假时钟、短会话循环、强杀、无新材料、预算耗尽和隐私撤销",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "H03",
+        "H06",
+        "H11",
+        "H12",
+        "Q01",
+        "Q02",
+        "T05"
+      ],
+      "id": "P06-U02",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "队列选择与薄适配",
+      "scope": "packages/jobs/store.ts; docs/adr/jobs.md",
+      "steps": [
+        "比较DelayKit/lite-q/manifest恢复与ABI",
+        "只选一个权威job存储",
+        "补政策而非重复实现整个队列"
+      ],
+      "test": "重复enqueue/双claim/强杀后恢复",
+      "done": "at-least-once边界明确，有采用或拒用证据",
+      "refs": [
+        "Q01",
+        "Q02",
+        "H11"
+      ],
+      "inputs": "隔离试验报告",
+      "kind": "implementation",
+      "id": "P06-U03",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U02"
+      ],
+      "requirements": [
+        "R12",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "积压和就绪条件",
+      "scope": "packages/dream/scheduler/readiness.ts",
+      "steps": [
+        "按未处理source版本统计",
+        "过滤未settled及未授权材料",
+        "纠正/待fold/普通Episode分优先级"
+      ],
+      "test": "离线15天无新材料不付费调用",
+      "done": "不按缺席天数补梦；时间只是条件之一",
+      "refs": [
+        "H03",
+        "H12"
+      ],
+      "inputs": "事件ledger与job store",
+      "kind": "implementation",
+      "id": "P06-U04",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U03"
+      ],
+      "requirements": [
+        "R12",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "启动补查与空闲策略",
+      "scope": "packages/dream/scheduler/triggers.ts",
+      "steps": [
+        "启动只本地查积压不阻塞UI",
+        "前台turn/审批/录音为busy",
+        "短会话饥饿可见并给手动小批入口"
+      ],
+      "test": "只开10分钟/锁屏/睡眠恢复/持续输入",
+      "done": "不强迫30分钟空闲，也不偷偷扩大后台权限",
+      "refs": [
+        "H12"
+      ],
+      "inputs": "应用生命周期和busy事件",
+      "kind": "implementation",
+      "id": "P06-U05",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U04"
+      ],
+      "requirements": [
+        "R12",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "步骤检查点与租约",
+      "scope": "packages/jobs/checkpoint.ts",
+      "steps": [
+        "持久化stage/input_hash/prompt/model/output_ref",
+        "租约带generation",
+        "恢复重新验source/epoch/version"
+      ],
+      "test": "模型回包后强杀/存输出后未commit/双恢复",
+      "done": "已验证步骤可复用，旧worker不能提交",
+      "refs": [
+        "H06",
+        "H11"
+      ],
+      "inputs": "Dream阶段runner",
+      "kind": "implementation",
+      "id": "P06-U06",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U05"
+      ],
+      "requirements": [
+        "R12",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": [
+        "按stage持久化输入hash、已验证输出ref与状态，不把整个内存Agent序列化成“恢复”。模型回包未验证前不得标阶段完成；checkpoint含provider/model/prompt和策略版本。",
+        "claim由存储原子生成attempt与generation并续租。心跳超时不是强制杀进程：新worker取得提交权前仍要避免与旧worker共用可写目标，旧generation写入始终拒绝。",
+        "重启核对source存在、epoch及目标版本；已完成纯计算可复用，外部模型调用回包丢失可能产生重复费用，准确列unknown_usage，不承诺exactly-once调用。"
+      ]
+    },
+    {
+      "title": "预算与资源仲裁",
+      "scope": "packages/jobs/budget.ts",
+      "steps": [
+        "自动Dream默认opt-in",
+        "单次每日token/费用可见且并发起步1",
+        "前台开始即不发新Dream调用"
+      ],
+      "test": "429/未知usage/预算临界/跨日/本地GPU冲突",
+      "done": "实际费用与估计分开，不假装取消等于退费",
+      "refs": [
+        "H03",
+        "T04"
+      ],
+      "inputs": "用户预算和模型route",
+      "kind": "implementation",
+      "id": "P06-U07",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U06"
+      ],
+      "requirements": [
+        "R12",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "让路退出与子进程清理",
+      "scope": "packages/jobs/lifecycle.ts",
+      "steps": [
+        "在阶段或模型调用边界yield",
+        "区分托盘驻留和完全退出",
+        "结束owned子进程并保存可恢复状态"
+      ],
+      "test": "关窗口/完全退出/强杀/挂起网络",
+      "done": "不为完成整梦拖住退出，不模拟离线生活",
+      "refs": [
+        "H06",
+        "H12"
+      ],
+      "inputs": "进程所有权与checkpoint",
+      "kind": "implementation",
+      "id": "P06-U08",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U07"
+      ],
+      "requirements": [
+        "R12",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "Dream控制面板",
+      "scope": "apps/companion/features/dream/",
+      "steps": [
+        "展示积压/当前stage/预算/暂停原因",
+        "允许手动跑/暂停/禁自动",
+        "草稿与已提交变化分开"
+      ],
+      "test": "重复点击/停止后迟到回包/关闭后重开",
+      "done": "界面状态来自job账本；禁用不删除已有记忆",
+      "refs": [
+        "H11",
+        "U01"
+      ],
+      "inputs": "可读job状态API",
+      "kind": "implementation",
+      "id": "P06-U09",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U08"
+      ],
+      "requirements": [
+        "R12",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "跨退出周期故障演练",
+      "scope": "tests/faults/dream/",
+      "steps": [
+        "遍历每次写前后强杀",
+        "加入源删除和epoch变化",
+        "对账输入每个Episode处置"
+      ],
+      "test": "一月/半年时间跳跃和短开短关",
+      "done": "无隐性跳过；重复模型计费无法判定时保留unknown",
+      "refs": [
+        "H06",
+        "H11",
+        "T05"
+      ],
+      "inputs": "故障注入开关与合成数据",
+      "kind": "implementation",
+      "id": "P06-U10",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U09"
+      ],
+      "requirements": [
+        "R12",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P06/; docs/evals/P06/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G06：积压真实可见，步骤可恢复，退出后无归属进程新调用。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "H03",
+        "H06",
+        "H11",
+        "H12",
+        "Q01",
+        "Q02",
+        "T05"
+      ],
+      "id": "P06-U11",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U03",
+        "P06-U04",
+        "P06-U05",
+        "P06-U06",
+        "P06-U07",
+        "P06-U08",
+        "P06-U09",
+        "P06-U10"
+      ],
+      "requirements": [
+        "R12",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U11/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U11.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.6.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.6.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G06：积压真实可见，步骤可恢复，退出后无归属进程新调用。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "H03",
+        "H06",
+        "H11",
+        "H12",
+        "Q01",
+        "Q02",
+        "T05"
+      ],
+      "id": "P06-U12",
+      "stage": "P06",
+      "version": "0.6.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U11"
+      ],
+      "requirements": [
+        "R03",
+        "R12",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P06-U12/<attempt-id>/result.md",
+      "fixture": "tests/units/P06-U12.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P07/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "复用官方MCP/SDK客户端和已有ComfyUI插件；不造协议",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "Z02",
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "C01",
+        "T01"
+      ],
+      "id": "P07-U01",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P06-U12"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P07/; docs/adr/P07-reuse.md",
+      "inputs": "P07-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "专属进程mock→真实只读→授权单次写；测试通知丢失与未知副作用",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "Z02",
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "C01",
+        "T01"
+      ],
+      "id": "P07-U02",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "工作包和结果协议",
+      "scope": "packages/contracts/delegation.ts",
+      "steps": [
+        "定义task/attempt/project/goal/scope/budget/evidence",
+        "结果有partial/unknown_effects与hash",
+        "实现映射只放ZCode工作层"
+      ],
+      "test": "缺权限/同ID换目标/超大payload",
+      "done": "本地wrapper命名不冒充上游SDK方法",
+      "refs": [
+        "D02",
+        "Z02"
+      ],
+      "inputs": "P02事件契约",
+      "kind": "implementation",
+      "id": "P07-U03",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U02"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R14",
+        "R17"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "ZCode委托MCP入口",
+      "scope": "packages/adapters/zcode/dsh-tool/",
+      "steps": [
+        "官方SDK暴露本地start/status/cancel/results",
+        "输入schema和路径授权验证",
+        "工具描述明确团队能力与局限"
+      ],
+      "test": "工具发现/恶意命令串/路径越界",
+      "done": "只加薄adapter，不重写ZCode工具系统",
+      "refs": [
+        "T01",
+        "Z02"
+      ],
+      "inputs": "MCP与工作包契约",
+      "kind": "implementation",
+      "id": "P07-U04",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U03"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R14",
+        "R17"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "DSH专属进程客户端",
+      "scope": "packages/adapters/dsh/process.ts",
+      "steps": [
+        "固定profile版本使用argv而非shell拼接",
+        "隔离env/data-root并分stdout/stderr",
+        "每可取消包独立进程"
+      ],
+      "test": "无Key/版本错/脏stdout/双包独立终止",
+      "done": "不深import私有类，真实启动证明可用",
+      "refs": [
+        "D02",
+        "D03",
+        "D04"
+      ],
+      "inputs": "已批准profile与隔离目录",
+      "kind": "implementation",
+      "id": "P07-U05",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U04"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R14",
+        "R17"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "通知与完成证据适配",
+      "scope": "packages/adapters/dsh/events.ts",
+      "steps": [
+        "messageId只标accepted",
+        "按实际事件维护状态，idle不算成功",
+        "验证产物hash和测试commit"
+      ],
+      "test": "工具失败但模型报成功/无final/断线",
+      "done": "无法核实保持unknown，不编测试数",
+      "refs": [
+        "D02",
+        "D04"
+      ],
+      "inputs": "原始通知fixture和EvidenceReport",
+      "kind": "implementation",
+      "id": "P07-U06",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U05"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R14",
+        "R17"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "跨Runtime执行权限",
+      "scope": "packages/adapters/dsh/policy.ts",
+      "steps": [
+        "先只读可信插件",
+        "写任务需工作包scope和执行端检查",
+        "动态扩大权限回到ZCode确认，不默认auto-approve"
+      ],
+      "test": "symlink/路径穿越/插件启动副作用/任意Shell",
+      "done": "无OS隔离时不宣传万能沙箱，无法约束能力不发布",
+      "refs": [
+        "D02",
+        "T03"
+      ],
+      "inputs": "威胁模型和授权策略",
+      "kind": "implementation",
+      "id": "P07-U07",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U06"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R14",
+        "R17"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "取消与检查点重启",
+      "scope": "packages/adapters/dsh/cancel.ts",
+      "steps": [
+        "终止owned进程树并记录确认",
+        "无原生resume时新attempt读取checkpoint而非宣称native",
+        "未知外部效果先查receipt"
+      ],
+      "test": "一个包取消不影响另包；外部提交后断线",
+      "done": "关闭进程不等于撤销外部动作，不调用虚构cancel方法",
+      "refs": [
+        "D02",
+        "D05"
+      ],
+      "inputs": "进程映射和operation_id",
+      "kind": "implementation",
+      "id": "P07-U08",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U07"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R14",
+        "R17"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": [
+        "Bridge保存work_package_id到owned进程树的映射。SDK无单session cancel时只终止该工作包专属runtime；先发支持的正常shutdown，再按受控超时终止owned子进程，不按进程名称全局杀。",
+        "取消后的Result保留已生成产物、最后证据与unknown_effects。用户仍可审查部分成果；不能自动清空工作树或把外部生成队列全局interrupt。",
+        "恢复创建新attempt，读取已授权checkpoint、base/head与产物hash。明确标checkpoint_restart，只有真实协议测试证明原会话可继续时才标native_resume。",
+        "测试两个同时工作包，取消A必须保持B运行；A提交远端请求后断线应先查询operation_id/receipt，查不明则等待选择，不再次自动提交。"
+      ]
+    },
+    {
+      "title": "已有ComfyUI插件纵向试验",
+      "scope": "tests/scenarios/comfyui/",
+      "steps": [
+        "固定C01许可/版本，复用client/safety/mock",
+        "只读队列再授权一次生成并查询结果",
+        "多实例未发布时仅独占测试实例"
+      ],
+      "test": "错误workflow/断线/重复提交/实例占用",
+      "done": "全局interrupt不影响他人队列，不顺手重写插件",
+      "refs": [
+        "C01",
+        "D04"
+      ],
+      "inputs": "用户授权ComfyUI测试目录",
+      "kind": "implementation",
+      "id": "P07-U09",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U08"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R14",
+        "R17"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "角色连续性与故障降级",
+      "scope": "tests/evals/delegation/",
+      "steps": [
+        "原生与DSH完成同类小任务",
+        "DSH输出仅作证据，主会话最终回答",
+        "DSH不可用主聊天仍可用"
+      ],
+      "test": "注入改身份指令/失败/取消/部分完成",
+      "done": "角色不被子代理替换；技术来源仅按需可查",
+      "refs": [
+        "H14",
+        "Z02",
+        "D02"
+      ],
+      "inputs": "桥接全链路与gold集",
+      "kind": "implementation",
+      "id": "P07-U10",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U09"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R14",
+        "R17"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P07/; docs/evals/P07/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G07：Core不调DSH；取消不伤无关包；未支持审批不得自动批准。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "Z02",
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "C01",
+        "T01"
+      ],
+      "id": "P07-U11",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U03",
+        "P07-U04",
+        "P07-U05",
+        "P07-U06",
+        "P07-U07",
+        "P07-U08",
+        "P07-U09",
+        "P07-U10"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R14",
+        "R17"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U11/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U11.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.7.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.7.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G07：Core不调DSH；取消不伤无关包；未支持审批不得自动批准。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "Z02",
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "C01",
+        "T01"
+      ],
+      "id": "P07-U12",
+      "stage": "P07",
+      "version": "0.7.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U11"
+      ],
+      "requirements": [
+        "R02",
+        "R03",
+        "R04",
+        "R14",
+        "R17"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P07-U12/<attempt-id>/result.md",
+      "fixture": "tests/units/P07-U12.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P08/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "试现成task/消息/工作树协调工具，避免多账本同步",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "Z04",
+        "Z07",
+        "D05",
+        "Q03",
+        "Q04",
+        "Q05",
+        "T02"
+      ],
+      "id": "P08-U01",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P07-U12"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P08/; docs/adr/P08-reuse.md",
+      "inputs": "P08-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "两队并行、双claim、旧lease、共享接口冲突、worker强杀",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "Z04",
+        "Z07",
+        "D05",
+        "Q03",
+        "Q04",
+        "Q05",
+        "T02"
+      ],
+      "id": "P08-U02",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "单一协调账本选型",
+      "scope": "packages/work/coordinator-adapter.ts",
+      "steps": [
+        "比较Q03/Q04/Q05职责和Windows依赖",
+        "选一个任务权威，消息可分离",
+        "ZCode拆任务，确定性服务claim"
+      ],
+      "test": "原生task与新账本冲突映射",
+      "done": "不多处自由写同一Owner；拒用现成有证据",
+      "refs": [
+        "Q03",
+        "Q04",
+        "Q05"
+      ],
+      "inputs": "候选PoC报告",
+      "kind": "implementation",
+      "id": "P08-U03",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U02"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R07",
+        "R08",
+        "R15"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "任务DAG租约与移交",
+      "scope": "packages/work/tasks.ts; packages/work/lease.ts",
+      "steps": [
+        "拒绝循环依赖",
+        "原子claim生成generation",
+        "过期先撤提交权，处理旧执行者隔离后才重派"
+      ],
+      "test": "双claim/时钟跳/旧owner迟到",
+      "done": "租约过期不被误当旧进程已停",
+      "refs": [
+        "Q04",
+        "Q05"
+      ],
+      "inputs": "唯一task store",
+      "kind": "implementation",
+      "id": "P08-U04",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U03"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R07",
+        "R08",
+        "R15"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "每写者工作树与资产锁",
+      "scope": "packages/work/worktrees.ts",
+      "steps": [
+        "每独立写者独立worktree",
+        "DSH共享树只一写其他只读",
+        "blend等二进制使用独占副本提交"
+      ],
+      "test": "同文件冲突/failed脏树/双写资产",
+      "done": "失败产物保留，worktree不是OS沙箱",
+      "refs": [
+        "T02",
+        "D05"
+      ],
+      "inputs": "任务owner和执行权限",
+      "kind": "implementation",
+      "id": "P08-U05",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U04"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R07",
+        "R08",
+        "R15"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": [
+        "调用Git前读取repo状态和worktree porcelain清单；为task/attempt建立专属分支与路径，从明确base_commit创建，已有目录或脏状态不得覆盖。所有写者有独立writer_id登记。",
+        "DSH组内只读研究/审查可并行共享快照；第二个写者必须申请新的worktree或等待唯一写者释放。共享schema/接口由一个Owner维护，其它任务只提交变更请求。",
+        "对.blend等二进制记录输入hash和独占产物目录，在副本执行，集成时先验证原hash未变再替换。失配进入review冲突，不能后写覆盖先写。",
+        "任务失败或lease过期保留工作树/分支和diff。清理必须经独立检查确认没有用户或待审产物，并且有明确授权；git worktree lock只防维护清理，不当文件写锁。"
+      ]
+    },
+    {
+      "title": "任务级消息与检查点",
+      "scope": "packages/work/messages.ts",
+      "steps": [
+        "定义message/task/sender/type/version与ack去重",
+        "跨Runtime默认经总协调和组长",
+        "只传必要上下文/证据"
+      ],
+      "test": "重复乱序/跨项目收件/过期答复",
+      "done": "不建自由Agent群聊、不传隐藏推理",
+      "refs": [
+        "Q03",
+        "D05"
+      ],
+      "inputs": "Bridge和任务契约",
+      "kind": "implementation",
+      "id": "P08-U06",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U05"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R07",
+        "R08",
+        "R15"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "团队预算与递归上限",
+      "scope": "packages/work/budget.ts",
+      "steps": [
+        "根包限制总token/费用/代理数/深度",
+        "下级只可收紧",
+        "初版禁止DSH反向调ZCode"
+      ],
+      "test": "预算耗尽继续派人/循环委托/设备争用",
+      "done": "取消向可控子任务传播，外部未停清楚标示",
+      "refs": [
+        "D05",
+        "Z04"
+      ],
+      "inputs": "团队树与资源状态",
+      "kind": "implementation",
+      "id": "P08-U07",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U06"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R07",
+        "R08",
+        "R15"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "版本化审查与单点集成",
+      "scope": "packages/work/review.ts; packages/work/integration.ts",
+      "steps": [
+        "ResultPackage带base/head/diff/tests",
+        "批准绑定精确head，改后重审",
+        "唯一集成者merge再跑测试"
+      ],
+      "test": "测后改文件/基线前移/语义冲突",
+      "done": "worker完成仅ready_for_review，合并验收后才accepted",
+      "refs": [
+        "Q04",
+        "T02"
+      ],
+      "inputs": "独立worktree和测试证据",
+      "kind": "implementation",
+      "id": "P08-U08",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U07"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R07",
+        "R08",
+        "R15"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "项目知识候选回流",
+      "scope": "packages/work/knowledge-handoff.ts",
+      "steps": [
+        "团队提交经验候选不改主Memory/Life",
+        "只接受的代码结论入主项目",
+        "重大里程碑走独立Life候选"
+      ],
+      "test": "被拒实现的架构建议/重复候选",
+      "done": "局部笔记不成为正式事实，源scope保留",
+      "refs": [
+        "Z03",
+        "Z04",
+        "Z07"
+      ],
+      "inputs": "集成结果与来源",
+      "kind": "implementation",
+      "id": "P08-U09",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U08"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R07",
+        "R08",
+        "R15"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "长项目协作演练",
+      "scope": "tests/scenarios/multi-team/",
+      "steps": [
+        "A接口B实现C只读审查，DSH一写多读",
+        "途中强杀/改接口/制造冲突",
+        "恢复对账任务分支和测试"
+      ],
+      "test": "无意重复阻止、有意双方案隔离",
+      "done": "不能以三段模型“完成了”代替实际提交测试",
+      "refs": [
+        "D05",
+        "Q04",
+        "T02"
+      ],
+      "inputs": "完整协调链路",
+      "kind": "implementation",
+      "id": "P08-U10",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U09"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R07",
+        "R08",
+        "R15"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P08/; docs/evals/P08/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G08：无意重复写受阻，review精确到commit，团队状态/预算可追。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "Z04",
+        "Z07",
+        "D05",
+        "Q03",
+        "Q04",
+        "Q05",
+        "T02"
+      ],
+      "id": "P08-U11",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U03",
+        "P08-U04",
+        "P08-U05",
+        "P08-U06",
+        "P08-U07",
+        "P08-U08",
+        "P08-U09",
+        "P08-U10"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R07",
+        "R08",
+        "R15"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U11/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U11.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.8.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.8.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G08：无意重复写受阻，review精确到commit，团队状态/预算可追。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "Z04",
+        "Z07",
+        "D05",
+        "Q03",
+        "Q04",
+        "Q05",
+        "T02"
+      ],
+      "id": "P08-U12",
+      "stage": "P08",
+      "version": "0.8.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U11"
+      ],
+      "requirements": [
+        "R02",
+        "R03",
+        "R04",
+        "R07",
+        "R08",
+        "R15"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P08-U12/<attempt-id>/result.md",
+      "fixture": "tests/units/P08-U12.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P09/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "复用原生权限与安全存储，审查全部数据域和插件行为",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "H10",
+        "H11",
+        "H15",
+        "Z03",
+        "Z04",
+        "T03",
+        "T04",
+        "T05"
+      ],
+      "id": "P09-U01",
+      "stage": "P09",
+      "version": "0.9.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P08-U12"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P09-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P09-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P09/; docs/adr/P09-reuse.md",
+      "inputs": "P09-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "后台生成中删除、旧备份恢复、坏网页注入、记忆越权与密钥泄露",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "H10",
+        "H11",
+        "H15",
+        "Z03",
+        "Z04",
+        "T03",
+        "T04",
+        "T05"
+      ],
+      "id": "P09-U02",
+      "stage": "P09",
+      "version": "0.9.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P09-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P09-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P09-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "记忆管理与注入解释",
+      "scope": "apps/companion/features/memory/",
+      "steps": [
+        "显示Life/core/project/archive及来源版本",
+        "编辑禁用取消pin走受控命令",
+        "展示本轮选入/省略原因"
+      ],
+      "test": "禁用下一轮即不注入；切项目不串",
+      "done": "UI读当前权威而非过期快照",
+      "refs": [
+        "H13",
+        "Z06"
+      ],
+      "inputs": "Life和原生Memory adapter",
+      "kind": "implementation",
+      "id": "P09-U03",
+      "stage": "P09",
+      "version": "0.9.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P09-U02"
+      ],
+      "requirements": [
+        "R08",
+        "R09",
+        "R16",
+        "R17",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P09-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P09-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "源删除和派生传播",
+      "scope": "packages/privacy/delete.ts",
+      "steps": [
+        "建立source→episode/note/index/cache/job引用图",
+        "删除先增加privacy_epoch",
+        "拒绝旧epoch候选并清缓存"
+      ],
+      "test": "生成中删除/旧摘要/子代理局部笔记",
+      "done": "删除receipt列全部域和无法控制的外部副本",
+      "refs": [
+        "H11",
+        "Z04"
+      ],
+      "inputs": "派生引用与用户选择",
+      "kind": "implementation",
+      "id": "P09-U04",
+      "stage": "P09",
+      "version": "0.9.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P09-U03"
+      ],
+      "requirements": [
+        "R08",
+        "R09",
+        "R16",
+        "R17",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P09-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P09-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": [
+        "删除事务先提交墓碑/新epoch，使后续读取、检索、Dream commit立即忽略目标；然后按派生引用图安排清理。墓碑仅保不含被删正文的标识和时间。",
+        "清理覆盖active/archive语义页、全文或向量索引、context缓存、音频缓存、job输入及子代理scope。多个权威Runtime未提供删接口时准确列partial与待处理路径，不虚报全删。",
+        "重建语义页时只能用仍存在且授权的来源；原页不可读应停止而非当空。删除期间进来的旧job、旧导出或迟到模型输出按epoch拒绝。",
+        "回执列已完成域、仍受保留政策影响的备份和无法控制的供应商/用户外部副本；不要把记录“已删除”当作底层所有副本已清除。"
+      ]
+    },
+    {
+      "title": "旧备份恢复对账",
+      "scope": "packages/privacy/restore.ts",
+      "steps": [
+        "新数据根校验恢复",
+        "合并本机较新墓碑与epoch",
+        "不自动重放旧待办写操作"
+      ],
+      "test": "旧备份含已删内容/跨机无墓碑",
+      "done": "明示用户自持副本局限，不承诺远程全清",
+      "refs": [
+        "T05"
+      ],
+      "inputs": "一致性备份和删除日志",
+      "kind": "implementation",
+      "id": "P09-U05",
+      "stage": "P09",
+      "version": "0.9.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P09-U04"
+      ],
+      "requirements": [
+        "R08",
+        "R09",
+        "R16",
+        "R17",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P09-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P09-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": [
+        "先恢复到新的临时数据根并核验schema、hash和基本完整性，再结合本机较新删除墓碑进行派生重建。只有核验成功才能切换当前数据根指针。",
+        "旧备份中的job和工程attempt默认恢复成needs_review，不直接重新执行发送、写文件或生成。Runtime checkpoint可以重建，用户事实与权限不能猜。",
+        "跨机器导入没有最新删除墓碑时，必须把潜在恢复旧内容的风险明确给用户选择；不能以“备份是过去的真相”自动覆盖现有更正。"
+      ]
+    },
+    {
+      "title": "Prompt与执行权限隔离",
+      "scope": "packages/context/trust-policy.ts; tests/security/",
+      "steps": [
+        "角色instruction只来自版本资产",
+        "工具网页记忆为data/evidence",
+        "执行端检查动作scope"
+      ],
+      "test": "恶意MEMORY/伪结构标记/事实证据嵌指令",
+      "done": "不宣称绝对防注入，固定越权负例必须失败",
+      "refs": [
+        "T03",
+        "H15",
+        "U02"
+      ],
+      "inputs": "源分层Context与工具政策",
+      "kind": "implementation",
+      "id": "P09-U06",
+      "stage": "P09",
+      "version": "0.9.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P09-U05"
+      ],
+      "requirements": [
+        "R08",
+        "R09",
+        "R16",
+        "R17",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P09-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P09-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "凭据网络和插件信任",
+      "scope": "packages/security/",
+      "steps": [
+        "Key按需env引用且日志脱敏",
+        "本地服务loopback+认证",
+        "第三方安装升级先权限diff，审查memory自动加写工具"
+      ],
+      "test": "只读profile启memory后写越界/无token连接/安装副作用",
+      "done": "只读权限由执行端落实，不是模型宣称",
+      "refs": [
+        "Z04",
+        "T03",
+        "T04"
+      ],
+      "inputs": "许可台账与Runtime配置",
+      "kind": "implementation",
+      "id": "P09-U07",
+      "stage": "P09",
+      "version": "0.9.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P09-U06"
+      ],
+      "requirements": [
+        "R08",
+        "R09",
+        "R16",
+        "R17",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P09-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P09-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "独立安全审查",
+      "scope": "docs/security/review.md; tests/security/e2e/",
+      "steps": [
+        "检查全部落盘/联网/进程点",
+        "撤权限/删除/暂停后实测",
+        "给无法OS隔离能力明确限制"
+      ],
+      "test": "发行配置默认S0-S4策略和越权fixture",
+      "done": "高风险未解阻断对应功能，不藏在注释里",
+      "refs": [
+        "T03",
+        "H16"
+      ],
+      "inputs": "前五单元结果",
+      "kind": "implementation",
+      "id": "P09-U08",
+      "stage": "P09",
+      "version": "0.9.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P09-U07"
+      ],
+      "requirements": [
+        "R08",
+        "R09",
+        "R16",
+        "R17",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P09-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P09-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P09/; docs/evals/P09/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G09：关键负例不放行，所有scope有删除/导出策略，无隐藏数据权威。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "H10",
+        "H11",
+        "H15",
+        "Z03",
+        "Z04",
+        "T03",
+        "T04",
+        "T05"
+      ],
+      "id": "P09-U09",
+      "stage": "P09",
+      "version": "0.9.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P09-U03",
+        "P09-U04",
+        "P09-U05",
+        "P09-U06",
+        "P09-U07",
+        "P09-U08"
+      ],
+      "requirements": [
+        "R08",
+        "R09",
+        "R16",
+        "R17",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P09-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P09-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.9.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.9.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G09：关键负例不放行，所有scope有删除/导出策略，无隐藏数据权威。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "H10",
+        "H11",
+        "H15",
+        "Z03",
+        "Z04",
+        "T03",
+        "T04",
+        "T05"
+      ],
+      "id": "P09-U10",
+      "stage": "P09",
+      "version": "0.9.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P09-U09"
+      ],
+      "requirements": [
+        "R03",
+        "R08",
+        "R09",
+        "R16",
+        "R17",
+        "R24"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P09-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P09-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P10/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "复用ZCode服务/UI组件与官方Live2D例程，不重造工作台",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z09",
+        "C02",
+        "T03",
+        "T06"
+      ],
+      "id": "P10-U01",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P09-U10"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P10/; docs/adr/P10-reuse.md",
+      "inputs": "P10-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "占位模型测透明/DPI/窗口输入；真实授权资产单独验收",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z09",
+        "C02",
+        "T03",
+        "T06"
+      ],
+      "id": "P10-U02",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "独立产品呈现接缝",
+      "scope": "apps/companion/; docs/adr/desktop.md",
+      "steps": [
+        "按已证接缝选择薄壳或小表现层patch",
+        "复用会话文件审批服务",
+        "补丁独立跟踪不使Core依赖Electron"
+      ],
+      "test": "无Key/无DSH/无模型启动",
+      "done": "不把UI需求变成重写整个ZCode业务层",
+      "refs": [
+        "Z01",
+        "T03"
+      ],
+      "inputs": "G00和G01接缝证据",
+      "kind": "implementation",
+      "id": "P10-U03",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U02"
+      ],
+      "requirements": [
+        "R05",
+        "R18",
+        "R19",
+        "R25"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "主窗口托盘与入口",
+      "scope": "apps/companion/main/",
+      "steps": [
+        "主窗口单实例，启动显示桌宠入口",
+        "隐藏托盘与完全退出明确",
+        "清理owned后台后下次受控恢复"
+      ],
+      "test": "二次启动/多屏拔插/窗口越界/退出",
+      "done": "不弹多个核心窗口，不秘密常驻",
+      "refs": [
+        "U01",
+        "T03"
+      ],
+      "inputs": "生命周期和进程注册",
+      "kind": "implementation",
+      "id": "P10-U04",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U03"
+      ],
+      "requirements": [
+        "R05",
+        "R18",
+        "R19",
+        "R25"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "聊天审批与证据卡",
+      "scope": "apps/companion/features/chat/",
+      "steps": [
+        "复用流式与文件卡",
+        "角色话语与系统证据分样式",
+        "审批展示确切动作目标scope有效期"
+      ],
+      "test": "断流/迟到/拒绝后执行/超长日志",
+      "done": "绿勾只代表已验证状态",
+      "refs": [
+        "Z01",
+        "U01"
+      ],
+      "inputs": "主会话服务和EvidenceReport",
+      "kind": "implementation",
+      "id": "P10-U05",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U04"
+      ],
+      "requirements": [
+        "R05",
+        "R18",
+        "R19",
+        "R25"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "会话和消息操作",
+      "scope": "apps/companion/features/messages/",
+      "steps": [
+        "新建切换重命名归档删除",
+        "复制引用收藏再生成",
+        "再生成保留版本来源，删除影响派生引用"
+      ],
+      "test": "收藏源被删/重生成后旧记忆/跨项目切换",
+      "done": "CHAT-001至007有明确实测覆盖",
+      "refs": [
+        "U01",
+        "H14"
+      ],
+      "inputs": "会话store与隐私传播",
+      "kind": "implementation",
+      "id": "P10-U06",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U05"
+      ],
+      "requirements": [
+        "R05",
+        "R18",
+        "R19",
+        "R25"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "固定Live2D适配",
+      "scope": "apps/companion/features/avatar/",
+      "steps": [
+        "先合规占位测Cubism，再正式授权模型",
+        "idle/think/work/speak/error由事件驱动",
+        "不提供导入换皮市场"
+      ],
+      "test": "DPI/透明命中/拖动/右键/模型缺失",
+      "done": "缺模型可降级，placeholder不冒充正式授权",
+      "refs": [
+        "U01",
+        "T06"
+      ],
+      "inputs": "资产清单与状态事件",
+      "kind": "implementation",
+      "id": "P10-U07",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U06"
+      ],
+      "requirements": [
+        "R05",
+        "R18",
+        "R19",
+        "R25"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "轻量状态与任务侧栏",
+      "scope": "apps/companion/features/status/",
+      "steps": [
+        "中央聊天，侧边相关任务/记忆/模型状态",
+        "DSH技术细节按需展开",
+        "暂停/未知效果不能被角色语气掩盖"
+      ],
+      "test": "无任务/错误/并发/预算耗尽",
+      "done": "伴侣界面不变重型管理后台",
+      "refs": [
+        "U01",
+        "C02"
+      ],
+      "inputs": "task/memory可读API",
+      "kind": "implementation",
+      "id": "P10-U08",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U07"
+      ],
+      "requirements": [
+        "R05",
+        "R18",
+        "R19",
+        "R25"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "设置与可访问性",
+      "scope": "apps/companion/features/settings/",
+      "steps": [
+        "模型/隐私/预算/权限/数据分组",
+        "键盘字号对比低动效可调",
+        "切配置作用时机明确"
+      ],
+      "test": "125/150/200%DPI/窄屏/全键盘",
+      "done": "没有模型替换入口，设置真实生效",
+      "refs": [
+        "U01",
+        "T03"
+      ],
+      "inputs": "可用UI与配置服务",
+      "kind": "implementation",
+      "id": "P10-U09",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U08"
+      ],
+      "requirements": [
+        "R05",
+        "R18",
+        "R19",
+        "R25"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "资产许可与下游补丁审计",
+      "scope": "docs/legal/assets.json; patches/",
+      "steps": [
+        "逐资源记录作者许可分发范围",
+        "Herta排除资产不拿",
+        "patch绑定上游commit和反向回退测试"
+      ],
+      "test": "发行目录未知图音字体/补丁不适配",
+      "done": "无权利证据资源不能打包",
+      "refs": [
+        "H16",
+        "Z08",
+        "T06"
+      ],
+      "inputs": "实际资源与补丁集",
+      "kind": "implementation",
+      "id": "P10-U10",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U09"
+      ],
+      "requirements": [
+        "R05",
+        "R18",
+        "R19",
+        "R25"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P10/; docs/evals/P10/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G10：单主窗口、完整消息操作、真正退出与固定授权角色边界成立。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z09",
+        "C02",
+        "T03",
+        "T06"
+      ],
+      "id": "P10-U11",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U03",
+        "P10-U04",
+        "P10-U05",
+        "P10-U06",
+        "P10-U07",
+        "P10-U08",
+        "P10-U09",
+        "P10-U10"
+      ],
+      "requirements": [
+        "R05",
+        "R18",
+        "R19",
+        "R25"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U11/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U11.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.10.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.10.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G10：单主窗口、完整消息操作、真正退出与固定授权角色边界成立。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z09",
+        "C02",
+        "T03",
+        "T06"
+      ],
+      "id": "P10-U12",
+      "stage": "P10",
+      "version": "0.10.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U11"
+      ],
+      "requirements": [
+        "R03",
+        "R05",
+        "R18",
+        "R19",
+        "R25"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P10-U12/<attempt-id>/result.md",
+      "fixture": "tests/units/P10-U12.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P11/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "查原生Document Skills/检索/提醒组件，勿自研Office/PDF解析器",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z02",
+        "Q01",
+        "T05"
+      ],
+      "id": "P11-U01",
+      "stage": "P11",
+      "version": "0.11.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P10-U12"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P11-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P11-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P11/; docs/adr/P11-reuse.md",
+      "inputs": "P11-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "资料导入问答删除与退出期间到期提醒，使用合成资料",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z02",
+        "Q01",
+        "T05"
+      ],
+      "id": "P11-U02",
+      "stage": "P11",
+      "version": "0.11.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P11-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P11-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P11-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "个人待办与工程task边界",
+      "scope": "packages/personal-tasks/",
+      "steps": [
+        "定义source_message/due_at/timezone/status",
+        "工程工作包只链接不复制状态",
+        "低风险创建可撤销"
+      ],
+      "test": "相对日期/重复输入/工程链接删除",
+      "done": "不是第二个竞争的项目账本",
+      "refs": [
+        "U01"
+      ],
+      "inputs": "任务需求与job接口",
+      "kind": "implementation",
+      "id": "P11-U03",
+      "stage": "P11",
+      "version": "0.11.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P11-U02"
+      ],
+      "requirements": [
+        "R20",
+        "R21"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P11-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P11-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "待办创建完成今日卡",
+      "scope": "apps/companion/features/tasks/",
+      "steps": [
+        "create/update/complete/reopen/archive幂等",
+        "聊天卡侧栏同源",
+        "完成todo不代表外部工作成功"
+      ],
+      "test": "两UI并发编辑/撤销/重复完成",
+      "done": "来源和状态一致，TASK功能逐项覆盖",
+      "refs": [
+        "U01"
+      ],
+      "inputs": "待办schema",
+      "kind": "implementation",
+      "id": "P11-U04",
+      "stage": "P11",
+      "version": "0.11.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P11-U03"
+      ],
+      "requirements": [
+        "R20",
+        "R21"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P11-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P11-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "非常驻提醒",
+      "scope": "packages/personal-tasks/reminders.ts",
+      "steps": [
+        "默认只在运行/授权驻留时提醒",
+        "错过到期标missed启动合并",
+        "系统任务仅显式授权注册且可卸载"
+      ],
+      "test": "睡眠/换时区/关一周/权限拒绝",
+      "done": "不承诺关机提醒，显示原定与实际送达时间",
+      "refs": [
+        "Q01",
+        "U01"
+      ],
+      "inputs": "job与OS通知adapter",
+      "kind": "implementation",
+      "id": "P11-U05",
+      "stage": "P11",
+      "version": "0.11.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P11-U04"
+      ],
+      "requirements": [
+        "R20",
+        "R21"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P11-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P11-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "受控文件导入",
+      "scope": "packages/knowledge/import.ts",
+      "steps": [
+        "用成熟解析组件并限制格式大小解压倍率",
+        "先明确本地/远程与供应商",
+        "保存doc/hash/parser_version/页行"
+      ],
+      "test": "坏文件/恶意压缩/超时/路径穿越",
+      "done": "无自动盘扫或不知情上传",
+      "refs": [
+        "Z02",
+        "U01"
+      ],
+      "inputs": "用户选定文件与解析许可",
+      "kind": "implementation",
+      "id": "P11-U06",
+      "stage": "P11",
+      "version": "0.11.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P11-U05"
+      ],
+      "requirements": [
+        "R20",
+        "R21"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P11-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P11-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "检索问答与引用",
+      "scope": "packages/knowledge/query.ts",
+      "steps": [
+        "复用检索，规模需要才加FTS/embedding",
+        "回答引用到页段",
+        "资料当数据不当权限指令"
+      ],
+      "test": "不存在答案/冲突资料/旧版本/注入",
+      "done": "查不到说未知，引用能回真实段落",
+      "refs": [
+        "Z02",
+        "U01"
+      ],
+      "inputs": "结构化导入与gold集",
+      "kind": "implementation",
+      "id": "P11-U07",
+      "stage": "P11",
+      "version": "0.11.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P11-U06"
+      ],
+      "requirements": [
+        "R20",
+        "R21"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P11-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P11-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "知识更新删除与恢复",
+      "scope": "packages/knowledge/lifecycle.ts",
+      "steps": [
+        "更新新version并失效旧索引",
+        "删除清cache/派生引用",
+        "备份说明含原文或仅索引"
+      ],
+      "test": "更新中断/已删源旧备份/坏索引重建",
+      "done": "项目、外部知识、Life三域不串",
+      "refs": [
+        "T05",
+        "U01"
+      ],
+      "inputs": "索引和privacy epoch",
+      "kind": "implementation",
+      "id": "P11-U08",
+      "stage": "P11",
+      "version": "0.11.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P11-U07"
+      ],
+      "requirements": [
+        "R20",
+        "R21"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P11-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P11-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P11/; docs/evals/P11/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G11：文件只在授权范围处理，引用可追，离线提醒不伪装按时完成。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z02",
+        "Q01",
+        "T05"
+      ],
+      "id": "P11-U09",
+      "stage": "P11",
+      "version": "0.11.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P11-U03",
+        "P11-U04",
+        "P11-U05",
+        "P11-U06",
+        "P11-U07",
+        "P11-U08"
+      ],
+      "requirements": [
+        "R20",
+        "R21"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P11-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P11-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.11.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.11.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G11：文件只在授权范围处理，引用可追，离线提醒不伪装按时完成。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z02",
+        "Q01",
+        "T05"
+      ],
+      "id": "P11-U10",
+      "stage": "P11",
+      "version": "0.11.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P11-U09"
+      ],
+      "requirements": [
+        "R03",
+        "R20",
+        "R21"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P11-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P11-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P12/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "寻找可许可TTS/ASR与口型组件，复用客户端不自研声学模型",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "U01",
+        "Z02",
+        "T03",
+        "T04",
+        "T06"
+      ],
+      "id": "P12-U01",
+      "stage": "P12",
+      "version": "0.12.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P11-U10"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P12-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P12-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P12/; docs/adr/P12-reuse.md",
+      "inputs": "P12-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "录音可见、播放取消、设备切换与GPU/模型预算争用",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "U01",
+        "Z02",
+        "T03",
+        "T04",
+        "T06"
+      ],
+      "id": "P12-U02",
+      "stage": "P12",
+      "version": "0.12.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P12-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P12-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P12-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "音频接口和资源选择",
+      "scope": "packages/audio/contracts.ts; docs/adr/voice.md",
+      "steps": [
+        "比较流式/取消/语言/Windows支持",
+        "先各选一个可用ASR/TTS",
+        "记录音色与录音外发/保留策略"
+      ],
+      "test": "无网/无音色/缺Key/资源不足",
+      "done": "未知音色不随包发布，纯文本仍可用",
+      "refs": [
+        "T06",
+        "U01"
+      ],
+      "inputs": "候选试验和授权",
+      "kind": "implementation",
+      "id": "P12-U03",
+      "stage": "P12",
+      "version": "0.12.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P12-U02"
+      ],
+      "requirements": [
+        "R18",
+        "R22",
+        "R25",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P12-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P12-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "手动朗读与播放",
+      "scope": "packages/audio/tts.ts",
+      "steps": [
+        "只朗读对应已提交回复",
+        "现成音频缓冲与停止控制",
+        "迟到音频按message/epoch丢弃"
+      ],
+      "test": "断流/长文本/快速切换/删除原回复",
+      "done": "不朗读隐藏日志，音频内容与来源对应",
+      "refs": [
+        "U01",
+        "T04"
+      ],
+      "inputs": "已提交消息与audio adapter",
+      "kind": "implementation",
+      "id": "P12-U04",
+      "stage": "P12",
+      "version": "0.12.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P12-U03"
+      ],
+      "requirements": [
+        "R18",
+        "R22",
+        "R25",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P12-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P12-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "显式录音和ASR",
+      "scope": "packages/audio/asr.ts",
+      "steps": [
+        "默认按键/明确开关录音",
+        "识别进入草稿，高风险仍确认",
+        "原始录音默认不留"
+      ],
+      "test": "误识别删除/背景采集/权限撤回",
+      "done": "关闭录音与退出不采集，远程处理有提示",
+      "refs": [
+        "U01",
+        "T03"
+      ],
+      "inputs": "麦克风许可与ASR试验",
+      "kind": "implementation",
+      "id": "P12-U05",
+      "stage": "P12",
+      "version": "0.12.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P12-U04"
+      ],
+      "requirements": [
+        "R18",
+        "R22",
+        "R25",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P12-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P12-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "语音会话和打断",
+      "scope": "packages/audio/session.ts",
+      "steps": [
+        "使用既有turn_id而非第二会话",
+        "插话先停播放，再决定模型/工作取消",
+        "已外发动作不可假装撤销"
+      ],
+      "test": "连续快问/迟到ASR/审批等待",
+      "done": "音频文字和执行事实一致",
+      "refs": [
+        "U01",
+        "D02"
+      ],
+      "inputs": "取消链路与ASR/TTS",
+      "kind": "implementation",
+      "id": "P12-U06",
+      "stage": "P12",
+      "version": "0.12.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P12-U05"
+      ],
+      "requirements": [
+        "R18",
+        "R22",
+        "R25",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P12-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P12-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "口型状态与资源仲裁",
+      "scope": "apps/companion/features/avatar/lipsync.ts",
+      "steps": [
+        "用幅度或受支持viseme驱动",
+        "前台音频使Dream让路",
+        "提供禁口型低动效开关"
+      ],
+      "test": "换设备/窗口隐藏/同时ComfyUI",
+      "done": "不把声音当用户情绪诊断，不串音频给无关插件",
+      "refs": [
+        "T06",
+        "U01"
+      ],
+      "inputs": "avatar与资源budget",
+      "kind": "implementation",
+      "id": "P12-U07",
+      "stage": "P12",
+      "version": "0.12.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P12-U06"
+      ],
+      "requirements": [
+        "R18",
+        "R22",
+        "R25",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P12-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P12-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P12/; docs/evals/P12/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G12：录音能停止，音色可分发，语音不能绕过工具审批。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "U01",
+        "Z02",
+        "T03",
+        "T04",
+        "T06"
+      ],
+      "id": "P12-U08",
+      "stage": "P12",
+      "version": "0.12.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P12-U03",
+        "P12-U04",
+        "P12-U05",
+        "P12-U06",
+        "P12-U07"
+      ],
+      "requirements": [
+        "R18",
+        "R22",
+        "R25",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P12-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P12-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.12.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.12.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G12：录音能停止，音色可分发，语音不能绕过工具审批。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "U01",
+        "Z02",
+        "T03",
+        "T04",
+        "T06"
+      ],
+      "id": "P12-U09",
+      "stage": "P12",
+      "version": "0.12.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P12-U08"
+      ],
+      "requirements": [
+        "R03",
+        "R18",
+        "R22",
+        "R25",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P12-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P12-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P13/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "用现成Provider/MCP/官方渠道接口；不为每厂商重造SDK",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z02",
+        "D05",
+        "C01",
+        "T01",
+        "T03"
+      ],
+      "id": "P13-U01",
+      "stage": "P13",
+      "version": "0.13.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P12-U09"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P13-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P13-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P13/; docs/adr/P13-reuse.md",
+      "inputs": "P13-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "每承诺路线真机测；草稿→确认→回执；缺凭据明确未测",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z02",
+        "D05",
+        "C01",
+        "T01",
+        "T03"
+      ],
+      "id": "P13-U02",
+      "stage": "P13",
+      "version": "0.13.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P13-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P13-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P13-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "模型配置和能力矩阵",
+      "scope": "packages/models/capabilities.ts",
+      "steps": [
+        "复用原生provider",
+        "记录DeepSeek/OpenAI/GLM/Qwen/Kimi/OpenRouter/SiliconFlow/Ollama及自定义端点目标",
+        "每路线标tested/experimental/not_tested"
+      ],
+      "test": "工具/视觉不支持、429、坏流式、无效凭据",
+      "done": "没有Key不填已支持，能力按钮准确降级",
+      "refs": [
+        "Z01",
+        "U01"
+      ],
+      "inputs": "模型配置和真实授权",
+      "kind": "implementation",
+      "id": "P13-U03",
+      "stage": "P13",
+      "version": "0.13.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P13-U02"
+      ],
+      "requirements": [
+        "R01",
+        "R06",
+        "R13",
+        "R23",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P13-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P13-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "跨模型身份和记忆回归",
+      "scope": "tests/evals/cross-model/",
+      "steps": [
+        "同一快照在至少两真实路线跑",
+        "adapter仅改格式不改事实和权限",
+        "记录风格、成本、延迟差异"
+      ],
+      "test": "换模型续做/失败/纠错/退出恢复",
+      "done": "数据可迁移不冒称人格绝对等价",
+      "refs": [
+        "H13",
+        "U02"
+      ],
+      "inputs": "固定评测与模型能力",
+      "kind": "implementation",
+      "id": "P13-U04",
+      "stage": "P13",
+      "version": "0.13.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P13-U03"
+      ],
+      "requirements": [
+        "R01",
+        "R06",
+        "R13",
+        "R23",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P13-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P13-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "视觉附件和浏览器接入",
+      "scope": "packages/adapters/zcode/media.ts",
+      "steps": [
+        "复用原生附件和浏览器",
+        "私密附件不自动进Life",
+        "只读先试，网页提交和写下载按风险确认"
+      ],
+      "test": "恶意网页/大附件/会话串号/未知下载",
+      "done": "不因一个Skill整体搬第二套浏览器Runtime",
+      "refs": [
+        "Z02",
+        "T03"
+      ],
+      "inputs": "工具policy和授权测试页面",
+      "kind": "implementation",
+      "id": "P13-U05",
+      "stage": "P13",
+      "version": "0.13.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P13-U04"
+      ],
+      "requirements": [
+        "R01",
+        "R06",
+        "R13",
+        "R23",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P13-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P13-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "外部草稿与审批发送",
+      "scope": "packages/channels/",
+      "steps": [
+        "优先合规QQ/OneBot或已批准渠道",
+        "审批绑定目标/正文/hash/有效期",
+        "operation_id+receipt防重，unknown先查"
+      ],
+      "test": "改正文仍用旧批准/错收件人/丢回包",
+      "done": "默认草稿，不自动群发；缺合规渠道保留阻塞",
+      "refs": [
+        "U01",
+        "T01"
+      ],
+      "inputs": "渠道授权和审批服务",
+      "kind": "implementation",
+      "id": "P13-U06",
+      "stage": "P13",
+      "version": "0.13.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P13-U05"
+      ],
+      "requirements": [
+        "R01",
+        "R06",
+        "R13",
+        "R23",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P13-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P13-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "第三方扩展权限与卸载",
+      "scope": "packages/extensions/",
+      "steps": [
+        "只管理已审查接入配置，不自建第二插件生态",
+        "安装升级显示权限diff",
+        "卸载回收owned进程与凭据"
+      ],
+      "test": "版本新增权限/启动副作用/同实例争用",
+      "done": "普通用户可用，但任何插件安全不作保证",
+      "refs": [
+        "Z02",
+        "D01",
+        "C01"
+      ],
+      "inputs": "锁定扩展与许可",
+      "kind": "implementation",
+      "id": "P13-U07",
+      "stage": "P13",
+      "version": "0.13.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P13-U06"
+      ],
+      "requirements": [
+        "R01",
+        "R06",
+        "R13",
+        "R23",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P13-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P13-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "最终能力范围核对",
+      "scope": "docs/scope/v1-freeze.md",
+      "steps": [
+        "对冻结Must逐项映射真实证据",
+        "未通过feature flag关闭",
+        "变更需决议，不能自动删困难需求"
+      ],
+      "test": "UI宣传与支持矩阵一致性",
+      "done": "未测不涂绿，最终范围透明",
+      "refs": [
+        "U01",
+        "U02"
+      ],
+      "inputs": "所有目标功能状态",
+      "kind": "implementation",
+      "id": "P13-U08",
+      "stage": "P13",
+      "version": "0.13.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P13-U07"
+      ],
+      "requirements": [
+        "R01",
+        "R06",
+        "R13",
+        "R23",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P13-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P13-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P13/; docs/evals/P13/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G13：支持声明等于证据范围，无未授权外发和盲重发。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z02",
+        "D05",
+        "C01",
+        "T01",
+        "T03"
+      ],
+      "id": "P13-U09",
+      "stage": "P13",
+      "version": "0.13.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P13-U03",
+        "P13-U04",
+        "P13-U05",
+        "P13-U06",
+        "P13-U07",
+        "P13-U08"
+      ],
+      "requirements": [
+        "R01",
+        "R06",
+        "R13",
+        "R23",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P13-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P13-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.13.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.13.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G13：支持声明等于证据范围，无未授权外发和盲重发。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "U01",
+        "Z01",
+        "Z02",
+        "D05",
+        "C01",
+        "T01",
+        "T03"
+      ],
+      "id": "P13-U10",
+      "stage": "P13",
+      "version": "0.13.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P13-U09"
+      ],
+      "requirements": [
+        "R01",
+        "R03",
+        "R06",
+        "R13",
+        "R23",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P13-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P13-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P14/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "复用成熟桌面打包/升级与依赖审查工具，不新造更新协议",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "Z01",
+        "Z08",
+        "D01",
+        "H16",
+        "T03",
+        "T04",
+        "T05",
+        "T06"
+      ],
+      "id": "P14-U01",
+      "stage": "P14",
+      "version": "0.14.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P13-U10"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P14-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P14-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P14/; docs/adr/P14-reuse.md",
+      "inputs": "P14-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "干净Windows、真实发行产物、强杀、磁盘满、长时间模拟",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "Z01",
+        "Z08",
+        "D01",
+        "H16",
+        "T03",
+        "T04",
+        "T05",
+        "T06"
+      ],
+      "id": "P14-U02",
+      "stage": "P14",
+      "version": "0.14.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P14-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P14-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P14-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "工具链与Runtime产物锁定",
+      "scope": "build/; runtime-lock.json",
+      "steps": [
+        "各进程锁自己的工具链/ABI",
+        "产物hash与依赖锁提交",
+        "打包仅必要profiles并检查上游默认联网"
+      ],
+      "test": "离线缓存构建/版本不匹配/原生ABI错",
+      "done": "可重建身份，不继承未知账号与telemetry",
+      "refs": [
+        "Z01",
+        "D01"
+      ],
+      "inputs": "通过集成的源码版本",
+      "kind": "implementation",
+      "id": "P14-U03",
+      "stage": "P14",
+      "version": "0.14.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P14-U02"
+      ],
+      "requirements": [
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R24",
+        "R26"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P14-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P14-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "Windows安装更新回退",
+      "scope": "apps/companion/build/; packages/update/",
+      "steps": [
+        "成熟打包工具+产物hash/签名策略",
+        "安装目录只读用户数据独立",
+        "schema备份与旧版只读退回"
+      ],
+      "test": "中文路径/普通权限/锁文件/半下载/中断升级",
+      "done": "测A包就发A包，回退不写坏新数据",
+      "refs": [
+        "Z01",
+        "T03",
+        "T05"
+      ],
+      "inputs": "固定工具链和迁移版本",
+      "kind": "implementation",
+      "id": "P14-U04",
+      "stage": "P14",
+      "version": "0.14.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P14-U03"
+      ],
+      "requirements": [
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R24",
+        "R26"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P14-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P14-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "规模性能与预算基准",
+      "scope": "tests/benchmarks/",
+      "steps": [
+        "合成1万/10万事件与多项目",
+        "分冷热缓存/本地与云延迟测",
+        "只优化真实热点，不先加云图数据库"
+      ],
+      "test": "前台发消息时后台资源释放",
+      "done": "报告硬件数据规模与实测，不编最佳参数",
+      "refs": [
+        "T05",
+        "H13"
+      ],
+      "inputs": "性能fixture和诊断",
+      "kind": "implementation",
+      "id": "P14-U05",
+      "stage": "P14",
+      "version": "0.14.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P14-U04"
+      ],
+      "requirements": [
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R24",
+        "R26"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P14-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P14-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "故障与多年模拟",
+      "scope": "tests/faults/release/",
+      "steps": [
+        "模拟90/180/365/1095天",
+        "遍历commit/备份/删除/claim/外发强杀",
+        "核对unknown与孤儿进程"
+      ],
+      "test": "旧lease/旧epoch/旧事件重放",
+      "done": "core保护与project不衰减始终成立",
+      "refs": [
+        "H09",
+        "D02",
+        "T05"
+      ],
+      "inputs": "全生命周期测试开关",
+      "kind": "implementation",
+      "id": "P14-U06",
+      "stage": "P14",
+      "version": "0.14.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P14-U05"
+      ],
+      "requirements": [
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R24",
+        "R26"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P14-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P14-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "上游升级回归流程",
+      "scope": "tools/check-upstream.mjs; docs/maintenance/",
+      "steps": [
+        "单独分支查diff再PoC",
+        "移植文件保存原hash和本地差异",
+        "跑Hook/Memory/SDK/数据契约才更新lock"
+      ],
+      "test": "字段变更/事件缺失/旧版本数据",
+      "done": "breaking change不静默放宽权限",
+      "refs": [
+        "Z01",
+        "D01",
+        "H16"
+      ],
+      "inputs": "版本和来源台账",
+      "kind": "implementation",
+      "id": "P14-U07",
+      "stage": "P14",
+      "version": "0.14.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P14-U06"
+      ],
+      "requirements": [
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R24",
+        "R26"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P14-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P14-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "Beta帮助与诊断包",
+      "scope": "docs/user/; apps/companion/features/help/",
+      "steps": [
+        "写托盘退出/Dream费用/记忆删除/项目迁移",
+        "诊断默认脱敏",
+        "新用户按文档从空机使用恢复"
+      ],
+      "test": "无Key/无模型/无网首启",
+      "done": "不要求读源码，关闭期间没有虚构活动",
+      "refs": [
+        "U01",
+        "T04"
+      ],
+      "inputs": "真实可安装Beta",
+      "kind": "implementation",
+      "id": "P14-U08",
+      "stage": "P14",
+      "version": "0.14.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P14-U07"
+      ],
+      "requirements": [
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R24",
+        "R26"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P14-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P14-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P14/; docs/evals/P14/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G14：零未关闭关键数据/权限缺陷，发行资产与用户数据分开。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "Z01",
+        "Z08",
+        "D01",
+        "H16",
+        "T03",
+        "T04",
+        "T05",
+        "T06"
+      ],
+      "id": "P14-U09",
+      "stage": "P14",
+      "version": "0.14.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P14-U03",
+        "P14-U04",
+        "P14-U05",
+        "P14-U06",
+        "P14-U07",
+        "P14-U08"
+      ],
+      "requirements": [
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R24",
+        "R26"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P14-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P14-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 0.14.0",
+      "kind": "gate",
+      "scope": "docs/releases/0.14.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G14：零未关闭关键数据/权限缺陷，发行资产与用户数据分开。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "Z01",
+        "Z08",
+        "D01",
+        "H16",
+        "T03",
+        "T04",
+        "T05",
+        "T06"
+      ],
+      "id": "P14-U10",
+      "stage": "P14",
+      "version": "0.14.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P14-U09"
+      ],
+      "requirements": [
+        "R03",
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R24",
+        "R26"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P14-U10/<attempt-id>/result.md",
+      "fixture": "tests/units/P14-U10.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P15/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "再查紧急上游问题与资源许可，冻结功能只修阻断",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "U01",
+        "Z01",
+        "D02",
+        "H16",
+        "T03",
+        "T05",
+        "T06"
+      ],
+      "id": "P15-U01",
+      "stage": "P15",
+      "version": "1.0.0-rc.1",
+      "document_version": "1.1",
+      "dependencies": [
+        "P14-U10"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P15-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P15-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P15/; docs/adr/P15-reuse.md",
+      "inputs": "P15-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "角色、工作、团队、Dream退出、文件、语音、外发完整旅程",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "U01",
+        "Z01",
+        "D02",
+        "H16",
+        "T03",
+        "T05",
+        "T06"
+      ],
+      "id": "P15-U02",
+      "stage": "P15",
+      "version": "1.0.0-rc.1",
+      "document_version": "1.1",
+      "dependencies": [
+        "P15-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P15-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P15-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "需求与证据追踪审计",
+      "scope": "docs/acceptance/traceability.md",
+      "steps": [
+        "导出需求→具体task→fixture→commit→证据",
+        "检查所有gate真实通过",
+        "未测和条件阻塞单列"
+      ],
+      "test": "抽查反向追溯能打开所有产物",
+      "done": "无孤立需求，无以设计代实现的绿勾",
+      "refs": [
+        "U01"
+      ],
+      "inputs": "完整任务ledger",
+      "kind": "implementation",
+      "id": "P15-U03",
+      "stage": "P15",
+      "version": "1.0.0-rc.1",
+      "document_version": "1.1",
+      "dependencies": [
+        "P15-U02"
+      ],
+      "requirements": [
+        "R01",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R25",
+        "R26",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P15-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P15-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "最终用户旅程",
+      "scope": "tests/e2e/final-journeys/",
+      "steps": [
+        "空机安装→入口→聊天→项目→DSH→证据",
+        "Life确认→退出→catchup→归档查找",
+        "知识/待办/语音/审批链路跑完"
+      ],
+      "test": "无Key/断网/拒绝权限/模型故障",
+      "done": "不是只测happy path，发行包实际可用",
+      "refs": [
+        "U01",
+        "Z01"
+      ],
+      "inputs": "已安装RC与授权资源",
+      "kind": "implementation",
+      "id": "P15-U04",
+      "stage": "P15",
+      "version": "1.0.0-rc.1",
+      "document_version": "1.1",
+      "dependencies": [
+        "P15-U03"
+      ],
+      "requirements": [
+        "R01",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R25",
+        "R26",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P15-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P15-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "人格事实与记忆评测",
+      "scope": "tests/evals/rc/",
+      "steps": [
+        "冻结样本/模型/Prompt hash",
+        "测建议当决定、伪原话、离线虚构、串记、假成功",
+        "关键例人审"
+      ],
+      "test": "支持矩阵真实路线再测",
+      "done": "关键失败要修复重测，不宣称普遍零风险",
+      "refs": [
+        "H15",
+        "U02"
+      ],
+      "inputs": "gold和真实模型凭据",
+      "kind": "implementation",
+      "id": "P15-U05",
+      "stage": "P15",
+      "version": "1.0.0-rc.1",
+      "document_version": "1.1",
+      "dependencies": [
+        "P15-U04"
+      ],
+      "requirements": [
+        "R01",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R25",
+        "R26",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P15-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P15-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "安全许可与供应链",
+      "scope": "docs/acceptance/security-release.md",
+      "steps": [
+        "扫描实际包和适用漏洞",
+        "核Herta排除资源/ZCode notices/Live2D音色授权",
+        "审默认网络和权限"
+      ],
+      "test": "未知资产/明文Key/未批准外发",
+      "done": "资源缺凭据不伪称获授权，高危不发",
+      "refs": [
+        "H16",
+        "Z08",
+        "T03",
+        "T06"
+      ],
+      "inputs": "发行资源和license台账",
+      "kind": "implementation",
+      "id": "P15-U06",
+      "stage": "P15",
+      "version": "1.0.0-rc.1",
+      "document_version": "1.1",
+      "dependencies": [
+        "P15-U05"
+      ],
+      "requirements": [
+        "R01",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R25",
+        "R26",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P15-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P15-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "RC修复与封版",
+      "scope": "docs/releases/rc.md; release-candidate.json",
+      "steps": [
+        "一修一证据，功能变更退回阶段",
+        "锁源码依赖资产schema/prompt",
+        "复跑受影响测试和恢复演练"
+      ],
+      "test": "修复后新增回归、发布hash漂移",
+      "done": "明确可发/不可发，不边发边猜",
+      "refs": [
+        "U01",
+        "T05"
+      ],
+      "inputs": "前四审查报告",
+      "kind": "implementation",
+      "id": "P15-U07",
+      "stage": "P15",
+      "version": "1.0.0-rc.1",
+      "document_version": "1.1",
+      "dependencies": [
+        "P15-U06"
+      ],
+      "requirements": [
+        "R01",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R25",
+        "R26",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P15-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P15-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P15/; docs/evals/P15/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G15：每个Must有证据，关键未解决项阻断封版；NOT_RUN不等于pass。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "U01",
+        "Z01",
+        "D02",
+        "H16",
+        "T03",
+        "T05",
+        "T06"
+      ],
+      "id": "P15-U08",
+      "stage": "P15",
+      "version": "1.0.0-rc.1",
+      "document_version": "1.1",
+      "dependencies": [
+        "P15-U03",
+        "P15-U04",
+        "P15-U05",
+        "P15-U06",
+        "P15-U07"
+      ],
+      "requirements": [
+        "R01",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R25",
+        "R26",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P15-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P15-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 1.0.0-rc.1",
+      "kind": "gate",
+      "scope": "docs/releases/1.0.0-rc.1/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G15：每个Must有证据，关键未解决项阻断封版；NOT_RUN不等于pass。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "U01",
+        "Z01",
+        "D02",
+        "H16",
+        "T03",
+        "T05",
+        "T06"
+      ],
+      "id": "P15-U09",
+      "stage": "P15",
+      "version": "1.0.0-rc.1",
+      "document_version": "1.1",
+      "dependencies": [
+        "P15-U08"
+      ],
+      "requirements": [
+        "R01",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R25",
+        "R26",
+        "R28"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P15-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P15-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "现成方案调查与来源比较",
+      "kind": "research",
+      "scope": "docs/research/P16/",
+      "inputs": "授权只读路径、阶段目标、来源基线与上一阶段已验结果；本任务不要求尚未产生的本阶段采用决定。",
+      "steps": [
+        "发布前查询紧急问题，不在发行日盲目升级",
+        "读取相关完整源码、测试、许可和安装脚本；查现有项目是否已实现。存在多个合理候选时比较至少两个，只有一个则记录搜索路径。",
+        "保存检索词/日期/URL/commit/依赖/权限和差额；给出依赖、薄适配、纯代码移植、借设计或拒用的候选决定，不写生产代码。"
+      ],
+      "test": "检查固定来源可定位、结果含限制；不可访问标明，README宣称不当已实跑。",
+      "done": "搜索记录与比较可复查；没有先开工再补一个“已检索”声明。",
+      "refs": [
+        "U01",
+        "Z01",
+        "D01",
+        "H16",
+        "T03",
+        "T05",
+        "T06"
+      ],
+      "id": "P16-U01",
+      "stage": "P16",
+      "version": "1.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P15-U09"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P16-U01/<attempt-id>/result.md",
+      "fixture": "tests/units/P16-U01.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "隔离试验与复用决定",
+      "kind": "spike",
+      "scope": "spikes/P16/; docs/adr/P16-reuse.md",
+      "inputs": "P16-U01候选比较、基础许可与隔离目录；真实Key和有副作用动作另需明确授权。",
+      "steps": [
+        "真实下载包校hash、安装、迁移、核心旅程与卸载",
+        "固定工具链和输入，先mock再执行获授权的真实路径；保留正常、失败、恢复与费用证据。没有真实环境就标对应NOT_RUN，不伪装通过。",
+        "确定一个默认采用路线；拒用也保留有用设计与测试。只有证实不匹配才批准最小自研差额；重大架构变化进ADR。"
+      ],
+      "test": "最小成功/故障/恢复全部有命令或可重复步骤；检查没改全局配置和真实用户资料。",
+      "done": "有被批准的采用决定或明确blocked，关键PoC未通过不得把后续依赖视为可用。",
+      "refs": [
+        "U01",
+        "Z01",
+        "D01",
+        "H16",
+        "T03",
+        "T05",
+        "T06"
+      ],
+      "id": "P16-U02",
+      "stage": "P16",
+      "version": "1.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P16-U01"
+      ],
+      "requirements": [
+        "R03"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P16-U02/<attempt-id>/result.md",
+      "fixture": "tests/units/P16-U02.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "发布物料与来源清单",
+      "scope": "release/manifest.json; third-party/",
+      "steps": [
+        "生成源码依赖资产prompt/schema hash",
+        "汇总SBOM/LICENSE/NOTICE与移植修改",
+        "支持矩阵只报实测"
+      ],
+      "test": "manifest与实际文件逐个核对",
+      "done": "每项产物可追溯，未知资源不打包",
+      "refs": [
+        "Z08",
+        "H16",
+        "T06"
+      ],
+      "inputs": "已封RC",
+      "kind": "implementation",
+      "id": "P16-U03",
+      "stage": "P16",
+      "version": "1.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P16-U02"
+      ],
+      "requirements": [
+        "R24",
+        "R25",
+        "R26",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P16-U03/<attempt-id>/result.md",
+      "fixture": "tests/units/P16-U03.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "发布批准与安装包验证",
+      "scope": "release/; docs/acceptance/signoff.md",
+      "steps": [
+        "单独获取远程tag/upload批准",
+        "签名真实状态写明",
+        "空环境校验下载安装运行卸载"
+      ],
+      "test": "只读安装目录/普通用户/首次无网",
+      "done": "验收产物和发布产物一致，不伪造签名",
+      "refs": [
+        "U01",
+        "Z01"
+      ],
+      "inputs": "明确发行授权与RC",
+      "kind": "implementation",
+      "id": "P16-U04",
+      "stage": "P16",
+      "version": "1.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P16-U03"
+      ],
+      "requirements": [
+        "R24",
+        "R25",
+        "R26",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P16-U04/<attempt-id>/result.md",
+      "fixture": "tests/units/P16-U04.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "数据与旧工程交接",
+      "scope": "docs/user/migration-backup.md",
+      "steps": [
+        "旧工程只读保留",
+        "仅显式选择格式导入，不猜旧字段",
+        "导出Life与原生project知识并在新根恢复"
+      ],
+      "test": "旧格式错误/缺密钥/已删源备份",
+      "done": "Runtime重装不丢Life；项目Memory真的随导出",
+      "refs": [
+        "U02",
+        "T05"
+      ],
+      "inputs": "可恢复导出与用户选择",
+      "kind": "implementation",
+      "id": "P16-U05",
+      "stage": "P16",
+      "version": "1.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P16-U04"
+      ],
+      "requirements": [
+        "R24",
+        "R25",
+        "R26",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P16-U05/<attempt-id>/result.md",
+      "fixture": "tests/units/P16-U05.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "稳定维护与范围变更",
+      "scope": "docs/maintenance/policy.md",
+      "steps": [
+        "1.0.x修兼容安全，新功能另立版本",
+        "上游变化先查再试再改",
+        "不默认替用户设置外部监控或后台常驻"
+      ],
+      "test": "演练DSH breaking接口与模型能力撤销",
+      "done": "后续升级不丢权限/隐私/证据边界",
+      "refs": [
+        "D01",
+        "Z01"
+      ],
+      "inputs": "维护责任人与支持矩阵",
+      "kind": "implementation",
+      "id": "P16-U06",
+      "stage": "P16",
+      "version": "1.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P16-U05"
+      ],
+      "requirements": [
+        "R24",
+        "R25",
+        "R26",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P16-U06/<attempt-id>/result.md",
+      "fixture": "tests/units/P16-U06.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "最终执行证据封存",
+      "scope": "docs/acceptance/final-report.md",
+      "steps": [
+        "对账所有task/requirement/gate",
+        "保存被拒方案和借鉴价值",
+        "归档批准变更与未承诺未来范围"
+      ],
+      "test": "任一Must not_started/blocked即不得complete",
+      "done": "文档写好不代表产品已完成",
+      "refs": [
+        "U01",
+        "U02"
+      ],
+      "inputs": "所有正式验收与发行结果",
+      "kind": "implementation",
+      "id": "P16-U07",
+      "stage": "P16",
+      "version": "1.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P16-U06"
+      ],
+      "requirements": [
+        "R24",
+        "R25",
+        "R26",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P16-U07/<attempt-id>/result.md",
+      "fixture": "tests/units/P16-U07.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "阶段集成与独立回归",
+      "kind": "integration",
+      "scope": "tests/integration/P16/; docs/evals/P16/",
+      "inputs": "本阶段全部实现单元的结果、精确commit、复用决定、测试fixture和授权记录。",
+      "steps": [
+        "逐项核对本阶段所有实现结果，不只读取最后一张任务卡的摘要。",
+        "运行阶段成功、失败、取消/恢复路径；mock、真实Runtime、付费模型、发行包分别登记。",
+        "独立审查scope、许可、事实/权限负例，记录未测项并修复后复跑，不替实现者编通过证据。"
+      ],
+      "test": "G16：所有Must验收且发布获明确授权，未完成不得标最终完成。",
+      "done": "全部阶段Must具有证据；关键未测或失败保留阻塞；审查绑定精确版本。",
+      "refs": [
+        "U01",
+        "Z01",
+        "D01",
+        "H16",
+        "T03",
+        "T05",
+        "T06"
+      ],
+      "id": "P16-U08",
+      "stage": "P16",
+      "version": "1.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P16-U03",
+        "P16-U04",
+        "P16-U05",
+        "P16-U06",
+        "P16-U07"
+      ],
+      "requirements": [
+        "R24",
+        "R25",
+        "R26",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P16-U08/<attempt-id>/result.md",
+      "fixture": "tests/units/P16-U08.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    },
+    {
+      "title": "验收并冻结 1.0.0",
+      "kind": "gate",
+      "scope": "docs/releases/1.0.0/",
+      "inputs": "独立回归报告、全部已接受单元、需求映射、锁版本与回滚说明。",
+      "steps": [
+        "G16：所有Must验收且发布获明确授权，未完成不得标最终完成。",
+        "生成版本范围、来源/代码/prompt/schema/资源hash与支持限制；逐条验收不得用文档或源码阅读冒充实现。",
+        "通过后才开放下一阶段集成；远程tag、上传、发布仍需单独明确授权。失败保持上个已验版本，不偷偷删Must。"
+      ],
+      "test": "对实际候选产物重跑阶段冒烟及无Key/无DSH/离线降级；变更后重新验收。",
+      "done": "gate明确pass或blocked，不能以“已规划”关闭产品版本。",
+      "refs": [
+        "U01",
+        "Z01",
+        "D01",
+        "H16",
+        "T03",
+        "T05",
+        "T06"
+      ],
+      "id": "P16-U09",
+      "stage": "P16",
+      "version": "1.0.0",
+      "document_version": "1.1",
+      "dependencies": [
+        "P16-U08"
+      ],
+      "requirements": [
+        "R03",
+        "R24",
+        "R25",
+        "R26",
+        "R27"
+      ],
+      "status": "not_started",
+      "owner": null,
+      "output": "evidence/P16-U09/<attempt-id>/result.md",
+      "fixture": "tests/units/P16-U09.test.ts（目标路径；开工按实际测试框架映射）",
+      "implementation_notes": []
+    }
+  ]
+}
