@@ -1,13 +1,13 @@
 {
   "mode": "mock",
   "model": "[基元]deepseek-flash",
-  "run_id": "mock-1790858539717198800",
+  "run_id": "mock-1790858330664158100",
   "passed": true,
   "python_assertions_enabled": true,
   "failure": null,
   "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
   "code_bindings": {
-    "probe.py": "087f5280b857e6ef1899ebc012620175dbb257a12a1190acc2bd4d3f12365fca",
+    "probe.py": "2c91e715c2c061fb08b64e3cfdd6d173fcb397e501820f408cb9ed133c158fe4",
     "host.mjs": "4025e6aa971ff270da5452d1231b4df98283ed1973cf2ceda7c87d961053e3f3",
     "plugin/.zcode-plugin/plugin.json": "720d77c272bb39bacae412be574fe6b6e9012b84ae3799758e85ad07995a829d",
     "plugin/hooks/hooks.json": "d56c47249e64fdc10063f1a857ee27d5c4d5efc99aad88e91fa4993c959ff224",
@@ -19,11 +19,11 @@
     "--import",
     "file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/node_modules/tsx/dist/esm/index.mjs",
     "E:\\Xiadie\\Xiadie\\spikes\\P01\\host.mjs",
-    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\mock-1790858539717198800\\spec.json"
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\mock-1790858330664158100\\spec.json"
   ],
-  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\mock-1790858539717198800\\fixture",
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\mock-1790858330664158100\\fixture",
   "exit_code": 0,
-  "elapsed_seconds": 6.875,
+  "elapsed_seconds": 6.438,
   "production_unchanged": true,
   "production_before": [
     {
@@ -83,7 +83,7 @@
     {
       "type": "turn_result",
       "phase": "read-ok",
-      "session_id": "sess_ac662f5f-b9db-403d-b927-af808e59e478",
+      "session_id": "sess_40f2a936-392d-44a6-8ecf-0c2f5db36311",
       "response": "Fixture value: orchid-42.",
       "observed_events": [
         {
@@ -91,70 +91,70 @@
           "phase": "read-ok",
           "event_type": "hook_run_started",
           "sequence": 1,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "hook_run_completed",
           "sequence": 2,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "session_title_updated",
           "sequence": 3,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "turn_started",
           "sequence": 4,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "hook_run_started",
           "sequence": 5,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "hook_run_completed",
           "sequence": 6,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_request",
           "sequence": 7,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_network_status",
           "sequence": 8,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_streaming",
           "sequence": 9,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_streaming",
           "sequence": 10,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "tool_name": "Read"
         },
@@ -163,7 +163,7 @@
           "phase": "read-ok",
           "event_type": "model_streaming",
           "sequence": 11,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok"
         },
         {
@@ -171,7 +171,7 @@
           "phase": "read-ok",
           "event_type": "model_streaming",
           "sequence": 12,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok"
         },
         {
@@ -179,7 +179,7 @@
           "phase": "read-ok",
           "event_type": "model_streaming",
           "sequence": 13,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "tool_name": "Read"
         },
@@ -188,7 +188,7 @@
           "phase": "read-ok",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 14,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "tool_name": "Read"
         },
@@ -197,7 +197,7 @@
           "phase": "read-ok",
           "event_type": "tool_call_scheduled",
           "sequence": 15,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "tool_name": "Read"
         },
@@ -206,14 +206,14 @@
           "phase": "read-ok",
           "event_type": "model_streaming",
           "sequence": 16,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 17,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "tool_name": "Read"
         },
@@ -222,7 +222,7 @@
           "phase": "read-ok",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 18,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "tool_name": "Read"
         },
@@ -231,7 +231,7 @@
           "phase": "read-ok",
           "event_type": "hook_run_started",
           "sequence": 19,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "tool_name": "Read"
         },
@@ -240,21 +240,21 @@
           "phase": "read-ok",
           "event_type": "model_network_status",
           "sequence": 20,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_complete",
           "sequence": 21,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "hook_run_completed",
           "sequence": 22,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "tool_name": "Read"
         },
@@ -263,7 +263,7 @@
           "phase": "read-ok",
           "event_type": "tool_call_started",
           "sequence": 23,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "tool_name": "Read"
         },
@@ -272,7 +272,7 @@
           "phase": "read-ok",
           "event_type": "tool_call_result",
           "sequence": 24,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "result": {
             "success": true,
@@ -284,14 +284,14 @@
           "phase": "read-ok",
           "event_type": "tool_batch_complete",
           "sequence": 25,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "stream_recovery_anchor_created",
           "sequence": 26,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "tool_name": "Read"
         },
@@ -300,7 +300,7 @@
           "phase": "read-ok",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 27,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c",
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11",
           "tool_call_id": "p01-read-ok",
           "tool_name": "Read"
         },
@@ -309,70 +309,70 @@
           "phase": "read-ok",
           "event_type": "model_request",
           "sequence": 28,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_network_status",
           "sequence": 29,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_streaming",
           "sequence": 30,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_streaming",
           "sequence": 31,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_streaming",
           "sequence": 32,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_streaming",
           "sequence": 33,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_streaming",
           "sequence": 34,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_network_status",
           "sequence": 35,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "model_complete",
           "sequence": 36,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         },
         {
           "type": "native_event",
           "phase": "read-ok",
           "event_type": "turn_complete",
           "sequence": 37,
-          "turn_id": "turn_81d056c7-ffd6-4e4a-b22c-d920a5d9dd7c"
+          "turn_id": "turn_7c398498-1f7d-422e-ae55-d0d32ad91a11"
         }
       ],
       "events": [
@@ -483,7 +483,7 @@
     {
       "type": "turn_result",
       "phase": "read-fail",
-      "session_id": "sess_ac662f5f-b9db-403d-b927-af808e59e478",
+      "session_id": "sess_40f2a936-392d-44a6-8ecf-0c2f5db36311",
       "response": "This read failed or was denied; it is not complete.",
       "observed_events": [
         {
@@ -491,49 +491,49 @@
           "phase": "read-fail",
           "event_type": "turn_started",
           "sequence": 38,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "hook_run_started",
           "sequence": 39,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "hook_run_completed",
           "sequence": 40,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_request",
           "sequence": 41,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_network_status",
           "sequence": 42,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_streaming",
           "sequence": 43,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_streaming",
           "sequence": 44,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -542,7 +542,7 @@
           "phase": "read-fail",
           "event_type": "model_streaming",
           "sequence": 45,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail"
         },
         {
@@ -550,7 +550,7 @@
           "phase": "read-fail",
           "event_type": "model_streaming",
           "sequence": 46,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail"
         },
         {
@@ -558,7 +558,7 @@
           "phase": "read-fail",
           "event_type": "model_streaming",
           "sequence": 47,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -567,7 +567,7 @@
           "phase": "read-fail",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 48,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -576,7 +576,7 @@
           "phase": "read-fail",
           "event_type": "tool_call_scheduled",
           "sequence": 49,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -585,14 +585,14 @@
           "phase": "read-fail",
           "event_type": "model_streaming",
           "sequence": 50,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 51,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -601,7 +601,7 @@
           "phase": "read-fail",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 52,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -610,7 +610,7 @@
           "phase": "read-fail",
           "event_type": "hook_run_started",
           "sequence": 53,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -619,21 +619,21 @@
           "phase": "read-fail",
           "event_type": "model_network_status",
           "sequence": 54,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_complete",
           "sequence": 55,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "hook_run_completed",
           "sequence": 56,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -642,7 +642,7 @@
           "phase": "read-fail",
           "event_type": "tool_call_started",
           "sequence": 57,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -651,7 +651,7 @@
           "phase": "read-fail",
           "event_type": "hook_run_started",
           "sequence": 58,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -660,7 +660,7 @@
           "phase": "read-fail",
           "event_type": "hook_run_completed",
           "sequence": 59,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -669,7 +669,7 @@
           "phase": "read-fail",
           "event_type": "tool_call_error",
           "sequence": 60,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "error_type": "tool_execution_failed"
         },
@@ -678,14 +678,14 @@
           "phase": "read-fail",
           "event_type": "tool_batch_complete",
           "sequence": 61,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "stream_recovery_anchor_created",
           "sequence": 62,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -694,7 +694,7 @@
           "phase": "read-fail",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 63,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8",
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e",
           "tool_call_id": "p01-read-fail",
           "tool_name": "Read"
         },
@@ -703,70 +703,70 @@
           "phase": "read-fail",
           "event_type": "model_request",
           "sequence": 64,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_network_status",
           "sequence": 65,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_streaming",
           "sequence": 66,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_streaming",
           "sequence": 67,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_streaming",
           "sequence": 68,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_streaming",
           "sequence": 69,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_streaming",
           "sequence": 70,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_network_status",
           "sequence": 71,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "model_complete",
           "sequence": 72,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         },
         {
           "type": "native_event",
           "phase": "read-fail",
           "event_type": "turn_complete",
           "sequence": 73,
-          "turn_id": "turn_8cc87ec9-cc83-4bff-8364-a84b24175ba8"
+          "turn_id": "turn_840ab8ae-dff5-46a3-ab8a-ed8cd1f2eb1e"
         }
       ],
       "events": [
@@ -877,7 +877,7 @@
     {
       "type": "turn_result",
       "phase": "scope-denied",
-      "session_id": "sess_ac662f5f-b9db-403d-b927-af808e59e478",
+      "session_id": "sess_40f2a936-392d-44a6-8ecf-0c2f5db36311",
       "response": "This read failed or was denied; it is not complete.",
       "observed_events": [
         {
@@ -885,49 +885,49 @@
           "phase": "scope-denied",
           "event_type": "turn_started",
           "sequence": 74,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "hook_run_started",
           "sequence": 75,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "hook_run_completed",
           "sequence": 76,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_request",
           "sequence": 77,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_network_status",
           "sequence": 78,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_streaming",
           "sequence": 79,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_streaming",
           "sequence": 80,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied",
           "tool_name": "Read"
         },
@@ -936,7 +936,7 @@
           "phase": "scope-denied",
           "event_type": "model_streaming",
           "sequence": 81,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied"
         },
         {
@@ -944,7 +944,7 @@
           "phase": "scope-denied",
           "event_type": "model_streaming",
           "sequence": 82,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied"
         },
         {
@@ -952,7 +952,7 @@
           "phase": "scope-denied",
           "event_type": "model_streaming",
           "sequence": 83,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied",
           "tool_name": "Read"
         },
@@ -961,7 +961,7 @@
           "phase": "scope-denied",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 84,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied",
           "tool_name": "Read"
         },
@@ -970,7 +970,7 @@
           "phase": "scope-denied",
           "event_type": "tool_call_scheduled",
           "sequence": 85,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied",
           "tool_name": "Read"
         },
@@ -979,14 +979,14 @@
           "phase": "scope-denied",
           "event_type": "model_streaming",
           "sequence": 86,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 87,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied",
           "tool_name": "Read"
         },
@@ -995,7 +995,7 @@
           "phase": "scope-denied",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 88,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied",
           "tool_name": "Read"
         },
@@ -1004,7 +1004,7 @@
           "phase": "scope-denied",
           "event_type": "hook_run_started",
           "sequence": 89,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied",
           "tool_name": "Read"
         },
@@ -1013,21 +1013,21 @@
           "phase": "scope-denied",
           "event_type": "model_network_status",
           "sequence": 90,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_complete",
           "sequence": 91,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "hook_run_blocked",
           "sequence": 92,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied",
           "tool_name": "Read"
         },
@@ -1036,14 +1036,14 @@
           "phase": "scope-denied",
           "event_type": "tool_batch_complete",
           "sequence": 93,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "stream_recovery_anchor_created",
           "sequence": 94,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied",
           "tool_name": "Read"
         },
@@ -1052,7 +1052,7 @@
           "phase": "scope-denied",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 95,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4",
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57",
           "tool_call_id": "p01-scope-denied",
           "tool_name": "Read"
         },
@@ -1061,70 +1061,70 @@
           "phase": "scope-denied",
           "event_type": "model_request",
           "sequence": 96,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_network_status",
           "sequence": 97,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_streaming",
           "sequence": 98,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_streaming",
           "sequence": 99,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_streaming",
           "sequence": 100,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_streaming",
           "sequence": 101,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_streaming",
           "sequence": 102,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_network_status",
           "sequence": 103,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "model_complete",
           "sequence": 104,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         },
         {
           "type": "native_event",
           "phase": "scope-denied",
           "event_type": "turn_complete",
           "sequence": 105,
-          "turn_id": "turn_2757174f-8659-4dfc-b8ff-2e25f06f7bb4"
+          "turn_id": "turn_dc24a4dc-b1ed-4b86-ba9b-b34e06928d57"
         }
       ],
       "events": [
@@ -1235,7 +1235,7 @@
     {
       "type": "turn_result",
       "phase": "symlink-denied",
-      "session_id": "sess_ac662f5f-b9db-403d-b927-af808e59e478",
+      "session_id": "sess_40f2a936-392d-44a6-8ecf-0c2f5db36311",
       "response": "This read failed or was denied; it is not complete.",
       "observed_events": [
         {
@@ -1243,49 +1243,49 @@
           "phase": "symlink-denied",
           "event_type": "turn_started",
           "sequence": 106,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "hook_run_started",
           "sequence": 107,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "hook_run_completed",
           "sequence": 108,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_request",
           "sequence": 109,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_network_status",
           "sequence": 110,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_streaming",
           "sequence": 111,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_streaming",
           "sequence": 112,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1294,7 +1294,7 @@
           "phase": "symlink-denied",
           "event_type": "model_streaming",
           "sequence": 113,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied"
         },
         {
@@ -1302,7 +1302,7 @@
           "phase": "symlink-denied",
           "event_type": "model_streaming",
           "sequence": 114,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied"
         },
         {
@@ -1310,7 +1310,7 @@
           "phase": "symlink-denied",
           "event_type": "model_streaming",
           "sequence": 115,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1319,7 +1319,7 @@
           "phase": "symlink-denied",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 116,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1328,7 +1328,7 @@
           "phase": "symlink-denied",
           "event_type": "tool_call_scheduled",
           "sequence": 117,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1337,14 +1337,14 @@
           "phase": "symlink-denied",
           "event_type": "model_streaming",
           "sequence": 118,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 119,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1353,7 +1353,7 @@
           "phase": "symlink-denied",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 120,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1362,7 +1362,7 @@
           "phase": "symlink-denied",
           "event_type": "hook_run_started",
           "sequence": 121,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1371,21 +1371,21 @@
           "phase": "symlink-denied",
           "event_type": "model_network_status",
           "sequence": 122,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_complete",
           "sequence": 123,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "hook_run_completed",
           "sequence": 124,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1394,7 +1394,7 @@
           "phase": "symlink-denied",
           "event_type": "tool_call_started",
           "sequence": 125,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1403,7 +1403,7 @@
           "phase": "symlink-denied",
           "event_type": "hook_run_started",
           "sequence": 126,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1412,7 +1412,7 @@
           "phase": "symlink-denied",
           "event_type": "hook_run_completed",
           "sequence": 127,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1421,7 +1421,7 @@
           "phase": "symlink-denied",
           "event_type": "tool_call_error",
           "sequence": 128,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "error_type": "FileSystemPortError"
         },
@@ -1430,14 +1430,14 @@
           "phase": "symlink-denied",
           "event_type": "tool_batch_complete",
           "sequence": 129,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "stream_recovery_anchor_created",
           "sequence": 130,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1446,7 +1446,7 @@
           "phase": "symlink-denied",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 131,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375",
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b",
           "tool_call_id": "p01-symlink-denied",
           "tool_name": "Read"
         },
@@ -1455,70 +1455,70 @@
           "phase": "symlink-denied",
           "event_type": "model_request",
           "sequence": 132,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_network_status",
           "sequence": 133,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_streaming",
           "sequence": 134,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_streaming",
           "sequence": 135,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_streaming",
           "sequence": 136,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_streaming",
           "sequence": 137,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_streaming",
           "sequence": 138,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_network_status",
           "sequence": 139,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "model_complete",
           "sequence": 140,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         },
         {
           "type": "native_event",
           "phase": "symlink-denied",
           "event_type": "turn_complete",
           "sequence": 141,
-          "turn_id": "turn_ff84a4cb-a606-4df9-a51c-e2acca761375"
+          "turn_id": "turn_126eec01-56a0-4b81-a05e-0231b18e280b"
         }
       ],
       "events": [
@@ -1629,7 +1629,7 @@
     {
       "type": "turn_result",
       "phase": "compact",
-      "session_id": "sess_ac662f5f-b9db-403d-b927-af808e59e478",
+      "session_id": "sess_40f2a936-392d-44a6-8ecf-0c2f5db36311",
       "response": "Compacted",
       "observed_events": [
         {
@@ -1637,63 +1637,63 @@
           "phase": "compact",
           "event_type": "turn_started",
           "sequence": 142,
-          "turn_id": "turn_db7fffcd-4e7b-45d3-b0c0-692fa826c307"
+          "turn_id": "turn_ef1d5ae3-299b-4299-90ed-29d4c5f9cd53"
         },
         {
           "type": "native_event",
           "phase": "compact",
           "event_type": "compact_started",
           "sequence": 143,
-          "turn_id": "turn_db7fffcd-4e7b-45d3-b0c0-692fa826c307"
+          "turn_id": "turn_ef1d5ae3-299b-4299-90ed-29d4c5f9cd53"
         },
         {
           "type": "native_event",
           "phase": "compact",
           "event_type": "model_request",
           "sequence": 144,
-          "turn_id": "turn_db7fffcd-4e7b-45d3-b0c0-692fa826c307"
+          "turn_id": "turn_ef1d5ae3-299b-4299-90ed-29d4c5f9cd53"
         },
         {
           "type": "native_event",
           "phase": "compact",
           "event_type": "model_network_status",
           "sequence": 145,
-          "turn_id": "turn_db7fffcd-4e7b-45d3-b0c0-692fa826c307"
+          "turn_id": "turn_ef1d5ae3-299b-4299-90ed-29d4c5f9cd53"
         },
         {
           "type": "native_event",
           "phase": "compact",
           "event_type": "model_network_status",
           "sequence": 146,
-          "turn_id": "turn_db7fffcd-4e7b-45d3-b0c0-692fa826c307"
+          "turn_id": "turn_ef1d5ae3-299b-4299-90ed-29d4c5f9cd53"
         },
         {
           "type": "native_event",
           "phase": "compact",
           "event_type": "model_complete",
           "sequence": 147,
-          "turn_id": "turn_db7fffcd-4e7b-45d3-b0c0-692fa826c307"
+          "turn_id": "turn_ef1d5ae3-299b-4299-90ed-29d4c5f9cd53"
         },
         {
           "type": "native_event",
           "phase": "compact",
           "event_type": "compact_boundary",
           "sequence": 148,
-          "turn_id": "turn_db7fffcd-4e7b-45d3-b0c0-692fa826c307"
+          "turn_id": "turn_ef1d5ae3-299b-4299-90ed-29d4c5f9cd53"
         },
         {
           "type": "native_event",
           "phase": "compact",
           "event_type": "compact_completed",
           "sequence": 149,
-          "turn_id": "turn_db7fffcd-4e7b-45d3-b0c0-692fa826c307"
+          "turn_id": "turn_ef1d5ae3-299b-4299-90ed-29d4c5f9cd53"
         },
         {
           "type": "native_event",
           "phase": "compact",
           "event_type": "turn_complete",
           "sequence": 150,
-          "turn_id": "turn_db7fffcd-4e7b-45d3-b0c0-692fa826c307"
+          "turn_id": "turn_ef1d5ae3-299b-4299-90ed-29d4c5f9cd53"
         }
       ],
       "events": [
@@ -1729,7 +1729,7 @@
     {
       "type": "turn_result",
       "phase": "resume",
-      "session_id": "sess_ac662f5f-b9db-403d-b927-af808e59e478",
+      "session_id": "sess_40f2a936-392d-44a6-8ecf-0c2f5db36311",
       "response": "Fixture value: orchid-42.",
       "observed_events": [
         {
@@ -1761,49 +1761,49 @@
           "phase": "resume",
           "event_type": "turn_started",
           "sequence": 5,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "hook_run_started",
           "sequence": 6,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "hook_run_completed",
           "sequence": 7,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_request",
           "sequence": 8,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_network_status",
           "sequence": 9,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_streaming",
           "sequence": 10,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_streaming",
           "sequence": 11,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "tool_name": "Read"
         },
@@ -1812,7 +1812,7 @@
           "phase": "resume",
           "event_type": "model_streaming",
           "sequence": 12,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume"
         },
         {
@@ -1820,7 +1820,7 @@
           "phase": "resume",
           "event_type": "model_streaming",
           "sequence": 13,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume"
         },
         {
@@ -1828,7 +1828,7 @@
           "phase": "resume",
           "event_type": "model_streaming",
           "sequence": 14,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "tool_name": "Read"
         },
@@ -1837,7 +1837,7 @@
           "phase": "resume",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 15,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "tool_name": "Read"
         },
@@ -1846,7 +1846,7 @@
           "phase": "resume",
           "event_type": "tool_call_scheduled",
           "sequence": 16,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "tool_name": "Read"
         },
@@ -1855,14 +1855,14 @@
           "phase": "resume",
           "event_type": "model_streaming",
           "sequence": 17,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 18,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "tool_name": "Read"
         },
@@ -1871,7 +1871,7 @@
           "phase": "resume",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 19,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "tool_name": "Read"
         },
@@ -1880,7 +1880,7 @@
           "phase": "resume",
           "event_type": "hook_run_started",
           "sequence": 20,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "tool_name": "Read"
         },
@@ -1889,21 +1889,21 @@
           "phase": "resume",
           "event_type": "model_network_status",
           "sequence": 21,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_complete",
           "sequence": 22,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "hook_run_completed",
           "sequence": 23,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "tool_name": "Read"
         },
@@ -1912,7 +1912,7 @@
           "phase": "resume",
           "event_type": "tool_call_started",
           "sequence": 24,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "tool_name": "Read"
         },
@@ -1921,7 +1921,7 @@
           "phase": "resume",
           "event_type": "tool_call_result",
           "sequence": 25,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "result": {
             "success": true,
@@ -1933,14 +1933,14 @@
           "phase": "resume",
           "event_type": "tool_batch_complete",
           "sequence": 26,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "stream_recovery_anchor_created",
           "sequence": 27,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "tool_name": "Read"
         },
@@ -1949,7 +1949,7 @@
           "phase": "resume",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 28,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9",
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c",
           "tool_call_id": "p01-resume",
           "tool_name": "Read"
         },
@@ -1958,70 +1958,70 @@
           "phase": "resume",
           "event_type": "model_request",
           "sequence": 29,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_network_status",
           "sequence": 30,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_streaming",
           "sequence": 31,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_streaming",
           "sequence": 32,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_streaming",
           "sequence": 33,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_streaming",
           "sequence": 34,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_streaming",
           "sequence": 35,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_network_status",
           "sequence": 36,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "model_complete",
           "sequence": 37,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         },
         {
           "type": "native_event",
           "phase": "resume",
           "event_type": "turn_complete",
           "sequence": 38,
-          "turn_id": "turn_a4c2ff3d-bfa7-4f07-b690-46bcc0c562b9"
+          "turn_id": "turn_07c93e7c-7453-429d-b540-6df2be9b598c"
         }
       ],
       "events": [
@@ -2132,7 +2132,7 @@
     {
       "type": "turn_result",
       "phase": "disabled",
-      "session_id": "sess_8473faef-e446-4043-8b9b-71b9696e14fa",
+      "session_id": "sess_08672c3f-1e67-44f6-a888-dc0b1ef51901",
       "response": "Fixture value: orchid-42.",
       "observed_events": [
         {
@@ -2140,42 +2140,42 @@
           "phase": "disabled",
           "event_type": "session_title_updated",
           "sequence": 1,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "turn_started",
           "sequence": 2,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_request",
           "sequence": 3,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_network_status",
           "sequence": 4,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_streaming",
           "sequence": 5,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_streaming",
           "sequence": 6,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled",
           "tool_name": "Read"
         },
@@ -2184,7 +2184,7 @@
           "phase": "disabled",
           "event_type": "model_streaming",
           "sequence": 7,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled"
         },
         {
@@ -2192,7 +2192,7 @@
           "phase": "disabled",
           "event_type": "model_streaming",
           "sequence": 8,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled"
         },
         {
@@ -2200,7 +2200,7 @@
           "phase": "disabled",
           "event_type": "model_streaming",
           "sequence": 9,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled",
           "tool_name": "Read"
         },
@@ -2209,7 +2209,7 @@
           "phase": "disabled",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 10,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled",
           "tool_name": "Read"
         },
@@ -2218,7 +2218,7 @@
           "phase": "disabled",
           "event_type": "tool_call_scheduled",
           "sequence": 11,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled",
           "tool_name": "Read"
         },
@@ -2227,14 +2227,14 @@
           "phase": "disabled",
           "event_type": "model_streaming",
           "sequence": 12,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 13,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled",
           "tool_name": "Read"
         },
@@ -2243,7 +2243,7 @@
           "phase": "disabled",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 14,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled",
           "tool_name": "Read"
         },
@@ -2252,7 +2252,7 @@
           "phase": "disabled",
           "event_type": "tool_call_started",
           "sequence": 15,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled",
           "tool_name": "Read"
         },
@@ -2261,21 +2261,21 @@
           "phase": "disabled",
           "event_type": "model_network_status",
           "sequence": 16,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_complete",
           "sequence": 17,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "tool_call_result",
           "sequence": 18,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled",
           "result": {
             "success": true,
@@ -2287,14 +2287,14 @@
           "phase": "disabled",
           "event_type": "tool_batch_complete",
           "sequence": 19,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "stream_recovery_anchor_created",
           "sequence": 20,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled",
           "tool_name": "Read"
         },
@@ -2303,7 +2303,7 @@
           "phase": "disabled",
           "event_type": "streaming_tool_ledger_updated",
           "sequence": 21,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309",
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9",
           "tool_call_id": "p01-disabled",
           "tool_name": "Read"
         },
@@ -2312,70 +2312,70 @@
           "phase": "disabled",
           "event_type": "model_request",
           "sequence": 22,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_network_status",
           "sequence": 23,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_streaming",
           "sequence": 24,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_streaming",
           "sequence": 25,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_streaming",
           "sequence": 26,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_streaming",
           "sequence": 27,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_streaming",
           "sequence": 28,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_network_status",
           "sequence": 29,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "model_complete",
           "sequence": 30,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         },
         {
           "type": "native_event",
           "phase": "disabled",
           "event_type": "turn_complete",
           "sequence": 31,
-          "turn_id": "turn_f917444a-e2b6-4881-9184-fbaf05095309"
+          "turn_id": "turn_e4803ac4-7a09-4401-9741-82406efb52a9"
         }
       ],
       "events": [
@@ -2490,29 +2490,29 @@
   "runtime_kind": "actual pinned ZCode bootstrap, provider, plugin Hook, Loop, executor and SQLite; mock/real provider recorded separately",
   "artifacts": [
     {
-      "path": "evidence/P01-U02/20261001-01/runs/mock-1790858539717198800/hooks.jsonl",
+      "path": "evidence/P01-U02/20261001-01/runs/mock-1790858330664158100/hooks.jsonl",
       "bytes": 3342,
-      "sha256": "a0e73492a0482fd85d59186269a7e748f80465160e52fe874911c5a6d61cb353"
+      "sha256": "d281bdc2b0c302ae935775039e57e1d61d874dff5a47997819120eecdb1b733b"
     },
     {
-      "path": "evidence/P01-U02/20261001-01/runs/mock-1790858539717198800/native-tool-receipts.jsonl",
+      "path": "evidence/P01-U02/20261001-01/runs/mock-1790858330664158100/native-tool-receipts.jsonl",
       "bytes": 1101,
-      "sha256": "954177e05fb6407a41ba662728d767bb9a7558a7cbf242e48c50080d53296ba6"
+      "sha256": "21f9139bfccf253c748cf00b1a017e8aa4d4f883fb760653c7a0f6b3ab834d9a"
     },
     {
-      "path": "evidence/P01-U02/20261001-01/runs/mock-1790858539717198800/requests.json",
+      "path": "evidence/P01-U02/20261001-01/runs/mock-1790858330664158100/requests.json",
       "bytes": 324047,
-      "sha256": "c7f26d07d068a170facaa3a47121f13a13494a49afe7018d3516f51ec9dc6e8d"
+      "sha256": "52e69a6d816b340ca740a3cea1985bf5b5c37f8c6e9eed9743aff9299f031644"
     },
     {
-      "path": "evidence/P01-U02/20261001-01/runs/mock-1790858539717198800/stderr.bin",
-      "bytes": 169,
-      "sha256": "c1de7beaaf8ef4c191a82af7fa4361847b6591ae2e0d05c9dca43834e5b9aefb"
+      "path": "evidence/P01-U02/20261001-01/runs/mock-1790858330664158100/stderr.bin",
+      "bytes": 168,
+      "sha256": "db874a15fb9ca5fd17c452614e5976ef19d1035ed96e3edce0dcbdce07becc73"
     },
     {
-      "path": "evidence/P01-U02/20261001-01/runs/mock-1790858539717198800/stdout.jsonl",
+      "path": "evidence/P01-U02/20261001-01/runs/mock-1790858330664158100/stdout.jsonl",
       "bytes": 127000,
-      "sha256": "08954b94e73521e740c82b5a8c0bb339163e4e795d385e15519f3fbe93cbdc78"
+      "sha256": "74d52c613859ec492945fa5f1e006c8dc754edff87222a69e6d6df0a4c4c98ee"
     }
   ]
 }

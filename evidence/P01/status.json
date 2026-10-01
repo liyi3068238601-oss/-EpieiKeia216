@@ -55,8 +55,8 @@
           "status": "pass",
           "evidence": {
             "path": "evidence/P01-U02/20261001-01/summary-mock.json",
-            "bytes": 75416,
-            "sha256": "d0c1f1854ba49f51cd9ca94b2aba4ce1154f82a164c5b15f8500a79b59eb4be1"
+            "bytes": 75673,
+            "sha256": "f090fdf3926de2d948d400d50160a47a4e3fbfcfa24400d8cb66675269464975"
           }
         },
         "startup_port_isolation": {
@@ -79,6 +79,33 @@
         "independent_acceptance": {
           "status": "pending",
           "reason": "U02 is not yet ready_for_review"
+        },
+        "pending_transport_guard": {
+          "status": "pass",
+          "scope": "synthetic/refusal check; not a real model route pass",
+          "evidence": {
+            "path": "evidence/P01-U02/20261001-01/transport-gate-verification.json",
+            "bytes": 1094,
+            "sha256": "f87ec65185e76016deb895473af3047bda7b14cd35c8596738f7c437a8307a56"
+          }
+        },
+        "pending_transport_guard_optimized": {
+          "status": "pass",
+          "scope": "synthetic/refusal check; not a real model route pass",
+          "evidence": {
+            "path": "evidence/P01-U02/20261001-01/transport-gate-verification-optimized.json",
+            "bytes": 1093,
+            "sha256": "6e9dd1f45a20e11f3bbadec72ffbd870e81d040d9b82e6e902665a576faf09c0"
+          }
+        },
+        "native_continuation_guard": {
+          "status": "pass",
+          "scope": "synthetic/refusal check; not a real model route pass",
+          "evidence": {
+            "path": "evidence/P01-U02/20261001-01/continuation-guard-verification.json",
+            "bytes": 1186,
+            "sha256": "279e45d7bd122e059bba2d9ff4f9b1417cd9432e360f99c5c9efbabed4638a44"
+          }
         }
       }
     },
@@ -213,5 +240,10 @@
       ]
     ],
     "product_launcher_enforcement": "required in dependent implementation; product not yet started"
+  },
+  "transport_inventory": {
+    "path": "evidence/P01-U02/20261001-01/transport-inventory.json",
+    "bytes": 794,
+    "sha256": "7cecdd4b126cbdf9dc0d305140e569706d03cf987a1f669d4755932388dbc38e"
   }
 }

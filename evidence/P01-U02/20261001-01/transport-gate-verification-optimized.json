@@ -1,0 +1,36 @@
+{
+  "status": "pass",
+  "python_optimization": true,
+  "scenario": "pending transport blocks real generation before credentials/runtime/network",
+  "attempts": {
+    "credential_file_open": 0,
+    "http_send": 0,
+    "socket_connect": 0,
+    "native_runtime_launch": 0
+  },
+  "paid_request_ledger_unchanged": true,
+  "actual_model_calls": 0,
+  "not_a_real_model_route_pass": true,
+  "artifacts": [
+    {
+      "path": "spikes/P01/probe.py",
+      "bytes": 24646,
+      "sha256": "087f5280b857e6ef1899ebc012620175dbb257a12a1190acc2bd4d3f12365fca"
+    },
+    {
+      "path": "spikes/P01/run-no-key.py",
+      "bytes": 5575,
+      "sha256": "3afe7e319cde874ac1261ed6fcf21c2a549d26cce4baecadf740e074fffe5d49"
+    },
+    {
+      "path": "spikes/P01/verify-transport-gate.py",
+      "bytes": 4109,
+      "sha256": "553a3492e2c9429be33045533c80ffb8313412add228af44d839152744993a43"
+    },
+    {
+      "path": "evidence/P01/transport-decision.json",
+      "bytes": 760,
+      "sha256": "0bae555e15b21b5c6898b3e985fc1737d1dab30cc3c27e3989d7e82ab6e24ed6"
+    }
+  ]
+}

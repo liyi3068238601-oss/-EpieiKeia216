@@ -1,6 +1,7 @@
 // Pinned private-workspace bootstrap seam; no replacement model/agent Loop.
 import assert from 'node:assert/strict';
 import { readFile, writeFile, realpath } from 'node:fs/promises';
+import { appendFileSync } from 'node:fs';
 import { resolve, relative, isAbsolute } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -37,6 +38,7 @@ let detach;
 let phase;
 const turns = [];
 const observed = [];
+const nativeToolNames = new Map();
 const emit = x => process.stdout.write(JSON.stringify(x) + '\n');
 async function setPhase(value) {
   phase = value;
@@ -68,12 +70,22 @@ async function open(sessionId, pluginEnabled = true) {
   assert.equal(app.runtime.isProjectMemoryEnabled(), false);
   detach = app.runtime.subscribeEvents({ onSessionEvent(event) {
     const p = event.payload ?? {};
+    if (p.toolCallId && p.toolName) nativeToolNames.set(p.toolCallId, p.toolName);
     const receipt = { type: 'native_event', phase, event_type: event.type, sequence: event.sequenceNumber,
       turn_id: event.turnId, tool_call_id: p.toolCallId, tool_name: p.toolName,
       result: p.result ? { success: p.result.success, content: p.result.content?.slice(0, 1500),
         error_type: p.result.error?.type } : undefined,
       error_type: p.error?.type,
     };
+    if (p.toolCallId && ['tool_call_result', 'tool_call_error', 'hook_run_blocked'].includes(event.type)) {
+      // Synchronous append makes the genuine terminal event available before
+      // the native Loop can send its next model request. No model text is read.
+      appendFileSync(process.env.P01_NATIVE_TOOL_RECEIPTS, JSON.stringify({ phase,
+        event_type: event.type, sequence: event.sequenceNumber, turn_id: event.turnId,
+        tool_call_id: p.toolCallId, tool_name: nativeToolNames.get(p.toolCallId),
+        result_success: p.result?.success,
+      }) + '\n');
+    }
     observed.push(receipt); emit(receipt);
   } });
 }

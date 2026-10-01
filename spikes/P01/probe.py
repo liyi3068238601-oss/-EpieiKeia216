@@ -35,6 +35,45 @@ def save(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
 
 
+def require(condition, message):
+    # Authorization and execution preconditions must survive Python -O.
+    if not condition:
+        raise PermissionError(message)
+
+
+def completed_read_tool_ids(frames, payload):
+    if b'data: [DONE]' not in payload.splitlines() or not any(c.get('finish_reason') == 'tool_calls' for f in frames for c in f.get('choices', [])):
+        return set()
+    calls = {}
+    for frame in frames:
+        for choice in frame.get('choices', []):
+            if choice.get('index', 0) != 0:
+                return set()
+            for delta in choice.get('delta', {}).get('tool_calls', []):
+                index = delta.get('index')
+                if not isinstance(index, int) or index < 0:
+                    return set()
+                call = calls.setdefault(index, {'id': '', 'type': '', 'name': ''})
+                for field in ('id', 'type'):
+                    if delta.get(field):
+                        if call[field] and call[field] != delta[field]:
+                            return set()
+                        call[field] = delta[field]
+                call['name'] += delta.get('function', {}).get('name', '')
+    if not calls or any(c['type'] != 'function' or c['name'] != 'Read' or not c['id'] for c in calls.values()):
+        return set()
+    ids = {c['id'] for c in calls.values()}
+    return ids if len(ids) == len(calls) else set()
+
+
+def native_tool_continuation(ids, messages, receipts, phase):
+    returned = {m.get('tool_call_id') for m in messages if m.get('role') == 'tool'}
+    observed = {r.get('tool_call_id') for r in receipts
+                if r.get('phase') == phase and r.get('tool_name') == 'Read'
+                and r.get('event_type') in ('tool_call_result', 'tool_call_error', 'hook_run_blocked')}
+    return bool(ids) and ids <= returned and ids <= observed
+
+
 helper_spec = spec_from_file_location('p01_no_key_helper', SPIKE / 'run-no-key.py')
 helper = module_from_spec(helper_spec)
 helper_spec.loader.exec_module(helper)
@@ -58,25 +97,29 @@ def exclusive_real_run():
 
 
 def run(mode, model):
-    assert json.loads((ROOT / 'evidence/P01-U01/20261001-01/acceptance.json').read_text(encoding='utf-8'))['status'] == 'accepted'
-    assert subprocess.check_output(['git', '-C', str(SOURCE), 'rev-parse', 'HEAD'], text=True).strip() == PIN
-    assert not subprocess.check_output(['git', '-C', str(SOURCE), 'status', '--porcelain'], text=True).strip()
+    require(json.loads((ROOT / 'evidence/P01-U01/20261001-01/acceptance.json').read_text(encoding='utf-8'))['status'] == 'accepted', 'P01-U01 is not accepted')
+    require(subprocess.check_output(['git', '-C', str(SOURCE), 'rev-parse', 'HEAD'], text=True).strip() == PIN, 'ZCode source pin changed')
+    require(not subprocess.check_output(['git', '-C', str(SOURCE), 'status', '--porcelain'], text=True).strip(), 'ZCode source is not clean')
     code = {p: sha(SPIKE / p) for p in CODE}
     key = url = None
     if mode == 'real':
         auth = json.loads((ROOT / 'evidence/P01/authorization.json').read_text(encoding='utf-8'))
-        assert auth['status'] == 'authorized' and model in auth['models']
+        require(auth['status'] == 'authorized' and model in auth['models'], 'P01 model is not authorized')
         transport = json.loads((ROOT / 'evidence/P01/transport-decision.json').read_text(encoding='utf-8'))
-        assert transport['status'] == 'confirmed', '7877 transport choice is pending; no credentials may be loaded or sent'
+        require(transport['status'] == 'confirmed', '7877 transport choice is pending; no credentials may be loaded or sent')
+        require(__debug__, 'P01 integration probes require assertion validation; optimized execution is unsupported')
         ui = json.loads((EVIDENCE / 'summary-no-key-ui.json').read_text(encoding='utf-8'))
-        assert ui['passed'], 'Real generation follows actual no-Key settings UI proof'
+        require(ui['passed'], 'Real generation follows actual no-Key settings UI proof')
         mock = json.loads((EVIDENCE / 'summary-mock.json').read_text(encoding='utf-8'))
-        assert mock['passed'] and mock['code_bindings'] == code
-        provider = yaml.safe_load(Path(r'C:\Users\liyi\.dsh\settings.yaml').read_text(encoding='utf-8'))['llm-pi-ai']['providers']['a7877']
-        key = yaml.safe_load(Path(r'C:\Users\liyi\.dsh\.credentials.yaml').read_text(encoding='utf-8'))['refs'][provider['apiKeyEnv']]
+        require(mock['passed'] and mock.get('python_assertions_enabled') is True and mock['code_bindings'] == code, 'Current native mock evidence is missing or stale')
         url = transport['approved_base_url'].rstrip('/')
-        assert provider['baseURL'].rstrip('/') == 'http://47.108.250.118:15555/v1' and key
-        assert url.startswith('https://') or transport.get('user_accepted_plain_http') is True
+        require(url.startswith('https://') or (transport.get('user_accepted_plain_http') is True and url == 'http://47.108.250.118:15555/v1'), 'Transport URL is not approved')
+        provider = yaml.safe_load(Path(r'C:\Users\liyi\.dsh\settings.yaml').read_text(encoding='utf-8'))['llm-pi-ai']['providers']['a7877']
+        require(provider['baseURL'].rstrip('/') == 'http://47.108.250.118:15555/v1', 'Configured 7877 route changed')
+        key = yaml.safe_load(Path(r'C:\Users\liyi\.dsh\.credentials.yaml').read_text(encoding='utf-8'))['refs'][provider['apiKeyEnv']]
+        require(bool(key), '7877 credential is unavailable')
+    else:
+        require(__debug__, 'P01 integration probes require assertion validation; optimized execution is unsupported')
     run_id = mode + '-' + str(time.time_ns())
     work = ROOT / '.runtime/P01' / run_id
     out = EVIDENCE / 'runs' / run_id
@@ -93,11 +136,12 @@ def run(mode, model):
     ps = "New-Item -ItemType Junction -Path '" + str(junction).replace("'", "''") + "' -Target '" + str(work / 'outside').replace("'", "''") + "' | Out-Null"
     subprocess.run(['powershell', '-NoProfile', '-Command', ps], check=True, capture_output=True)
     packet, hook_log = work / 'packet.json', work / 'hooks.jsonl'
+    native_receipt_file = work / 'native-tool-receipts.jsonl'
     ledger = ROOT / 'evidence/P01/model-calls.jsonl'
     requests = []
     counts = {}
     request_lock = threading.Lock()
-    first_response_tools = set()
+    first_response_tools = {}
 
     class Relay(BaseHTTPRequestHandler):
         def log_message(self, *args):
@@ -137,14 +181,13 @@ def run(mode, model):
             if denied:
                 entry['policy_denied'] = True
                 return self.respond(400, {'error': {'message': 'P01 isolated request policy denied'}})
+            if counts[phase] == 2:
+                receipts = [json.loads(s) for s in native_receipt_file.read_text(encoding='utf-8').splitlines()] if native_receipt_file.exists() else []
+                if not native_tool_continuation(first_response_tools.get(phase, set()), body.get('messages', []), receipts, phase):
+                    entry['policy_denied'] = True
+                    return self.respond(400, {'error': {'message': 'P01 replay rejected: no observed native Read continuation'}})
+                entry['native_continuation_verified'] = True
             if mode == 'real':
-                if counts[phase] == 2:
-                    # Only a completed first response followed by its native
-                    # tool result can spend the second slot; replay is rejected.
-                    completed_tools = {m.get('tool_call_id') for m in body.get('messages', []) if m.get('role') == 'tool'}
-                    if not first_response_tools or not first_response_tools <= completed_tools:
-                        entry['policy_denied'] = True
-                        return self.respond(400, {'error': {'message': 'P01 paid replay rejected: no completed native tool continuation'}})
                 used = len(ledger.read_text(encoding='utf-8').splitlines()) if ledger.exists() else 0
                 if used >= 18 or not isinstance(body.get('max_tokens'), int) or not 1 <= body['max_tokens'] <= 1024:
                     entry['policy_denied'] = True
@@ -173,8 +216,6 @@ def run(mode, model):
                         frames.append(frame)
                         if frame.get('usage'):
                             entry['usage'] = frame['usage']
-                if counts[phase] == 1 and b'data: [DONE]' in payload and any(c.get('finish_reason') == 'tool_calls' for f in frames for c in f.get('choices', [])):
-                    first_response_tools.update(t['id'] for f in frames for c in f.get('choices', []) for t in c.get('delta', {}).get('tool_calls', []) if t.get('id'))
                 entry['response_sha256'] = hashlib.sha256(payload).hexdigest()
             else:
                 tool = phase != 'compact' and counts[phase] == 1
@@ -190,6 +231,8 @@ def run(mode, model):
                 frames = [{'id': 'p01-mock', 'object': 'chat.completion.chunk', 'created': 1, 'model': model, 'choices': [{'index': 0, 'delta': delta, 'finish_reason': None}]},
                           {'id': 'p01-mock', 'object': 'chat.completion.chunk', 'created': 1, 'model': model, 'choices': [{'index': 0, 'delta': {}, 'finish_reason': 'tool_calls' if tool else 'stop'}], 'usage': {'prompt_tokens': 100, 'completion_tokens': 8, 'total_tokens': 108}}]
                 payload = ('\n\n'.join('data: ' + json.dumps(f) for f in frames) + '\n\ndata: [DONE]\n\n').encode()
+            if counts[phase] == 1:
+                first_response_tools[phase] = completed_read_tool_ids(frames, payload)
             self.send_response(200)
             self.send_header('Content-Type', 'text/event-stream')
             self.send_header('Content-Length', str(len(payload)))
@@ -215,7 +258,7 @@ def run(mode, model):
     save(personal, provider)
     role_path = ROOT / 'docs/research/P01/persona-from-mofox-v3.md'
     ledger_versions = json.loads((ROOT / 'docs/research/P01/persona-versions.json').read_text(encoding='utf-8'))
-    assert sha(role_path) == ledger_versions['versions'][-1]['sha256']
+    require(sha(role_path) == ledger_versions['versions'][-1]['sha256'], 'Approved persona hash changed')
     role = role_path.read_text(encoding='utf-8').split('## 建议采用的核心人设\n', 1)[1].split('## 虚构风格示例', 1)[0]
     spec = {'mode': mode, 'model': model, 'fixture': str(fixture), 'home': str(home), 'role': role,
             'user_config': str(user_config), 'project_config': str(fixture / '.zcode/config.json'),
@@ -228,7 +271,7 @@ def run(mode, model):
     env.update({'PATH': str(NODE.parent) + os.pathsep + r'C:\Program Files\Git\cmd' + os.pathsep + r'C:\Windows\System32', 'USERPROFILE': str(home), 'APPDATA': str(home / 'AppData/Roaming'), 'LOCALAPPDATA': str(home / 'AppData/Local'), 'TEMP': str(temp), 'TMP': str(temp),
                 'ZCODE_DATA_BASE_DIR': str(data), 'ZCODE_SESSION_DB_PATH': str(work / 'sessions.sqlite'),
                 'ZCODE_PERSONAL_PROVIDER_CONFIG_FILE': str(personal), 'ZCODE_BUILTIN_PROVIDER_CONFIG_FILE': str(SOURCE / 'config/provider/zcode-builtin.json'),
-                'P01_PACKET_PATH': str(packet), 'P01_HOOK_LOG': str(hook_log), 'NODE_ENV': 'production'})
+                'P01_PACKET_PATH': str(packet), 'P01_HOOK_LOG': str(hook_log), 'P01_NATIVE_TOOL_RECEIPTS': str(native_receipt_file), 'NODE_ENV': 'production'})
     command = [str(NODE), '--import', (SOURCE / 'node_modules/tsx/dist/esm/index.mjs').as_uri(), str(SPIKE / 'host.mjs'), str(work / 'spec.json')]
     before = helper.globals_snapshot()
     started = time.monotonic(); failure = None; passed = False
@@ -236,6 +279,7 @@ def run(mode, model):
         proc = subprocess.run(command, cwd=fixture, env=env, capture_output=True, timeout=400)
         (out / 'stdout.jsonl').write_bytes(proc.stdout); (out / 'stderr.bin').write_bytes(proc.stderr)
         if hook_log.exists(): (out / 'hooks.jsonl').write_bytes(hook_log.read_bytes())
+        if native_receipt_file.exists(): (out / 'native-tool-receipts.jsonl').write_bytes(native_receipt_file.read_bytes())
         assert proc.returncode == 0, 'Native host process failed'
         events = [json.loads(s) for s in proc.stdout.decode('utf-8').splitlines() if s.startswith('{')]
         turns = [e for e in events if e.get('type') == 'turn_result']
@@ -281,7 +325,7 @@ def run(mode, model):
         server.shutdown(); server.server_close()
         save(out / 'requests.json', requests)
         after = helper.globals_snapshot()
-        summary = {'mode': mode, 'model': model, 'run_id': run_id, 'passed': passed and before == after,
+        summary = {'mode': mode, 'model': model, 'run_id': run_id, 'passed': passed and before == after, 'python_assertions_enabled': __debug__,
                    'failure': failure, 'source_commit': PIN, 'code_bindings': code, 'role_sha256': sha(role_path),
                    'command': command, 'cwd': str(fixture), 'exit_code': proc.returncode if 'proc' in locals() else None,
                    'elapsed_seconds': round(time.monotonic()-started,3), 'production_unchanged': before == after,
@@ -298,7 +342,7 @@ def run(mode, model):
 
 if __name__ == '__main__':
     mode = sys.argv[1] if len(sys.argv)>1 else 'mock'
-    assert mode in ('mock','real')
+    require(mode in ('mock','real'), 'Unknown P01 probe mode')
     model = MODELS[int(sys.argv[2])] if len(sys.argv)>2 else MODELS[0]
     if mode == 'real':
         with exclusive_real_run():

@@ -1,0 +1,37 @@
+{
+  "status": "pass",
+  "scenario": "synthetic guard counterexamples; not a model route pass",
+  "checks": {
+    "completed_Read": true,
+    "fragmented_Read_name": true,
+    "unsupported_tool_rejected": true,
+    "duplicate_ids_rejected": true,
+    "incomplete_stream_rejected": true,
+    "embedded_DONE_text_rejected": true,
+    "native_result_continues": true,
+    "fabricated_body_without_native_event_rejected": true,
+    "wrong_tool_id_rejected": true,
+    "wrong_phase_rejected": true,
+    "wrong_tool_name_rejected": true,
+    "scheduled_only_rejected": true,
+    "observed_native_error_can_be_reported": true
+  },
+  "actual_model_calls": 0,
+  "artifacts": [
+    {
+      "path": "spikes/P01/probe.py",
+      "bytes": 24646,
+      "sha256": "087f5280b857e6ef1899ebc012620175dbb257a12a1190acc2bd4d3f12365fca"
+    },
+    {
+      "path": "spikes/P01/host.mjs",
+      "bytes": 6754,
+      "sha256": "4025e6aa971ff270da5452d1231b4df98283ed1973cf2ceda7c87d961053e3f3"
+    },
+    {
+      "path": "spikes/P01/verify-continuation.py",
+      "bytes": 3677,
+      "sha256": "c98f9667cbb1a62738b3b768f8f777d77bac84417dccbcf578bb8d9cd0bc154a"
+    }
+  ]
+}

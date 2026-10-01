@@ -7,10 +7,12 @@
 | 试验 | 最新 run | exit | 结果 |
 | --- | --- | --- | --- |
 | 无 Key 原生控制面 | `no-key-1790855533337618800` | 0 | 空 Key Provider 设置与重启读取、SQLite 合成会话重开通过；不是 UI 历史展示 |
-| 原生 Loop + 本机 mock | `mock-1790856351042829800` | 0 | 正常读、缺失读、越界 Hook 拒绝、junction 拒绝、compact、恢复、插件禁用均通过 |
+| 原生 Loop + 本机 mock | `mock-1790858539717198800` | 0 | 七个正常/故障/恢复分支通过；13 条本地请求，6 条续接均匹配实际原生工具回执 |
 | 实际 Desktop 两次启动 | `desktop-no-key-1790856449203452900` | 0 | 无 Key Skip、实际 SettingsPage、语言偏好保存与重启重读通过 |
 | Desktop 启动端口复核 | 同上 | 0 | 第一次 63946/63948，第二次 63103/63105；只监听回环，均不与启动前已有端口重合，固定 9229 关闭 |
 | 隐藏窗口截图/视觉验收 | 同上 | — | NOT_RUN，原生 capture 超时，不能称视觉通过 |
+| 待确认传输守卫（普通及 Python -O） | `transport-gate-verification*.json` | 0 | 显式终止；凭据读取、网络请求、Runtime 启动尝试均为 0 |
+| 模型续接守卫反例 | `continuation-guard-verification.json` | 0 | 13 项通过；仅合成守卫试验，非真实模型结果 |
 | 两个授权模型 | 未运行 | — | NOT_RUN，生成请求 0；用户已授权模型与预算，剩余问题是凭据传输方式 |
 
 对应命令在项目根 `E:\Xiadie\Xiadie`：`python -X utf8 spikes/P01/run-no-key.py`、`python -X utf8 spikes/P01/probe.py mock`、`python -X utf8 spikes/P01/run-desktop-ui.py`、`python -X utf8 spikes/P01/verify-ports.py`。摘要保留具体 child command、cwd、exit code、输入/代码 SHA、原生输出与产物 SHA。`baseline.json` 绑定任务卡、U01 接受证据、当前人设及 Desktop 构建清单。
@@ -24,6 +26,8 @@
 生产文件前后 SHA 一致；这项检查会只读生产配置、凭据文件、数据库及 Mofox TOML 的字节来计算 SHA，不解析或输出凭据，不把生产内容传给子进程。无 Key child 使用独立完整环境和 profile。Desktop Main/Host/Scheduler 均先加载测试 guard；记录一次 canary 拒绝、原生工具与设置操作，非 OS 网络沙箱。owned offline endpoint 返回 503，不向外转发。端口要求进入项目 `AGENTS.md`，未来产品入口继续落实；不改或停止本机已安装 ZCode。
 
 模型转发代码包含父进程凭据内存、全阶段请求账本（初始 18 次）、跨进程锁、串行 relay 和工具结果续接约束；在传输决定明确之前拒绝读取实际模型凭据。当前配置端口的无认证 HTTPS metadata 探测不支持 TLS，选择待用户回复，详见 `evidence/P01/transport-decision.json`。不得用官方 DeepSeek 价格替代网关实际计费。
+
+本机 DSH 与 ZCode 的配置元数据复查均只找到同一 HTTP 网关，未找到已配置 HTTPS 同源入口，见 `transport-inventory.json`。本次未更改已授权的模型或改用其他 Provider。真实执行前置改用显式 `require`/`PermissionError`，保留 Python `-O` 下的授权拒绝；实际 integration probe 禁止优化模式，防止断言验收被跳过。完整首响应只接受按 index 合并后名称为 `Read` 的工具调用；第二次请求同时要求同 phase、同 ID 的原生终止回执与请求工具消息。Host 同步写独立 owned 回执文件，避免异步写入晚于续接请求。合成反例和原生 mock 都验证该约束。
 
 ## 失败与修正证据
 
