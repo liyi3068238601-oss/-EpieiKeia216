@@ -7,7 +7,7 @@
   "product_version": "0.1.0",
   "stage": "P01",
   "stage_status": "running",
-  "current_task": "P01-U02",
+  "current_task": "P01-U03",
   "G00": "pass",
   "G01": "pending",
   "tasks": [
@@ -32,7 +32,7 @@
       "dependencies": [
         "P01-U01"
       ],
-      "status": "ready_for_review",
+      "status": "accepted",
       "card_sha256": "f65e1a36fb777b7f722a020a6366befc53e095965569b7c14ef0f6dfb4717d6f",
       "checks": {
         "no_key_control": {
@@ -89,8 +89,12 @@
           ]
         },
         "independent_acceptance": {
-          "status": "pending",
-          "reason": "Author ready_for_review; exact commit review required"
+          "status": "pass",
+          "evidence": {
+            "path": "evidence/P01-U02/20261001-01/review-final.json",
+            "bytes": 4338,
+            "sha256": "7f53a99a32f569e5aa8906b0b2f0a1b841a41750979b68f953d323723c032b7c"
+          }
         },
         "pending_transport_guard": {
           "status": "pass",
@@ -119,6 +123,12 @@
             "sha256": "a277003f99024f71e76b1d284e1dd7bcb5fc383cf6b9172e43b2a151847eb2d8"
           }
         }
+      },
+      "author_commit": "4502b7001376208f188b56b2338b67968fbe77a8",
+      "acceptance": {
+        "path": "evidence/P01-U02/20261001-01/acceptance.json",
+        "bytes": 1644,
+        "sha256": "a5ecd9e95f8edf61b8545e1defb51882fb69f62b40e75db8fdb153f79afdf239"
       }
     },
     {
@@ -276,5 +286,10 @@
     "path": "evidence/P01/blocked-audit.json",
     "bytes": 572,
     "sha256": "b48c0411a658360fcd2ae67373226dc86217ebcf555a8b476bcfa0a5619434ec"
+  },
+  "model_default": {
+    "provider": "DeepSeek official",
+    "model_id": "deepseek-flash",
+    "eval_second_model_id": "deepseek-v4-pro"
   }
 }

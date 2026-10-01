@@ -1,0 +1,39 @@
+{
+  "task_id": "P01-U02",
+  "attempt_id": "20261001-01",
+  "status": "accepted",
+  "coordinator": "root",
+  "accepted_at": "2026-10-01",
+  "author_commit": "4502b7001376208f188b56b2338b67968fbe77a8",
+  "final_independent_review": {
+    "path": "evidence/P01-U02/20261001-01/review-final.json",
+    "bytes": 4338,
+    "sha256": "7f53a99a32f569e5aa8906b0b2f0a1b841a41750979b68f953d323723c032b7c"
+  },
+  "ready_manifest": {
+    "path": "evidence/P01-U02/20261001-01/verification.json",
+    "bytes": 50543,
+    "sha256": "f7d005e29278c0c4bec8ebfb49669ca17ab040f129c414d037a1e02eba7cb480"
+  },
+  "approved_reuse_decision": "Pinned native ZCode unique Runtime/Loop with bounded Xiadie Core/Hook; private bootstrap seam",
+  "verification_counts": {
+    "verification_manifest": "evidence/P01-U02/20261001-01/verification.json",
+    "bound_files": 241,
+    "mismatches": 0,
+    "method": "Compared actual working-tree byte count/SHA-256 and git cat-file blob byte count/SHA-256 at reviewed commit",
+    "command_exit": 0
+  },
+  "actual_generation_requests": 4,
+  "model_ids": [
+    "deepseek-flash",
+    "deepseek-v4-pro"
+  ],
+  "limitations": [
+    "Visual screenshot verification and Windows distribution packaging remain NOT_RUN.",
+    "Two valid model IDs were exercised; distinct backend identity was not proven.",
+    "Full persona evaluation and product local-history UI remain deferred to their planned units.",
+    "These results do not accept P01 or G01."
+  ],
+  "scope": "U02 only; not G01/P01/U09",
+  "root_checks": "Exact independent report digest and author commit, real summaries, usage arithmetic, dynamic ports, frozen plan and P00"
+}

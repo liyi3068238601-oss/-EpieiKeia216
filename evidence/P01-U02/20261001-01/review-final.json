@@ -1,0 +1,114 @@
+{
+  "schema": "p01-u02-independent-review/v1",
+  "reviewed_at_utc": "2026-10-01T13:37:30Z",
+  "task": "P01-U02",
+  "verdict": "PASS",
+  "reviewed_commit": "4502b7001376208f188b56b2338b67968fbe77a8",
+  "worktree_clean": true,
+  "review_scope": "Bounded U02 spike/reuse decision only; no P01/G01/U09 acceptance",
+  "binding_audit": {
+    "verification_manifest": "evidence/P01-U02/20261001-01/verification.json",
+    "bound_files": 241,
+    "mismatches": 0,
+    "method": "Compared actual working-tree byte count/SHA-256 and git cat-file blob byte count/SHA-256 at reviewed commit",
+    "command_exit": 0
+  },
+  "desktop_manifest": {
+    "manifest": "evidence/P01-U02/20261001-01/desktop-build/manifest.json",
+    "entries": 6643,
+    "prior_full_manifest_audit_reused": true,
+    "current_sample_count": 6,
+    "current_sample_all_match": true,
+    "sampled": [
+      ".runtime/P01/desktop-source/packages/desktop/out/main/index.js",
+      ".runtime/P01/desktop-source/packages/desktop/out/host/index.js",
+      ".runtime/P01/desktop-source/packages/desktop/out/preload/index.cjs",
+      ".runtime/P01/desktop-source/packages/desktop/out/renderer/index.html",
+      ".runtime/P01/desktop-source/packages/desktop/out/renderer/assets/settings-Pr862CSM.js",
+      ".runtime/P01/desktop-source/node_modules/electron/dist/electron.exe"
+    ]
+  },
+  "real_routes": {
+    "provider": "DeepSeek official",
+    "model_ids": [
+      "deepseek-flash",
+      "deepseek-v4-pro"
+    ],
+    "requests_per_id": 2,
+    "total_generation_requests": 4,
+    "upstream_statuses": [
+      200,
+      200,
+      200,
+      200
+    ],
+    "each_route_has_native_read_result_and_verified_continuation": true,
+    "observed_fixture": "P01_ONLY_READ_VALUE=orchid-42",
+    "observed_persona": "遐蝶",
+    "production_hashes_unchanged_for_each_route": true,
+    "backend_independence": "not established; no independent-backend comparison claimed"
+  },
+  "request_budget": {
+    "initial_cap": 18,
+    "requests_used": 4,
+    "remaining": 14,
+    "monetary_limit": null,
+    "estimated_combined_peak_ceiling_cny": 0.05532756,
+    "actual_account_charge": "not returned/observed; estimate is not a bill"
+  },
+  "native_mock": {
+    "run": "mock-1790860194279562400",
+    "pass": true,
+    "exit": 0,
+    "branches": [
+      "read-ok",
+      "read-fail",
+      "scope-denied",
+      "symlink-denied",
+      "compact",
+      "resume",
+      "disabled"
+    ],
+    "local_requests": 13,
+    "verified_native_continuations": 6,
+    "actual_model_calls": 0,
+    "disabled_branch_native_runtime_completed": true
+  },
+  "guard_tests": {
+    "continuation_counterexamples": 13,
+    "status": "pass",
+    "pending_transport_normal_and_python_optimized": "both reject before credential read/network/runtime; observed attempts all zero"
+  },
+  "no_key_desktop": {
+    "run": "desktop-no-key-1790856449203452900",
+    "two_real_desktop_starts": true,
+    "settings_dom_and_locale_persistence": "pass",
+    "port_isolation": "pass",
+    "screenshot_visual_validation": "NOT_RUN (capture timeout)",
+    "windows_distribution_package": "NOT_RUN"
+  },
+  "source_adoption": {
+    "default": "pinned ZCode native Runtime/Loop with bounded Xiadie Core/Hook/evidence projection",
+    "route": "accepted for this U02 bounded spike",
+    "bootstrap_seam": "private fixed-workspace seam, not a stable public plugin SDK",
+    "excluded": "No default DSH/Dream startup, no copied Herta character assets",
+    "production_or_paid_product_use": "not performed"
+  },
+  "blockers": [],
+  "limitations": [
+    "U02 authoring stays ready_for_review until root records integration/acceptance.",
+    "Visual screenshot verification and Windows distribution packaging remain NOT_RUN.",
+    "Two valid model IDs were exercised; distinct backend identity was not proven.",
+    "Full persona evaluation and product local-history UI remain deferred to their planned units.",
+    "These results do not accept P01 or G01."
+  ],
+  "review_actions": {
+    "files_written": [
+      ".runtime/P01/review-u02/review.json"
+    ],
+    "production_modified": false,
+    "model_calls_made_by_reviewer": 0,
+    "credentials_read_by_reviewer": false,
+    "project_runtime_started_by_reviewer": false
+  }
+}
