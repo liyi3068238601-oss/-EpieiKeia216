@@ -8,7 +8,7 @@
   "independent_reviews": [
     {
       "path": "evidence/P00-U02/20261001-01/review-final.json",
-      "sha256": "82b7908c7263b7bb550f4becc95fa438a5dd8e698201f2c618cf9f4da365fa4a"
+      "sha256": "17a2cb4308002da3067a7b2b3002a94d3ed56bdd6cdec22abc679dc78bf9d595"
     },
     {
       "path": "evidence/P00-U02/20261001-01/review-adoption.json",
@@ -142,5 +142,10 @@
     "OS sandbox, Windows distribution package, durable recovery and complete product are not accepted.",
     "U07/U08/U09 and U10/G00 remain required; P01 remains closed."
   ],
-  "next_task": "P00-U03"
+  "next_task": "P00-U03",
+  "post_acceptance_review_update": {
+    "previous_review_sha256": "82b7908c7263b7bb550f4becc95fa438a5dd8e698201f2c618cf9f4da365fa4a",
+    "current_review_sha256": "17a2cb4308002da3067a7b2b3002a94d3ed56bdd6cdec22abc679dc78bf9d595",
+    "scope": "Reviewer appended current HEAD and author/independent SDK case-count reconciliation after coordinator commit; coordinator read diff and found no changed recommendation or bound inputs. Baseline is start-state, not current HEAD."
+  }
 }

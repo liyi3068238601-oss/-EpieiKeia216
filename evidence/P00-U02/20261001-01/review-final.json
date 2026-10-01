@@ -222,9 +222,36 @@
     "full_source_review": "NOT_RUN",
     "model_calls": 0,
     "dependency_install": "NOT_RUN",
-    "result_or_status_modified": false,
     "files_written": [
       "evidence/P00-U02/20261001-01/review-final.json"
-    ]
+    ],
+    "this_review_modified_result_or_status": false
+  },
+  "workspace_head_check": {
+    "current_head": "9e70d861102f1e2738e034311a6e220ad74377c8",
+    "result_baseline_commit": "4eb4fbee15645d8d7c74239813f7da759983eb89",
+    "match": false
+  },
+  "execution_record_reconciliation": {
+    "dsh_author_run_artifact_cases": [
+      "bad_route",
+      "corrected_route"
+    ],
+    "dsh_independent_review_cases": [
+      {
+        "case": "normal",
+        "exit_code": 0
+      },
+      {
+        "case": "failure",
+        "exit_code": 0
+      },
+      {
+        "case": "recovery",
+        "exit_code": 0
+      }
+    ],
+    "interpretation": "result.md:13 explicitly attributes the three zero-exit cases to the independent review rerun; dsh-runtime-run.json records the author two-route run. These are distinct records, so the counts do not conflict.",
+    "failed_route_semantics": "the expected bad-route error is caught by the harness; exit 0 is harness success, not route success."
   }
 }
