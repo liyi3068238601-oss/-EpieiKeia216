@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-01",
+  "goal": "进入P01",
+  "project_root": "E:\\Xiadie\\Xiadie",
+  "baseline_commit": "7ab0e81f63e9559a1b182f43b9e242e8a8e703fa",
+  "plan_version": "1.1",
+  "product_version": "0.1.0",
+  "stage": "P01",
+  "stage_status": "running",
+  "current_task": "P01-U01",
+  "G00": "pass",
+  "G01": "pending",
+  "tasks": [
+    {
+      "id": "P01-U01",
+      "title": "现成方案调查与来源比较",
+      "dependencies": [
+        "P00-U12"
+      ],
+      "status": "running",
+      "card_sha256": "1dcbc0cf345b9920e2f33d162f31e6d9d6d02864f0ef7495be5bc3dd409c2634"
+    },
+    {
+      "id": "P01-U02",
+      "title": "隔离试验与复用决定",
+      "dependencies": [
+        "P01-U01"
+      ],
+      "status": "not_started",
+      "card_sha256": "f65e1a36fb777b7f722a020a6366befc53e095965569b7c14ef0f6dfb4717d6f"
+    },
+    {
+      "id": "P01-U03",
+      "title": "最小TypeScript工作区",
+      "dependencies": [
+        "P01-U02"
+      ],
+      "status": "not_started",
+      "card_sha256": "e5641391e17900de2bc954b1b7cbf23e83e25225ebf9a6c61f75f99d527afe7a"
+    },
+    {
+      "id": "P01-U04",
+      "title": "原创角色资产与加载器",
+      "dependencies": [
+        "P01-U03"
+      ],
+      "status": "not_started",
+      "card_sha256": "011b011490d5826fa37e80b24c22c75f1e57bbe0314f359fd89805b17ff44f28"
+    },
+    {
+      "id": "P01-U05",
+      "title": "ContextPacket契约",
+      "dependencies": [
+        "P01-U04"
+      ],
+      "status": "not_started",
+      "card_sha256": "a1e3de1e6bc42e47694c06959fb708e3b8008fc9c1046983e6a93b389e60fcc8"
+    },
+    {
+      "id": "P01-U06",
+      "title": "ZCode插件薄接入",
+      "dependencies": [
+        "P01-U05"
+      ],
+      "status": "not_started",
+      "card_sha256": "673b724c74fa683478c109970219080e171babfeecca2b99b9ce7418bab2148a"
+    },
+    {
+      "id": "P01-U07",
+      "title": "主回复与证据投影",
+      "dependencies": [
+        "P01-U06"
+      ],
+      "status": "not_started",
+      "card_sha256": "71b278061dd71273d66143ac527916be718a59c8ea1ebcb5d71dab5ab1e017e5"
+    },
+    {
+      "id": "P01-U08",
+      "title": "开发配置与凭据隔离",
+      "dependencies": [
+        "P01-U07"
+      ],
+      "status": "not_started",
+      "card_sha256": "15b4961ca908c9343c09eb81d20c5ec290a9fff4a21563a16a6642e9233e89a0"
+    },
+    {
+      "id": "P01-U09",
+      "title": "人格与失败基线评测",
+      "dependencies": [
+        "P01-U08"
+      ],
+      "status": "not_started",
+      "card_sha256": "2d73e570a0e7cad4a39707e9bef279326c70dc4730c9e4914a577e1b39f103a8"
+    },
+    {
+      "id": "P01-U10",
+      "title": "阶段集成与独立回归",
+      "dependencies": [
+        "P01-U03",
+        "P01-U04",
+        "P01-U05",
+        "P01-U06",
+        "P01-U07",
+        "P01-U08",
+        "P01-U09"
+      ],
+      "status": "not_started",
+      "card_sha256": "d283c623a14fad26d0a56f22d0f7e60fee4762ae1f3fabb8ae8dd6f1a8982cb0"
+    },
+    {
+      "id": "P01-U11",
+      "title": "验收并冻结 0.1.0",
+      "dependencies": [
+        "P01-U10"
+      ],
+      "status": "not_started",
+      "card_sha256": "df5d3ca973d3035ada4554102523e5864b220abbed3050c4447a5ae212235952"
+    }
+  ],
+  "model_authorization": {
+    "status": "authorized",
+    "provider": "7877",
+    "models": [
+      "[基元]deepseek-flash",
+      "[基元]glm-5.3-flash"
+    ],
+    "budget_limit": null,
+    "initial_request_limit": 18,
+    "generation_calls_made": 0,
+    "scope": "P01 role and synthetic read-only tests; actual credentials in parent memory only",
+    "user_reply": "授权这两个模型用于 P01"
+  },
+  "persona_asset_state": "v3 clarifies user-approved v2; all four versions preserved; runtime asset not yet created",
+  "product_implementation_started": false,
+  "next_stage_started": false,
+  "persona_source_sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978",
+  "persona_scope_deviation": "User approved retained game background in current draft; do not label the character original or assert public distribution rights",
+  "persona_versions": {
+    "path": "docs/research/P01/persona-versions.json",
+    "bytes": 2110,
+    "sha256": "5dfad32babc70012f8b2dd1c9d26714a12080cfbbd2f8faa3f84e7eeb092b467"
+  }
+}

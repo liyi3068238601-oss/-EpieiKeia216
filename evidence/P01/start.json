@@ -1,0 +1,75 @@
+{
+  "stage": "P01",
+  "entry_status": "running",
+  "G00": "verified pass",
+  "baseline_commit": "7ab0e81f63e9559a1b182f43b9e242e8a8e703fa",
+  "branch": "p01-stage",
+  "objective": "进入P01",
+  "completion_target": "P01-U01 through P01-U11 and G01; no P02 automatic start",
+  "current_unit": "P01-U01",
+  "authority": "planning/Xiadie_V2_v1.1; unchanged",
+  "preflight": {
+    "path": "evidence/P01/preflight.json",
+    "bytes": 2139,
+    "sha256": "e850a0862ad927433076651c7f28ffb4c56fdd82512b9f39324acc992f1c1873"
+  },
+  "preflight_driver": {
+    "path": "evidence/P01/preflight.py",
+    "bytes": 4016,
+    "sha256": "fd61fc4deccf866577874adc5727239bb8ed13a4ab2631e5e7ea228a3bbbb34f"
+  },
+  "model_authorization": {
+    "path": "evidence/P01/authorization.json",
+    "bytes": 610,
+    "sha256": "0b3a037f11f9981fc5d71a9a0e1dc87d200a2f90abfadacee34a92514ec136cf"
+  },
+  "persona_draft": {
+    "path": "docs/research/P01/persona-from-mofox-v3.md",
+    "bytes": 5632,
+    "sha256": "d17b290e585cc8954321e4a0e6881823dcd221e6dff8e82223a506090ab3433f"
+  },
+  "persona_inventory": {
+    "path": "docs/research/P01/persona-inventory.md",
+    "bytes": 2835,
+    "sha256": "981644a2f63b96cf7f7c881de3601bea94e8bc6b41397b606cd1a49fd9043fdb"
+  },
+  "persona_review": "User approved v2; v3 only clarifies review status, local-source canon and runtime facts",
+  "product_implementation_started": false,
+  "model_generation_calls": 0,
+  "admission_command": {
+    "command": [
+      "python",
+      "evidence/P01/preflight.py"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie",
+    "exit_code": 0,
+    "result": "P01_ADMITTED; read-only GET /models 200; two candidate names listed; zero generation",
+    "evidence_kind": "recorded exec result plus preflight.json; no raw stdout byte file claimed"
+  },
+  "rollback": "Revert this stage-entry metadata commit; preserve accepted P00, old projects, sources and global profiles",
+  "superseded_unapproved_persona_draft": {
+    "path": "docs/research/P01/persona-proposal.md",
+    "bytes": 3310,
+    "sha256": "f614229f1f1e1052a5f7ab93085bf6e20327fa267bd153168515c51eba28e7db"
+  },
+  "persona_source": {
+    "path": "docs/research/P01/persona-source.json",
+    "bytes": 2938,
+    "sha256": "827d042d23d361cae47dfc6634c3b3110a965fa977974b27b731bf3d5752cb2c"
+  },
+  "persona_versions": {
+    "path": "docs/research/P01/persona-versions.json",
+    "bytes": 2110,
+    "sha256": "5dfad32babc70012f8b2dd1c9d26714a12080cfbbd2f8faa3f84e7eeb092b467"
+  },
+  "approved_persona_draft": {
+    "path": "docs/research/P01/persona-from-mofox.md",
+    "bytes": 5191,
+    "sha256": "6c4c8e2f5aeeab78848f4c72cc0d53f87ea94124980c230cc32959df3168a40d"
+  },
+  "persona_decision": {
+    "path": "docs/research/P01/persona-decision.md",
+    "bytes": 2268,
+    "sha256": "7b8d5bb7b22ac1ff92e156dbf06ba96e3f669be301a6c49b570c369655ee5d9b"
+  }
+}
