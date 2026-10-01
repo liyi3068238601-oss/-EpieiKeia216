@@ -1,0 +1,109 @@
+{
+  "unit": "P00-U12",
+  "status": "accepted",
+  "accepted_by": "root independent integration review",
+  "baseline_commit": "95ac4933ea30049e689c9d4d7d63c2b66ecd62be",
+  "input_bindings": [
+    {
+      "path": "docs/releases/0.0.0/candidate.zip",
+      "bytes": 10578,
+      "sha256": "1260c77c1f2740783e4c8725da99d021f05d9c4d9ee089d9740c2466fa5a76c9"
+    },
+    {
+      "path": "docs/releases/0.0.0/manifest.json",
+      "bytes": 18082,
+      "sha256": "fc2c4337127b51e57e43fd00b44406e57f2c9127b9869a4c05a82c2201e03849"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/result.md",
+      "bytes": 6594,
+      "sha256": "41ce5ad649cb145edb411dc14e5dbe3f8b1f9b8635771d504e1c56a4f3888ab4"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/verification.json",
+      "bytes": 16179,
+      "sha256": "8349a66c3c0b68bf3ad238d68beb83990b9306a169d2576d8ef5285de2f73399"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/root-review.json",
+      "bytes": 5024,
+      "sha256": "c5a38e4c9578958a97294ff4e9cf50b788b8abebd3d51d89a37deaa8a27ed60c"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/root-review-final/execution.json",
+      "bytes": 61400,
+      "sha256": "a9e8d75dc91f224d017b285c1c82e52cc933e68d665db8c8e240e66571d82b49"
+    }
+  ],
+  "prior_accepted_units": [
+    {
+      "path": "evidence/P00-U01/20261001-01/acceptance.json",
+      "bytes": 1611,
+      "sha256": "2110187830a3ac42bddd8d9887b824928d837495e0f1e9a55cead1d7cb1292d1"
+    },
+    {
+      "path": "evidence/P00-U02/20261001-01/acceptance.json",
+      "bytes": 6412,
+      "sha256": "1e72a2725e4740b690dabdc17b0f1a657892eaf6f94de5e5d2034c5db507eae6"
+    },
+    {
+      "path": "evidence/P00-U03/20261001-01/acceptance.json",
+      "bytes": 604,
+      "sha256": "2ff8eb67d86df08723f614d17b074d9baad698c993b2cfb4118344f868bbfaa8"
+    },
+    {
+      "path": "evidence/P00-U04/20261001-01/acceptance.json",
+      "bytes": 2456,
+      "sha256": "6e1c6b9663f236e271f943c62e17f5aaa08ecfd32bbde8f96e99b0c8e1de3eaf"
+    },
+    {
+      "path": "evidence/P00-U05/20261001-01/acceptance.json",
+      "bytes": 1071,
+      "sha256": "4f59ab227d56e62bfe05ff22cc5244e7843e7b939911696d62cb78ec13008db6"
+    },
+    {
+      "path": "evidence/P00-U06/20261001-01/acceptance.json",
+      "bytes": 1135,
+      "sha256": "f2084bd60d38b6ed8ba05b3d5eb5128849b3bf90feb4de1e636bb31a759db405"
+    },
+    {
+      "path": "evidence/P00-U07/20261001-01/acceptance.json",
+      "bytes": 4626,
+      "sha256": "49bc5d5071b9fbc2fe1e35ae60dc945023f0e718e6a6a824c86e0d275882d15c"
+    },
+    {
+      "path": "evidence/P00-U08/20261001-01/acceptance.json",
+      "bytes": 2172,
+      "sha256": "bb75ce501326229293e324020c1924b86e4562da2ae9d3c903ad6aab4fda7e38"
+    },
+    {
+      "path": "evidence/P00-U09/20261001-01/acceptance.json",
+      "bytes": 2009,
+      "sha256": "f18845beb6aebfb6d46cdd3d2093dd89a3f2e5bc3d4cf4865ec7644c2eb5c177"
+    },
+    {
+      "path": "evidence/P00-U10/20261001-01/acceptance.json",
+      "bytes": 964,
+      "sha256": "a87df8fe2a7efc5b5a49d3b5bfb733f94d4ac45ec2f6e86c62a56d059a76aedc"
+    },
+    {
+      "path": "evidence/P00-U11/20261001-01/acceptance.json",
+      "bytes": 2418,
+      "sha256": "827354c557be95d89f4a1d2d1ccefa51b0c4baa92b34cc346720c9f0dec0b776"
+    }
+  ],
+  "gate": "G00",
+  "gate_status": "pass",
+  "scope": "Local P00 research candidate; four fresh final-ZIP replays and seven P00 Must mappings",
+  "paid_model_calls_this_unit": 0,
+  "product_implementation_started": false,
+  "next_stage": "P01 eligible; not started by this task",
+  "support_limits": [
+    "no-key uses mock only; real-model path is NOT_RUN_NO_KEY and real service availability is untested. The mock writes a synthetic p00-fixture-key field; no real credential files are read.",
+    "U07 globals_snapshot is empty; no global credential-path enumeration/hash audit is claimed.",
+    "no-DSH tests an isolated missing entry override without touching DSH source, then runs the ZCode mock.",
+    "offline is a loopback TCP timeout/refusal diagnostic with no provider reply; not an OS-wide offline mode or native fallback.",
+    "Persona/Life schema, Live2D/role assets, product UI/runtime, installer/package and full restore remain absent or NOT_RUN."
+  ],
+  "rollback": "Revert the separate P00-U12 release/evidence commit; retain prior accepted versions and raw local experiments."
+}

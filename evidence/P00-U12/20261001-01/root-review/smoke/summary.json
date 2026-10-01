@@ -1,0 +1,299 @@
+{
+  "schema": "xiadie.p00-candidate-case/v1",
+  "product_version": "0.0.0",
+  "package_kind": "local P00 research candidate; not a product installer",
+  "case": "smoke",
+  "status": "passed_with_limits",
+  "external": {
+    "project_commit": "95ac4933ea30049e689c9d4d7d63c2b66ecd62be",
+    "source_pins": [
+      {
+        "id": "zcode",
+        "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "clean": true
+      },
+      {
+        "id": "dsh",
+        "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+        "clean": true
+      },
+      {
+        "id": "herta",
+        "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "clean": true
+      }
+    ],
+    "file_checks": [
+      {
+        "path": ".runtime/P00/dsh/source/node_modules/tsx/dist/esm/api/index.mjs",
+        "bytes": 1148,
+        "sha256": "6108c0ae308c9399e240e9d6cb43d2a291f4a55418c982f3ae017f9357a86053"
+      },
+      {
+        "path": ".runtime/P00/dsh/source/packages/sdk/client/tsconfig.json",
+        "bytes": 413,
+        "sha256": "8bc1fbe7575e579ba08cf6ae17d9a308e238d5e730c24be8ea51776a717acfce"
+      },
+      {
+        "path": ".runtime/P00/dsh/source/packages/sdk/protocol/src/transport.ts",
+        "bytes": 9557,
+        "sha256": "7aed4460d1bccc9bc525d2c54f2220ba5360ae529cb86711eb043ad7471c45ac"
+      },
+      {
+        "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/bootstrap/dist/app/create-app.js",
+        "bytes": 62591,
+        "sha256": "7b647434cc2c298aa1720d32db481c4ccd6d2a49f43eaf1ee50b7dd28e4729f7"
+      },
+      {
+        "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/bootstrap/dist/index.js",
+        "bytes": 1731,
+        "sha256": "cfffe39e61575a3a6627e8a10153d4ed998d6e48fd774c0195f57f2282074202"
+      },
+      {
+        "path": ".runtime/P00/zcode/source/config/provider/zcode-builtin.json",
+        "bytes": 186892,
+        "sha256": "c239da43e00e3e212ca874fe48a13ebbb3896ebc59ebeb28e003bd29856e38f9"
+      },
+      {
+        "path": ".runtime/P00/zcode/source/node_modules/tsx/dist/esm/index.mjs",
+        "bytes": 7014,
+        "sha256": "9fab711543eb155d50fb147f8984e104db348a73b74daee4e3974bec109aa381"
+      },
+      {
+        "path": "assets/manifest.json",
+        "bytes": 4304,
+        "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"
+      },
+      {
+        "path": "docs/adr/host-and-reuse.md",
+        "bytes": 9642,
+        "sha256": "2bc0605d0e9eee7bc735626473eb374b601583d948d4b6cfb86e91992184f444"
+      },
+      {
+        "path": "docs/legal/reuse.md",
+        "bytes": 8966,
+        "sha256": "1836b866d0e29ca43e0fd4bb549a92e987b759ef94593aa618f45c741904ba90"
+      },
+      {
+        "path": "docs/sources.lock.json",
+        "bytes": 18354,
+        "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+      },
+      {
+        "path": "evidence/P00-U01/20261001-01/acceptance.json",
+        "bytes": 1611,
+        "sha256": "2110187830a3ac42bddd8d9887b824928d837495e0f1e9a55cead1d7cb1292d1"
+      },
+      {
+        "path": "evidence/P00-U02/20261001-01/acceptance.json",
+        "bytes": 6412,
+        "sha256": "1e72a2725e4740b690dabdc17b0f1a657892eaf6f94de5e5d2034c5db507eae6"
+      },
+      {
+        "path": "evidence/P00-U03/20261001-01/acceptance.json",
+        "bytes": 604,
+        "sha256": "2ff8eb67d86df08723f614d17b074d9baad698c993b2cfb4118344f868bbfaa8"
+      },
+      {
+        "path": "evidence/P00-U04/20261001-01/acceptance.json",
+        "bytes": 2456,
+        "sha256": "6e1c6b9663f236e271f943c62e17f5aaa08ecfd32bbde8f96e99b0c8e1de3eaf"
+      },
+      {
+        "path": "evidence/P00-U05/20261001-01/acceptance.json",
+        "bytes": 1071,
+        "sha256": "4f59ab227d56e62bfe05ff22cc5244e7843e7b939911696d62cb78ec13008db6"
+      },
+      {
+        "path": "evidence/P00-U06/20261001-01/acceptance.json",
+        "bytes": 1135,
+        "sha256": "f2084bd60d38b6ed8ba05b3d5eb5128849b3bf90feb4de1e636bb31a759db405"
+      },
+      {
+        "path": "evidence/P00-U07/20261001-01/acceptance.json",
+        "bytes": 4626,
+        "sha256": "49bc5d5071b9fbc2fe1e35ae60dc945023f0e718e6a6a824c86e0d275882d15c"
+      },
+      {
+        "path": "evidence/P00-U08/20261001-01/acceptance.json",
+        "bytes": 2172,
+        "sha256": "bb75ce501326229293e324020c1924b86e4562da2ae9d3c903ad6aab4fda7e38"
+      },
+      {
+        "path": "evidence/P00-U09/20261001-01/acceptance.json",
+        "bytes": 2009,
+        "sha256": "f18845beb6aebfb6d46cdd3d2093dd89a3f2e5bc3d4cf4865ec7644c2eb5c177"
+      },
+      {
+        "path": "evidence/P00-U10/20261001-01/acceptance.json",
+        "bytes": 964,
+        "sha256": "a87df8fe2a7efc5b5a49d3b5bfb733f94d4ac45ec2f6e86c62a56d059a76aedc"
+      },
+      {
+        "path": "evidence/P00-U11/20261001-01/acceptance.json",
+        "bytes": 2418,
+        "sha256": "827354c557be95d89f4a1d2d1ccefa51b0c4baa92b34cc346720c9f0dec0b776"
+      },
+      {
+        "path": "evidence/P00/final-baseline-confirmation.json",
+        "bytes": 733,
+        "sha256": "188e040757c13b8d0f318821fc711bc9168861e7098fd29a597949d87feeefb7"
+      },
+      {
+        "path": "planning/Xiadie_V2_v1.1/requirements.json",
+        "bytes": 21995,
+        "sha256": "3d3a89844ecc1a71efb1a49094762ec1826dfb4e66dcc76802fe91b497fc3505"
+      },
+      {
+        "path": "planning/Xiadie_V2_v1.1/tasks/P00-U12.md",
+        "bytes": 3067,
+        "sha256": "4308ed6fa9edac29a8ed1c1f2320abb4f18ff38c9ada090c3967152f0eeccc95"
+      },
+      {
+        "path": "references/herta-4623df12/packages/knowledge/src/dream/config.ts",
+        "bytes": 3990,
+        "sha256": "f770993a8658940498e8b368e61e511534bb0bddf43bed3264e7187a7576da92"
+      },
+      {
+        "path": "references/herta-4623df12/packages/knowledge/src/dream/retention.ts",
+        "bytes": 2184,
+        "sha256": "5aff288916a43bc1cb377d7a6d0e38cfc5ed598b0116b51bb9015c9982c2c468"
+      },
+      {
+        "path": "references/herta-4623df12/packages/knowledge/src/dream/segment-session.ts",
+        "bytes": 9545,
+        "sha256": "73727ce076a15b78c1420ef06dbdd9a87c0bac31aac66c083862031327e41b3f"
+      },
+      {
+        "path": "references/herta-4623df12/packages/knowledge/src/dream/select-episodes.ts",
+        "bytes": 1316,
+        "sha256": "20a70844ddc1bf5a988eb47207e427e8f597dc4e74e045a2af5b2c4448a1b347"
+      },
+      {
+        "path": "spikes/P00/herta-pure/poc.mjs",
+        "bytes": 6924,
+        "sha256": "dc7d8e2d7a49b61ea492bfdd0041b7d0264782febfcb2eecf36a6ceb0c1f8b3d"
+      },
+      {
+        "path": "spikes/dsh-sdk/job-detached-test.py",
+        "bytes": 3408,
+        "sha256": "da65dbc7b43f38eea16ac756b983a79781e6b26cf1a4a2e32516de644cb257ac"
+      },
+      {
+        "path": "spikes/dsh-sdk/job-gate.mjs",
+        "bytes": 1212,
+        "sha256": "b3b90e5d6f26348a0b328722e9b7a6e3f7159459fe2cb1030be1e353198b5fb5"
+      },
+      {
+        "path": "spikes/dsh-sdk/job-sdk-bootstrap.mjs",
+        "bytes": 827,
+        "sha256": "2cfccce46f0568f3dcee35a3bd631048098a1eee5d82a43de2a2b42e551e05b3"
+      },
+      {
+        "path": "spikes/dsh-sdk/probe.ts",
+        "bytes": 34978,
+        "sha256": "21b025015917927a0909d670123c8c6f0f4a9cbaafc434679b112f210f650eec"
+      },
+      {
+        "path": "spikes/dsh-sdk/windows-job.py",
+        "bytes": 11175,
+        "sha256": "056d748611f0875de49ec60e44eaeb530afaacb5fa1e37e6b61f5399b7f46cfe"
+      },
+      {
+        "path": "spikes/zcode-context/host.mjs",
+        "bytes": 3382,
+        "sha256": "3e58ade405de41ec0ffc12d1934e0cdb0e0d2c9246932a386d791eb526c6a800"
+      },
+      {
+        "path": "spikes/zcode-context/plugin/.zcode-plugin/plugin.json",
+        "bytes": 161,
+        "sha256": "96e68bcee0c08ecbc68cff96a03fea5c09b90ca2ee32e37c2b0f66bc0c2f25f2"
+      },
+      {
+        "path": "spikes/zcode-context/plugin/hooks/context.mjs",
+        "bytes": 1438,
+        "sha256": "79f3f5bbeb8605409c12ae07044c1ba428cde5eb1dba7bf850e807977a40f5c0"
+      },
+      {
+        "path": "spikes/zcode-context/plugin/hooks/hooks.json",
+        "bytes": 736,
+        "sha256": "d56c47249e64fdc10063f1a857ee27d5c4d5efc99aad88e91fa4993c959ff224"
+      },
+      {
+        "path": "spikes/zcode-context/probe.py",
+        "bytes": 17259,
+        "sha256": "0eb40003f2f3091dff93ebd71a14f9ac313180a00e4a348997d590c4b7691c78"
+      },
+      {
+        "path": "spikes/zcode-memory/probe.mjs",
+        "bytes": 24255,
+        "sha256": "5a44150ab792c8e3c960d972f30ae4ae4175214e07e4864825ed68f13604cc96"
+      },
+      {
+        "path": "tests/integration/P00/run.py",
+        "bytes": 15575,
+        "sha256": "9465aab5c672af23efcf29dff8dc5d465f26897ba591f1eb2269d75aee242af7"
+      },
+      {
+        "path": "tests/integration/P00/u07_mock_probe.py",
+        "bytes": 14685,
+        "sha256": "644b38ef8bedae08884a6588e68feb49b77cf5134e77181ae91aadc82877da1e"
+      }
+    ]
+  },
+  "package_manifest_sha256": "4bd873a30a87df1e078b7848afd71ff3abf0afa752d90be0cd8a78f6478bb3c3",
+  "package_files_checked": [
+    {
+      "path": "candidate.py",
+      "bytes": 17514,
+      "sha256": "5ad30bbb50a638c238e43149c017051cc80d8774b2a4e1f8c20938d4bfed98a9"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2597,
+      "sha256": "76a10e1d81bc9d9be64e664d95627f08cf1269596049c36b064889b8d4c99f00"
+    }
+  ],
+  "paid_model_calls": 0,
+  "global_credential_files_read": false,
+  "checks": {
+    "runner_exit_zero": true,
+    "runner_passed_with_limits": true,
+    "six_commands_passed": true,
+    "paid_model_calls_zero": true
+  },
+  "command": {
+    "command": [
+      "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project\\tests\\integration\\P00\\run.py",
+      "--root",
+      "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project",
+      "--output-dir",
+      "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project\\evidence\\P00-U11\\20261001-01\\candidate-smoke-1790839669323008900"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 22.438,
+    "stdout": {
+      "path": "u11-smoke.stdout.bin",
+      "bytes": 250,
+      "sha256": "4af5c960bd28b1125c64ad0358972b5d5366939d0fb0481faf9b78fe02a14b75"
+    },
+    "stderr": {
+      "path": "u11-smoke.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "u11_summary": {
+    "path": "evidence/P00-U11/20261001-01/candidate-smoke-1790839669323008900/runner-summary.json",
+    "bytes": 19481,
+    "sha256": "0a01840cc21a9e76ec75cd80247f0871a2a386f05d06af269fb4bbf1239384e3"
+  },
+  "limitations": [
+    "fixed local references required",
+    "not a product or installer test"
+  ],
+  "elapsed_seconds": 23.015
+}

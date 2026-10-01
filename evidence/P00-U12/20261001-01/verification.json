@@ -1,0 +1,431 @@
+{
+  "schema": "p00-u12-verification/v1",
+  "unit": "P00-U12",
+  "status": "ready_for_review",
+  "baselineCommit": "95ac4933ea30049e689c9d4d7d63c2b66ecd62be",
+  "productVersion": "0.0.0",
+  "planVersion": "1.1",
+  "productImplementationStarted": false,
+  "gateState": "awaiting_independent_review",
+  "p01Opened": false,
+  "artifacts": [
+    {
+      "path": "docs/releases/0.0.0/candidate.py",
+      "bytes": 17514,
+      "sha256": "5ad30bbb50a638c238e43149c017051cc80d8774b2a4e1f8c20938d4bfed98a9"
+    },
+    {
+      "path": "docs/releases/0.0.0/README.md",
+      "bytes": 2750,
+      "sha256": "8e49de5324735f03ccea4d761fedbd7d55c141f64b8cbfcc7295fd0d8383b9b1"
+    },
+    {
+      "path": "docs/releases/0.0.0/manifest.json",
+      "bytes": 18082,
+      "sha256": "fc2c4337127b51e57e43fd00b44406e57f2c9127b9869a4c05a82c2201e03849"
+    },
+    {
+      "path": "docs/releases/0.0.0/candidate.zip",
+      "bytes": 10578,
+      "sha256": "1260c77c1f2740783e4c8725da99d021f05d9c4d9ee089d9740c2466fa5a76c9"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/package-run.py",
+      "bytes": 13381,
+      "sha256": "9c1fd264bd32c173aa68f7b6a6b2133ca7f047b75e08ee6b7efc629838a3258f"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/package-summary.json",
+      "bytes": 1254,
+      "sha256": "84da1193ad99bcbf95ad184d7eaa329c159d89fb81079cd2ab4e500fae9de0cb"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/execution.json",
+      "bytes": 5524,
+      "sha256": "73e482a8e94f75d9f5f3ec55b46bffb20e0c93ce031895f4eefc2fe212a1cba0"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/.gitignore",
+      "bytes": 82,
+      "sha256": "ece14898bc11ab76fdfd356ad3999fe149b9fca9c6565b2b344213c373bfe4c4"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/result.md",
+      "bytes": 6594,
+      "sha256": "41ce5ad649cb145edb411dc14e5dbe3f8b1f9b8635771d504e1c56a4f3888ab4"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/source-after.json",
+      "bytes": 4206,
+      "sha256": "0786c813b43c24ed8be4e9296afdd8ab20145d9214d685ebd6a259c08753fc81"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/root-verify.py",
+      "bytes": 7206,
+      "sha256": "8d1e99d9aa2c3ded281ebbfabd5ca0d5090d359026854fe79e8aedf8e09658da"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/root-review-final/execution.json",
+      "bytes": 61400,
+      "sha256": "a9e8d75dc91f224d017b285c1c82e52cc933e68d665db8c8e240e66571d82b49"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/root-review.json",
+      "bytes": 5024,
+      "sha256": "c5a38e4c9578958a97294ff4e9cf50b788b8abebd3d51d89a37deaa8a27ed60c"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/root-review-final/smoke/summary.json",
+      "bytes": 10841,
+      "sha256": "5c1ededb89dd3bb72a9ab3708a9def07a74091c14444f19a59e1b23fb6d36eaf"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/root-review-final/no-key/summary.json",
+      "bytes": 10105,
+      "sha256": "406380c7c438fc15531acf95e434235e09cf2f3f105b746ca285c74b8f55ae87"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/root-review-final/no-dsh/summary.json",
+      "bytes": 10339,
+      "sha256": "95343ed7204048510f6046265e862d268bb93d50331c44569faa35e7b90d10cd"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/root-review-final/offline/summary.json",
+      "bytes": 10895,
+      "sha256": "9a706c700606fdc4af40a669dff312acc07e31970e2dbc9220f9265e3b4b7c4d"
+    }
+  ],
+  "package": {
+    "kind": "local research candidate, not product/installer",
+    "bytes": 10578,
+    "sha256": "1260c77c1f2740783e4c8725da99d021f05d9c4d9ee089d9740c2466fa5a76c9",
+    "members": [
+      "candidate.py",
+      "README.md",
+      "manifest.json"
+    ],
+    "freshExtraction": "evidence/P00-U12/20261001-01/root-review-final/unpacked",
+    "thirdPartyPayload": false,
+    "realCredentials": false,
+    "roleAssets": false,
+    "finalIndependentReview": {
+      "path": "evidence/P00-U12/20261001-01/root-review.json",
+      "sha256": "c5a38e4c9578958a97294ff4e9cf50b788b8abebd3d51d89a37deaa8a27ed60c",
+      "recommendation": "accept local P00 research candidate after final metadata review",
+      "status": "passed_with_limits",
+      "blockers": []
+    }
+  },
+  "external": {
+    "projectRoot": "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project",
+    "projectCommit": "95ac4933ea30049e689c9d4d7d63c2b66ecd62be",
+    "sourceLockSha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e",
+    "sources": {
+      "zcode": {
+        "path": ".runtime/P00/zcode/source",
+        "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "clean": true
+      },
+      "dsh": {
+        "path": ".runtime/P00/dsh/source",
+        "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+        "clean": true
+      },
+      "herta": {
+        "path": "references/herta-4623df12",
+        "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "clean": true
+      }
+    },
+    "fileBindings": 43,
+    "toolchain": {
+      "python": {
+        "path": "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "version": "Python 3.12.10",
+        "sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a"
+      },
+      "node": {
+        "path": "C:\\Program Files\\nodejs\\node.exe",
+        "version": "v24.16.0",
+        "sha256": "b3094d0b49f9ad602262a9921551737bb97637c05dd357a06ae98188d7290aa3"
+      }
+    },
+    "sourceBindingDetail": "docs/releases/0.0.0/manifest.json binds exact accepted inputs, tested source files and runtime entries.",
+    "junctions": "Path aliases into fixed sources; Git pins/clean checks used, not ACL read-only or OS sandbox.",
+    "sourcePinsAfter": [
+      {
+        "path": ".runtime/P00/zcode/source",
+        "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "clean": true
+      },
+      {
+        "path": ".runtime/P00/dsh/source",
+        "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+        "clean": true
+      },
+      {
+        "path": "references/herta-4623df12",
+        "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "clean": true
+      }
+    ]
+  },
+  "execution": {
+    "authorInitialRun": {
+      "execution": {
+        "path": "evidence/P00-U12/20261001-01/execution.json",
+        "bytes": 5524,
+        "sha256": "73e482a8e94f75d9f5f3ec55b46bffb20e0c93ce031895f4eefc2fe212a1cba0"
+      },
+      "archiveSha256": "db815cea18fda6478a4e5bbcbaabfda91863d0dfd3477b5e8c132f26e43c7a5f",
+      "status": "passed_with_limits",
+      "scope": "historical initial package run before README wording correction; final ZIP is independently re-extracted and replayed below"
+    },
+    "finalIndependentReplay": {
+      "driver": {
+        "path": "evidence/P00-U12/20261001-01/root-verify.py",
+        "bytes": 7206,
+        "sha256": "8d1e99d9aa2c3ded281ebbfabd5ca0d5090d359026854fe79e8aedf8e09658da"
+      },
+      "execution": {
+        "path": "evidence/P00-U12/20261001-01/root-review-final/execution.json",
+        "bytes": 61400,
+        "sha256": "a9e8d75dc91f224d017b285c1c82e52cc933e68d665db8c8e240e66571d82b49"
+      },
+      "zipSha256": "1260c77c1f2740783e4c8725da99d021f05d9c4d9ee089d9740c2466fa5a76c9",
+      "status": "passed_with_limits",
+      "freshZipUnpack": true,
+      "exactFlatMembers": 3,
+      "zipCrcPassed": true,
+      "payloadUnchangedAfterExecution": true,
+      "cases": [
+        {
+          "case": "smoke",
+          "command": [
+            "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\unpacked\\candidate.py",
+            "--case",
+            "smoke",
+            "--external-root",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project",
+            "--output-dir",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\smoke"
+          ],
+          "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\unpacked",
+          "exitCode": 0,
+          "status": "passed_with_limits",
+          "elapsedSeconds": 19.721,
+          "paidModelCalls": 0,
+          "summary": {
+            "path": "evidence\\P00-U12\\20261001-01\\root-review-final\\smoke\\summary.json",
+            "bytes": 10841,
+            "sha256": "5c1ededb89dd3bb72a9ab3708a9def07a74091c14444f19a59e1b23fb6d36eaf"
+          }
+        },
+        {
+          "case": "no-key",
+          "command": [
+            "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\unpacked\\candidate.py",
+            "--case",
+            "no-key",
+            "--external-root",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project",
+            "--output-dir",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\no-key"
+          ],
+          "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\unpacked",
+          "exitCode": 0,
+          "status": "passed_with_limits",
+          "elapsedSeconds": 7.554,
+          "paidModelCalls": 0,
+          "summary": {
+            "path": "evidence\\P00-U12\\20261001-01\\root-review-final\\no-key\\summary.json",
+            "bytes": 10105,
+            "sha256": "406380c7c438fc15531acf95e434235e09cf2f3f105b746ca285c74b8f55ae87"
+          }
+        },
+        {
+          "case": "no-dsh",
+          "command": [
+            "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\unpacked\\candidate.py",
+            "--case",
+            "no-dsh",
+            "--external-root",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project",
+            "--output-dir",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\no-dsh"
+          ],
+          "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\unpacked",
+          "exitCode": 0,
+          "status": "passed_with_limits",
+          "elapsedSeconds": 7.651,
+          "paidModelCalls": 0,
+          "summary": {
+            "path": "evidence\\P00-U12\\20261001-01\\root-review-final\\no-dsh\\summary.json",
+            "bytes": 10339,
+            "sha256": "95343ed7204048510f6046265e862d268bb93d50331c44569faa35e7b90d10cd"
+          }
+        },
+        {
+          "case": "offline",
+          "command": [
+            "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\unpacked\\candidate.py",
+            "--case",
+            "offline",
+            "--external-root",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project",
+            "--output-dir",
+            "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\offline"
+          ],
+          "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review-final\\unpacked",
+          "exitCode": 0,
+          "status": "passed_with_limits",
+          "elapsedSeconds": 9.686,
+          "paidModelCalls": 0,
+          "summary": {
+            "path": "evidence\\P00-U12\\20261001-01\\root-review-final\\offline\\summary.json",
+            "bytes": 10895,
+            "sha256": "9a706c700606fdc4af40a669dff312acc07e31970e2dbc9220f9265e3b4b7c4d"
+          }
+        }
+      ],
+      "paidModelCalls": 0,
+      "smokeAssertionsPassed": 19,
+      "sourcePinsAfter": [
+        {
+          "path": ".runtime/P00/zcode/source",
+          "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+          "clean": true
+        },
+        {
+          "path": ".runtime/P00/dsh/source",
+          "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+          "clean": true
+        },
+        {
+          "path": "references/herta-4623df12",
+          "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+          "clean": true
+        }
+      ],
+      "globalCredentialFilesRead": false,
+      "offlineScope": "direct TCP to tested 127.0.0.1 port; not a real provider or OS-wide offline test"
+    },
+    "rawOutputAndNestedHashes": "Final independent execution.json and root-review.json bind the four fresh-extraction case summaries, nested evidence, commands and source pins."
+  },
+  "assetsAndSchemas": {
+    "prompt_and_hook_sources": [
+      "spikes/zcode-context/probe.py",
+      "spikes/zcode-context/host.mjs",
+      "spikes/zcode-context/plugin/hooks/context.mjs"
+    ],
+    "protocol_schema_source": ".runtime/P00/dsh/source/packages/sdk/protocol/src/transport.ts",
+    "actual_synthetic_packet_prompt_hashes": "Recorded per case in U07 packet/spec/request artifact bindings.",
+    "assets_manifest": {
+      "path": "assets/manifest.json",
+      "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a",
+      "approvedAssets": []
+    },
+    "persona_schema": "NOT_PRESENT_IN_P00",
+    "life_schema": "NOT_PRESENT_IN_P00",
+    "live2d_and_role_assets": "NOT_PRESENT_IN_P00"
+  },
+  "mustCoverage": [
+    {
+      "id": "R02",
+      "evidence": "U07 loopback and U09 SDK smoke",
+      "limit": "no desktop/product runtime"
+    },
+    {
+      "id": "R03",
+      "evidence": "U01/U02 reuse decisions; fresh ZIP executes locked probes",
+      "limit": "no P01 implementation"
+    },
+    {
+      "id": "R08",
+      "evidence": "U08 scope/permission; U09 Job A/B/detached; integration reruns",
+      "limit": "not full AgentRuntime or hostile-process sandbox"
+    },
+    {
+      "id": "R17",
+      "evidence": "U07 denial; no-key/no-DSH; U08 deny",
+      "limit": "no global config audit, OS sandbox, future UI, or provider authorization"
+    },
+    {
+      "id": "R24",
+      "evidence": "accepted U03/U04 protection and bounded checkpoint handling",
+      "limit": "no final backup/restore or crash consistency"
+    },
+    {
+      "id": "R25",
+      "evidence": "U06/U10 license boundary; assets approved count zero; ZIP has no third-party payload",
+      "limit": "no product SBOM/notices or role rights approval"
+    },
+    {
+      "id": "R27",
+      "evidence": "U01-U11 accepted plus final ZIP independently unpacked and all four candidate cases passed.",
+      "limit": "U12 awaits independent acceptance; installer NOT_RUN"
+    }
+  ],
+  "unitStates": [
+    {
+      "unit": "P00-U01",
+      "status": "accepted"
+    },
+    {
+      "unit": "P00-U02",
+      "status": "accepted"
+    },
+    {
+      "unit": "P00-U03",
+      "status": "accepted"
+    },
+    {
+      "unit": "P00-U04",
+      "status": "accepted"
+    },
+    {
+      "unit": "P00-U05",
+      "status": "accepted"
+    },
+    {
+      "unit": "P00-U06",
+      "status": "accepted"
+    },
+    {
+      "unit": "P00-U07",
+      "status": "accepted"
+    },
+    {
+      "unit": "P00-U08",
+      "status": "accepted"
+    },
+    {
+      "unit": "P00-U09",
+      "status": "accepted"
+    },
+    {
+      "unit": "P00-U10",
+      "status": "accepted"
+    },
+    {
+      "unit": "P00-U11",
+      "status": "accepted"
+    },
+    {
+      "unit": "P00-U12",
+      "status": "ready_for_review"
+    }
+  ],
+  "boundaries": [
+    "no-key uses mock only; real-model path is NOT_RUN_NO_KEY and real service availability is untested. The mock writes a synthetic p00-fixture-key field; no real credential files are read.",
+    "U07 globals_snapshot is empty; no global credential-path enumeration/hash audit is claimed.",
+    "no-DSH tests an isolated missing entry override without touching DSH source, then runs the ZCode mock.",
+    "offline is a loopback TCP timeout/refusal diagnostic with no provider reply; not an OS-wide offline mode or native fallback.",
+    "Persona/Life schema, Live2D/role assets, product UI/runtime, installer/package and full restore remain absent or NOT_RUN."
+  ],
+  "rollback": "Revert only docs/releases/0.0.0 and evidence/P00-U12/20261001-01. The scratch clone and run materials remain local for review; fixed sources, user data and global configuration were not changed."
+}

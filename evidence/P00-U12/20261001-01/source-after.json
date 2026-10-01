@@ -1,0 +1,128 @@
+{
+  "scope": "Read-only post-run pin and clean check of all three fixed source trees.",
+  "sources": [
+    {
+      "id": "zcode",
+      "path": ".runtime/P00/zcode/source",
+      "expectedCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "head": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "clean": true,
+      "commands": [
+        {
+          "command": [
+            "git",
+            "-C",
+            "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source",
+            "rev-parse",
+            "HEAD"
+          ],
+          "cwd": "E:\\Xiadie\\Xiadie",
+          "exitCode": 0,
+          "stdoutBytes": 41,
+          "stdoutSha256": "c9e9c065dbc732368bcfa1e6f610926a03a210632eab5cf2b4bc167dc3ad3de7",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdoutText": "29628c9acdb81b703bbd4080c207a0e7ce5e276e"
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source",
+            "status",
+            "--porcelain"
+          ],
+          "cwd": "E:\\Xiadie\\Xiadie",
+          "exitCode": 0,
+          "stdoutBytes": 0,
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdoutText": ""
+        }
+      ]
+    },
+    {
+      "id": "dsh",
+      "path": ".runtime/P00/dsh/source",
+      "expectedCommit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "head": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "clean": true,
+      "commands": [
+        {
+          "command": [
+            "git",
+            "-C",
+            "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source",
+            "rev-parse",
+            "HEAD"
+          ],
+          "cwd": "E:\\Xiadie\\Xiadie",
+          "exitCode": 0,
+          "stdoutBytes": 41,
+          "stdoutSha256": "cbc3e0967a38594c578aa682932dc6b341e1dd73a4315e38f8940dc1cb7cf601",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdoutText": "639ed015397290b3745d163aafe02ffee4aa3f84"
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "E:\\Xiadie\\Xiadie\\.runtime\\P00\\dsh\\source",
+            "status",
+            "--porcelain"
+          ],
+          "cwd": "E:\\Xiadie\\Xiadie",
+          "exitCode": 0,
+          "stdoutBytes": 0,
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdoutText": ""
+        }
+      ]
+    },
+    {
+      "id": "herta",
+      "path": "references/herta-4623df12",
+      "expectedCommit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "head": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "clean": true,
+      "commands": [
+        {
+          "command": [
+            "git",
+            "-C",
+            "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+            "rev-parse",
+            "HEAD"
+          ],
+          "cwd": "E:\\Xiadie\\Xiadie",
+          "exitCode": 0,
+          "stdoutBytes": 41,
+          "stdoutSha256": "732f480b97c203346cf91ecf14b4827635683c1727e3d4cdaef704ac76f7bc15",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdoutText": "4623df120adf99340ce5f7e25ed829466975e3ae"
+        },
+        {
+          "command": [
+            "git",
+            "-C",
+            "E:\\Xiadie\\Xiadie\\references\\herta-4623df12",
+            "status",
+            "--porcelain"
+          ],
+          "cwd": "E:\\Xiadie\\Xiadie",
+          "exitCode": 0,
+          "stdoutBytes": 0,
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderrBytes": 0,
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdoutText": ""
+        }
+      ]
+    }
+  ]
+}

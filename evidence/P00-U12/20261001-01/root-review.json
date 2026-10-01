@@ -1,0 +1,128 @@
+{
+  "unit": "P00-U12",
+  "reviewer": "root independent integration review",
+  "baselineCommit": "95ac4933ea30049e689c9d4d7d63c2b66ecd62be",
+  "recommendation": "accept local P00 research candidate after final metadata review",
+  "status": "passed_with_limits",
+  "blockers": [],
+  "finalZipSha256": "1260c77c1f2740783e4c8725da99d021f05d9c4d9ee089d9740c2466fa5a76c9",
+  "artifacts": [
+    {
+      "path": "docs/releases/0.0.0/candidate.zip",
+      "bytes": 10578,
+      "sha256": "1260c77c1f2740783e4c8725da99d021f05d9c4d9ee089d9740c2466fa5a76c9"
+    },
+    {
+      "path": "docs/releases/0.0.0/candidate.py",
+      "bytes": 17514,
+      "sha256": "5ad30bbb50a638c238e43149c017051cc80d8774b2a4e1f8c20938d4bfed98a9"
+    },
+    {
+      "path": "docs/releases/0.0.0/README.md",
+      "bytes": 2750,
+      "sha256": "8e49de5324735f03ccea4d761fedbd7d55c141f64b8cbfcc7295fd0d8383b9b1"
+    },
+    {
+      "path": "docs/releases/0.0.0/manifest.json",
+      "bytes": 18082,
+      "sha256": "fc2c4337127b51e57e43fd00b44406e57f2c9127b9869a4c05a82c2201e03849"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/root-review-final/execution.json",
+      "bytes": 61400,
+      "sha256": "a9e8d75dc91f224d017b285c1c82e52cc933e68d665db8c8e240e66571d82b49"
+    },
+    {
+      "path": "evidence/P00-U12/20261001-01/root-verify.py",
+      "bytes": 7206,
+      "sha256": "8d1e99d9aa2c3ded281ebbfabd5ca0d5090d359026854fe79e8aedf8e09658da"
+    }
+  ],
+  "cases": {
+    "smoke": {
+      "exitCode": 0,
+      "status": "passed_with_limits",
+      "elapsedSeconds": 19.721,
+      "summary": {
+        "path": "evidence\\P00-U12\\20261001-01\\root-review-final\\smoke\\summary.json",
+        "bytes": 10841,
+        "sha256": "5c1ededb89dd3bb72a9ab3708a9def07a74091c14444f19a59e1b23fb6d36eaf"
+      },
+      "rawBindingCount": 90
+    },
+    "no-key": {
+      "exitCode": 0,
+      "status": "passed_with_limits",
+      "elapsedSeconds": 7.554,
+      "summary": {
+        "path": "evidence\\P00-U12\\20261001-01\\root-review-final\\no-key\\summary.json",
+        "bytes": 10105,
+        "sha256": "406380c7c438fc15531acf95e434235e09cf2f3f105b746ca285c74b8f55ae87"
+      },
+      "rawBindingCount": 39
+    },
+    "no-dsh": {
+      "exitCode": 0,
+      "status": "passed_with_limits",
+      "elapsedSeconds": 7.651,
+      "summary": {
+        "path": "evidence\\P00-U12\\20261001-01\\root-review-final\\no-dsh\\summary.json",
+        "bytes": 10339,
+        "sha256": "95343ed7204048510f6046265e862d268bb93d50331c44569faa35e7b90d10cd"
+      },
+      "rawBindingCount": 39
+    },
+    "offline": {
+      "exitCode": 0,
+      "status": "passed_with_limits",
+      "elapsedSeconds": 9.686,
+      "summary": {
+        "path": "evidence\\P00-U12\\20261001-01\\root-review-final\\offline\\summary.json",
+        "bytes": 10895,
+        "sha256": "9a706c700606fdc4af40a669dff312acc07e31970e2dbc9220f9265e3b4b7c4d"
+      },
+      "rawBindingCount": 41
+    }
+  },
+  "observed": {
+    "freshZipUnpack": true,
+    "exactFlatMembers": 3,
+    "zipCrcPassed": true,
+    "payloadUnchangedAfterExecution": true,
+    "paidModelCalls": 0,
+    "sixSmokeCommandsPassed": true,
+    "smokeAssertionsPassed": 19,
+    "jobAssignedBeforeImport": true,
+    "jobMembersAfterDriverExit": [],
+    "missingDshEntryActuallyAbsent": true,
+    "noKeyActualModelPath": "NOT_RUN_NO_KEY",
+    "offlineDiagnosticStateReadbackMatches": true,
+    "offlineFaultScope": "direct TCP to tested 127.0.0.1 port; not a real provider or OS-wide offline test",
+    "allCheckValuesIndependentlyChecked": true,
+    "sourcePinsAfter": [
+      {
+        "path": ".runtime/P00/zcode/source",
+        "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "clean": true
+      },
+      {
+        "path": ".runtime/P00/dsh/source",
+        "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+        "clean": true
+      },
+      {
+        "path": "references/herta-4623df12",
+        "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+        "clean": true
+      }
+    ]
+  },
+  "limitations": [
+    "Local research artifact requires fixed external accepted checkout and runtimes; not portable, not a Windows installer or product application.",
+    "Synthetic mock calls exercise accepted native source paths; no real provider fallback, future Settings UI or full AgentRuntime/role identity claim.",
+    "Windows Job fixture proves owned process lifecycle, not a security sandbox or crash-consistent checkpoint protocol.",
+    "Seven P00 Musts are stage evidence only; all 28 final product Musts remain future deliverables.",
+    "Final README discloses local absolute tool paths in manifest; no user profile contents, actual credentials, third-party source/binaries or role assets are packaged."
+  ],
+  "historicalReplay": "root-review/execution.json belongs to prior ZIP db815cea18fda6478a4e5bbcbaabfda91863d0dfd3477b5e8c132f26e43c7a5f; retained without rewriting"
+}

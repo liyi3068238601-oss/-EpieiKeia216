@@ -3,7 +3,7 @@
   "goal": "执行P00，有问题随时问我",
   "project_root": "E:\\Xiadie\\Xiadie",
   "plan_version": "1.1",
-  "current_task": "P00-U12",
+  "current_task": null,
   "tasks": [
     {
       "id": "P00-U01",
@@ -115,7 +115,7 @@
       "dependencies": [
         "P00-U11"
       ],
-      "status": "running",
+      "status": "accepted",
       "attempt_id": "20261001-01"
     }
   ],
@@ -144,5 +144,15 @@
       "evidence/P00-U07/20261001-01/summary-real.json"
     ]
   },
-  "product_implementation_started": false
+  "product_implementation_started": false,
+  "stage": "P00",
+  "stage_status": "completed",
+  "G00": {
+    "status": "pass",
+    "evidence": "evidence/P00/G00.md",
+    "acceptance": "evidence/P00-U12/20261001-01/acceptance.json"
+  },
+  "next_stage": "P01",
+  "next_stage_eligible": true,
+  "next_stage_started": false
 }

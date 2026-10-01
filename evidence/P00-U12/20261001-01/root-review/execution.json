@@ -1,0 +1,88 @@
+{
+  "zip_sha256": "db815cea18fda6478a4e5bbcbaabfda91863d0dfd3477b5e8c132f26e43c7a5f",
+  "unpacked_bindings": {
+    "candidate.py": "5ad30bbb50a638c238e43149c017051cc80d8774b2a4e1f8c20938d4bfed98a9",
+    "manifest.json": "4bd873a30a87df1e078b7848afd71ff3abf0afa752d90be0cd8a78f6478bb3c3",
+    "README.md": "76a10e1d81bc9d9be64e664d95627f08cf1269596049c36b064889b8d4c99f00"
+  },
+  "after": {
+    "candidate.py": "5ad30bbb50a638c238e43149c017051cc80d8774b2a4e1f8c20938d4bfed98a9",
+    "manifest.json": "4bd873a30a87df1e078b7848afd71ff3abf0afa752d90be0cd8a78f6478bb3c3",
+    "README.md": "76a10e1d81bc9d9be64e664d95627f08cf1269596049c36b064889b8d4c99f00"
+  },
+  "parallel_independent_cases": true,
+  "cases": {
+    "smoke": {
+      "command": [
+        "python",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\unpacked\\candidate.py",
+        "--case",
+        "smoke",
+        "--external-root",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project",
+        "--output-dir",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\smoke"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\unpacked",
+      "exit_code": 0,
+      "elapsed_seconds": 23.141,
+      "summary_status": "passed_with_limits",
+      "paid_model_calls": 0,
+      "summary_sha256": "bde2a62d6c4785efe340cd926021e52bff2ea57e69ec1fe76816c4a0a7caca10"
+    },
+    "no-key": {
+      "command": [
+        "python",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\unpacked\\candidate.py",
+        "--case",
+        "no-key",
+        "--external-root",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project",
+        "--output-dir",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\no-key"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\unpacked",
+      "exit_code": 0,
+      "elapsed_seconds": 9.344,
+      "summary_status": "passed_with_limits",
+      "paid_model_calls": 0,
+      "summary_sha256": "96099f8fed0b591d0d2c4d20bc005960c538d89a0003aa13c65e8b3ed2e7253f"
+    },
+    "no-dsh": {
+      "command": [
+        "python",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\unpacked\\candidate.py",
+        "--case",
+        "no-dsh",
+        "--external-root",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project",
+        "--output-dir",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\no-dsh"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\unpacked",
+      "exit_code": 0,
+      "elapsed_seconds": 9.422,
+      "summary_status": "passed_with_limits",
+      "paid_model_calls": 0,
+      "summary_sha256": "6bf0527e865a6969d72d8ba2fcdc78cc1f7cf5daef132accfb8e94bb1759cb3e"
+    },
+    "offline": {
+      "command": [
+        "python",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\unpacked\\candidate.py",
+        "--case",
+        "offline",
+        "--external-root",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\external-project",
+        "--output-dir",
+        "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\offline"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\evidence\\P00-U12\\20261001-01\\root-review\\unpacked",
+      "exit_code": 0,
+      "elapsed_seconds": 11.36,
+      "summary_status": "passed_with_limits",
+      "paid_model_calls": 0,
+      "summary_sha256": "62e6feeddd5787c7c29c844f3a7f09d249dec77a4fc1b1ebfd32b11a0816fa3b"
+    }
+  }
+}

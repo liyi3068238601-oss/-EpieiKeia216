@@ -1,0 +1,97 @@
+{
+  "schema": "p00-u12-research-candidate-review/v1",
+  "unit": "P00-U12",
+  "status": "ready_for_review",
+  "reviewedAt": "2026-10-01",
+  "scope": {
+    "included": [
+      "Final candidate ZIP members and manifest bindings, read directly through .NET ZipArchive without extraction",
+      "Candidate case selection, external-source references, README limitations, and archive payload/license boundary",
+      "Author metadata and final independent root execution summaries"
+    ],
+    "excluded": [
+      "Re-running any candidate case or invoking a model, installation, or external network service",
+      "Re-auditing the already accepted U01-U11 source and license research",
+      "Product implementation, P01, installer, UI, or release authorization"
+    ]
+  },
+  "recommendation": {
+    "decision": "accept_local_p00_research_candidate_with_limits",
+    "blockers": [],
+    "nonBlockingFollowups": [
+      "P01 stays closed until G00 is accepted; this ZIP is not a portable product or installer.",
+      "The manifest intentionally records absolute local tool paths, including the Python installation path; README now discloses this and states the ZIP is not portable.",
+      "External source junctions are path aliases with clean-pin checks, not ACL-enforced read-only mounts or a sandbox."
+    ],
+    "rationale": "The final ZIP contains only the three declared research-candidate files, and the code/README member hashes match its manifest. The final independent fresh extraction passed smoke, no-key, no-dsh, and offline cases with zero paid calls. The evidence distinguishes mock behavior, a missing DSH entry override, and a loopback-only connection failure from real-provider availability, DSH-source absence, or system-wide offline guarantees."
+  },
+  "findings": [
+    {
+      "area": "Archive and payload",
+      "result": "Direct .NET ZipArchive inspection found exactly candidate.py, README.md, and manifest.json. Their sizes and hashes match the final manifest and workspace files. The manifest enumerates fixed external project/source/toolchain dependencies; no third-party source, runtime binary, role asset, or real credential is embedded. The local tool-path disclosure is explicit in the revised README.",
+      "zipSha256": "1260c77c1f2740783e4c8725da99d021f05d9c4d9ee089d9740c2466fa5a76c9",
+      "members": [
+        {"path":"candidate.py","bytes":17514,"sha256":"5ad30bbb50a638c238e43149c017051cc80d8774b2a4e1f8c20938d4bfed98a9"},
+        {"path":"README.md","bytes":2750,"sha256":"8e49de5324735f03ccea4d761fedbd7d55c141f64b8cbfcc7295fd0d8383b9b1"},
+        {"path":"manifest.json","bytes":18082,"sha256":"fc2c4337127b51e57e43fd00b44406e57f2c9127b9869a4c05a82c2201e03849"}
+      ]
+    },
+    {
+      "area": "External references and licensing boundary",
+      "result": "The manifest pins ZCode, DSH, and Herta and binds required external files by hash. The external-project fixture uses three Windows junction aliases to those fixed trees; they are not ACL protection. Candidate logic reads and checks source pins and writes case evidence outside those trees. The ZIP has no third-party payload and makes no downstream distribution-rights claim; future product dependencies, notices, and role rights remain separate release gates.",
+      "references": [
+        "docs/releases/0.0.0/manifest.json",
+        "docs/releases/0.0.0/README.md",
+        "evidence/P00-U12/20261001-01/package-summary.json",
+        "evidence/P00-U12/20261001-01/source-after.json"
+      ]
+    },
+    {
+      "area": "Four bounded cases",
+      "result": "The final root run used a fresh extraction and all four cases passed with limits: smoke reran the U11 integration; no-key exercised only the mock path with a synthetic fake-key field and left real-model availability NOT_RUN; no-dsh checked only an absent entry override and did not launch or preflight DSH; offline recorded a failed TCP attempt to a closed loopback port (TimeoutError) and read back diagnostic state. The latter is not an OS-wide network block or provider fallback. All cases report zero paid calls.",
+      "rootExecution": {
+        "path": "evidence/P00-U12/20261001-01/root-review-final/execution.json",
+        "bytes": 61400,
+        "sha256": "a9e8d75dc91f224d017b285c1c82e52cc933e68d665db8c8e240e66571d82b49"
+      },
+      "caseSummaries": [
+        {"path":"evidence/P00-U12/20261001-01/root-review-final/smoke/summary.json","bytes":10841,"sha256":"5c1ededb89dd3bb72a9ab3708a9def07a74091c14444f19a59e1b23fb6d36eaf"},
+        {"path":"evidence/P00-U12/20261001-01/root-review-final/no-key/summary.json","bytes":10105,"sha256":"406380c7c438fc15531acf95e434235e09cf2f3f105b746ca285c74b8f55ae87"},
+        {"path":"evidence/P00-U12/20261001-01/root-review-final/no-dsh/summary.json","bytes":10339,"sha256":"95343ed7204048510f6046265e862d268bb93d50331c44569faa35e7b90d10cd"},
+        {"path":"evidence/P00-U12/20261001-01/root-review-final/offline/summary.json","bytes":10895,"sha256":"9a706c700606fdc4af40a669dff312acc07e31970e2dbc9220f9265e3b4b7c4d"}
+      ]
+    },
+    {
+      "area": "Stage and product boundary",
+      "result": "P00 version 0.0.0 remains a local research candidate. Persona/Life schemas and role assets are NOT_PRESENT_IN_P00, approvedAssets is empty, P01 is not opened, and the 28 final product Musts are not marked complete. Product UI/runtime, installer/Windows package, real provider operation, final backup/restore, and product distribution rights are NOT_RUN or future-stage work, not evidence of a product release."
+    }
+  ],
+  "finalBindings": [
+    {"path":"docs/releases/0.0.0/candidate.zip","bytes":10578,"sha256":"1260c77c1f2740783e4c8725da99d021f05d9c4d9ee089d9740c2466fa5a76c9"},
+    {"path":"docs/releases/0.0.0/candidate.py","bytes":17514,"sha256":"5ad30bbb50a638c238e43149c017051cc80d8774b2a4e1f8c20938d4bfed98a9"},
+    {"path":"docs/releases/0.0.0/README.md","bytes":2750,"sha256":"8e49de5324735f03ccea4d761fedbd7d55c141f64b8cbfcc7295fd0d8383b9b1"},
+    {"path":"docs/releases/0.0.0/manifest.json","bytes":18082,"sha256":"fc2c4337127b51e57e43fd00b44406e57f2c9127b9869a4c05a82c2201e03849"},
+    {"path":"evidence/P00-U12/20261001-01/result.md","bytes":6594,"sha256":"41ce5ad649cb145edb411dc14e5dbe3f8b1f9b8635771d504e1c56a4f3888ab4"},
+    {"path":"evidence/P00-U12/20261001-01/verification.json","bytes":16179,"sha256":"8349a66c3c0b68bf3ad238d68beb83990b9306a169d2576d8ef5285de2f73399"},
+    {"path":"evidence/P00-U12/20261001-01/root-review.json","bytes":5024,"sha256":"c5a38e4c9578958a97294ff4e9cf50b788b8abebd3d51d89a37deaa8a27ed60c"},
+    {"path":"evidence/P00-U12/20261001-01/root-review-final/execution.json","bytes":61400,"sha256":"a9e8d75dc91f224d017b285c1c82e52cc933e68d665db8c8e240e66571d82b49"}
+  ],
+  "verification": {
+    "artifactBindingsChecked": 17,
+    "mismatches": [],
+    "authorStatus": "ready_for_review",
+    "rootReview": {
+      "decision": "accept local P00 research candidate after final metadata review",
+      "blockers": [],
+      "path": "evidence/P00-U12/20261001-01/root-review.json",
+      "sha256": "c5a38e4c9578958a97294ff4e9cf50b788b8abebd3d51d89a37deaa8a27ed60c"
+    }
+  },
+  "reviewMethod": {
+    "mode": "read_only_static_and_artifact_review",
+    "zipExtractionByReviewer": false,
+    "candidateCaseRerun": false,
+    "networkOrModelCalls": 0,
+    "filesChangedByReviewer": ["evidence/P00-U12/20261001-01/review.json"]
+  }
+}
