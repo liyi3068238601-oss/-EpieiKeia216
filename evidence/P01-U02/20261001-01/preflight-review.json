@@ -1,0 +1,41 @@
+{
+  "author_commit": "6784260508ef75cd2aec6e3a6993c93b4383c84c",
+  "status": "subset_preflight_pass",
+  "unit_acceptance": "pending; U02 remains running",
+  "reviewers": ["/root/p01_sources", "/root/p01_gate_audit"],
+  "build_check": {
+    "manifest": "evidence/P01-U02/20261001-01/desktop-build/manifest.json",
+    "matched": 6643,
+    "failed": 0,
+    "total_bytes": 471304952,
+    "pinned_source_and_build_checkout_clean": true
+  },
+  "desktop_check": {
+    "run_id": "desktop-no-key-1790856449203452900",
+    "native_settings_dom_and_same_profile_restart": "pass",
+    "main_host_scheduler_guard_and_canary": "pass",
+    "main_listener_ports_disjoint_from_baseline": "pass",
+    "owned_offline_endpoint_port": 52627,
+    "offline_endpoint_disjoint_from_baseline": true,
+    "offline_endpoint_forwarding": false,
+    "utility_wrapper_hash_bindings": "pass"
+  },
+  "review_notes": [
+    {
+      "finding": "Production SHA snapshots read the credential/settings file bytes even though values are not parsed or output",
+      "reviewer_recommendation": "Prefer snapshots limited to isolated profile",
+      "author_response": "Retain the existing disclosed parent-only read-only SHA comparison to meet the task requirement to verify production files unchanged. Do not claim zero production reads or expose values. This is not a secret-parsing or model-forwarding action. Revisit snapshot policy at formal review."
+    },
+    {
+      "finding": "Hidden native capture timed out",
+      "author_response": "Visual acceptance remains NOT_RUN; actual DOM and persisted setting proof is separately scoped."
+    },
+    {
+      "finding": "Individual roles of the two recorded Main listeners are not identified",
+      "author_response": "Call these newly created Main loopback listeners. The fixed-9229 switch is disabled and Playwright requests inspector/CDP port 0, but do not assign a specific listener role without endpoint identification."
+    }
+  ],
+  "generation_calls": 0,
+  "transport_decision": "pending",
+  "G01": "pending"
+}
