@@ -1,0 +1,14 @@
+{
+  "schema": "p01-u03-observed-failure/v1",
+  "command": "pnpm install --lockfile-only --ignore-scripts --store-dir E:/Xiadie/Xiadie/.runtime/P01/pnpm-store-u03-20261001",
+  "cwd": "E:/Xiadie/Xiadie/.runtime/P01/worktrees/u03",
+  "exit_code": 1,
+  "observed_output_text": "ERR_PNPM_NO_PKG_MANIFEST No package.json found in E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u03",
+  "cause": "The first apply_patch call used E:/Xiadie as its base and placed project files in E:/Xiadie/.runtime/P01/worktrees/u03. Those exact files were moved into the authorized worktree after confirming the destination had no conflicting product files.",
+  "raw_log_preservation": {
+    "preserved": false,
+    "reason": "The same-named stdout/stderr files were overwritten by the successful lock-generation retry before the initial failure was archived.",
+    "sha256": null
+  },
+  "follow_up": "The corrected lock-generation command and later frozen-lockfile clean installs are recorded separately in logs/lock-generate.* and logs/attempt-2 and logs/attempt-3."
+}
