@@ -1,0 +1,120 @@
+{
+  "task": "P00-U03",
+  "author_status": "ready_for_review",
+  "timestamp_utc": "2026-10-01T03:53:53.6361694Z",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "preflight_file": "evidence/P00-U03/20261001-01/preflight.json",
+  "preflight_time_utc": "2026-10-01T03:50:45.5469086Z",
+  "authorization": {
+    "allowed_evidence": "evidence/P00-U03/20261001-01/*",
+    "task_card": "planning/Xiadie_V2_v1.1/tasks/P00-U03.md",
+    "allowed_document": "docs/baseline/local-inventory.md"
+  },
+  "commands": [
+    {
+      "exit_code": 0,
+      "output": "E:/Xiadie/Xiadie",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "command": "git rev-parse --show-toplevel"
+    },
+    {
+      "note": "Root HEAD advanced from preflight 9e70d861... to 97cf03ee... by coordinator U02 review commit; not changed by this inventory.",
+      "exit_code": 0,
+      "output": "97cf03ee156e9201dda9ee1dfa0fddd7ee53efa7",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "command": "git rev-parse HEAD"
+    },
+    {
+      "exit_code": 0,
+      "output": "p00-baseline",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "command": "git branch --show-current"
+    },
+    {
+      "exit_code": 0,
+      "output": "False",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "command": "Test-Path -LiteralPath 'E:\\Xiadie\\Xiadie-next'"
+    },
+    {
+      "exit_code": 0,
+      "output": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "phase": "postflight",
+      "command": "git -C D:\\Deepseek Harness\\deepseek-harness rev-parse HEAD"
+    },
+    {
+      "exit_code": 0,
+      "output": [
+        "?? eccv866.png",
+        "?? lfn_gen1.png",
+        "?? lfn_gen1.txt",
+        "?? lfn_shot1.png",
+        "?? nax_net.txt"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "phase": "postflight",
+      "command": "git -C D:\\Deepseek Harness\\deepseek-harness status --short --untracked-files=all"
+    },
+    {
+      "exit_code": 0,
+      "output": "False",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "command": "Test-Path -LiteralPath 'tests\\units\\P00-U03.test.ts'"
+    }
+  ],
+  "dsh_comparison": {
+    "path": "D:\\Deepseek Harness\\deepseek-harness",
+    "pre_head": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+    "post_head": "c291e7961a515f6d7af9304e7fd1d257929aef26",
+    "head_equal": true,
+    "pre_status_lines": [
+      "?? eccv866.png",
+      "?? lfn_gen1.png",
+      "?? lfn_gen1.txt",
+      "?? lfn_shot1.png",
+      "?? nax_net.txt"
+    ],
+    "post_status_lines": [
+      "?? eccv866.png",
+      "?? lfn_gen1.png",
+      "?? lfn_gen1.txt",
+      "?? lfn_shot1.png",
+      "?? nax_net.txt"
+    ],
+    "status_equal": true,
+    "files_opened_or_hashed": false
+  },
+  "history_path": {
+    "path": "E:\\Xiadie\\Xiadie-next",
+    "exists": false,
+    "classification": "unknown_path_missing_no_wider_search",
+    "branch_or_status": "not_available"
+  },
+  "root_metadata": {
+    "preflight_head": "9e70d861102f1e2738e034311a6e220ad74377c8",
+    "postflight_head": "97cf03ee156e9201dda9ee1dfa0fddd7ee53efa7",
+    "branch": "p00-baseline",
+    "git_top": "E:/Xiadie/Xiadie"
+  },
+  "writes": [
+    "docs/baseline/local-inventory.md",
+    "evidence/P00-U03/20261001-01/preflight.json",
+    "evidence/P00-U03/20261001-01/result.md",
+    "evidence/P00-U03/20261001-01/run.json",
+    "evidence/P00-U03/20261001-01/hashes.json"
+  ],
+  "no_tests_or_runtime": true,
+  "tool_probe_notes": [
+    {
+      "exit_code_recorded": false,
+      "observed": "ripgrep rejected PowerShell-only -ErrorAction argument as unknown encoding: rrorAction; recovered with exact PowerShell Test-Path.",
+      "command": "rg --files ... -ErrorAction SilentlyContinue"
+    },
+    {
+      "exit_code_recorded": false,
+      "observed": "Guessed filename was absent; recovered by using requirements.json and exact project file listing.",
+      "command": "Get-Content planning/Xiadie_V2_v1.1/04_需求追踪.md"
+    }
+  ]
+}
