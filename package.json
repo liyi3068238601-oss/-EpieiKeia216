@@ -13,12 +13,13 @@
     "boundary:check": "node tools/check-import-boundaries.mjs",
     "test:unit": "pnpm run build && node tools/run-tests.mjs unit",
     "test:contract": "node tools/run-tests.mjs contract",
-    "test:integration": "node tools/run-tests.mjs integration",
+    "test:integration": "pnpm run build && node tools/run-tests.mjs integration",
     "test:eval": "node tools/not-implemented.mjs test:eval",
     "test:e2e": "node tools/not-implemented.mjs test:e2e",
     "build": "tsc --project tsconfig.json"
   },
   "devDependencies": {
+    "@types/node": "24.12.2",
     "typescript": "6.0.2"
   }
 }

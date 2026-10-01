@@ -1,0 +1,58 @@
+{
+  "attempt": "attempt-1",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "baseline_commit": "11c0cbc",
+  "started_at_utc": "2026-10-01T14:50:59.263676+00:00",
+  "commands": [
+    {
+      "name": "lock-generation",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "install",
+        "--lockfile-only",
+        "--ignore-scripts",
+        "--store-dir",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\pnpm-store-u04"
+      ],
+      "command": "pnpm install --lockfile-only --ignore-scripts --store-dir E:\\Xiadie\\Xiadie\\.runtime\\P01\\pnpm-store-u04",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-01T14:50:59.988873+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "frozen-install",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "install",
+        "--frozen-lockfile",
+        "--ignore-scripts",
+        "--store-dir",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\pnpm-store-u04"
+      ],
+      "command": "pnpm install --frozen-lockfile --ignore-scripts --store-dir E:\\Xiadie\\Xiadie\\.runtime\\P01\\pnpm-store-u04",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-01T14:51:00.768735+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "check",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "check"
+      ],
+      "command": "pnpm run check",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-01T14:51:02.582463+00:00",
+      "exit_code": 2
+    }
+  ],
+  "node_version": "v24.14.0",
+  "pnpm_version": "10.33.2"
+}

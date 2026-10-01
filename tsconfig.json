@@ -9,9 +9,11 @@
     "forceConsistentCasingInFileNames": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
+    "types": ["node"],
+    "lib": ["ES2022"],
     "rootDir": ".",
     "outDir": "dist"
   },
-  "include": ["packages/contracts/src/**/*.ts"],
+  "include": ["packages/contracts/src/**/*.ts", "packages/character/src/**/*.ts"],
   "exclude": ["dist", "node_modules"]
 }

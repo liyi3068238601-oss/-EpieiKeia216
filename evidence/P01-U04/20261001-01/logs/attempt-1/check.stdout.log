@@ -1,0 +1,13 @@
+
+> xiadie@0.1.0 check E:\Xiadie\Xiadie
+> pnpm run typecheck && pnpm run boundary:check
+
+ WARN  Unsupported engine: wanted: {"node":"24.14.x"} (current: {"node":"v24.16.0","pnpm":"10.33.2"})
+
+> xiadie@0.1.0 typecheck E:\Xiadie\Xiadie
+> tsc --project tsconfig.json --noEmit
+
+packages/character/src/schema.ts(96,10): error TS2352: Conversion of type 'string | number | boolean | readonly JsonValue[] | { readonly [key: string]: JsonValue; } | null' to type 'CharacterAsset' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '{ readonly [key: string]: JsonValue; }' is missing the following properties from type 'CharacterAsset': schemaVersion, id, displayName, version, fields
+ ELIFECYCLE  Command failed with exit code 2.
+ ELIFECYCLE  Command failed with exit code 2.

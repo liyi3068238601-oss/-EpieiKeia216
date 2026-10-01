@@ -1,0 +1,38 @@
+
+> xiadie@0.1.0 test:integration E:\Xiadie\Xiadie
+> pnpm run build && node tools/run-tests.mjs integration
+
+
+> xiadie@0.1.0 build E:\Xiadie\Xiadie
+> tsc --project tsconfig.json
+
+✔ approved asset loads as an immutable snapshot with no writer capability (16.1963ms)
+✔ missing and wrongly named asset files reject loading (29.2835ms)
+✔ wrong identity and path-like selection are rejected before file access (0.2442ms)
+✔ tampered content and malformed JSON cannot silently fall back (51.2222ms)
+✔ editing both content and its self-reported hash does not grant approval (22.3073ms)
+✔ oversized files are rejected before unbounded reading or parsing (40.2915ms)
+✔ real directory junction cannot redirect asset reads outside the configured root (15.9876ms)
+✔ accepts local re-exports and Node built-ins (30.1024ms)
+✔ does not mistake a worktree located under .runtime for a Core dependency (11.5534ms)
+✔ follows a local wrapper and transitive re-export to forbidden Electron (15.7894ms)
+✔ rejects a transitive import into adapters even through a local wrapper (14.0509ms)
+✔ fails closed for computed dynamic import and require targets (17.912ms)
+✔ rejects configured local aliases that resolve into references (27.5243ms)
+✔ rejects file URLs and absolute Windows module paths (7.3725ms)
+✔ maps the U03 task selector and rejects unknown selectors (0.6261ms)
+✔ test runner exits nonzero for an unknown command-line task selector (70.4101ms)
+✔ rejects a Core directory junction (6.2261ms)
+✔ rejects a source junction located inside Core (17.3943ms)
+✔ rejects a wrapper import that crosses a directory junction (47.2227ms)
+✔ allows a pnpm-style dependency junction whose canonical target stays under node_modules (24.3558ms)
+✔ rejects pnpm-style junctions whose canonical targets enter forbidden paths (63.4787ms)
+✔ rejects a node_modules junction whose canonical target is outside the repository (17.3262ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 762.5201

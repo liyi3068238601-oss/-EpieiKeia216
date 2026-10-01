@@ -1,0 +1,22 @@
+
+> xiadie@0.1.0 test:unit E:\Xiadie\Xiadie
+> pnpm run build && node tools/run-tests.mjs unit "--" "P01-U04"
+
+
+> xiadie@0.1.0 build E:\Xiadie\Xiadie
+> tsc --project tsconfig.json
+
+✔ six-field approved schema preserves provenance and fictional example labels (3.3222ms)
+✔ missing, empty and unknown fields fail validation (3.4176ms)
+✔ wrong character, name and version cannot become a generic identity (1.0927ms)
+✔ source, license and fiction metadata must match the approved schema (1.6441ms)
+✔ field and total limits count UTF-8 bytes (0.8358ms)
+✔ accessors and cycles are rejected without invoking asset code (0.5942ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 127.4446

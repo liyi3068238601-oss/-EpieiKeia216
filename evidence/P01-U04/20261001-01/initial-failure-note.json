@@ -1,0 +1,12 @@
+{
+  "attempt": "attempt-1",
+  "status": "failed; raw logs retained",
+  "observed": [
+    "Lock generation and frozen install exited 0; root node_modules was absent before this install.",
+    "Typecheck exited 2: validated JsonValue needed an explicit unknown-to-CharacterAsset assertion.",
+    "The top-level launcher used Node v24.14.0, but nested pnpm resolved a global shim and logged Node v24.16.0. The initial execution metadata is only the launcher version, not proof of all child processes."
+  ],
+  "repair": "Use the explicit validated type assertion; prepend the existing pinned pnpm.CMD directory as well as the Node directory for all following checks. Do not change global Node or pnpm.",
+  "evidence": "logs/attempt-1/check.stdout.log; logs/attempt-1/check.stderr.log; logs/attempt-1/execution.json",
+  "acceptance": "Attempt-1 check is not a pass; later attempt evidence must verify the repaired code/toolchain."
+}

@@ -4,21 +4,24 @@ import { fileURLToPath } from "node:url";
 
 const TESTS = Object.freeze({
   unit: Object.freeze({
-    all: ["packages/contracts/test/json-value.test.mjs"],
+    all: ["packages/contracts/test/json-value.test.mjs", "packages/character/test/schema.test.mjs"],
     tasks: Object.freeze({
       "P01-U03": ["packages/contracts/test/json-value.test.mjs"],
+      "P01-U04": ["packages/character/test/schema.test.mjs"],
     }),
   }),
   contract: Object.freeze({
-    all: ["packages/contracts/test/contracts.test.mjs"],
+    all: ["packages/contracts/test/contracts.test.mjs", "packages/character/test/contract.test.mjs"],
     tasks: Object.freeze({
       "P01-U03": ["packages/contracts/test/contracts.test.mjs"],
+      "P01-U04": ["packages/character/test/contract.test.mjs"],
     }),
   }),
   integration: Object.freeze({
-    all: ["packages/contracts/test/import-boundaries.test.mjs"],
+    all: ["packages/contracts/test/import-boundaries.test.mjs", "packages/character/test/loader.test.mjs"],
     tasks: Object.freeze({
       "P01-U03": ["packages/contracts/test/import-boundaries.test.mjs"],
+      "P01-U04": ["packages/character/test/loader.test.mjs"],
     }),
   }),
 });

@@ -1,0 +1,16 @@
+{
+  "task_id": "P01-U04",
+  "status": "ready_for_review",
+  "decision": "Load six versioned local persona fields from approved v3; pin manifest and content bytes in host code; no fallback or write API.",
+  "adopted": [
+    {"source": "User-selected persona v2 with editorial v3", "path": "docs/research/P01/persona-from-mofox-v3.md", "sha256": "d17b290e585cc8954321e4a0e6881823dcd221e6dff8e82223a506090ab3433f", "use": "Exact six-section text extraction; all older versions preserved", "rights": "Local user approval; game canon and public distribution rights not independently verified"},
+    {"source": "Herta", "commit": "4623df120adf99340ce5f7e25ed829466975e3ae", "path": "packages/herta/src/narrative/static-prefix.ts", "license": "MIT source code; character material excluded", "use": "Stable approved identity separated from runtime records; design reference only, no source or character asset copied"},
+    {"source": "Node.js fs and crypto", "runtime_version": "24.14.0", "documentation_urls": ["https://nodejs.org/docs/latest-v24.x/api/fs.html", "https://nodejs.org/docs/latest-v24.x/api/crypto.html"], "documentation_observed_version": "24.21.0", "use": "Longstanding synchronous read-only fs and SHA-256 APIs, verified on the fixed runtime", "license": "MIT runtime"},
+    {"source": "@types/node", "version": "24.12.2", "version_source": "Pinned ZCode desktop pnpm-lock.yaml", "license": "MIT", "use": "Development types only; exact dependency integrity in lockfile"},
+    {"source": "Accepted project JsonValue validator", "commit": "cf407f278fea36fa7e1f48d154e0ae0720c1ef88", "use": "Reject non-JSON values and accessors before schema validation"}
+  ],
+  "support_path_mapping": ["package.json", "pnpm-lock.yaml", "tsconfig.json", "tools/run-tests.mjs", ".gitattributes"],
+  "test_mapping": {"unit": "packages/character/test/schema.test.mjs", "contract": "packages/character/test/contract.test.mjs and readonly.type-fixture.ts", "integration": "packages/character/test/loader.test.mjs", "task_selector": "P01-U04"},
+  "model_calls": 0,
+  "model_write_scope": "No write capability in this asset API; actual native model tool authorization remains a U06 integration requirement."
+}

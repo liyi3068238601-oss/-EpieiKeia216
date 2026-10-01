@@ -1,0 +1,39 @@
+
+> xiadie@0.1.0 test:integration E:\Xiadie\Xiadie
+> pnpm run build && node tools/run-tests.mjs integration
+
+
+> xiadie@0.1.0 build E:\Xiadie\Xiadie
+> tsc --project tsconfig.json
+
+✔ approved asset loads as an immutable snapshot with no writer capability (7.5197ms)
+✔ schema validity and copied source hashes cannot forge an approved snapshot (5.0659ms)
+✔ missing and wrongly named asset files reject loading (34.4238ms)
+✔ wrong identity and path-like selection are rejected before file access (0.2736ms)
+✔ tampered content and malformed JSON cannot silently fall back (43.9215ms)
+✔ editing both content and its self-reported hash does not grant approval (15.9752ms)
+✔ oversized files are rejected before unbounded reading or parsing (28.717ms)
+✔ real directory junction cannot redirect asset reads outside the configured root (12.4601ms)
+✔ accepts local re-exports and Node built-ins (30.5901ms)
+✔ does not mistake a worktree located under .runtime for a Core dependency (11.8933ms)
+✔ follows a local wrapper and transitive re-export to forbidden Electron (14.5591ms)
+✔ rejects a transitive import into adapters even through a local wrapper (15.0632ms)
+✔ fails closed for computed dynamic import and require targets (17.0478ms)
+✔ rejects configured local aliases that resolve into references (21.8853ms)
+✔ rejects file URLs and absolute Windows module paths (8.8578ms)
+✔ maps the U03 task selector and rejects unknown selectors (0.6059ms)
+✔ test runner exits nonzero for an unknown command-line task selector (79.3941ms)
+✔ rejects a Core directory junction (7.31ms)
+✔ rejects a source junction located inside Core (10.0415ms)
+✔ rejects a wrapper import that crosses a directory junction (34.8877ms)
+✔ allows a pnpm-style dependency junction whose canonical target stays under node_modules (27.089ms)
+✔ rejects pnpm-style junctions whose canonical targets enter forbidden paths (68.5316ms)
+✔ rejects a node_modules junction whose canonical target is outside the repository (15.8379ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 752.9565

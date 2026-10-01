@@ -1,0 +1,23 @@
+
+> xiadie@0.1.0 test:integration E:\Xiadie\Xiadie
+> pnpm run build && node tools/run-tests.mjs integration "--" "P01-U04"
+
+
+> xiadie@0.1.0 build E:\Xiadie\Xiadie
+> tsc --project tsconfig.json
+
+✔ approved asset loads as an immutable snapshot with no writer capability (7.5934ms)
+✔ missing and wrongly named asset files reject loading (36.1522ms)
+✔ wrong identity and path-like selection are rejected before file access (0.2753ms)
+✔ tampered content and malformed JSON cannot silently fall back (39.2425ms)
+✔ editing both content and its self-reported hash does not grant approval (17.1519ms)
+✔ oversized files are rejected before unbounded reading or parsing (31.7114ms)
+✔ real directory junction cannot redirect asset reads outside the configured root (13.0395ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 264.3271

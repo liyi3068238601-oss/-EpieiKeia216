@@ -1,0 +1,115 @@
+{
+  "attempt": "attempt-2",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "baseline_commit": "11c0cbc",
+  "started_at_utc": "2026-10-01T14:52:57.881385+00:00",
+  "commands": [
+    {
+      "name": "check",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "check"
+      ],
+      "command": "pnpm run check",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-01T14:52:58.330895+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "unit",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "test:unit"
+      ],
+      "command": "pnpm run test:unit",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-01T14:53:00.995489+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "contract",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "test:contract"
+      ],
+      "command": "pnpm run test:contract",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-01T14:53:03.102271+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "integration",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "test:integration"
+      ],
+      "command": "pnpm run test:integration",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-01T14:53:05.069252+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "unit-selector",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "test:unit",
+        "--",
+        "P01-U04"
+      ],
+      "command": "pnpm run test:unit -- P01-U04",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-01T14:53:07.740427+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "contract-selector",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "test:contract",
+        "--",
+        "P01-U04"
+      ],
+      "command": "pnpm run test:contract -- P01-U04",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-01T14:53:09.591427+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "integration-selector",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "test:integration",
+        "--",
+        "P01-U04"
+      ],
+      "command": "pnpm run test:integration -- P01-U04",
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-01T14:53:11.683295+00:00",
+      "exit_code": 0
+    }
+  ],
+  "node_version": "v24.14.0",
+  "pnpm_version": "10.33.2",
+  "nested_pnpm_bin": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin\\pnpm.CMD"
+}
