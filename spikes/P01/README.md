@@ -1,6 +1,6 @@
 # P01-U02 隔离试验
 
-这些脚本验证固定 ZCode 原生接缝，尚不是 Xiadie 产品实现。前置 P01-U01 已接受；本单元仍为 `running`，真实模型路线未运行，不能用于放行 P01-U03。
+这些脚本验证固定 ZCode 原生接缝，尚不是 Xiadie 产品实现。前置 P01-U01 已接受；本单元现为 `blocked`，等待已提出的网关传输方式选择，真实模型路线未运行，不能用于放行 P01-U03。
 
 固定 ZCode 提交：`29628c9acdb81b703bbd4080c207a0e7ce5e276e`。控制面与 Loop 使用已有 P00 隔离构建；Desktop 使用独立 `.runtime/P01/desktop-source`。Node 24.14.0、pnpm 10.33.2、Electron 41.0.3、Playwright Core 1.59.1。Desktop 全量产物与构建日志绑定在 `evidence/P01-U02/20261001-01/desktop-build/manifest.json`。
 

@@ -6,7 +6,7 @@
   "plan_version": "1.1",
   "product_version": "0.1.0",
   "stage": "P01",
-  "stage_status": "running",
+  "stage_status": "blocked",
   "current_task": "P01-U02",
   "G00": "pass",
   "G01": "pending",
@@ -32,7 +32,7 @@
       "dependencies": [
         "P01-U01"
       ],
-      "status": "running",
+      "status": "blocked",
       "card_sha256": "f65e1a36fb777b7f722a020a6366befc53e095965569b7c14ef0f6dfb4717d6f",
       "checks": {
         "no_key_control": {
@@ -107,7 +107,8 @@
             "sha256": "279e45d7bd122e059bba2d9ff4f9b1417cd9432e360f99c5c9efbabed4638a44"
           }
         }
-      }
+      },
+      "blocking_condition": "gateway-transport-confirmation; authorized model routes are preserved; no response to the existing transport question"
     },
     {
       "id": "P01-U03",
@@ -245,5 +246,10 @@
     "path": "evidence/P01-U02/20261001-01/transport-inventory.json",
     "bytes": 794,
     "sha256": "7cecdd4b126cbdf9dc0d305140e569706d03cf987a1f669d4755932388dbc38e"
+  },
+  "blocked_audit": {
+    "path": "evidence/P01/blocked-audit.json",
+    "bytes": 1514,
+    "sha256": "c10c698b98a941ac698069b10d3298a94fe9a8a0dbf18b4c7118953b68f1ec36"
   }
 }
