@@ -1,0 +1,56 @@
+{
+  "schema": "p01-u03-independent-review/v1",
+  "task_id": "P01-U03",
+  "attempt_id": "20261001-01",
+  "reviewed_commit": "f914a4c4c54990f841c030ec7d09500530a7474f",
+  "parent_commit": "46099706bc6f2c041d7f0a704bbb7bd04635d6e6",
+  "status": "needs_changes",
+  "manifest_check": {
+    "manifest_sha256": "0d030c691c998e19521a572ef02202fa1913ad4e58c09564fa8b65e6948b0b64",
+    "manifest_bound_files": 95,
+    "worktree_vs_commit_blob_mismatches": 0,
+    "changed_paths": 97,
+    "manifest_scope_matches_commit_diff": true,
+    "checkout_clean": true
+  },
+  "findings": [
+    {
+      "id": "U03-R1",
+      "severity": "blocker",
+      "summary": "An imported directory junction is silently skipped by the boundary checker.",
+      "evidence": {
+        "file": "tools/check-import-boundaries.mjs",
+        "line_early_continue": 193,
+        "unreachable_symlink_branch": 196,
+        "checker_sha256": "751806c25af35413f6c198571c3510f4b0a856837d0fb5632010e14d3e9234bd",
+        "independent_fixture": ".runtime/P01/review-u03/audit-f914a4/junction-probe",
+        "fixture": "Core imports ../../shared-link/bridge.ts; shared-link is a real Windows directory junction into references/upstream; tsconfig sets preserveSymlinks=true.",
+        "typescript_resolved_path": "shared-link/bridge.ts",
+        "observed_report": {
+          "status": "scanned",
+          "scannedFiles": 1,
+          "violations": []
+        }
+      },
+      "required_action": "Handle resolution.kind === symlink before the generic non-local continue, add a real junction negative fixture, then bind a new commit and attempt evidence."
+    }
+  ],
+  "verified_evidence": {
+    "attempt_3_clean_install": 0,
+    "check": 0,
+    "build": 0,
+    "unit": "3 passed",
+    "contract": "1 passed",
+    "integration": "9 passed",
+    "all_three_P01_U03_selectors": 0,
+    "unknown_selector": 2,
+    "test_eval": 2,
+    "test_e2e": 2,
+    "boundary_limit": "packages/core is absent; check log explicitly says BOUNDARY_SCAN_NOT_RUN. Existing integration results are policy-fixture evidence, not a product Core scan.",
+    "initial_lock_failure": "Observed error text and cause are recorded; original stdout/stderr were overwritten and no raw-log hash is claimed."
+  },
+  "review_artifacts": [
+    ".runtime/P01/review-u03/audit-f914a4/repro-f914a4.mjs",
+    ".runtime/P01/review-u03/audit-f914a4/verify-manifest-f914a4.mjs"
+  ]
+}

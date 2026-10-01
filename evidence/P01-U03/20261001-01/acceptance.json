@@ -1,0 +1,48 @@
+{
+  "task_id": "P01-U03",
+  "attempt_id": "20261001-01",
+  "status": "accepted",
+  "coordinator": "root",
+  "accepted_at_utc": "2026-10-01T14:43:32.552865+00:00",
+  "author_commits": [
+    "f914a4c4c54990f841c030ec7d09500530a7474f",
+    "cf407f278fea36fa7e1f48d154e0ae0720c1ef88"
+  ],
+  "final_reviewed_commit": "cf407f278fea36fa7e1f48d154e0ae0720c1ef88",
+  "integration_commit": "0e9eeb9c65d755fd570abc6e2d942eff0d662cda",
+  "independent_review": {
+    "path": "evidence/P01-U03/20261001-01/review-final.json",
+    "bytes": 3579,
+    "sha256": "e89882565f124d57d1a52531e70e15a6ab12b61a751c4634de152329639e219a"
+  },
+  "initial_rejected_review": {
+    "path": "evidence/P01-U03/20261001-01/review-initial-needs-changes.json",
+    "bytes": 2395,
+    "sha256": "6c9fdfec416f8cae234677a94985b99ce3e90fc99fd6be27aa036225ce195122"
+  },
+  "author_manifest": {
+    "path": "evidence/P01-U03/20261001-01/manifest.json",
+    "bytes": 26317,
+    "sha256": "c312debec0e171e0da8ffc6bf28b1ed6775652172c676ededdecd8ce877f628d"
+  },
+  "root_integration_check": {
+    "files": 130,
+    "mismatches": 0,
+    "method": "Integrated working-tree raw byte counts/SHA-256 match reviewed author manifest; root separately verified all author Git blobs."
+  },
+  "checks": {
+    "check": 0,
+    "build": 0,
+    "unit": "3 passed",
+    "contract": "1 passed",
+    "integration": "15 passed, 0 failed, 0 skipped",
+    "independent_junction_probes": "references and outside-root denied; normal same-root pnpm accepted"
+  },
+  "scope": "U03 only; G01 pending; product Core absent and boundary scan NOT_RUN",
+  "limitations": [
+    "Static policy fixtures are not a runtime sandbox or a product Core graph audit.",
+    "Eval/e2e remain explicitly NOT_IMPLEMENTED, exit2.",
+    "Initial failed lock raw stdout/stderr were not retained; gap documented.",
+    "Author manifest timestamp is stale; acceptance relies on exact byte/hash and Git-blob verification."
+  ]
+}

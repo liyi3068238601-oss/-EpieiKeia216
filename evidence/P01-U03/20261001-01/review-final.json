@@ -1,0 +1,69 @@
+{
+  "schema": "p01-u03-independent-review/v1",
+  "task_id": "P01-U03",
+  "attempt_id": "20261001-01",
+  "status": "pass",
+  "reviewed_commit": "cf407f278fea36fa7e1f48d154e0ae0720c1ef88",
+  "reviewed_parent": "f914a4c4c54990f841c030ec7d09500530a7474f",
+  "baseline_commit": "46099706bc6f2c041d7f0a704bbb7bd04635d6e6",
+  "scope": "P01-U03 implementation and policy fixtures only; this report does not accept the P01 stage or claim product Core scan coverage.",
+  "manifest_verification": {
+    "manifest_sha256": "c312debec0e171e0da8ffc6bf28b1ed6775652172c676ededdecd8ce877f628d",
+    "bound_files": 130,
+    "worktree_to_git_blob_mismatches": 0,
+    "changed_paths_from_baseline": 132,
+    "changed_paths_match_manifest_plus_self_files": true,
+    "baseline_is_commit_ancestor": true,
+    "checkout_clean": true
+  },
+  "independent_boundary_probes": {
+    "forbidden_references_junction": {
+      "checker_sha256": "2ebec7a4e27b9ca7f32c7d3f9ad9a784f63fdd88e3e1d7b4bf439c3895ff479f",
+      "result": "SYMLINK_SOURCE_UNSUPPORTED reported for Core -> local wrapper -> real Windows junction into references/upstream"
+    },
+    "normal_internal_pnpm_junction": {
+      "layout": "fixture/node_modules/foo junction to fixture/node_modules/.pnpm/foo@1.0.0/node_modules/foo",
+      "result": "0 violations; canonical target stayed inside the fixture node_modules tree"
+    },
+    "outside_root_node_modules_junction": {
+      "layout": "fixture/node_modules/foo junction to a separate temporary external/node_modules/foo tree",
+      "result": "SYMLINK_SOURCE_UNSUPPORTED reported; external package shortcut did not hide an out-of-root target"
+    },
+    "original_false_pass_reproduced_on_f914a4": "The prior checker returned 0 violations for a junction into references; the reviewed commit now reports it."
+  },
+  "verified_command_evidence": {
+    "attempt_3": {
+      "clean_install": 0,
+      "check": 0,
+      "build": 0,
+      "unit": "3 passed",
+      "contract": "1 passed",
+      "integration_before_junction_cases": "9 passed",
+      "P01_U03_selectors": 0,
+      "unknown_selector": 2,
+      "test_eval": 2,
+      "test_e2e": 2
+    },
+    "attempt_8": {
+      "check": 0,
+      "integration": "15 passed, 0 failed, 0 skipped",
+      "integration_selector": "15 passed, 0 failed, 0 skipped",
+      "worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u03",
+      "node_version": "v24.14.0",
+      "pnpm_version": "10.33.2"
+    }
+  },
+  "limitations_and_metadata": [
+    "packages/core is absent. check exits 0 while printing BOUNDARY_SCAN_NOT_RUN; checker evidence covers synthetic policy fixtures, not a product Core import graph.",
+    "test:eval and test:e2e intentionally remain NOT_IMPLEMENTED and exit 2; no product end-to-end result is claimed.",
+    "The initial lock-generation failure's raw stdout/stderr were overwritten. The observed text and cause are documented, with no fabricated raw-log hash.",
+    "manifest.generated_at_utc reads 2026-10-01T22:07:40+08:00, earlier than the 22:35+08:00 repair commit; all 130 byte/hash bindings and the manifest self-hash match the commit."
+  ],
+  "review_artifacts": [
+    ".runtime/P01/review-u03/audit-f914a4/review-f914a4.json",
+    ".runtime/P01/review-u03/audit-f914a4/repro-junction-cf407f.mjs",
+    ".runtime/P01/review-u03/audit-f914a4/repro-pnpm-internal-junction-cf407f.mjs",
+    ".runtime/P01/review-u03/audit-f914a4/repro-pnpm-external-outside-root-final.mjs",
+    ".runtime/P01/review-u03/audit-f914a4/verify-manifest-final.mjs"
+  ]
+}

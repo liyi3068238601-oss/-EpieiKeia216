@@ -7,7 +7,7 @@
   "product_version": "0.1.0",
   "stage": "P01",
   "stage_status": "running",
-  "current_task": "P01-U03",
+  "current_task": "P01-U04",
   "G00": "pass",
   "G01": "pending",
   "tasks": [
@@ -137,16 +137,28 @@
       "dependencies": [
         "P01-U02"
       ],
-      "status": "running",
+      "status": "accepted",
       "card_sha256": "e5641391e17900de2bc954b1b7cbf23e83e25225ebf9a6c61f75f99d527afe7a",
       "author_worktree": ".runtime/P01/worktrees/u03",
       "author_branch": "p01-u03",
       "accepted_prerequisite": "evidence/P01-U02/20261001-01/acceptance.json",
       "review": {
-        "status": "needs_changes",
-        "author_commit": "f914a4c4c54990f841c030ec7d09500530a7474f",
-        "finding_evidence": "evidence/P01/reviews/P01-U03/f914a4-findings.json",
-        "fix_in_progress": true
+        "status": "pass",
+        "author_commit": "cf407f278fea36fa7e1f48d154e0ae0720c1ef88",
+        "initial_rejected_commit": "f914a4c4c54990f841c030ec7d09500530a7474f",
+        "fix_in_progress": false,
+        "evidence": {
+          "path": "evidence/P01-U03/20261001-01/review-final.json",
+          "bytes": 3579,
+          "sha256": "e89882565f124d57d1a52531e70e15a6ab12b61a751c4634de152329639e219a"
+        }
+      },
+      "author_commit": "cf407f278fea36fa7e1f48d154e0ae0720c1ef88",
+      "integration_commit": "0e9eeb9c65d755fd570abc6e2d942eff0d662cda",
+      "acceptance": {
+        "path": "evidence/P01-U03/20261001-01/acceptance.json",
+        "bytes": 1934,
+        "sha256": "ba24f38938d91a3c199186baa59698ad8f2ff9ca8a3ffbb7acaf29fbe378e397"
       }
     },
     {
@@ -155,8 +167,9 @@
       "dependencies": [
         "P01-U03"
       ],
-      "status": "not_started",
-      "card_sha256": "011b011490d5826fa37e80b24c22c75f1e57bbe0314f359fd89805b17ff44f28"
+      "status": "running",
+      "card_sha256": "011b011490d5826fa37e80b24c22c75f1e57bbe0314f359fd89805b17ff44f28",
+      "accepted_prerequisite": "P01-U03:cf407f278fea36fa7e1f48d154e0ae0720c1ef88"
     },
     {
       "id": "P01-U05",
