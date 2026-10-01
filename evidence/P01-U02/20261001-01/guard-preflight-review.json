@@ -1,0 +1,36 @@
+{
+  "author_commit": "884b05901516dcf318ac3deac1bfd3f6fbebf145",
+  "reviewer": "/root/p01_gate_audit",
+  "status": "subset_preflight_pass",
+  "unit_acceptance": "pending; U02 remains running",
+  "exact_bindings_matched": 16,
+  "latest_mock": "mock-1790858539717198800",
+  "mock_requests": 13,
+  "native_second_requests_verified": 6,
+  "includes_disabled_phase": true,
+  "real_generation_calls": 0,
+  "transport_decision": "pending",
+  "reviewer_activity": "read-only; no program execution, credential read or file modification",
+  "evidence": [
+    {
+      "path": "evidence/P01-U02/20261001-01/summary-mock.json",
+      "bytes": 75673,
+      "sha256": "f090fdf3926de2d948d400d50160a47a4e3fbfcfa24400d8cb66675269464975"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/transport-gate-verification.json",
+      "bytes": 1094,
+      "sha256": "f87ec65185e76016deb895473af3047bda7b14cd35c8596738f7c437a8307a56"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/transport-gate-verification-optimized.json",
+      "bytes": 1093,
+      "sha256": "6e9dd1f45a20e11f3bbadec72ffbd870e81d040d9b82e6e902665a576faf09c0"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/continuation-guard-verification.json",
+      "bytes": 1186,
+      "sha256": "279e45d7bd122e059bba2d9ff4f9b1417cd9432e360f99c5c9efbabed4638a44"
+    }
+  ]
+}
