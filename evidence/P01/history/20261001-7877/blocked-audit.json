@@ -1,0 +1,27 @@
+{
+  "goal": "进入P01",
+  "blocker_id": "gateway-transport-confirmation",
+  "blocker": "The selected 7877 gateway is configured over plain HTTP; the user has not answered the pending transport choice",
+  "observed_consecutive_goal_turns": 3,
+  "previous_turn_classification": "progress: explicit authorization gates, native continuation correlation, counterexamples and exact-commit independent preflight",
+  "current_turn_classification": "no progress: same pending transport confirmed; all delegates completed and no owned P01 runtime process remains",
+  "goal_status": "blocked after third consecutive observation",
+  "G01": "pending",
+  "remaining_requirements": "U02 real model routes and acceptance, then U03-U11 and G01; no scope reduction",
+  "available_safe_work_at_turn_end": "No remaining independent U02 work identified; dependent implementation stays gated",
+  "requires_external_change": "User response to the already pending transport question",
+  "evidence": [
+    {
+      "path": "evidence/P01/transport-decision.json",
+      "bytes": 760,
+      "sha256": "0bae555e15b21b5c6898b3e985fc1737d1dab30cc3c27e3989d7e82ab6e24ed6"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/transport-inventory.json",
+      "bytes": 794,
+      "sha256": "7cecdd4b126cbdf9dc0d305140e569706d03cf987a1f669d4755932388dbc38e"
+    }
+  ],
+  "blocking_threshold_satisfied": true,
+  "stop_scope": "Only goal execution stops; retain author code, accepted U01, all evidence/persona versions and model authorization"
+}

@@ -1,0 +1,980 @@
+{
+  "mode": "real",
+  "model": "deepseek-v4-pro",
+  "run_id": "real-1790860202775548100",
+  "passed": true,
+  "python_assertions_enabled": true,
+  "failure": null,
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "code_bindings": {
+    "probe.py": "38d46344c815995babe4e422c284b34abd2359f15a53b25960dc3deddb560b1c",
+    "host.mjs": "4025e6aa971ff270da5452d1231b4df98283ed1973cf2ceda7c87d961053e3f3",
+    "plugin/.zcode-plugin/plugin.json": "720d77c272bb39bacae412be574fe6b6e9012b84ae3799758e85ad07995a829d",
+    "plugin/hooks/hooks.json": "d56c47249e64fdc10063f1a857ee27d5c4d5efc99aad88e91fa4993c959ff224",
+    "plugin/hooks/context.mjs": "175ad1d699704820e8ce6c86db07d84c4b85005dbca0b113ab095443182e33ae"
+  },
+  "role_sha256": "d17b290e585cc8954321e4a0e6881823dcd221e6dff8e82223a506090ab3433f",
+  "command": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--import",
+    "file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/node_modules/tsx/dist/esm/index.mjs",
+    "E:\\Xiadie\\Xiadie\\spikes\\P01\\host.mjs",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\real-1790860202775548100\\spec.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\real-1790860202775548100\\fixture",
+  "exit_code": 0,
+  "elapsed_seconds": 8.218,
+  "production_unchanged": true,
+  "production_before": [
+    {
+      "label": "production-0",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "label": "production-1",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "label": "production-2",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    },
+    {
+      "label": "production-3",
+      "exists": true,
+      "sha256": "b39155fc95f2af2024ec3e311b59b5ebe03998fff061527e093fe338fbb07ea6"
+    },
+    {
+      "label": "production-4",
+      "exists": true,
+      "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+    },
+    {
+      "label": "production-official-provider",
+      "exists": true,
+      "sha256": "c6e9b3fee17989d971d5fde2d38704153a7cedfb310844f5d4d30c341f7e967a"
+    }
+  ],
+  "production_after": [
+    {
+      "label": "production-0",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "label": "production-1",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "label": "production-2",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    },
+    {
+      "label": "production-3",
+      "exists": true,
+      "sha256": "b39155fc95f2af2024ec3e311b59b5ebe03998fff061527e093fe338fbb07ea6"
+    },
+    {
+      "label": "production-4",
+      "exists": true,
+      "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+    },
+    {
+      "label": "production-official-provider",
+      "exists": true,
+      "sha256": "c6e9b3fee17989d971d5fde2d38704153a7cedfb310844f5d4d30c341f7e967a"
+    }
+  ],
+  "turns": [
+    {
+      "type": "turn_result",
+      "phase": "real-read",
+      "session_id": "sess_78214d60-8633-48a5-8414-1778005d57d4",
+      "response": "我的对话身份是遐蝶（翁法罗斯的黄金裔、奥赫玛的入殓师），文件中读到的值是 `P01_ONLY_READ_VALUE=orchid-42`。",
+      "observed_events": [
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_started",
+          "sequence": 1,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_completed",
+          "sequence": 2,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "session_title_updated",
+          "sequence": 3,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "turn_started",
+          "sequence": 4,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_started",
+          "sequence": 5,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_completed",
+          "sequence": 6,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_request",
+          "sequence": 7,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_network_status",
+          "sequence": 8,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 9,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 10,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 11,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 12,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 13,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 14,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 15,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "streaming_tool_ledger_updated",
+          "sequence": 16,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "tool_call_scheduled",
+          "sequence": 17,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 18,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "streaming_tool_ledger_updated",
+          "sequence": 19,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "streaming_tool_ledger_updated",
+          "sequence": 20,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_started",
+          "sequence": 21,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_network_status",
+          "sequence": 22,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_complete",
+          "sequence": 23,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_completed",
+          "sequence": 24,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "tool_call_started",
+          "sequence": 25,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "tool_call_result",
+          "sequence": 26,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "result": {
+            "success": true,
+            "content": "1\tP01_ONLY_READ_VALUE=orchid-42\n2\t"
+          }
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "tool_batch_complete",
+          "sequence": 27,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "stream_recovery_anchor_created",
+          "sequence": 28,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "streaming_tool_ledger_updated",
+          "sequence": 29,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_request",
+          "sequence": 30,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_network_status",
+          "sequence": 31,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 32,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 33,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 34,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 35,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 36,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 37,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 38,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 39,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 40,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 41,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 42,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 43,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 44,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 45,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 46,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 47,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 48,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 49,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 50,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 51,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 52,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 53,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 54,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 55,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 56,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 57,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 58,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 59,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 60,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 61,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 62,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 63,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 64,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 65,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 66,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 67,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 68,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 69,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 70,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 71,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 72,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 73,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 74,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 75,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 76,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_network_status",
+          "sequence": 77,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_complete",
+          "sequence": 78,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "turn_complete",
+          "sequence": 79,
+          "turn_id": "turn_2d1d6b94-60f8-4d78-80ff-401cd703c5f4"
+        }
+      ],
+      "events": [
+        {
+          "type": "turn_started"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "tool_call_scheduled",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "tool_batch_complete"
+        },
+        {
+          "type": "stream_recovery_anchor_created",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "call_00_GUt8IpnyQ0tF3NXGZYK74263",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "turn_complete"
+        }
+      ]
+    }
+  ],
+  "model_calls": 2,
+  "usage": [
+    {
+      "prompt_tokens": 4379,
+      "completion_tokens": 73,
+      "total_tokens": 4452,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 4379
+    },
+    {
+      "prompt_tokens": 4481,
+      "completion_tokens": 42,
+      "total_tokens": 4523,
+      "prompt_tokens_details": {
+        "cached_tokens": 4352
+      },
+      "prompt_cache_hit_tokens": 4352,
+      "prompt_cache_miss_tokens": 129
+    }
+  ],
+  "gateway_cost": "not returned by official API; usage recorded",
+  "runtime_kind": "actual pinned ZCode bootstrap, provider, plugin Hook, Loop, executor and SQLite; mock/real provider recorded separately",
+  "artifacts": [
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860202775548100/hooks.jsonl",
+      "bytes": 712,
+      "sha256": "c7ced31a40ba5b11d3f3b5fa8bd3edd73857033834de5337d9fe3815cb053b7b"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860202775548100/native-tool-receipts.jsonl",
+      "bytes": 213,
+      "sha256": "eb53eaefe562d6e5c86604bd33d61c83008ced4260997dddcd7a73045546935c"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860202775548100/requests.json",
+      "bytes": 42339,
+      "sha256": "8030b18fc565308fc4e6c8dd2b7c354dd3096b6d1af61c2733dc1c4527c7616c"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860202775548100/response-1.sse",
+      "bytes": 14413,
+      "sha256": "e607769119ee8adad3b8302de5539d5a595a1b81f5f235e7cbf0c880545fd314"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860202775548100/response-2.sse",
+      "bytes": 12646,
+      "sha256": "64fd3113f02cc0c5d00634031b18e7d17d844625ecc69bd906496c67e9422438"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860202775548100/stderr.bin",
+      "bytes": 169,
+      "sha256": "cbc8f198c6ed00094a3826fdcac08a4ec4d90c34a6897c3a62102e496cae8f12"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860202775548100/stdout.jsonl",
+      "bytes": 43608,
+      "sha256": "c437fb635b4e32fb7605b7959e137b7e0975c1247ff1052ec76aec8d55c7983c"
+    }
+  ]
+}

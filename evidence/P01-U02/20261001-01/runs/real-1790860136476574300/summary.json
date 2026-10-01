@@ -1,0 +1,1100 @@
+{
+  "mode": "real",
+  "model": "deepseek-flash",
+  "run_id": "real-1790860136476574300",
+  "passed": true,
+  "python_assertions_enabled": true,
+  "failure": null,
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "code_bindings": {
+    "probe.py": "38d46344c815995babe4e422c284b34abd2359f15a53b25960dc3deddb560b1c",
+    "host.mjs": "4025e6aa971ff270da5452d1231b4df98283ed1973cf2ceda7c87d961053e3f3",
+    "plugin/.zcode-plugin/plugin.json": "720d77c272bb39bacae412be574fe6b6e9012b84ae3799758e85ad07995a829d",
+    "plugin/hooks/hooks.json": "d56c47249e64fdc10063f1a857ee27d5c4d5efc99aad88e91fa4993c959ff224",
+    "plugin/hooks/context.mjs": "175ad1d699704820e8ce6c86db07d84c4b85005dbca0b113ab095443182e33ae"
+  },
+  "role_sha256": "d17b290e585cc8954321e4a0e6881823dcd221e6dff8e82223a506090ab3433f",
+  "command": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--import",
+    "file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/node_modules/tsx/dist/esm/index.mjs",
+    "E:\\Xiadie\\Xiadie\\spikes\\P01\\host.mjs",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\real-1790860136476574300\\spec.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\real-1790860136476574300\\fixture",
+  "exit_code": 0,
+  "elapsed_seconds": 7.453,
+  "production_unchanged": true,
+  "production_before": [
+    {
+      "label": "production-0",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "label": "production-1",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "label": "production-2",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    },
+    {
+      "label": "production-3",
+      "exists": true,
+      "sha256": "b39155fc95f2af2024ec3e311b59b5ebe03998fff061527e093fe338fbb07ea6"
+    },
+    {
+      "label": "production-4",
+      "exists": true,
+      "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+    },
+    {
+      "label": "production-official-provider",
+      "exists": true,
+      "sha256": "c6e9b3fee17989d971d5fde2d38704153a7cedfb310844f5d4d30c341f7e967a"
+    }
+  ],
+  "production_after": [
+    {
+      "label": "production-0",
+      "exists": true,
+      "sha256": "51d9b3aa97a2c0a5dc4cade01b0a3d83533919d602f52d79746ab035af73775e"
+    },
+    {
+      "label": "production-1",
+      "exists": true,
+      "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+    },
+    {
+      "label": "production-2",
+      "exists": true,
+      "sha256": "3c15067b3b9b431591ab1361a5f627d78ec6c2b209c19c202a50c5fad7ed1227"
+    },
+    {
+      "label": "production-3",
+      "exists": true,
+      "sha256": "b39155fc95f2af2024ec3e311b59b5ebe03998fff061527e093fe338fbb07ea6"
+    },
+    {
+      "label": "production-4",
+      "exists": true,
+      "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+    },
+    {
+      "label": "production-official-provider",
+      "exists": true,
+      "sha256": "c6e9b3fee17989d971d5fde2d38704153a7cedfb310844f5d4d30c341f7e967a"
+    }
+  ],
+  "turns": [
+    {
+      "type": "turn_result",
+      "phase": "real-read",
+      "session_id": "sess_e355ca82-38cc-4f66-bf71-ea42f19a3c24",
+      "response": "我是遐蝶——翁法罗斯的黄金裔、奥赫玛的入殓师，以这个身份与你交谈；文件中读取到的值是 `P01_ONLY_READ_VALUE=orchid-42`。",
+      "observed_events": [
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_started",
+          "sequence": 1,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_completed",
+          "sequence": 2,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "session_title_updated",
+          "sequence": 3,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "turn_started",
+          "sequence": 4,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_started",
+          "sequence": 5,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_completed",
+          "sequence": 6,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_request",
+          "sequence": 7,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_network_status",
+          "sequence": 8,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 9,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 10,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 11,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 12,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 13,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 14,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 15,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 16,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 17,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 18,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 19,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 20,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 21,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 22,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 23,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 24,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "streaming_tool_ledger_updated",
+          "sequence": 25,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "tool_call_scheduled",
+          "sequence": 26,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 27,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "streaming_tool_ledger_updated",
+          "sequence": 28,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "streaming_tool_ledger_updated",
+          "sequence": 29,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_started",
+          "sequence": 30,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_network_status",
+          "sequence": 31,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_complete",
+          "sequence": 32,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "hook_run_completed",
+          "sequence": 33,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "tool_call_started",
+          "sequence": 34,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "tool_call_result",
+          "sequence": 35,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "result": {
+            "success": true,
+            "content": "1\tP01_ONLY_READ_VALUE=orchid-42\n2\t"
+          }
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "tool_batch_complete",
+          "sequence": 36,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "stream_recovery_anchor_created",
+          "sequence": 37,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "streaming_tool_ledger_updated",
+          "sequence": 38,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_request",
+          "sequence": 39,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_network_status",
+          "sequence": 40,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 41,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 42,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 43,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 44,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 45,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 46,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 47,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 48,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 49,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 50,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 51,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 52,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 53,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 54,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 55,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 56,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 57,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 58,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 59,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 60,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 61,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 62,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 63,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 64,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 65,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 66,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 67,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 68,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 69,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 70,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 71,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 72,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 73,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 74,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 75,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 76,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 77,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 78,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 79,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 80,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 81,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 82,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 83,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 84,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 85,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 86,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 87,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_streaming",
+          "sequence": 88,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_network_status",
+          "sequence": 89,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "model_complete",
+          "sequence": 90,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        },
+        {
+          "type": "native_event",
+          "phase": "real-read",
+          "event_type": "turn_complete",
+          "sequence": 91,
+          "turn_id": "turn_cb68131a-a26a-4356-896b-353f79b03a40"
+        }
+      ],
+      "events": [
+        {
+          "type": "turn_started"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650"
+        },
+        {
+          "type": "model_streaming",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "tool_call_scheduled",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "tool_batch_complete"
+        },
+        {
+          "type": "stream_recovery_anchor_created",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "streaming_tool_ledger_updated",
+          "tool_call_id": "call_00_ag9KkWuvL0KViM7VInfJ3650",
+          "tool_name": "Read"
+        },
+        {
+          "type": "model_request"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_streaming"
+        },
+        {
+          "type": "model_network_status"
+        },
+        {
+          "type": "model_complete"
+        },
+        {
+          "type": "turn_complete"
+        }
+      ]
+    }
+  ],
+  "model_calls": 2,
+  "usage": [
+    {
+      "prompt_tokens": 4369,
+      "completion_tokens": 73,
+      "total_tokens": 4442,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 4369
+    },
+    {
+      "prompt_tokens": 4471,
+      "completion_tokens": 45,
+      "total_tokens": 4516,
+      "prompt_tokens_details": {
+        "cached_tokens": 4224
+      },
+      "prompt_cache_hit_tokens": 4224,
+      "prompt_cache_miss_tokens": 247
+    }
+  ],
+  "gateway_cost": "not returned by official API; usage recorded",
+  "runtime_kind": "actual pinned ZCode bootstrap, provider, plugin Hook, Loop, executor and SQLite; mock/real provider recorded separately",
+  "artifacts": [
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860136476574300/hooks.jsonl",
+      "bytes": 712,
+      "sha256": "d091af6a68139972b7811d3e1a283d324c26565257e961441f4d3e3266eea545"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860136476574300/native-tool-receipts.jsonl",
+      "bytes": 213,
+      "sha256": "778e031b77ecfa8f6313ddd7dec7670fbb599d0d908844490405c31e2040bd48"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860136476574300/requests.json",
+      "bytes": 42354,
+      "sha256": "461811e9291841f23363abf917199e3fb18e3082444a304c07e10f4c8bf70228"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860136476574300/response-1.sse",
+      "bytes": 16388,
+      "sha256": "312a482378bb603b3eff06f9b6a1b16b4f675dd9313bb5302ce005dae63f575f"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860136476574300/response-2.sse",
+      "bytes": 13476,
+      "sha256": "3a0bdaa240dc6c845d4eea1c88340f0676b0f35a07178643bb7dfb4547c0ce85"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860136476574300/stderr.bin",
+      "bytes": 169,
+      "sha256": "2c2fd9751d952e8f09b35434d618010e999f32c9be3f8fab34a5067cebac4bcc"
+    },
+    {
+      "path": "evidence/P01-U02/20261001-01/runs/real-1790860136476574300/stdout.jsonl",
+      "bytes": 49440,
+      "sha256": "8a34be636247621294e520140bc5b868a132489e38d4490eddbaff8ca68d2e75"
+    }
+  ]
+}

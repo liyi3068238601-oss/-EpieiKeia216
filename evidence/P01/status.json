@@ -6,7 +6,7 @@
   "plan_version": "1.1",
   "product_version": "0.1.0",
   "stage": "P01",
-  "stage_status": "blocked",
+  "stage_status": "running",
   "current_task": "P01-U02",
   "G00": "pass",
   "G01": "pending",
@@ -32,7 +32,7 @@
       "dependencies": [
         "P01-U01"
       ],
-      "status": "blocked",
+      "status": "ready_for_review",
       "card_sha256": "f65e1a36fb777b7f722a020a6366befc53e095965569b7c14ef0f6dfb4717d6f",
       "checks": {
         "no_key_control": {
@@ -55,8 +55,8 @@
           "status": "pass",
           "evidence": {
             "path": "evidence/P01-U02/20261001-01/summary-mock.json",
-            "bytes": 75673,
-            "sha256": "f090fdf3926de2d948d400d50160a47a4e3fbfcfa24400d8cb66675269464975"
+            "bytes": 75996,
+            "sha256": "d4e75a235d6855dfd43eb2fac6fb1b9efe91f987a7971df14c9f9e9f6c36fbfe"
           }
         },
         "startup_port_isolation": {
@@ -72,21 +72,33 @@
           "reason": "Hidden native capture timed out; functional DOM/settings persistence only"
         },
         "real_model_routes": {
-          "status": "NOT_RUN",
-          "generation_calls_made": 0,
-          "reason": "Pending user choice of gateway credential transport"
+          "status": "pass",
+          "generation_calls_made": 4,
+          "scope": "two official model-ID native read/role routes; backend independence unconfirmed",
+          "evidence": [
+            {
+              "path": "evidence/P01-U02/20261001-01/summary-real-flash.json",
+              "bytes": 33252,
+              "sha256": "fbb09b0344e2866778350b53d503537514cf73345dc28b8d7cffb6597e08d5c0"
+            },
+            {
+              "path": "evidence/P01-U02/20261001-01/summary-real-pro.json",
+              "bytes": 29899,
+              "sha256": "541bb39550b909fccbe29bce1fd005977dd31a360ef2f668545f9471604aabc0"
+            }
+          ]
         },
         "independent_acceptance": {
           "status": "pending",
-          "reason": "U02 is not yet ready_for_review"
+          "reason": "Author ready_for_review; exact commit review required"
         },
         "pending_transport_guard": {
           "status": "pass",
           "scope": "synthetic/refusal check; not a real model route pass",
           "evidence": {
             "path": "evidence/P01-U02/20261001-01/transport-gate-verification.json",
-            "bytes": 1094,
-            "sha256": "f87ec65185e76016deb895473af3047bda7b14cd35c8596738f7c437a8307a56"
+            "bytes": 1307,
+            "sha256": "2f8b5bb347165630c259da0fd9b5c25d4acf77407071c4a76117bec6446ea17f"
           }
         },
         "pending_transport_guard_optimized": {
@@ -94,8 +106,8 @@
           "scope": "synthetic/refusal check; not a real model route pass",
           "evidence": {
             "path": "evidence/P01-U02/20261001-01/transport-gate-verification-optimized.json",
-            "bytes": 1093,
-            "sha256": "6e9dd1f45a20e11f3bbadec72ffbd870e81d040d9b82e6e902665a576faf09c0"
+            "bytes": 1306,
+            "sha256": "b5adaaeb2583a1bfdcf8deb361640ccc9d9d4705c6d5641224facb5602a99637"
           }
         },
         "native_continuation_guard": {
@@ -104,11 +116,10 @@
           "evidence": {
             "path": "evidence/P01-U02/20261001-01/continuation-guard-verification.json",
             "bytes": 1186,
-            "sha256": "279e45d7bd122e059bba2d9ff4f9b1417cd9432e360f99c5c9efbabed4638a44"
+            "sha256": "a277003f99024f71e76b1d284e1dd7bcb5fc383cf6b9172e43b2a151847eb2d8"
           }
         }
-      },
-      "blocking_condition": "gateway-transport-confirmation; authorized model routes are preserved; no response to the existing transport question"
+      }
     },
     {
       "id": "P01-U03",
@@ -199,21 +210,35 @@
     }
   ],
   "model_authorization": {
+    "stage": "P01",
     "status": "authorized",
-    "provider": "7877",
+    "provider": "deepseek-official",
     "models": [
-      "[基元]deepseek-flash",
-      "[基元]glm-5.3-flash"
+      "deepseek-flash",
+      "deepseek-v4-pro"
     ],
     "budget_limit": null,
     "initial_request_limit": 18,
-    "generation_calls_made": 0,
-    "scope": "P01 role and synthetic read-only tests; actual credentials in parent memory only",
-    "user_reply": "授权这两个模型用于 P01",
+    "scope": "Role materials and synthetic read-only fixtures; existing official credential only in parent memory; no DSH/Dream default start",
+    "user_reply": "使用deepseek官方的模型吧",
+    "budget_origin": "Earlier user reply 无上限 remains in effect",
+    "prior_authorization": {
+      "path": "evidence/P01/history/20261001-7877/authorization.json",
+      "bytes": 610,
+      "sha256": "0b3a037f11f9981fc5d71a9a0e1dc87d200a2f90abfadacee34a92514ec136cf"
+    },
+    "metadata_preflight": {
+      "path": "evidence/P01/deepseek-official-preflight.json",
+      "bytes": 353,
+      "sha256": "248cb7eb9454a81b3aa8bb56da7813168a7600150619254fd73838d219e19a6f"
+    },
+    "generation_calls_at_authorization": 0,
+    "route_independence": "Two valid API model IDs; backend independence is not asserted while official sources disagree on Pro routing",
+    "generation_calls_made": 4,
     "transport_decision": {
       "path": "evidence/P01/transport-decision.json",
-      "bytes": 760,
-      "sha256": "0bae555e15b21b5c6898b3e985fc1737d1dab30cc3c27e3989d7e82ab6e24ed6"
+      "bytes": 614,
+      "sha256": "a527ab46e12bb3c70930e3ea4ea41135f15eceded8266887238c90847b78656b"
     }
   },
   "persona_asset_state": "v3 clarifies user-approved v2; all four versions preserved; runtime asset not yet created",
@@ -249,7 +274,7 @@
   },
   "blocked_audit": {
     "path": "evidence/P01/blocked-audit.json",
-    "bytes": 1514,
-    "sha256": "c10c698b98a941ac698069b10d3298a94fe9a8a0dbf18b4c7118953b68f1ec36"
+    "bytes": 572,
+    "sha256": "b48c0411a658360fcd2ae67373226dc86217ebcf555a8b476bcfa0a5619434ec"
   }
 }

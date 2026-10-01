@@ -1,0 +1,57 @@
+{
+  "provider": "DeepSeek official",
+  "actual_generation_requests": 4,
+  "initial_stage_request_cap": 18,
+  "initial_requests_remaining": 14,
+  "budget_limit": null,
+  "actual_account_charge": "not returned/observed; estimates are not bills",
+  "routes": [
+    {
+      "model_id": "deepseek-flash",
+      "requests": 2,
+      "prompt_tokens": 8840,
+      "cache_hit_tokens": 4224,
+      "cache_miss_tokens": 4616,
+      "completion_tokens": 118,
+      "conservative_peak_rate_cny_per_million": {
+        "hit": 0.04,
+        "miss": 2.0,
+        "output": 8.0
+      },
+      "estimated_peak_ceiling_cny": 0.01034496,
+      "evidence": {
+        "path": "evidence/P01-U02/20261001-01/summary-real-flash.json",
+        "bytes": 33252,
+        "sha256": "fbb09b0344e2866778350b53d503537514cf73345dc28b8d7cffb6597e08d5c0"
+      }
+    },
+    {
+      "model_id": "deepseek-v4-pro",
+      "requests": 2,
+      "prompt_tokens": 8860,
+      "cache_hit_tokens": 4352,
+      "cache_miss_tokens": 4508,
+      "completion_tokens": 115,
+      "conservative_peak_rate_cny_per_million": {
+        "hit": 0.3,
+        "miss": 9.0,
+        "output": 27.0
+      },
+      "estimated_peak_ceiling_cny": 0.0449826,
+      "evidence": {
+        "path": "evidence/P01-U02/20261001-01/summary-real-pro.json",
+        "bytes": 29899,
+        "sha256": "541bb39550b909fccbe29bce1fd005977dd31a360ef2f668545f9471604aabc0"
+      }
+    }
+  ],
+  "estimated_combined_peak_ceiling_cny": 0.05532756,
+  "price_source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+  "routing_conflict_source": "https://www.deepseek.com/en/news/deepseek-v4-1-flash/",
+  "estimate_limit": "Conservative published model-ID peak prices; actual off-peak/cache/rerouting/account charge may differ",
+  "ledger": {
+    "path": "evidence/P01/model-calls.jsonl",
+    "bytes": 890,
+    "sha256": "c3a6befb04fed0afb37d01527d38f4e9b50853041e5c37da1d0813eefb5fa184"
+  }
+}

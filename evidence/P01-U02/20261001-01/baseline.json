@@ -1,6 +1,6 @@
 {
   "task": "P01-U02",
-  "status": "blocked",
+  "status": "ready_for_review",
   "author_base_commit": "3b5f634bf9722216edb169210c94147212734f48",
   "accepted_P00_commit": "7ab0e81f63e9559a1b182f43b9e242e8a8e703fa",
   "plan": "planning/Xiadie_V2_v1.1",
@@ -47,8 +47,8 @@
       "status": "pass",
       "evidence": {
         "path": "evidence/P01-U02/20261001-01/summary-mock.json",
-        "bytes": 75673,
-        "sha256": "f090fdf3926de2d948d400d50160a47a4e3fbfcfa24400d8cb66675269464975"
+        "bytes": 75996,
+        "sha256": "d4e75a235d6855dfd43eb2fac6fb1b9efe91f987a7971df14c9f9e9f6c36fbfe"
       }
     },
     "startup_port_isolation": {
@@ -64,21 +64,33 @@
       "reason": "Hidden native capture timed out; functional DOM/settings persistence only"
     },
     "real_model_routes": {
-      "status": "NOT_RUN",
-      "generation_calls_made": 0,
-      "reason": "Pending user choice of gateway credential transport"
+      "status": "pass",
+      "generation_calls_made": 4,
+      "scope": "two official model-ID native read/role routes; backend independence unconfirmed",
+      "evidence": [
+        {
+          "path": "evidence/P01-U02/20261001-01/summary-real-flash.json",
+          "bytes": 33252,
+          "sha256": "fbb09b0344e2866778350b53d503537514cf73345dc28b8d7cffb6597e08d5c0"
+        },
+        {
+          "path": "evidence/P01-U02/20261001-01/summary-real-pro.json",
+          "bytes": 29899,
+          "sha256": "541bb39550b909fccbe29bce1fd005977dd31a360ef2f668545f9471604aabc0"
+        }
+      ]
     },
     "independent_acceptance": {
       "status": "pending",
-      "reason": "U02 is not yet ready_for_review"
+      "reason": "Author ready_for_review; exact commit review required"
     },
     "pending_transport_guard": {
       "status": "pass",
       "scope": "synthetic/refusal check; not a real model route pass",
       "evidence": {
         "path": "evidence/P01-U02/20261001-01/transport-gate-verification.json",
-        "bytes": 1094,
-        "sha256": "f87ec65185e76016deb895473af3047bda7b14cd35c8596738f7c437a8307a56"
+        "bytes": 1307,
+        "sha256": "2f8b5bb347165630c259da0fd9b5c25d4acf77407071c4a76117bec6446ea17f"
       }
     },
     "pending_transport_guard_optimized": {
@@ -86,8 +98,8 @@
       "scope": "synthetic/refusal check; not a real model route pass",
       "evidence": {
         "path": "evidence/P01-U02/20261001-01/transport-gate-verification-optimized.json",
-        "bytes": 1093,
-        "sha256": "6e9dd1f45a20e11f3bbadec72ffbd870e81d040d9b82e6e902665a576faf09c0"
+        "bytes": 1306,
+        "sha256": "b5adaaeb2583a1bfdcf8deb361640ccc9d9d4705c6d5641224facb5602a99637"
       }
     },
     "native_continuation_guard": {
@@ -96,12 +108,21 @@
       "evidence": {
         "path": "evidence/P01-U02/20261001-01/continuation-guard-verification.json",
         "bytes": 1186,
-        "sha256": "279e45d7bd122e059bba2d9ff4f9b1417cd9432e360f99c5c9efbabed4638a44"
+        "sha256": "a277003f99024f71e76b1d284e1dd7bcb5fc383cf6b9172e43b2a151847eb2d8"
       }
     }
   },
-  "approved_reuse_decision": "pending real route and independent review",
+  "approved_reuse_decision": "author submitted native-route adoption for independent acceptance",
   "product_implementation_started": false,
   "P02_started": false,
-  "blocking_condition": "pending gateway transport choice; true model path NOT_RUN; downstream dependencies not available"
+  "model_authorization": {
+    "path": "evidence/P01/authorization.json",
+    "bytes": 1032,
+    "sha256": "1be7b1502633c8957fe0e63a0ee2736c396eb7232aa4a82b164d225106c381d9"
+  },
+  "transport": {
+    "path": "evidence/P01/transport-decision.json",
+    "bytes": 614,
+    "sha256": "a527ab46e12bb3c70930e3ea4ea41135f15eceded8266887238c90847b78656b"
+  }
 }

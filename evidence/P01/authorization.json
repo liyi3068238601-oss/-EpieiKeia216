@@ -1,19 +1,26 @@
 {
   "stage": "P01",
   "status": "authorized",
-  "provider": "7877",
+  "provider": "deepseek-official",
   "models": [
-    "[基元]deepseek-flash",
-    "[基元]glm-5.3-flash"
+    "deepseek-flash",
+    "deepseek-v4-pro"
   ],
   "budget_limit": null,
   "initial_request_limit": 18,
-  "scope": "Role materials and synthetic read-only fixtures only; parent-memory real credentials; no DSH/Dream default start",
-  "user_reply": "授权这两个模型用于 P01",
-  "prior_metadata": {
-    "path": "evidence/P01/preflight.json",
-    "bytes": 2139,
-    "sha256": "e850a0862ad927433076651c7f28ffb4c56fdd82512b9f39324acc992f1c1873"
+  "scope": "Role materials and synthetic read-only fixtures; existing official credential only in parent memory; no DSH/Dream default start",
+  "user_reply": "使用deepseek官方的模型吧",
+  "budget_origin": "Earlier user reply 无上限 remains in effect",
+  "prior_authorization": {
+    "path": "evidence/P01/history/20261001-7877/authorization.json",
+    "bytes": 610,
+    "sha256": "0b3a037f11f9981fc5d71a9a0e1dc87d200a2f90abfadacee34a92514ec136cf"
   },
-  "generation_calls_at_authorization": 0
+  "metadata_preflight": {
+    "path": "evidence/P01/deepseek-official-preflight.json",
+    "bytes": 353,
+    "sha256": "248cb7eb9454a81b3aa8bb56da7813168a7600150619254fd73838d219e19a6f"
+  },
+  "generation_calls_at_authorization": 0,
+  "route_independence": "Two valid API model IDs; backend independence is not asserted while official sources disagree on Pro routing"
 }

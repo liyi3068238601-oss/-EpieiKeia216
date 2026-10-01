@@ -13,7 +13,6 @@ import msvcrt
 from contextlib import contextmanager
 
 import httpx
-import yaml
 
 from importlib.util import spec_from_file_location, module_from_spec
 
@@ -23,7 +22,8 @@ SPIKE = ROOT / 'spikes/P01'
 EVIDENCE = ROOT / 'evidence/P01-U02/20261001-01'
 PIN = '29628c9acdb81b703bbd4080c207a0e7ce5e276e'
 NODE = ROOT / '.runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe'
-MODELS = ['[基元]deepseek-flash', '[基元]glm-5.3-flash']
+MODELS = ['deepseek-flash', 'deepseek-v4-pro']
+OFFICIAL_PROVIDER_CONFIG = Path(r'C:\Users\liyi\.zcode\v2\provider_config.json')
 CODE = ['probe.py', 'host.mjs', 'plugin/.zcode-plugin/plugin.json', 'plugin/hooks/hooks.json', 'plugin/hooks/context.mjs']
 
 
@@ -104,20 +104,21 @@ def run(mode, model):
     key = url = None
     if mode == 'real':
         auth = json.loads((ROOT / 'evidence/P01/authorization.json').read_text(encoding='utf-8'))
-        require(auth['status'] == 'authorized' and model in auth['models'], 'P01 model is not authorized')
+        require(auth['status'] == 'authorized' and auth['provider'] == 'deepseek-official' and model in auth['models'], 'P01 model is not authorized')
         transport = json.loads((ROOT / 'evidence/P01/transport-decision.json').read_text(encoding='utf-8'))
-        require(transport['status'] == 'confirmed', '7877 transport choice is pending; no credentials may be loaded or sent')
+        require(transport['status'] == 'confirmed', 'Model transport choice is pending; no credentials may be loaded or sent')
         require(__debug__, 'P01 integration probes require assertion validation; optimized execution is unsupported')
         ui = json.loads((EVIDENCE / 'summary-no-key-ui.json').read_text(encoding='utf-8'))
         require(ui['passed'], 'Real generation follows actual no-Key settings UI proof')
         mock = json.loads((EVIDENCE / 'summary-mock.json').read_text(encoding='utf-8'))
         require(mock['passed'] and mock.get('python_assertions_enabled') is True and mock['code_bindings'] == code, 'Current native mock evidence is missing or stale')
         url = transport['approved_base_url'].rstrip('/')
-        require(url.startswith('https://') or (transport.get('user_accepted_plain_http') is True and url == 'http://47.108.250.118:15555/v1'), 'Transport URL is not approved')
-        provider = yaml.safe_load(Path(r'C:\Users\liyi\.dsh\settings.yaml').read_text(encoding='utf-8'))['llm-pi-ai']['providers']['a7877']
-        require(provider['baseURL'].rstrip('/') == 'http://47.108.250.118:15555/v1', 'Configured 7877 route changed')
-        key = yaml.safe_load(Path(r'C:\Users\liyi\.dsh\.credentials.yaml').read_text(encoding='utf-8'))['refs'][provider['apiKeyEnv']]
-        require(bool(key), '7877 credential is unavailable')
+        require(url == 'https://api.deepseek.com' and transport['provider'] == 'deepseek-official', 'Official HTTPS transport is not approved')
+        providers = json.loads(OFFICIAL_PROVIDER_CONFIG.read_text(encoding='utf-8'))['config']['providerConfigRules']['providerRules']
+        matching = [p['config'] for p in providers if p.get('config', {}).get('api', {}).get('baseUrl', '').rstrip('/') == url]
+        require(len(matching) == 1 and matching[0]['api']['type'] == 'openai-chat-completions', 'Official provider is missing or ambiguous')
+        key = matching[0].get('access', {}).get('apiKey')
+        require(isinstance(key, str) and bool(key), 'Official credential is unavailable')
     else:
         require(__debug__, 'P01 integration probes require assertion validation; optimized execution is unsupported')
     run_id = mode + '-' + str(time.time_ns())
@@ -192,7 +193,7 @@ def run(mode, model):
                 if used >= 18 or not isinstance(body.get('max_tokens'), int) or not 1 <= body['max_tokens'] <= 1024:
                     entry['policy_denied'] = True
                     return self.respond(400, {'error': {'message': 'P01 authorized request cap reached'}})
-                event = {'attempt': used + 1, 'run_id': run_id, 'model': model, 'stage': 'P01-U02', 'status': 'attempted; external outcome may be unknown', 'timestamp': time.time()}
+                event = {'attempt': used + 1, 'run_id': run_id, 'provider': 'deepseek-official', 'model': model, 'stage': 'P01-U02', 'status': 'attempted; external outcome may be unknown', 'timestamp': time.time()}
                 with ledger.open('a', encoding='utf-8', newline='\n') as f:
                     f.write(json.dumps(event, ensure_ascii=False) + '\n'); f.flush(); os.fsync(f.fileno())
                 entry['upstream_attempted'] = True
@@ -216,6 +217,7 @@ def run(mode, model):
                         frames.append(frame)
                         if frame.get('usage'):
                             entry['usage'] = frame['usage']
+                entry['response_model_ids'] = sorted({f['model'] for f in frames if isinstance(f.get('model'), str)})
                 entry['response_sha256'] = hashlib.sha256(payload).hexdigest()
             else:
                 tool = phase != 'compact' and counts[phase] == 1
@@ -273,7 +275,7 @@ def run(mode, model):
                 'ZCODE_PERSONAL_PROVIDER_CONFIG_FILE': str(personal), 'ZCODE_BUILTIN_PROVIDER_CONFIG_FILE': str(SOURCE / 'config/provider/zcode-builtin.json'),
                 'P01_PACKET_PATH': str(packet), 'P01_HOOK_LOG': str(hook_log), 'P01_NATIVE_TOOL_RECEIPTS': str(native_receipt_file), 'NODE_ENV': 'production'})
     command = [str(NODE), '--import', (SOURCE / 'node_modules/tsx/dist/esm/index.mjs').as_uri(), str(SPIKE / 'host.mjs'), str(work / 'spec.json')]
-    before = helper.globals_snapshot()
+    before = helper.globals_snapshot() + [{'label': 'production-official-provider', 'exists': OFFICIAL_PROVIDER_CONFIG.exists(), 'sha256': sha(OFFICIAL_PROVIDER_CONFIG)}]
     started = time.monotonic(); failure = None; passed = False
     try:
         proc = subprocess.run(command, cwd=fixture, env=env, capture_output=True, timeout=400)
@@ -324,18 +326,18 @@ def run(mode, model):
     finally:
         server.shutdown(); server.server_close()
         save(out / 'requests.json', requests)
-        after = helper.globals_snapshot()
+        after = helper.globals_snapshot() + [{'label': 'production-official-provider', 'exists': OFFICIAL_PROVIDER_CONFIG.exists(), 'sha256': sha(OFFICIAL_PROVIDER_CONFIG)}]
         summary = {'mode': mode, 'model': model, 'run_id': run_id, 'passed': passed and before == after, 'python_assertions_enabled': __debug__,
                    'failure': failure, 'source_commit': PIN, 'code_bindings': code, 'role_sha256': sha(role_path),
                    'command': command, 'cwd': str(fixture), 'exit_code': proc.returncode if 'proc' in locals() else None,
                    'elapsed_seconds': round(time.monotonic()-started,3), 'production_unchanged': before == after,
                    'production_before': before, 'production_after': after,
                    'turns': turns if 'turns' in locals() else [], 'model_calls': sum(bool(q.get('upstream_attempted')) for q in requests),
-                   'usage': [q['usage'] for q in requests if q.get('usage')], 'gateway_cost': 'not returned' if mode == 'real' else 'no paid model calls',
+                   'usage': [q['usage'] for q in requests if q.get('usage')], 'gateway_cost': 'not returned by official API; usage recorded' if mode == 'real' else 'no paid model calls',
                    'runtime_kind': 'actual pinned ZCode bootstrap, provider, plugin Hook, Loop, executor and SQLite; mock/real provider recorded separately',
                    'artifacts': [{'path': p.relative_to(ROOT).as_posix(), 'bytes': p.stat().st_size, 'sha256': sha(p)} for p in out.iterdir() if p.is_file()]}
         save(out / 'summary.json', summary)
-        save(EVIDENCE / ('summary-mock.json' if mode == 'mock' else 'summary-real-' + ('deepseek' if model == MODELS[0] else 'glm') + '.json'), summary)
+        save(EVIDENCE / ('summary-mock.json' if mode == 'mock' else 'summary-real-' + ('flash' if model == MODELS[0] else 'pro') + '.json'), summary)
         print(json.dumps({'run_id':run_id,'passed':summary['passed'],'exit_code':summary['exit_code'],'model_calls':summary['model_calls'],'failure':failure},ensure_ascii=False),flush=True)
     return summary['passed']
 

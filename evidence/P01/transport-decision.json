@@ -1,16 +1,16 @@
 {
   "stage": "P01",
-  "status": "pending",
-  "model_authorization": "The two 7877 model routes remain authorized; this pending choice only concerns credential transport discovered during U02 review",
-  "configured_base_url": "http://47.108.250.118:15555/v1",
-  "approved_base_url": null,
+  "status": "confirmed",
+  "provider": "deepseek-official",
+  "configured_base_url": "https://api.deepseek.com",
+  "approved_base_url": "https://api.deepseek.com",
   "user_accepted_plain_http": false,
-  "https_metadata_probe": {
-    "url": "https://47.108.250.118:15555/v1/models",
-    "authentication": "none",
-    "generation_requests": 0,
-    "result": "ConnectError: SSL wrong version number; this port does not serve HTTPS"
-  },
-  "question": "Use a user-provided HTTPS entry for the same gateway, or explicitly retain the configured HTTP route after disclosing unencrypted credential transmission",
-  "generation_calls_made": 0
+  "user_reply": "使用deepseek官方的模型吧",
+  "tls_verification": "Authenticated GET /models returned 200 with certificate verification; redirects disabled",
+  "generation_calls_made": 0,
+  "supersedes": {
+    "path": "evidence/P01/history/20261001-7877/transport-decision.json",
+    "bytes": 760,
+    "sha256": "0bae555e15b21b5c6898b3e985fc1737d1dab30cc3c27e3989d7e82ab6e24ed6"
+  }
 }
