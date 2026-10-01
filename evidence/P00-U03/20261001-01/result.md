@@ -1,6 +1,6 @@
 # P00-U03 结果
 
-**作者状态：** `ready_for_review`  
+**作者状态：** `ready_for_review`
 **范围：** 只读旧工程盘点；未接受、未修改执行状态、未 stage/commit。
 
 任务卡 `planning/Xiadie_V2_v1.1/tasks/P00-U03.md` 第 11、15–27 行授权新增 `docs/baseline/local-inventory.md`，要求检查历史路径、区分资料/人格资产/旧数据库/不可覆盖内容、记录来源决定与命令证据，并明确缺失路径标 unknown。`AGENTS.md` 第 3、7–11 行要求冻结计划、保护项目与生产数据、记录命令/哈希/限制，并由作者提交 `ready_for_review`。前置 U02 整体验收收据为 `evidence/P00-U02/20261001-01/acceptance.json`，状态 `accepted`。新项目根盘点开始时为 `9e70d861102f1e2738e034311a6e220ad74377c8`；执行期间主控为 U02 复审追加 metadata 并提交 `97cf03ee156e9201dda9ee1dfa0fddd7ee53efa7`，该主控提交不是本盘点写入。

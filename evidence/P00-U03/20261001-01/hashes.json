@@ -30,8 +30,8 @@
     },
     {
       "path": "docs/baseline/local-inventory.md",
-      "sha256": "dd24263b9ff93004e90ad0d0c34df0e614a74991a162b7c360da58a8099a1185",
-      "bytes": 2765
+      "sha256": "04451a3ef65269182c1e7ed1af1ba10ba3648ff709c364b4668fb5ca2efdf914",
+      "bytes": 2763
     },
     {
       "path": "evidence/P00-U03/20261001-01/preflight.json",
@@ -40,13 +40,27 @@
     },
     {
       "path": "evidence/P00-U03/20261001-01/result.md",
-      "sha256": "56ef59280ed78800709b4230a09e772585974b55a4a7698e713ea280d0f57bcf",
-      "bytes": 3509
+      "sha256": "6d84fabe4b9b02cbedbda9b155c94a55091a552beb637b8a6036e83c4f30dc34",
+      "bytes": 3507
     },
     {
       "path": "evidence/P00-U03/20261001-01/run.json",
       "sha256": "1cdfe632911c6575a3d15cd211f95c303e7b66176c40adac3cdac4fe1a3b1eec",
       "bytes": 3980
+    }
+  ],
+  "coordinator_format_fix": [
+    {
+      "path": "docs/baseline/local-inventory.md",
+      "previous_sha256": "dd24263b9ff93004e90ad0d0c34df0e614a74991a162b7c360da58a8099a1185",
+      "sha256": "04451a3ef65269182c1e7ed1af1ba10ba3648ff709c364b4668fb5ca2efdf914",
+      "reason": "remove Markdown trailing-space hard break; content unchanged"
+    },
+    {
+      "path": "evidence/P00-U03/20261001-01/result.md",
+      "previous_sha256": "56ef59280ed78800709b4230a09e772585974b55a4a7698e713ea280d0f57bcf",
+      "sha256": "6d84fabe4b9b02cbedbda9b155c94a55091a552beb637b8a6036e83c4f30dc34",
+      "reason": "remove Markdown trailing-space hard break; content unchanged"
     }
   ]
 }
