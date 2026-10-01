@@ -7,7 +7,7 @@
   "product_version": "0.1.0",
   "stage": "P01",
   "stage_status": "running",
-  "current_task": "P01-U01",
+  "current_task": "P01-U02",
   "G00": "pass",
   "G01": "pending",
   "tasks": [
@@ -17,8 +17,14 @@
       "dependencies": [
         "P00-U12"
       ],
-      "status": "ready_for_review",
-      "card_sha256": "1dcbc0cf345b9920e2f33d162f31e6d9d6d02864f0ef7495be5bc3dd409c2634"
+      "status": "accepted",
+      "card_sha256": "1dcbc0cf345b9920e2f33d162f31e6d9d6d02864f0ef7495be5bc3dd409c2634",
+      "author_commit": "15ef754b7ef6803348deacede06b73dfd77e7e82",
+      "acceptance": {
+        "path": "evidence/P01-U01/20261001-01/acceptance.json",
+        "bytes": 3861,
+        "sha256": "8af63d14b538aaab562efabad4d97c9b1c4cff4346403a3b87fb5f5ec9d30d0e"
+      }
     },
     {
       "id": "P01-U02",
@@ -26,7 +32,7 @@
       "dependencies": [
         "P01-U01"
       ],
-      "status": "not_started",
+      "status": "running",
       "card_sha256": "f65e1a36fb777b7f722a020a6366befc53e095965569b7c14ef0f6dfb4717d6f"
     },
     {

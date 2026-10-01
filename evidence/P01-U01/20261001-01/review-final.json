@@ -1,0 +1,24 @@
+{
+  "task_id": "P01-U01",
+  "review_revision": 2,
+  "reviewer": "/root/p01_gate_audit",
+  "status": "pass",
+  "author_commit": "15ef754b7ef6803348deacede06b73dfd77e7e82",
+  "ready_manifest": {
+    "path": "evidence/P01-U01/20261001-01/ready-for-review.json",
+    "bytes": 3386,
+    "sha256": "05c21b5d9212f709fdefac8df5e4af1cdc52b5ba4cebd8b0fe6d914dabb8f01e"
+  },
+  "submission": {
+    "path": "evidence/P01-U01/20261001-01/submission.json",
+    "bytes": 624,
+    "sha256": "74cd5686179294d631985cba378595aba57fc0befac577479b0a810e63b018d8"
+  },
+  "bindings_verified_against_disk_and_commit": 16,
+  "mismatches": 0,
+  "scope": "Independent delta re-review after initial full research review; not runtime/product acceptance",
+  "findings": "Private-workspace seam restriction corrected; author commit bound; old rejected version retained",
+  "commands": "git show exact author commit blobs and SHA checks; research verifier exit 0 in first review; no product/model run in delta review",
+  "evidence_kind": "Reviewer report from collaboration message, recorded by sole root writer; no invented raw stdout file",
+  "paid_requests": 0
+}
