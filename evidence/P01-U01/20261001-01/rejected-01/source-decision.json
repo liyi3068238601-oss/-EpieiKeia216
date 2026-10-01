@@ -1,0 +1,22 @@
+{
+  "task_id": "P01-U01",
+  "status": "research_candidate_only; final adoption depends on accepted U02",
+  "preferred": "official ZCode plugin plus thin bootstrap host using public native event subscription",
+  "alternatives": [
+    {
+      "route": "small downstream Host patch",
+      "decision": "defer unless preferred route reproducibly fails"
+    },
+    {
+      "route": "plugin-owned model client / DSH main loop",
+      "decision": "reject; conflicts with frozen main-runtime boundary"
+    }
+  ],
+  "herta": "mechanism/test-design reference only; no copied code or excluded character assets",
+  "zcode_source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "plugin_docs_commit": "c94279c9a449235fd5991f7903a6c7e4fdc3ab7e",
+  "persona": "v3 maintains user-approved v2 content choice; all four versions retained; private source excluded from Git and model input",
+  "report": "docs/research/P01/native-reuse.md",
+  "production_code_written": false,
+  "model_generation_requests": 0
+}

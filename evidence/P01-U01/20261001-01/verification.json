@@ -1,0 +1,186 @@
+{
+  "task": "P01-U01",
+  "status": "research_checks_pass",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "baseline_commit": "d1d46065f7bbe7e01addbf0375b6025995620583",
+  "sources": [
+    {
+      "path": ".runtime/P00/zcode/source",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "clean": true
+    },
+    {
+      "path": ".runtime/P00/dsh/source",
+      "commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "clean": true
+    },
+    {
+      "path": "references/herta-4623df12",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "clean": true
+    }
+  ],
+  "prerequisite": {
+    "path": "evidence/P00-U12/20261001-01/acceptance.json",
+    "bytes": 4469,
+    "sha256": "d949e71ef360605258cdefcb750878d9b3977926a01438ba51e0e6f1440534ef"
+  },
+  "task_card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P01-U01.md",
+    "bytes": 2838,
+    "sha256": "1dcbc0cf345b9920e2f33d162f31e6d9d6d02864f0ef7495be5bc3dd409c2634"
+  },
+  "source_files": [
+    {
+      "path": ".runtime/P00/zcode/source/LICENSE",
+      "bytes": 11546,
+      "sha256": "fa36dc312bc4946b1c22dba3c726ad8d3052b353f81424e7b997dbb3d9b40a49"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/README.md",
+      "bytes": 11031,
+      "sha256": "1883ce9412247e7ff2c2a5d72a24622402e25dd79e9785f9f3ce302f30433e19"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/package.json",
+      "bytes": 4265,
+      "sha256": "d610f59469cc29e8a687a8e5f9f6d7573d71d45add7f4893756d13c32d6793f0"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/README.md",
+      "bytes": 11572,
+      "sha256": "bbf9b47cb7e8056288cb6dd63a69ae1b20a5eb95ea4b4336689da4d5c1fece92"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/package.json",
+      "bytes": 2018,
+      "sha256": "cd12d626b9f169e40b74d0063e92500afbb5985964fa94de1fdd49f3716d0ddb"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/packages/desktop/package.json",
+      "bytes": 4431,
+      "sha256": "4cae658e98c22872c4fd12d5d4dffcded57171d3996956703754a58d1ba17445"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/adapters/src/plugins/hook-sources.ts",
+      "bytes": 5512,
+      "sha256": "0ad7e59b8f7a8c91e6348ecfe93a44e1c0e4f97d58ac96ed311fbbcc69dabf17"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/hooks/configured-runner-input.ts",
+      "bytes": 5392,
+      "sha256": "ba409c54bf3137256b66c0aa75f9d5faa9515e7d03eb1c7acc4217272c710656"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/hooks/configured-runner-callback.ts",
+      "bytes": 7664,
+      "sha256": "450d2e711977431152e1c0ab62c184798eaf69a88e3d3f0289c49d05b502b08c"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/runtime/methods/hooks.ts",
+      "bytes": 5114,
+      "sha256": "b2a394823d6b325e9f322b2d219d3e12046a2cafc880c0e0aa8b76315be3fa00"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/core/src/runtime/agent-runtime.ts",
+      "bytes": 28991,
+      "sha256": "42c3b5091039301b9e6da2c5f578c9fce896e9048e5706fb7c5954df91e291dd"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/bootstrap/src/app/types.ts",
+      "bytes": 31757,
+      "sha256": "38102f760a43ad94bdd13f4f7ab3190bd7017d6caa60c5d5b1d559cc0a58ac26"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/bootstrap/src/app/provider-registry-model-runtime.ts",
+      "bytes": 3604,
+      "sha256": "3f2113c77c7319161f1cd62e8bd2866ec8eef77667c59ff49fa23f8e3dd83470"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/bootstrap/src/plugins.ts",
+      "bytes": 54485,
+      "sha256": "6bab6b92bb1351a78fadfdd8ec0ad1e2e95d38e044cb7dbebd29fe1d7fdc369f"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/adapters/src/config/file-config.adapter.ts",
+      "bytes": 20203,
+      "sha256": "320c51458acf2b84c9e28369f935655669ed33ef39a08cd46966a1a61abb00c2"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/apps/zcode-cli/packages/contracts/src/events/session.events.ts",
+      "bytes": 44451,
+      "sha256": "9499625625d99d6d26e48dde03b7900243ac257efc917ce5fb5cc78eb52ed8cb"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/packages/ui/src/settings/PluginConfigControls.tsx",
+      "bytes": 7895,
+      "sha256": "b1f48c296c890ebc08709b3dba6a0060c03072fea8888021749d4ba3b12cd779"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/packages/ui/src/login/LoginApiKeyForm.tsx",
+      "bytes": 10704,
+      "sha256": "fde70eb00c8a4bce5eed621a0ae7dba0e2edec6e5a306ebf75ad830a41492c38"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/packages/provider-node/src/personal-provider-config-repository.ts",
+      "bytes": 10560,
+      "sha256": "0b86d4c19315a0ab25263b6224323fb9ec3898baf5caa26a0d45abe5ce36ab1b"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/packages/services/test/providerConfigMigration.test.ts",
+      "bytes": 5128,
+      "sha256": "2032015eb0713ad2f293298d43748a6d5022c0686304adaeb819df94a42c91f7"
+    },
+    {
+      "path": ".runtime/P00/zcode/source/packages/services/src/zcode-agent/zcodeAgent.ts",
+      "bytes": 37752,
+      "sha256": "fba9bb6c2c5ee35df1026373148ac586a392a06d25b57dd649038105c935e6cc"
+    },
+    {
+      "path": "references/herta-4623df12/LICENSE",
+      "bytes": 2751,
+      "sha256": "bb1f011bb44b82acdcb078fdfcc2f7b6185c930b69a1ee275b518e79e32aea82"
+    },
+    {
+      "path": "references/herta-4623df12/README.md",
+      "bytes": 9282,
+      "sha256": "528091dff215c3bbf872971e127fa246179af33bf65b8cd5f6b804f932403645"
+    },
+    {
+      "path": "references/herta-4623df12/packages/herta/package.json",
+      "bytes": 445,
+      "sha256": "3acbe475a6fa586bdb73aeee58bb8770b9e0fd55e3c7a36f5fcf39c2d9f7f1cc"
+    },
+    {
+      "path": "references/herta-4623df12/packages/herta/src/narrative/static-prefix.ts",
+      "bytes": 7606,
+      "sha256": "d12ee34abf8da9937f6628bfb80a0d0bedde0bfcf16f2d5846be35b6a5c4ed51"
+    },
+    {
+      "path": "references/herta-4623df12/packages/herta/src/narrative/actor-prompt.ts",
+      "bytes": 19295,
+      "sha256": "61430188aa2ee199bc4e7aaccb22b5b6385a3087836b51e2191288e159c159cf"
+    },
+    {
+      "path": "references/herta-4623df12/packages/herta/src/narrative/static-prefix.test.ts",
+      "bytes": 11734,
+      "sha256": "c50bfedfbd734ee7f0e915d2f661ed09632a9c454d61df9840662c78a1e36cae"
+    },
+    {
+      "path": "references/herta-4623df12/packages/herta/src/narrative/actor-prompt.test.ts",
+      "bytes": 30605,
+      "sha256": "1fb7f1744239946c523c6b8af2ec097aaf1695298525847b08d72e3025d07c7c"
+    }
+  ],
+  "tracked_test_paths": [
+    "packages/services/test/importedClaudeRecovery.test.ts",
+    "packages/services/test/nonCliAcpRetirement.test.ts",
+    "packages/services/test/providerConfigMigration.test.ts",
+    "packages/ui/test/nonCliAcpRetirement.test.ts"
+  ],
+  "persona_versions": 4,
+  "private_archive_git_ignored": true,
+  "model_generation_requests": 0,
+  "product_tests_run": false,
+  "scope": "source/version/receipt and persona archive checks only; not U02 or product acceptance"
+}

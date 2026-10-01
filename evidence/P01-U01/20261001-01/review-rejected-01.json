@@ -1,0 +1,18 @@
+{
+  "reviewer": "/root/p01_gate_audit",
+  "status": "rejected; correct and resubmit",
+  "review_kind": "independent read-only review reported by agent; no raw stdout file claimed",
+  "ready_sha256": "f80e908193aaa07c937be0762461d36e169589e02c792b309bf20abda68dd369",
+  "bindings_checked": 15,
+  "mismatches": 0,
+  "command": "python -X utf8 docs/research/P01/verify-research.py",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "exit_code": 0,
+  "findings": [
+    "U01 has no exact author implementation commit; staged hashes cannot replace required commit identity",
+    "subscribeEvents is a fixed source/private workspace bootstrap-runtime seam, not a proven supported external plugin API"
+  ],
+  "research_findings": "licenses, candidate comparison, adjacent tests and limitations otherwise consistent; zero model generation or product tests",
+  "private_persona_content_opened": false,
+  "author_next_action": "narrow wording; create author commit; bind exact commit; resubmit independent review"
+}
