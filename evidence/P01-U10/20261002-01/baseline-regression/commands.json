@@ -1,0 +1,110 @@
+[
+  {
+    "name": "typecheck",
+    "command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "node_modules/typescript/bin/tsc",
+      "--project",
+      "tsconfig.json",
+      "--noEmit"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10-coord",
+    "exit_code": 0,
+    "seconds": 2.185,
+    "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-baseline-regression\\typecheck.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "boundary",
+    "command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "tools/check-import-boundaries.mjs"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10-coord",
+    "exit_code": 0,
+    "seconds": 0.418,
+    "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-baseline-regression\\boundary.log",
+    "bytes": 86,
+    "sha256": "d1176d426fdea04831b5627baf5f985e1166644b4def337de5ac578f66db7aa0"
+  },
+  {
+    "name": "build",
+    "command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "node_modules/typescript/bin/tsc",
+      "--project",
+      "tsconfig.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10-coord",
+    "exit_code": 0,
+    "seconds": 0.618,
+    "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-baseline-regression\\build.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "unit",
+    "command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "tools/run-tests.mjs",
+      "unit"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10-coord",
+    "exit_code": 0,
+    "seconds": 0.418,
+    "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-baseline-regression\\unit.log",
+    "bytes": 5864,
+    "sha256": "5c2b715df765f87bddb088a9d39d69714c8f2e11172a7df349fbbd48e87a6e64"
+  },
+  {
+    "name": "contract",
+    "command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "tools/run-tests.mjs",
+      "contract"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10-coord",
+    "exit_code": 0,
+    "seconds": 0.852,
+    "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-baseline-regression\\contract.log",
+    "bytes": 583,
+    "sha256": "9f9dcff3f0aa7ae16d73e8523d285a67d0eddb4b19caa8e7c1c52e69282bb14e"
+  },
+  {
+    "name": "integration",
+    "command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "tools/run-tests.mjs",
+      "integration"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10-coord",
+    "exit_code": 0,
+    "seconds": 35.324,
+    "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-baseline-regression\\integration.log",
+    "bytes": 21243,
+    "sha256": "add1d78fcfe5361d0a493a26f72a2ebc634881851d6a79ce1a0596a79bd9be55"
+  },
+  {
+    "name": "python-guards",
+    "command": [
+      "python",
+      "-X",
+      "utf8",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/evals/persona",
+      "-p",
+      "test_relay_guards.py",
+      "-v"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10-coord",
+    "exit_code": 0,
+    "seconds": 0.152,
+    "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-baseline-regression\\python-guards.log",
+    "bytes": 1690,
+    "sha256": "ecc5f6ac37aa25d19732be7d68a126521ae9561f318ac9cbac821553fdd651d7"
+  }
+]
