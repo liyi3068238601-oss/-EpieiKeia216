@@ -6,8 +6,8 @@
   "plan_version": "1.1",
   "product_version": "0.1.0",
   "stage": "P01",
-  "stage_status": "paused",
-  "current_task": "P01-U06",
+  "stage_status": "running",
+  "current_task": "P01-U07",
   "G00": "pass",
   "G01": "pending",
   "tasks": [
@@ -280,8 +280,13 @@
       "dependencies": [
         "P01-U06"
       ],
-      "status": "not_started",
-      "card_sha256": "71b278061dd71273d66143ac527916be718a59c8ea1ebcb5d71dab5ab1e017e5"
+      "status": "running",
+      "card_sha256": "71b278061dd71273d66143ac527916be718a59c8ea1ebcb5d71dab5ab1e017e5",
+      "author_worktree": ".runtime/P01/worktrees/u07",
+      "author_branch": "p01-u07",
+      "author_agent": "u07_author",
+      "baseline_commit": "b02ea866e578899eebbdf7a6685665589d7c5a12",
+      "accepted_prerequisite": "P01-U06:ef716c8a1ae4b0c67c9af9ea6d84fee809399d1a"
     },
     {
       "id": "P01-U08",
@@ -410,29 +415,38 @@
         "bytes": 1868,
         "sha256": "157008b05867fd63d1e32838a34bc8108bedcfd5d1b177d40f4d2a33c7947bc4"
       }
+    },
+    {
+      "user_reply": "准备在最完整的可暂定点停止",
+      "paused_at_utc": "2026-10-02T09:26:37.774992+00:00",
+      "after_task": "P01-U06",
+      "checkpoint": {
+        "path": "evidence/P01/checkpoints/U06/checkpoint.json",
+        "bytes": 2686,
+        "sha256": "bd4ca4f29c708391b22cf0f2e781a91c964dd6900e98128f8e96515961b1c156"
+      }
+    }
+  ],
+  "resume_history": [
+    {
+      "path": "evidence/P01/history/20261002-resume-u06/resume.json",
+      "bytes": 1065,
+      "sha256": "3162a10ef919fec8e7413f5783b82c7c88170724426e79e1e483fb0654bcd1ce"
     }
   ],
   "resume": {
-    "path": "evidence/P01/history/20261002-resume-u06/resume.json",
-    "bytes": 1065,
-    "sha256": "3162a10ef919fec8e7413f5783b82c7c88170724426e79e1e483fb0654bcd1ce"
+    "path": "evidence/P01/history/20261002-resume-u07/resume.json",
+    "bytes": 729,
+    "sha256": "5e10051e306f9ace5f588f8e5ec0b785cd206a0cb19482679d0711073eae830b"
   },
-  "pause_request": {
-    "path": "evidence/P01/history/20261002-pause-u06/request.json",
-    "bytes": 623,
-    "sha256": "a16e4ffd65a1f496dcc1a3ab9926502779fb414c2093dfde18a85ee3e69ba2df",
-    "status": "fulfilled",
-    "after_task": "P01-U06",
-    "fulfilled_at_utc": "2026-10-02T09:26:37.774992+00:00"
-  },
-  "pause": {
-    "user_reply": "准备在最完整的可暂定点停止",
-    "paused_at_utc": "2026-10-02T09:26:37.774992+00:00",
-    "after_task": "P01-U06",
-    "checkpoint": {
-      "path": "evidence/P01/checkpoints/U06/checkpoint.json",
-      "bytes": 2686,
-      "sha256": "bd4ca4f29c708391b22cf0f2e781a91c964dd6900e98128f8e96515961b1c156"
+  "pause_request_history": [
+    {
+      "path": "evidence/P01/history/20261002-pause-u06/request.json",
+      "bytes": 623,
+      "sha256": "a16e4ffd65a1f496dcc1a3ab9926502779fb414c2093dfde18a85ee3e69ba2df",
+      "status": "fulfilled",
+      "after_task": "P01-U06",
+      "fulfilled_at_utc": "2026-10-02T09:26:37.774992+00:00"
     }
-  }
+  ]
 }
