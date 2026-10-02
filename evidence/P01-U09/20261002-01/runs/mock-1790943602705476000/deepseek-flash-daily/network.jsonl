@@ -1,0 +1,11 @@
+{"pid":24800,"kind":"guard_loaded"}
+{"pid":24800,"kind":"socket","allowed":false,"target":"p01-egress-canary.invalid"}
+{"pid":24800,"kind":"egress_canary_denied"}
+{"pid":24800,"kind":"socket","allowed":false,"target":"localhost"}
+{"pid":24800,"kind":"guard_loaded"}
+{"pid":24800,"kind":"socket","allowed":false,"target":"p01-egress-canary.invalid"}
+{"pid":24800,"kind":"egress_canary_denied"}
+{"pid":24800,"kind":"socket","allowed":false,"target":"localhost"}
+{"pid":24800,"kind":"request","api":"node.fetch","target":"http://127.0.0.1:63618/v1/chat/completions","allowed":true}
+{"pid":24800,"kind":"socket","allowed":false,"target":"localhost"}
+{"pid":24800,"kind":"uncaught_error","error_type":"Error","message":"P01 no-Key test blocked outbound socket"}

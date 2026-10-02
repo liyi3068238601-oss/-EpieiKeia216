@@ -1,0 +1,24 @@
+{
+  "scope": "P01 small-sample persona qualification, not general model quality or backend independence",
+  "real_run": "real-1790944515494615000",
+  "human_review": {"status": "not_reviewed"},
+  "models": [
+    {
+      "id": "deepseek-flash",
+      "real_scenarios_completed": 5,
+      "baseline_default": true,
+      "qualified_for_candidate": true,
+      "known_revisions": ["Daily parenthetical meta-commentary", "Overlong or excessive explanations"],
+      "limits": "Only the five tested scenarios and approved v3 asset are evidenced. No promise of universal persona consistency."
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "real_scenarios_completed": 5,
+      "baseline_default": false,
+      "qualified_for_candidate": false,
+      "known_revisions": ["The disagreement response reverses who made the claimed accompaniment promise while denying that any such promise is recorded"],
+      "limits": "Retain the real outputs. Do not advertise this route as P01 persona-qualified; qualify again after a justified improvement or model change."
+    }
+  ],
+  "candidate_requirement": "U10 must default to the qualified Flash route and make unqualified persona use unavailable. Disabling the Xiadie extension retains native ZCode behavior. The evaluation runner may still measure both authorized IDs explicitly."
+}

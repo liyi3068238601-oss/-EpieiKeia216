@@ -1,0 +1,28 @@
+{
+  "real_execution_author_commit": "59f9c6e3b01c1f3adeecb0a88ceb78bf45a056ef",
+  "real_summary_sha256": "ed3ef557c0e12df36b569b93ffb93e8bc78b56a141b468a92974d5d344da84d4",
+  "post_fix_mock_summary_sha256": "e93025acac50e7d6455692723cebaccb53d97028e3505c8fb9fe289e7d632135",
+  "changed_bindings": [
+    {
+      "path": "tests/evals/persona/relay.py",
+      "before_sha256": "8b5fa54254ca9bc42d0f2a24657911c94e97a2e4a535120bfbd7cc0788d0aee7",
+      "after_sha256": "d5f940ef759982617affb3c513c94c49da9ec4fc79b679de4705d77ffc392f57"
+    },
+    {
+      "path": "tests/evals/persona/relay_guards.py",
+      "before_sha256": "e2cc48f5166249e413b14f43c67b2e32d41d7e36e067318f717c3f72a4646923",
+      "after_sha256": "d95897ccb770f46c43cc99ffa640eea408a42d8bd19677d3b44a8ff6cf620505"
+    },
+    {
+      "path": "tests/evals/persona/test_relay_guards.py",
+      "before_sha256": "bec43b00002541b1564b25c523ce3f798b76548aa546133572b50abaac6a1d20",
+      "after_sha256": "f0292e51c27347bde7aa9d556b936a78f5cc82959c8d4d699d61b0e85f37444f"
+    }
+  ],
+  "unchanged_bindings": 22,
+  "change_scope": "Exception diagnostics only: use GuardRejection for deterministic checks and suppress external PermissionError text, with a new negative test.",
+  "real_model_repeated_after_fix": false,
+  "preserved_evidence": "Paid outputs remain bound to their original execution hashes; native host, model composition, network guard, profile bridge and assets are byte-identical.",
+  "post_fix_mock_passed": true,
+  "post_fix_mock_generation_requests": 0
+}

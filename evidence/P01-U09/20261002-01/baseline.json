@@ -1,0 +1,20 @@
+{
+  "task": "P01-U09",
+  "attempt": "20261002-01",
+  "baseline_commit": "05e6018092ab743c0431858e4dfc86d9e2e5d8e3",
+  "prerequisite": "P01-U08 accepted",
+  "plan": "planning/Xiadie_V2_v1.1/tasks/P01-U09.md",
+  "plan_modified": false,
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "runtime_persona_sha256": "a688c669c4f556495131ac69cdc868a5b2ee93614eff814fc0793b1690c99bb4",
+  "worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09",
+  "scope_mapping": {
+    "tests/units/P01-U09.test.ts": "tests/evals/persona/native.test.mjs and tests/evals/persona/test_relay_guards.py",
+    "runner_registration": "tools/run-tests.mjs maps the existing node:test runner to U09; Python guards remain an explicitly recorded companion command"
+  },
+  "author_status": "ready_for_review",
+  "real_model_authorization": "evidence/P01/authorization.json and transport-decision.json; official DeepSeek routes, parent-memory credential, synthetic read-only inputs",
+  "initial_generation_limit": 18,
+  "generation_attempts_before_u09": 4,
+  "u09_max_new_generation_requests": 14
+}
