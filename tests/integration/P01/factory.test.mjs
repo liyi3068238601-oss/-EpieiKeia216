@@ -151,6 +151,7 @@ async function withOwnedFactoryFixture(t, { failNativeCreate = false, subscripti
     return {
       sessionId: "fixture-session",
       runtime: {
+        beginShutdown() {},
         subscribeEvents({ onSessionEvent }) {
           if (subscriptionFailure) throw new Error("raw subscription error must not escape");
           sessionEventHandler = onSessionEvent;
@@ -336,6 +337,25 @@ test("enabled factory closes its owned adapter if native app construction fails"
     return port;
   };
   await assert.rejects(f.create({ env: f.env }), /native fixture construction failed/);
+  assert.equal(f.executionCloseCount, 1);
+});
+
+test("native ProtocolRuntimeResources can wrap candidate close and close it exactly once", async (t) => {
+  const f = await withOwnedFactoryFixture(t);
+  const app = await f.create({ env: f.env });
+  assert.equal(Object.getOwnPropertyDescriptor(app, "close")?.writable, true);
+
+  const source = process.env.P01_U10_ZCODE_SOURCE ?? "E:/Xiadie/Xiadie/.runtime/P01/desktop-source";
+  const nativeRuntimeResources = await import(pathToFileURL(path.join(
+    source,
+    "apps/zcode-cli/packages/bootstrap/dist/zcode-protocol/runtime-resources.js",
+  )).href);
+  const resources = new nativeRuntimeResources.ProtocolRuntimeResources(async () => app);
+  const managedApp = await resources.create({});
+  assert.equal(managedApp, app);
+
+  await Promise.all([resources.close(), resources.close(), managedApp.close()]);
+  assert.equal(f.nativeAppCloseCount, 1);
   assert.equal(f.executionCloseCount, 1);
 });
 

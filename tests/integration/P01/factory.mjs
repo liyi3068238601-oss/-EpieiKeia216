@@ -301,6 +301,7 @@ function createAppFacade(host, sidecar, executionLifecycle) {
     submitPrompt: { configurable: true, value: sidecar.wrap("submitPrompt", host.submitPrompt.bind(host)) },
     close: {
       configurable: true,
+      writable: true,
       value: async (...args) => {
         sidecar.closePending();
         try { await host.close?.(...args); }
