@@ -1,0 +1,73 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "success",
+  "status": "failed",
+  "gate_mode": "enabled",
+  "flow": "reply",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send"
+  ],
+  "user_visible_reply": null,
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 11152,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-04",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-candidate04-success-20261002\\scenarios\\success\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-candidate04-success-20261002\\scenarios\\success\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-candidate04-success-20261002\\scenarios\\success\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 3824,
+        "parent_pid": 11152,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 51456,
+        "parent_pid": 11152,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 12768,
+        "parent_pid": 11152,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 55788,
+        "parent_pid": 11152,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 42724,
+        "parent_pid": 11152,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 42560,
+        "parent_pid": 55788,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": false,
+  "failure_code": "ui_assertion_failed",
+  "failure_details": {
+    "name": "TimeoutError",
+    "code": "unknown",
+    "operator": null,
+    "message": "locator.waitFor: Timeout 45000ms exceeded.",
+    "stack": "locator.waitFor: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid^=\"v4-row-\"][class*=\"group/assistant-row\"]').filter({ hasText: '你好，我是遐蝶。我们可以慢慢聊。' }).last() to be visible\u001b[22m\n\n    at waitForVisibleText (E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10-ui\\tests\\integration\\P01\\desktop-ui.mjs:196:24)\n    at E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10-ui\\tests\\integration\\P01\\desktop-ui.mjs:287:11",
+    "windows": 1
+  }
+}

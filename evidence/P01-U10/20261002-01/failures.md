@@ -12,6 +12,9 @@
 | candidate 03 success a | Desktop 从 owned data/.zcode/v2/provider_config.json 读取配置，原测试写入其他路径，界面无模型；同时引导页过渡误判 | 按固定 Desktop paths.ts 写入正确的合成配置路径；未动生产配置 |
 | candidate 03 success b | 界面已有 Flash 和输入框，但隐藏的 onboarding 节点仍被 count 命中，重复 Skip 点击超时 | 优先判断可见输入框；只点击可见引导页并等待步骤切换 |
 | candidate 03 success c | 实际输入和发送后原生协议创建失败，0 模型请求；日志报 close 只读 | 固定 ProtocolRuntimeResources 会接管 app.close；factory 必须保留该方法的原生可写语义，修复后用新候选重跑 |
+| candidate 04 success a | 已进入 CLI，但身份 Hook 没有有效回执，界面明确显示 hook-receipt 拒绝，0 模型请求 | CLI 专用 NODE_OPTIONS 预加载被后代 Hook 继承；改为只在目标 CLI argv 中注入 `--require`，不传播 NODE_OPTIONS |
+
+candidate 04 success b 调试格通过：实际输入框/发送按钮、1 次本地 mock 请求、一个已完成回合的 U07 投影与回复 hash 一致。该格保存在 `debug-smoke/`，完整阶段验收以最终提交上的正式映射 full runner 为准。早期 UI 调试在作者修改期间执行，保留观察结果及原始日志，不将其当作最终代码的完整精确版本回归。
 
 静态独立预审另外指出：构建必须验证干净的作者工作树并将实际输入逐字节对照 commit 的 Git blob；runner 不得只记录 factory/recipe 不匹配而继续通过。网络 guard 也须覆盖实际通过 spawn 启动的 CLI，而不只覆盖 Electron 主进程和 utility host。上述检查是最终验收的前提，不能用较早候选的构建通过代替。
 
