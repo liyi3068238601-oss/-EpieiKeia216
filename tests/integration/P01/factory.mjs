@@ -209,13 +209,13 @@ function projectionSidecar(hostApp, root, createTurnEventCollector) {
         catch { process.stderr.write("P01_PROJECTION_SIDECAR_WRITE_FAILED\n"); }
         cleanup();
       };
-      const record = async (id, result) => {
+      const record = async (id, result, verifiedProjection) => {
         turnId = id;
         try {
           if (subscriptionFailed) throw new Error("event_subscription_failed");
           if (!turnId) throw new Error("missing_turn_id");
           const requiredToolCallIds = scheduled.filter((item) => item.turnId === turnId).map((item) => item.toolCallId);
-          const projection = collector.project(result, requiredToolCallIds);
+          const projection = verifiedProjection ?? collector.project(result, requiredToolCallIds);
           const reply = projection.reply.text;
           const row = {
             schemaVersion: 1,
@@ -240,6 +240,23 @@ function projectionSidecar(hostApp, root, createTurnEventCollector) {
         }
         cleanup();
       };
+      const recordCancelledCompletion = async (id) => {
+        turnId = id;
+        let projection;
+        try {
+          if (subscriptionFailed) throw new Error("event_subscription_failed");
+          const requiredToolCallIds = scheduled.filter((item) => item.turnId === turnId).map((item) => item.toolCallId);
+          projection = collector.project(undefined, requiredToolCallIds);
+          if (projection.lifecycle !== "cancelled" || projection.resultType !== "cancelled") {
+            await appendFailure("turn_completion_failed");
+            return;
+          }
+        } catch {
+          await appendFailure("turn_completion_failed");
+          return;
+        }
+        await record(turnId, undefined, projection);
+      };
       try {
         const result = await method(...args);
         if (methodName === "sendInput" && result?.kind === "started_turn" && result.completion && result.turnId) {
@@ -247,7 +264,7 @@ function projectionSidecar(hostApp, root, createTurnEventCollector) {
           collector.bindTurn(turnId);
           void Promise.resolve(result.completion).then(
             (completion) => record(turnId, completion),
-            () => appendFailure("turn_completion_failed"),
+            () => recordCancelledCompletion(turnId),
           );
         } else if (methodName === "submitPrompt" && typeof result?.turnId === "string") {
           turnId = result.turnId;

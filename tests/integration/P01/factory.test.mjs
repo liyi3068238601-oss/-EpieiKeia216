@@ -30,7 +30,15 @@ function modelOptions(overrides = {}) {
   };
 }
 
-async function withOwnedFactoryFixture(t, { failNativeCreate = false, subscriptionFailure = false, startTurn = false } = {}) {
+async function withOwnedFactoryFixture(t, {
+  failNativeCreate = false,
+  subscriptionFailure = false,
+  startTurn = false,
+  completionError,
+  terminalType = "turn_complete",
+  terminalPayload = { resultType: "success", response: "fixture reply should only be hashed" },
+  emitTerminal = true,
+} = {}) {
   const temp = realpathSync.native(os.tmpdir());
   const root = await mkdtemp(path.join(temp, "p01-u10-factory-"));
   t.after(async () => {
@@ -160,15 +168,20 @@ async function withOwnedFactoryFixture(t, { failNativeCreate = false, subscripti
       },
       async sendInput() {
         if (!startTurn) return { kind: "busy" };
-        for (const [sequenceNumber, type, payload] of [
+        const events = [
           [1, "tool_call_scheduled", { toolCallId: "tool-fixture", toolName: "Read" }],
           [2, "tool_call_result", { toolCallId: "tool-fixture", toolName: "Read", result: { success: true } }],
-          [3, "turn_complete", { resultType: "success", response: "fixture reply should only be hashed" }],
-        ]) sessionEventHandler?.({ sessionId: "fixture-session", turnId: "fixture-turn", sequenceNumber, type, payload });
+          ...(emitTerminal ? [[3, terminalType, terminalPayload]] : []),
+        ];
+        for (const [sequenceNumber, type, payload] of events) {
+          sessionEventHandler?.({ sessionId: "fixture-session", turnId: "fixture-turn", sequenceNumber, type, payload });
+        }
         return {
           kind: "started_turn",
           turnId: "fixture-turn",
-          completion: Promise.resolve({ turnId: "fixture-turn", response: "fixture reply should only be hashed" }),
+          completion: completionError
+            ? Promise.reject(completionError)
+            : Promise.resolve({ turnId: "fixture-turn", response: "fixture reply should only be hashed" }),
         };
       },
       async submitPrompt() { return { turnId: "fixture-turn" }; },
@@ -411,5 +424,60 @@ test("projection subscription failure is recorded as unavailable without exposin
   assert.equal(row.projectionStatus, "unavailable");
   assert.equal(row.reason, "event_subscription_failed");
   assert.equal(contents.includes("raw subscription error"), false);
+  await app.close();
+});
+
+test("native cancelled terminal event projects cancellation when completion rejects", async (t) => {
+  const cancellation = Object.assign(new Error("Turn was cancelled."), { type: "turn_cancelled" });
+  const f = await withOwnedFactoryFixture(t, {
+    startTurn: true,
+    completionError: cancellation,
+    terminalPayload: { resultType: "cancelled" },
+  });
+  const app = await f.create({ env: f.env });
+  const result = await app.sendInput("fixture prompt");
+  await assert.rejects(result.completion, /Turn was cancelled/);
+
+  const sidecarPath = path.join(f.root, "u10-turn-projections.jsonl");
+  let contents;
+  for (let attempt = 0; attempt < 50; attempt += 1) {
+    try { contents = await readFile(sidecarPath, "utf8"); break; }
+    catch { await new Promise((resolve) => setTimeout(resolve, 10)); }
+  }
+  assert.equal(typeof contents, "string");
+  const row = JSON.parse(contents.trim());
+  assert.equal(row.turnId, "fixture-turn");
+  assert.equal(row.projectionStatus, "projected");
+  assert.equal(row.lifecycle, "cancelled");
+  assert.equal(row.resultType, "cancelled");
+  assert.deepEqual(row.toolReceipts, [{ toolCallId: "tool-fixture", toolName: "Read", status: "succeeded" }]);
+  assert.equal(contents.includes("Turn was cancelled"), false);
+  await app.close();
+});
+
+test("a cancellation-shaped completion rejection without native terminal evidence remains unavailable", async (t) => {
+  const cancellation = Object.assign(new Error("Turn was cancelled."), { type: "turn_cancelled" });
+  const f = await withOwnedFactoryFixture(t, {
+    startTurn: true,
+    completionError: cancellation,
+    emitTerminal: false,
+  });
+  const app = await f.create({ env: f.env });
+  const result = await app.sendInput("fixture prompt");
+  await assert.rejects(result.completion, /Turn was cancelled/);
+
+  const sidecarPath = path.join(f.root, "u10-turn-projections.jsonl");
+  let contents;
+  for (let attempt = 0; attempt < 50; attempt += 1) {
+    try { contents = await readFile(sidecarPath, "utf8"); break; }
+    catch { await new Promise((resolve) => setTimeout(resolve, 10)); }
+  }
+  assert.equal(typeof contents, "string");
+  const row = JSON.parse(contents.trim());
+  assert.equal(row.turnId, "fixture-turn");
+  assert.equal(row.projectionStatus, "unavailable");
+  assert.equal(row.reason, "turn_completion_failed");
+  assert.equal("lifecycle" in row, false);
+  assert.equal(contents.includes("Turn was cancelled"), false);
   await app.close();
 });
