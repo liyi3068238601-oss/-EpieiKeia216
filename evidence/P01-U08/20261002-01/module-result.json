@@ -1,0 +1,129 @@
+{
+  "task_id": "P01-U08",
+  "baseline_commit": "e78c8f9cd4568956f43e57fab291ecc6d3142fd6",
+  "scope": "config-secrets-and-read-only-warmup-validation",
+  "runtime": {
+    "node": "24.14.0",
+    "package_manager": "pnpm 10.33.2",
+    "install": "offline frozen-lockfile using .runtime/P01/pnpm-store-u04"
+  },
+  "exports": {
+    "config": [
+      "createDefaultProfile()",
+      "parseProfileV1(value)",
+      "exportPortableProfile(value)",
+      "importPortableProfile(value)",
+      "resolveOwnedProfilePaths(root)",
+      "buildChildEnvironment(paths, { systemEnv, endpointOrigin })"
+    ],
+    "secrets": [
+      "authorizeCredentialReference(profile, perCallAuthorization)",
+      "withAuthorizedCredential(profile, perCallAuthorization, parentResolver, useCallback)"
+    ]
+  },
+  "profile_contract": {
+    "schema_version": 1,
+    "provider_id": "deepseek-official",
+    "model_ids": ["deepseek-flash", "deepseek-v4-pro"],
+    "credential_reference": "existing-zcode:deepseek-official",
+    "default": "offline and no credential reference",
+    "authorization": "per-call only; never persisted or copied to child environment"
+  },
+  "owned_path_fields": [
+    "root", "profileFile", "home", "data", "temp", "workspace", "storage",
+    "userData", "sessionData", "appData", "localAppData"
+  ],
+  "child_environment": {
+    "inherited_allowlist": ["PATH", "SYSTEMROOT", "WINDIR", "COMSPEC", "PATHEXT"],
+    "owned_path_variables": [
+      "HOME", "USERPROFILE", "APPDATA", "LOCALAPPDATA", "TEMP", "TMP",
+      "ZCODE_DATA_BASE_DIR", "ZCODE_STORAGE_DIR", "ZCODE_DESKTOP_HOME_DIR",
+      "ZCODE_DESKTOP_USER_DATA_DIR", "ZCODE_DESKTOP_SESSION_DATA_DIR"
+    ],
+    "endpoint": "HTTP loopback with nonzero assigned port; rejects port 9229",
+    "fixed_debugging_port": "disabled"
+  },
+  "verification": [
+    {
+      "command": "node.exe node_modules/typescript/bin/tsc --project tsconfig.json",
+      "status": "passed"
+    },
+    {
+      "command": "node.exe node_modules/typescript/bin/tsc --project tsconfig.json --noEmit",
+      "status": "passed"
+    },
+    {
+      "command": "node.exe --test packages/config/test/desktop-build-paths.test.mjs",
+      "status": "passed",
+      "tests": 4,
+      "detail": "Physical containment probes cover same-source, existing and future descendants, Windows case variants, a prefix-adjacent sibling, and a junction ancestor targeting the source."
+    },
+    {
+      "command": "node.exe --test packages/config/test/warmup.test.mjs",
+      "status": "passed",
+      "tests": 3,
+      "detail": "Transpiled the fixed pinned initialize method after applying patchReadOnlyWarmup; covered ready, provider_not_ready and other startup error branches."
+    },
+    {
+      "command": "node.exe tools/run-tests.mjs unit P01-U08",
+      "status": "passed",
+      "tests": 19
+    },
+    {
+      "command": "node.exe tools/run-tests.mjs unit",
+      "status": "passed",
+      "tests": 53
+    },
+    {
+      "command": "node.exe tools/check-import-boundaries.mjs",
+      "status": "not_applicable",
+      "detail": "The repository reports packages/core absent, so no product Core imports were checked."
+    }
+  ],
+  "credential_tests": "Synthetic canary only; denied, offline, missing-reference, resolver-error, and credential-use throw/reject paths never expose the canary through child env or raw errors.",
+  "desktop_assembly_evidence": {
+    "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "assembly": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-07\\packages\\desktop",
+    "artifact_files": 6638,
+    "recipe_sha256": "1b72f8b3660ffb0093e9ef1e272c26ac3b2e6d6439a065fbcc97f47cae6b6c0d",
+    "descriptor_sha256": "0561ef2b728be014545a6ac2a76ccfeabc0b9905ae59badef252098b787bdce6",
+    "native_main_renderer_preload_unchanged": true,
+    "local_development_artifact": true,
+    "build_command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08\\packages\\config\\desktop-build.mjs",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-07"
+    ],
+    "build_cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08",
+    "build_exit_code": 0,
+    "build_elapsed_seconds": 63.985,
+    "source_clean": true,
+    "recipe_matches": true
+  },
+  "desktop_ui_evidence": {
+    "run_id": "u08-no-key-1790940517353035900",
+    "passed": true,
+    "command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08\\packages\\config\\test\\desktop-no-key.mjs",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-no-key-1790940517353035900\\spec.json"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08",
+    "exit_code": 0,
+    "elapsed_seconds": 43.109,
+    "reference_source_clean": true,
+    "code_unchanged": true,
+    "launches": 2,
+    "settings_visible_each_launch": true,
+    "preseeded_native_history_visible_each_launch": true,
+    "migration_scan_or_import_tested": false,
+    "model_requests": 0,
+    "real_credential_loaded": false,
+    "dsh_started": false,
+    "production_files_unchanged": true,
+    "dynamic_loopback_ports": true,
+    "desktop_assembly": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-07\\packages\\desktop",
+    "visual_acceptance": "not run"
+  }
+}
