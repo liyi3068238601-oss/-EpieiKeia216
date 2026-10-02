@@ -1,0 +1,123 @@
+{
+  "scenario_id": "success",
+  "passed": false,
+  "exit_code": 1,
+  "model_requests": 0,
+  "expected_model_requests": 1,
+  "relay_records": [],
+  "sidecar_correlation": {
+    "status": "NOT_EXPOSED",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-candidate03-success-20261002c\\scenarios\\success\\profile\\u10-turn-projections.jsonl",
+    "verified": false
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "success",
+    "status": "failed",
+    "gate_mode": "enabled",
+    "flow": "reply",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send"
+    ],
+    "user_visible_reply": null,
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 55832,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-03",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-candidate03-success-20261002c\\scenarios\\success\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-candidate03-success-20261002c\\scenarios\\success\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-candidate03-success-20261002c\\scenarios\\success\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 36104,
+          "parent_pid": 55832,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 53108,
+          "parent_pid": 55832,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 46264,
+          "parent_pid": 55832,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 22548,
+          "parent_pid": 55832,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 30500,
+          "parent_pid": 22548,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": false,
+    "failure_code": "ui_assertion_failed",
+    "failure_details": {
+      "name": "TimeoutError",
+      "code": "unknown",
+      "operator": null,
+      "message": "locator.waitFor: Timeout 45000ms exceeded.",
+      "windows": 1
+    }
+  },
+  "network_guard_records": 322,
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 55832,
+    "descendants": [
+      {
+        "pid": 36104,
+        "parent_pid": 55832,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 53108,
+        "parent_pid": 55832,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 46264,
+        "parent_pid": 55832,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 22548,
+        "parent_pid": 55832,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 30500,
+        "parent_pid": 22548,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback"
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ]
+}
