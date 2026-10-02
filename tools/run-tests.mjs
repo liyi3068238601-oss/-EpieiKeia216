@@ -1,4 +1,5 @@
 import path from "node:path";
+import { statSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
@@ -68,6 +69,13 @@ function main(argv) {
   }
 
   const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+  for (const file of files) {
+    try {
+      if (statSync(path.join(root, file)).isFile()) continue;
+    } catch { /* Report the declared fixture rather than accepting a partial suite. */ }
+    console.error(`test file is missing: ${file}`);
+    return 1;
+  }
   const result = spawnSync(process.execPath, ["--test", ...files], {
     cwd: root,
     stdio: "inherit",
