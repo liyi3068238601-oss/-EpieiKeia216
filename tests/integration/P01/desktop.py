@@ -307,9 +307,18 @@ def verify_candidate(candidate_arg: str) -> dict:
                                        capture_output=True, text=True, check=False)
     repository_status = subprocess.run(["git", "-C", str(repository_root), "status", "--porcelain"],
                                        capture_output=True, text=True, check=False)
+    build_commit = descriptor.get("repositoryCommit")
+    if not isinstance(build_commit, str) or not re.fullmatch(r"[a-f0-9]{40}", build_commit):
+        raise HarnessError("candidate_repository_commit_invalid")
+    ancestry = subprocess.run(["git", "-C", str(repository_root), "merge-base", "--is-ancestor", build_commit, "HEAD"],
+                              capture_output=True, check=False)
     if (repository_commit.returncode != 0 or repository_status.returncode != 0 or
-            repository_commit.stdout.strip() != descriptor.get("repositoryCommit") or repository_status.stdout.strip()):
+            ancestry.returncode != 0 or repository_status.stdout.strip()):
         raise HarnessError("candidate_repository_not_clean_and_pinned")
+    # Review/evidence commits may follow a build. Its material inputs still have
+    # to equal the original committed blobs and their descriptor hashes.
+    source_metadata["build_repository_commit"] = build_commit
+    source_metadata["verification_repository_commit"] = repository_commit.stdout.strip()
     repository_inputs = descriptor.get("repositoryInputs")
     if not isinstance(repository_inputs, list) or not repository_inputs:
         raise HarnessError("descriptor_repository_inputs_invalid")
@@ -324,6 +333,10 @@ def verify_candidate(candidate_arg: str) -> dict:
         if (not path_is_inside(repository_root, item_path) or not item_path.is_file()
                 or item.get("bytes") != item_path.stat().st_size or item.get("sha256") != sha256(item_path)):
             raise HarnessError("candidate_repository_input_mismatch")
+        blob = subprocess.run(["git", "-C", str(repository_root), "show", f"{build_commit}:{rel.as_posix()}"],
+                              capture_output=True, check=False)
+        if blob.returncode != 0 or blob.stdout != item_path.read_bytes():
+            raise HarnessError("candidate_repository_input_commit_mismatch")
         verified_inputs.append(item["path"])
     protocol_patch = descriptor.get("protocolPatch")
     if not isinstance(protocol_patch, dict) or not isinstance(protocol_patch.get("file"), str):
