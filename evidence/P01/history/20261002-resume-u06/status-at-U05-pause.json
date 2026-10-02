@@ -6,8 +6,8 @@
   "plan_version": "1.1",
   "product_version": "0.1.0",
   "stage": "P01",
-  "stage_status": "running",
-  "current_task": "P01-U06",
+  "stage_status": "paused",
+  "current_task": "P01-U05",
   "G00": "pass",
   "G01": "pending",
   "tasks": [
@@ -242,13 +242,8 @@
       "dependencies": [
         "P01-U05"
       ],
-      "status": "running",
-      "card_sha256": "673b724c74fa683478c109970219080e171babfeecca2b99b9ce7418bab2148a",
-      "author_worktree": ".runtime/P01/worktrees/u06",
-      "author_branch": "p01-u06",
-      "author_agent": "u06_author",
-      "baseline_commit": "f01f3d3551b55b8bde6889a940e9bcc68425240b",
-      "accepted_prerequisite": "P01-U05:96457a2ef13e697e1877bcf23deb79578422a08e"
+      "status": "not_started",
+      "card_sha256": "673b724c74fa683478c109970219080e171babfeecca2b99b9ce7418bab2148a"
     },
     {
       "id": "P01-U07",
@@ -376,21 +371,14 @@
     "eval_second_model_id": "deepseek-v4-pro"
   },
   "next_task": "P01-U06",
-  "pause_history": [
-    {
-      "user_reply": "准备在最完整的可暂定点停止",
-      "paused_at_utc": "2026-10-02T02:17:16.503483+00:00",
-      "after_task": "P01-U05",
-      "checkpoint": {
-        "path": "evidence/P01/checkpoints/U05/checkpoint.json",
-        "bytes": 1868,
-        "sha256": "157008b05867fd63d1e32838a34bc8108bedcfd5d1b177d40f4d2a33c7947bc4"
-      }
+  "pause": {
+    "user_reply": "准备在最完整的可暂定点停止",
+    "paused_at_utc": "2026-10-02T02:17:16.503483+00:00",
+    "after_task": "P01-U05",
+    "checkpoint": {
+      "path": "evidence/P01/checkpoints/U05/checkpoint.json",
+      "bytes": 1868,
+      "sha256": "157008b05867fd63d1e32838a34bc8108bedcfd5d1b177d40f4d2a33c7947bc4"
     }
-  ],
-  "resume": {
-    "path": "evidence/P01/history/20261002-resume-u06/resume.json",
-    "bytes": 1065,
-    "sha256": "3162a10ef919fec8e7413f5783b82c7c88170724426e79e1e483fb0654bcd1ce"
   }
 }
