@@ -6,7 +6,7 @@
   "plan_version": "1.1",
   "product_version": "0.1.0",
   "stage": "P01",
-  "stage_status": "running",
+  "stage_status": "paused",
   "current_task": "P01-U06",
   "G00": "pass",
   "G01": "pending",
@@ -242,13 +242,37 @@
       "dependencies": [
         "P01-U05"
       ],
-      "status": "running",
+      "status": "accepted",
       "card_sha256": "673b724c74fa683478c109970219080e171babfeecca2b99b9ce7418bab2148a",
       "author_worktree": ".runtime/P01/worktrees/u06",
       "author_branch": "p01-u06",
       "author_agent": "u06_author",
       "baseline_commit": "f01f3d3551b55b8bde6889a940e9bcc68425240b",
-      "accepted_prerequisite": "P01-U05:96457a2ef13e697e1877bcf23deb79578422a08e"
+      "accepted_prerequisite": "P01-U05:96457a2ef13e697e1877bcf23deb79578422a08e",
+      "author_commit": "ef716c8a1ae4b0c67c9af9ea6d84fee809399d1a",
+      "integration_commit": "025cf2003498bfb94856913f2fa2712da03f3bc8",
+      "acceptance": {
+        "path": "evidence/P01-U06/20261002-01/acceptance.json",
+        "bytes": 17510,
+        "sha256": "e7b3ff273a403e396392a031d5284f2ca83c1790c1ff146340b708c58bc90457"
+      },
+      "review": {
+        "status": "pass",
+        "reviewer": "u06_review_recovery",
+        "reviewed_commit": "ef716c8a1ae4b0c67c9af9ea6d84fee809399d1a",
+        "evidence": {
+          "path": "evidence/P01-U06/20261002-01/review-final.json",
+          "bytes": 20202,
+          "sha256": "d1d8b4cfb29ef7bab929323f556af3d1039d9fe8351831463785f57e38e77880"
+        }
+      },
+      "tests": {
+        "unit": 7,
+        "contract": 2,
+        "integration": 15,
+        "fail": 0,
+        "skipped": 0
+      }
     },
     {
       "id": "P01-U07",
@@ -375,7 +399,7 @@
     "model_id": "deepseek-flash",
     "eval_second_model_id": "deepseek-v4-pro"
   },
-  "next_task": "P01-U06",
+  "next_task": "P01-U07",
   "pause_history": [
     {
       "user_reply": "准备在最完整的可暂定点停止",
@@ -397,7 +421,18 @@
     "path": "evidence/P01/history/20261002-pause-u06/request.json",
     "bytes": 623,
     "sha256": "a16e4ffd65a1f496dcc1a3ab9926502779fb414c2093dfde18a85ee3e69ba2df",
-    "status": "closing_current_unit",
-    "after_task": "P01-U06"
+    "status": "fulfilled",
+    "after_task": "P01-U06",
+    "fulfilled_at_utc": "2026-10-02T09:26:37.774992+00:00"
+  },
+  "pause": {
+    "user_reply": "准备在最完整的可暂定点停止",
+    "paused_at_utc": "2026-10-02T09:26:37.774992+00:00",
+    "after_task": "P01-U06",
+    "checkpoint": {
+      "path": "evidence/P01/checkpoints/U06/checkpoint.json",
+      "bytes": 2686,
+      "sha256": "bd4ca4f29c708391b22cf0f2e781a91c964dd6900e98128f8e96515961b1c156"
+    }
   }
 }

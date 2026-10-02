@@ -1,0 +1,35 @@
+{
+  "schema": "p01-review-command/v1",
+  "id": "integration-u06",
+  "startedAtUtc": "2026-10-02T06:23:47.932Z",
+  "completedAtUtc": "2026-10-02T06:23:57.831Z",
+  "command": "node",
+  "executable": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+  "argv": [
+    "tools/run-tests.mjs",
+    "integration",
+    "P01-U06"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u06-review",
+  "launcher": "direct node.exe process",
+  "exitCode": 0,
+  "signal": null,
+  "spawnError": null,
+  "environmentOverrides": {
+    "COREPACK_ENABLE_NETWORK": "0",
+    "pathPrefix": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64"
+    ]
+  },
+  "stdout": {
+    "path": "integration-u06.stdout.log",
+    "bytes": 13365,
+    "sha256": "6c9d95a5b8bfbd82409a342b9d3ad00fb18c9fdfe58f6101364752a77f0f9697"
+  },
+  "stderr": {
+    "path": "integration-u06.stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

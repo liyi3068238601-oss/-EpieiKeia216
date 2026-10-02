@@ -1,0 +1,25 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /missing, stale, cross-turn, or incomplete packet receipt/. Input:
+
+'ReferenceError: APPROVED_CHARACTER is not defined'
+
+    at async file:///E:/Xiadie/Xiadie/.runtime/P01/u06-final-review/independent-review-04.mjs:260:3 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: ReferenceError: APPROVED_CHARACTER is not defined
+      at Object.run (file:///E:/Xiadie/Xiadie/.runtime/P01/u06-final-review/independent-review-04.mjs:171:85)
+      at async Object.value (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06-review/dist/packages/adapters/zcode/src/host.js:258:30)
+      at async Object.submitPrompt (file:///E:/Xiadie/Xiadie/.runtime/P01/u06-final-review/independent-review-04.mjs:202:20)
+      at async Object.submitPrompt (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06-review/dist/packages/adapters/zcode/src/host.js:62:20)
+      at async waitForActual (node:assert:646:5)
+      at async strict.rejects (node:assert:769:25)
+      at async file:///E:/Xiadie/Xiadie/.runtime/P01/u06-final-review/independent-review-04.mjs:260:3,
+  expected: /missing, stale, cross-turn, or incomplete packet receipt/,
+  operator: 'rejects',
+  diff: 'simple'
+}
+
+Node.js v24.14.0

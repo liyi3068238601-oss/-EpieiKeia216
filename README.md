@@ -1,6 +1,6 @@
 # Xiadie V2
 
-P01 已按用户“继续P01吧”的要求从 U05 检查点恢复，当前执行 U06 插件接入。P00 / G00 已验收；P01-U01 至 U05 已独立验收，包括来源调查、隔离试验、最小 TypeScript 工作区、角色资产加载器和 ContextPacket 契约。P01 / G01 仍待验收，随后按依赖顺序推进 U07 至 U11。历史暂停交接见 [P01-pause-U05.md](docs/handovers/P01-pause-U05.md)，冻结分支 `p01-pause-u05` 保留；当前执行状态见 `evidence/P01/status.json`。
+P01 已完成 U06 并按用户要求暂停：P00 / G00 和 P01-U01 至 U06 已独立验收，P01 / G01 仍待验收，U07 至 U11 实现未开始。暂停交接见 [P01-pause-U06.md](docs/handovers/P01-pause-U06.md)，本地书签 `p01-pause-u06` 固定当前边界；下一单元为 U07 主回复与证据投影。历史 `p01-pause-u05` 保留，当前状态见 `evidence/P01/status.json`。
 
 项目根：`E:/Xiadie/Xiadie`。权威计划为 `planning/Xiadie_V2_v1.1/`，从原始 v1.1 ZIP 解压并逐文件核验 SHA-256；计划副本保持不变。
 

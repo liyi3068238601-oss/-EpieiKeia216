@@ -1,0 +1,505 @@
+{
+  "schema": "p01-independent-review/v1",
+  "decision": "pass",
+  "task": "P01-U06",
+  "review_target": {
+    "author_commit": "ef716c8a1ae4b0c67c9af9ea6d84fee809399d1a",
+    "baseline_commit": "f01f3d3551b55b8bde6889a940e9bcc68425240b",
+    "author_commit_parent_matches_baseline": true,
+    "author_worktree": ".runtime/P01/worktrees/u06",
+    "reviewer_worktree": ".runtime/P01/worktrees/u06-review",
+    "reviewer_worktree_clean_at_review": true,
+    "author_worktree_clean_at_review": true,
+    "author_manifest": {
+      "path": ".runtime/P01/worktrees/u06/evidence/P01-U06/20261002-01/manifest.json",
+      "files": 162,
+      "bytes": 42006,
+      "sha256": "524fc3fd2b6135f3dcff04d9b3c856ac9a2849baacb536d45c140500142db7a2",
+      "verification": "all 162 entries matched bytes, SHA-256, Git blob SHA-1, and the exact baseline-to-author changed path set excluding the manifest itself"
+    }
+  },
+  "source_review": [
+    {
+      "path": ".runtime/P01/worktrees/u06-review/packages/adapters/zcode/src/host.ts",
+      "areas": [
+        "190-315 native app/facade and operation locks",
+        "317-486 admission ticket and Hook gate",
+        "487-550 model wrapper and receipt/compact gate",
+        "554-637 Hook identity, transcript and receipt validation",
+        "701-765 owned profile and physical storage boundary"
+      ],
+      "finding": "The host builds a fresh U04/U05 ContextPacket from the approved character with a per-admission nonce. It accepts only the installed UserPromptSubmit argv Hook, validates the full canonical packet and receipt against the native session/turn and a bounded transcript read, then checks the same native model-invocation context and packet at delegate time. Enabled sendInput forces requireIdle and releases the ticket/lock from native completion; compact admission binds to one session and compact turn and clears in finally. Disabled calls delegate through native methods. Admission failures are capped at 64 and retain hashes/correlation metadata rather than prompt or transcript content."
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/plugins/xiadie/hooks/context.mjs",
+      "areas": [
+        "11-54 input, approved packet, transcript receipt and response",
+        "57-100 strict aliases and bounded transcript read"
+      ],
+      "finding": "The process Hook validates native event/session/turn input, loads only the approved asset, rebuilds the packet with the host nonce, reads and hashes the bounded transient transcript, and emits the packet plus receipt without persisting transcript content."
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/packages/adapters/zcode/test/native.integration.test.mjs",
+      "finding": "The preserved integration fixture exercises the fixed native ZCode bootstrap and installed Hook process, including normal turn, sendInput, compact, resume, disabled mode, and malformed/missing/timeout Hook failure paths."
+    }
+  ],
+  "evidence_provenance": {
+    "standard_runs": "These are frozen raw outputs and execution JSON left by the independent reviewer whose turn was interrupted, in the same clean ef716c8 reviewer worktree. This recovery checked their hashes, exit codes, and pass/fail/skip counts; it did not rerun the standard commands.",
+    "self_probe": "The recovery added an in-process execution-port probe with explicit valid-envelope assertions. It tested foreign turn and foreign session receipts, fresh matching nonce receipts, and cleanup after a native compact failure."
+  },
+  "verification": {
+    "frozen_install": {
+      "exit_code": 0,
+      "offline": true,
+      "ignore_scripts": true
+    },
+    "check": {
+      "exit_code": 0,
+      "typescript": "passed",
+      "boundary_scan": {
+        "status": "not_run",
+        "reason": "packages/core is absent; the raw check output states no product Core imports were checked"
+      }
+    },
+    "build": {
+      "exit_code": 0
+    },
+    "standard_tests": [
+      {
+        "id": "unit-u06",
+        "tests": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      {
+        "id": "contract-u06",
+        "tests": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      {
+        "id": "integration-u06",
+        "tests": 15,
+        "passed": 15,
+        "failed": 0,
+        "skipped": 0,
+        "exit_code": 0
+      }
+    ],
+    "standard_run_ids": [
+      {
+        "id": "frozen-install",
+        "exit_code": 0
+      },
+      {
+        "id": "check",
+        "exit_code": 0
+      },
+      {
+        "id": "build",
+        "exit_code": 0
+      },
+      {
+        "id": "unit-u06",
+        "exit_code": 0
+      },
+      {
+        "id": "contract-u06",
+        "exit_code": 0
+      },
+      {
+        "id": "integration-u06",
+        "exit_code": 0
+      }
+    ],
+    "standard_output_hashes_checked": true,
+    "reviewer_probe": {
+      "execution_path": ".runtime/P01/u06-final-review/independent-review-05.execution.json",
+      "exit_code": 0,
+      "result": "pass",
+      "manifest_paths_and_hashes_exact": true,
+      "cases": [
+        {
+          "id": "enabled-cross-turn-session-compact-cleanup",
+          "result": "PASS",
+          "nonceCount": 4,
+          "freshNonceCount": 4,
+          "delegateCalls": 2,
+          "failures": [
+            "model-receipt",
+            "model-receipt"
+          ]
+        }
+      ]
+    }
+  },
+  "probe_history": [
+    {
+      "id": "independent-review",
+      "result": "harness_setup_failed",
+      "note": "Looked for preserved standard logs beneath the reviewer worktree instead of the supplied review evidence directory; no product probe ran."
+    },
+    {
+      "id": "independent-review-02",
+      "result": "probe_construction_failed",
+      "note": "The synthetic receipt used a contentSha256 property absent from the loaded character object and the cross-session case did not yet change the model trace session."
+    },
+    {
+      "id": "independent-review-03",
+      "result": "probe_construction_failed",
+      "note": "The foreign session case was corrected, but the synthetic receipt still omitted the approved content digest."
+    },
+    {
+      "id": "independent-review-04",
+      "result": "probe_construction_failed",
+      "note": "The approved digest reference was added before its import, causing a ReferenceError; no product defect was indicated."
+    },
+    {
+      "id": "independent-review-05",
+      "result": "pass",
+      "note": "Uses APPROVED_CHARACTER.contentSha256, asserts the Hook envelope contains canonical context and receipt (not a block response), and changes both foreign turn and foreign session traces."
+    }
+  ],
+  "limits": [
+    "Native integration was run against the read-only ZCode source commit 29628c9acdb81b703bbd4080c207a0e7ce5e276e with a loopback OpenAI-compatible mock. No paid model request or credentials were used.",
+    "The native fixture did not verify Desktop GUI/CLI product assembly, DSH packaging, or a production profile.",
+    "The boundary scan could not inspect packages/core because that package is absent.",
+    "P01-U07 was not entered. G01 remains pending; this pass is only the independent U06 review decision before the coordinator's merge/regression and pause record."
+  ],
+  "artifacts": [
+    {
+      "path": ".runtime/P01/u06-final-review/build-review-report.mjs",
+      "bytes": 9900,
+      "sha256": "c8a0640664c5e421153fef7bf3dbfb90183540e2b360aafa1a0f5a4feae0a833"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-02.execution.json",
+      "bytes": 1063,
+      "sha256": "0421f50b2997c711936f91d9856cd0f2aa0bd3368a9876ed3e970038e5008733"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-02.mjs",
+      "bytes": 14590,
+      "sha256": "e3159ccf4dbb30f8609217903b466189077292835a76e35e141821b9355e2d0e"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-02.stderr.log",
+      "bytes": 506,
+      "sha256": "5565e0818bd81ff8f584e185c65cb23f9c4537a92ee752102efbcbddbdbe9fdf"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-02.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-03.execution.json",
+      "bytes": 1064,
+      "sha256": "a32b850af2737e59dc7bb88e159e26f3c35a997cd234e86d79eb5d108e3994e1"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-03.mjs",
+      "bytes": 14658,
+      "sha256": "d60292a9af5032d85fd27f4a8a7fa0af36b446f4875d17ff5b7c808cadcf0af8"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-03.stderr.log",
+      "bytes": 1017,
+      "sha256": "9fa18b3abe311da728ec4761eade259609e73970982fd4d302eda517d5c884f3"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-03.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-04.execution.json",
+      "bytes": 1064,
+      "sha256": "5ad667bac59be33dcc46aed58edd2daf3971ea9abd65a885f7f7b0d8a800c0d1"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-04.mjs",
+      "bytes": 15073,
+      "sha256": "bd4d4c1b98c475de4af950e79b06805a69f46443123eb6e51dafcfb7be45f00b"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-04.stderr.log",
+      "bytes": 1360,
+      "sha256": "37bf4d6ff1a2b1a02ce5ae87839a75f706e81e1bb6d3ac3a446f2507f6a7eaef"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-04.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-05.execution.json",
+      "bytes": 1064,
+      "sha256": "e3cbb3b0aec515076a6a0ca6dd00116884e7d6cc3b8dc5848f5f3ae667eebd5e"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-05.mjs",
+      "bytes": 15095,
+      "sha256": "53967ac913b2152c1605eb1b87bfc75f03ad0d6c632afbfeb23cb846e443c0a7"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-05.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review-05.stdout.log",
+      "bytes": 1676,
+      "sha256": "78fb22cb020fefe994b26596917232605d4bc97b1e6280ebfa32506176b4eaa3"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review.execution.json",
+      "bytes": 1054,
+      "sha256": "70bb1266d01c325182fafffd5041cbb420694fa9c6a6d97729973bd310347f34"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review.mjs",
+      "bytes": 18112,
+      "sha256": "0e727df5b5b4ff71b6da075c6aa878bf404d0147efdeec75e0ce6231d40f58e3"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review.stderr.log",
+      "bytes": 690,
+      "sha256": "5af6748f53e6bf1f1f54fbd99faed1752741aaa271362186c57632c5d77684be"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/independent-review.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/build.execution.json",
+      "bytes": 1056,
+      "sha256": "cd76af0912e14531ac6771cba81279756909715ddc0957c8906ca031e90eabab"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/build.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/build.stdout.log",
+      "bytes": 104,
+      "sha256": "e09d76e77804057ef817e8efd73b06417d410397532b06bd8c518accf79ad61d"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/check.execution.json",
+      "bytes": 1056,
+      "sha256": "b73682958baf6cfe40a31fe0ba5e1261271dc397d3cb326ca3ec030cff019d9b"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/check.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/check.stdout.log",
+      "bytes": 449,
+      "sha256": "4e4257c49437a31d5f119b1fe7f98a7d059d9a37a867d13cdbd76b69f5cb49d9"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/contract-u06.execution.json",
+      "bytes": 1120,
+      "sha256": "d485e30fa3c54a3a6da04b1a5937a805a6f1e99ba2446a6ae497b0ded6aa356d"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/contract-u06.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/contract-u06.stdout.log",
+      "bytes": 322,
+      "sha256": "687ae0f9072fc2bbe79bf2d0d1d924b17dc64dd80c80973641a239a3113ad9af"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/frozen-install.execution.json",
+      "bytes": 1216,
+      "sha256": "84442a66f402124c040337c3fb316e7704dce2e31af8e1a11e271aedf26871c8"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/frozen-install.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/frozen-install.stdout.log",
+      "bytes": 276,
+      "sha256": "58501c821223a518e4e150a0caf1c0182cc5fa4b97fba8b9c215e1bb68e3b68b"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/integration-u06.execution.json",
+      "bytes": 1134,
+      "sha256": "676d799829a3c5612e0556d721f8fd175495b1396453f24f92c1bc9a1fe0171d"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/integration-u06.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/integration-u06.stdout.log",
+      "bytes": 13365,
+      "sha256": "6c9d95a5b8bfbd82409a342b9d3ad00fb18c9fdfe58f6101364752a77f0f9697"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/unit-u06.execution.json",
+      "bytes": 1104,
+      "sha256": "4d368a73eeadeff39eae57507bd3435b8b14d0fd16ae74c9f9a83b3a2c3261b2"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/unit-u06.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/logs/unit-u06.stdout.log",
+      "bytes": 876,
+      "sha256": "f750aabd45f0daf96483340b89b27541f71f78ba4a19b53b2fce3bc1d3e39ee5"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/run-independent-review-02.mjs",
+      "bytes": 2386,
+      "sha256": "00531cb1db15ea6b556d4646639b44aa979ba9fea6d572d6725bff02bddc1e9d"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/run-independent-review-03.mjs",
+      "bytes": 2388,
+      "sha256": "52051769b9c192caac403389102ca60e0299ede2b9e788befffef23b7108f316"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/run-independent-review-04.mjs",
+      "bytes": 2390,
+      "sha256": "1be4e89ac6ab1d7464496ded015331519284141f2d6f5dab362ce1ca665b8f38"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/run-independent-review-05.mjs",
+      "bytes": 2392,
+      "sha256": "47472b565ab7ca009309575d8229253e4830a1d4dd3c34264d26fdf74706e022"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/run-independent-review.mjs",
+      "bytes": 2366,
+      "sha256": "c594ac0a9cd4685958d9645b05e378dd47c7b111e4dfc897a33d5baed9702892"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/run-standard.mjs",
+      "bytes": 3874,
+      "sha256": "9ca233484a4960d57e1236732d70617bfa9d607e5f160764921938f80231dc98"
+    },
+    {
+      "path": ".runtime/P01/u06-final-review/standard-run-summary.json",
+      "bytes": 730,
+      "sha256": "60ebafd14976b8981c33c91db5c2bb6afb62ebe60e435f8a2e99b113026d0262"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/evidence/P01-U06/20261002-01/manifest.json",
+      "bytes": 42006,
+      "sha256": "524fc3fd2b6135f3dcff04d9b3c856ac9a2849baacb536d45c140500142db7a2"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/evidence/P01-U06/20261002-01/result.md",
+      "bytes": 4900,
+      "sha256": "e8bfda9f64cb975aa7130910959ab87cfb5e4788b76e965d2a9d07909cde63c8"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/packages/adapters/zcode/src/host.ts",
+      "bytes": 35854,
+      "sha256": "3d76e104f12cd9995f33d1a031e73bac2121947c9e7c063a932deaf2725d6615"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/packages/adapters/zcode/src/index.ts",
+      "bytes": 508,
+      "sha256": "41cbdbb09c588e89a7883237de9eb2af09fb965f7f543ca7cb9aad52cae201dd"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/packages/adapters/zcode/test/contract.test.mjs",
+      "bytes": 3003,
+      "sha256": "4a502df5e212ab328f2b0e3e98c10bc4aa9dc1d496db8dd388fb022d77e06240"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/packages/adapters/zcode/test/fixtures/hook-process-fault.mjs",
+      "bytes": 420,
+      "sha256": "7aabbc6093e51c422729208bb9e1f95879b0e891309f55e0153236fa2a34b832"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/packages/adapters/zcode/test/host.test.mjs",
+      "bytes": 11039,
+      "sha256": "3d8d1dda066de99180d792fdf2afe7cf0d277051c83a906d41af944bd6c4d1c9"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/packages/adapters/zcode/test/native.integration.test.mjs",
+      "bytes": 34314,
+      "sha256": "83530e286072830eafeb67eede29c6266c7b17d5dede41a2b8d302442f3f8fd4"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/packages/character/src/loader.ts",
+      "bytes": 5333,
+      "sha256": "a8505ecbcc7d179d66ccb7e31c4cea873faa103d1366fa0681adf182d97acc0f"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/packages/context/src/index.ts",
+      "bytes": 11781,
+      "sha256": "6fcc5b6ca892a0106a1063f15587db24633d799603846b55ddcab8fe77b50fd7"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/packages/contracts/src/context.ts",
+      "bytes": 1801,
+      "sha256": "ffc855d2d496d97b25508fdbcad540d6c01ba755fe7d56837a5873c3f367d071"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/plugins/xiadie/.zcode-plugin/plugin.json",
+      "bytes": 130,
+      "sha256": "79c2465cae65293220d5e08e91beead1c8a4bf247bb7d47f5d2afb15d1eaba90"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/plugins/xiadie/hooks/context.mjs",
+      "bytes": 4597,
+      "sha256": "f8d6bd19ab406bc296b6edc3193945f08c687cafd61ca871279042c14e5d966f"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/plugins/xiadie/hooks/hooks.json",
+      "bytes": 351,
+      "sha256": "729c69089429928ed50e507a22e2556df81233d04066bf358cd03bfd1fc1491b"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/plugins/xiadie/marketplace.json",
+      "bytes": 214,
+      "sha256": "665dddf5c68c68fc6daa74ecdf7d8a213b281172b626545752253e171d0d6302"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/tools/run-tests.mjs",
+      "bytes": 3305,
+      "sha256": "0cdeb107674d81d4e47d858b08be20d9f5440ac2311a35505879eb26ee29682b"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06-review/tsconfig.json",
+      "bytes": 592,
+      "sha256": "fe42f91aa370d9083adc2abb6a6b1a95635e37292bd7a2e5804b6e326950e386"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u06/evidence/P01-U06/20261002-01/manifest.json",
+      "bytes": 42006,
+      "sha256": "524fc3fd2b6135f3dcff04d9b3c856ac9a2849baacb536d45c140500142db7a2"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 1771,
+      "sha256": "56a2e6fd17f29f7737ad4b130ce5fcd3a6118f47cabfa6941e549deaaca3a29d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U06.md",
+      "bytes": 2128,
+      "sha256": "673b724c74fa683478c109970219080e171babfeecca2b99b9ce7418bab2148a"
+    }
+  ]
+}

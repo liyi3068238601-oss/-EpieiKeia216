@@ -1,0 +1,225 @@
+{
+  "schema": "xiadie.p01.u07.design-audit.v1",
+  "task": "P01-U07",
+  "status": "read_only_design_audit",
+  "audited_at": "2026-10-02",
+  "workspace_root": "E:\\Xiadie\\Xiadie",
+  "scope": {
+    "requested": [
+      "Read AGENTS.md and P01-U07 planning card",
+      "Read accepted P01-U02 evidence and reuse ADR",
+      "Inspect spikes/P01/host.mjs",
+      "Inspect pinned ZCode source at commit 29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "Identify native event, tool receipt, final reply, transcript APIs and minimum U06 integration requirements"
+    ],
+    "restrictions_respected": [
+      "No source, planning, reference, config, or product files changed",
+      "No model, desktop, or service started",
+      "Only this report is written under .runtime/P01/u07-design-audit"
+    ],
+    "execution": "No tests were run; this was source/evidence inspection only."
+  },
+  "baseline": {
+    "planning_card": "planning/Xiadie_V2_v1.1/tasks/P01-U07.md",
+    "allowed_product_path": "packages/application/turn-projection.ts",
+    "dependency": "P01-U06",
+    "u02_acceptance": {
+      "path": "evidence/P01-U02/20261001-01/acceptance.json",
+      "status": "accepted",
+      "accepted_at": "2026-10-01",
+      "author_commit": "4502b7001376208f188b56b2338b67968fbe77a8",
+      "scope": "U02 only; not P01, G01, or U09",
+      "approved_route": "Pinned native ZCode unique Runtime/Loop with bounded Xiadie Core/Hook and evidence projection"
+    },
+    "adr_metadata_note": "docs/adr/P01-reuse.md still says ready_for_review in its header; acceptance.json records U02 as accepted. Treat acceptance.json as execution state.",
+    "pinned_source": {
+      "repository_path": "references/zcode-29628c9/apps/zcode-cli",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "seam_status": "Private fixed-workspace bootstrap seam; not a stable public plugin SDK"
+    }
+  },
+  "native_interfaces": [
+    {
+      "name": "ZCodeApp runtime event subscription",
+      "refs": [
+        "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/app/types.ts:291-295",
+        "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/internal-methods.ts:252",
+        "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/methods/config.ts:161-165"
+      ],
+      "contract": "ZCodeApp exposes runtime: AgentRuntime; subscribe as app.runtime.subscribeEvents({ onSessionEvent(event) { ... } }); it returns an unsubscribe function. The native event envelope carries sessionId, optional turnId, type, timestamp, traceId, sequenceNumber, and payload.",
+      "event_envelope_ref": "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/session.events.ts:72-80"
+    },
+    {
+      "name": "ZCodeApp submitPrompt",
+      "refs": [
+        "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/app/types.ts:721",
+        "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/types.ts:412-419"
+      ],
+      "contract": "submitPrompt(prompt, options?) returns TurnResult with response, turnId, traceId, optional usage, native events, and SessionProjection. It has no separate business-success field."
+    },
+    {
+      "name": "ZCodeApp.loadSessionTranscript",
+      "refs": [
+        "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/app/types.ts:95,327",
+        "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/app/session-facade.ts:321-325",
+        "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/session-transcript.ts:12-50"
+      ],
+      "signature": "loadSessionTranscript(): Promise<SessionTranscriptMessage[]>",
+      "arguments": "None; the facade binds deps.sessionId and deps.sessionStore.",
+      "data_source": "loadSessionTranscriptFromStore calls sessionStore.messages({ sessionID: sessionId }); if the optional SessionStorePort is absent it returns an empty array.",
+      "output_schema": {
+        "message": "SessionTranscriptMessage { content: string; parts?: SessionTranscriptPart[]; role: 'agent' | 'user' }",
+        "part_variants": [
+          "text { text }",
+          "thought { text }",
+          "tool { input, output?, error?, resultDisplay?, status: pending|running|completed|failed, title?, toolCallId, toolName }"
+        ],
+        "mapping_refs": [
+          "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/session-transcript.ts:33-37",
+          "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/session-transcript.ts:53-101",
+          "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/session-transcript.ts:149-205"
+        ]
+      },
+      "mapping_behavior": [
+        "Filters summary messages and model-only user messages.",
+        "User messages become role user, using non-ignored text/file/agent parts.",
+        "Assistant messages become role agent; non-ignored text parts are joined with blank lines, reasoning becomes thought, and tool parts retain status plus input and output/error.",
+        "The returned transcript messages do not carry message IDs, turn IDs, event sequence numbers, or receipt provenance."
+      ],
+      "consequence": "This is a useful existing history/UI restoration API, correcting the earlier claim that ZCodeApp exposed no transcript read. U07 live projection still does not need a new history API: subscribeEvents and TurnResult provide current-turn facts. The transcript is a persisted conversation projection, not a replacement for correlated live receipts; do not treat its retained tool text as a fresh current-turn execution proof."
+    },
+    {
+      "name": "Underlying native session store",
+      "refs": [
+        "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/interfaces/session-store.port.ts:1124-1128",
+        "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/interfaces/session-store.port.ts:385-433,751-782"
+      ],
+      "contract": "SessionStorePort.messages({ sessionID }) returns MessageWithParts[]; stored assistant messages use role assistant and structured text/reasoning/tool parts. The public app transcript maps the stored assistant role to agent and omits storage identifiers."
+    }
+  ],
+  "event_projection": {
+    "correlation_and_ordering": {
+      "refs": [
+        "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/session.events.ts:72-80",
+        "spikes/P01/host.mjs:71-90,97-107"
+      ],
+      "fields": [
+        "Use sessionId and turnId to scope current-turn events.",
+        "Use inputId when present to associate accepted input.",
+        "Use sequenceNumber for event order and id or (sessionId, sequenceNumber) for idempotency."
+      ],
+      "duplicate_sources": "Choose runtime subscription for live UI/projection. If a caller also merges TurnResult.events, deduplicate before reduction."
+    },
+    "tool_lifecycle": [
+      {
+        "event": "tool_call_scheduled / tool_call_started / tool_call_progress",
+        "payload": "Scheduled and started carry toolCallId and toolName; progress carries toolCallId and may omit toolName.",
+        "projection": "Create or update one pending/running receipt keyed by toolCallId.",
+        "refs": [
+          "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/session.events.ts:822-859",
+          "references/zcode-29628c9/apps/zcode-cli/packages/tui/src/app-tool-transcript.ts:28-70"
+        ]
+      },
+      {
+        "event": "tool_call_result",
+        "payload": "toolCallId, result.success/content/display/perf/truncation/byte metadata, duration; event payload itself has no toolName.",
+        "projection": "Terminal success is success=true; join the tool name from scheduled/started by toolCallId.",
+        "refs": [
+          "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/session.events.ts:861-867,1076-1087",
+          "references/zcode-29628c9/apps/zcode-cli/packages/core/src/tool/executor/events.ts:51-86"
+        ]
+      },
+      {
+        "event": "tool_call_error",
+        "payload": "toolCallId plus structured ErrorPayload; event payload itself has no toolName.",
+        "projection": "Terminal failure for that toolCallId; retain only allowlisted/sanitized error type or code for evidence.",
+        "refs": [
+          "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/session.events.ts:869-874,1101-1114",
+          "references/zcode-29628c9/apps/zcode-cli/packages/core/src/tool/executor/events.ts:89-110"
+        ]
+      },
+      {
+        "event": "tool_batch_complete",
+        "payload": "toolCallIds, successCount, errorCount.",
+        "projection": "Use as batch aggregate/cross-check, not as a substitute for per-tool terminal receipts.",
+        "refs": [
+          "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/session.events.ts:876-880",
+          "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/methods/tools.ts:104-116"
+        ]
+      }
+    ],
+    "sanitization": "Do not persist raw input, result content, stack, or the whole native payload in the product evidence projection; tool inputs/results can be large or sensitive. Project the minimal correlated facts: IDs, name, terminal state, success, and a safe error classification."
+  },
+  "final_reply_and_ui": {
+    "authoritative_current_turn_text": {
+      "source": "TurnResult.response and the matching turn_complete payload.response",
+      "refs": [
+        "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/types.ts:412-419",
+        "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/session.events.ts:576-611",
+        "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/methods/turn.ts:647-667,706-714"
+      ],
+      "rule": "Render/preserve the native final response directly; do not invoke another model to rewrite it. Do not combine every ModelComplete or streaming chunk into the final reply; modelResponse is updated on each model step and the loop's returned response is the terminal value.",
+      "stream_ui_refs": [
+        "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/session.events.ts:711-720",
+        "references/zcode-29628c9/apps/zcode-cli/packages/tui/src/app-transcript-stream.ts:7-35,97-103",
+        "references/zcode-29628c9/apps/zcode-cli/packages/tui/src/app-turn-complete.ts:27-37",
+        "references/zcode-29628c9/apps/zcode-cli/packages/tui/src/app-events.ts:71-99",
+        "references/zcode-29628c9/apps/zcode-cli/packages/tui/src/app-submit.ts:39-68"
+      ],
+      "behavior": "Native UI uses ModelStreaming assistantMessageId for live text, appends TurnResult.response for submit calls, and applies non-empty turn_complete.response as an idempotent fallback when streaming/result application did not already show it. The transcript display role is agent."
+    },
+    "business_completion_boundary": {
+      "rule": "Turn lifecycle success is not proof that the requested task succeeded. Expose native turn outcome and actual tool receipts separately; only declare a business requirement verified when its declared evidence is present and correlated.",
+      "counterexamples": [
+        {
+          "case": "UserPromptSubmit hook blocks continuation",
+          "evidence": "turn.ts:363-393 emits TurnComplete resultType success with response from stopReason/default, tokenCount 0, toolCallCount 0, before any model call."
+        },
+        {
+          "case": "Tool failure followed by a normal final answer",
+          "evidence": "evidence/P01-U02/20261001-01/runs/mock-1790860194279562400/summary.json has read-fail with tool_call_error type tool_execution_failed followed by turn_complete; response states the read failed."
+        },
+        {
+          "case": "Hook scope denial followed by a normal final answer",
+          "evidence": "The same accepted U02 mock summary has scope-denied with hook_run_blocked followed by turn_complete."
+        }
+      ],
+      "event_projection_refs": [
+        "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/session.events.ts:576-611",
+        "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/helpers/turn-errors.ts:139-207",
+        "references/zcode-29628c9/apps/zcode-cli/packages/core/src/runtime/methods/turn.ts:363-393",
+        "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/event-reducer.ts:190-197",
+        "references/zcode-29628c9/apps/zcode-cli/packages/tui/src/app-events.ts:71-88"
+      ],
+      "cancellation": "TurnCancelled is represented as TurnComplete { response: '', resultType: 'cancelled' }, not TurnError. A cancelled tool can have a per-tool error receipt; retain earlier successful receipts and mark the aggregate partial/cancelled as appropriate.",
+      "caution": "Native UI/event reducers use TurnComplete to finish the interaction (idle/ready); that UI lifecycle transition is not business verification."
+    }
+  },
+  "u06_minimum_interface_requirements": [
+    "Expose and use the same pinned app.runtime.subscribeEvents sink plus unsubscribe and app.submitPrompt result; preserve the native ZCode Runtime/Loop.",
+    "Register event subscription before calling submitPrompt so the current Hook/turn events are not missed; preserve sessionId, turnId, inputId, toolCallId, event id/sequence, and Hook terminal events.",
+    "Bind the loaded ContextPacket to the submitted turn and expose only safe local provenance such as identity/version/digest for projection joins; pinned SessionEvent has no ContextPacket identifier field, so U06 must supply that join explicitly if needed.",
+    "Report Hook packet load failure/blocked state explicitly; do not infer it by parsing the reply text.",
+    "Keep role prompt content out of receipts and do not add a second autonomous Loop or pure persona rewrite model call."
+  ],
+  "tests_recommended": [
+    "Pure reducer fixture: one successful native tool receipt plus native final response.",
+    "ToolCallError followed by TurnComplete success: preserve failure and do not mark business result verified.",
+    "hook_run_blocked / UserPromptSubmit preventContinuation followed by TurnComplete success: classify blocked or unverified.",
+    "A batch with one successful and one failed tool: retain both per-tool receipts and reconcile ToolBatchComplete counts.",
+    "TurnComplete cancelled after a successful receipt: keep the prior success and mark the current outcome cancelled/partial.",
+    "Duplicate/out-of-order events: order by sequenceNumber and reduce idempotently; verify TurnResult.events plus live subscription do not double-append.",
+    "Streaming final text plus turn_complete fallback: avoid duplicate transcript reply and ignore empty cancellation response."
+  ],
+  "test_mapping_note": "P01-U07 card allows packages/application/turn-projection.ts and names tests/units/P01-U07.test.ts as a target to map to the actual framework. Root package uses Node node:test .test.mjs and tools/run-tests.mjs currently registers U03-U05 only; register/map the test rather than leave it undiscoverable.",
+  "not_implemented_or_not_run": [
+    "No P01-U07 implementation or product projection was made.",
+    "No U07 cancellation/partial-batch runtime integration test was run; U02's seven mock branches cover read success/failure, scope/symlink denial, compact, resume, and disabled, not cancellation or partial multi-tool batch.",
+    "No model, desktop, or service was started.",
+    "loadSessionTranscript was source-inspected only; no runtime call was made."
+  ],
+  "file_changes": {
+    "changed_product_files": [],
+    "created_report": ".runtime/P01/u07-design-audit/report.json"
+  }
+}

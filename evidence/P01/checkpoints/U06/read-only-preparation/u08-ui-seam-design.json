@@ -1,0 +1,142 @@
+{
+  "audit": {
+    "id": "P01-U08-U11-design-audit",
+    "date": "2026-10-02",
+    "mode": "read-only",
+    "result": "design findings only; no implementation or runtime acceptance",
+    "workspace": "E:/Xiadie/Xiadie",
+    "workspace_head": "0ec2c4031c89a5133a11c5fef8bc71bbaf0ecb05",
+    "reference": {
+      "path": "references/zcode-29628c9",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "desktop_source_path": ".runtime/P01/desktop-source",
+      "desktop_source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "desktop_source_worktree": "clean"
+    },
+    "scope_guard": [
+      "No edits to reference source, desktop source, global configuration, production profiles, or real credentials/history.",
+      "No Desktop, model, or other process was launched; no build, package, download, or cache inventory was run.",
+      "Only this report and its checksum are written under .runtime/P01/u08-design-audit/.",
+      "P01-U08 is gated by U07; this audit does not authorize implementation ahead of that acceptance."
+    ]
+  },
+  "task_contract": {
+    "U08": {
+      "status": "not_started",
+      "prerequisite": "P01-U07",
+      "allowed_target_paths": ["packages/config/", "packages/secrets/"],
+      "required_outcomes": [
+        "Independent profile data root",
+        "Store credential references only and pass secrets under authorization",
+        "No-Key settings can open and read local history",
+        "Exception, environment-dump, and exported-config secret scans",
+        "Evidence must distinguish real UI execution from source inspection or mocks"
+      ],
+      "implication": "Keep U08 limited to configuration, secret references, isolated launch/profile handling, and real no-Key history UI validation. Product role-prompt wiring is a later candidate integration/UI verification after U06 and U10 gates."
+    },
+    "U11": {
+      "status": "not_started",
+      "prerequisite": "P01-U10",
+      "allowed_target_paths": ["docs/releases/0.1.0/"],
+      "required_outcomes": [
+        "Actual candidate artifact smoke test",
+        "Verifiable identity assets and runnable main interaction",
+        "Honest failure behavior and native Runtime availability with extension disabled",
+        "Re-run no-Key, no-DSH, and offline degradation against candidate artifact"
+      ],
+      "scope_decision": "P01 calls for an actual candidate artifact; NSIS is not a prerequisite. An unpacked or portable local candidate is a feasible minimum if it meets U11's actual-artifact checks. Do not expand this audit into an installer release project."
+    }
+  },
+  "findings": {
+    "no_key_history_ui": {
+      "finding": "The pinned source contains a complete candidate path to test imported synthetic history through the real native UI, but there is no evidence that the current P01 Desktop spike has exercised it.",
+      "source_path": [
+        {"file": "references/zcode-29628c9/packages/ui/src/SettingsPage.tsx", "lines": "1880-1884", "observation": "Settings migration section renders MigrationSection."},
+        {"file": "references/zcode-29628c/packages/ui/src/hooks/useClaudeSessionMigration.ts", "lines": "150-155,196-200", "observation": "UI scans candidates and calls importClaudeSessions."},
+        {"file": "references/zcode-29628c/packages/services/src/session/claude-native/claudeNativeSessionImportRepo.ts", "lines": "49-65", "observation": "Scanner roots include homedir(), process.env.HOME, and getDataBaseDir(), each followed by .claude/projects."},
+        {"file": "references/zcode-29628c/packages/services/src/zcode-agent/zcodeTaskServiceAdapter.ts", "lines": "2638-2651,2654-2704", "observation": "Service scans native imports, creates an immediate-persistence ZCode session with imported messages, and records migrationSource=claudeCode."},
+        {"file": "references/zcode-29628c/packages/ui/src/TaskListItem.tsx", "lines": "62,253", "observation": "Task row supports selection/opening."},
+        {"file": "references/zcode-29628c/packages/ui/src/v4/SessionPane.tsx", "lines": "4735-4743", "observation": "SessionPane renders rows from the actual timeline snapshot."}
+      ],
+      "minimum_real_ui_test_after_gates": [
+        "Create a fresh isolated work/home tree containing only one synthetic Claude JSONL transcript with distinct user and assistant sentinel text and a temporary workspace cwd.",
+        "Before launch, set both USERPROFILE and HOME to that synthetic home; set ZCODE_DATA_BASE_DIR to an isolated data root. Check the resolved scan roots are all within the isolated test roots before using Migration.",
+        "Launch the actual no-Key Desktop entry, skip onboarding without entering credentials, open Settings > Migration, scan/select/import the synthetic session, open the imported task, and assert both sentinel turns render in SessionPane.",
+        "Close and reopen under the same isolated profile and verify the imported task and turns persist. Do not send a prompt or invoke a model in this U08 test.",
+        "Capture only synthetic IDs/text or hashes in evidence; never scan or open the user's production Claude history."
+      ],
+      "existing_spike_limit": "spikes/P01/run-desktop-ui.py:44-55 isolates USERPROFILE and ZCODE_DATA_BASE_DIR and disables fixed debugging port; spikes/P01/desktop-ui.mjs:96-121 opens the actual Settings page, persists locale across two launches, checks profile paths and owned loopback listeners. It does not synthesize/import/open historical session rows. Historical UI result remains NOT_RUN.",
+      "acceptance_boundary": "This no-Key history test proves profile isolation and native history rendering only. It does not prove that a UI prompt uses the U06 executionPort/modelAdapter Host or the approved role/plugin pipeline."
+    },
+    "native_host_injection_seam": {
+      "finding": "The usable native app assembly seam is the app-server protocol factory, not a standalone UI-side injection API. ZCodeAppOptions already accepts the principal Host-owned objects, while the current protocol factory does not supply the U06 executionPort/modelAdapter.",
+      "source_path": [
+        {"file": "references/zcode-29628c9/packages/services/src/zcode-agent/zcodeAgentProcessManager.ts", "lines": "369-377", "observation": "Desktop runtime launches the bundled entrypoint as app-server --stdio."},
+        {"file": "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/zcode-protocol-entrypoint.ts", "lines": "249-278", "observation": "ZCodeProtocolAgentServer receives createZCodeApp closure, which decorates options and calls createZCodeApp; current additions include provider/presentation selection, env, browser broker, and MCP lease, but not U06 Host executionPort/modelAdapter."},
+        {"file": "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/app/types.ts", "lines": "138,153-178", "observation": "ZCodeAppOptions exposes modelAdapter, officialPluginRoots, pluginStorageRoot, executionPort, fileSystemPort and explicit user/project config paths."},
+        {"file": "references/zcode-29628c9/apps/zcode-cli/packages/bootstrap/src/app/create-app.ts", "lines": "212-219,392-404", "observation": "Startup resolves plugins; executionPort uses injected value or silently constructs a default Node adapter."}
+      ],
+      "required_future_integration": [
+        "Once U06 is accepted, make the actual bundled app-server protocol factory assemble/pass U06 Host final-gate executionPort and modelAdapter, plus approved plugin/config roots, so the native Session UI is on the same product pipeline.",
+        "Keep ZCode's model/tool Loop unchanged. Do not treat an independently tested dev script, mock, or U08 no-Key history UI as proof that U06 is in the native UI prompt path.",
+        "Use the parent-designated isolated product copy and record the mapping at apps/companion/native-overlay; do not patch references/zcode-29628c9 or .runtime/P01/desktop-source. The package-level U08 allowed paths remain packages/config and packages/secrets."
+      ],
+      "critical_contracts_instance_risk": {
+        "severity": "blocking integration risk unless explicitly resolved and tested",
+        "observation": "contracts/src/model/invocation-context.ts:72-79 creates a module-local AsyncLocalStorage singleton. adapters/src/model/runner.ts:156 reads getCurrentModelInvocationContext() from its imported contracts instance.",
+        "risk": "If XiadieHost imports a separately compiled @zcode/contracts instance, its getter can observe a different AsyncLocalStorage from the bundled CLI adapter, so the U06 final gate may receive no invocation context even though both APIs have the same names/types.",
+        "minimum_safe_bridge": "Pass the bundled CLI contracts getter together with the native adapter/factory facade into XiadieHost, or compile/bundle XiadieHost into the same module graph. Add an actual native UI prompt test that proves the approved invocation context reaches the final gate and plugin path. Do not attach U02's independent compiled-path gate to the bundle and claim equivalence."
+      },
+      "scope_note": "A search did not find a SessionAppFactory symbol in the pinned source; the concrete named seam is ZCodeProtocolAgentDependencies.createZCodeApp/createZCodeApp."
+    },
+    "profile_ports_identity": {
+      "finding": "The existing no-Key UI spike supplies a good isolation and dynamic-port pattern for reuse by a later approved test, but its present assertion covers Settings/locale rather than history or product prompt behavior.",
+      "source_path": [
+        {"file": "spikes/P01/run-desktop-ui.py", "lines": "41-64", "observation": "Offline origin binds 127.0.0.1:0; child receives a small env allowlist, isolated profile/data/session roots, ZCODE_ENV=test, fixed-port disable switch, and a pre-launch listener baseline."},
+        {"file": "spikes/P01/desktop-ui.mjs", "lines": "98-119", "observation": "Reads actual Electron paths, verifies fixed debugging port switch is 0, checks Host utility process and listeners against baseline, and requires loopback-only listeners."},
+        {"file": "spikes/P01/verify-ports.py", "lines": "34-43", "observation": "Rechecks process ownership, loopback addresses, no port overlap, fixed 9229 disabled, hidden actual Settings UI, and egress guard."},
+        {"file": "references/zcode-29628c9/packages/desktop/src/main/index.ts", "lines": "257-258", "observation": "Fixed debugging port belongs to the unpackaged development branch and is appended unless ZCODE_DISABLE_FIXED_REMOTE_DEBUGGING_PORT is set."}
+      ],
+      "minimum_launch_contract": [
+        "Use a new per-attempt HOME/USERPROFILE, APPDATA/LOCALAPPDATA, TEMP/TMP, ZCODE_DATA_BASE_DIR, Desktop userData, and sessionData under the isolated work tree; whitelist child environment and never dump it to evidence.",
+        "Bind helper/offline endpoints to OS-allocated loopback port 0; set ZCODE_DISABLE_FIXED_REMOTE_DEBUGGING_PORT=1 and verify Electron reports remote-debugging-port=0.",
+        "Snapshot listeners before launch, then assert every app-owned listener belongs to the observed app/Host processes, uses 127.0.0.1 or ::1, and does not collide with the pre-existing listener set."
+      ],
+      "identity_for_candidate": "Use compile-time Preview flavor identity consistently for candidate build and runtime (ZCODE_PREVIEW_IDENTITY=1 per handover). ZCODE_ENV=test selects test endpoint behavior; changing appId alone is insufficient because Main AUMID and product flavor identity are compile-time coupled."
+    },
+    "credential_references": {
+      "finding": "The pinned native credential implementation is encrypted-value storage, not reference-only storage; it is not itself the U08 target design.",
+      "source_path": [
+        {"file": "references/zcode-29628c9/packages/services/src/credential/credentialService.ts", "lines": "21-33,87-114", "observation": "Credential values are written to credentials.json after encryption; source includes a SafeStorage TODO."},
+        {"file": "references/zcode-29628c/packages/services/src/credential/providers/credentialCipherProvider.ts", "lines": "6-37", "observation": "AES-256-GCM key derives from ZCODE_CREDENTIAL_SECRET or a deterministic platform/home/username fallback."},
+        {"file": "planning/Xiadie_V2_v1.1/tasks/P01-U08.md", "lines": "1-30", "observation": "U08 requires secret references and authorized pass-through; it is gated by U07 and scopes code to packages/config and packages/secrets."}
+      ],
+      "minimum_design": [
+        "Persist only an opaque credentialRef in profile config; store the actual credential in an OS-backed credential store behind a host-only resolver.",
+        "Resolve only after explicit authorization and only in the approved request path; keep the credential out of renderer state, project/plugin config, .env, logs, crash/error text, history, and exported bundles.",
+        "Test exports and exception/environment diagnostics with synthetic canary credentials. No-Key tests use no credentialRef and never inspect real environment values or secret stores."
+      ],
+      "limitation": "Electron safeStorage can encrypt/decrypt local data but does not by itself implement the reference-only lookup contract; existing ZCode encrypted-file behavior must not be described as the U08 reference design."
+    }
+  },
+  "candidate_artifact_and_build": {
+    "U11_minimum": "After U10, build/run an actual isolated local candidate artifact and record identity, no-Key/no-DSH/offline behavior and native Runtime operation with extension disabled. NSIS is optional for this P01 gate; do not claim an installer if only unpacked/portable output was run.",
+    "isolation": "Use an independent product copy for any builder or overlay experiment. The documented builder hook edits node_modules NSIS templates; preserve both pinned source trees and record source commit, overlay mapping, build command, output hashes, and revert path.",
+    "integration_overlay_mapping": "apps/companion/native-overlay in isolated product copy (future integration only; not changed in this audit).",
+    "cache_and_build_status": "Not inventoried in this audit; no current cache presence/version/hash claim is made. No packaging/build was attempted."
+  },
+  "verification": {
+    "performed": [
+      "Read root AGENTS.md, P01-U08 and P01-U11 task cards, P01 resume notes, and existing P01 native reuse research.",
+      "Read relevant source at fixed ZCode commit and inspected the existing P01 desktop UI/port spike scripts.",
+      "Checked workspace and desktop-source commit/worktree status."
+    ],
+    "not_performed": [
+      "No Desktop launch or GUI interaction during this audit.",
+      "No synthetic history import run; proposed test remains NOT_RUN.",
+      "No UI prompt through U06 Host; integration remains NOT_RUN and gated on U06/U10.",
+      "No build/package, installer, cache dependency inventory, network request, model request, or credential access."
+    ],
+    "evidence_limit": "All findings are source/task-card inspection. They define a minimal implementation and test path; they are not product acceptance evidence."
+  }
+}

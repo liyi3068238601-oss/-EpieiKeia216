@@ -1,0 +1,45 @@
+{
+  "checked_at_utc": "2026-10-02T09:17:35.636505+00:00",
+  "commands": [
+    {
+      "label": "all",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "f01f3d3551b55b8bde6889a940e9bcc68425240b",
+        "ef716c8a1ae4b0c67c9af9ea6d84fee809399d1a"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 2,
+      "output": {
+        "path": "diff-check-all.log",
+        "bytes": 4851,
+        "sha256": "2cb057e90b6894f5ff82cc200a3871ec604ec539da5c9aaa0775a093ba1c6a2d"
+      }
+    },
+    {
+      "label": "product",
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "f01f3d3551b55b8bde6889a940e9bcc68425240b",
+        "ef716c8a1ae4b0c67c9af9ea6d84fee809399d1a",
+        "--",
+        "packages",
+        "plugins",
+        "tools",
+        "tsconfig.json"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0,
+      "output": {
+        "path": "diff-check-product.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "disposition": "Full diff whitespace diagnostics are confined to preserved raw failure logs and the required blank-line context marker in implementation.diff. Evidence bytes are retained unchanged. Product source diff is clean."
+}

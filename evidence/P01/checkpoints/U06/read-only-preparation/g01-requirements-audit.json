@@ -1,0 +1,486 @@
+{
+  "schema": "xiadie-p01-g01-gate-requirements-audit/v1",
+  "audit": {
+    "captured_at": "2026-10-02T13:37:44+08:00",
+    "project_root": "E:\\Xiadie\\Xiadie",
+    "mode": "read_only_audit",
+    "product_or_model_started_during_audit": false,
+    "model_calls_during_audit": 0,
+    "only_output_written": ".runtime/P01/gate-requirements-audit/report.json",
+    "scope": "P01/G01 Must and artifact requirements; P01-U10/U11 implementation was not started."
+  },
+  "current_status": {
+    "stage": "P01",
+    "stage_status": "running",
+    "current_task": "P01-U06",
+    "current_task_status": "running",
+    "G00": "pass",
+    "G01": "pending",
+    "accepted_tasks": [
+      "P01-U01",
+      "P01-U02",
+      "P01-U03",
+      "P01-U04",
+      "P01-U05"
+    ],
+    "not_started_tasks": [
+      "P01-U07",
+      "P01-U08",
+      "P01-U09",
+      "P01-U10",
+      "P01-U11"
+    ],
+    "gate_assessment": "NOT_YET_ASSESSABLE",
+    "reason": "Candidate ZCode interaction is not integrated or independently tested yet. P01-U06 is running; U07-U11 are not started. Do not mark G01 pass from U02 or U05."
+  },
+  "classification": {
+    "plan_statement": "Frozen v1.1 plan says P01/G01 requires verifiable identity assets, a runnable primary interaction, honest failure, and native ZCode Runtime still working when the extension is disabled.",
+    "source_fact": "Pinned ZCode CLI/TUI ordinary input uses sendInput; slash/background compact uses submitPrompt. At the audit snapshot, U06 host.ts wraps submitPrompt/resume/compact/readAdmissionFailures but forwards sendInput through its generic facade.",
+    "recommendation": "At P01, select and name one existing ZCode user-entry surface. Recommended minimum is the existing CLI/TUI ordinary chat input; use its actual sendInput path. Do not build P10 desktop/Live2D features to prove P01.",
+    "not_run": [
+      "This audit did not launch ZCode, the Xiadie candidate, DSH, or a model.",
+      "No current candidate smoke, candidate no-Key/no-DSH/offline test, P01-U10 integration run, or P01-U11 gate run was executed.",
+      "Current U06 sendInput behavior is a source inspection only; the candidate UI path remains NOT_RUN.",
+      "U06 in-progress native.integration.test.mjs was inspected as source only and was not executed during this audit."
+    ]
+  },
+  "minimum_p01_candidate": {
+    "boundary": "A runnable isolated candidate using the pinned existing ZCode Runtime plus the accepted P01 assets and the integrated U06-U09 code; no standalone product window, Live2D model, tray, or installer is required.",
+    "required_evidence": [
+      {
+        "id": "candidate_identity",
+        "criterion": "Pin ZCode commit, Xiadie candidate commit/build, enabled extension state, persona asset version/hash, packet/schema/prompt hashes, and test profile/data root. Show the approved fixed identity is what the candidate Hook actually injects."
+      },
+      {
+        "id": "ordinary_main_interaction",
+        "criterion": "Send one ordinary user message through the selected existing ZCode input surface, show the final response in that surface, and correlate it to the runtime turn/Hook receipt. A direct host.submitPrompt call or a slash command alone is insufficient evidence for ordinary UI input."
+      },
+      {
+        "id": "single_read_only_tool",
+        "criterion": "In the same candidate path, execute exactly one allowlisted read-only operation against a synthetic fixture. Retain input/turn/tool ids, fixture hash, one completion receipt, and the final response; verify there was no write side effect."
+      },
+      {
+        "id": "honest_failure_and_cancel_recovery",
+        "criterion": "Exercise a read-only tool failure and a cancellation/recovery path. The visible result and event/receipt evidence must say failed, cancelled, or incomplete; no success/final-complete claim may appear without successful evidence."
+      },
+      {
+        "id": "extension_disabled",
+        "criterion": "With the same pinned ZCode source and isolated profile, disable the extension and prove the native Runtime still accepts an ordinary turn. Record the before/after config hashes and host result."
+      },
+      {
+        "id": "no_key",
+        "criterion": "On the actual candidate, start a fresh no-Key profile, reach local settings/onboarding, and record zero provider/model requests. Never include credential values in logs."
+      },
+      {
+        "id": "no_dsh",
+        "criterion": "On the actual candidate, run without DSH installed or on PATH and record that no DSH process/request was attempted and the P01 ZCode path remains usable. The current U02 guard does not itself prove this process-level condition."
+      },
+      {
+        "id": "offline_degradation",
+        "criterion": "Point an isolated candidate profile at the existing loopback-only 503 fixture. Send an ordinary user message and retain the visible unavailable/error state plus runtime receipt; prove the turn is not represented as successful."
+      },
+      {
+        "id": "evidence_classes",
+        "criterion": "Label mock, actual ZCode Runtime, authorized paid-model, and distribution-package evidence separately. Mock evidence cannot stand in for the candidate Runtime. P01 may mark package testing NOT_RUN when no P01 installer artifact exists."
+      }
+    ],
+    "interaction_path": {
+      "frozen_plan_choice": "The v1.1 P01 plan says existing ZCode and primary interaction but does not select CLI versus Desktop. P10 later owns the formal product desktop and fixed Live2D.",
+      "recommended_p01_choice": "Existing ZCode CLI/TUI ordinary chat input as the smallest P01 host surface; this avoids inventing a P10 interface while still testing a real user entry.",
+      "source_semantics": "The pinned CLI TUI delegates ordinary user input to activeApp.sendInput when available. The pinned server operation also calls record.app.sendInput for ordinary content; slash/background compact uses submitPrompt.",
+      "suitable_proof": "Drive the actual selected input surface and record entered text, rendered final text, turn/input ids, Hook admission/receipt, and tool receipt. A headless submitPrompt smoke remains useful as a lower-level Runtime check, but cannot prove this interaction route.",
+      "current_gap": "Current unaccepted U06 host.ts snapshot does not guard sendInput. Its native integration test source uses host.submitPrompt for mock read, disabled-extension, and fail-closed cases; those test definitions are not execution evidence and do not prove the ordinary UI route. Inference: the selected UI path must be supported or remain a gate blocker until U10."
+    },
+    "gate_artifacts": {
+      "P01_U10": {
+        "status": "not_started",
+        "planned_output": "evidence/P01-U10/<attempt-id>/result.md",
+        "minimum_contents": [
+          "Review every accepted implementation result and bind the report to the exact candidate commit/build and asset hashes.",
+          "Run success, failure, cancel/recovery, and extension-disabled paths; report mock, actual Runtime, paid model, and package evidence as separate classes.",
+          "Independently record scope, permission, fact, and failure negative cases; keep unresolved critical cases blocking.",
+          "Record commands, cwd, exit codes, outputs/hashes, limitations, and rollback."
+        ]
+      },
+      "P01_U11": {
+        "status": "not_started",
+        "planned_output": "evidence/P01-U11/<attempt-id>/result.md",
+        "minimum_contents": [
+          "Accept only after U10 and all P01 implementation units are accepted.",
+          "Re-run the actual candidate smoke plus no-Key, no-DSH, and offline degradation cases against the exact candidate.",
+          "Freeze version scope and source/code/prompt/schema/asset hashes and support limits; explicitly mark pass or blocked.",
+          "Keep remote tag/upload/publish outside this gate unless separately authorized."
+        ]
+      }
+    }
+  },
+  "must_requirements": [
+    {
+      "id": "R01",
+      "title": "固定原创身份与表达连续性",
+      "priority": "must",
+      "p01_status": "partial",
+      "actual_evidence": [
+        "P01-U04 is accepted for the persona asset/loader.",
+        "P01-U05 is accepted for the instruction/state/evidence/content ContextPacket contract and deterministic renderer.",
+        "P01-U02 records four earlier authorized generation requests, but its acceptance explicitly says it does not accept P01/G01/U09."
+      ],
+      "still_missing": [
+        "Actual U06 Hook injection of the accepted role through the selected ordinary input path.",
+        "U07 final response and tool-evidence projection on the candidate.",
+        "U09 role/failure evaluation and U10/U11 exact-candidate smoke."
+      ],
+      "not_run": "Candidate role continuity through the current ZCode input surface."
+    },
+    {
+      "id": "R02",
+      "title": "ZCode主工作与Core/DSH边界",
+      "priority": "must",
+      "p01_status": "partial",
+      "actual_evidence": [
+        "Accepted U02 reuse decision selects the pinned native ZCode Runtime/Loop with bounded Xiadie Core/Hook.",
+        "U02 authorization/status says DSH/Dream is not a default start."
+      ],
+      "still_missing": [
+        "Accepted U06 product Hook integration and proof that the chosen ordinary message path uses the bounded Xiadie gate.",
+        "Candidate no-DSH process/request evidence and extension-disabled native Runtime regression.",
+        "U05 explicitly records that packages/core is absent and its boundary scan is NOT_RUN."
+      ],
+      "not_run": "Candidate Core/DSH boundary in a real ZCode interaction."
+    },
+    {
+      "id": "R03",
+      "title": "先查现成、再试、后最小实现",
+      "priority": "must",
+      "p01_status": "research_and_spike_accepted; gate_confirmation_pending",
+      "actual_evidence": [
+        "P01-U01 and U02 are accepted.",
+        "U02 pins the approved reuse decision and a 241-file SHA-256/git-blob manifest with zero mismatches."
+      ],
+      "still_missing": [
+        "U11 must bind that decision to the exact integrated candidate and its source/asset hashes.",
+        "Any changed or newly introduced seam must be reported as a scoped difference, not treated as already validated by U02."
+      ],
+      "not_run": "Independent gate review of the integrated candidate."
+    },
+    {
+      "id": "R05",
+      "title": "多会话、消息操作与流式恢复",
+      "priority": "must",
+      "p01_status": "partial",
+      "p01_slice": "For P01, require one ordinary user turn plus the U10 failure/cancel/recovery checks. Full session/message management belongs to later planned work, including P02 and P10; P01 is not a reason to build that UI.",
+      "actual_evidence": [
+        "U02 exercised lower-level Runtime/Loop paths and separately launched the existing Desktop for no-Key settings."
+      ],
+      "still_missing": [
+        "No accepted candidate ordinary-input UI turn or rendered response.",
+        "No candidate stream cancellation/recovery or event-to-final-result proof.",
+        "U02 Desktop driver only navigates entry/settings and tests local preference persistence; it does not send a chat message."
+      ],
+      "not_run": "P01 candidate message lifecycle."
+    },
+    {
+      "id": "R06",
+      "title": "模型配置、能力矩阵和降级",
+      "priority": "must",
+      "p01_status": "partial",
+      "actual_evidence": [
+        "U02 no-Key control-plane and actual Desktop no-Key/settings attempts passed with zero model requests.",
+        "U02 exercised two official model IDs in four earlier calls; backend independence was not proven."
+      ],
+      "still_missing": [
+        "U08 candidate configuration/credential isolation and U09 evaluation are not started.",
+        "The U02 loopback 503 endpoint was an egress fixture; its Desktop driver did not send a chat, so it does not prove visible offline degradation.",
+        "No candidate no-DSH result is recorded."
+      ],
+      "not_run": "Candidate no-Key/no-DSH/offline behavior and candidate model-route result."
+    },
+    {
+      "id": "R13",
+      "title": "单轮来源分层与token预算",
+      "priority": "must",
+      "p01_status": "partial",
+      "actual_evidence": [
+        "Accepted U05 separates instruction/state/evidence/content, pins source_refs/scope/version, validates exact shapes, and measures a UTF-8 byte upper bound for the packet."
+      ],
+      "still_missing": [
+        "Actual candidate Hook-to-model integration and visible proof that the right source/version was injected on the chosen turn.",
+        "U05 explicitly does not measure tokenizer tokens or host-native system/project prompt accounting; the gate must retain that limitation rather than claim a complete token budget."
+      ],
+      "not_run": "Candidate prompt source projection and any tokenizer-level measurement."
+    }
+  ],
+  "u02_reuse": {
+    "accepted_scope": "U02 is an accepted spike/reuse decision, not P01/G01 acceptance.",
+    "best_existing_parts": [
+      {
+        "path": "spikes/P01/run-no-key.py",
+        "reuse": "Reuse the isolated child environment, fresh home/data/temp directories, production-file SHA-256 before/after snapshot, no-secret logging, model-request count, and run manifest pattern."
+      },
+      {
+        "path": "spikes/P01/run-desktop-ui.py",
+        "reuse": "Reuse the actual pinned ZCode Desktop launcher, fresh profile, 127.0.0.1 ephemeral 503 endpoint, listener baseline, dynamic inspector/CDP checks, and artifact manifest pattern if Desktop is the selected host."
+      },
+      {
+        "path": "spikes/P01/desktop-ui.mjs",
+        "reuse": "Reuse Playwright against the actual ZCode UI and its DOM/settings assertions; add the one ordinary chat send, final-result assertion, read-only receipt, error/cancel assertions only for the candidate run."
+      },
+      {
+        "path": "spikes/P01/desktop-guard.cjs",
+        "reuse": "Reuse the network guard and loopback allowlist. Add the smallest process observation needed for no-DSH; current guard records network/utility forks but does not prove no DSH child process."
+      },
+      {
+        "path": "spikes/P01/no-key.mjs",
+        "reuse": "Reuse the no-Key ZCode control-plane probe for startup/settings reachability; it is not a substitute for the candidate UI/Runtime smoke."
+      }
+    ],
+    "minimal_reuse_plan": [
+      "Keep accepted U02 files/evidence as the immutable baseline; make the U11 runner parameterize the exact candidate build/plugin path and isolated profile.",
+      "Use separate fresh profiles for candidate success, no-Key, no-DSH, and offline cases. Keep dynamic loopback ports and production hash checks.",
+      "For no-Key, assert settings reachable and model request count is zero. For no-DSH, omit DSH from PATH/config and capture process/request evidence. For offline, use the existing 503 server and assert a visible failed/unavailable result with no success receipt.",
+      "Drive the selected normal user-input control so the real sendInput route, candidate Hook, tool receipt, and final UI result are connected in one evidence chain. Record screenshot only as visual evidence; DOM/transcript plus runtime receipts prove function.",
+      "The current U02 Desktop no-Key evidence and U02 mock loop remain pre-candidate evidence; both must be rerun or explicitly referenced only as baseline, not passed forward as U11 candidate results."
+    ],
+    "existing_gaps": [
+      "U02 Desktop summary is no-Key/settings persistence with zero model requests; the driver never submits chat input.",
+      "U02 accepts visual screenshot verification as NOT_RUN.",
+      "U02 no-Key script and Desktop guard do not assert absence of DSH process launch.",
+      "U02 mock/model routes do not use the integrated P01 candidate; acceptance says scope U02 only.",
+      "The current U06 native.integration.test.mjs defines mock read, disabled-extension, and fail-closed tests through host.submitPrompt; its source has no sendInput UI test, and this audit did not execute it."
+    ]
+  },
+  "stage_boundaries": {
+    "P10": {
+      "conclusion": "P10 is explicitly the formal desktop stage: one main window, tray, cards/readable status, and fixed Live2D. None is a P01 installer or G01 criterion.",
+      "source": "01_项目计划书.md lines 526-553."
+    },
+    "P16": {
+      "conclusion": "P16-U04 requires a real artifact hash check and clean-environment download/install/run/uninstall verification. The frozen v1.1 sources do not name NSIS or any installer technology. P01 does not require NSIS; leave package-tech choice to P16."
+    },
+    "NSIS": {
+      "requirement_in_v1_1_plan": false,
+      "finding": "No NSIS requirement is stated in the frozen v1.1 planning sources. P01 candidate can be an isolated runnable build/profile. P16 requires installer validation, with installer mechanism unspecified."
+    }
+  },
+  "sources": [
+    {
+      "id": "agents",
+      "path": "E:\\Xiadie\\Xiadie\\AGENTS.md",
+      "lines": "1-13",
+      "sha256": "56a2e6fd17f29f7737ad4b130ce5fcd3a6118f47cabfa6941e549deaaca3a29d",
+      "supports": "Frozen plan is authoritative; P01 task order; no U10/U11 before dependencies; actual evidence and NOT_RUN policy."
+    },
+    {
+      "id": "plan01",
+      "path": "E:\\Xiadie\\Xiadie\\planning\\Xiadie_V2_v1.1\\01_项目计划书.md",
+      "lines": [
+        "271-297",
+        "526-553",
+        "688-712"
+      ],
+      "sha256": "77e4265fb3ee9278c088b3147c8c106eb9462dd7795cd7da8e433a581d7a48a7",
+      "supports": "P01/G01, P10 formal desktop/Live2D, P16 real delivery/install package boundary."
+    },
+    {
+      "id": "plan02",
+      "path": "E:\\Xiadie\\Xiadie\\planning\\Xiadie_V2_v1.1\\02_计划执行书.md",
+      "lines": [
+        "470-474",
+        "546-788",
+        "791-823",
+        "826-858"
+      ],
+      "sha256": "5f8fe397e4622c208e866827d7b528e3efacfd7912e74c602182c8465aa6d5b4",
+      "supports": "P01 stage statement, U03-U09 Must links, U10 regression paths and pass standard, U11 actual candidate/no-Key/no-DSH/offline gate."
+    },
+    {
+      "id": "requirements",
+      "path": "E:\\Xiadie\\Xiadie\\planning\\Xiadie_V2_v1.1\\requirements.json",
+      "lines": [
+        "4-50",
+        "51-103",
+        "104-181",
+        "232-280",
+        "281-317",
+        "562-600"
+      ],
+      "sha256": "3d3a89844ecc1a71efb1a49094762ec1826dfb4e66dcc76802fe91b497fc3505",
+      "supports": "R01/R02/R03/R05/R06/R13 titles, P01 mapping, and Must priority."
+    },
+    {
+      "id": "u10_card",
+      "path": "E:\\Xiadie\\Xiadie\\planning\\Xiadie_V2_v1.1\\tasks\\P01-U10.md",
+      "lines": "1-43",
+      "sha256": "d283c623a14fad26d0a56f22d0f7e60fee4762ae1f3fabb8ae8dd6f1a8982cb0",
+      "supports": "U10 inputs, exact allowed artifact scope, run matrix, acceptance and NOT_RUN handling."
+    },
+    {
+      "id": "u11_card",
+      "path": "E:\\Xiadie\\Xiadie\\planning\\Xiadie_V2_v1.1\\tasks\\P01-U11.md",
+      "lines": "1-43",
+      "sha256": "df5d3ca973d3035ada4554102523e5864b220abbed3050c4447a5ae212235952",
+      "supports": "U11 dependency, candidate smoke/no-Key/no-DSH/offline, hash freeze and gate output."
+    },
+    {
+      "id": "p16u04_card",
+      "path": "E:\\Xiadie\\Xiadie\\planning\\Xiadie_V2_v1.1\\tasks\\P16-U04.md",
+      "lines": "1-39",
+      "sha256": "ef1efefb1f0d9d63e49ff467c45f02edb155fc07a7a08c465f43b4af69e45aa2",
+      "supports": "Generic release approval and actual installer artifact verification; no named NSIS technology."
+    },
+    {
+      "id": "status",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01\\status.json",
+      "lines": [
+        "1-12",
+        "202-252",
+        "281-303",
+        "307-330"
+      ],
+      "sha256": "25384e6ff97ae5960a6d27402b12e5cdf320c1c764fddc85dd9dd0cdb1da7a93",
+      "supports": "Current P01/U06 status, accepted U05, U10/U11 not started, model authorization metadata without secret values."
+    },
+    {
+      "id": "u02_acceptance",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01-U02\\20261001-01\\acceptance.json",
+      "lines": "1-39",
+      "sha256": "a5ecd9e95f8edf61b8545e1defb51882fb69f62b40e75db8fdb153f79afdf239",
+      "supports": "Accepted reuse decision, 241-file manifest, four calls/two model ids, explicit U02-only limitation."
+    },
+    {
+      "id": "u02_mock_summary",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01-U02\\20261001-01\\summary-mock.json",
+      "lines": "1-2528",
+      "sha256": "d4e75a235d6855dfd43eb2fac6fb1b9efe91f987a7971df14c9f9e9f6c36fbfe",
+      "supports": "Prior mock native Runtime/Loop/tool route evidence; provider calls are mock and not candidate acceptance."
+    },
+    {
+      "id": "u02_no_key_control",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01-U02\\20261001-01\\summary-no-key-control.json",
+      "lines": "1-96",
+      "sha256": "3b5fff94ffd19b05307c61450a54536bfb165f539088e002f5cd724cb4b07dec",
+      "supports": "Prior isolated no-Key control-plane pass; Desktop UI explicitly NOT_RUN for this run."
+    },
+    {
+      "id": "u02_no_key_ui",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01-U02\\20261001-01\\summary-no-key-ui.json",
+      "lines": "1-174",
+      "sha256": "e53f3e02f051bc009c89d33dde003bccd652c5c76d7c1a5c599bf4c25ffe0550",
+      "supports": "Prior actual pinned Desktop no-Key/settings run with zero model requests; not the Xiadie candidate or chat smoke."
+    },
+    {
+      "id": "u05_acceptance",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01-U05\\20261001-01\\acceptance.json",
+      "lines": "1-371",
+      "sha256": "a1b332d859a940202aa35f975422abbf0450b949788bd1618ba30391093ff9eb",
+      "supports": "Accepted ContextPacket implementation and explicit no P01/G01, no Desktop/model/candidate package scope."
+    },
+    {
+      "id": "u05_review",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01-U05\\20261001-01\\review-final.json",
+      "lines": "1-182",
+      "sha256": "f128a908fe47c519db60f4dd995af8caccc9660867455246b9ca5bfef1d7dfee",
+      "supports": "Independent pass, integrated library tests, and explicit product Hook/runtime NOT_RUN limitations."
+    },
+    {
+      "id": "no_key_runner",
+      "path": "E:\\Xiadie\\Xiadie\\spikes\\P01\\run-no-key.py",
+      "lines": [
+        "1-31",
+        "33-91"
+      ],
+      "sha256": "3afe7e319cde874ac1261ed6fcf21c2a549d26cce4baecadf740e074fffe5d49",
+      "supports": "Reusable fresh-profile/no-secret/hash-before-after runner pattern."
+    },
+    {
+      "id": "no_key_probe",
+      "path": "E:\\Xiadie\\Xiadie\\spikes\\P01\\no-key.mjs",
+      "lines": "1-81",
+      "sha256": "b6b63d34022510b812a86c1d35d382ddb246e585644adc4bb9bf71fb293a51f1",
+      "supports": "Existing no-Key native control-plane probe."
+    },
+    {
+      "id": "desktop_runner",
+      "path": "E:\\Xiadie\\Xiadie\\spikes\\P01\\run-desktop-ui.py",
+      "lines": [
+        "20-55",
+        "56-102"
+      ],
+      "sha256": "5bf5788d7c0efb323512cb2839a00faab0059d7964ce3d463b26ca41ea25c662",
+      "supports": "Actual pinned Desktop launch, isolated profile, ephemeral loopback 503, dynamic port and network evidence."
+    },
+    {
+      "id": "desktop_driver",
+      "path": "E:\\Xiadie\\Xiadie\\spikes\\P01\\desktop-ui.mjs",
+      "lines": [
+        "44-60",
+        "62-126"
+      ],
+      "sha256": "55a6130044c8c8f7a6f419527f3e5c78b44b40712b161a6186d919e58ee961b5",
+      "supports": "Actual UI no-Key/settings workflow; it never submits a chat message and records visual capture as NOT_RUN."
+    },
+    {
+      "id": "desktop_guard",
+      "path": "E:\\Xiadie\\Xiadie\\spikes\\P01\\desktop-guard.cjs",
+      "lines": [
+        "1-35",
+        "50-94"
+      ],
+      "sha256": "8bf2787315f194f17ff4fa199a738244de1c21717787d23dd51185617cc683c8",
+      "supports": "Loopback-only test network instrumentation; no DSH process absence assertion."
+    },
+    {
+      "id": "zcode_server_operations",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\bootstrap\\src\\zcode-protocol\\server-operations.ts",
+      "lines": [
+        "2091-2100",
+        "2410-2450"
+      ],
+      "sha256": "728ed0dfbb18d528ff5dd209a7aba44123dd32c8783e5881f84b978b26ee1c11",
+      "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "supports": "Slash/background compact uses submitPrompt; ordinary content uses sendInput and awaits completion only after admission."
+    },
+    {
+      "id": "zcode_input_facade",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\bootstrap\\src\\app\\input-facade.ts",
+      "lines": "193-249",
+      "sha256": "4e823a2f2aa2504268a5d10da4f231ad61f56119aa153acc02d949a2ec9d1bf2",
+      "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "supports": "sendInput returns started_turn with completion or queued; admission ACK is not completion."
+    },
+    {
+      "id": "zcode_tui_input",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source\\apps\\zcode-cli\\packages\\cli\\src\\tui-prompt-handler.ts",
+      "lines": "318-348",
+      "sha256": "708b05f471942f62c418bd08ca86940b2c667ed2ff0a12a8a1b430670ddf9bc1",
+      "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "supports": "CLI/TUI ordinary message selects sendInput when exposed by the active app."
+    },
+    {
+      "id": "u06_host_snapshot",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u06\\packages\\adapters\\zcode\\src\\host.ts",
+      "lines": [
+        "214-258",
+        "740-785"
+      ],
+      "sha256": "d29a1be1a2555bf0365255081eab452cd61d6c3ce2ed551e3855396bed6b4295",
+      "unaccepted_worktree_head": "f01f3d3551b55b8bde6889a940e9bcc68425240b",
+      "supports": "Current unaccepted U06 working snapshot wraps submitPrompt/resume/compact; other methods are forwarded.",
+      "line_count": 799,
+      "worktree_status": "untracked at capture; exact current file hash is the snapshot identifier"
+    },
+    {
+      "id": "u06_test_snapshot",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u06\\packages\\adapters\\zcode\\test\\native.integration.test.mjs",
+      "lines": [
+        "30-46",
+        "75-129"
+      ],
+      "sha256": "aafc2fc2787d86ca68998caf5d8c1375a3cb0b7247b05813c70211775694dfac",
+      "unaccepted_worktree_head": "f01f3d3551b55b8bde6889a940e9bcc68425240b",
+      "supports": "Current U06 source defines mock native Read, disabled-extension, and fail-closed cases via host.submitPrompt; no sendInput UI test.",
+      "line_count": 574,
+      "worktree_status": "untracked at capture; test source was not executed by this audit"
+    }
+  ]
+}

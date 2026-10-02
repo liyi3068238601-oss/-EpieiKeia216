@@ -1,0 +1,66 @@
+{
+  "decision": "pass",
+  "authorCommit": "ef716c8a1ae4b0c67c9af9ea6d84fee809399d1a",
+  "baselineCommit": "f01f3d3551b55b8bde6889a940e9bcc68425240b",
+  "manifest": {
+    "files": 162,
+    "sha256": "524fc3fd2b6135f3dcff04d9b3c856ac9a2849baacb536d45c140500142db7a2",
+    "changedPathSet": "exact"
+  },
+  "standardRuns": [
+    {
+      "id": "frozen-install",
+      "exitCode": 0,
+      "stdoutBytes": 276,
+      "stderrBytes": 0
+    },
+    {
+      "id": "check",
+      "exitCode": 0,
+      "stdoutBytes": 449,
+      "stderrBytes": 0
+    },
+    {
+      "id": "build",
+      "exitCode": 0,
+      "stdoutBytes": 104,
+      "stderrBytes": 0
+    },
+    {
+      "id": "unit-u06",
+      "exitCode": 0,
+      "stdoutBytes": 876,
+      "stderrBytes": 0
+    },
+    {
+      "id": "contract-u06",
+      "exitCode": 0,
+      "stdoutBytes": 322,
+      "stderrBytes": 0
+    },
+    {
+      "id": "integration-u06",
+      "exitCode": 0,
+      "stdoutBytes": 13365,
+      "stderrBytes": 0
+    }
+  ],
+  "probeResults": [
+    {
+      "id": "enabled-cross-turn-session-compact-cleanup",
+      "result": "PASS",
+      "nonceCount": 4,
+      "freshNonceCount": 4,
+      "delegateCalls": 2,
+      "failures": [
+        "model-receipt",
+        "model-receipt"
+      ]
+    }
+  ],
+  "limits": [
+    "The independent cross-trace fixture uses a synthetic in-process execution port; the preserved integration run separately launches the installed Hook process.",
+    "The native integration uses the fixed ZCode 29628c9 source and a loopback HTTP mock; no paid model, Desktop GUI, DSH, or product assembly was exercised.",
+    "The standard boundary scan did not run because packages/core is absent."
+  ]
+}
