@@ -1,0 +1,16 @@
+✔ merges duplicate native stream and TurnResult events, orders receipts, and preserves the native reply (7.9807ms)
+✔ keeps distinct native TurnResult-only sequence-zero events and merges their live copies by ID (0.2232ms)
+✔ same event ID with conflicting turn or terminal payload fails closed (0.2678ms)
+✔ a normal turn and confident role text stay unverified when a required receipt failed or is absent (0.1629ms)
+✔ hook block remains blocked even when native turn lifecycle says success (0.436ms)
+✔ partial receipts, cancellation, and empty completion fallback keep text and execution facts separate (0.2244ms)
+✔ conflicting terminal receipts fail closed and a no-tool conversation has an independent evidence state (0.2462ms)
+✔ collector can subscribe before native admission, then bind and discard other turns (0.5463ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69.6986

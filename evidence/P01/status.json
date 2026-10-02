@@ -7,7 +7,7 @@
   "product_version": "0.1.0",
   "stage": "P01",
   "stage_status": "running",
-  "current_task": "P01-U07",
+  "current_task": "P01-U08",
   "G00": "pass",
   "G01": "pending",
   "tasks": [
@@ -280,13 +280,30 @@
       "dependencies": [
         "P01-U06"
       ],
-      "status": "running",
+      "status": "accepted",
       "card_sha256": "71b278061dd71273d66143ac527916be718a59c8ea1ebcb5d71dab5ab1e017e5",
       "author_worktree": ".runtime/P01/worktrees/u07",
       "author_branch": "p01-u07",
       "author_agent": "u07_author",
       "baseline_commit": "b02ea866e578899eebbdf7a6685665589d7c5a12",
-      "accepted_prerequisite": "P01-U06:ef716c8a1ae4b0c67c9af9ea6d84fee809399d1a"
+      "accepted_prerequisite": "P01-U06:ef716c8a1ae4b0c67c9af9ea6d84fee809399d1a",
+      "author_commit": "e3e3c5e2d22f29986d9ba5c7f6d0bb037d8f3bf9",
+      "integration_commit": "5213e2c0faff456d32a26b8bf403945076f2cf8f",
+      "acceptance": {
+        "path": "evidence/P01-U07/20261002-01/acceptance.json",
+        "bytes": 6962,
+        "sha256": "d59b4f1f357bffc178406dfd8d34484804f5c187c0823f20720b4243efc2d974"
+      },
+      "review": {
+        "status": "pass",
+        "reviewer": "u07_review",
+        "reviewed_commit": "e3e3c5e2d22f29986d9ba5c7f6d0bb037d8f3bf9",
+        "evidence": {
+          "path": "evidence/P01-U07/20261002-01/review-final.json",
+          "bytes": 11921,
+          "sha256": "db3a4a34eab54a4ef3bf2203d4edae5636fe7d9f503a4276d268089fe45766d9"
+        }
+      }
     },
     {
       "id": "P01-U08",
@@ -294,7 +311,7 @@
       "dependencies": [
         "P01-U07"
       ],
-      "status": "not_started",
+      "status": "running",
       "card_sha256": "15b4961ca908c9343c09eb81d20c5ec290a9fff4a21563a16a6642e9233e89a0"
     },
     {
@@ -404,7 +421,7 @@
     "model_id": "deepseek-flash",
     "eval_second_model_id": "deepseek-v4-pro"
   },
-  "next_task": "P01-U07",
+  "next_task": "P01-U08",
   "pause_history": [
     {
       "user_reply": "准备在最完整的可暂定点停止",
