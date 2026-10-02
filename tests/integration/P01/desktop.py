@@ -65,6 +65,34 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def summarize_request_shape(body: dict) -> dict:
+    def field_state(key: str) -> str:
+        if key not in body:
+            return "absent"
+        value = body[key]
+        if key == "stream":
+            return "true" if value is True else "false" if value is False else "other"
+        if key == "tools":
+            if value is None:
+                return "null"
+            if isinstance(value, list):
+                return "empty" if not value else "nonempty"
+            return "other"
+        if value is None:
+            return "null"
+        if isinstance(value, str) and value in {"none", "auto", "required"}:
+            return value
+        return "object" if isinstance(value, dict) else "other"
+
+    return {
+        "body_keys": sorted(body),
+        "stream_present": "stream" in body,
+        "stream": field_state("stream"),
+        "tools": field_state("tools"),
+        "tool_choice": field_state("tool_choice"),
+    }
+
+
 def execution_bindings() -> dict:
     commit = subprocess.run(["git", "-C", str(REPO), "rev-parse", "HEAD"],
                             capture_output=True, text=True, check=False)
@@ -605,6 +633,7 @@ class MockRelay:
                         "accepted": False,
                         "request_sha256": hashlib.sha256(body_bytes).hexdigest(),
                         "request_bytes": len(body_bytes),
+                        "request_shape": summarize_request_shape(body),
                         "model": body.get("model") if isinstance(body.get("model"), str) else None,
                         "stream": body.get("stream") is True,
                         "auth_present": bool(self.headers.get("Authorization")),
@@ -702,8 +731,13 @@ class MockRelay:
                 if record.get("auxiliary_title"):
                     if outer.scenario_id != "disabled_native" or index != 2:
                         raise HarnessError("unexpected_auxiliary_title_request")
-                    if (body.get("model") != "deepseek-flash" or body.get("stream") is not False
-                            or body.get("tools", []) != [] or "tool_choice" in body):
+                    stream_is_non_streaming = "stream" not in body or body.get("stream") is False
+                    tools_are_empty = "tools" not in body or body.get("tools") == []
+                    tool_choice_is_none_or_absent = (
+                        "tool_choice" not in body or body.get("tool_choice") == "none"
+                    )
+                    if (body.get("model") != "deepseek-flash" or not stream_is_non_streaming
+                            or not tools_are_empty or not tool_choice_is_none_or_absent):
                         raise HarnessError("auxiliary_title_request_shape_mismatch")
                     record["request_kind"] = "auxiliary_title"
                     return
@@ -939,6 +973,9 @@ def create_profile_and_spec(
         "P01_GUARD_ELECTRON_EXE": candidate["resolved_paths"]["electronPath"],
         "P01_ALLOWED_HTTP_ORIGINS": json.dumps([relay.origin]),
         "P01_ALLOWED_IPC_PIPE_PREFIX": rf"\\.\pipe\p01-u10-{uuid.uuid4()}-",
+        # Keep each owned UI test attempt bounded. The production adapter defaults to ten retries;
+        # the offline scenario explicitly asserts a single refusal, so its test process uses zero.
+        "ZCODE_MODEL_RETRY_MAX_RETRIES": "0",
     })
     # No inherited model command, credentials, NODE_OPTIONS, or user profile reaches Electron.
     for forbidden in ("ZCODE_AGENT_SERVER_COMMAND", "ZCODE_AGENT_SERVER_ARGS_JSON", "ZCODE_AGENT_SERVER_CWD", "NODE_OPTIONS"):
@@ -1195,7 +1232,8 @@ def run_scenario(scenario_id: str, output: Path, candidate: dict, system_env: di
             "network_guard": guard_evidence,
             "process_evidence": process_evidence,
             "profile": {"portable_profile_decision": "no-key", "native_provider_config": "empty" if scenario_id == "no_key" else "synthetic-loopback-only",
-                        "api_key_real": False, "model_backend": "parent-owned-loopback"},
+                        "api_key_real": False, "model_backend": "parent-owned-loopback",
+                        "adapter_retry_test_override": {"env": "ZCODE_MODEL_RETRY_MAX_RETRIES", "value": "0"}},
             "limitations": ["network guard is process instrumentation, not an OS sandbox",
                             "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"],
         }
