@@ -1,12 +1,12 @@
 {
-  "date": "2026-10-01",
+  "date": "2026-10-02",
   "goal": "进入P01",
   "project_root": "E:\\Xiadie\\Xiadie",
   "baseline_commit": "7ab0e81f63e9559a1b182f43b9e242e8a8e703fa",
   "plan_version": "1.1",
   "product_version": "0.1.0",
   "stage": "P01",
-  "stage_status": "running",
+  "stage_status": "paused",
   "current_task": "P01-U05",
   "G00": "pass",
   "G01": "pending",
@@ -204,13 +204,37 @@
       "dependencies": [
         "P01-U04"
       ],
-      "status": "running",
+      "status": "accepted",
       "card_sha256": "a1e3de1e6bc42e47694c06959fb708e3b8008fc9c1046983e6a93b389e60fcc8",
       "accepted_prerequisite": "P01-U04:122d3028385469a3704249f8df17e013cf880456",
       "author_worktree": ".runtime/P01/worktrees/u05",
       "author_branch": "p01-u05",
       "author_agent": "u05_author",
-      "baseline_commit": "01f3f8700ada91ef6756a184fe5ea029d432f530"
+      "baseline_commit": "01f3f8700ada91ef6756a184fe5ea029d432f530",
+      "author_commit": "96457a2ef13e697e1877bcf23deb79578422a08e",
+      "integration_commit": "f7d3bcff8926b4e931b4fba70c111bb519668800",
+      "acceptance": {
+        "path": "evidence/P01-U05/20261001-01/acceptance.json",
+        "bytes": 19027,
+        "sha256": "a1b332d859a940202aa35f975422abbf0450b949788bd1618ba30391093ff9eb"
+      },
+      "review": {
+        "status": "pass",
+        "reviewer": "u05_review",
+        "reviewed_commit": "96457a2ef13e697e1877bcf23deb79578422a08e",
+        "evidence": {
+          "path": "evidence/P01-U05/20261001-01/review-final.json",
+          "bytes": 10473,
+          "sha256": "f128a908fe47c519db60f4dd995af8caccc9660867455246b9ca5bfef1d7dfee"
+        }
+      },
+      "tests": {
+        "unit": 10,
+        "contract": 1,
+        "integration": 2,
+        "fail": 0,
+        "skipped": 0
+      }
     },
     {
       "id": "P01-U06",
@@ -345,5 +369,16 @@
     "provider": "DeepSeek official",
     "model_id": "deepseek-flash",
     "eval_second_model_id": "deepseek-v4-pro"
+  },
+  "next_task": "P01-U06",
+  "pause": {
+    "user_reply": "准备在最完整的可暂定点停止",
+    "paused_at_utc": "2026-10-02T02:17:16.503483+00:00",
+    "after_task": "P01-U05",
+    "checkpoint": {
+      "path": "evidence/P01/checkpoints/U05/checkpoint.json",
+      "bytes": 1868,
+      "sha256": "157008b05867fd63d1e32838a34bc8108bedcfd5d1b177d40f4d2a33c7947bc4"
+    }
   }
 }

@@ -1,0 +1,19 @@
+file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u05/dist/packages/context/src/index.js:233
+    throw new ContextPacketError("INVALID_INPUT", message);
+          ^
+
+ContextPacketError: Context input exceeds its UTF-8 byte limit
+    at invalid (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u05/dist/packages/context/src/index.js:233:11)
+    at addSize (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u05/dist/packages/context/src/index.js:199:9)
+    at snapshotJson (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u05/dist/packages/context/src/index.js:146:9)
+    at snapshotJson (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u05/dist/packages/context/src/index.js:190:26)
+    at snapshotJson (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u05/dist/packages/context/src/index.js:170:24)
+    at snapshotJson (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u05/dist/packages/context/src/index.js:190:26)
+    at buildContextPacket (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u05/dist/packages/context/src/index.js:34:20)
+    at file:///E:/Xiadie/Xiadie/.runtime/P01/u05-review/final-counterexamples.mjs:162:3
+    at group (file:///E:/Xiadie/Xiadie/.runtime/P01/u05-review/final-counterexamples.mjs:24:28)
+    at file:///E:/Xiadie/Xiadie/.runtime/P01/u05-review/final-counterexamples.mjs:153:1 {
+  code: 'INVALID_INPUT'
+}
+
+Node.js v24.14.0

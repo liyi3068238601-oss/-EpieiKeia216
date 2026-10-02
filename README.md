@@ -1,6 +1,6 @@
 # Xiadie V2
 
-当前执行 P01「最小骨架与遐蝶角色」，P00 / G00 已验收。P01-U01 至 U04 已独立验收，包括来源调查、隔离试验、最小 TypeScript 工作区和角色资产加载器；当前进入 U05 上下文契约，P01 / G01 仍待验收。
+P01 已按用户要求在 U05 验收后暂停。P00 / G00 已验收；P01-U01 至 U05 已独立验收，包括来源调查、隔离试验、最小 TypeScript 工作区、角色资产加载器和 ContextPacket 契约。恢复入口为 U06，P01 / G01 仍待验收。暂停交接见 [P01-pause-U05.md](docs/handovers/P01-pause-U05.md)。
 
 项目根：`E:/Xiadie/Xiadie`。权威计划为 `planning/Xiadie_V2_v1.1/`，从原始 v1.1 ZIP 解压并逐文件核验 SHA-256；计划副本保持不变。
 

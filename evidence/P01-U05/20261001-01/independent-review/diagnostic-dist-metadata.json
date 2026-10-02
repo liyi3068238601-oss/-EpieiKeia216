@@ -1,0 +1,62 @@
+{
+  "schema": "p01-u05-probe-diagnostic/v1",
+  "classification": "pre-fix uncommitted diagnostic; not final commit acceptance",
+  "baseline_commit": "01f3f8700ada91ef6756a184fe5ea029d432f530",
+  "author_commit": null,
+  "executed_at_utc": "2026-10-01T15:53:01.2205227Z",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "command": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe .runtime/P01/u05-review/proxy-probe.mjs",
+  "runtime": "Node v24.14.0",
+  "exit_code": 0,
+  "runtime_artifact": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u05\\dist\\packages\\context\\src\\index.js",
+    "bytes": 8585,
+    "sha256": "b2cc09e15c73f36ea1fc218cea983c1c506a773a36ea57433b438e2975c70420",
+    "last_write_utc": "2026-10-01T15:41:18.9860232Z",
+    "relation": "dist timestamp precedes source edit timestamp and diagnostic; author attempt-3 build output"
+  },
+  "source_state": {
+    "worktree_path": "packages/context/src/index.ts",
+    "worktree_bytes": 11781,
+    "worktree_sha256": "6fcc5b6ca892a0106a1063f15587db24633d799603846b55ddcab8fe77b50fd7",
+    "worktree_last_write_utc": "2026-10-01T15:55:37.2953771Z",
+    "staged_index_bytes": 10018,
+    "staged_index_sha256": "05815c3434481eca663195a6a267cd13bb21b73297c3696edc384afdcb91fd06",
+    "staged_git_blob": "a0bcbd62949402f73bacee05f10411024d68680b",
+    "staged_source_matches_author_manifest": true,
+    "note": "The current worktree source was edited after this diagnostic. Probe executed the ignored dist artifact built before that edit; do not treat as a finding against final author commit."
+  },
+  "artifacts": [
+    {
+      "path": ".runtime/P01/u05-review/proxy-probe.mjs",
+      "bytes": 3203,
+      "sha256": "fc0c387a256959b67cf9ef1c6fbdbe291b531223e3bf2dc352689a98eb19145c"
+    },
+    {
+      "path": ".runtime/P01/u05-review/proxy-probe.stdout.log",
+      "bytes": 625,
+      "sha256": "2bba671da7c5f720784024a9a1124182ecee03ecb85e082bf70a87f131962e5a"
+    },
+    {
+      "path": ".runtime/P01/u05-review/proxy-probe.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "results": [
+    {
+      "case": "max_tokens Proxy reads bypassed MAX_BUDGET",
+      "observed": 1048577,
+      "expected_max": 1048576
+    },
+    {
+      "case": "source_refs Proxy reads bypassed per-record limit",
+      "observed": 17,
+      "expected_max": 16
+    },
+    {
+      "case": "nested Proxy get trap executed during snapshot",
+      "observed_get_count": 1
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "diagnostic": "current built output; not final commit acceptance",
+  "node": "v24.14.0",
+  "results": [
+    {
+      "case": "max_tokens_proxy_bypasses_maximum",
+      "passed": true,
+      "proxy_get_reads": 4,
+      "emitted_max_tokens": 1048577,
+      "allowed_max_tokens": 1048576
+    },
+    {
+      "case": "source_refs_proxy_bypasses_per_record_limit",
+      "passed": true,
+      "proxy_get_reads": 4,
+      "emitted_refs": 17,
+      "allowed_refs": 16
+    },
+    {
+      "case": "json_value_proxy_get_trap_runs_during_snapshot",
+      "passed": true,
+      "proxy_get_reads": 1,
+      "accepted": true
+    }
+  ]
+}

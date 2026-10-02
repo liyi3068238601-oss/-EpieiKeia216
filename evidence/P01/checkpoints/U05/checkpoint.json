@@ -1,0 +1,60 @@
+{
+  "schema": "p01-pause-checkpoint/v1",
+  "created_at_utc": "2026-10-02T02:17:16.503483+00:00",
+  "user_reply": "准备在最完整的可暂定点停止",
+  "stage": "P01",
+  "status": "paused",
+  "boundary": "P01-U01 through P01-U05 accepted; U06 implementation not started",
+  "integration_commit": "f7d3bcff8926b4e931b4fba70c111bb519668800",
+  "u05_author_commit": "96457a2ef13e697e1877bcf23deb79578422a08e",
+  "local_commit_anchor_branch": "p01-pause-u05",
+  "u05_acceptance": {
+    "path": "evidence/P01-U05/20261001-01/acceptance.json",
+    "bytes": 19027,
+    "sha256": "a1b332d859a940202aa35f975422abbf0450b949788bd1618ba30391093ff9eb"
+  },
+  "u05_review": {
+    "path": "evidence/P01-U05/20261001-01/review-final.json",
+    "bytes": 10473,
+    "sha256": "f128a908fe47c519db60f4dd995af8caccc9660867455246b9ca5bfef1d7dfee"
+  },
+  "preservation": {
+    "path": "evidence/P01/checkpoints/U05/preservation.json",
+    "bytes": 77402,
+    "sha256": "20a876b477119797d1df3f60a076c1918312f1618ebd8bb4036e6cbd80bf8f02"
+  },
+  "root_validation": {
+    "path": "evidence/P01/checkpoints/U05/root-validation/execution.json",
+    "bytes": 5149,
+    "sha256": "14093d1ff0432ef7b719b10c113537e0b89fb84fa3a63eca6fb5179d10cbf0e2"
+  },
+  "next_task": "P01-U06",
+  "G00": "pass",
+  "G01": "pending",
+  "P02_started": false,
+  "model_generation_calls": 4,
+  "initial_request_limit": 18,
+  "budget_limit": null,
+  "models": [
+    "deepseek-flash",
+    "deepseek-v4-pro"
+  ],
+  "backend_independence": "unconfirmed",
+  "handoff": "docs/handovers/P01-pause-U05.md",
+  "resume_notes": "docs/handovers/P01-resume-notes.md",
+  "remaining": [
+    "P01-U06",
+    "P01-U07",
+    "P01-U08",
+    "P01-U09",
+    "P01-U10",
+    "P01-U11",
+    "G01"
+  ],
+  "unverified": [
+    "native product Hook integration",
+    "product startup entry",
+    "Windows distribution package",
+    "G01"
+  ]
+}

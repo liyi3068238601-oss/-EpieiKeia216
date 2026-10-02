@@ -1,0 +1,142 @@
+{
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "commit_before_checks": "f7d3bcff8926b4e931b4fba70c111bb519668800",
+  "started_at_utc": "2026-10-02T02:16:35.102869+00:00",
+  "commands": [
+    {
+      "label": "check",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "check"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-02T02:16:36.638346+00:00",
+      "ended_at_utc": "2026-10-02T02:16:44.056059+00:00",
+      "exit_code": 0,
+      "stdout": {
+        "path": "evidence/P01/checkpoints/U05/root-validation/check.stdout.log",
+        "bytes": 347,
+        "sha256": "d07f21c066049d6d62216fa0ce4f8242caaa6f243e35737705c25413f948e10e"
+      },
+      "stderr": {
+        "path": "evidence/P01/checkpoints/U05/root-validation/check.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "build",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "build"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-02T02:16:44.071389+00:00",
+      "ended_at_utc": "2026-10-02T02:16:45.762091+00:00",
+      "exit_code": 0,
+      "stdout": {
+        "path": "evidence/P01/checkpoints/U05/root-validation/build.stdout.log",
+        "bytes": 70,
+        "sha256": "90b64e1de365a861002551da6e5a422213671acbbcb42bd8520c66003149bb17"
+      },
+      "stderr": {
+        "path": "evidence/P01/checkpoints/U05/root-validation/build.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "unit",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tools/run-tests.mjs",
+        "unit",
+        "P01-U03",
+        "P01-U04",
+        "P01-U05"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-02T02:16:45.781022+00:00",
+      "ended_at_utc": "2026-10-02T02:16:46.232843+00:00",
+      "exit_code": 0,
+      "stdout": {
+        "path": "evidence/P01/checkpoints/U05/root-validation/unit.stdout.log",
+        "bytes": 1727,
+        "sha256": "8110fcc48ab175705db2b1c82fcf797759852413e405e7a2ffcfc231d0be1c38"
+      },
+      "stderr": {
+        "path": "evidence/P01/checkpoints/U05/root-validation/unit.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "tests": 19,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "label": "contract",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tools/run-tests.mjs",
+        "contract",
+        "P01-U03",
+        "P01-U04",
+        "P01-U05"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-02T02:16:46.246417+00:00",
+      "ended_at_utc": "2026-10-02T02:16:48.084001+00:00",
+      "exit_code": 0,
+      "stdout": {
+        "path": "evidence/P01/checkpoints/U05/root-validation/contract.stdout.log",
+        "bytes": 377,
+        "sha256": "163bb435f6e4b142147786aefb32210eed89c2490131a0879550cb42b71224e3"
+      },
+      "stderr": {
+        "path": "evidence/P01/checkpoints/U05/root-validation/contract.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "tests": 3,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "label": "integration",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tools/run-tests.mjs",
+        "integration",
+        "P01-U03",
+        "P01-U04",
+        "P01-U05"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "started_at_utc": "2026-10-02T02:16:48.094127+00:00",
+      "ended_at_utc": "2026-10-02T02:16:49.108148+00:00",
+      "exit_code": 0,
+      "stdout": {
+        "path": "evidence/P01/checkpoints/U05/root-validation/integration.stdout.log",
+        "bytes": 2163,
+        "sha256": "730210d6f77c7a7b72fad7b3635ab2b6caf2f903ab59261fe931cc5a70d22b0e"
+      },
+      "stderr": {
+        "path": "evidence/P01/checkpoints/U05/root-validation/integration.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "tests": 25,
+      "fail": 0,
+      "skipped": 0
+    }
+  ],
+  "node_version": "v24.14.0",
+  "pnpm_version": "10.33.2",
+  "scope": "Integrated library regression only; Core boundary NOT_RUN, no Desktop/model/E2E or package claim"
+}

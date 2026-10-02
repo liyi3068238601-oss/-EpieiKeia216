@@ -1,0 +1,122 @@
+﻿[
+    {
+        "label":  "node-version",
+        "cwd":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u05",
+        "command":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe --version",
+        "node":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "path_prefix":  [
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin",
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64"
+                        ],
+        "started_utc":  "2026-10-01T16:07:20.3291727Z",
+        "ended_utc":  "2026-10-01T16:07:20.3793777Z",
+        "exit_code":  0,
+        "stdout":  "logs/final/node-version.stdout.log",
+        "stderr":  "logs/final/node-version.stderr.log"
+    },
+    {
+        "label":  "pnpm-version",
+        "cwd":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u05",
+        "command":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin\\pnpm.CMD --version",
+        "node":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "path_prefix":  [
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin",
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64"
+                        ],
+        "started_utc":  "2026-10-01T16:07:20.4552135Z",
+        "ended_utc":  "2026-10-01T16:07:20.7475163Z",
+        "exit_code":  0,
+        "stdout":  "logs/final/pnpm-version.stdout.log",
+        "stderr":  "logs/final/pnpm-version.stderr.log"
+    },
+    {
+        "label":  "typescript-version",
+        "cwd":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u05",
+        "command":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin\\pnpm.CMD exec tsc --version",
+        "node":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "path_prefix":  [
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin",
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64"
+                        ],
+        "started_utc":  "2026-10-01T16:07:20.7557531Z",
+        "ended_utc":  "2026-10-01T16:07:21.2027055Z",
+        "exit_code":  0,
+        "stdout":  "logs/final/typescript-version.stdout.log",
+        "stderr":  "logs/final/typescript-version.stderr.log"
+    },
+    {
+        "label":  "build",
+        "cwd":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u05",
+        "command":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin\\pnpm.CMD run build",
+        "node":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "path_prefix":  [
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin",
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64"
+                        ],
+        "started_utc":  "2026-10-01T16:07:21.2027055Z",
+        "ended_utc":  "2026-10-01T16:07:22.1738400Z",
+        "exit_code":  0,
+        "stdout":  "logs/final/build.stdout.log",
+        "stderr":  "logs/final/build.stderr.log"
+    },
+    {
+        "label":  "check",
+        "cwd":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u05",
+        "command":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin\\pnpm.CMD run check",
+        "node":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "path_prefix":  [
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin",
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64"
+                        ],
+        "started_utc":  "2026-10-01T16:07:22.1821927Z",
+        "ended_utc":  "2026-10-01T16:07:24.1962462Z",
+        "exit_code":  0,
+        "stdout":  "logs/final/check.stdout.log",
+        "stderr":  "logs/final/check.stderr.log"
+    },
+    {
+        "label":  "unit-u05",
+        "cwd":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u05",
+        "command":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe tools/run-tests.mjs unit P01-U05",
+        "node":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "path_prefix":  [
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin",
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64"
+                        ],
+        "started_utc":  "2026-10-01T16:07:24.2025603Z",
+        "ended_utc":  "2026-10-01T16:07:24.4134244Z",
+        "exit_code":  0,
+        "stdout":  "logs/final/unit-u05.stdout.log",
+        "stderr":  "logs/final/unit-u05.stderr.log"
+    },
+    {
+        "label":  "contract-u05",
+        "cwd":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u05",
+        "command":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe tools/run-tests.mjs contract P01-U05",
+        "node":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "path_prefix":  [
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin",
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64"
+                        ],
+        "started_utc":  "2026-10-01T16:07:24.4134244Z",
+        "ended_utc":  "2026-10-01T16:07:25.3161872Z",
+        "exit_code":  0,
+        "stdout":  "logs/final/contract-u05.stdout.log",
+        "stderr":  "logs/final/contract-u05.stderr.log"
+    },
+    {
+        "label":  "integration-u05",
+        "cwd":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u05",
+        "command":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe tools/run-tests.mjs integration P01-U05",
+        "node":  "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "path_prefix":  [
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\bin",
+                            "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64"
+                        ],
+        "started_utc":  "2026-10-01T16:07:25.3161872Z",
+        "ended_utc":  "2026-10-01T16:07:25.5230842Z",
+        "exit_code":  0,
+        "stdout":  "logs/final/integration-u05.stdout.log",
+        "stderr":  "logs/final/integration-u05.stderr.log"
+    }
+]

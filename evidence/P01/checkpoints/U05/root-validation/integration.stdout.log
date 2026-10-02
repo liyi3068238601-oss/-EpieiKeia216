@@ -1,0 +1,33 @@
+✔ approved asset loads as an immutable snapshot with no writer capability (7.9993ms)
+✔ schema validity and copied source hashes cannot forge an approved snapshot (5.6212ms)
+✔ missing and wrongly named asset files reject loading (31.949ms)
+✔ wrong identity and path-like selection are rejected before file access (0.2523ms)
+✔ tampered content and malformed JSON cannot silently fall back (49.7505ms)
+✔ editing both content and its self-reported hash does not grant approval (21.7875ms)
+✔ oversized files are rejected before unbounded reading or parsing (41.396ms)
+✔ real directory junction cannot redirect asset reads outside the configured root (10.7171ms)
+✔ approved loader snapshot produces the pinned instruction and keeps dynamic tool data as evidence (9.3899ms)
+✔ P01-U05 is registered in the unit, contract and integration selectors (0.3723ms)
+✔ accepts local re-exports and Node built-ins (37.2871ms)
+✔ does not mistake a worktree located under .runtime for a Core dependency (18.4191ms)
+✔ follows a local wrapper and transitive re-export to forbidden Electron (18.0475ms)
+✔ rejects a transitive import into adapters even through a local wrapper (14.3418ms)
+✔ fails closed for computed dynamic import and require targets (29.8764ms)
+✔ rejects configured local aliases that resolve into references (24.777ms)
+✔ rejects file URLs and absolute Windows module paths (14.7723ms)
+✔ maps the U03 task selector and rejects unknown selectors (0.9358ms)
+✔ test runner exits nonzero for an unknown command-line task selector (78.5909ms)
+✔ rejects a Core directory junction (5.8836ms)
+✔ rejects a source junction located inside Core (13.0447ms)
+✔ rejects a wrapper import that crosses a directory junction (56.967ms)
+✔ allows a pnpm-style dependency junction whose canonical target stays under node_modules (27.5471ms)
+✔ rejects pnpm-style junctions whose canonical targets enter forbidden paths (72.1448ms)
+✔ rejects a node_modules junction whose canonical target is outside the repository (18.6698ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 857.4281

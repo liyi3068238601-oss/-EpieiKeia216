@@ -1,0 +1,67 @@
+{
+  "schema": "p01-u05-independent-manifest-audit/v1",
+  "reviewed_commit": "96457a2ef13e697e1877bcf23deb79578422a08e",
+  "result": "pass",
+  "checks": {
+    "manifestSha256": {
+      "actual": "4730ab5e8c283dfeb4ef161cd6e60a6bce7de6265a2bcf6a93a07492056cc721",
+      "expected": "4730ab5e8c283dfeb4ef161cd6e60a6bce7de6265a2bcf6a93a07492056cc721",
+      "sidecar": "4730ab5e8c283dfeb4ef161cd6e60a6bce7de6265a2bcf6a93a07492056cc721",
+      "pass": true
+    },
+    "frozenWorktree": {
+      "head": "96457a2ef13e697e1877bcf23deb79578422a08e",
+      "expectedCommit": "96457a2ef13e697e1877bcf23deb79578422a08e",
+      "branch": "p01-u05",
+      "clean": true,
+      "pass": true
+    },
+    "manifestBinding": {
+      "task_id": "P01-U05",
+      "attempt_id": "20261001-01",
+      "baseline_commit": "01f3f8700ada91ef6756a184fe5ea029d432f530",
+      "author_commit_field": null,
+      "declared_files": 89,
+      "pass": true
+    },
+    "changedPathBinding": {
+      "changed_paths": 91,
+      "excluded_manifest_sidecars": 2,
+      "manifest_bindings": 89,
+      "changed_paths_excluding_manifest_match_bindings": true,
+      "pass": true
+    },
+    "scope": {
+      "unexpected_changed_paths": [],
+      "no_reference_or_role_asset_copies": true,
+      "pass": true
+    },
+    "fileContents": {
+      "count": 89,
+      "disk_byte_count_matches": 89,
+      "disk_sha256_matches": 89,
+      "declared_git_blob_matches": 89,
+      "disk_equals_frozen_git_blob": 89,
+      "mismatches": [],
+      "pass": true
+    },
+    "prerequisiteAncestry": {
+      "P01-U03": {
+        "commit": "cf407f278fea36fa7e1f48d154e0ae0720c1ef88",
+        "is_ancestor": true
+      },
+      "P01-U04": {
+        "commit": "122d3028385469a3704249f8df17e013cf880456",
+        "is_ancestor": true
+      },
+      "pass": true
+    },
+    "planUnchanged": {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U05.md",
+      "baseline_blob": "ee01a1606d95c8936f7890d3d5f70912d57e03fa",
+      "target_blob": "ee01a1606d95c8936f7890d3d5f70912d57e03fa",
+      "pass": true
+    }
+  },
+  "errors": []
+}
