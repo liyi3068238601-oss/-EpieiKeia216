@@ -26,6 +26,21 @@ async function binding(file) {
   return { path: file, bytes: bytes.length, sha256: digest(bytes) };
 }
 
+async function bindRepositoryInputs(commit) {
+  const names = execFileSync("git", ["-C", REPO, "ls-files", "-z", "--", "packages", "assets", "plugins",
+    "tests/integration/P01", "tools", "package.json", "pnpm-lock.yaml", "tsconfig.json"], { encoding: "utf8" })
+    .split("\0").filter(Boolean).sort();
+  const bindings = [];
+  for (const relative of names) {
+    const file = path.join(REPO, relative);
+    const committed = execFileSync("git", ["-C", REPO, "show", `${commit}:${relative}`], { maxBuffer: 64 * 1024 * 1024 });
+    const data = await readFile(file);
+    assert.deepEqual(data, committed, `Repository input differs from committed bytes: ${relative}`);
+    bindings.push({ path: relative, bytes: data.length, sha256: digest(data) });
+  }
+  return bindings;
+}
+
 async function bindTree(root) {
   const result = [];
   async function visit(directory) {
@@ -45,6 +60,10 @@ async function bindTree(root) {
 export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
   assertAbsolute(source, "source");
   assertAbsolute(destination, "destination");
+  const repositoryCommit = execFileSync("git", ["-C", REPO, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+  assert.equal(execFileSync("git", ["-C", REPO, "status", "--porcelain"], { encoding: "utf8" }).trim(), "",
+    "Candidate build requires a clean, committed repository");
+  const repositoryInputs = await bindRepositoryInputs(repositoryCommit);
   const physicalSource = await realpath(source);
   const factoryEntry = path.join(HERE, "factory-entry.mjs");
   await readFile(factoryEntry); // Fail before creating a candidate if its seam is absent.
@@ -156,12 +175,17 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
   await save(path.join(manifestDir, "cli-metafile.json"), result.metafile);
   assert.equal(execFileSync("git", ["-C", physicalSource, "rev-parse", "HEAD"], { encoding: "utf8" }).trim(), SOURCE_PIN);
   assert.equal(execFileSync("git", ["-C", physicalSource, "status", "--porcelain"], { encoding: "utf8" }).trim(), "");
+  assert.equal(execFileSync("git", ["-C", REPO, "rev-parse", "HEAD"], { encoding: "utf8" }).trim(), repositoryCommit);
+  assert.equal(execFileSync("git", ["-C", REPO, "status", "--porcelain"], { encoding: "utf8" }).trim(), "");
+  assert.deepEqual(await bindRepositoryInputs(repositoryCommit), repositoryInputs,
+    "Repository inputs changed while building the candidate");
   const artifacts = await bindTree(assemblyRoot);
   const descriptor = {
     schemaVersion: 1,
     sourceCommit: SOURCE_PIN,
     sourceRoot: physicalSource,
-    repositoryCommit: execFileSync("git", ["-C", REPO, "rev-parse", "HEAD"], { encoding: "utf8" }).trim(),
+    repositoryCommit,
+    repositoryInputs,
     assemblyRoot,
     desktopPath: base.destination,
     cliEntry,
