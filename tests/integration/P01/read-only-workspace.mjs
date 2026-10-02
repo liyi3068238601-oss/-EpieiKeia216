@@ -3,7 +3,7 @@
 import { lstatSync, realpathSync } from "node:fs";
 import path from "node:path";
 
-const READ_METHODS = new Set(["stat", "readText", "readBinary", "readRange"]);
+const READ_METHODS = new Set(["stat", "readTextFile", "readBinaryFile", "readTextFileRange"]);
 const isRecord = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 
 function isInside(root, candidate) {
