@@ -4,13 +4,13 @@ import {createRequire} from "node:module";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
-import {fileURLToPath} from "node:url";
 import {patchReadOnlyWarmup, SOURCE_PIN} from "../desktop-build.mjs";
 
 const require = createRequire(import.meta.url);
 const ts = require("typescript");
-const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
-const sourceRoot = path.resolve(repoRoot, "..", "..", "desktop-source");
+const sourceRoot = path.resolve(
+  process.env.P01_U08_ZCODE_SOURCE ?? "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+);
 const sourceFile = path.join(sourceRoot, "packages/services/src/zcode-agent/zcodeAgentService.ts");
 const sourceRevision = execFileSync("git", ["-C", sourceRoot, "rev-parse", "HEAD"], {
   encoding: "utf8",

@@ -1,7 +1,7 @@
 // Local development Desktop assembly from the accepted Apache-2.0 ZCode pin.
 // Source stays read-only. Only startup's read-only admission is changed in memory.
 import assert from 'node:assert/strict';
-import {cp, mkdir, readFile, writeFile, symlink, readdir} from 'node:fs/promises';
+import {cp, lstat, mkdir, readFile, realpath, stat, writeFile, symlink, readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {createRequire} from 'node:module';
@@ -9,6 +9,55 @@ import path from 'node:path';
 import {pathToFileURL, fileURLToPath} from 'node:url';
 
 export const SOURCE_PIN = '29628c9acdb81b703bbd4080c207a0e7ce5e276e';
+
+function isInsidePath(root, candidate) {
+  const relative = path.relative(root, candidate);
+  return relative === '' ||
+    (!path.isAbsolute(relative) && relative !== '..' && !relative.startsWith(`..${path.sep}`));
+}
+
+async function resolveThroughPhysicalAncestor(candidateValue) {
+  let current = path.resolve(candidateValue);
+  const missingSegments = [];
+
+  while (true) {
+    try {
+      const physical = await realpath(current);
+      if (!(await stat(physical)).isDirectory()) {
+        throw new Error('Desktop output path and its existing ancestor must be directories');
+      }
+      return path.resolve(physical, ...missingSegments);
+    } catch (error) {
+      if (error?.code !== 'ENOENT' && error?.code !== 'ENOTDIR') throw error;
+
+      try {
+        if ((await lstat(current)).isSymbolicLink()) {
+          throw new Error('Desktop output path contains an unresolved symbolic link');
+        }
+      } catch (inspectionError) {
+        if (inspectionError?.code !== 'ENOENT' && inspectionError?.code !== 'ENOTDIR') {
+          throw inspectionError;
+        }
+      }
+
+      const parent = path.dirname(current);
+      if (parent === current) throw new Error('Desktop output path has no existing physical ancestor');
+      missingSegments.unshift(path.basename(current));
+      current = parent;
+    }
+  }
+}
+
+export async function resolveDesktopBuildPaths(sourceValue, destinationValue) {
+  const source = await realpath(path.resolve(sourceValue));
+  if (!(await stat(source)).isDirectory()) throw new Error('Pinned Desktop source must be a directory');
+  const assemblyRoot = await resolveThroughPhysicalAncestor(destinationValue);
+  if (isInsidePath(source, assemblyRoot)) {
+    throw new Error('Desktop output must be outside the physical reference source tree');
+  }
+  return {source, assemblyRoot};
+}
+
 export function patchReadOnlyWarmup(text) {
   const start = text.indexOf('    async initialize(params: ZCodeAgentWorkspaceTarget)');
   const end = text.indexOf('    async syncAppRuntimePreferences(', start);
@@ -24,13 +73,11 @@ export function patchReadOnlyWarmup(text) {
 }
 
 export async function buildDesktop(sourceValue, destinationValue) {
-  const source = path.resolve(sourceValue);
-  const assemblyRoot = path.resolve(destinationValue);
+  const {source, assemblyRoot} = await resolveDesktopBuildPaths(sourceValue, destinationValue);
   const destination = path.join(assemblyRoot,'packages/desktop');
   const git = (...args) => execFileSync('git',['-C',source,...args],{encoding:'utf8'}).trim();
   assert.equal(git('rev-parse','HEAD'),SOURCE_PIN);
   assert.equal(git('status','--porcelain'),'');
-  assert.ok(!assemblyRoot.startsWith(source+path.sep), 'Output must be outside the reference tree');
   await mkdir(assemblyRoot,{recursive:false});
   await mkdir(destination,{recursive:true});
   const desktop = path.join(source,'packages/desktop');

@@ -53,6 +53,12 @@
       "status": "passed"
     },
     {
+      "command": "node.exe --test packages/config/test/desktop-build-paths.test.mjs",
+      "status": "passed",
+      "tests": 4,
+      "detail": "Physical containment probes cover same-source, existing and future descendants, Windows case variants, a prefix-adjacent sibling, and a junction ancestor targeting the source."
+    },
+    {
       "command": "node.exe --test packages/config/test/warmup.test.mjs",
       "status": "passed",
       "tests": 3,
@@ -61,12 +67,12 @@
     {
       "command": "node.exe tools/run-tests.mjs unit P01-U08",
       "status": "passed",
-      "tests": 15
+      "tests": 19
     },
     {
       "command": "node.exe tools/run-tests.mjs unit",
       "status": "passed",
-      "tests": 49
+      "tests": 53
     },
     {
       "command": "node.exe tools/check-import-boundaries.mjs",
@@ -77,24 +83,35 @@
   "credential_tests": "Synthetic canary only; denied, offline, missing-reference, resolver-error, and credential-use throw/reject paths never expose the canary through child env or raw errors.",
   "desktop_assembly_evidence": {
     "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
-    "assembly": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-06\\packages\\desktop",
+    "assembly": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-07\\packages\\desktop",
     "artifact_files": 6638,
-    "recipe_sha256": "147548e7664c7fe65826ec1910af76a8279215fa4375253d611bda01294bd9e3",
-    "descriptor_sha256": "f601ff1f9193b879c5b6048345bc931eb1a5d4a5f2e8471761ad2e00e16a78c2",
+    "recipe_sha256": "1b72f8b3660ffb0093e9ef1e272c26ac3b2e6d6439a065fbcc97f47cae6b6c0d",
+    "descriptor_sha256": "0561ef2b728be014545a6ac2a76ccfeabc0b9905ae59badef252098b787bdce6",
     "native_main_renderer_preload_unchanged": true,
-    "local_development_artifact": true
+    "local_development_artifact": true,
+    "build_command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08\\packages\\config\\desktop-build.mjs",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-07"
+    ],
+    "build_cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08",
+    "build_exit_code": 0,
+    "build_elapsed_seconds": 63.985,
+    "source_clean": true,
+    "recipe_matches": true
   },
   "desktop_ui_evidence": {
-    "run_id": "u08-no-key-1790939126108911100",
+    "run_id": "u08-no-key-1790940517353035900",
     "passed": true,
     "command": [
       "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
       "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08\\packages\\config\\test\\desktop-no-key.mjs",
-      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-no-key-1790939126108911100\\spec.json"
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-no-key-1790940517353035900\\spec.json"
     ],
     "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08",
     "exit_code": 0,
-    "elapsed_seconds": 43.0,
+    "elapsed_seconds": 43.109,
     "reference_source_clean": true,
     "code_unchanged": true,
     "launches": 2,
@@ -106,6 +123,7 @@
     "dsh_started": false,
     "production_files_unchanged": true,
     "dynamic_loopback_ports": true,
+    "desktop_assembly": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-07\\packages\\desktop",
     "visual_acceptance": "not run"
   }
 }
