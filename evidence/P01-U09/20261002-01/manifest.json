@@ -14,14 +14,20 @@
     {
       "path": "evidence/P01-U09/20261002-01/credential-byte-scan.json",
       "bytes": 362,
-      "sha256": "1b9e38b5858bd46068df1c1971711bf4e2c7a5d372995b0d04eb9b3ad4549a51",
-      "git_blob": "33e072d8f09bf58d344a28f6a0197e24d9257d6f"
+      "sha256": "deecbdba43f76087a5571739df643e38239027e25b9b9feb4384ff8c71f3ede0",
+      "git_blob": "5f6fcc1e4b05533674aa82db1a6bf01bae4d5477"
     },
     {
       "path": "evidence/P01-U09/20261002-01/matrix-commands.json",
-      "bytes": 2059,
-      "sha256": "22ea57dafdc4c9f7c9157629b4e8cb661ad0f3606bd2bdcfebc9432bab6cdf80",
-      "git_blob": "083c70a29251a05e93d02114fa105a7f7abb361e"
+      "bytes": 2355,
+      "sha256": "3295bb44eff9f27f66f31b83744a1806febfd3347f826bf0bc391ab58307480b",
+      "git_blob": "26fe2e91df6ff42b4b38345cb8609392fa1542fa"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/model-capabilities.json",
+      "bytes": 1323,
+      "sha256": "42df357bf79bccb04fa5442110d1ccac7da17d11ece36d0ef8b9f7b264ecdb5d",
+      "git_blob": "7dadf721d40cc271eda109182dbd7f951553defb"
     },
     {
       "path": "evidence/P01-U09/20261002-01/official-docs-refresh.json",
@@ -37,9 +43,21 @@
     },
     {
       "path": "evidence/P01-U09/20261002-01/result.md",
-      "bytes": 3699,
-      "sha256": "6e44883b232755b11f57a60a9edce33deeefc21afe26ad7b6778814ddf11bc86",
-      "git_blob": "8b6a8d464839c4188414b2e458aa41d7bc2fc1f9"
+      "bytes": 4898,
+      "sha256": "aaab5e751b449aa84cb6c1b090992cab8de580512cda20671bd6c4808110f402",
+      "git_blob": "3fe1369319e8891bcfd6abb670a341d870b55ea7"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/review-fix-binding.json",
+      "bytes": 1529,
+      "sha256": "b9221d8917f63c76d28beccc7ab4be648c628f041da4359033f5263161963b6d",
+      "git_blob": "0cdba9cc72bbb83e23658e135ee20c169205a76f"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/review-fix.diff",
+      "bytes": 4451,
+      "sha256": "d3f7a4f4d1ef55fdca4cba4972f6394fcc4535dc24c28f34a13eb62bb2bd9a2b",
+      "git_blob": "e262c9bafe860e902d613554e8946316133ec226"
     },
     {
       "path": "evidence/P01-U09/20261002-01/rollback.md",
@@ -1998,6 +2016,888 @@
       "git_blob": "42531996c04bad8b70f1740727af39b2e6fe68d5"
     },
     {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/command.json",
+      "bytes": 707,
+      "sha256": "3aded15227e43f6216673613d064e8cb665d6fb22a06ebd8544a4b2553d2d049",
+      "git_blob": "59af95a96edbcc09ef7d89750a3549df5942fc69"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/model-context.jsonl",
+      "bytes": 5752,
+      "sha256": "d79ac53565d1e1a14499101bf07639dbc6e10e00de13938c3963a2ceb4660ad7",
+      "git_blob": "a014041de521d5d7c26239868d76149d168c79ab"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/native-tool-receipts.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/network.jsonl",
+      "bytes": 651,
+      "sha256": "417325923075d566f78c10f44c34ab07b8b8fbb1aafbc0581dd13818d6ba8484",
+      "git_blob": "e8cd88c392752f2a09de67f9029dc384c03bfd34"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/profile-binding.json",
+      "bytes": 3959,
+      "sha256": "cb6d081983dc1cb9b2affadfc31b35fa226c8bc8a4141342cbb400ab19c7696d",
+      "git_blob": "43e0a386dedf60a705df4416c50cae83fe7ae31c"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/profile-command.json",
+      "bytes": 548,
+      "sha256": "3dc87f018d8a7adf40a465ba3c5fef77331d301d590095c914ce6af00ac35b02",
+      "git_blob": "c4876270cd0ab324f6505a4df56cdc954cfae031"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/profile.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/profile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/requests.json",
+      "bytes": 740,
+      "sha256": "abf6838f2eb1bc25847bc8842a2a886038f61ddefeb70368fee29ac7a41af3f3",
+      "git_blob": "1cbcc946d8ae0f7e19613d23a61e59db3efa373c"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/response-1.public.sse",
+      "bytes": 525,
+      "sha256": "344f42a210f289f6fac7e5e81ffb71190fb34db18c36b13b9b34648cd9d23e78",
+      "git_blob": "92c40ef22180585d17fd116107005dec22deca6f"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/result.json",
+      "bytes": 9037,
+      "sha256": "dfc708f94dd7a9692d149cfba71e01288bb2f14645b97040025b2043fe7e4836",
+      "git_blob": "cc6dc0a8ccc662c4d0aecc030b1fe93c9e0c83e9"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/stderr.log",
+      "bytes": 169,
+      "sha256": "79af292c66cb7f27f9c4fd82d472ec939675aefcc9ee673fa1542d73066ef2dd",
+      "git_blob": "2cb140cc4930a4f90e778043bf3f60049918f264"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/stdout.log",
+      "bytes": 8318,
+      "sha256": "03c2e77daa01da2bd55304841d3da0d7462e677853245e6d138d045903dbdf94",
+      "git_blob": "1c60c47f90b15504bcfa144bcfc5b49867dfc731"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-daily/summary.json",
+      "bytes": 529,
+      "sha256": "0b42720dd8a0a67e68e2c27357e4e82cc7055afd3fdf7d2922eca9e27945b7d5",
+      "git_blob": "339fe237a9eb51361648558c13d3121ac08c219b"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/command.json",
+      "bytes": 728,
+      "sha256": "10ff516507027e5b3fbbbce4555548b701834714edb0a3cd2945b21ce86c90b5",
+      "git_blob": "1b36f5127c713284274bfffbdda7c14ac359d0f2"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/model-context.jsonl",
+      "bytes": 5759,
+      "sha256": "f894883bbd66998907abd39ced6fdd0b35370f923977959d9fce48ef4e356abb",
+      "git_blob": "cddd9e6c368e2fcee96ec8680ee1cf92ba254d36"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/native-tool-receipts.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/network.jsonl",
+      "bytes": 651,
+      "sha256": "404b53b5dda91db96ef3237564a3ec12c8513207e5798b2e73f8d860589ea724",
+      "git_blob": "84a6a222e640b2daf5bbf894e2b0b799ebf1b46c"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/profile-binding.json",
+      "bytes": 4120,
+      "sha256": "859a37e0af4821d12ea9971a10a7e181ba2e0fc5aa39ffaf79e09173a0dfc4ab",
+      "git_blob": "c7c7026ad72e6ecc455e5f90746fd6f6e7fd3db7"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/profile-command.json",
+      "bytes": 562,
+      "sha256": "bb0a079db0372f8890b707290d25484704423158e2d5a30b861346a43249ce73",
+      "git_blob": "7d3d091b3c8f1aaf77a5a1f9b8c396ab3c7bbe27"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/profile.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/profile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/requests.json",
+      "bytes": 740,
+      "sha256": "ffad17e80d3227a136df013711ae16043e75d6a7eb709bdbcd9c8bab3bdc768a",
+      "git_blob": "4c12ecf05b13af789c4d289f4f90166acb78abbb"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/response-1.public.sse",
+      "bytes": 537,
+      "sha256": "5340d3efb6cf6daf504d254262ee43d945eceb428a7348cfbec41a580700f545",
+      "git_blob": "568f33f7ba1c2c813187e9845bb15dad78fe0cb9"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/result.json",
+      "bytes": 9089,
+      "sha256": "302f28a071143d09cfca8622238fdf3ddbe701a8bf5c3445877bc2e63c647511",
+      "git_blob": "5690588f6ec5e6fa1515b1d538e24ba37df6e0b3"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/stderr.log",
+      "bytes": 169,
+      "sha256": "79a85c6bc93227c85f44b0f8c4afc1a2bf063588de81d66a3ad035991ad10d4a",
+      "git_blob": "d6b6c7f5521b2395c0d1db0ab15ec752bb74979f"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/stdout.log",
+      "bytes": 8370,
+      "sha256": "7ad489c4096e055059a32af6e7c03de3e844cef3dc02bbf50fc0c7587c71146e",
+      "git_blob": "3bac04157455a9e0230d0f7de396ab89ed33aa7c"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-disagreement/summary.json",
+      "bytes": 543,
+      "sha256": "dada20f64e958b445564ce3fefd409d2402016822ba3a157b045b55b0fb1145f",
+      "git_blob": "3d4a15bb2388071195800953a8ffa2df90df5877"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/command.json",
+      "bytes": 728,
+      "sha256": "39d337400434f6097570e770245fbb9dfbea982871e65f085b90da9598761475",
+      "git_blob": "b53b231bc3c9757cf4efb6ba91f5a73f9d1ca2e2"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/model-context.jsonl",
+      "bytes": 11518,
+      "sha256": "9c863545f759218f6906da1cf0bf234ebed0219e7ce70eb8e846a85e8a5966c0",
+      "git_blob": "c7689080127d245215db4ed1c7a13747315c3d27"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/native-tool-receipts.jsonl",
+      "bytes": 249,
+      "sha256": "906c4f0ec0de26bfc82516d6c5525508e280e512c90db26060d774a4ce1b4012",
+      "git_blob": "055b991f80f2034a9914186b05b2e884d25cedc1"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/network.jsonl",
+      "bytes": 822,
+      "sha256": "1d88e9752f1dd1c18377a058ac1346dba4b87373cd3af62f382301977ad2c2f9",
+      "git_blob": "4f9a09b0b7543087b73c9e549f3786869cb60140"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/profile-binding.json",
+      "bytes": 4120,
+      "sha256": "8526d270eaed20af08f153e380cb370932597634944bb4f34f9ec6abae10c082",
+      "git_blob": "3d6ac55eef8bf71c1053a1944b3803962e638c8d"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/profile-command.json",
+      "bytes": 562,
+      "sha256": "68a685148f69abba4a9297d427a70482c1e7496c5b72ad94a335a77984346ac1",
+      "git_blob": "a31ff54ac1ec349ed9e18f3db2269c82f0aed843"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/profile.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/profile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/requests.json",
+      "bytes": 1476,
+      "sha256": "47b5e2fd509ae28a333b864f72226dff99058b2078f42596d02d5f4cec07baf3",
+      "git_blob": "c70be3c9b783ed51dbafc22eebe18f5169bc7f84"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/response-1.public.sse",
+      "bytes": 738,
+      "sha256": "68c87dec40a5742a9f5efb22a61a5aaa1e59dce30db974c575d076bb098cf500",
+      "git_blob": "1d1bb1e1c1d9d6dfd77fd679bea1e944fbfff846"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/response-2.public.sse",
+      "bytes": 543,
+      "sha256": "a7d677125ee48b97df8c41e77ed440f5a8f04b67f6b9a0f3e6019034a7292779",
+      "git_blob": "ea9e660f0bd83ecffbc3b746e7f2d3cf4eaf8860"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/result.json",
+      "bytes": 15613,
+      "sha256": "f1e8159b20fab288ffa78c80808db72821653476381ef6419d88ee53c832f9b1",
+      "git_blob": "cbfe8c732ec56c731d6cbd8ada3d073a22d96687"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/stderr.log",
+      "bytes": 169,
+      "sha256": "ec06a65750911da0df7a5a6ae5bb63aba1a3b3469b62d04a31bb84551f2b210d",
+      "git_blob": "73789c6befb10b73f57b069278fec3fda139fc7a"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/stdout.log",
+      "bytes": 14522,
+      "sha256": "f3702254a1cdb3f19cd33b1a42e525acfd37b017142e24c037bc3f46fd72b35f",
+      "git_blob": "7176a49a1e75b2f569ed89bd1a883a6f280b2b2b"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-failure_read/summary.json",
+      "bytes": 543,
+      "sha256": "41ff0f36264b3f492dfb6aa914b026523e7da6061bc0da077d40f5eb4e033074",
+      "git_blob": "f02904862bd2a0b7fc81ccc8947610fe0d2820da"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/command.json",
+      "bytes": 734,
+      "sha256": "dbccfd8ba2b0048d96d1deff6e3238b2eec20784a403f63c00465902f08b06e2",
+      "git_blob": "93188b42d68020966f97024c5be3187cbb92aebb"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/model-context.jsonl",
+      "bytes": 5761,
+      "sha256": "a2113601d7f446856ed6cd1ab32f7cd68df5de65d0d9fac78a00011480582be2",
+      "git_blob": "9026445bff392093485b47f25bc64f11a3856b48"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/native-tool-receipts.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/network.jsonl",
+      "bytes": 651,
+      "sha256": "10dbca4965be60c0864fd39624df819c9b1a8fdcdf446ae2e580d93964546b49",
+      "git_blob": "34cb1877ba24fe82719811cc020b921778a3fa5d"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/profile-binding.json",
+      "bytes": 4166,
+      "sha256": "97756a8f93fd843d3396082dcda9b10f8d4a20bfe003bb038e72173740d56187",
+      "git_blob": "79a48883ff6ec7e6e57808f7fc89bf44de4840df"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/profile-command.json",
+      "bytes": 566,
+      "sha256": "e25820928d2ee3e3a623f33d89bbae71a96c31a99d939182d3628a7a62ebcfb7",
+      "git_blob": "3c75ee4b9306955311dee3ae820ba023ea066224"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/profile.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/profile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/requests.json",
+      "bytes": 740,
+      "sha256": "1e2048af2df1f10ae52f18e4267f8d40550a08b10e74505375f81755acd7c4e4",
+      "git_blob": "76a8b9045a62034aa6779572836e8614371ee656"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/response-1.public.sse",
+      "bytes": 527,
+      "sha256": "2d40d0285ca2a58844fb5d180661dd72ee40df9dc2c30e760609d8aa9e2e1924",
+      "git_blob": "07ccb74e59dbe4384beacea157c7c68e053794e4"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/result.json",
+      "bytes": 9077,
+      "sha256": "572ee8cf696f0a668797a373200ce654af866e3185964d96f1165f4b5161adc8",
+      "git_blob": "4339af5e3a266b44db181249a955dde3121d55d6"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/stderr.log",
+      "bytes": 169,
+      "sha256": "463bedaa3e6254126321dcecab11e62c963eb58869828709fba8f1ec18972226",
+      "git_blob": "88996070d497586a88b01ca148426fa506fbef53"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/stdout.log",
+      "bytes": 8358,
+      "sha256": "17bb68b1d89199e66f679d19bab8549688216cf2633a946d54051162e2551c34",
+      "git_blob": "bd3f20931f778361d944cc7fa94368ba10e20d6f"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-refusal_secret/summary.json",
+      "bytes": 547,
+      "sha256": "8483628541407157f2d267a01289d921290dd1ca734cbf37e3c23d13cc0bdce7",
+      "git_blob": "f0e492a19f7c22b002bd4581d589f51392847b2e"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/command.json",
+      "bytes": 734,
+      "sha256": "0d1aba4540b8320ff106d09d389b907378e81465fbc5693eaae12022e8e61747",
+      "git_blob": "6bb986929eaa1b0dd54ae0271240f1294835dd82"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/model-context.jsonl",
+      "bytes": 11522,
+      "sha256": "8c68a3577f06326dbbcb526340b18e2f46eeb1ef076716e0507f2e0b672f4ec7",
+      "git_blob": "3903a9b560bb913734cec524992b4adce42f1d06"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/native-tool-receipts.jsonl",
+      "bytes": 253,
+      "sha256": "54d98aa80c68bea5b63cf175a3a3bc32954db7a4b8d316dd9045b68fa2711013",
+      "git_blob": "0be0adbdf5b602f7df3ab791034ffacafb8c74f3"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/network.jsonl",
+      "bytes": 822,
+      "sha256": "2cf27de137123b401186ef17236168c3b393b7371d41ab71921c9079e07b3868",
+      "git_blob": "2805cea13ad19c6273da5fe9e2ff53b224cd7db8"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/profile-binding.json",
+      "bytes": 4166,
+      "sha256": "ce4d0c2c937995b59fbd50d1515665055ab5bcd12be080034f294497d5469314",
+      "git_blob": "5f2b0695c75d7888ef246394a775d9ada142b8c0"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/profile-command.json",
+      "bytes": 566,
+      "sha256": "ccb81aec6186ed2011c95f61dffc1b3c86b6f1b6a9dcdb65e4c9ab417362314b",
+      "git_blob": "f685f7aa6d8bb592a2fab66bf6a49e5dfa899bf9"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/profile.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/profile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/requests.json",
+      "bytes": 1476,
+      "sha256": "289c5c82c769f324177cc63483847489b8769caf7e6b6455383d74a0eb9a64de",
+      "git_blob": "efee1f44c3012240c83afa443868153e6e7744c4"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/response-1.public.sse",
+      "bytes": 741,
+      "sha256": "be98ed0a0d13313b60e00ebd6f2d3226510f5c09334f2866ce9fa9a372ede80d",
+      "git_blob": "ed0a1829554c9977562520a7c64486bb390c0b00"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/response-2.public.sse",
+      "bytes": 493,
+      "sha256": "488819bd1b5e5a4658eb47ef010a6603ecc86a09eacf09f70dac767cd552a5c8",
+      "git_blob": "ab2dfd0a24d2f2ab7843cc79cb8af1b01a57b460"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/result.json",
+      "bytes": 15502,
+      "sha256": "2aba74657da28260b339f73157d20f5881ffab42d34693d9c43458f85f688a27",
+      "git_blob": "c2e226630c8520b53991614bd0d637917c8b54f8"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/stderr.log",
+      "bytes": 169,
+      "sha256": "ab37936b44f014cc350d2a8a71fcafce433ad28c5fddac8a492515999bb3c081",
+      "git_blob": "affc80b6e6a34360900b3ce0b89857d736170856"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/stdout.log",
+      "bytes": 14421,
+      "sha256": "326cc4b5da2bd9856fb317a7f3b3f9d6f77212ec8fec68c17d44842f092374bf",
+      "git_blob": "c2fe3565f24944433bc5018c964dc642754b462c"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-flash-technical_read/summary.json",
+      "bytes": 547,
+      "sha256": "ba0f4b9c3c8849177d3c701c458b37fc4eb9ad8cf1f81d11606cfd5dbc6ddc88",
+      "git_blob": "c3580816d3001b62494a793ee0ae9c26e365b69d"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/command.json",
+      "bytes": 710,
+      "sha256": "f090eed14f21f1a48fdf009316aa732f81bb3a253039fa3b3353ad75def55c0e",
+      "git_blob": "20b071a5ec2196832f772a5440ae442f2786ab62"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/model-context.jsonl",
+      "bytes": 5752,
+      "sha256": "bd31885b5300718e0989377d5b3651a788a4245a15a7fb1b3338ff2d9d6efc3d",
+      "git_blob": "c7f36dfa48cd8951cd5060309508110529fe14a0"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/native-tool-receipts.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/network.jsonl",
+      "bytes": 651,
+      "sha256": "2504513aea234f5ba69004ff6a9fd6b57c001fbebf8dece82dbc1fb708663fcc",
+      "git_blob": "0eb82e245f3a9f0e848a23880840d60af1c4195f"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/profile-binding.json",
+      "bytes": 3983,
+      "sha256": "fa4e22b61fbcf542221ccb32d172182446b1e3d469a4a62eb9a62e8e83ff6fb8",
+      "git_blob": "70453442422a6fbfe32a54957f7258a60e899cdb"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/profile-command.json",
+      "bytes": 550,
+      "sha256": "f62aea12a2445d9cac6194067dafb2c93575dda33c45f57d443ad7ae2bfe29ee",
+      "git_blob": "fb05b8a4f84dba9d1f1772bc10f9705ae6031ef7"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/profile.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/profile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/requests.json",
+      "bytes": 741,
+      "sha256": "736db1ffbee5d1772ef5fb8d010605b493b3a9bf3d513fae4f4e1bb16aa58032",
+      "git_blob": "8cea464f0de8a6236a95e91c350aa85c4e52d07e"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/response-1.public.sse",
+      "bytes": 527,
+      "sha256": "bbb82472cf48cbae4271e2481a65ae6435e643c1bf17a9657e32544ed0b34fd7",
+      "git_blob": "ef122ca89b8598bfae1bc0cbde8ad7cf2d90fd24"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/result.json",
+      "bytes": 9040,
+      "sha256": "47b4caf0687baaa94626d21e7649ab8ea0d6a7b20a825f0f5fbd5711a8dcc482",
+      "git_blob": "c40277d98f2300ed251d4e0e17abb85e8058acb6"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/stderr.log",
+      "bytes": 169,
+      "sha256": "715da9a6cb7d2cbf8179def35bd39c48f1effb01223be30b016c86f2d6cea061",
+      "git_blob": "703db0734357a707429692f0eba10d27a48cc169"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/stdout.log",
+      "bytes": 8321,
+      "sha256": "8a45f43b1690f14bdbbdd993ce718c570a7ecf08cc4c277680a5aa3cb6949abe",
+      "git_blob": "533d7431d917f1d5e461ae37be6f7cb6bf97703c"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-daily/summary.json",
+      "bytes": 531,
+      "sha256": "ca52136f08b590f5c6c5ce35d52dae4232ee3875b0147f5460d6928cab572246",
+      "git_blob": "8e9c596a8a035c54c7b6cb0abb3a6e821b7f702a"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/command.json",
+      "bytes": 731,
+      "sha256": "f062efa1f3c108f10272765dd6fa2952f0aed9b70e21419d295b6074d95af5ad",
+      "git_blob": "294989f49224f2fcb7d7854738d0e62d1a446cc9"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/model-context.jsonl",
+      "bytes": 5759,
+      "sha256": "c7c616f01ea3e6aaf5a461178e56e3960af1eb6f01013476581eb29b3c420568",
+      "git_blob": "7ba4195e7e9f36c6478fd1ae99e3f1c936a716ac"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/native-tool-receipts.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/network.jsonl",
+      "bytes": 651,
+      "sha256": "ba235a17e5be527c04bdd1d63949736035f2424fb57e29da34bc9228752da42f",
+      "git_blob": "dc1f81b51e9872d1c365a133539b6fa20932fa7e"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/profile-binding.json",
+      "bytes": 4144,
+      "sha256": "27a5232c3966732720d3efd993714eca8801639daec4b49466c845ff0c638e2e",
+      "git_blob": "d1d5fd1686c6de27d8e8aa3756f35f518ae235e6"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/profile-command.json",
+      "bytes": 564,
+      "sha256": "6609ff65a673e25e37e1cee00fe3e5801ccd00d3f41279b5c9f407406dccf556",
+      "git_blob": "00d239f0b65091c357afef287655bac83b0bfe51"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/profile.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/profile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/requests.json",
+      "bytes": 741,
+      "sha256": "0f6433c58d797561ea130fbc30d9780860f08ec26ee294cb65cec21ab5c6b226",
+      "git_blob": "07f3544b15b466d43f6adc9417fb63fa80fa6561"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/response-1.public.sse",
+      "bytes": 539,
+      "sha256": "ab0918f80c9e6ac224be81c5561094b2d0f0856798310c941b34e66a7e4c2450",
+      "git_blob": "f91b761e603cd0e2c70c23804cccf5ecaf60038d"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/result.json",
+      "bytes": 9092,
+      "sha256": "a0a610c82715d1af49844abfe3c3fc77f0e077c4453e20cd8997f13003ef0551",
+      "git_blob": "a1368a4aaa45a991490dd7b2a34f1ccefec69002"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/stderr.log",
+      "bytes": 169,
+      "sha256": "a35dc220f4d0f8031d51e0df71a8ab4f903042bb483b9c7679b3342f49769171",
+      "git_blob": "d6d5671e72ee13b4cb032399b45044a19a39f4a0"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/stdout.log",
+      "bytes": 8373,
+      "sha256": "25a9bdff53d9d0d473c8b17c189b837299ee0802fea873f9ff160ef90b35a97f",
+      "git_blob": "b6ab16dbdff2d98cbbdfc3d5464fb8b46138601a"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-disagreement/summary.json",
+      "bytes": 545,
+      "sha256": "7c263f260f34eefd19cd4500cad2d3a5e5f98b3b87cf18226e8b90ef93a057b0",
+      "git_blob": "9a2c6d0d250fc3e54f71ff730e3458ca6ac48ee0"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/command.json",
+      "bytes": 731,
+      "sha256": "426cf318191143b2f546db89cdc853f8c3b01457f6d7960377590bf8a8aa835e",
+      "git_blob": "cc46d70191525776d46f6f2314a941075993a545"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/model-context.jsonl",
+      "bytes": 11518,
+      "sha256": "c535f534bd397610f6614bdcc82f00af6f182f0469c41a27aa587d36362a2842",
+      "git_blob": "c770a55e3ead2264fd8b155cbc0fe8bb6d172d08"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/native-tool-receipts.jsonl",
+      "bytes": 249,
+      "sha256": "8a60125611b54d9923cd0e937e12f1896bd8155897c48346841006a6339819fc",
+      "git_blob": "a7dc9bd6d377d4c557f7a7f71c88c0ff45bd8ad4"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/network.jsonl",
+      "bytes": 822,
+      "sha256": "9c92e261eb276019aa979fc6b0e1aaa8d3bfc33cb47301d33bc466a3fdd0adf3",
+      "git_blob": "80572fedadaeaaf304744ae15c34b2e96b9da51b"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/profile-binding.json",
+      "bytes": 4144,
+      "sha256": "cd57b894b1eaece7d399f3f2e5a5ac15573728603739c018e0c9802ba2a4ef60",
+      "git_blob": "00ceedc10a94b8e5ce65489c366a9c2d6610925e"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/profile-command.json",
+      "bytes": 564,
+      "sha256": "0a0663cd73e7f3c709fdcb287c63e7ae550b026659175ebf7cc2f92e3f92074f",
+      "git_blob": "4040a963dd30076c0bfac3504f0fdf520fb61395"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/profile.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/profile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/requests.json",
+      "bytes": 1478,
+      "sha256": "0e148088c781800ad2c42d861319ec6b21c79150759fa2c0b647d2d1efbcbb36",
+      "git_blob": "8a71245df8df10df8826ebbcd2a1519fc0caecba"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/response-1.public.sse",
+      "bytes": 741,
+      "sha256": "faaee918fcd8379217fd26e48c65dd07c90b0ea6b0604faad0036f5db4934a3e",
+      "git_blob": "c63cdc9dfa84c48192bc7b2685abcc0f28adf723"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/response-2.public.sse",
+      "bytes": 545,
+      "sha256": "d7e40aa4ace472d4620009cb77f8a7b8e2ccc0d22c39c8868e53404a648a9af5",
+      "git_blob": "25ee70266d699c10e3d7bd62b004bf01188ea498"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/result.json",
+      "bytes": 15616,
+      "sha256": "b36f11865e2e17eb3ca0aab0110a3fd6b2d9a0bfcd13a66e806b7fe10d28c874",
+      "git_blob": "127542ca0ee421a82b0c413047998f1ad1d0cafc"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/stderr.log",
+      "bytes": 169,
+      "sha256": "fd2603bd6d8e4074f5f451fb11bacb7754415e9103d2c047856dc6bc318f2bd1",
+      "git_blob": "b2bff3d1a54a63445c3a53b20ea7ad774bb8cc19"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/stdout.log",
+      "bytes": 14525,
+      "sha256": "daf43f1d569e749301343a72932f4bcdcddf6f698ad631d078815ec09210e951",
+      "git_blob": "913570dbd2ac529770adf5e112317ad291ade9cb"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-failure_read/summary.json",
+      "bytes": 545,
+      "sha256": "1e7fe69cef8029405f68c109001f6e28e0649250279967b73dc8f34a233d7c9c",
+      "git_blob": "ba14eb3ae3ba06900163ede6854357142a62b9ca"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/command.json",
+      "bytes": 737,
+      "sha256": "f1945a722eb0e40296f544ce6989dfb4777d6e6f3f891873c7c9932450e1aabc",
+      "git_blob": "f4ab2e667efc9a049c298533d9d0e786ca6b1747"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/model-context.jsonl",
+      "bytes": 5761,
+      "sha256": "2e805a8c89af62324b5f06f124ef89752d6007b5c6a3ac670b9173da6d48c606",
+      "git_blob": "79eb2cd6eb21dce5f525c679bd93e2d72a12dd8c"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/native-tool-receipts.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/network.jsonl",
+      "bytes": 651,
+      "sha256": "6e1f7c696b9aa1bcc8c52204af392aaf43490adccaa661d5981796f8ee53ced7",
+      "git_blob": "73a909b29e4cd2ef50ee3e5009d2cfcc2e91fcd6"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/profile-binding.json",
+      "bytes": 4190,
+      "sha256": "c16ee48d846be121a32ebe5a7a660624fccae801d71edbdfabd1e133880e19e9",
+      "git_blob": "0270db1e8d46d5b70df02ecdb724cbc8b6d6a403"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/profile-command.json",
+      "bytes": 568,
+      "sha256": "271839a1aca4c2439b399d98e81d2cb4221f2a1a27773cc4974fbea569e32252",
+      "git_blob": "f9af1a5d30882e80d3a568894bd15d52c96909fc"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/profile.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/profile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/requests.json",
+      "bytes": 741,
+      "sha256": "728fea7e2d83c2a20b1e28c5e41934c706237cf3359feadf05eff5cd2792ed00",
+      "git_blob": "6be332ba62eba98188980edf1c1fce3bc0e1e7dc"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/response-1.public.sse",
+      "bytes": 529,
+      "sha256": "23ea9c62b39a6de86b148c702e5e562658746a675621df5c7e8eafa309c554fe",
+      "git_blob": "3cc67d3a84ca59df25470721673c0a54740cc906"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/result.json",
+      "bytes": 9080,
+      "sha256": "22bd47703e2ea9858c7b946931b7ea354583f906d2aca80e1c8b267c6d7af6cd",
+      "git_blob": "4e0cc6365b31fb317f9f85f7688210b6b9563bab"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/stderr.log",
+      "bytes": 169,
+      "sha256": "d80d2d370932741b872abca4d6bd6b3b8f564812d73b3fba59fe76cd3660151a",
+      "git_blob": "8e215a08a069832da9191c502a183dea95c053b2"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/stdout.log",
+      "bytes": 8361,
+      "sha256": "f84c3095479ef96c11b81e78a9109f994f9a5403db62d6389aa2c7ee25ca860c",
+      "git_blob": "9f83b475462eaa7cc8c35af2229238a21a0ebe24"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-refusal_secret/summary.json",
+      "bytes": 549,
+      "sha256": "4447329c3da70b16a452f9ad6c38e6e9383aa94f1f19c3129e1068228c8a0506",
+      "git_blob": "957c304249a9913cbe9830e54b899229087c226a"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/command.json",
+      "bytes": 737,
+      "sha256": "2c2d428c8a00ec9debe26fb405db040719264fa4ed31d54f4d45484a9cde92a7",
+      "git_blob": "e4a2d2a118dbfbd3b085da7ded9f41ef0cfb1338"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/model-context.jsonl",
+      "bytes": 11522,
+      "sha256": "87203664ec22c25d5dd75766ef24d6a843bad398a53e3b76e5dde5791134e599",
+      "git_blob": "fc6b11753221932349e983046d0b8a3ce6b7c185"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/native-tool-receipts.jsonl",
+      "bytes": 253,
+      "sha256": "032cf5926e56f0300e7e014c81b285bd48682fc2d9a9623f6629af64190373fb",
+      "git_blob": "4480062e8ca828e132cb44adc803161bf7712e84"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/network.jsonl",
+      "bytes": 822,
+      "sha256": "a75ebd2802472a0dd4b0a6f92620426dc2847058380869ef38691bc3e16d926e",
+      "git_blob": "481da487a5c22b9eeec150ec6b63e359cf0ebc68"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/profile-binding.json",
+      "bytes": 4190,
+      "sha256": "4bedea6a41d846f9f2c9981205fb9ee6e930a40f2bbaf066ca21a6a4c105dd21",
+      "git_blob": "fd09eb302b714be8bb9e55b8e64f0d6c3db92fca"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/profile-command.json",
+      "bytes": 568,
+      "sha256": "74e3a14c49608ad5cbc006faf2feea965d6ce16410618e071e985f526d666686",
+      "git_blob": "4910a18fcb26023132e9da2a8afb9112bd5445cf"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/profile.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/profile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/requests.json",
+      "bytes": 1478,
+      "sha256": "517f93fad60ef6a1b2c90c5f021efebf9a647e9d32d24ee9d2747bcbec068018",
+      "git_blob": "815ef8d740422d523bad268588f58cb9ebb58ad6"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/response-1.public.sse",
+      "bytes": 744,
+      "sha256": "1319b958f2733d3dfab930f540d1277476e19a03cb279b7460f4433631d80bb0",
+      "git_blob": "e520f5e5e1d95f23291a3991cb000b7dc15b9171"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/response-2.public.sse",
+      "bytes": 495,
+      "sha256": "8e8dbd558d092a7592fcfef10944e8b213b6b9189d6f076a0ef89f376ac8c0db",
+      "git_blob": "36e1b85d761f45e48b493605e8840aca39ec3b8a"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/result.json",
+      "bytes": 15505,
+      "sha256": "5be38545c32b0ec86b4cd664491cb2edd4264c6e460b68b94ed2f7467a28b14a",
+      "git_blob": "304ae539c984fd2a6eb7e0138326b4059df81b55"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/stderr.log",
+      "bytes": 169,
+      "sha256": "b5a360830faba2479dc29c97b8daaff4164c29a89176dc7ee5c6076f2456cf61",
+      "git_blob": "ddc038b6e9401bd9c9e6424eb35c7ceeb108f529"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/stdout.log",
+      "bytes": 14424,
+      "sha256": "b14cf9f0b3bba02dc3ea8ed4309ea2a7eb454756419d1c21ff78d1435dbe74b5",
+      "git_blob": "44c2efe9a2f7c8bdeca8762b9945158ac55baa9d"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/deepseek-v4-pro-technical_read/summary.json",
+      "bytes": 549,
+      "sha256": "134bd930b770577a84a17f9317ad309901aa3c1cc5fb35ca994474b8b7ca7bf6",
+      "git_blob": "33ae4b7270cc49bcce6010ddc38074851d4c9700"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/ledger-after.jsonl",
+      "bytes": 4603,
+      "sha256": "64363c24a57f63e334a180e571bd44b5a87bae1f8c25129b7233a98ad205380b",
+      "git_blob": "b6f587f0c3bc579d5b2fdc9c6158a0ad09bb329b"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/ledger-before.jsonl",
+      "bytes": 4603,
+      "sha256": "64363c24a57f63e334a180e571bd44b5a87bae1f8c25129b7233a98ad205380b",
+      "git_blob": "b6f587f0c3bc579d5b2fdc9c6158a0ad09bb329b"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/runs/mock-1790945568299289900/summary.json",
+      "bytes": 12612,
+      "sha256": "e93025acac50e7d6455692723cebaccb53d97028e3505c8fb9fe289e7d632135",
+      "git_blob": "aa90ee13318b409e08d74964f92e1fa9346a44d1"
+    },
+    {
       "path": "evidence/P01-U09/20261002-01/runs/real-1790944515494615000/deepseek-flash-daily/command.json",
       "bytes": 707,
       "sha256": "3bc09821b6b1acf28de497d04e245ae7093e20839ec4b1ba56e1de8634b15b4e",
@@ -3066,10 +3966,28 @@
       "git_blob": "b60bfad7467e21b17a02e9179c7a92844b5eeda9"
     },
     {
+      "path": "evidence/P01-U09/20261002-01/validation/python-guards-review-fix-optimized.log",
+      "bytes": 1690,
+      "sha256": "e15be6c349e86d7fc1849663246566019188efabc1cbbb920d7d77b5a5648463",
+      "git_blob": "d452d43f8930b5b426ef932fc816b991b1149bcc"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/validation/python-guards-review-fix.log",
+      "bytes": 1690,
+      "sha256": "e15be6c349e86d7fc1849663246566019188efabc1cbbb920d7d77b5a5648463",
+      "git_blob": "d452d43f8930b5b426ef932fc816b991b1149bcc"
+    },
+    {
       "path": "evidence/P01-U09/20261002-01/validation/python-guards.log",
       "bytes": 1537,
       "sha256": "0610e38510f6161490b7967b01023df9e95ca4da0cfb46301d3fbfdbfe1889c9",
       "git_blob": "a36bb51b65d1c44d4cb3074785882b16329b55f0"
+    },
+    {
+      "path": "evidence/P01-U09/20261002-01/validation/python-review-fix-commands.json",
+      "bytes": 460,
+      "sha256": "65f58919131e88e0c25f5f1654d8e36f4ac43d9522f926c24a5fec33baaee82f",
+      "git_blob": "20038c8e610735c08a08cbbcfe74a316b20c659c"
     },
     {
       "path": "evidence/P01-U09/20261002-01/validation/source-diff-check.command.json",
@@ -3127,15 +4045,15 @@
     },
     {
       "path": "tests/evals/persona/relay.py",
-      "bytes": 18982,
-      "sha256": "8b5fa54254ca9bc42d0f2a24657911c94e97a2e4a535120bfbd7cc0788d0aee7",
-      "git_blob": "4ba1ea579697e6673f1d926831d0e370c663d2c1"
+      "bytes": 18929,
+      "sha256": "d5f940ef759982617affb3c513c94c49da9ec4fc79b679de4705d77ffc392f57",
+      "git_blob": "02d0cdaaa78a3fb34f0e42039e3ddf68012b572a"
     },
     {
       "path": "tests/evals/persona/relay_guards.py",
-      "bytes": 12024,
-      "sha256": "e2cc48f5166249e413b14f43c67b2e32d41d7e36e067318f717c3f72a4646923",
-      "git_blob": "2af3ba69024f44a042c213f683ebc040709527b0"
+      "bytes": 12337,
+      "sha256": "d95897ccb770f46c43cc99ffa640eea408a42d8bd19677d3b44a8ff6cf620505",
+      "git_blob": "c02b2d0b8587da9bbcceb5c784a176dceaef07ad"
     },
     {
       "path": "tests/evals/persona/rubric.md",
@@ -3145,9 +4063,9 @@
     },
     {
       "path": "tests/evals/persona/test_relay_guards.py",
-      "bytes": 9453,
-      "sha256": "bec43b00002541b1564b25c523ce3f798b76548aa546133572b50abaac6a1d20",
-      "git_blob": "b188e9191a0815ab2822fc2a6290d03b23f54338"
+      "bytes": 10087,
+      "sha256": "f0292e51c27347bde7aa9d556b936a78f5cc82959c8d4d699d61b0e85f37444f",
+      "git_blob": "23433bcdfa9c2741eb8a54ba6a140db3f47b9990"
     },
     {
       "path": "tools/run-tests.mjs",

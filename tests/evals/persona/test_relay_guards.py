@@ -4,10 +4,19 @@ import json
 import tempfile
 from pathlib import Path
 import unittest
-from relay_guards import ASSET_SHA, completed_read_calls, public_sse, validate_child_config, validate_read_targets, validate_request
+from relay_guards import ASSET_SHA, GuardRejection, completed_read_calls, public_sse, require, safe_failure_message, validate_child_config, validate_read_targets, validate_request
 
 
 class RelayGuardTests(unittest.TestCase):
+    def test_external_permission_error_text_is_never_recorded(self):
+        canary = 'SYNTHETIC_SECRET_IN_EXTERNAL_ERROR'
+        for error in (PermissionError(canary), PermissionError(13, 'denied', canary), RuntimeError(canary)):
+            self.assertEqual(safe_failure_message(error), 'transport or parsing failure')
+            self.assertNotIn(canary, safe_failure_message(error))
+        with self.assertRaises(GuardRejection) as caught:
+            require(False, 'model not authorized')
+        self.assertEqual(safe_failure_message(caught.exception), 'model not authorized')
+
     def fixture(self, failure=False):
         scenario = {'id':'failure_read' if failure else 'technical_read','max_requests':2,'target':'missing.txt' if failure else 'readme.txt'}
         packet = '{"instruction":"遐蝶的已批准合成人设"}'

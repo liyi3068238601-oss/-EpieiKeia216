@@ -10,7 +10,7 @@ import subprocess
 import threading
 import time
 import httpx
-from relay_guards import ASSET_SHA, MODELS, public_sse, require, validate_child_config, validate_read_targets, validate_request
+from relay_guards import ASSET_SHA, MODELS, public_sse, require, safe_failure_message, validate_child_config, validate_read_targets, validate_request
 
 REPO = Path(__file__).resolve().parents[3]
 ROOT = Path(r'E:\Xiadie\Xiadie')
@@ -161,8 +161,8 @@ def run_cell(mode, model, scenario, matrix_root, state):
                 except Exception as error:
                     state['halted'] = True
                     entry.update(denied=True,error_type=type(error).__name__,
-                                 denial_reason=str(error) if type(error) is PermissionError else 'transport or parsing failure')
-                    # Original exceptions/response bodies are deliberately not logged.
+                                 denial_reason=safe_failure_message(error))
+                    # Only our fixed guard diagnostics are recorded; external exceptions and response bodies are not.
                     self.respond(400,b'{"error":{"message":"P01 evaluation stopped; no retry"}}')
 
     server = ThreadingHTTPServer(('127.0.0.1',0),Relay)
@@ -221,7 +221,7 @@ def run_cell(mode, model, scenario, matrix_root, state):
             require(projection['evidenceStatus']==expected,'native projection outcome differs')
             if expected=='verified': require('orchid-42' in projection['reply']['text'],'actual read value missing')
     except Exception as error:
-        failure = {'error_type':type(error).__name__,'message':str(error) if isinstance(error,PermissionError) else 'native evaluation failure'}
+        failure = {'error_type':type(error).__name__,'message':safe_failure_message(error)}
         state['halted'] = True
     finally:
         server.shutdown(); server.server_close()

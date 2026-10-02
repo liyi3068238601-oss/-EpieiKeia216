@@ -8,9 +8,18 @@ ASSET_SHA = 'a688c669c4f556495131ac69cdc868a5b2ee93614eff814fc0793b1690c99bb4'
 MODELS = ('deepseek-flash', 'deepseek-v4-pro')
 
 
+class GuardRejection(PermissionError):
+    """A fixed diagnostic produced by our own deterministic validation."""
+
+
 def require(condition, message):
     if not condition:
-        raise PermissionError(message)
+        raise GuardRejection(message)
+
+
+def safe_failure_message(error):
+    # OS PermissionError may contain a filename or other external text.
+    return str(error) if type(error) is GuardRejection else 'transport or parsing failure'
 
 
 def message_text(messages):
