@@ -1,0 +1,1 @@
+P01_ONLY_READ_VALUE=orchid-42

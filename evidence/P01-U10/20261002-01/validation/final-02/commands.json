@@ -1,0 +1,30 @@
+{
+  "execution_commit": "aa392a52045ce873f06f8c8a1954d00b20e42e76",
+  "candidate": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-04",
+  "script_sha256": "da0cd30e72ea7e15083bc66d450534965bd273faea01940cf28ec002a5b9351b",
+  "commands": [
+    {
+      "name": "e2e-full",
+      "command": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "test:e2e",
+        "--",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-04",
+        "--suite",
+        "full",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-02\\ui-full"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10",
+      "exit_code": 1,
+      "seconds": 145.225,
+      "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-02\\e2e-full.log",
+      "bytes": 3374,
+      "sha256": "5e74f2b724686564ae6a7800addd12f24d0bd16a0094fb1f99ad86df31b276b2"
+    }
+  ]
+}

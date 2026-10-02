@@ -1,0 +1,47 @@
+[
+  {
+    "request_index": 1,
+    "accepted": true,
+    "request_sha256": "80d2b528a9639cc0833cecfda81e1fd2471d8dc47aaa3b292cd6b0bda62ee3b5",
+    "request_bytes": 14678,
+    "model": "deepseek-flash",
+    "stream": true,
+    "auth_present": true,
+    "synthetic_auth_only": true,
+    "messages_count": 4,
+    "tool_names": [
+      "Read"
+    ],
+    "assistant_tool_call_ids": [],
+    "tool_result_ids": [],
+    "upstream_attempted": false,
+    "status": 200,
+    "tool_call_id": "p01-u10-read_failure-read",
+    "tool_target": "missing.txt"
+  },
+  {
+    "request_index": 2,
+    "accepted": true,
+    "request_sha256": "371a2c17201054eafff1146989c802c12288f9108e3cf50035ce497958c28ba0",
+    "request_bytes": 15241,
+    "model": "deepseek-flash",
+    "stream": true,
+    "auth_present": true,
+    "synthetic_auth_only": true,
+    "messages_count": 6,
+    "tool_names": [
+      "Read"
+    ],
+    "assistant_tool_call_ids": [
+      "p01-u10-read_failure-read"
+    ],
+    "tool_result_ids": [
+      "p01-u10-read_failure-read"
+    ],
+    "upstream_attempted": false,
+    "correlated_tool_call_id": "p01-u10-read_failure-read",
+    "tool_result_sha256": "d5519ac5001848276858272c289054c48c6460e29bd43117ebcf8962209262be",
+    "tool_result_success_shape": true,
+    "status": 200
+  }
+]
