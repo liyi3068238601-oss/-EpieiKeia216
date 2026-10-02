@@ -1,0 +1,12 @@
+{
+  "schema": "p01-pause-request/v1",
+  "requested_at_utc": "2026-10-02T05:47:03Z",
+  "user_reply": "准备在最完整的可暂定点停止",
+  "status": "closing_current_unit",
+  "current_unit": "P01-U06",
+  "target": "Complete the in-progress U06 adapter and necessary tests, independently review the exact commit, then freeze a recoverable checkpoint and pause.",
+  "do_not_start": ["P01-U07", "P01-U08", "P01-U09", "P01-U10", "P01-U11", "P02"],
+  "G01": "pending",
+  "model_generation_calls_at_request": 4,
+  "note": "The request is to close at a complete checkpoint; it is not evidence that U06 or G01 has passed."
+}
