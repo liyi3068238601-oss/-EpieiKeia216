@@ -30,7 +30,10 @@ PROFILE_BRIDGE = ROOT / "tests/evals/persona/profile-bridge.mjs"
 SEED_HISTORY = REPO / "packages/config/test/seed-history.mjs"
 UI_DRIVER = HERE / "desktop-ui.mjs"
 NETWORK_GUARD = HERE / "electron-network-guard.cjs"
+TITLE_SIDECAR_SOURCE = SOURCE / "apps/zcode-cli/packages/core/src/runtime/methods/title-generation-sidecar.ts"
 SYNTHETIC_KEY = "p01-u09-loopback-only"
+CLIENT_DISCONNECT_ERRORS = (BrokenPipeError, ConnectionAbortedError, ConnectionResetError)
+KNOWN_CLIENT_DISCONNECT_CODES = {32, 103, 104, 109, 10053, 10054}
 FULL_SCENARIOS = ("success", "read_success", "read_failure", "cancel_recovery", "disabled_native", "pro_denied")
 DEGRADATION_SCENARIOS = ("no_key", "no_dsh", "offline")
 EXPECTED_REPLIES = {
@@ -404,8 +407,9 @@ def verify_candidate(candidate_arg: str) -> dict:
 
 
 def verify_pinned_source() -> dict:
-    if not NODE.is_file() or not PROFILE_BRIDGE.is_file() or not UI_DRIVER.is_file() or not NETWORK_GUARD.is_file():
-        raise HarnessError("fixed_u10_toolchain_or_bridge_missing")
+    if (not NODE.is_file() or not PROFILE_BRIDGE.is_file() or not UI_DRIVER.is_file()
+            or not NETWORK_GUARD.is_file() or not TITLE_SIDECAR_SOURCE.is_file()):
+        raise HarnessError("fixed_u10_toolchain_or_fixture_missing")
     commit = subprocess.run(["git", "-C", str(SOURCE), "rev-parse", "HEAD"], capture_output=True, text=True, check=False)
     status = subprocess.run(["git", "-C", str(SOURCE), "status", "--porcelain"], capture_output=True, text=True, check=False)
     if commit.returncode or status.returncode or commit.stdout.strip() != PIN or status.stdout.strip():
@@ -515,6 +519,38 @@ def seed_workspace(profile: Path, scenario_output: Path, *, with_history: bool, 
 class MockRelay:
     """One per UI scenario; only a dynamic 127.0.0.1 listener exists."""
 
+    def read_native_title_system_prompt(self) -> str:
+        source = TITLE_SIDECAR_SOURCE.read_text(encoding="utf-8")
+        match = re.search(r"const SESSION_TITLE_SYSTEM_PROMPT = `([^`]*)`;", source, re.DOTALL)
+        if match is None or "${" in match.group(1):
+            raise HarnessError("pinned_title_prompt_unavailable")
+        return match.group(1)
+
+    def has_native_title_messages(self, body: dict) -> bool:
+        messages = body.get("messages")
+        if not isinstance(messages, list) or len(messages) != 2:
+            return False
+        system, user = messages
+        return (
+            isinstance(system, dict) and system.get("role") == "system"
+            and system.get("content") == self.title_system_prompt
+            and isinstance(user, dict) and user.get("role") == "user"
+            and user.get("content") == scenario_prompt("disabled_native")
+        )
+
+    def wait_for_cancel_observation(self, timeout_seconds: float = 2.0) -> bool:
+        deadline = time.monotonic() + timeout_seconds
+        expected = {"schema": "p01-u10-cancel-observed/v1", "scenario_id": "cancel_recovery",
+                    "action": "clicked-native-stop-button"}
+        while time.monotonic() < deadline:
+            try:
+                if json.loads(self.cancel_observed_file.read_text(encoding="utf-8")) == expected:
+                    return True
+            except (OSError, json.JSONDecodeError):
+                pass
+            time.sleep(0.02)
+        return False
+
     def __init__(self, scenario_id: str, output: Path, workspace: Path, expected_post_count: int, offline: bool = False):
         self.scenario_id = scenario_id
         self.output = output
@@ -524,6 +560,8 @@ class MockRelay:
         self.records: list[dict] = []
         self.lock = threading.Lock()
         self.server: ThreadingHTTPServer | None = None
+        self.title_system_prompt = self.read_native_title_system_prompt()
+        self.cancel_observed_file = output / "cancel-observed.json"
 
         outer = self
 
@@ -594,6 +632,7 @@ class MockRelay:
                         "assistant_tool_call_ids": [],
                         "tool_result_ids": [],
                         "upstream_attempted": False,
+                        "auxiliary_title": outer.has_native_title_messages(body),
                     }
                     outer.records.append(record)
 
@@ -609,10 +648,55 @@ class MockRelay:
                         raise HarnessError("unqualified_pro_request_must_be_refused_before_relay")
                     record["accepted"] = True
                     record["status"] = 200
-                    self.send_sse(index)
-                except (BrokenPipeError, ConnectionResetError):
-                    record["client_cancelled"] = True
-                    record["accepted"] = True
+                    if record["auxiliary_title"]:
+                        title_response = {
+                            "id": "chatcmpl-p01-u10-title",
+                            "object": "chat.completion",
+                            "created": 1,
+                            "model": "deepseek-flash",
+                            "choices": [{
+                                "index": 0,
+                                "message": {"role": "assistant", "content": '{"title":"U10 原生 UI 测试"}'},
+                                "finish_reason": "stop",
+                            }],
+                            "usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
+                        }
+                        self.send_body(200, "application/json", json.dumps(title_response, ensure_ascii=False).encode("utf-8"))
+                    else:
+                        self.send_sse(index, record)
+                except CLIENT_DISCONNECT_ERRORS as error:
+                    error_code = getattr(error, "winerror", None)
+                    if not isinstance(error_code, int):
+                        error_code = getattr(error, "errno", None)
+                    if not isinstance(error_code, int):
+                        error_code = None
+                    cancel_confirmed = (
+                        outer.scenario_id == "cancel_recovery" and index == 1
+                        and record.get("partial_stream_sent") is True
+                        and type(error) in CLIENT_DISCONNECT_ERRORS
+                        and error_code in KNOWN_CLIENT_DISCONNECT_CODES
+                        and outer.wait_for_cancel_observation()
+                    )
+                    if cancel_confirmed:
+                        record.update({
+                            "accepted": True,
+                            "status": 200,
+                            "client_cancelled": True,
+                            "cancel_confirmation": {
+                                "source": "native-stop-ui-action",
+                                "exception_type": type(error).__name__,
+                                "exception_code": error_code,
+                            },
+                        })
+                    else:
+                        record.update({"accepted": False, "status": 500,
+                                       "reason": "unconfirmed_client_disconnect",
+                                       "transport_error_type": type(error).__name__,
+                                       "transport_error_code": error_code})
+                        try:
+                            self.send_body(500, "application/json", b'{"error":{"message":"P01 relay failure"}}')
+                        except CLIENT_DISCONNECT_ERRORS:
+                            pass
                 except HarnessError as error:
                     record.update({"accepted": False, "status": 400, "reason": error.args[0] if error.args and re.fullmatch(r"[a-z0-9_]+", str(error.args[0])) else "request_policy_denied"})
                     self.send_body(400, "application/json", b'{"error":{"message":"P01 evaluation stopped"}}')
@@ -621,8 +705,6 @@ class MockRelay:
                     self.send_body(500, "application/json", b'{"error":{"message":"P01 relay failure"}}')
 
             def validate_request(self, body: dict, record: dict, index: int):
-                if body.get("model") != "deepseek-flash" or body.get("stream") is not True:
-                    raise HarnessError("model_or_stream_mismatch")
                 if SYNTHETIC_KEY.encode() in json.dumps(body, ensure_ascii=False).encode():
                     raise HarnessError("synthetic_key_in_request_body")
                 if outer.scenario_id not in {"no_key", "pro_denied"} and not record["synthetic_auth_only"]:
@@ -630,6 +712,17 @@ class MockRelay:
                 messages = body.get("messages")
                 if not isinstance(messages, list):
                     raise HarnessError("messages_missing")
+                if record.get("auxiliary_title"):
+                    if outer.scenario_id != "disabled_native" or index != 2:
+                        raise HarnessError("unexpected_auxiliary_title_request")
+                    if (body.get("model") != "deepseek-flash" or body.get("stream") is not False
+                            or body.get("tools", []) != [] or "tool_choice" in body):
+                        raise HarnessError("auxiliary_title_request_shape_mismatch")
+                    record["request_kind"] = "auxiliary_title"
+                    return
+                if body.get("model") != "deepseek-flash" or body.get("stream") is not True:
+                    raise HarnessError("model_or_stream_mismatch")
+                record["request_kind"] = "conversation"
                 tool_calls = []
                 tool_results = []
                 for message in messages:
@@ -676,7 +769,7 @@ class MockRelay:
                          "choices": [{"index": 0, "delta": delta, "finish_reason": finish_reason}]}
                 return ("data: " + json.dumps(frame, ensure_ascii=False) + "\n\n").encode("utf-8")
 
-            def send_sse(self, index: int):
+            def send_sse(self, index: int, record: dict):
                 self.send_response(200)
                 self.send_header("Content-Type", "text/event-stream")
                 self.send_header("Cache-Control", "no-cache")
@@ -700,6 +793,7 @@ class MockRelay:
                 if outer.scenario_id == "cancel_recovery" and index == 1:
                     self.wfile.write(self.frame({"role": "assistant", "content": "这是一条尚未完成的本地测试回复"}))
                     self.wfile.flush()
+                    record["partial_stream_sent"] = True
                     for _ in range(120):
                         time.sleep(0.25)
                         self.wfile.write(b": keepalive\n\n")
@@ -904,6 +998,7 @@ def create_profile_and_spec(
         "occupied_ports_before": [],
         "history_markers": history_markers,
         "cancel_file": str(scenario_output / "cancel.request"),
+        "cancel_observed_file": str(scenario_output / "cancel-observed.json"),
     }
     spec_path = scenario_output / "desktop-ui.spec.json"
     write_json(spec_path, spec)
@@ -926,7 +1021,7 @@ def scenario_prompt(scenario_id: str) -> str:
 
 def expected_requests(scenario_id: str) -> int:
     return {"success": 1, "read_success": 2, "read_failure": 2, "cancel_recovery": 2,
-            "disabled_native": 1, "pro_denied": 0, "no_key": 0, "no_dsh": 1, "offline": 1}[scenario_id]
+            "disabled_native": 2, "pro_denied": 0, "no_key": 0, "no_dsh": 1, "offline": 1}[scenario_id]
 
 
 def validate_sidecar(scenario_id: str, profile: Path, relay_records: list[dict], ui_result: dict | None) -> dict:

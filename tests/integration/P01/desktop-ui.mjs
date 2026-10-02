@@ -22,13 +22,19 @@ function validateSpec(spec) {
     "candidate", "desktop", "electron", "playwright", "guard", "workspace", "out", "env",
     "scenario_id", "flow", "prompt", "expected_reply", "partial_reply", "model", "target_model",
     "profile_paths", "gate_mode", "relay_origin", "occupied_ports_before", "history_markers",
-    "cancel_file",
+    "cancel_file", "cancel_observed_file",
   ]);
   if (!spec || typeof spec !== "object" || Array.isArray(spec) || Object.keys(spec).some((key) => !keys.has(key))) {
     throw new Error("invalid_spec");
   }
   for (const key of ["candidate", "desktop", "electron", "playwright", "guard", "workspace", "out"]) {
     requireAbsolute(spec[key], key);
+  }
+  requireAbsolute(spec.cancel_file, "cancel_file");
+  requireAbsolute(spec.cancel_observed_file, "cancel_observed_file");
+  if (path.resolve(spec.cancel_observed_file).toLowerCase() !==
+      path.resolve(spec.out, "cancel-observed.json").toLowerCase()) {
+    throw new Error("invalid_cancel_observed_path");
   }
   if (!spec.env || typeof spec.env !== "object" || Array.isArray(spec.env)) throw new Error("invalid_env");
   if (!/^[a-z0-9_]+$/.test(spec.scenario_id) || !["reply", "cancel_recovery", "no_key", "offline", "pro_denied"].includes(spec.flow)) {
@@ -294,6 +300,11 @@ try {
     result.ui_actions.push("observed-streaming-partial-in-renderer");
     await stop.click();
     result.ui_actions.push("clicked-native-stop-button");
+    await writeFile(spec.cancel_observed_file, `${JSON.stringify({
+      schema: "p01-u10-cancel-observed/v1",
+      scenario_id: spec.scenario_id,
+      action: "clicked-native-stop-button",
+    })}\n`, { flag: "wx" });
     await stop.waitFor({ state: "detached", timeout: 20_000 });
     await send(first, "请恢复后简短回应，不要复述我刚才的要求。");
     await waitForVisibleText(first, spec.expected_reply, 30_000);
