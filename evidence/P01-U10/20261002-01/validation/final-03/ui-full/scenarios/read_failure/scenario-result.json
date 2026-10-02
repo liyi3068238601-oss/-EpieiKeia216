@@ -1,0 +1,202 @@
+{
+  "scenario_id": "read_failure",
+  "passed": true,
+  "exit_code": 0,
+  "model_requests": 2,
+  "expected_model_requests": 2,
+  "relay_records": [
+    {
+      "request_index": 1,
+      "accepted": true,
+      "request_sha256": "85711355d7de513fe0a0ccfebeaf601c901289dfaed6ed89993178639fb5ee6e",
+      "request_bytes": 14678,
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 4,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 200,
+      "tool_call_id": "p01-u10-read_failure-read",
+      "tool_target": "missing.txt"
+    },
+    {
+      "request_index": 2,
+      "accepted": true,
+      "request_sha256": "cc85d91406d0542c5959e9c722337f161d9959db0cd9d0b44fbc24cb6294df4b",
+      "request_bytes": 15241,
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 6,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [
+        "p01-u10-read_failure-read"
+      ],
+      "tool_result_ids": [
+        "p01-u10-read_failure-read"
+      ],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "correlated_tool_call_id": "p01-u10-read_failure-read",
+      "tool_result_sha256": "f1c982b242c8361d372d2ba75e523b6bb10493d69130e4da604821ba09e769f6",
+      "tool_result_success_shape": true,
+      "status": 200
+    }
+  ],
+  "sidecar_correlation": {
+    "status": "verified",
+    "verified": true,
+    "session_id": "sess_e9a5599c-8333-4a08-816c-738fc46ad84e",
+    "turn_id": "turn_07083531-e988-4fd0-9345-aadb32938778",
+    "tool_call_id": "p01-u10-read_failure-read",
+    "tool_status": "failed",
+    "lifecycle": "completed",
+    "evidence_status": "failed",
+    "projection_status": "projected",
+    "reply_sha256": "cc1290a42570f0317432f3b01062aed411316ff78dce85538facb3567e1c793c"
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "read_failure",
+    "status": "completed",
+    "gate_mode": "enabled",
+    "flow": "reply",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send"
+    ],
+    "user_visible_reply": "missing.txt 不存在，这一步未完成，我没有读到文件内容。",
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 51508,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-05",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-03\\ui-full\\scenarios\\read_failure\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-03\\ui-full\\scenarios\\read_failure\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-03\\ui-full\\scenarios\\read_failure\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 48308,
+          "parent_pid": 51508,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 31224,
+          "parent_pid": 51508,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 54332,
+          "parent_pid": 51508,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 5288,
+          "parent_pid": 51508,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 54156,
+          "parent_pid": 51508,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 51452,
+          "parent_pid": 5288,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "network_guard_records": 331,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 51508,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      5288
+    ],
+    "cli_required": true,
+    "cli_spawned_pids": [
+      51452
+    ],
+    "cli_guarded_pids": [
+      51452
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 51508,
+    "descendants": [
+      {
+        "pid": 48308,
+        "parent_pid": 51508,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 31224,
+        "parent_pid": 51508,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 54332,
+        "parent_pid": 51508,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 5288,
+        "parent_pid": 51508,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 54156,
+        "parent_pid": 51508,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 51452,
+        "parent_pid": 5288,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback"
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ]
+}
