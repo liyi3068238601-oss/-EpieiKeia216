@@ -1,0 +1,128 @@
+{
+  "schema": "p01-u10-author-result/v1",
+  "unit": "P01-U10",
+  "author_status": "ready_for_review",
+  "accepted": false,
+  "baseline_commit": "1dee2d18b684f602aa6dacd3f6049f35cf14d262",
+  "candidate": {
+    "id": "u10-candidate-06",
+    "source_commit": "82298c735dfbc4f278b5e920d79be7a83f979b55",
+    "descriptor_path": "builds/u10-candidate-06/candidate-descriptor.json",
+    "descriptor_sha256": "25f92e7604b41479fdcdd9dcc089afe0ce6441db4586a7f7e7614805632a8907",
+    "cli_sha256": "56bc58a658d938b9090e6004b1ab3cc4ab4ec32ed1c1b6e2138aeb2676cce44d",
+    "candidate_model": "deepseek-flash",
+    "denied_model": "deepseek-v4-pro",
+    "pinned_upstream_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "license": "Apache-2.0"
+  },
+  "toolchain": {
+    "node": "v24.14.0",
+    "pnpm": "10.33.2",
+    "python": "3.12.10"
+  },
+  "build": {
+    "evidence": "builds/commands-06.json",
+    "exit_code": 0
+  },
+  "final04": {
+    "evidence": "validation/final-04",
+    "check_exit_code": 0,
+    "unit_exit_code": 0,
+    "unit_passed": 79,
+    "full_suite_exit_code": 0,
+    "scenario_total": 6,
+    "scenario_passed": 6,
+    "scenarios": [
+      "success",
+      "read_success",
+      "read_failure",
+      "cancel_recovery",
+      "disabled_native",
+      "pro_denied"
+    ],
+    "local_loopback_post_requests": 9,
+    "external_model_requests": 0,
+    "dsh_like_descendants": 0,
+    "DSH_process_tree_verified": true,
+    "production_unchanged": true,
+    "execution_unchanged": true,
+    "retry_test_override": {
+      "environment": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0",
+      "scope": "isolated offline test harness only"
+    },
+    "human_visual_review": "NOT_RUN"
+  },
+  "previous_final03": {
+    "evidence": "validation/final-03",
+    "full_suite_exit_code": 1,
+    "scenario_passed": 5,
+    "scenario_total": 6,
+    "failed_scenario": "disabled_native",
+    "root_cause": "Pinned SDK generate omits stream; final-03 archive derived false and relay rejected the shape.",
+    "superseded_by": "candidate-06 / final-04"
+  },
+  "title_sdk_capture": {
+    "evidence": "validation/title-sdk-capture/command.json",
+    "exit_code": 0,
+    "sdk": "@ai-sdk/openai-compatible 2.0.60 + ai 6.0.193",
+    "wire_body_keys": [
+      "max_tokens",
+      "messages",
+      "model"
+    ],
+    "stream_present": false,
+    "tools_present": false,
+    "tool_choice_present": false,
+    "network": "dynamic 127.0.0.1 only; synthetic API key"
+  },
+  "supporting_baseline_regression": {
+    "evidence": "baseline-regression/result.json",
+    "wrapper_commit": "4d67560605cf3b79e9437528a78b2ab6198af5a1",
+    "not_final_u10_commit": true,
+    "counts": {
+      "contract": 5,
+      "integration": 41,
+      "python_guards": 10,
+      "mock_eval": 10
+    },
+    "scope_reuse_basis": "No packages/, assets/, plugins/, tests/evals/persona/, pnpm-lock.yaml, or tsconfig.json changes from baseline to candidate source; these counts are supplementary, not a full rerun on the final U10 tree."
+  },
+  "model_authorization": {
+    "preapproved_real_request_budget": 18,
+    "used_before_u10": 18,
+    "u09_real_requests": 14,
+    "historical_u02_generations": 4,
+    "u10_real_model_requests": 0,
+    "real_credentials_used_in_u10": false,
+    "real_paid_requests_in_u10": false,
+    "candidate_auth": "synthetic loopback-only placeholder"
+  },
+  "scope": {
+    "code": "tests/integration/P01/ plus package command mapping in package.json and tools/run-tests.mjs/tools/run-stage-tests.mjs",
+    "docs": [
+      "docs/evals/P01/integration.md",
+      "docs/evals/P01/requirement-evidence.md"
+    ],
+    "evidence": "evidence/P01-U10/20261002-01/",
+    "p01_status_changed": false,
+    "p02_started": false
+  },
+  "gate": {
+    "u10_author_status": "ready_for_review",
+    "u10_accepted": false,
+    "u11": "not_started",
+    "g01": "pending",
+    "next_stage_started": false
+  },
+  "limitations": [
+    "U10 full scenarios used a synthetic loopback provider configuration; they do not prove a fully unauthenticated provider UI state.",
+    "The accepted U08 no-key UI evidence covers opening Settings and reading a preseeded native ZCode history marker; a complete no-key UI status display is not claimed.",
+    "Turn/tool receipts are written to a sidecar; no renderer evidence panel was added.",
+    "Visual acceptance is NOT_RUN; human persona review remains not_reviewed.",
+    "The local assembly is not an installer or distributable package.",
+    "The relay network guard is process instrumentation, not an OS sandbox.",
+    "Boundary scan is BOUNDARY_SCAN_NOT_RUN because packages/core is absent.",
+    "P02 application-level persistence has not started."
+  ]
+}
