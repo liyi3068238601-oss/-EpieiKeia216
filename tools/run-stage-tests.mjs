@@ -16,7 +16,8 @@ if (suite === "eval") {
   }
 } else if (suite === "e2e") {
   // desktop.py strictly validates its own candidate, output and suite arguments.
-  // It has no real-provider mode and never reads the production credential file.
+  // It has no real-provider mode and never parses or passes real credentials.
+  // Production files may be hashed to verify they remain unchanged.
   command = ["-X", "utf8", "tests/integration/P01/desktop.py", ...args];
 } else {
   console.error("usage: node tools/run-stage-tests.mjs <eval|e2e> [runner arguments]");
