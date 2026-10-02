@@ -1,0 +1,17 @@
+✔ constructs immutable instructions only from the approved snapshot and puts canon in fictional state (5.3874ms)
+✔ schema-only and copied role values cannot create instruction packets (2.978ms)
+✔ hostile memory and trusted facts stay in their data partitions (2.2584ms)
+✔ stable serialization sorts nested object keys and correctly escapes strings (5.2445ms)
+✔ rejects structurally valid packets copied or deserialized outside the builder (2.72ms)
+✔ rejects missing references, invalid scope and caller-supplied instruction keys (4.8316ms)
+✔ rejects accessor input without invoking it and enforces finite payload limits (2.6695ms)
+✔ input mutation cannot alter the packet snapshot or rendered bytes (2.2803ms)
+✔ budget is checked against the whole serialized packet and never returns a partial string (4.1282ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 114.9024

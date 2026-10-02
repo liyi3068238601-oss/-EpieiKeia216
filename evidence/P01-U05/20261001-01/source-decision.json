@@ -1,0 +1,95 @@
+{
+  "task_id": "P01-U05",
+  "attempt_id": "20261001-01",
+  "status": "ready_for_review",
+  "adopted": [
+    {
+      "source": "Accepted U04 character loader/API",
+      "commit": "122d3028385469a3704249f8df17e013cf880456",
+      "paths": [
+        "packages/character/src/loader.ts",
+        "packages/character/src/schema.ts"
+      ],
+      "decision": "Use isApprovedCharacter as the only instruction provenance check; canonical canon remains a fictional state record."
+    },
+    {
+      "source": "Herta fixed source",
+      "commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "paths": [
+        "references/herta-4623df12/packages/herta/src/narrative/actor-prompt.ts",
+        "references/herta-4623df12/packages/herta/src/narrative/actor-prompt.test.ts",
+        "references/herta-4623df12/packages/herta/src/narrative/static-prefix.ts",
+        "references/herta-4623df12/packages/herta/src/narrative/static-prefix.test.ts"
+      ],
+      "license": "MIT applies to source code; the same LICENSE excludes character material, canon/dialogue, images and audio",
+      "decision": "Design reference only: keep approved identity ahead of dynamic records and pin serializer order with deterministic tests; no source code or Herta character content copied."
+    },
+    {
+      "source": "U02 old Foundation candidate",
+      "path": "planning/Xiadie_V2_v1.1/03_代码参考与复用清单.md#u02",
+      "decision": "Candidate is unpinned and its PoC is NOT_RUN; no Mastra dependency or old dual-self runtime adopted."
+    }
+  ],
+  "source_files": [
+    {
+      "path": "references/herta-4623df12/LICENSE",
+      "bytes": 2751,
+      "sha256": "bb1f011bb44b82acdcb078fdfcc2f7b6185c930b69a1ee275b518e79e32aea82"
+    },
+    {
+      "path": "references/herta-4623df12/packages/herta/src/narrative/static-prefix.ts",
+      "bytes": 7606,
+      "sha256": "d12ee34abf8da9937f6628bfb80a0d0bedde0bfcf16f2d5846be35b6a5c4ed51"
+    },
+    {
+      "path": "references/herta-4623df12/packages/herta/src/narrative/actor-prompt.ts",
+      "bytes": 19295,
+      "sha256": "61430188aa2ee199bc4e7aaccb22b5b6385a3087836b51e2191288e159c159cf"
+    },
+    {
+      "path": "references/herta-4623df12/packages/herta/src/narrative/static-prefix.test.ts",
+      "bytes": 11734,
+      "sha256": "c50bfedfbd734ee7f0e915d2f661ed09632a9c454d61df9840662c78a1e36cae"
+    },
+    {
+      "path": "references/herta-4623df12/packages/herta/src/narrative/actor-prompt.test.ts",
+      "bytes": 30605,
+      "sha256": "1fb7f1744239946c523c6b8af2ec097aaf1695298525847b08d72e3025d07c7c"
+    }
+  ],
+  "path_mapping": {
+    "task_card_contract_path": "packages/contracts/context.ts",
+    "implemented_path": "packages/contracts/src/context.ts",
+    "reason": "Existing source tree uses packages/contracts/src; mapping recorded without editing the planning baseline."
+  },
+  "test_mapping": {
+    "unit": "packages/context/test/context.test.mjs",
+    "contract": "packages/context/test/contract.test.mjs",
+    "integration": "packages/context/test/integration.test.mjs",
+    "selector": "P01-U05"
+  },
+  "runtime_dependencies_added": [],
+  "role_material_copied": false,
+  "implementation_notes": [
+    "ContextPacket is JSON/readonly with fixed instruction, state, evidence, content partitions and source_refs.",
+    "Only a U04-approved loader snapshot supplies identity, voice, values, boundaries and examples to instruction.",
+    "Dynamic input is first captured once from own property descriptors into a bounded detached snapshot, then exact shapes, strict JSON values, source_refs, scope, version, depth and byte limits are validated before deep-freezing.",
+    "Accessors, hidden or symbol fields, sparse arrays, and non-finite numbers are rejected; ordinary Proxy get traps are not invoked, while reflection traps may run, so the implementation is not a same-process sandbox.",
+    "Canon is explicitly labeled fictional-character-canon in state; tool results and trusted facts remain evidence; user, external and memory values remain content.",
+    "Canonical JSON fixes partition order and sorts nested object keys. Builder-local WeakSet/WeakMap provenance rejects copied or deserialized packets; restore by rebuilding from approved role and data.",
+    "Budget checks complete rendered JSON UTF-8 bytes against max_tokens using utf8-byte-upper-bound; it excludes native system/project rules and is not a model tokenizer count."
+  ],
+  "considered_sources": [
+    {
+      "source": "Accepted project JsonValue validator",
+      "commit": "cf407f278fea36fa7e1f48d154e0ae0720c1ef88",
+      "path": "packages/contracts/src/json-value.ts",
+      "decision": "Inspected during implementation. The pre-review candidate reused isJsonValue then reread input values; review reproduced a descriptor/get-trap time-of-check/time-of-use issue. Final U05 uses a single descriptor snapshot and does not call this validator."
+    },
+    {
+      "source": "Independent pre-repair review probe",
+      "path": "evidence/P01-U05/20261001-01/review/initial-findings.md",
+      "decision": "Three reproduced Proxy get-trap findings are preserved with the pre-repair manifest and code diff; attempt-4 covers the fix."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "task_id": "P01-U05",
+  "attempt_id": "20261001-01",
+  "initial_cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u05",
+  "branch": "p01-u05",
+  "baseline_commit": "01f3f8700ada91ef6756a184fe5ea029d432f530",
+  "working_tree_clean_at_start": true,
+  "prerequisite": {
+    "task_id": "P01-U04",
+    "status": "accepted",
+    "author_commit": "122d3028385469a3704249f8df17e013cf880456",
+    "acceptance_path": "evidence/P01-U04/20261001-01/acceptance.json",
+    "acceptance_sha256": "2b9a858886656c7fa38af0fd6d0da600948a32d05bcc4575be978c942f5700cf"
+  },
+  "task_card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P01-U05.md",
+    "sha256": "a1e3de1e6bc42e47694c06959fb708e3b8008fc9c1046983e6a93b389e60fcc8"
+  },
+  "baseline_files": [
+    {
+      "path": "packages/contracts/src/json-value.ts",
+      "sha256": "10ef265e18f7a074c5ef4ea8a936fc3b958ed69cf62ded9b9cb3775ceeaf92f8"
+    },
+    {
+      "path": "packages/character/src/index.ts",
+      "sha256": "29530de7d311d5cb8894ce943c90146edd6b890a74fb144f113ec4f9679d11d5"
+    },
+    {
+      "path": "packages/character/src/schema.ts",
+      "sha256": "b3405d98a976a19436d1e4191cac3a79153156c67d827208a930ab2024a956ed"
+    },
+    {
+      "path": "packages/character/src/loader.ts",
+      "sha256": "a8505ecbcc7d179d66ccb7e31c4cea873faa103d1366fa0681adf182d97acc0f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U05.md",
+      "sha256": "a1e3de1e6bc42e47694c06959fb708e3b8008fc9c1046983e6a93b389e60fcc8"
+    },
+    {
+      "path": "evidence/P01-U04/20261001-01/acceptance.json",
+      "sha256": "2b9a858886656c7fa38af0fd6d0da600948a32d05bcc4575be978c942f5700cf"
+    }
+  ],
+  "toolchain": {
+    "node_version": "v24.14.0",
+    "pnpm_version": "10.33.2",
+    "typescript_version": "6.0.2",
+    "install_command": "pnpm install --frozen-lockfile --ignore-scripts",
+    "store": "E:/Xiadie/Xiadie/.runtime/P01/pnpm-store-u04",
+    "lockfile_sha256": "73a7f0c772915e255001e331c960d547153efc460d4f19bc57709bff183b3f64"
+  },
+  "scope": "Dedicated worktree E:/Xiadie/Xiadie/.runtime/P01/worktrees/u05 only"
+}
