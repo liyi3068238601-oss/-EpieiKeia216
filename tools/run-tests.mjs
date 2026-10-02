@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const TESTS = Object.freeze({
   unit: Object.freeze({
-    all: ["packages/contracts/test/json-value.test.mjs", "packages/character/test/schema.test.mjs", "packages/context/test/context.test.mjs", "packages/adapters/zcode/test/host.test.mjs", "packages/application/test/turn-projection.test.mjs", "packages/config/test/profile.test.mjs", "packages/config/test/desktop-build-paths.test.mjs", "packages/config/test/warmup.test.mjs", "packages/secrets/test/credential.test.mjs", "tests/evals/persona/native.test.mjs"],
+    all: ["packages/contracts/test/json-value.test.mjs", "packages/character/test/schema.test.mjs", "packages/context/test/context.test.mjs", "packages/adapters/zcode/test/host.test.mjs", "packages/application/test/turn-projection.test.mjs", "packages/config/test/profile.test.mjs", "packages/config/test/desktop-build-paths.test.mjs", "packages/config/test/warmup.test.mjs", "packages/secrets/test/credential.test.mjs", "tests/evals/persona/native.test.mjs", "tests/integration/P01/read-only-workspace.test.mjs", "tests/integration/P01/factory.test.mjs", "tests/integration/P01/electron-network-guard.test.mjs"],
     tasks: Object.freeze({
       "P01-U03": ["packages/contracts/test/json-value.test.mjs"],
       "P01-U04": ["packages/character/test/schema.test.mjs"],
@@ -13,6 +13,7 @@ const TESTS = Object.freeze({
       "P01-U07": ["packages/application/test/turn-projection.test.mjs"],
       "P01-U08": ["packages/config/test/profile.test.mjs", "packages/config/test/desktop-build-paths.test.mjs", "packages/config/test/warmup.test.mjs", "packages/secrets/test/credential.test.mjs"],
       "P01-U09": ["tests/evals/persona/native.test.mjs"],
+      "P01-U10": ["tests/integration/P01/read-only-workspace.test.mjs", "tests/integration/P01/factory.test.mjs", "tests/integration/P01/electron-network-guard.test.mjs"],
     }),
   }),
   contract: Object.freeze({
