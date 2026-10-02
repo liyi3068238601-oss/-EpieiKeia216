@@ -1,0 +1,25 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "success",
+  "status": "failed",
+  "gate_mode": "enabled",
+  "flow": "reply",
+  "ui_actions": [],
+  "user_visible_reply": null,
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": null,
+  "passed": false,
+  "failure_code": "ui_assertion_failed",
+  "failure_details": {
+    "name": "TimeoutError",
+    "code": "unknown",
+    "operator": null,
+    "message": "electron.launch: Timeout 45000ms exceeded.",
+    "windows": 0
+  }
+}
