@@ -32,6 +32,7 @@ async function resolveOwnedContext(env, profileModule, secretsModule) {
   const root = path.dirname(path.resolve(storageRoot));
   const paths = profileModule.resolveOwnedProfilePaths(root);
   if (paths.storage !== path.resolve(storageRoot) || paths.home !== env.HOME || paths.home !== env.USERPROFILE ||
+      paths.home !== env.ZCODE_DESKTOP_HOME_DIR ||
       paths.data !== env.ZCODE_DATA_BASE_DIR || paths.temp !== env.TEMP || paths.temp !== env.TMP ||
       paths.userData !== env.ZCODE_DESKTOP_USER_DATA_DIR || paths.sessionData !== env.ZCODE_DESKTOP_SESSION_DATA_DIR ||
       paths.appData !== env.APPDATA || paths.localAppData !== env.LOCALAPPDATA ||
@@ -85,6 +86,14 @@ async function installIdentityPlugin({ root, paths, env, pluginApi, repositoryRo
   try { userConfig = JSON.parse(await readFile(userConfigPath, "utf8")); }
   catch (error) { if (error?.code !== "ENOENT") throw new Error("P01 isolated user config is invalid"); }
   userConfig.storage = { ...(userConfig.storage ?? {}), dir: paths.storage };
+  const currentFeatures = userConfig.features && typeof userConfig.features === "object" && !Array.isArray(userConfig.features)
+    ? userConfig.features
+    : {};
+  const currentSkills = userConfig.skills && typeof userConfig.skills === "object" && !Array.isArray(userConfig.skills)
+    ? userConfig.skills
+    : {};
+  userConfig.features = { ...currentFeatures, mcp: false, skill: false };
+  userConfig.skills = { ...currentSkills, enabled: false };
   await writeFile(userConfigPath, `${JSON.stringify(userConfig, null, 2)}\n`, "utf8");
   const discovered = pluginApi.listZCodePlugins({
     pluginStorageRoot,
@@ -165,6 +174,7 @@ function projectionSidecar(hostApp, root, createTurnEventCollector) {
       const scheduled = [];
       let unsubscribe;
       let turnId;
+      let subscriptionFailed = false;
       let cleaned = false;
       const cleanup = () => {
         if (cleaned) return;
@@ -183,7 +193,7 @@ function projectionSidecar(hostApp, root, createTurnEventCollector) {
           },
         });
       } catch {
-        unsubscribe = undefined;
+        subscriptionFailed = true;
       }
       const appendFailure = async (reason) => {
         const row = {
@@ -200,6 +210,7 @@ function projectionSidecar(hostApp, root, createTurnEventCollector) {
       const record = async (id, result) => {
         turnId = id;
         try {
+          if (subscriptionFailed) throw new Error("event_subscription_failed");
           if (!turnId) throw new Error("missing_turn_id");
           const requiredToolCallIds = scheduled.filter((item) => item.turnId === turnId).map((item) => item.toolCallId);
           const projection = collector.project(result, requiredToolCallIds);
@@ -222,7 +233,7 @@ function projectionSidecar(hostApp, root, createTurnEventCollector) {
           };
           await appendFile(file, `${JSON.stringify(row)}\n`, "utf8");
         } catch {
-          await appendFailure("projection_failed");
+          await appendFailure(subscriptionFailed ? "event_subscription_failed" : "projection_failed");
           return;
         }
         cleanup();
@@ -344,6 +355,7 @@ export function createU10ProtocolFactory({
       }), { endpointOrigin: env.ZCODE_ENDPOINT_ORIGIN });
       const runtimeConfig = {
         ...appOptions.runtimeConfig,
+        mcp: { ...appOptions.runtimeConfig?.mcp, enabled: false, servers: {} },
         memory: { enabled: false, use: false, extractionEnabled: false },
         dynamicWorkflowEnabled: false,
         toolAllowlist: ["Read"],

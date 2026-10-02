@@ -4,6 +4,8 @@ import { realpathSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
+import { pathToFileURL } from "node:url";
+import { createTurnEventCollector } from "../../../dist/packages/application/turn-projection.js";
 import { createU10ProtocolFactory } from "./factory.mjs";
 import {
   assertQualifiedModel,
@@ -28,7 +30,7 @@ function modelOptions(overrides = {}) {
   };
 }
 
-async function withOwnedFactoryFixture(t, { failNativeCreate = false } = {}) {
+async function withOwnedFactoryFixture(t, { failNativeCreate = false, subscriptionFailure = false, startTurn = false } = {}) {
   const temp = realpathSync.native(os.tmpdir());
   const root = await mkdtemp(path.join(temp, "p01-u10-factory-"));
   t.after(async () => {
@@ -48,6 +50,7 @@ async function withOwnedFactoryFixture(t, { failNativeCreate = false } = {}) {
     storage: path.join(root, "storage"),
     workspace: path.join(root, "workspace"),
     profileFile: path.join(root, "profile.json"),
+    projectConfigFile: path.join(root, "project.json"),
   };
   for (const directory of new Set(Object.values(dirs).filter((value) => !value.endsWith(".json")))) {
     await mkdir(directory, { recursive: true });
@@ -58,10 +61,12 @@ async function withOwnedFactoryFixture(t, { failNativeCreate = false } = {}) {
     modelId: "deepseek-flash",
     networkMode: "offline",
   })}\n`);
+  await writeFile(dirs.projectConfigFile, "{}\n");
   const env = {
     P01_U10_GATE_MODE: "enabled",
     HOME: dirs.home,
     USERPROFILE: dirs.home,
+    ZCODE_DESKTOP_HOME_DIR: dirs.home,
     APPDATA: dirs.appData,
     LOCALAPPDATA: dirs.localAppData,
     TEMP: dirs.temp,
@@ -80,6 +85,7 @@ async function withOwnedFactoryFixture(t, { failNativeCreate = false } = {}) {
   let gateExecution;
   let gateModel;
   let gateRequest;
+  let sessionEventHandler;
   const pluginRoot = path.join(root, "plugin-storage", "plugins", "xiadie");
   const nativeModules = {
     createNodeFileSystemAdapter: () => ({ async readTextFile() {}, async readBinaryFile() {}, async stat() {} }),
@@ -94,7 +100,7 @@ async function withOwnedFactoryFixture(t, { failNativeCreate = false } = {}) {
       setModelIoFullRetentionEnabled() {},
     }),
     createRuntimeAiSdkModelExecutionConfig: () => ({}),
-    createTurnEventCollector: () => ({ onSessionEvent() {}, bindTurn() {}, project() { throw new Error("unused"); }, close() {} }),
+    createTurnEventCollector,
     profile: {
       resolveOwnedProfilePaths: (candidateRoot) => ({
         home: dirs.home,
@@ -144,8 +150,26 @@ async function withOwnedFactoryFixture(t, { failNativeCreate = false } = {}) {
     if (failNativeCreate) throw new Error("native fixture construction failed");
     return {
       sessionId: "fixture-session",
-      runtime: { subscribeEvents() { return () => {}; } },
-      async sendInput() { return { kind: "busy" }; },
+      runtime: {
+        subscribeEvents({ onSessionEvent }) {
+          if (subscriptionFailure) throw new Error("raw subscription error must not escape");
+          sessionEventHandler = onSessionEvent;
+          return () => { sessionEventHandler = undefined; };
+        },
+      },
+      async sendInput() {
+        if (!startTurn) return { kind: "busy" };
+        for (const [sequenceNumber, type, payload] of [
+          [1, "tool_call_scheduled", { toolCallId: "tool-fixture", toolName: "Read" }],
+          [2, "tool_call_result", { toolCallId: "tool-fixture", toolName: "Read", result: { success: true } }],
+          [3, "turn_complete", { resultType: "success", response: "fixture reply should only be hashed" }],
+        ]) sessionEventHandler?.({ sessionId: "fixture-session", turnId: "fixture-turn", sequenceNumber, type, payload });
+        return {
+          kind: "started_turn",
+          turnId: "fixture-turn",
+          completion: Promise.resolve({ turnId: "fixture-turn", response: "fixture reply should only be hashed" }),
+        };
+      },
       async submitPrompt() { return { turnId: "fixture-turn" }; },
       async close() { nativeAppCloseCount += 1; },
     };
@@ -254,7 +278,29 @@ test("enabled factory preserves U06 injected ports and pins only its exact ident
   assert.equal(f.nativeOptions.modelAdapter, f.gateModel);
   assert.equal(f.nativeOptions.sourceTitle, "electron");
   assert.equal(f.nativeOptions.runtimeConfig.memory.enabled, false);
+  assert.equal(f.nativeOptions.runtimeConfig.mcp.enabled, false);
+  assert.deepEqual(f.nativeOptions.runtimeConfig.mcp.servers, {});
   assert.equal(f.nativeOptions.fileSystemPort.readTextFile instanceof Function, true);
+
+  const source = process.env.P01_U10_ZCODE_SOURCE ?? "E:/Xiadie/Xiadie/.runtime/P01/desktop-source";
+  const loadNative = (relative) => import(pathToFileURL(path.join(source, relative)).href);
+  const { register } = await loadNative("node_modules/tsx/dist/esm/api/index.mjs");
+  register();
+  const { createConfig } = await loadNative("apps/zcode-cli/packages/adapters/dist/config/index.js");
+  const config = createConfig({
+    env: f.env,
+    userConfigPath: path.join(f.root, "user.json"),
+    projectConfigPath: path.join(f.root, "project.json"),
+    workingDirectory: path.join(f.root, "workspace"),
+  });
+  assert.deepEqual(config.sources.user.diagnostics, []);
+  assert.equal(config.config.features.mcp, false);
+  assert.equal(config.config.features.skill, false);
+  assert.equal(config.config.skills.enabled, false);
+  const persistedUserConfig = JSON.parse(await readFile(path.join(f.root, "user.json"), "utf8"));
+  assert.equal(persistedUserConfig.features.mcp, false);
+  assert.equal(persistedUserConfig.features.skill, false);
+  assert.equal(persistedUserConfig.skills.enabled, false);
 
   const request = {
     command: { mode: "argv", file: electronPath, args: [path.join(f.pluginRoot, "hooks", "context.mjs")] },
@@ -281,4 +327,59 @@ test("enabled factory closes its owned adapter if native app construction fails"
   };
   await assert.rejects(f.create({ env: f.env }), /native fixture construction failed/);
   assert.equal(f.executionCloseCount, 1);
+});
+
+test("projection sidecar records correlated tool evidence and hashes reply text", async (t) => {
+  const f = await withOwnedFactoryFixture(t, { startTurn: true });
+  const baseCreateExecutionAdapter = f.nativeModules.createNodeExecutionAdapter;
+  f.nativeModules.createNodeExecutionAdapter = (...args) => {
+    const port = baseCreateExecutionAdapter(...args);
+    f.nativeModules.baseExecution = port;
+    return port;
+  };
+  const app = await f.create({ env: f.env });
+  const result = await app.sendInput("fixture prompt");
+  await result.completion;
+  const sidecarPath = path.join(f.root, "u10-turn-projections.jsonl");
+  let contents;
+  for (let attempt = 0; attempt < 50; attempt += 1) {
+    try { contents = await readFile(sidecarPath, "utf8"); break; }
+    catch { await new Promise((resolve) => setTimeout(resolve, 10)); }
+  }
+  assert.equal(typeof contents, "string");
+  const row = JSON.parse(contents.trim());
+  assert.equal(row.sessionId, "fixture-session");
+  assert.equal(row.turnId, "fixture-turn");
+  assert.equal(row.projectionStatus, "projected");
+  assert.deepEqual(row.requiredToolCallIds, ["tool-fixture"]);
+  assert.deepEqual(row.toolReceipts, [{ toolCallId: "tool-fixture", toolName: "Read", status: "succeeded" }]);
+  assert.equal(row.evidenceStatus, "verified");
+  assert.equal(row.replyBytes, Buffer.byteLength("fixture reply should only be hashed", "utf8"));
+  assert.equal(contents.includes("fixture reply should only be hashed"), false);
+  await app.close();
+});
+
+test("projection subscription failure is recorded as unavailable without exposing the error", async (t) => {
+  const f = await withOwnedFactoryFixture(t, { startTurn: true, subscriptionFailure: true });
+  const baseCreateExecutionAdapter = f.nativeModules.createNodeExecutionAdapter;
+  f.nativeModules.createNodeExecutionAdapter = (...args) => {
+    const port = baseCreateExecutionAdapter(...args);
+    f.nativeModules.baseExecution = port;
+    return port;
+  };
+  const app = await f.create({ env: f.env });
+  const result = await app.sendInput("fixture prompt");
+  await result.completion;
+  const sidecarPath = path.join(f.root, "u10-turn-projections.jsonl");
+  let contents;
+  for (let attempt = 0; attempt < 50; attempt += 1) {
+    try { contents = await readFile(sidecarPath, "utf8"); break; }
+    catch { await new Promise((resolve) => setTimeout(resolve, 10)); }
+  }
+  assert.equal(typeof contents, "string");
+  const row = JSON.parse(contents.trim());
+  assert.equal(row.projectionStatus, "unavailable");
+  assert.equal(row.reason, "event_subscription_failed");
+  assert.equal(contents.includes("raw subscription error"), false);
+  await app.close();
 });
