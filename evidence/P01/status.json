@@ -7,7 +7,7 @@
   "product_version": "0.1.0",
   "stage": "P01",
   "stage_status": "running",
-  "current_task": "P01-U09",
+  "current_task": "P01-U10",
   "G00": "pass",
   "G01": "pending",
   "tasks": [
@@ -342,8 +342,25 @@
       "dependencies": [
         "P01-U08"
       ],
-      "status": "running",
-      "card_sha256": "2d73e570a0e7cad4a39707e9bef279326c70dc4730c9e4914a577e1b39f103a8"
+      "status": "accepted",
+      "card_sha256": "2d73e570a0e7cad4a39707e9bef279326c70dc4730c9e4914a577e1b39f103a8",
+      "author_commit": "423ed0a64a06509091044b9e7c22b7e0355b9cae",
+      "integration_commit": "6a4e064be5258facda2d1e7eb1dc05a86d11ff8a",
+      "acceptance": {
+        "path": "evidence/P01-U09/20261002-01/acceptance.json",
+        "bytes": 4500,
+        "sha256": "98d636b94c3850d7b58b28c2bea7cd077662de40319bb0e629426557ddd5355f"
+      },
+      "review": {
+        "status": "pass",
+        "reviewer": "u07_review",
+        "reviewed_commit": "423ed0a64a06509091044b9e7c22b7e0355b9cae",
+        "evidence": {
+          "path": "evidence/P01-U09/20261002-01/review-final.json",
+          "bytes": 10136,
+          "sha256": "1645eb0d2f248bf7ab8fbbffea67398cebebf45991d6ed378f51859458519a49"
+        }
+      }
     },
     {
       "id": "P01-U10",
@@ -357,7 +374,7 @@
         "P01-U08",
         "P01-U09"
       ],
-      "status": "not_started",
+      "status": "running",
       "card_sha256": "d283c623a14fad26d0a56f22d0f7e60fee4762ae1f3fabb8ae8dd6f1a8982cb0"
     },
     {
@@ -452,7 +469,7 @@
     ],
     "qualification_note": "Pro is measured, but its reversed promise participants require revision; do not present it as P01 persona-qualified."
   },
-  "next_task": "P01-U09",
+  "next_task": "P01-U10",
   "pause_history": [
     {
       "user_reply": "准备在最完整的可暂定点停止",

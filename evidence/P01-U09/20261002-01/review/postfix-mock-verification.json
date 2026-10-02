@@ -1,0 +1,49 @@
+{
+  "run_id": "mock-1790945568299289900",
+  "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09-review\\evidence\\P01-U09\\20261002-01\\runs\\mock-1790945568299289900\\summary.json",
+  "mode": "mock",
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "passed": true,
+  "cells": 10,
+  "passed_cells": 10,
+  "generation_calls": 0,
+  "sum_cell_model_calls": 0.0,
+  "code_unchanged": true,
+  "production_unchanged": true,
+  "DSH_started": false,
+  "model_backend_independence": "not asserted",
+  "human_review": {
+    "status": "not_reviewed"
+  },
+  "code_binding_checks": [
+    {
+      "mock_summary_sha256": "d5f940ef759982617affb3c513c94c49da9ec4fc79b679de4705d77ffc392f57",
+      "path": "tests/evals/persona/relay.py",
+      "review_fix_binding_sha256": "d5f940ef759982617affb3c513c94c49da9ec4fc79b679de4705d77ffc392f57",
+      "matches": true,
+      "sha256": "d5f940ef759982617affb3c513c94c49da9ec4fc79b679de4705d77ffc392f57"
+    },
+    {
+      "mock_summary_sha256": "d95897ccb770f46c43cc99ffa640eea408a42d8bd19677d3b44a8ff6cf620505",
+      "path": "tests/evals/persona/relay_guards.py",
+      "review_fix_binding_sha256": "d95897ccb770f46c43cc99ffa640eea408a42d8bd19677d3b44a8ff6cf620505",
+      "matches": true,
+      "sha256": "d95897ccb770f46c43cc99ffa640eea408a42d8bd19677d3b44a8ff6cf620505"
+    },
+    {
+      "mock_summary_sha256": "f0292e51c27347bde7aa9d556b936a78f5cc82959c8d4d699d61b0e85f37444f",
+      "path": "tests/evals/persona/test_relay_guards.py",
+      "review_fix_binding_sha256": "f0292e51c27347bde7aa9d556b936a78f5cc82959c8d4d699d61b0e85f37444f",
+      "matches": true,
+      "sha256": "f0292e51c27347bde7aa9d556b936a78f5cc82959c8d4d699d61b0e85f37444f"
+    }
+  ],
+  "capability_policy": {
+    "flash_default": true,
+    "pro_candidate_qualified": false,
+    "candidate_requirement": "U10 must default to the qualified Flash route and make unqualified persona use unavailable. Disabling the Xiadie extension retains native ZCode behavior. The evaluation runner may still measure both authorized IDs explicitly.",
+    "flash_candidate_qualified": true,
+    "pro_default": false
+  },
+  "passed_binding_checks": true
+}

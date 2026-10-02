@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "decision": "pass",
+  "review_target": {
+    "author_commit": "423ed0a64a06509091044b9e7c22b7e0355b9cae",
+    "baseline_commit": "05e6018092ab743c0431858e4dfc86d9e2e5d8e3",
+    "worktree": "detached .runtime/P01/worktrees/u09-review"
+  },
+  "manifest": {
+    "path": "evidence/P01-U09/20261002-01/manifest.json",
+    "bytes": 199494,
+    "sha256": "76e09287312f620f33570ae1870ce35dd8eeacf17c9e7be826ba540d95c76b8c",
+    "entries": 678,
+    "changed_paths": 679,
+    "disk_sha_git_blob_mismatches": 0,
+    "path_set_mismatches": 0
+  },
+  "resolved_finding": {
+    "finding": "External PermissionError and runtime exception text could leak filenames into persisted diagnostics.",
+    "status": "fixed_and_verified",
+    "fix": "GuardRejection carries fixed internal guard messages; safe_failure_message maps all external exceptions to a constant.",
+    "test": "Synthetic exception-canary test passes in normal and optimized Python runs."
+  },
+  "validation": {
+    "frozen_offline_install": {
+      "status": "passed",
+      "node": "24.14.0",
+      "pnpm": "10.33.2",
+      "offline": true
+    },
+    "check": {
+      "exit_code": 0,
+      "typescript": "passed",
+      "boundary_scan": "not_run: packages/core absent"
+    },
+    "build": {
+      "exit_code": 0,
+      "status": "passed"
+    },
+    "node_u09_unit": {
+      "status": "passed",
+      "tests": "8/8",
+      "basis": "reused prior exact-target execution after confirming only three Python files changed and all Node/build inputs remained byte-identical"
+    },
+    "python_guards": {
+      "normal": "10/10 passed",
+      "optimized": "10/10 passed",
+      "python": "3.12.10"
+    },
+    "post_fix_native_mock": {
+      "run_id": "mock-1790945568299289900",
+      "status": "10/10 passed",
+      "generation_calls": 0,
+      "code_unchanged": true,
+      "production_unchanged": true,
+      "DSH_started": false,
+      "code_bindings_match": true
+    }
+  },
+  "real_matrix": {
+    "run_id": "real-1790944515494615000",
+    "execution_author_commit": "59f9c6e3b01c1f3adeecb0a88ceb78bf45a056ef",
+    "runtime": "pinned ZCode + accepted Xiadie host, Hook, context and turn projection",
+    "scenarios": "5 scenarios x 2 model IDs",
+    "runner": "10/10 passed",
+    "generation_requests": 14,
+    "ledger": "4 to 18 entries, no retry",
+    "usage_tokens": {
+      "prompt": 61045,
+      "total": 62597,
+      "completion": 1552
+    },
+    "native_receipt_mismatches": [],
+    "post_fix_real_run": "not repeated; fix is diagnostic-only and binding records the original paid output"
+  },
+  "agent_review": {
+    "artifact": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\real-agent-review.json",
+    "hard_failures": 0,
+    "human_review": "not_reviewed",
+    "deepseek_flash": "Candidate-qualified only for the tested v3 asset and five cases; revise notes on verbosity/meta-commentary.",
+    "deepseek_v4_pro": "Measured but not qualified. Disagreement reverses the promise participants; classified revise for factual/clarity error because I/you identity remains stable and no promise is asserted as remembered fact.",
+    "backend_independence": "not asserted"
+  },
+  "handoff": {
+    "U10": "Enforce the recorded Flash-only qualification when the Xiadie extension is enabled; the unqualified Pro route must be unavailable as a candidate. Disabling the extension retains native ZCode behavior.",
+    "G01": "Pending U10 candidate gate and later product-level checks."
+  },
+  "limitations": [
+    "This review is agent_review, not human_review; human_review remains not_reviewed.",
+    "The two model IDs used one DeepSeek API adapter; backend independence is not asserted.",
+    "Boundary import scan did not run because packages/core is absent.",
+    "No Desktop, full E2E, or distributable installer verification was performed in U09.",
+    "No real model request was made by this reviewer."
+  ],
+  "artifacts": [
+    {
+      "name": "final manifest",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09-review\\evidence\\P01-U09\\20261002-01\\manifest.json",
+      "bytes": 199494,
+      "sha256": "76e09287312f620f33570ae1870ce35dd8eeacf17c9e7be826ba540d95c76b8c"
+    },
+    {
+      "name": "independent manifest verification",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\manifest-verification-final.json",
+      "bytes": 578,
+      "sha256": "6af6123a7969b30ecc9d1ce329b403afd6e7ac72aeb7f4be14cc1cf32d8197aa"
+    },
+    {
+      "name": "offline frozen install metadata",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\offline-install.json",
+      "bytes": 222,
+      "sha256": "b980e84d01987f6ae155f4feba97dbe83ea0e13044b7121e956d69fc27650c24"
+    },
+    {
+      "name": "offline frozen install log",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\offline-install.log",
+      "bytes": 287,
+      "sha256": "9683007c3778e866a9225b8df4f69c05eecb4d390317a2b2eebc6ffa803d22fd"
+    },
+    {
+      "name": "check output",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\check.log",
+      "bytes": 462,
+      "sha256": "5c93c165365049154d82bb5191474894a0e2b82d7122e11bb7188b1ccce1ab97"
+    },
+    {
+      "name": "build output",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\build.log",
+      "bytes": 108,
+      "sha256": "d1ce0d7a8f166b0cc1f2eb4750a113faa9b5736a9a8b25e680ad8d17f388f3db"
+    },
+    {
+      "name": "Node U09 unit output, reused after binding comparison",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\node-unit-P01-U09.log",
+      "bytes": 892,
+      "sha256": "986e0707917d74cb827ddbe46c3f8bde388f4d3f9779cf36ddcc0c79d7971d00"
+    },
+    {
+      "name": "Node validation reuse bindings",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\node-reuse-bindings.json",
+      "bytes": 1054,
+      "sha256": "20c58ce0d86d9098ff317b75b1092176073b75f87bd04a132cdeb85a404862b1"
+    },
+    {
+      "name": "Python guard check metadata",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\python-final-checks.json",
+      "bytes": 391,
+      "sha256": "ca724bca90ecec2381f6455a38361b32e8a509cd64ab0f0736da1c954a720443"
+    },
+    {
+      "name": "Python guards normal",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\python-guards-final.log",
+      "bytes": 1690,
+      "sha256": "c26937fd9769aa5340bd1eab111bae0ae426cd60790fb2ab3e0c415ec68437c8"
+    },
+    {
+      "name": "Python guards optimized",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\python-guards-final-optimized.log",
+      "bytes": 1690,
+      "sha256": "9240271fb662396be4aad43f3f9c760e3be85e8eaa07c4dd9498ff242d98f569"
+    },
+    {
+      "name": "independent semantic review",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\real-agent-review.json",
+      "bytes": 9161,
+      "sha256": "e9015b058ddaf2aca0e7f4729f1c448ad0fb027e1e134bd4be8340c2aae637f0"
+    },
+    {
+      "name": "author real matrix summary",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09-review\\evidence\\P01-U09\\20261002-01\\runs\\real-1790944515494615000\\summary.json",
+      "bytes": 12881,
+      "sha256": "ed3ef557c0e12df36b569b93ffb93e8bc78b56a141b468a92974d5d344da84d4"
+    },
+    {
+      "name": "author result narrative",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09-review\\evidence\\P01-U09\\20261002-01\\result.md",
+      "bytes": 4898,
+      "sha256": "aaab5e751b449aa84cb6c1b090992cab8de580512cda20671bd6c4808110f402"
+    },
+    {
+      "name": "fixed logging binding",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09-review\\evidence\\P01-U09\\20261002-01\\review-fix-binding.json",
+      "bytes": 1529,
+      "sha256": "b9221d8917f63c76d28beccc7ab4be648c628f041da4359033f5263161963b6d"
+    },
+    {
+      "name": "post-fix native mock verification",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u09-review\\final\\postfix-mock-verification.json",
+      "bytes": 2211,
+      "sha256": "db5a17cb5ec567311b8ea59a4090d59dc9fc5ff35e7dc1c44a9d5637ab4cf81c"
+    },
+    {
+      "name": "post-fix native mock summary",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09-review\\evidence\\P01-U09\\20261002-01\\runs\\mock-1790945568299289900\\summary.json",
+      "bytes": 12612,
+      "sha256": "e93025acac50e7d6455692723cebaccb53d97028e3505c8fb9fe289e7d632135"
+    },
+    {
+      "name": "candidate model capabilities",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09-review\\evidence\\P01-U09\\20261002-01\\model-capabilities.json",
+      "bytes": 1323,
+      "sha256": "42df357bf79bccb04fa5442110d1ccac7da17d11ece36d0ef8b9f7b264ecdb5d"
+    },
+    {
+      "name": "Pro disagreement projection",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09-review\\evidence\\P01-U09\\20261002-01\\runs\\real-1790944515494615000\\deepseek-v4-pro-disagreement\\result.json",
+      "bytes": 9526,
+      "sha256": "026aa344db78df9da53792fcf57118c5a4607b0a5e89a508419159a4530743fd"
+    },
+    {
+      "name": "relay redaction source",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09-review\\tests\\evals\\persona\\relay.py",
+      "bytes": 18929,
+      "sha256": "d5f940ef759982617affb3c513c94c49da9ec4fc79b679de4705d77ffc392f57"
+    },
+    {
+      "name": "relay guard source",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09-review\\tests\\evals\\persona\\relay_guards.py",
+      "bytes": 12337,
+      "sha256": "d95897ccb770f46c43cc99ffa640eea408a42d8bd19677d3b44a8ff6cf620505"
+    },
+    {
+      "name": "relay redaction regression test",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09-review\\tests\\evals\\persona\\test_relay_guards.py",
+      "bytes": 10087,
+      "sha256": "f0292e51c27347bde7aa9d556b936a78f5cc82959c8d4d699d61b0e85f37444f"
+    }
+  ]
+}

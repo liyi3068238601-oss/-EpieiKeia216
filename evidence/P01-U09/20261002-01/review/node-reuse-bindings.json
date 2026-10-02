@@ -1,0 +1,24 @@
+{
+  "prior_validation_commit": "59f9c6e3b01c1f3adeecb0a88ceb78bf45a056ef",
+  "final_author_commit": "423ed0a64a06509091044b9e7c22b7e0355b9cae",
+  "source_paths_changed": [
+    "tests/evals/persona/relay.py",
+    "tests/evals/persona/relay_guards.py",
+    "tests/evals/persona/test_relay_guards.py"
+  ],
+  "expected_python_only_changes": [
+    "tests/evals/persona/relay.py",
+    "tests/evals/persona/relay_guards.py",
+    "tests/evals/persona/test_relay_guards.py"
+  ],
+  "unexpected_source_changes": [],
+  "missing_expected_changes": [],
+  "node_build_and_test_inputs_unchanged": true,
+  "reused_results": {
+    "offline_frozen_install": "pass; package.json and lockfile unchanged",
+    "node_unit": "8/8 pass; test code and runner unchanged",
+    "build": "pass; TypeScript sources/config unchanged",
+    "check": "pass; node and TypeScript inputs unchanged"
+  },
+  "reason": "Final commit changes only Python relay/guard/redaction test code plus evidence; reran updated Python guard suite and verified post-fix native mock."
+}
