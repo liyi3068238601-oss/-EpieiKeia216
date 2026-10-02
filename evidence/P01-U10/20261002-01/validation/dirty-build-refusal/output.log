@@ -1,0 +1,21 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Candidate build requires a clean, committed repository
++ actual - expected
+
++ '?? tests/integration/P01/dirty-build-negative.tmp'
+- ''
+
+    at buildCandidate (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u10-coord/tests/integration/P01/build-candidate.mjs:64:10)
+    at file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u10-coord/tests/integration/P01/build-candidate.mjs:220:27 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '?? tests/integration/P01/dirty-build-negative.tmp',
+  expected: '',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.14.0
