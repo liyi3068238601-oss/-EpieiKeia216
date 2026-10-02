@@ -1,0 +1,153 @@
+{
+  "schema": "p01-independent-review/v1",
+  "decision": "pass",
+  "task": "P01-U10",
+  "review_target": {
+    "author_commit": "8d1d437ca5260d139541ac1237a554cf9ee6c419",
+    "baseline_commit": "1dee2d18b684f602aa6dacd3f6049f35cf14d262",
+    "build_commit": "82298c735dfbc4f278b5e920d79be7a83f979b55",
+    "author_worktree": ".runtime/P01/worktrees/u10",
+    "reviewer_worktree": ".runtime/P01/worktrees/u10-review",
+    "author_worktree_clean_at_review": true,
+    "reviewer_worktree_clean_at_review": true,
+    "author_manifest": {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/manifest.json",
+      "files": 1607,
+      "changed_paths": 1608,
+      "bytes": 512207,
+      "sha256": "dd6157b3528b287230f61511ab536e8a2c89cf5ac90f60e0c8378a61c57f6733",
+      "verification": "Independent batched Git-blob/disk/SHA-256 and changed-path audit: 0 mismatches."
+    }
+  },
+  "review_findings": [
+    "Enabled factory requires the owned no-credential profile and qualified deepseek-flash; actual inference also requires the synthetic key and assigned loopback endpoint. Pro is refused before inference. Disabled mode passes through to the native factory.",
+    "Enabled runtime disables MCP, memory, and dynamic workflows, allows only Read, and uses a physically bounded read-only workspace port. Native session/turn/tool receipts drive sidecar evidence; a rejected completion is projected as cancelled only with matching native cancellation terminal evidence.",
+    "The Desktop harness matched auxiliary-title messages to the fixed-source system prompt and exact scenario prompt. Cancellation required the native Stop observation, partial stream, and recognized disconnect. Read failure remained a failed native tool receipt with a truthful UI result."
+  ],
+  "evidence_binding": {
+    "candidate": "u10-candidate-06",
+    "descriptor_sha256": "25f92e7604b41479fdcdd9dcc089afe0ce6441db4586a7f7e7614805632a8907",
+    "descriptor_artifacts_verified": 6673,
+    "repository_inputs_verified": 66,
+    "build_to_author_diff": "No paths outside docs/ and evidence/ changed; final-04 exercises the unchanged implementation."
+  },
+  "verification": {
+    "pinned_toolchain": {
+      "node": "v24.14.0",
+      "pnpm": "10.33.2"
+    },
+    "check_exit_code": 0,
+    "unit": {
+      "passed": 79,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "desktop_final_04": {
+      "passed": "6/6",
+      "scenarios": [
+        "success",
+        "read_success",
+        "read_failure",
+        "cancel_recovery",
+        "disabled_native",
+        "pro_denied"
+      ],
+      "local_loopback_posts": 9,
+      "external_model_requests": 0,
+      "process_network_guard": "verified in all six",
+      "paid_or_real_model_calls": 0
+    },
+    "scenario_evidence": {
+      "cancel_recovery": "Actual Stop action, native cancelled projection, then successful fresh turn.",
+      "read_success": "Native Read receipt verified/succeeded.",
+      "read_failure": "Native Read receipt failed/tool_error; reply did not claim file content was read.",
+      "disabled_native": "Native reply and correctly shaped auxiliary-title request succeeded.",
+      "pro_denied": "Pro unavailable in picker; 0 requests."
+    },
+    "run_reuse": "The committed final-04 run is bound to build commit 82298c7. Exact author adds documentation/evidence only, so stable UI/unit/check suites were not rerun."
+  },
+  "limitations": [
+    "No real model/key was used; this is loopback-mock evidence, not paid production endpoint validation.",
+    "Desktop DOM/control flows were exercised; human visual review was NOT_RUN.",
+    "The network guard is process instrumentation, not an OS sandbox.",
+    "The check log says BOUNDARY_SCAN_NOT_RUN because packages/core is absent.",
+    "U11 and the root G01 gate remain open; Pro remains unqualified."
+  ],
+  "artifacts": [
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/manifest.json",
+      "bytes": 512207,
+      "sha256": "dd6157b3528b287230f61511ab536e8a2c89cf5ac90f60e0c8378a61c57f6733"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/builds/u10-candidate-06/candidate-descriptor.json",
+      "bytes": 1319380,
+      "sha256": "25f92e7604b41479fdcdd9dcc089afe0ce6441db4586a7f7e7614805632a8907"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/validation/final-04/commands.json",
+      "bytes": 2535,
+      "sha256": "045ef8b0a3687b3bd624059f8c8cf327b0ec07afaaa9dd4745bf5647b0318c62"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/validation/final-04/check.log",
+      "bytes": 428,
+      "sha256": "db535ca2f972c0c4d1ad9e452a2bfe02a89b59df64f57ca37990479814724b30"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/validation/final-04/unit.log",
+      "bytes": 7806,
+      "sha256": "83e7c957f8004a8e530ef503d52ea724b2b67e4f5c28b57128fcbc16c1dc9cb4"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/validation/final-04/e2e-full.log",
+      "bytes": 891,
+      "sha256": "fbaf666c172c512252e8c66219e6d26836c5f2d1f6c8c4677fe4ef73a8600b02"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/validation/final-04/ui-full/summary.json",
+      "bytes": 63682,
+      "sha256": "a3a458b1b18d5b81b52ca48fc8709c13184ca3bc2f9d10620c7aac78bf8ace34"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/validation/final-04/ui-full/scenarios/cancel_recovery/cancel-observed.json",
+      "bytes": 110,
+      "sha256": "d52252780dba2d35e974180efc423a2363f64f81f1bb8518bc105b8f85a5357f"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/validation/final-04/ui-full/scenarios/cancel_recovery/profile/u10-turn-projections.jsonl",
+      "bytes": 931,
+      "sha256": "2b41a1a561a11e6c4e6ac2cd9db5d440b076f3a03ffc472ed708c489b839bc26"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/validation/final-04/ui-full/scenarios/read_success/profile/u10-turn-projections.jsonl",
+      "bytes": 571,
+      "sha256": "5508b61eca14508ea700f8e4975a05ba155721c01c2e75587a15742d16e320e5"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/validation/final-04/ui-full/scenarios/read_failure/profile/u10-turn-projections.jsonl",
+      "bytes": 591,
+      "sha256": "8633c26c19fdcf1c68b5701021df6ae01f79d870d1c142cbbce1c1e3bd787309"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/validation/final-04/ui-full/scenarios/disabled_native/relay-requests.json",
+      "bytes": 2029,
+      "sha256": "bcb208b40375be716ceba8b38b81773fe662e78e0d5d8f7bb9693e07da224684"
+    },
+    {
+      "path": ".runtime/P01/worktrees/u10-review/evidence/P01-U10/20261002-01/validation/title-sdk-capture/stdout.jsonl",
+      "bytes": 162,
+      "sha256": "ed297757685ead695f7fa40c7e352054ac1cfa34f05db9c801c81454a95dc756"
+    },
+    {
+      "path": ".runtime/P01/u10-review/final-8d1d437/manifest-verification.json",
+      "bytes": 595,
+      "sha256": "9609566dafc2723479217c29eea95dde2d8b529a919b36d564d245551e34481a"
+    },
+    {
+      "path": ".runtime/P01/u10-review/final-8d1d437/verify-manifest.py",
+      "bytes": 2366,
+      "sha256": "a660d8ac16291ec03898c195d2ff39133e2fc2832a3434d9d8f01e2065b73eba"
+    }
+  ]
+}
