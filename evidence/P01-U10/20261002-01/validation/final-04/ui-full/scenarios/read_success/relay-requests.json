@@ -1,0 +1,83 @@
+[
+  {
+    "request_index": 1,
+    "accepted": true,
+    "request_sha256": "80fd8b846d030bf1f38e567ae3eda11044aa36c25ad9f6a2363780bb5d9b217b",
+    "request_bytes": 14668,
+    "request_shape": {
+      "body_keys": [
+        "max_tokens",
+        "messages",
+        "model",
+        "stream",
+        "stream_options",
+        "thinking",
+        "tool_choice",
+        "tools"
+      ],
+      "stream_present": true,
+      "stream": "true",
+      "tools": "nonempty",
+      "tool_choice": "auto"
+    },
+    "model": "deepseek-flash",
+    "stream": true,
+    "auth_present": true,
+    "synthetic_auth_only": true,
+    "messages_count": 4,
+    "tool_names": [
+      "Read"
+    ],
+    "assistant_tool_call_ids": [],
+    "tool_result_ids": [],
+    "upstream_attempted": false,
+    "auxiliary_title": false,
+    "request_kind": "conversation",
+    "status": 200,
+    "tool_call_id": "p01-u10-read_success-read",
+    "tool_target": "readme.txt"
+  },
+  {
+    "request_index": 2,
+    "accepted": true,
+    "request_sha256": "22dd1ee4faf8462da0b44cbba99e8feb8198f89e2af01e3550e3dc6816491d1e",
+    "request_bytes": 15092,
+    "request_shape": {
+      "body_keys": [
+        "max_tokens",
+        "messages",
+        "model",
+        "stream",
+        "stream_options",
+        "thinking",
+        "tool_choice",
+        "tools"
+      ],
+      "stream_present": true,
+      "stream": "true",
+      "tools": "nonempty",
+      "tool_choice": "auto"
+    },
+    "model": "deepseek-flash",
+    "stream": true,
+    "auth_present": true,
+    "synthetic_auth_only": true,
+    "messages_count": 6,
+    "tool_names": [
+      "Read"
+    ],
+    "assistant_tool_call_ids": [
+      "p01-u10-read_success-read"
+    ],
+    "tool_result_ids": [
+      "p01-u10-read_success-read"
+    ],
+    "upstream_attempted": false,
+    "auxiliary_title": false,
+    "request_kind": "conversation",
+    "correlated_tool_call_id": "p01-u10-read_success-read",
+    "tool_result_sha256": "630735300d9fc4d4a91178c739b26ef936e372e10270986df791a1287ab824f4",
+    "tool_result_success_shape": true,
+    "status": 200
+  }
+]

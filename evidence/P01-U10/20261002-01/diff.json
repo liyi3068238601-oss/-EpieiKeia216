@@ -1,0 +1,32 @@
+{
+  "baseline_commit": "1dee2d18b684f602aa6dacd3f6049f35cf14d262",
+  "implementation_commit": "82298c735dfbc4f278b5e920d79be7a83f979b55",
+  "command": [
+    "git",
+    "diff",
+    "--binary",
+    "1dee2d18b684f602aa6dacd3f6049f35cf14d262",
+    "82298c735dfbc4f278b5e920d79be7a83f979b55",
+    "--",
+    "tests/integration/P01",
+    "tools",
+    "package.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10",
+  "exit_code": 0,
+  "patch": {
+    "path": "implementation.patch",
+    "bytes": 192904,
+    "sha256": "70f0f9ee784c2f21d696d4ed37b7a337ba27e44d26f1b1ecbd2677361b297879"
+  },
+  "unchanged_paths": [
+    "packages/",
+    "assets/",
+    "plugins/",
+    "tests/evals/persona/",
+    "pnpm-lock.yaml",
+    "tsconfig.json"
+  ],
+  "mismatches": [],
+  "boundary": "Implementation patch; full changed-path coverage is in the author manifest."
+}

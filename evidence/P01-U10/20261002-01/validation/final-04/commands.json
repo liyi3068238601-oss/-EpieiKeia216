@@ -1,0 +1,62 @@
+{
+  "execution_commit": "82298c735dfbc4f278b5e920d79be7a83f979b55",
+  "candidate": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06",
+  "script_sha256": "6b021c46e09eb3d374df7e001b7f93bb47e1d803421a75c438666c46a167da9b",
+  "commands": [
+    {
+      "name": "check",
+      "command": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "check"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10",
+      "exit_code": 0,
+      "seconds": 3.087,
+      "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-04\\check.log",
+      "bytes": 428,
+      "sha256": "db535ca2f972c0c4d1ad9e452a2bfe02a89b59df64f57ca37990479814724b30"
+    },
+    {
+      "name": "unit",
+      "command": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "test:unit"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10",
+      "exit_code": 0,
+      "seconds": 2.158,
+      "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-04\\unit.log",
+      "bytes": 7806,
+      "sha256": "83e7c957f8004a8e530ef503d52ea724b2b67e4f5c28b57128fcbc16c1dc9cb4"
+    },
+    {
+      "name": "e2e-full",
+      "command": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "test:e2e",
+        "--",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06",
+        "--suite",
+        "full",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-04\\ui-full"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10",
+      "exit_code": 0,
+      "seconds": 168.255,
+      "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-04\\e2e-full.log",
+      "bytes": 891,
+      "sha256": "fbaf666c172c512252e8c66219e6d26836c5f2d1f6c8c4677fe4ef73a8600b02"
+    }
+  ]
+}

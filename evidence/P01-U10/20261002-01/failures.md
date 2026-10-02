@@ -21,3 +21,20 @@ candidate 04 success b 调试格通过：实际输入框/发送按钮、1 次本
 测试入口曾允许 Node 在其他测试存在时静默略过缺失路径；`tools/run-tests.mjs` 现在先检查每个声明文件，缺失明确 exit 1。早期局部 13 项是 factory/FS 检查，不是包含 UI guard 的完整 U10 单测。
 
 归档时曾遇到 Windows 长路径限制，归档脚本改用本次目录内的扩展绝对路径，并校验已复制字节后续传；Git 仅在此仓库启用 core.longpaths。自动生成的本次测试证书材料在作者分支整合前排除，保留其源位置与 hash，不输出内容。
+
+## 正式 full-run 失败（原始记录保留）
+
+| Run | 原始结论 | 后续处置与当前状态 |
+| --- | --- | --- |
+| `validation/final-01` | runner 在启动 UI 前以 `candidate_repository_not_clean_and_pinned` 拒绝候选；check 与 unit 命令通过，e2e exit 1。该轮没有实际 Desktop 场景，属于候选来源/干净树预检失败，不是产品场景失败。 | build-candidate 增加 Git blob 与实际输入字节核验，并要求 pinned/clean 候选；原始 `runner-failure.json`、commands 和日志保留。 |
+| `validation/final-02` — `cancel_recovery` | UI 的 partial → Stop → 再次发送 → 回复恢复均成功，relay 有 2 个请求；但被取消回合的 completion Promise reject，使 sidecar 标记 `turn_completion_failed`，虽然原生 SQLite 已记录 `turn_complete.resultType=cancelled` / cancelled usage，导致该格未通过。relay 同时曾把 renderer client disconnect 记为 HTTP 500 `relay_internal_failure`，但 `upstream_attempted=false`；UI harness 的 disconnect 记账在后续修正。 | commit `1249821` 在 completion 拒绝时只读取已有 U07 collector 的原生 terminal 事件，并调用既有 `project(undefined, ...)`；仅原生 cancelled terminal 可以生成 cancelled 投影，任意异常不映射成取消。factory 测试覆盖该契约。final-03 中此格通过。 |
+| `validation/final-02` — `disabled_native` | 禁用候选 gate 后原生回复可见，但 native Desktop 随后发出 auxiliary-title generate 请求；首版 harness 将它当成多余的对话模型调用，2 个请求未满足预期的单次普通生成。 | commit `68de988` 给实际 auxiliary title 请求分类并保留 native 形状；candidate-05 final-03 已证实该请求标为 `auxiliary_title:true`，但 pinned SDK 的 `generate` 请求没有 `stream` 字段；当前归档器把缺省推导为 `false`，relay 因形状校验以 `auxiliary_title_request_shape_mismatch` / HTTP 400 拒绝。主回复通过不使该场景或 full suite 通过。修正方案按 wire capture 接受 `stream` 缺省；隔离 env 显式设 `ZCODE_MODEL_RETRY_MAX_RETRIES=0` 保持单次拒绝，该测试值不代表产品的生产默认策略。candidate-06 / final-04 已重建重跑，见下。 |
+
+final-01、final-02、final-03 与 final-04 的归档文件及其原始日志都保留在本目录的 `validation/` 中；上表仅作索引，没有覆盖早期失败记录。final-03 是历史 5/6、exit 1 的结果；final-04 使用独立新目录，不能回写旧 run。
+## 修正后复验
+
+| Run | 结果 | 证据边界 |
+| --- | --- | --- |
+| `candidate-06` / `validation/final-04` | check 0、unit 79/79、full suite 6/6，全部 exit 0 | wire capture 证明 pinned SDK 的 `generateText` body 不含 `stream` / `tools` / `tool_choice`；candidate-06 按该真实形状接受 disabled-native auxiliary-title POST。全轮仅 loopback mock、9 次本地 POST、0 外部模型请求。`ZCODE_MODEL_RETRY_MAX_RETRIES=0` 只在隔离测试 env 生效，不代表生产默认值。作者结果为 `ready_for_review`，尚未独立 accepted，也不等于 G01 pass。 |
+
+这一复验没有删除或覆盖此前失败记录；精确产物与命令见 [result.md](result.md)、`builds/commands-06.json` 和 `validation/final-04/`。
