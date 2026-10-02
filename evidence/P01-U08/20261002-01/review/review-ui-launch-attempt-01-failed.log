@@ -1,0 +1,16 @@
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open 'E:\Xiadie\Xiadie\.runtime\P01\u08-review\final-07\ui-spec.json'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1269:14)
+    at async file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u08-review-07/packages/config/test/desktop-no-key.mjs:7:25 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final-07\\ui-spec.json'
+}
+
+Node.js v24.14.0
+EXIT_CODE=1

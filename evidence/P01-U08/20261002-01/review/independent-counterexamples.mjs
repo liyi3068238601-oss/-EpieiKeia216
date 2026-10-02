@@ -1,0 +1,55 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {pathToFileURL} from 'node:url';
+const [repo,sourceRoot,fixtureRoot,out]=process.argv.slice(2);
+const config=await import(pathToFileURL(path.join(repo,'dist/packages/config/src/index.js')).href);
+const secrets=await import(pathToFileURL(path.join(repo,'dist/packages/secrets/src/index.js')).href);
+const {resolveDesktopBuildPaths}=await import(pathToFileURL(path.join(repo,'packages/config/desktop-build.mjs')).href);
+fs.mkdirSync(fixtureRoot,{recursive:true});
+const results=[];
+const source=path.resolve(sourceRoot);
+const lowerAlias=source.toLowerCase();
+const samePhysical=fs.realpathSync.native(lowerAlias).toLowerCase()===fs.realpathSync.native(source).toLowerCase();
+assert.equal(samePhysical,true);
+for(const destination of [lowerAlias,path.win32.join(lowerAlias,'review-case-variant-child')]) {
+  await assert.rejects(resolveDesktopBuildPaths(source,destination),/outside the physical reference source tree/);
+}
+results.push({case:'case-variant source root and missing descendant output',result:'both rejected'});
+const alias=path.join(fixtureRoot,'pinned-source-junction');
+fs.symlinkSync(source,alias,'junction');
+await assert.rejects(resolveDesktopBuildPaths(source,path.join(alias,'future-output')),/outside the physical reference source tree/);
+results.push({case:'output through existing junction alias into pinned source',result:'rejected'});
+const sibling=path.join(fixtureRoot,'external-sibling-output');
+const resolved=await resolveDesktopBuildPaths(source,sibling);
+assert.equal(resolved.source,fs.realpathSync.native(source));
+assert.equal(resolved.assemblyRoot,sibling);
+results.push({case:'external prefix-adjacent sibling output',result:'allowed and physically resolved'});
+const profileRoot=path.join(fixtureRoot,'profile-owned');
+const outside=path.join(fixtureRoot,'outside-profile');
+fs.mkdirSync(path.join(profileRoot,'home'),{recursive:true}); fs.mkdirSync(outside,{recursive:true});
+fs.symlinkSync(outside,path.join(profileRoot,'home','AppData'),'junction');
+assert.throws(()=>config.resolveOwnedProfilePaths(profileRoot),/link|outside/i);
+results.push({case:'nested home/AppData junction',result:'rejected'});
+const safeRoot=path.join(fixtureRoot,'profile-path-mismatch'); fs.mkdirSync(safeRoot);
+const paths=config.resolveOwnedProfilePaths(safeRoot);
+assert.throws(()=>config.buildChildEnvironment({...paths,workspace:outside},{endpointOrigin:'http://127.0.0.1:43127',systemEnv:{}}),/do not match their root/i);
+results.push({case:'tampered derived child workspace',result:'rejected'});
+const ref=config.EXISTING_DEEPSEEK_CREDENTIAL_REFERENCE;
+const profile={...config.createDefaultProfile(),credentialRef:ref};
+let resolverCalls=0,getterCalls=0;
+const access={kind:'authorized'};
+Object.defineProperty(access,'credentialRef',{enumerable:true,get(){getterCalls++; return ref;}});
+const denied=await secrets.withAuthorizedCredential(profile,access,()=>{resolverCalls++;return 'test-key-canary';},()=>assert.fail('must not execute'));
+assert.equal(denied.decision.decision,'denied'); assert.equal(getterCalls,0); assert.equal(resolverCalls,0);
+results.push({case:'credentialRef accessor before parent resolver',result:'denied without getter or resolver'});
+const canary='INDEPENDENT_U08_CALLBACK_CANARY';
+let callbackCalls=0,diagnostic;
+try{await secrets.withAuthorizedCredential(profile,{kind:'authorized',credentialRef:ref},()=>canary,key=>{callbackCalls++;assert.equal(key,canary);throw canary;});}
+catch(error){diagnostic={message:error.message,stack:error.stack,cause:error.cause};}
+assert.equal(callbackCalls,1); assert.equal(diagnostic.message,'Credential use failed'); assert.equal(diagnostic.cause,undefined); assert.equal(JSON.stringify(diagnostic).includes(canary),false);
+results.push({case:'callback throws non-Error secret canary',result:'sanitized without canary'});
+const report={review_commit:execFileSync('git',['-C',repo,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),source_commit:execFileSync('git',['-C',source,'rev-parse','HEAD'],{encoding:'utf8'}).trim(),warmup_source_override_unset:process.env.P01_U08_ZCODE_SOURCE===undefined,results};
+fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify(report,null,2));

@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "task": "P01-U08 independent exact-commit review",
+  "decision": "changes_required",
+  "review_target": {
+    "author_commit": "37893275accf2a45dfb960f2205cce9b886048ce",
+    "baseline_commit": "e78c8f9cd4568956f43e57fab291ecc6d3142fd6",
+    "review_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review",
+    "review_worktree_detached": true,
+    "review_worktree_clean": true
+  },
+  "findings": [
+    {
+      "id": "U08-R1",
+      "priority": "P1",
+      "path": "packages/config/desktop-build.mjs",
+      "line": 33,
+      "summary": "The source-output containment guard uses case-sensitive startsWith on Windows paths. A case-only alias of the pinned source resolves to the same directory; a child output path passes the guard and writes under the reference source before the later cleanliness check.",
+      "independent_evidence": "independent-counterexamples.json; the proof used realpath on the case-varied alias and did not write to the source."
+    },
+    {
+      "id": "U08-R2",
+      "priority": "P1",
+      "path": "packages/config/test/warmup.test.mjs",
+      "line": 13,
+      "summary": "The pinned source path calculation assumes the repository itself is nested two directories below .runtime/P01. It works in author/review worktrees but resolves to E:\\desktop-source in the main checkout E:\\Xiadie\\Xiadie, so the P01-U08 warmup unit fails in the integration checkout.",
+      "independent_evidence": "warmup-path-counterexample.json; main checkout resolves to a nonexistent path while author worktree resolves to the pinned source."
+    }
+  ],
+  "validation": {
+    "toolchain": {
+      "node": "v24.14.0",
+      "pnpm": "10.33.2",
+      "install": "frozen lockfile, offline, exit 0",
+      "store": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\pnpm-store-u04"
+    },
+    "pinned_commands": [
+      {
+        "name": "typecheck-pinned",
+        "exit_code": 0,
+        "log": "typecheck-pinned.log"
+      },
+      {
+        "name": "boundary-pinned",
+        "exit_code": 0,
+        "log": "boundary-pinned.log"
+      },
+      {
+        "name": "build-pinned",
+        "exit_code": 0,
+        "log": "build-pinned.log"
+      },
+      {
+        "name": "u08-unit-pinned",
+        "exit_code": 0,
+        "log": "u08-unit-pinned.log"
+      }
+    ],
+    "boundary_scan": "exit 0; reports NOT_RUN because packages/core is absent",
+    "u08_unit": "15/15 passed",
+    "independent_counterexamples": [
+      {
+        "case": "nested AppData junction below otherwise physical owned home",
+        "result": "rejected"
+      },
+      {
+        "case": "caller tampers a derived child workspace path",
+        "result": "rejected"
+      },
+      {
+        "case": "authorization credentialRef accessor cannot trigger resolution",
+        "result": "denied without getter/resolver"
+      },
+      {
+        "case": "consumer throws a non-Error key canary",
+        "result": "generic error; canary absent"
+      },
+      {
+        "case": "case-variant output path inside pinned source is accepted by recipe guard",
+        "result": "counterexample reproduced without writing into source",
+        "source_alias_resolves_to_source": true,
+        "recipe_guard_would_allow": true,
+        "relative": "u08-review-guard-counterexample"
+      }
+    ],
+    "pinned_desktop_assembly": {
+      "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "recipe_sha256": "147548e7664c7fe65826ec1910af76a8279215fa4375253d611bda01294bd9e3",
+      "source_input_sha256": "0de3bf15938048a03c99ae07de92a87f22792643bf2e4cea17b9454b013fc3db",
+      "patched_source_sha256": "8d8b120360870f03b45138b17e0b1f97696622ff84e421f24415d38d182e24fc",
+      "descriptor_artifacts": 6638,
+      "descriptor_bytes": 157638800,
+      "hash_mismatches": [],
+      "missing": [],
+      "source_clean": true,
+      "main_preload_renderer_identical_to_pin": {
+        "main": {
+          "files": 21,
+          "differences": []
+        },
+        "preload": {
+          "files": 6,
+          "differences": []
+        },
+        "renderer": {
+          "files": 6586,
+          "differences": []
+        }
+      },
+      "unlisted_after_build_or_run": [
+        {
+          "path": "%SystemDrive%/ProgramData/Microsoft/Windows/Caches/cversions.2.db",
+          "bytes": 16384
+        },
+        {
+          "path": "%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{53B625E6-252A-4FA7-93E1-BA4A07258BB9}.2.ver0x0000000000000001.db",
+          "bytes": 1240
+        },
+        {
+          "path": "%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{621B6E11-9A7A-4201-92E9-7520D6A3457C}.2.ver0x0000000000000001.db",
+          "bytes": 1240
+        },
+        {
+          "path": "%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{6AF0698E-D558-4F6E-9B3C-3716689AF493}.2.ver0x0000000000000001.db",
+          "bytes": 309728
+        },
+        {
+          "path": "%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{6C5932C1-B26B-4B70-8D1A-1C581F8D8682}.2.ver0x0000000000000001.db",
+          "bytes": 1240
+        },
+        {
+          "path": "%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{DDF571F2-BE98-426D-8288-1A9A39C3FDA2}.2.ver0x0000000000000001.db",
+          "bytes": 662848
+        },
+        {
+          "path": "packages/desktop/xiadie-build.json",
+          "bytes": 1299247
+        }
+      ]
+    },
+    "author_manifest": {
+      "verified_by_coordinator": true,
+      "manifest": {
+        "path": "evidence/P01-U08/20261002-01/manifest.json",
+        "bytes": 40635,
+        "sha256": "c2ba2e97d0e868f53e082f90c3a3e30d7a6e2755e5b3f8d804590e6eef240d81"
+      }
+    },
+    "author_ui_evidence": {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08\\evidence\\P01-U08\\20261002-01\\ui\\u08-no-key-1790939126108911100\\summary.json",
+      "passed": true,
+      "native_electron_two_launches": true,
+      "settings_and_native_history_visible": true,
+      "model_requests": 0,
+      "real_credential_loaded": false,
+      "reviewer_rerun": "not run on this commit by coordinator direction"
+    },
+    "logs": {
+      "initial_pnpm_run_check": "completed with Node 24.16 engine warning; superseded by direct pinned Node 24.14 checks in listed pinned logs",
+      "failed_custom_probe": "first draft tested a nonexistent data/workspace path and was corrected; failed log retained as independent-counterexamples-attempt-01-failed.log"
+    }
+  },
+  "limitations": [
+    "No real credential, model request, paid service, DSH, Claude history import, or portable installer validation.",
+    "Desktop UI rerun intentionally not repeated on this commit; coordinator will run the corrected exact commit and assembly.",
+    "Assembly verification covers all 6,638 descriptor-listed artifacts. It does not claim the whole assembly directory has no runtime residue; six ProgramData cache files and the xiadie-build.json sidecar were unlisted after build/UI."
+  ],
+  "artifacts": [
+    {
+      "role": "Pinned toolchain and offline frozen install metadata",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\install-meta.json",
+      "bytes": 722,
+      "sha256": "bc548c7c29a412a7ea5a4c3340e9d7722490cd731a6aa0f1182eaf07dfc42104"
+    },
+    {
+      "role": "Offline frozen install output",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\install.log",
+      "bytes": 300,
+      "sha256": "b5e1af8b2d2cb5b9fa1f71aac7998fe71f1c058329cf0c72a7352f4bd763aa67"
+    },
+    {
+      "role": "Pinned check/build/unit command metadata",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\pinned-checks-meta.json",
+      "bytes": 1353,
+      "sha256": "60c209330742884a6ec50b8e540484fb6183377e81863c48b9c6916e174cad80"
+    },
+    {
+      "role": "Pinned typecheck output",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\typecheck-pinned.log",
+      "bytes": 13,
+      "sha256": "c1e97067c5f479a44a6f57297a0a8f87a59d181c3c529910f8bf059094bc3abb"
+    },
+    {
+      "role": "Pinned boundary scan output",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\boundary-pinned.log",
+      "bytes": 100,
+      "sha256": "72e0592dc850fcf9209db06c710c20bb3e7a70281cafdbe2d73bcf9298de6747"
+    },
+    {
+      "role": "Pinned TypeScript build output",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\build-pinned.log",
+      "bytes": 13,
+      "sha256": "c1e97067c5f479a44a6f57297a0a8f87a59d181c3c529910f8bf059094bc3abb"
+    },
+    {
+      "role": "P01-U08 unit results",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\u08-unit-pinned.log",
+      "bytes": 1612,
+      "sha256": "dcb810591ffbef0e6af07401b8b73af3641f5db4f62c654d13da236235be58df"
+    },
+    {
+      "role": "Independent credential/path counterexamples",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\independent-counterexamples.json",
+      "bytes": 877,
+      "sha256": "46313270dfeec94157be9cf20e6797f70eaa76ee4e2419bbe08cef3427307af3"
+    },
+    {
+      "role": "Independent counterexample output",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\independent-counterexamples.log",
+      "bytes": 918,
+      "sha256": "2e7ebcef8d0e27a404cc7ca5b69a266147210732c50554a9ff0c0e040d8e6257"
+    },
+    {
+      "role": "Main checkout versus worktree source path reproduction",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\warmup-path-counterexample.json",
+      "bytes": 566,
+      "sha256": "1cb3a40437654e8368a176bd8552460bed2db5f872e1a9d739a0205a34997b35"
+    },
+    {
+      "role": "Warmup path reproduction output",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\warmup-path-counterexample.log",
+      "bytes": 597,
+      "sha256": "a83dbc005457a793d5a860d3a1f5dbf266ed69efaba5422aeca679d983035f27"
+    },
+    {
+      "role": "Full pinned Desktop descriptor and artifact hash verification",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\assembly-verification.json",
+      "bytes": 2465,
+      "sha256": "ae2a828e73e4ad7738937da983bbd1689a316ddef4039ad6e045a238b23078b4"
+    },
+    {
+      "role": "Desktop hash verification output",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final\\assembly-verification.log",
+      "bytes": 2546,
+      "sha256": "f15a67a6f1d84e523a644da3c0ca3b8e509ce186820e605a9bec10280e0b7248"
+    },
+    {
+      "role": "Reviewed Desktop assembly recipe",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review\\packages\\config\\desktop-build.mjs",
+      "bytes": 6585,
+      "sha256": "147548e7664c7fe65826ec1910af76a8279215fa4375253d611bda01294bd9e3"
+    },
+    {
+      "role": "Reviewed warmup source path test",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review\\packages\\config\\test\\warmup.test.mjs",
+      "bytes": 5863,
+      "sha256": "172de27cbb2a74f194d5449384833d8263dae6030dd5e90fb5d0857b6bda62f4"
+    },
+    {
+      "role": "Reviewed profile and child environment source",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review\\packages\\config\\src\\index.ts",
+      "bytes": 10039,
+      "sha256": "73fc5f901b17f4575e19977d655aff701db422b6e513277c30e3a33dbcf08dbf"
+    },
+    {
+      "role": "Reviewed credential authorization source",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review\\packages\\secrets\\src\\index.ts",
+      "bytes": 4227,
+      "sha256": "aea3b31c87187726683b6fe36b1fabea88d9554f646cb0784bd1f9dfe40ead09"
+    },
+    {
+      "role": "Bound assembly descriptor",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review\\evidence\\P01-U08\\20261002-01\\desktop-assembly.json",
+      "bytes": 1299247,
+      "sha256": "f601ff1f9193b879c5b6048345bc931eb1a5d4a5f2e8471761ad2e00e16a78c2"
+    },
+    {
+      "role": "Author evidence report",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review\\evidence\\P01-U08\\20261002-01\\result.md",
+      "bytes": 7004,
+      "sha256": "04d7084c1637394dd6412dc369a2c1187275816907783bbf7c0d7210ea7bb302"
+    },
+    {
+      "role": "Author final no-Key Desktop UI summary",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08\\evidence\\P01-U08\\20261002-01\\ui\\u08-no-key-1790939126108911100\\summary.json",
+      "bytes": 7872,
+      "sha256": "bf6d9118e28ad8e873c232998a0d5726c128089bffed1fa07e94d5639a945407"
+    },
+    {
+      "role": "Pinned upstream host source input",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\packages\\services\\src\\zcode-agent\\zcodeAgentService.ts",
+      "bytes": 236622,
+      "sha256": "0de3bf15938048a03c99ae07de92a87f22792643bf2e4cea17b9454b013fc3db"
+    },
+    {
+      "role": "Patched Desktop host artifact",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-06\\packages\\desktop\\out\\host\\index.js",
+      "bytes": 1362809,
+      "sha256": "858293b75e4f35201bc3a6f3f74736b250c4946614db85547649613f42ccc637"
+    },
+    {
+      "role": "Pinned Desktop main artifact",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-06\\packages\\desktop\\out\\main\\index.js",
+      "bytes": 680261,
+      "sha256": "7cec241038c7d022f69b0927b41358ddbcedc225688a6f84eb5ba25d0ed0c32c"
+    },
+    {
+      "role": "Pinned Desktop preload artifact",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-06\\packages\\desktop\\out\\preload\\index.cjs",
+      "bytes": 702436,
+      "sha256": "b082ca4d0ce75460f5fbcc9e946a8be55fea7fd9ed318bf7f4f1948e95338678"
+    },
+    {
+      "role": "Pinned Desktop renderer entry artifact",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-06\\packages\\desktop\\out\\renderer\\index.html",
+      "bytes": 26467,
+      "sha256": "a219d33c44c2fe599115bc3b8acdb69bde62d12b15a9ac6a0cf6f71236c691ed"
+    },
+    {
+      "role": "Pinned CLI artifact",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-desktop-06\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+      "bytes": 16752599,
+      "sha256": "38c9dfe1a2a884658b7530954bea6c573adcc1f3ae7e9eeda89d58f433e54eb2"
+    },
+    {
+      "role": "Coordinator author commit/manifest verification",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\coord\\P01-U08-author-37893275accf.json",
+      "bytes": 555,
+      "sha256": "473d55a80346d4a698ed4bd5f8830daa7ffaa01815b9cc09259e361f2c8a4255"
+    }
+  ]
+}

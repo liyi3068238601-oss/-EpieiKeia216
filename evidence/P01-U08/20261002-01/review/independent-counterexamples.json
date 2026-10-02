@@ -1,0 +1,35 @@
+{
+  "review_commit": "3de2c0621d8fcfec5a7874ca2c0df8d9de4deb53",
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "warmup_source_override_unset": true,
+  "results": [
+    {
+      "case": "case-variant source root and missing descendant output",
+      "result": "both rejected"
+    },
+    {
+      "case": "output through existing junction alias into pinned source",
+      "result": "rejected"
+    },
+    {
+      "case": "external prefix-adjacent sibling output",
+      "result": "allowed and physically resolved"
+    },
+    {
+      "case": "nested home/AppData junction",
+      "result": "rejected"
+    },
+    {
+      "case": "tampered derived child workspace",
+      "result": "rejected"
+    },
+    {
+      "case": "credentialRef accessor before parent resolver",
+      "result": "denied without getter or resolver"
+    },
+    {
+      "case": "callback throws non-Error secret canary",
+      "result": "sanitized without canary"
+    }
+  ]
+}

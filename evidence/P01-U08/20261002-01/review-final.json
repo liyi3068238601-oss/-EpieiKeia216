@@ -1,0 +1,138 @@
+{
+  "validation": {
+    "unit": {
+      "failed": 0,
+      "passed": 19,
+      "suite": "P01-U08"
+    },
+    "ui": {
+      "visual_acceptance": "not run",
+      "launches": 2,
+      "settings_visible": true,
+      "result": "passed",
+      "source_clean": true,
+      "synthetic_native_history_visible_each_launch": true,
+      "model_requests": 0,
+      "production_unchanged": true,
+      "real_key_used": false
+    },
+    "install": "offline frozen install passed using pinned Node 24.14.0 / pnpm 10.33.2",
+    "independent_counterexamples": "7/7 passed",
+    "check": "typecheck, import-boundary command, and build exit 0",
+    "manifest": {
+      "disk_git_mismatches": 0,
+      "changed_paths_including_manifest": 168,
+      "entries": 167,
+      "path_set_matches": true
+    },
+    "assembly": {
+      "descriptor_listed_files": 6638,
+      "hash_mismatches": 0
+    }
+  },
+  "artifacts": [
+    {
+      "role": "offline frozen install log",
+      "sha256": "be368760847c3054a8da516a27be09af791e645a0e683005ed2bd1f859349bef",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final-07\\install.log",
+      "bytes": 300
+    },
+    {
+      "role": "pinned checks metadata",
+      "sha256": "3b2d049c84735f53ed0e692b4c9db85271fc46662b67837a8dbdc3c9fcc28e84",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final-07\\pinned-checks-meta.json",
+      "bytes": 1517
+    },
+    {
+      "role": "U08 unit output (19/19)",
+      "sha256": "72b6611412f61baffb06db591dc9f3561b39318a348b32fda9fdcb2281a98291",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final-07\\u08-unit-pinned.log",
+      "bytes": 1923
+    },
+    {
+      "role": "independent counterexample results",
+      "sha256": "058360c413aa22bf603eeb123821934a059931518efb1c27c0cd274e4b7ed926",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final-07\\independent-counterexamples.json",
+      "bytes": 957
+    },
+    {
+      "role": "independent UI runner log",
+      "sha256": "0a3320971c049dd88605ff22d7682b8de964c303dbbf471b41df2dd2e9931638",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final-07\\review-ui-launch.log",
+      "bytes": 258
+    },
+    {
+      "role": "preserved failed initial invocation",
+      "sha256": "c44396f1ac54c644843bdffb3232a6d13a87d763f111dfaf2f430856a2676e31",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final-07\\review-ui-launch-attempt-01-failed.log",
+      "bytes": 635
+    },
+    {
+      "role": "actual UI run summary",
+      "sha256": "eda558c730f6ad3498b8dd03db1ad9d88ebc76635adef12f207c852b24835765",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review-07\\evidence\\P01-U08\\20261002-01\\ui\\u08-no-key-1790941116487135000\\summary.json",
+      "bytes": 7954
+    },
+    {
+      "role": "two-launch UI result",
+      "sha256": "ae9c73988a2dde82e6b596da858c9786127afee7117380ee8905cd702d21e2d8",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review-07\\evidence\\P01-U08\\20261002-01\\ui\\u08-no-key-1790941116487135000\\ui-result.json",
+      "bytes": 1743
+    },
+    {
+      "role": "UI network guard log",
+      "sha256": "d211e90da3537353cec4c85ed613afecd98ff8835e51f71798363e0d1a2d8024",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review-07\\evidence\\P01-U08\\20261002-01\\ui\\u08-no-key-1790941116487135000\\network.jsonl",
+      "bytes": 133595
+    },
+    {
+      "role": "author assembly descriptor",
+      "sha256": "0561ef2b728be014545a6ac2a76ccfeabc0b9905ae59badef252098b787bdce6",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review-07\\evidence\\P01-U08\\20261002-01\\desktop-assembly-07.json",
+      "bytes": 1299247
+    },
+    {
+      "role": "author change manifest",
+      "sha256": "4f9c4e7cdb2c2c76ac7fb3349528e1fbbe36504279b9404aec62a599a03ffac5",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review-07\\evidence\\P01-U08\\20261002-01\\manifest.json",
+      "bytes": 47428
+    },
+    {
+      "role": "independent manifest verification",
+      "sha256": "006e2f23b89df8887c5e0d26e2bcfd00751ecad117c02fef12244a88e74e03ba",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final-07\\manifest-verification.json",
+      "bytes": 528
+    },
+    {
+      "role": "preserved prior changes-required report",
+      "sha256": "319a177652240c7783c94f18568a1a282c1b5cf6e2db06bdf060da8cce033509",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u08-review\\final-07\\prior-review\\report.json",
+      "bytes": 14366
+    }
+  ],
+  "decision": "pass",
+  "review_target": {
+    "author_commit": "3de2c0621d8fcfec5a7874ca2c0df8d9de4deb53",
+    "baseline_commit": "e78c8f9cd4568956f43e57fab291ecc6d3142fd6",
+    "worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u08-review-07",
+    "detached": true
+  },
+  "schema": "P01-U08-independent-review-v1",
+  "limitations": [
+    "No real model/key or paid call.",
+    "UI validation used synthetic native history and fixed local-development assembly; no portable installer or visual-design acceptance.",
+    "Boundary scanner reports packages/core absent; command exit 0 does not validate that absent subtree."
+  ],
+  "findings": [
+    {
+      "id": "R1 source-path containment (case variants and junction alias)",
+      "evidence": "Independent adversarial cases rejected writes into pinned source while allowing prefix-adjacent sibling.",
+      "status": "closed"
+    },
+    {
+      "id": "R2 warmup test checkout-relative source path",
+      "evidence": "U08 suite passed with P01_U08_ZCODE_SOURCE unset in detached review checkout.",
+      "status": "closed"
+    }
+  ]
+}

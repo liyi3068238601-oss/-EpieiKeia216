@@ -1,0 +1,28 @@
+✔ rejects the same physical source root and existing or future descendants (10.7353ms)
+✔ rejects a Windows case-variant alias of the source tree (4.7153ms)
+✔ allows a prefix-adjacent sibling output directory (3.6147ms)
+✔ resolves an existing junction ancestor before checking containment (4.4226ms)
+✔ default profile is offline, no-key, versioned and limited to the official model IDs (2.3776ms)
+✔ profile schema rejects secrets, arbitrary credential references, paths and persisted authorization (0.5693ms)
+✔ portable export/import carries only validated non-secret settings across independent roots (4.9157ms)
+✔ owned profile paths derive every app directory beneath the isolated root (2.933ms)
+✔ owned paths reject a linked root and a junction or symlink escaping to another profile (4.4841ms)
+✔ child environment preserves only the system allowlist and owned profile paths (3.1004ms)
+✔ child environment requires an OS-assigned loopback origin and refuses fixed 9229 (4.6313ms)
+✔ patchReadOnlyWarmup executes the fixed initialize source and keeps the ready path unchanged (46.1013ms)
+✔ provider_not_ready alone falls back to the native read-only client (9.5423ms)
+✔ non-provider startup errors keep the existing failure path and do not fall back (11.3254ms)
+✔ no-key, offline and denied decisions do not call the parent resolver (2.7763ms)
+✔ an offline profile requires a fresh per-call authorization before resolving in parent memory (0.2672ms)
+✔ resolver failures are sanitized without the original message, stack or cause (0.5205ms)
+✔ credential-use throws and rejected promises are sanitized without message, stack or cause (0.5323ms)
+✔ empty or missing parent credentials fail with the same generic diagnostic (0.3532ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 409.6742
+EXIT_CODE=0

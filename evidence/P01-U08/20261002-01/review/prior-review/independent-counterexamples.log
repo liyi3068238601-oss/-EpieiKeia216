@@ -1,0 +1,29 @@
+{
+  "review_commit": "37893275accf2a45dfb960f2205cce9b886048ce",
+  "cases": [
+    {
+      "case": "nested AppData junction below otherwise physical owned home",
+      "result": "rejected"
+    },
+    {
+      "case": "caller tampers a derived child workspace path",
+      "result": "rejected"
+    },
+    {
+      "case": "authorization credentialRef accessor cannot trigger resolution",
+      "result": "denied without getter/resolver"
+    },
+    {
+      "case": "consumer throws a non-Error key canary",
+      "result": "generic error; canary absent"
+    },
+    {
+      "case": "case-variant output path inside pinned source is accepted by recipe guard",
+      "result": "counterexample reproduced without writing into source",
+      "source_alias_resolves_to_source": true,
+      "recipe_guard_would_allow": true,
+      "relative": "u08-review-guard-counterexample"
+    }
+  ]
+}
+EXIT_CODE=0
