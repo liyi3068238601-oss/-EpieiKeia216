@@ -1,0 +1,18 @@
+{
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u09",
+  "commands": [
+    {
+      "command": "python -X utf8 -m unittest discover -s tests/evals/persona -p test_relay_guards.py -v",
+      "exit_code": 0,
+      "tests_passed": 9,
+      "log": "python-guards.log"
+    },
+    {
+      "command": "python -O -X utf8 -m unittest discover -s tests/evals/persona -p test_relay_guards.py -v",
+      "exit_code": 0,
+      "tests_passed": 9,
+      "log": "python-guards-optimized.log"
+    }
+  ],
+  "scope": "Synthetic transport guard tests, zero credential loads and zero real model calls. The paid runner itself intentionally rejects optimized Python execution."
+}

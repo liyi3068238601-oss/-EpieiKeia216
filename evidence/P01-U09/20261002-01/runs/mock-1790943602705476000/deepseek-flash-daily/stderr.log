@@ -1,0 +1,19 @@
+(node:24800) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+E:\Xiadie\Xiadie\spikes\P01\desktop-guard.cjs:33
+  if (!allowed) throw new Error('P01 no-Key test blocked outbound socket');
+                      ^
+
+Error: P01 no-Key test blocked outbound socket
+    at net.Socket.connect (E:\Xiadie\Xiadie\spikes\P01\desktop-guard.cjs:33:23)
+    at Object.connect (node:net:245:17)
+    at Client.connect (node:internal/deps/undici/undici:3181:24)
+    at connect (node:internal/deps/undici/undici:9224:25)
+    at _resume (node:internal/deps/undici/undici:9373:11)
+    at resume (node:internal/deps/undici/undici:9318:7)
+    at node:internal/deps/undici/undici:9144:32
+    at node:internal/process/task_queues:150:7
+    at AsyncResource.runInAsyncScope (node:async_hooks:228:14)
+    at AsyncResource.runMicrotask (node:internal/process/task_queues:147:8)
+
+Node.js v24.14.0

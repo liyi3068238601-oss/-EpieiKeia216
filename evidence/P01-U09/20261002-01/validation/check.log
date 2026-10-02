@@ -1,0 +1,15 @@
+
+> xiadie@0.1.0 check E:\Xiadie\Xiadie\.runtime\P01\worktrees\u09
+> pnpm run typecheck && pnpm run boundary:check
+
+ WARN  Unsupported engine: wanted: {"node":"24.14.x"} (current: {"node":"v24.16.0","pnpm":"10.33.2"})
+
+> xiadie@0.1.0 typecheck E:\Xiadie\Xiadie\.runtime\P01\worktrees\u09
+> tsc --project tsconfig.json --noEmit
+
+ WARN  Unsupported engine: wanted: {"node":"24.14.x"} (current: {"node":"v24.16.0","pnpm":"10.33.2"})
+
+> xiadie@0.1.0 boundary:check E:\Xiadie\Xiadie\.runtime\P01\worktrees\u09
+> node tools/check-import-boundaries.mjs
+
+BOUNDARY_SCAN_NOT_RUN: packages/core is absent; no product Core imports were checked.
