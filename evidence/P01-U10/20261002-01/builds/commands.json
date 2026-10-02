@@ -1,0 +1,73 @@
+[
+  {
+    "candidate": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-01",
+    "exit_code": 1,
+    "execution_cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10",
+    "command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "tests/integration/P01/build-candidate.mjs",
+      "--output",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-01"
+    ],
+    "bindings": [],
+    "scope": "build-only; candidate01 failed alias resolution; candidate02 debug; candidate03 awaits full UI acceptance"
+  },
+  {
+    "candidate": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-02",
+    "exit_code": 0,
+    "execution_cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10",
+    "command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "tests/integration/P01/build-candidate.mjs",
+      "--output",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-02"
+    ],
+    "bindings": [
+      {
+        "path": "evidence/P01-U10/20261002-01/builds/u10-candidate-02/candidate-descriptor.json",
+        "bytes": 1307442,
+        "sha256": "25d64ecc22e418772885442daa23f10b79a1cdb0e9951d52228f696cb92d925a"
+      },
+      {
+        "path": "evidence/P01-U10/20261002-01/builds/u10-candidate-02/build-evidence/cli-inputs.json",
+        "bytes": 610737,
+        "sha256": "d27a5eb718b0b258e8fbd6e896a308a0e943989e4ba97652506038801827600c"
+      },
+      {
+        "path": "evidence/P01-U10/20261002-01/builds/u10-candidate-02/build-evidence/cli-metafile.json",
+        "bytes": 2221887,
+        "sha256": "5f29483a9bde6defa9b5c8d1da9808dcf8833f26cd3e7d38ad6f8d7f22c3cebd"
+      }
+    ],
+    "scope": "build-only; candidate01 failed alias resolution; candidate02 debug; candidate03 awaits full UI acceptance"
+  },
+  {
+    "candidate": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-03",
+    "exit_code": 0,
+    "execution_cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u10",
+    "command": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "tests/integration/P01/build-candidate.mjs",
+      "--output",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-03"
+    ],
+    "bindings": [
+      {
+        "path": "evidence/P01-U10/20261002-01/builds/u10-candidate-03/candidate-descriptor.json",
+        "bytes": 1307967,
+        "sha256": "204622b371be1340b3aee1e67e35bfebcd73103d9932a1ea136d3fc9f50401cc"
+      },
+      {
+        "path": "evidence/P01-U10/20261002-01/builds/u10-candidate-03/build-evidence/cli-inputs.json",
+        "bytes": 610737,
+        "sha256": "33ec320b1f6103c168366c3ded05100549826fd22f3cadbc4adb87ebd4493496"
+      },
+      {
+        "path": "evidence/P01-U10/20261002-01/builds/u10-candidate-03/build-evidence/cli-metafile.json",
+        "bytes": 2221888,
+        "sha256": "82f5104af608dc3c1ba67ff69bf67b2b2182be62f69d4864ffde4bb6e29f3d78"
+      }
+    ],
+    "scope": "build-only; candidate01 failed alias resolution; candidate02 debug; candidate03 awaits full UI acceptance"
+  }
+]
