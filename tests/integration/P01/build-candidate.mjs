@@ -136,7 +136,18 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
   const invocationInputs = Object.keys(result.metafile.inputs).filter((file) => /[/\\]model[/\\]invocation-context\.[cm]?[jt]s$/.test(file));
   assert.equal(invocationInputs.length, 1, "Native invocation AsyncLocalStorage must have one module instance");
   assert.equal(await realpath(path.resolve(physicalSource, invocationInputs[0])), targetInvocation);
-  await cp(path.join(cliDirectory, "dist/provider"), path.join(path.dirname(cliEntry), "provider"), { recursive: true, errorOnExist: true });
+  const providerSource = path.join(physicalSource, "config/provider/zcode-builtin.json");
+  const providerBlob = execFileSync("git", ["-C", physicalSource, "show", `${SOURCE_PIN}:config/provider/zcode-builtin.json`]);
+  assert.deepEqual(await readFile(providerSource), providerBlob, "Provider config must match the pinned tracked input");
+  const providerStagingFile = path.join(physicalSource, "scripts/builtin-provider-config.mjs");
+  const { stageBuiltinProviderConfig } = await import(pathToFileURL(providerStagingFile).href);
+  const provider = await stageBuiltinProviderConfig({
+    root: physicalSource,
+    directory: path.join(path.dirname(cliEntry), "provider"),
+    env: { NODE_ENV: "production", ZCODE_ENV: "production", ZCODE_BUILTIN_PROVIDER_CONFIG_FILE: providerSource },
+  });
+  assert.equal(provider.sourcePath, providerSource);
+  assert.equal(digest(Buffer.from(provider.content)), digest(providerBlob));
   const inputBindings = [];
   for (const file of Object.keys(result.metafile.inputs).sort()) inputBindings.push(await binding(path.resolve(physicalSource, file)));
   const manifestDir = path.join(assemblyRoot, "build-evidence");
@@ -168,6 +179,7 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
     candidateModel: "deepseek-flash",
     deniedModel: "deepseek-v4-pro",
     protocolPatch: patchBinding,
+    providerConfig: { source: await binding(providerSource), recipe: await binding(providerStagingFile), environment: provider.environment },
     invocationContext: await binding(targetInvocation),
     invocationContextModuleCount: invocationInputs.length,
     nodeVersion,
@@ -182,5 +194,5 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const args = process.argv.slice(2);
   if (args.length !== 2 || args[0] !== "--output") throw new Error("usage: node tests/integration/P01/build-candidate.mjs --output <new absolute directory>");
   const candidate = await buildCandidate({ destination: args[1] });
-  console.log(JSON.stringify({ candidate: path.join(candidate.assemblyRoot, "candidate-descriptor.json"), artifacts: candidate.artifacts.length, cliSha256: candidate.cli.sha256 }));
+  console.log(JSON.stringify({ candidate: await binding(path.join(candidate.assemblyRoot, "candidate-descriptor.json")), artifacts: candidate.artifacts.length, cliSha256: candidate.cli.sha256 }));
 }
