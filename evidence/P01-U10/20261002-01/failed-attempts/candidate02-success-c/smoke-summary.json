@@ -1,0 +1,53 @@
+{
+  "scenario_id": "success",
+  "passed": false,
+  "exit_code": 1,
+  "model_requests": 0,
+  "expected_model_requests": 1,
+  "relay_records": [],
+  "sidecar_correlation": {
+    "status": "NOT_EXPOSED",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-candidate02-success-20261002c\\scenarios\\success\\profile\\u10-turn-projections.jsonl",
+    "verified": false
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "success",
+    "status": "failed",
+    "gate_mode": "enabled",
+    "flow": "reply",
+    "ui_actions": [],
+    "user_visible_reply": null,
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": null,
+    "passed": false,
+    "failure_code": "ui_assertion_failed",
+    "failure_details": {
+      "name": "TimeoutError",
+      "code": "unknown",
+      "operator": null,
+      "message": "electron.launch: Timeout 45000ms exceeded.",
+      "windows": 0
+    }
+  },
+  "network_guard_records": 5,
+  "process_evidence": {
+    "status": "unverified",
+    "reason": "live_process_tree_missing"
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback"
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ]
+}

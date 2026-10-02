@@ -1,0 +1,67 @@
+[tsup] ZCODE_ENV=test ZCODE_PRODUCT_FLAVOR=preview
+CLI Building entry: {"host/index":"E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\packages\\desktop\\src\\host\\index.ts","host/tasksStorageWorker":"E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\packages\\desktop\\src\\host\\tasksStorageWorker.ts"}
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.5.1
+CLI Target: node22
+ESM Build start
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-ZZOLNKTD.js     156.73 KB
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-B45ORG4E.js     140.00 B
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\tasksStorageWorker.js 616.00 B
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-5AJAOD42.js     202.00 B
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-OB2MTTZR.js     10.67 KB
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-VX7P3VUC.js     152.00 B
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-GOVIVXYI.js     1.38 KB
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-QER3M7XR.js     107.93 KB
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-OAWVEIS4.js     6.48 KB
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-IG3KWOMW.js     96.55 KB
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-6A3RDH7Q.js     872.00 B
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-L4X5TBCR.js     572.00 B
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-XPU7OCSY.js     17.67 KB
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-VGZV7KBJ.js     11.88 KB
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-63EQJRFE.js     857.00 B
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-6IUWV5UR.js     734.00 B
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\index.js              1.30 MB
+ESM ..\..\..\u10-candidate-01\packages\desktop\out\host\chunk-WS3ZRUTG.js     737.87 KB
+ESM ⚡️ Build success in 727ms
+X [ERROR] Could not resolve "@zcode/contracts"
+
+    ../worktrees/u10/tests/integration/P01/factory-entry.mjs:1:38:
+      1 │ import { createFileSystemError } from "@zcode/contracts";
+        ╵                                       ~~~~~~~~~~~~~~~~~~
+
+  You can mark the path "@zcode/contracts" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+
+X [ERROR] Could not resolve "@zcode/adapters/exec"
+
+    ../worktrees/u10/tests/integration/P01/factory-entry.mjs:2:43:
+      2 │ import { createNodeExecutionAdapter } from "@zcode/adapters/exec";
+        ╵                                            ~~~~~~~~~~~~~~~~~~~~~~
+
+  You can mark the path "@zcode/adapters/exec" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+
+X [ERROR] Could not resolve "@zcode/adapters/fs"
+
+    ../worktrees/u10/tests/integration/P01/factory-entry.mjs:3:44:
+      3 │ import { createNodeFileSystemAdapter } from "@zcode/adapters/fs";
+        ╵                                             ~~~~~~~~~~~~~~~~~~~~
+
+  You can mark the path "@zcode/adapters/fs" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+
+3 errors
+E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:1748
+  let error = new Error(text);
+              ^
+
+Error: Build failed with 3 errors:
+../worktrees/u10/tests/integration/P01/factory-entry.mjs:1:38: ERROR: Could not resolve "@zcode/contracts"
+../worktrees/u10/tests/integration/P01/factory-entry.mjs:2:43: ERROR: Could not resolve "@zcode/adapters/exec"
+../worktrees/u10/tests/integration/P01/factory-entry.mjs:3:44: ERROR: Could not resolve "@zcode/adapters/fs"
+    at failureErrorWithLog (E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:1748:15)
+    at E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:1207:25
+    at E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:1626:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+
+Node.js v24.14.0

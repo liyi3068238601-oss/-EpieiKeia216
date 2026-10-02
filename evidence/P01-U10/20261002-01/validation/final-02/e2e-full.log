@@ -1,0 +1,46 @@
+
+> xiadie@0.1.0 test:e2e E:\Xiadie\Xiadie\.runtime\P01\worktrees\u10
+> pnpm run build && node tools/run-stage-tests.mjs e2e "--" "--candidate" "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-04" "--suite" "full" "--output" "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-02\\ui-full"
+
+
+> xiadie@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\worktrees\u10
+> tsc --project tsconfig.json
+
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 49157)
+Traceback (most recent call last):
+  File "E:\Xiadie\Xiadie\.runtime\P01\worktrees\u10\tests\integration\P01\desktop.py", line 612, in do_POST
+    self.send_sse(index)
+  File "E:\Xiadie\Xiadie\.runtime\P01\worktrees\u10\tests\integration\P01\desktop.py", line 705, in send_sse
+    self.wfile.write(b": keepalive\n\n")
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 424, in handle_one_request
+    method()
+  File "E:\Xiadie\Xiadie\.runtime\P01\worktrees\u10\tests\integration\P01\desktop.py", line 621, in do_POST
+    self.send_body(500, "application/json", b'{"error":{"message":"P01 relay failure"}}')
+  File "E:\Xiadie\Xiadie\.runtime\P01\worktrees\u10\tests\integration\P01\desktop.py", line 540, in send_body
+    self.end_headers()
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 538, in end_headers
+    self.flush_headers()
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\http\server.py", line 542, in flush_headers
+    self.wfile.write(b"".join(self._headers_buffer))
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+{"passed": false, "suite": "full", "output": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-02\\ui-full", "scenarios": [{"id": "success", "passed": true, "model_requests": 1}, {"id": "read_success", "passed": true, "model_requests": 2}, {"id": "read_failure", "passed": true, "model_requests": 2}, {"id": "cancel_recovery", "passed": false, "model_requests": 2}, {"id": "disabled_native", "passed": false, "model_requests": 2}, {"id": "pro_denied", "passed": true, "model_requests": 0}]}
+ ELIFECYCLE  Command failed with exit code 1.

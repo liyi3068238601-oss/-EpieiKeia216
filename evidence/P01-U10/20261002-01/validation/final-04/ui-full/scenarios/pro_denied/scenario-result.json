@@ -1,0 +1,138 @@
+{
+  "scenario_id": "pro_denied",
+  "passed": true,
+  "exit_code": 0,
+  "model_requests": 0,
+  "expected_model_requests": 0,
+  "relay_records": [],
+  "sidecar_correlation": {
+    "status": "NOT_EXPOSED",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-04\\ui-full\\scenarios\\pro_denied\\profile\\u10-turn-projections.jsonl",
+    "verified": false
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "pro_denied",
+    "status": "completed",
+    "gate_mode": "enabled",
+    "flow": "pro_denied",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step"
+    ],
+    "user_visible_reply": null,
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-v4-pro",
+      "pro_item_available": false,
+      "selected": null,
+      "pro_selected": false
+    },
+    "desktop": {
+      "main_pid": 17720,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-04\\ui-full\\scenarios\\pro_denied\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-04\\ui-full\\scenarios\\pro_denied\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u10-final-04\\ui-full\\scenarios\\pro_denied\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 4124,
+          "parent_pid": 17720,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 48836,
+          "parent_pid": 17720,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 36936,
+          "parent_pid": 17720,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 21032,
+          "parent_pid": 17720,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 40196,
+          "parent_pid": 21032,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "network_guard_records": 325,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 17720,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      21032
+    ],
+    "cli_required": false,
+    "cli_spawned_pids": [
+      40196
+    ],
+    "cli_guarded_pids": [
+      40196
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 17720,
+    "descendants": [
+      {
+        "pid": 4124,
+        "parent_pid": 17720,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 48836,
+        "parent_pid": 17720,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 36936,
+        "parent_pid": 17720,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 21032,
+        "parent_pid": 17720,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 40196,
+        "parent_pid": 21032,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ]
+}

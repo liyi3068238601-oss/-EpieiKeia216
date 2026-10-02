@@ -1,0 +1,3870 @@
+diff --git a/package.json b/package.json
+index 5a2d6ff..cebe73f 100644
+--- a/package.json
++++ b/package.json
+@@ -14,8 +14,8 @@
+     "test:unit": "pnpm run build && node tools/run-tests.mjs unit",
+     "test:contract": "node tools/run-tests.mjs contract",
+     "test:integration": "pnpm run build && node tools/run-tests.mjs integration",
+-    "test:eval": "node tools/not-implemented.mjs test:eval",
+-    "test:e2e": "node tools/not-implemented.mjs test:e2e",
++    "test:eval": "pnpm run build && node tools/run-stage-tests.mjs eval",
++    "test:e2e": "pnpm run build && node tools/run-stage-tests.mjs e2e",
+     "build": "tsc --project tsconfig.json"
+   },
+   "devDependencies": {
+diff --git a/tests/integration/P01/.gitattributes b/tests/integration/P01/.gitattributes
+new file mode 100644
+index 0000000..e11c72b
+--- /dev/null
++++ b/tests/integration/P01/.gitattributes
+@@ -0,0 +1 @@
++* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+diff --git a/tests/integration/P01/build-candidate.mjs b/tests/integration/P01/build-candidate.mjs
+new file mode 100644
+index 0000000..4039728
+--- /dev/null
++++ b/tests/integration/P01/build-candidate.mjs
+@@ -0,0 +1,222 @@
++// Reuse the accepted U08 Desktop recipe and the pinned native CLI build graph.
++// The reference checkout is input only; all build output stays in a new candidate.
++import assert from "node:assert/strict";
++import { execFileSync } from "node:child_process";
++import { createHash } from "node:crypto";
++import { cp, mkdir, readFile, readdir, realpath, writeFile } from "node:fs/promises";
++import { createRequire } from "node:module";
++import path from "node:path";
++import { fileURLToPath, pathToFileURL } from "node:url";
++import { buildDesktop, SOURCE_PIN } from "../../../packages/config/desktop-build.mjs";
++
++const HERE = path.dirname(fileURLToPath(import.meta.url));
++const REPO = path.resolve(HERE, "../../..");
++const HOST_ROOT = "E:\\Xiadie\\Xiadie";
++const DEFAULT_SOURCE = path.join(HOST_ROOT, ".runtime/P01/desktop-source");
++const NODE = path.join(HOST_ROOT, ".runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe");
++const digest = (data) => createHash("sha256").update(data).digest("hex");
++const save = (file, data) => writeFile(file, `${JSON.stringify(data, null, 2)}\n`, "utf8");
++
++function assertAbsolute(value, name) {
++  if (typeof value !== "string" || !path.isAbsolute(value)) throw new Error(`${name} must be an absolute path`);
++}
++
++async function binding(file) {
++  const bytes = await readFile(file);
++  return { path: file, bytes: bytes.length, sha256: digest(bytes) };
++}
++
++async function bindRepositoryInputs(commit) {
++  const names = execFileSync("git", ["-C", REPO, "ls-files", "-z", "--", "packages", "assets", "plugins",
++    "tests/integration/P01", "tools", "package.json", "pnpm-lock.yaml", "tsconfig.json"], { encoding: "utf8" })
++    .split("\0").filter(Boolean).sort();
++  const bindings = [];
++  for (const relative of names) {
++    const file = path.join(REPO, relative);
++    const committed = execFileSync("git", ["-C", REPO, "show", `${commit}:${relative}`], { maxBuffer: 64 * 1024 * 1024 });
++    const data = await readFile(file);
++    assert.deepEqual(data, committed, `Repository input differs from committed bytes: ${relative}`);
++    bindings.push({ path: relative, bytes: data.length, sha256: digest(data) });
++  }
++  return bindings;
++}
++
++async function bindTree(root) {
++  const result = [];
++  async function visit(directory) {
++    const entries = (await readdir(directory, { withFileTypes: true })).sort((a, b) => a.name.localeCompare(b.name));
++    for (const entry of entries) {
++      if (entry.name === "node_modules") continue;
++      if (entry.isSymbolicLink()) throw new Error("Unexpected candidate resource link");
++      const file = path.join(directory, entry.name);
++      if (entry.isDirectory()) await visit(file);
++      else result.push({ ...(await binding(file)), path: path.relative(root, file).replaceAll("\\", "/") });
++    }
++  }
++  await visit(root);
++  return result;
++}
++
++export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
++  assertAbsolute(source, "source");
++  assertAbsolute(destination, "destination");
++  const repositoryCommit = execFileSync("git", ["-C", REPO, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
++  assert.equal(execFileSync("git", ["-C", REPO, "status", "--porcelain"], { encoding: "utf8" }).trim(), "",
++    "Candidate build requires a clean, committed repository");
++  const repositoryInputs = await bindRepositoryInputs(repositoryCommit);
++  const physicalSource = await realpath(source);
++  const factoryEntry = path.join(HERE, "factory-entry.mjs");
++  await readFile(factoryEntry); // Fail before creating a candidate if its seam is absent.
++  const nodeVersion = execFileSync(NODE, ["--version"], { encoding: "utf8" }).trim();
++  assert.equal(nodeVersion, "v24.14.0");
++  const base = await buildDesktop(physicalSource, destination);
++  const assemblyRoot = base.assemblyRoot;
++  const resources = path.join(assemblyRoot, "xiadie");
++  await mkdir(resources);
++  for (const name of ["dist", "assets", "plugins"]) {
++    await cp(path.join(REPO, name), path.join(resources, name), { recursive: true, errorOnExist: true });
++  }
++
++  const cliDirectory = path.join(physicalSource, "apps/zcode-cli/packages/cli");
++  const cliRoot = path.join(physicalSource, "apps/zcode-cli");
++  const nativePackages = path.join(cliRoot, "packages");
++  const require = createRequire(path.join(physicalSource, "package.json"));
++  const { build } = await import(pathToFileURL(require.resolve("esbuild")).href);
++  const nativeBuild = await import(pathToFileURL(path.join(cliDirectory, "scripts/build.mjs")).href);
++  const cliVersion = await nativeBuild.readRootPackageVersion({ root: cliRoot });
++  const expectedZod = await nativeBuild.readZodBuildVersion();
++  const electronPath = path.join(physicalSource, "node_modules/electron/dist/electron.exe");
++  const playwrightPath = require.resolve("playwright-core");
++  const targetProtocol = path.join(nativePackages, "bootstrap/dist/zcode-protocol-entrypoint.js");
++  const targetInvocation = await realpath(path.join(nativePackages, "contracts/dist/model/invocation-context.js"));
++  const cliEntry = path.join(assemblyRoot, "apps/zcode-cli/packages/cli/dist/zcode.cjs");
++  const nativeAlias = (relative) => path.join(nativePackages, relative);
++  const aliases = {
++    ...nativeBuild.resolveBuildAliases({ cliDirectory, rootDirectory: cliRoot }),
++    "@p01/profile": path.join(REPO, "packages/config/src/index.ts"),
++    "@p01/secrets": path.join(REPO, "packages/secrets/src/index.ts"),
++    "@p01/xiadie-host": path.join(REPO, "packages/adapters/zcode/src/index.ts"),
++    "@p01/turn-projection": path.join(REPO, "packages/application/turn-projection.ts"),
++    "@p01/native-execution": nativeAlias("adapters/dist/exec/index.js"),
++    "@p01/native-filesystem": nativeAlias("adapters/dist/fs/index.js"),
++    "@p01/native-filesystem-contracts": nativeAlias("contracts/dist/interfaces/file-system.port.js"),
++    "@p01/native-model-factory": nativeAlias("bootstrap/dist/model-factory.js"),
++    "@p01/native-model-config": nativeAlias("bootstrap/dist/model-config.js"),
++    "@p01/native-plugin-api": nativeAlias("bootstrap/dist/plugins.js"),
++    "@p01/native-app": nativeAlias("bootstrap/dist/app/create-app.js"),
++    "@p01/native-invocation-context": targetInvocation,
++  };
++  const needle = 'import { createZCodeApp } from "./app/create-app.js";';
++  let patches = 0;
++  let patchBinding;
++  const noticesFile = path.join(assemblyRoot, "apps/zcode-cli/packages/cli/dist/THIRD-PARTY-NOTICES.md");
++  const notices = await readFile(noticesFile, "utf8");
++  const result = await build({
++    absWorkingDir: physicalSource,
++    entryPoints: [path.join(cliDirectory, "src/main.ts")],
++    outfile: cliEntry,
++    bundle: true,
++    platform: "node",
++    format: "cjs",
++    target: "node22",
++    minify: true,
++    keepNames: true,
++    sourcemap: false,
++    metafile: true,
++    legalComments: "none",
++    logLevel: "info",
++    external: nativeBuild.resolveBuildExternal(),
++    alias: aliases,
++    define: {
++      __CLI_VERSION__: JSON.stringify(cliVersion),
++      __P01_REPOSITORY_ROOT__: JSON.stringify(resources),
++      __P01_NODE_EXECUTABLE__: JSON.stringify(NODE),
++      __P01_ELECTRON_EXECUTABLE__: JSON.stringify(electronPath),
++    },
++    banner: { js: `#!/usr/bin/env node\n"use strict";\nif (process.argv.length === 3 && process.argv[2] === "--licenses") { const sea = require("node:sea"); const nodeNotice = sea.isSea() ? "\\n\\n## Bundled Node.js runtime\\n\\n" + sea.getAsset("zcode-node-license", "utf8") : ""; process.stdout.write(${JSON.stringify(notices)} + nodeNotice, () => process.exit(0)); } else {` },
++    footer: { js: "}" },
++    plugins: [
++      { name: "xiadie-protocol-factory", setup(builder) {
++        builder.onResolve({ filter: /^p01:factory$/ }, () => ({ path: factoryEntry }));
++        builder.onLoad({ filter: /zcode-protocol-entrypoint\.js$/ }, async (args) => {
++          assert.equal(path.resolve(args.path), targetProtocol);
++          const original = await readFile(args.path, "utf8");
++          assert.equal(original.split(needle).length, 2, "Pinned protocol factory import changed");
++          const contents = original.replace(needle, 'import { createZCodeApp } from "p01:factory";');
++          patches += 1;
++          patchBinding = { file: targetProtocol, originalSha256: digest(original), patchedSha256: digest(contents) };
++          return { contents, loader: "js", resolveDir: path.dirname(args.path) };
++        });
++      } },
++      nativeBuild.createZodDedupePlugin({ expectedV4Version: expectedZod }),
++    ],
++  });
++  assert.equal(patches, 1, "CLI must contain exactly one protocol factory overlay");
++  const invocationInputs = Object.keys(result.metafile.inputs).filter((file) => /[/\\]model[/\\]invocation-context\.[cm]?[jt]s$/.test(file));
++  assert.equal(invocationInputs.length, 1, "Native invocation AsyncLocalStorage must have one module instance");
++  assert.equal(await realpath(path.resolve(physicalSource, invocationInputs[0])), targetInvocation);
++  const providerSource = path.join(physicalSource, "config/provider/zcode-builtin.json");
++  const providerBlob = execFileSync("git", ["-C", physicalSource, "show", `${SOURCE_PIN}:config/provider/zcode-builtin.json`]);
++  assert.deepEqual(await readFile(providerSource), providerBlob, "Provider config must match the pinned tracked input");
++  const providerStagingFile = path.join(physicalSource, "scripts/builtin-provider-config.mjs");
++  const { stageBuiltinProviderConfig } = await import(pathToFileURL(providerStagingFile).href);
++  const provider = await stageBuiltinProviderConfig({
++    root: physicalSource,
++    directory: path.join(path.dirname(cliEntry), "provider"),
++    env: { NODE_ENV: "production", ZCODE_ENV: "production", ZCODE_BUILTIN_PROVIDER_CONFIG_FILE: providerSource },
++  });
++  assert.equal(provider.sourcePath, providerSource);
++  assert.equal(digest(Buffer.from(provider.content)), digest(providerBlob));
++  const inputBindings = [];
++  for (const file of Object.keys(result.metafile.inputs).sort()) inputBindings.push(await binding(path.resolve(physicalSource, file)));
++  const manifestDir = path.join(assemblyRoot, "build-evidence");
++  await mkdir(manifestDir);
++  await save(path.join(manifestDir, "cli-inputs.json"), inputBindings);
++  await save(path.join(manifestDir, "cli-metafile.json"), result.metafile);
++  assert.equal(execFileSync("git", ["-C", physicalSource, "rev-parse", "HEAD"], { encoding: "utf8" }).trim(), SOURCE_PIN);
++  assert.equal(execFileSync("git", ["-C", physicalSource, "status", "--porcelain"], { encoding: "utf8" }).trim(), "");
++  assert.equal(execFileSync("git", ["-C", REPO, "rev-parse", "HEAD"], { encoding: "utf8" }).trim(), repositoryCommit);
++  assert.equal(execFileSync("git", ["-C", REPO, "status", "--porcelain"], { encoding: "utf8" }).trim(), "");
++  assert.deepEqual(await bindRepositoryInputs(repositoryCommit), repositoryInputs,
++    "Repository inputs changed while building the candidate");
++  const artifacts = await bindTree(assemblyRoot);
++  const descriptor = {
++    schemaVersion: 1,
++    sourceCommit: SOURCE_PIN,
++    sourceRoot: physicalSource,
++    repositoryCommit,
++    repositoryInputs,
++    assemblyRoot,
++    desktopPath: base.destination,
++    cliEntry,
++    cwd: assemblyRoot,
++    electronPath,
++    playwrightPath,
++    nodePath: NODE,
++    factoryEntry,
++    factory: await binding(factoryEntry),
++    recipe: await binding(fileURLToPath(import.meta.url)),
++    cli: await binding(cliEntry),
++    resourcesRoot: resources,
++    gateEnv: "P01_U10_GATE_MODE",
++    gateDefault: "enabled",
++    candidateModel: "deepseek-flash",
++    deniedModel: "deepseek-v4-pro",
++    protocolPatch: patchBinding,
++    providerConfig: { source: await binding(providerSource), recipe: await binding(providerStagingFile), environment: provider.environment },
++    invocationContext: await binding(targetInvocation),
++    invocationContextModuleCount: invocationInputs.length,
++    nodeVersion,
++    artifacts,
++    scope: "Local development candidate with borrowed pinned dependencies; not a portable installer. U08 base manifest precedes the CLI overlay; this descriptor binds final files and excludes itself.",
++  };
++  await save(path.join(assemblyRoot, "candidate-descriptor.json"), descriptor);
++  return descriptor;
++}
++
++if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
++  const args = process.argv.slice(2);
++  if (args.length !== 2 || args[0] !== "--output") throw new Error("usage: node tests/integration/P01/build-candidate.mjs --output <new absolute directory>");
++  const candidate = await buildCandidate({ destination: args[1] });
++  console.log(JSON.stringify({ candidate: await binding(path.join(candidate.assemblyRoot, "candidate-descriptor.json")), artifacts: candidate.artifacts.length, cliSha256: candidate.cli.sha256 }));
++}
+diff --git a/tests/integration/P01/desktop-ui.mjs b/tests/integration/P01/desktop-ui.mjs
+new file mode 100644
+index 0000000..7eb0db2
+--- /dev/null
++++ b/tests/integration/P01/desktop-ui.mjs
+@@ -0,0 +1,379 @@
++import assert from "node:assert/strict";
++import { existsSync } from "node:fs";
++import { readFile, writeFile } from "node:fs/promises";
++import { execFile } from "node:child_process";
++import { createRequire } from "node:module";
++import path from "node:path";
++import { fileURLToPath } from "node:url";
++import { promisify } from "node:util";
++
++const driverPath = fileURLToPath(import.meta.url);
++const driverDir = path.dirname(driverPath);
++const resultSchema = "p01-u10-desktop-ui/v1";
++const execFileAsync = promisify(execFile);
++
++function requireAbsolute(value, name) {
++  if (typeof value !== "string" || !path.isAbsolute(value)) throw new Error(`invalid_${name}`);
++  return value;
++}
++
++function validateSpec(spec) {
++  const keys = new Set([
++    "candidate", "desktop", "electron", "playwright", "guard", "workspace", "out", "env",
++    "scenario_id", "flow", "prompt", "expected_reply", "partial_reply", "model", "target_model",
++    "profile_paths", "gate_mode", "relay_origin", "occupied_ports_before", "history_markers",
++    "cancel_file", "cancel_observed_file",
++  ]);
++  if (!spec || typeof spec !== "object" || Array.isArray(spec) || Object.keys(spec).some((key) => !keys.has(key))) {
++    throw new Error("invalid_spec");
++  }
++  for (const key of ["candidate", "desktop", "electron", "playwright", "guard", "workspace", "out"]) {
++    requireAbsolute(spec[key], key);
++  }
++  requireAbsolute(spec.cancel_file, "cancel_file");
++  requireAbsolute(spec.cancel_observed_file, "cancel_observed_file");
++  if (path.resolve(spec.cancel_observed_file).toLowerCase() !==
++      path.resolve(spec.out, "cancel-observed.json").toLowerCase()) {
++    throw new Error("invalid_cancel_observed_path");
++  }
++  if (!spec.env || typeof spec.env !== "object" || Array.isArray(spec.env)) throw new Error("invalid_env");
++  if (!/^[a-z0-9_]+$/.test(spec.scenario_id) || !["reply", "cancel_recovery", "no_key", "offline", "pro_denied"].includes(spec.flow)) {
++    throw new Error("invalid_flow");
++  }
++  if (spec.gate_mode !== "enabled" && spec.gate_mode !== "disabled") throw new Error("invalid_gate_mode");
++  return spec;
++}
++
++const specPath = process.argv[2];
++if (process.argv.length !== 3 || !path.isAbsolute(specPath)) throw new Error("usage");
++const spec = validateSpec(JSON.parse(await readFile(specPath, "utf8")));
++const { _electron } = createRequire(driverPath)(spec.playwright);
++let app;
++const result = {
++  schema: resultSchema,
++  scenario_id: spec.scenario_id,
++  status: "running",
++  gate_mode: spec.gate_mode,
++  flow: spec.flow,
++  ui_actions: [],
++  user_visible_reply: null,
++  error_banner: null,
++  model_selection: { expected: spec.model ?? null, pro_item_available: null, selected: null },
++  desktop: null,
++};
++
++async function saveJson(name, value) {
++  await writeFile(path.join(spec.out, name), `${JSON.stringify(value, null, 2)}\n`, { flag: "wx" });
++}
++
++async function snapshot(page, name) {
++  const body = await page.locator("body").innerText();
++  await writeFile(path.join(spec.out, `${name}.txt`), `${body}\n`, { flag: "wx" });
++  return body;
++}
++
++async function descendantProcesses(rootPid) {
++  const powershell = path.join(spec.env.SYSTEMROOT, "System32/WindowsPowerShell/v1.0/powershell.exe");
++  const command = "Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,Name | ConvertTo-Json -Compress";
++  const { stdout } = await execFileAsync(powershell, ["-NoProfile", "-Command", command], {
++    cwd: spec.candidate,
++    env: spec.env,
++    windowsHide: true,
++    timeout: 15_000,
++    maxBuffer: 8 * 1024 * 1024,
++  });
++  const parsed = stdout.trim() ? JSON.parse(stdout) : [];
++  const processes = Array.isArray(parsed) ? parsed : [parsed];
++  const children = new Map();
++  for (const item of processes) {
++    const parent = Number(item.ParentProcessId);
++    if (!Number.isInteger(parent)) continue;
++    const list = children.get(parent) ?? [];
++    list.push(item);
++    children.set(parent, list);
++  }
++  const descendants = [];
++  const seen = new Set([rootPid]);
++  const pending = [rootPid];
++  while (pending.length) {
++    const parent = pending.pop();
++    for (const item of children.get(parent) ?? []) {
++      const pid = Number(item.ProcessId);
++      if (!Number.isInteger(pid) || seen.has(pid)) continue;
++      seen.add(pid);
++      pending.push(pid);
++      descendants.push({ pid, parent_pid: parent, name: String(item.Name ?? "unknown") });
++    }
++  }
++  return descendants;
++}
++
++async function openSettings(initial) {
++  await initial.keyboard.press("Control+,");
++  const deadline = Date.now() + 20_000;
++  while (Date.now() < deadline) {
++    for (const page of app.windows()) {
++      if (await page.getByTestId("settings-page").count()) return page;
++    }
++    await new Promise((resolve) => setTimeout(resolve, 100));
++  }
++  throw new Error("settings_page_unavailable");
++}
++
++async function readyWorkspace(first) {
++  await first.waitForLoadState("domcontentloaded");
++  const deadline = Date.now() + 65_000;
++  while (Date.now() < deadline) {
++    const composer = first.getByTestId("v4-composer-input");
++    if (await composer.isVisible().catch(() => false)) return;
++
++    const apiKeyPage = first.getByTestId("login-use-api-key-button");
++    if (await apiKeyPage.isVisible().catch(() => false)) {
++      await apiKeyPage.click();
++      const password = first.locator("input[type='password']");
++      assert.equal(await password.inputValue(), "", "fresh owned profile unexpectedly contains a saved API key");
++      await first.getByRole("button", { name: /暂时跳过|Skip for now|Skip/i }).click();
++      await apiKeyPage.waitFor({ state: "detached" });
++      result.ui_actions.push("skipped-key-onboarding-with-empty-password");
++      continue;
++    }
++
++    const onboarding = first.getByTestId("onboarding-page");
++    if (await onboarding.isVisible().catch(() => false)) {
++      const skip = first.getByRole("button", { name: /^(跳过|Skip)$/ });
++      if (!(await skip.isVisible().catch(() => false)) || !(await skip.isEnabled().catch(() => false))) {
++        await new Promise((resolve) => setTimeout(resolve, 150));
++        continue;
++      }
++      const heading = await onboarding.getByRole("heading", { level: 1 }).innerText().catch(() => "");
++      await skip.click();
++      result.ui_actions.push("skipped-local-onboarding-step");
++      const stepDeadline = Date.now() + 15_000;
++      while (Date.now() < stepDeadline) {
++        if (await composer.isVisible().catch(() => false)) return;
++        if (!(await onboarding.isVisible().catch(() => false))) break;
++        const nextHeading = await onboarding.getByRole("heading", { level: 1 }).innerText().catch(() => "");
++        if (nextHeading && nextHeading !== heading) break;
++        await new Promise((resolve) => setTimeout(resolve, 100));
++      }
++      continue;
++    }
++    await new Promise((resolve) => setTimeout(resolve, 150));
++  }
++  throw new Error("composer_not_ready_after_onboarding");
++}
++
++async function selectModel(page, model) {
++  if (!model) return false;
++  const trigger = page.getByTestId("chat-model-select-trigger");
++  if (!(await trigger.count())) return false;
++  await trigger.click();
++  const item = page.getByTestId(`chat-model-select-item-${model}`);
++  const available = await item.count() > 0;
++  if (model === "deepseek-v4-pro") result.model_selection.pro_item_available = available;
++  if (available && await item.isEnabled()) {
++    await item.click();
++    result.model_selection.selected = model;
++    return true;
++  }
++  return false;
++}
++
++async function send(page, prompt) {
++  const input = page.getByTestId("v4-composer-input");
++  await input.waitFor({ state: "visible", timeout: 20_000 });
++  await input.fill(prompt);
++  result.ui_actions.push("filled-v4-composer-input");
++  const button = page.getByTestId("v4-composer-send");
++  await button.waitFor({ state: "visible", timeout: 10_000 });
++  if (await button.isEnabled()) {
++    await button.click();
++    result.ui_actions.push("clicked-v4-composer-send");
++    return { button_enabled: true };
++  }
++  await input.press("Enter");
++  result.ui_actions.push("pressed-enter-with-send-disabled");
++  return { button_enabled: false };
++}
++
++async function waitForVisibleText(page, text, timeout = 45_000) {
++  const assistantRows = page.locator('[data-testid^="v4-row-"][class*="group/assistant-row"]');
++  const assistantReply = assistantRows.filter({ hasText: text }).last();
++  await assistantReply.waitFor({ state: "visible", timeout });
++  const visibleAssistantText = await assistantReply.innerText();
++  assert.ok(visibleAssistantText.includes(text), "expected text was not in an assistant response row");
++  await page.getByTestId("v4-stop").waitFor({ state: "detached", timeout: 20_000 });
++  const body = await snapshot(page, `ui-${spec.scenario_id}-final`);
++  assert.ok(body.includes(text), "verified assistant response was not present in the renderer snapshot");
++  result.user_visible_reply = text;
++}
++
++async function waitForVisibleAssistantText(page, text, timeout = 15_000) {
++  const assistantRows = page.locator('[data-testid^="v4-row-"][class*="group/assistant-row"]');
++  const partial = assistantRows.filter({ hasText: text }).last();
++  await partial.waitFor({ state: "visible", timeout });
++  assert.ok((await partial.innerText()).includes(text), "streamed text was not in an assistant response row");
++}
++
++async function waitForError(page) {
++  const banner = page.getByTestId("chat-error-banner");
++  await banner.waitFor({ state: "visible", timeout: 30_000 });
++  const errorCode = await banner.getAttribute("data-error-code");
++  result.error_banner = { visible: true, error_code: errorCode ?? null };
++  await snapshot(page, `ui-${spec.scenario_id}-error`);
++}
++
++async function inspectHistory(page) {
++  if (!Array.isArray(spec.history_markers) || spec.history_markers.length !== 2) throw new Error("history_markers_missing");
++  const userMarker = page.getByText(spec.history_markers[0], { exact: true }).first();
++  await userMarker.waitFor({ state: "visible", timeout: 25_000 });
++  await userMarker.click();
++  await page.getByText(spec.history_markers[1], { exact: true }).waitFor({ state: "visible", timeout: 25_000 });
++  result.ui_actions.push("opened-native-synthetic-history-in-renderer");
++  await snapshot(page, `ui-${spec.scenario_id}-history`);
++}
++
++async function inspectSettings(page) {
++  const settings = await openSettings(page);
++  await settings.getByTestId("settings-locale-select-trigger").waitFor({ state: "visible", timeout: 15_000 });
++  result.ui_actions.push("opened-native-settings-page");
++  await snapshot(settings, `ui-${spec.scenario_id}-settings`);
++  const back = settings.getByTestId("settings-back-button");
++  if (await back.count()) await back.click();
++  else if (settings !== page) await settings.close();
++  else await page.keyboard.press("Escape");
++}
++
++try {
++  app = await _electron.launch({
++    executablePath: spec.electron,
++    cwd: spec.candidate,
++    args: ["-r", spec.guard, spec.desktop, "--disable-background-networking", "--open-workspace", spec.workspace],
++    env: spec.env,
++    timeout: 45_000,
++  });
++  await writeFile(path.join(spec.out, "desktop-main.pid"), `${app.process().pid}\n`, { flag: "wx" });
++  if (typeof spec.cancel_file === "string" && path.isAbsolute(spec.cancel_file)) {
++    const cancelTimer = setInterval(async () => {
++      if (!app || !existsSync(spec.cancel_file)) return;
++      clearInterval(cancelTimer);
++      await app.close().catch(() => {});
++      app = undefined;
++      process.exit(124);
++    }, 200);
++    cancelTimer.unref();
++  }
++  app.process().stdout?.on("data", (data) => process.stdout.write(data));
++  app.process().stderr?.on("data", (data) => process.stderr.write(data));
++  const first = await app.firstWindow({ timeout: 45_000 });
++  await readyWorkspace(first);
++  assert.equal(await app.evaluate(() => globalThis.__p01Guard), true, "Electron main-process guard did not load");
++  const desktop = await app.evaluate(({ app: nativeApp, BrowserWindow }) => ({
++    main_pid: process.pid,
++    cwd: process.cwd(),
++    home: nativeApp.getPath("home"),
++    userData: nativeApp.getPath("userData"),
++    sessionData: nativeApp.getPath("sessionData"),
++    visible: BrowserWindow.getAllWindows().some((window) => window.isVisible()),
++    remote_debugging_port: nativeApp.commandLine.getSwitchValue("remote-debugging-port"),
++  }));
++  assert.equal(desktop.cwd, spec.candidate, "Electron did not inherit candidateRoot cwd");
++  assert.equal(desktop.visible, false, "the test Electron window became visible");
++  assert.equal(desktop.remote_debugging_port, "0", "Desktop fixed inspector port was not disabled");
++  assert.equal(desktop.home, spec.profile_paths.home);
++  assert.equal(desktop.userData, spec.profile_paths.user_data);
++  assert.equal(desktop.sessionData, spec.profile_paths.session_data);
++  result.desktop = desktop;
++  result.desktop.descendant_processes = await descendantProcesses(desktop.main_pid);
++  await snapshot(first, `ui-${spec.scenario_id}-entry`);
++
++  if (spec.flow === "reply") {
++    if (spec.model) await selectModel(first, spec.model);
++    await send(first, spec.prompt);
++    await waitForVisibleText(first, spec.expected_reply);
++  } else if (spec.flow === "cancel_recovery") {
++    await selectModel(first, "deepseek-flash");
++    await send(first, spec.prompt);
++    const stop = first.getByTestId("v4-stop");
++    await stop.waitFor({ state: "visible", timeout: 20_000 });
++    await waitForVisibleAssistantText(first, spec.partial_reply, 15_000);
++    result.ui_actions.push("observed-streaming-partial-in-renderer");
++    await stop.click();
++    result.ui_actions.push("clicked-native-stop-button");
++    await writeFile(spec.cancel_observed_file, `${JSON.stringify({
++      schema: "p01-u10-cancel-observed/v1",
++      scenario_id: spec.scenario_id,
++      action: "clicked-native-stop-button",
++    })}\n`, { flag: "wx" });
++    await stop.waitFor({ state: "detached", timeout: 20_000 });
++    await send(first, "请恢复后简短回应，不要复述我刚才的要求。");
++    await waitForVisibleText(first, spec.expected_reply, 30_000);
++  } else if (spec.flow === "no_key") {
++    await inspectHistory(first);
++    await first.getByTestId("conversation-new-task").click();
++    result.ui_actions.push("clicked-new-conversation-task");
++    const sendResult = await send(first, spec.prompt);
++    result.no_key_send_button_enabled = sendResult.button_enabled;
++    if (sendResult.button_enabled) {
++      await waitForError(first);
++    } else {
++      result.error_banner = { visible: false, refused_by_disabled_control: true };
++      await snapshot(first, `ui-${spec.scenario_id}-send-disabled`);
++    }
++    await inspectSettings(first);
++  } else if (spec.flow === "offline") {
++    if (spec.history_markers) {
++      await inspectHistory(first);
++      await first.getByTestId("conversation-new-task").click();
++      result.ui_actions.push("clicked-new-conversation-task");
++    }
++    await selectModel(first, "deepseek-flash");
++    await send(first, spec.prompt);
++    await waitForError(first);
++    await inspectSettings(first);
++    if (spec.history_markers) await inspectHistory(first);
++  } else if (spec.flow === "pro_denied") {
++    const selected = await selectModel(first, "deepseek-v4-pro");
++    result.model_selection.pro_selected = selected;
++    if (selected) {
++      await send(first, spec.prompt);
++      await waitForError(first);
++    } else {
++      await snapshot(first, `ui-${spec.scenario_id}-pro-unavailable`);
++    }
++  }
++
++  result.desktop.descendant_processes = await descendantProcesses(result.desktop.main_pid);
++  result.status = "completed";
++  result.passed = true;
++  await saveJson("ui-result.json", result);
++  process.stdout.write(`${JSON.stringify({ kind: "p01_u10_ui_result", scenario_id: spec.scenario_id, passed: true })}\n`);
++} catch (error) {
++  result.status = "failed";
++  result.passed = false;
++  result.failure_code = error instanceof Error && /^[a-z0-9_]+$/.test(error.message) ? error.message : "ui_assertion_failed";
++  const firstLine = error instanceof Error ? error.message.split(/\r?\n/u, 1)[0] : "unknown_failure";
++  result.failure_details = {
++    name: error instanceof Error && ["Error", "TypeError", "RangeError", "AssertionError", "TimeoutError"].includes(error.name)
++      ? error.name : "Unknown",
++    code: error && typeof error.code === "string" && /^[A-Z][A-Z0-9_]{0,60}$/.test(error.code) ? error.code : "unknown",
++    operator: error && typeof error.operator === "string" && /^[a-z]+$/u.test(error.operator) ? error.operator : null,
++    message: firstLine.slice(0, 240),
++    stack: error instanceof Error && typeof error.stack === "string"
++      ? error.stack.split(/\r?\n/u).slice(0, 8).join("\n").slice(0, 1600) : null,
++    windows: app?.windows().length ?? 0,
++  };
++  if (result.desktop?.main_pid) {
++    result.desktop.descendant_processes = await descendantProcesses(result.desktop.main_pid).catch(() => []);
++  }
++  if (app) {
++    for (const [index, page] of app.windows().entries()) {
++      await snapshot(page, `ui-${spec.scenario_id}-failure-window-${index}`).catch(() => {});
++    }
++  }
++  await saveJson("ui-result.json", result).catch(() => {});
++  process.stderr.write(`P01_U10_UI_FAILED:${result.failure_code}\n`);
++  process.exitCode = 1;
++} finally {
++  await app?.close();
++}
+diff --git a/tests/integration/P01/desktop.py b/tests/integration/P01/desktop.py
+new file mode 100644
+index 0000000..d4c077f
+--- /dev/null
++++ b/tests/integration/P01/desktop.py
+@@ -0,0 +1,1339 @@
++"""Actual Desktop UI matrix against an owned loopback-only model relay."""
++
++from __future__ import annotations
++
++import argparse
++import hashlib
++from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
++import json
++import os
++from pathlib import Path
++import re
++import runpy
++import socket
++import subprocess
++import threading
++import time
++import uuid
++
++
++REPO = Path(__file__).resolve().parents[3]
++ROOT = Path(r"E:\Xiadie\Xiadie")
++SOURCE = ROOT / ".runtime/P01/desktop-source"
++NODE = ROOT / ".runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe"
++PRODUCTION_GLOBALS_HELPER = ROOT / "spikes/P01/run-no-key.py"
++PRODUCTION_PROVIDER_CONFIG = Path(r"C:\Users\liyi\.zcode\v2\provider_config.json")
++MODEL_CALLS_LEDGER = ROOT / "evidence/P01/model-calls.jsonl"
++PIN = "29628c9acdb81b703bbd4080c207a0e7ce5e276e"
++HERE = Path(__file__).resolve().parent
++PROFILE_BRIDGE = ROOT / "tests/evals/persona/profile-bridge.mjs"
++SEED_HISTORY = REPO / "packages/config/test/seed-history.mjs"
++UI_DRIVER = HERE / "desktop-ui.mjs"
++NETWORK_GUARD = HERE / "electron-network-guard.cjs"
++TITLE_SIDECAR_SOURCE = SOURCE / "apps/zcode-cli/packages/core/src/runtime/methods/title-generation-sidecar.ts"
++SYNTHETIC_KEY = "p01-u09-loopback-only"
++CLIENT_DISCONNECT_ERRORS = (BrokenPipeError, ConnectionAbortedError, ConnectionResetError)
++KNOWN_CLIENT_DISCONNECT_CODES = {32, 103, 104, 109, 10053, 10054}
++FULL_SCENARIOS = ("success", "read_success", "read_failure", "cancel_recovery", "disabled_native", "pro_denied")
++DEGRADATION_SCENARIOS = ("no_key", "no_dsh", "offline")
++EXPECTED_REPLIES = {
++    "success": "你好，我是遐蝶。我们可以慢慢聊。",
++    "read_success": "读到的标记是 orchid-42。",
++    "read_failure": "missing.txt 不存在，这一步未完成，我没有读到文件内容。",
++    "cancel_recovery": "已恢复。",
++    "disabled_native": "原生模型路径已通过本地测试。",
++    "no_dsh": "本地运行正常，没有启动 DSH。",
++}
++ALLOWED_DESCRIPTOR_KEYS = {
++    "schemaVersion", "sourceCommit", "sourceRoot", "repositoryCommit", "assemblyRoot",
++    "desktopPath", "cliEntry", "cwd", "electronPath", "playwrightPath", "nodePath",
++    "factoryEntry", "factory", "recipe", "cli", "resourcesRoot", "gateEnv", "gateDefault",
++    "candidateModel", "deniedModel", "protocolPatch", "providerConfig", "invocationContext",
++    "invocationContextModuleCount", "nodeVersion", "artifacts", "scope", "repositoryInputs",
++}
++
++
++class HarnessError(RuntimeError):
++    pass
++
++
++def sha256(path: Path) -> str:
++    digest = hashlib.sha256()
++    with path.open("rb") as stream:
++        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
++            digest.update(chunk)
++    return digest.hexdigest()
++
++
++def summarize_request_shape(body: dict) -> dict:
++    def field_state(key: str) -> str:
++        if key not in body:
++            return "absent"
++        value = body[key]
++        if key == "stream":
++            return "true" if value is True else "false" if value is False else "other"
++        if key == "tools":
++            if value is None:
++                return "null"
++            if isinstance(value, list):
++                return "empty" if not value else "nonempty"
++            return "other"
++        if value is None:
++            return "null"
++        if isinstance(value, str) and value in {"none", "auto", "required"}:
++            return value
++        return "object" if isinstance(value, dict) else "other"
++
++    return {
++        "body_keys": sorted(body),
++        "stream_present": "stream" in body,
++        "stream": field_state("stream"),
++        "tools": field_state("tools"),
++        "tool_choice": field_state("tool_choice"),
++    }
++
++
++def execution_bindings() -> dict:
++    commit = subprocess.run(["git", "-C", str(REPO), "rev-parse", "HEAD"],
++                            capture_output=True, text=True, check=False)
++    if commit.returncode != 0:
++        raise HarnessError("execution_commit_unavailable")
++    files = {
++        "desktop_runner": Path(__file__).resolve(),
++        "desktop_ui": UI_DRIVER,
++        "electron_network_guard": NETWORK_GUARD,
++        "profile_bridge": PROFILE_BRIDGE,
++        "seed_history": SEED_HISTORY,
++    }
++    fingerprints = []
++    for label, path in files.items():
++        if not path.is_file():
++            raise HarnessError(f"execution_binding_{label}_missing")
++        fingerprints.append({"label": label, "path": str(path.resolve()),
++                             "bytes": path.stat().st_size, "sha256": sha256(path)})
++    return {"repository": str(REPO), "commit": commit.stdout.strip(), "files": fingerprints}
++
++
++def production_file_fingerprint(path: Path, *, count_lines: bool = False) -> dict:
++    if not path.is_file():
++        return {"path": str(path), "exists": False, "bytes": None, "sha256": None,
++                **({"line_count": None} if count_lines else {})}
++    digest = hashlib.sha256()
++    byte_count = 0
++    line_count = 0
++    last_byte = None
++    with path.open("rb") as stream:
++        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
++            digest.update(chunk)
++            byte_count += len(chunk)
++            if count_lines:
++                line_count += chunk.count(b"\n")
++                last_byte = chunk[-1]
++    if count_lines and byte_count and last_byte != 0x0A:
++        line_count += 1
++    return {"path": str(path), "exists": True, "bytes": byte_count, "sha256": digest.hexdigest(),
++            **({"line_count": line_count} if count_lines else {})}
++
++
++def production_snapshot() -> dict:
++    if not PRODUCTION_GLOBALS_HELPER.is_file():
++        raise HarnessError("production_snapshot_helper_missing")
++    helper = runpy.run_path(str(PRODUCTION_GLOBALS_HELPER))
++    globals_snapshot = helper.get("globals_snapshot")
++    if not callable(globals_snapshot):
++        raise HarnessError("production_snapshot_helper_invalid")
++    # The imported helper reports only existence and SHA-256 for fixed legacy paths.
++    # It never parses or persists their contents.
++    return {
++        "global_file_hashes": globals_snapshot(),
++        "official_provider_config": production_file_fingerprint(PRODUCTION_PROVIDER_CONFIG),
++        "model_call_ledger": production_file_fingerprint(MODEL_CALLS_LEDGER, count_lines=True),
++    }
++
++
++def write_json(path: Path, value: object) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    with path.open("x", encoding="utf-8", newline="\n") as stream:
++        json.dump(value, stream, ensure_ascii=False, indent=2)
++        stream.write("\n")
++
++
++def read_json(path: Path) -> object:
++    return json.loads(path.read_text(encoding="utf-8"))
++
++
++def path_is_inside(root: Path, path: Path) -> bool:
++    try:
++        path.resolve(strict=True).relative_to(root.resolve(strict=True))
++        return True
++    except (OSError, ValueError):
++        return False
++
++
++def safe_system_environment() -> dict[str, str]:
++    env = {
++        key.upper(): value
++        for key, value in os.environ.items()
++        if key.upper() in {"SYSTEMROOT", "WINDIR", "COMSPEC", "PATHEXT"}
++    }
++    if not env.get("SYSTEMROOT"):
++        env["SYSTEMROOT"] = r"C:\Windows"
++    if not env.get("WINDIR"):
++        env["WINDIR"] = env["SYSTEMROOT"]
++    env["PATH"] = os.pathsep.join(
++        [str(NODE.parent), r"C:\Program Files\Git\cmd", r"C:\Windows\System32"]
++    )
++    return env
++
++
++def run_logged(argv: list[str], cwd: Path, env: dict[str, str], output: Path, label: str, timeout: int) -> dict:
++    record = {"argv": argv, "cwd": str(cwd), "timeout_seconds": timeout}
++    try:
++        result = subprocess.run(
++            argv,
++            cwd=str(cwd),
++            env=env,
++            stdout=subprocess.PIPE,
++            stderr=subprocess.PIPE,
++            timeout=timeout,
++            check=False,
++            shell=False,
++        )
++        record.update({
++            "exit_code": result.returncode,
++            "stdout_bytes": len(result.stdout),
++            "stdout_sha256": hashlib.sha256(result.stdout).hexdigest(),
++            "stderr_bytes": len(result.stderr),
++            "stderr_sha256": hashlib.sha256(result.stderr).hexdigest(),
++        })
++        (output / f"{label}.stdout.bin").write_bytes(result.stdout)
++        (output / f"{label}.stderr.bin").write_bytes(result.stderr)
++    except subprocess.TimeoutExpired as error:
++        stdout = error.stdout or b""
++        stderr = error.stderr or b""
++        record.update({"exit_code": None, "timed_out": True,
++                       "stdout_bytes": len(stdout), "stdout_sha256": hashlib.sha256(stdout).hexdigest(),
++                       "stderr_bytes": len(stderr), "stderr_sha256": hashlib.sha256(stderr).hexdigest()})
++        (output / f"{label}.stdout.bin").write_bytes(stdout)
++        (output / f"{label}.stderr.bin").write_bytes(stderr)
++    write_json(output / f"{label}.command.json", record)
++    return record
++
++
++def run_ui_driver(spec_path: Path, scenario_output: Path, env: dict[str, str], timeout: int = 240) -> dict:
++    argv = [str(NODE), str(UI_DRIVER), str(spec_path)]
++    record = {"argv": argv, "cwd": str(REPO), "timeout_seconds": timeout}
++    process = subprocess.Popen(argv, cwd=str(REPO), env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
++    timed_out = False
++    forced_electron_pids: list[int] = []
++    try:
++        stdout, stderr = process.communicate(timeout=timeout)
++    except subprocess.TimeoutExpired:
++        timed_out = True
++        (scenario_output / "cancel.request").write_text("timeout cleanup requested\n", encoding="utf-8")
++        try:
++            stdout, stderr = process.communicate(timeout=35)
++        except subprocess.TimeoutExpired:
++            pid_file = scenario_output / "desktop-main.pid"
++            if pid_file.is_file():
++                try:
++                    electron_pid = int(pid_file.read_text(encoding="utf-8").strip())
++                except ValueError:
++                    electron_pid = 0
++                if electron_pid > 0:
++                    kill_path = Path(env["SYSTEMROOT"]) / "System32/taskkill.exe"
++                    killed = subprocess.run([str(kill_path), "/PID", str(electron_pid), "/T", "/F"],
++                                            env=env, capture_output=True, timeout=15, check=False)
++                    forced_electron_pids.append(electron_pid)
++                    (scenario_output / "electron-timeout-cleanup.stdout.bin").write_bytes(killed.stdout)
++                    (scenario_output / "electron-timeout-cleanup.stderr.bin").write_bytes(killed.stderr)
++            process.terminate()
++            stdout, stderr = process.communicate(timeout=15)
++    (scenario_output / "desktop-ui.stdout.bin").write_bytes(stdout)
++    (scenario_output / "desktop-ui.stderr.bin").write_bytes(stderr)
++    record.update({"exit_code": process.returncode, "timed_out": timed_out,
++                   "forced_electron_root_pids": forced_electron_pids,
++                   "stdout_bytes": len(stdout), "stdout_sha256": hashlib.sha256(stdout).hexdigest(),
++                   "stderr_bytes": len(stderr), "stderr_sha256": hashlib.sha256(stderr).hexdigest()})
++    write_json(scenario_output / "desktop-ui.command.json", record)
++    return record
++
++
++def same_path(actual: object, expected: Path, label: str, *, must_exist: bool = True) -> Path:
++    if not isinstance(actual, str) or not Path(actual).is_absolute():
++        raise HarnessError(f"descriptor_{label}_must_be_absolute")
++    actual_path = Path(actual)
++    try:
++        resolved = actual_path.resolve(strict=must_exist)
++        expected_resolved = expected.resolve(strict=must_exist)
++    except OSError as error:
++        raise HarnessError(f"descriptor_{label}_missing") from error
++    if os.path.normcase(str(resolved)) != os.path.normcase(str(expected_resolved)):
++        raise HarnessError(f"descriptor_{label}_mismatch")
++    return resolved
++
++
++def verify_candidate(candidate_arg: str) -> dict:
++    candidate = Path(candidate_arg)
++    if not candidate.is_absolute():
++        raise HarnessError("candidate_must_be_absolute")
++    try:
++        resolved_candidate = candidate.resolve(strict=True)
++    except OSError as error:
++        raise HarnessError("candidate_missing") from error
++    if not resolved_candidate.is_dir() or candidate.is_symlink():
++        raise HarnessError("candidate_must_be_physical_directory")
++    descriptor_path = resolved_candidate / "candidate-descriptor.json"
++    descriptor = read_json(descriptor_path)
++    if not isinstance(descriptor, dict) or set(descriptor) - ALLOWED_DESCRIPTOR_KEYS:
++        raise HarnessError("descriptor_schema_invalid")
++    if descriptor.get("schemaVersion") != 1 or descriptor.get("sourceCommit") != PIN:
++        raise HarnessError("candidate_source_pin_mismatch")
++    if descriptor.get("gateEnv") != "P01_U10_GATE_MODE":
++        raise HarnessError("candidate_factory_contract_mismatch")
++    if descriptor.get("gateDefault") != "enabled" or descriptor.get("candidateModel") != "deepseek-flash":
++        raise HarnessError("candidate_qualification_contract_mismatch")
++    if descriptor.get("deniedModel") != "deepseek-v4-pro":
++        raise HarnessError("candidate_denied_model_contract_mismatch")
++
++    expected_paths = {
++        "assemblyRoot": resolved_candidate,
++        "desktopPath": resolved_candidate / "packages/desktop",
++        "cliEntry": resolved_candidate / "apps/zcode-cli/packages/cli/dist/zcode.cjs",
++        "cwd": resolved_candidate,
++        "electronPath": ROOT / ".runtime/P01/desktop-source/node_modules/electron/dist/electron.exe",
++        "playwrightPath": ROOT / ".runtime/P01/desktop-source/node_modules/playwright-core/index.js",
++        "sourceRoot": ROOT / ".runtime/P01/desktop-source",
++        "nodePath": NODE,
++    }
++    resolved = {
++        name: str(same_path(descriptor.get(name), expected, name))
++        for name, expected in expected_paths.items()
++    }
++    resolved["nodePath"] = str(same_path(descriptor.get("nodePath"), NODE, "nodePath"))
++    if descriptor.get("nodeVersion") != "v24.14.0" or descriptor.get("invocationContextModuleCount") != 1:
++        raise HarnessError("candidate_runtime_contract_mismatch")
++    source_metadata = {}
++    for label in ("factory", "recipe", "cli", "invocationContext"):
++        item = descriptor.get(label)
++        if not isinstance(item, dict) or not isinstance(item.get("path"), str):
++            raise HarnessError(f"descriptor_{label}_invalid")
++        item_path = Path(item["path"])
++        if not item_path.is_absolute() or not item_path.is_file():
++            raise HarnessError(f"descriptor_{label}_missing")
++        current_match = item.get("bytes") == item_path.stat().st_size and item.get("sha256") == sha256(item_path)
++        if not current_match:
++            raise HarnessError(f"descriptor_{label}_hash_mismatch")
++        source_metadata[f"{label}_matches_current_file"] = current_match
++    if Path(descriptor["factoryEntry"]).resolve(strict=True) != Path(descriptor["factory"]["path"]).resolve(strict=True):
++        raise HarnessError("candidate_factory_entry_mismatch")
++    repository_root_result = subprocess.run(
++        ["git", "-C", str(Path(descriptor["factory"]["path"]).parent), "rev-parse", "--show-toplevel"],
++        capture_output=True, text=True, check=False,
++    )
++    if repository_root_result.returncode != 0:
++        raise HarnessError("candidate_repository_root_unavailable")
++    repository_root = Path(repository_root_result.stdout.strip()).resolve(strict=True)
++    repository_commit = subprocess.run(["git", "-C", str(repository_root), "rev-parse", "HEAD"],
++                                       capture_output=True, text=True, check=False)
++    repository_status = subprocess.run(["git", "-C", str(repository_root), "status", "--porcelain"],
++                                       capture_output=True, text=True, check=False)
++    build_commit = descriptor.get("repositoryCommit")
++    if not isinstance(build_commit, str) or not re.fullmatch(r"[a-f0-9]{40}", build_commit):
++        raise HarnessError("candidate_repository_commit_invalid")
++    ancestry = subprocess.run(["git", "-C", str(repository_root), "merge-base", "--is-ancestor", build_commit, "HEAD"],
++                              capture_output=True, check=False)
++    if (repository_commit.returncode != 0 or repository_status.returncode != 0 or
++            ancestry.returncode != 0 or repository_status.stdout.strip()):
++        raise HarnessError("candidate_repository_not_clean_and_pinned")
++    # Review/evidence commits may follow a build. Its material inputs still have
++    # to equal the original committed blobs and their descriptor hashes.
++    source_metadata["build_repository_commit"] = build_commit
++    source_metadata["verification_repository_commit"] = repository_commit.stdout.strip()
++    repository_inputs = descriptor.get("repositoryInputs")
++    if not isinstance(repository_inputs, list) or not repository_inputs:
++        raise HarnessError("descriptor_repository_inputs_invalid")
++    verified_inputs = []
++    for item in repository_inputs:
++        if not isinstance(item, dict) or not isinstance(item.get("path"), str):
++            raise HarnessError("descriptor_repository_input_invalid")
++        rel = Path(item["path"])
++        if rel.is_absolute() or ".." in rel.parts:
++            raise HarnessError("descriptor_repository_input_path_invalid")
++        item_path = (repository_root / rel).resolve(strict=True)
++        if (not path_is_inside(repository_root, item_path) or not item_path.is_file()
++                or item.get("bytes") != item_path.stat().st_size or item.get("sha256") != sha256(item_path)):
++            raise HarnessError("candidate_repository_input_mismatch")
++        blob = subprocess.run(["git", "-C", str(repository_root), "show", f"{build_commit}:{rel.as_posix()}"],
++                              capture_output=True, check=False)
++        if blob.returncode != 0 or blob.stdout != item_path.read_bytes():
++            raise HarnessError("candidate_repository_input_commit_mismatch")
++        verified_inputs.append(item["path"])
++    protocol_patch = descriptor.get("protocolPatch")
++    if not isinstance(protocol_patch, dict) or not isinstance(protocol_patch.get("file"), str):
++        raise HarnessError("descriptor_protocol_patch_invalid")
++    patch_path = Path(protocol_patch["file"])
++    if (not patch_path.is_absolute() or not patch_path.is_file()
++            or sha256(patch_path) != protocol_patch.get("originalSha256")):
++        raise HarnessError("candidate_protocol_source_mismatch")
++    provider_metadata = descriptor.get("providerConfig")
++    if isinstance(provider_metadata, dict):
++        provider_source = provider_metadata.get("source")
++        if not isinstance(provider_source, dict) or not isinstance(provider_source.get("path"), str):
++            raise HarnessError("descriptor_provider_source_invalid")
++        provider_path = Path(provider_source["path"])
++        if (not provider_path.is_absolute() or not provider_path.is_file()
++                or provider_source.get("sha256") != sha256(provider_path)):
++            raise HarnessError("candidate_provider_source_mismatch")
++    else:
++        bundled_provider = resolved_candidate / "apps/zcode-cli/packages/cli/dist/provider/zcode-builtin.json"
++        pinned_provider = subprocess.run(
++            ["git", "-C", str(SOURCE), "show", f"{PIN}:config/provider/zcode-builtin.json"],
++            capture_output=True, check=False,
++        )
++        if (not bundled_provider.is_file() or pinned_provider.returncode != 0
++                or hashlib.sha256(bundled_provider.read_bytes()).digest() != hashlib.sha256(pinned_provider.stdout).digest()):
++            raise HarnessError("candidate_provider_source_mismatch")
++    files = [
++        Path(resolved["desktopPath"]) / "out/main/index.js",
++        Path(resolved["desktopPath"]) / "out/host/index.js",
++        Path(resolved["desktopPath"]) / "out/preload/index.cjs",
++        Path(resolved["desktopPath"]) / "out/renderer/index.html",
++        Path(resolved["cliEntry"]),
++    ]
++    if any(not path.is_file() for path in files):
++        raise HarnessError("candidate_desktop_build_incomplete")
++
++    artifacts = descriptor.get("artifacts", [])
++    if not isinstance(artifacts, list):
++        raise HarnessError("descriptor_artifacts_invalid")
++    for artifact in artifacts:
++        if not isinstance(artifact, dict) or not isinstance(artifact.get("path"), str):
++            raise HarnessError("descriptor_artifact_invalid")
++        rel = Path(artifact["path"])
++        if rel.is_absolute() or ".." in rel.parts:
++            raise HarnessError("descriptor_artifact_path_invalid")
++        artifact_path = (resolved_candidate / rel).resolve(strict=True)
++        if not path_is_inside(resolved_candidate, artifact_path) or not artifact_path.is_file():
++            raise HarnessError("descriptor_artifact_outside_candidate")
++        if artifact.get("bytes") != artifact_path.stat().st_size or artifact.get("sha256") != sha256(artifact_path):
++            raise HarnessError("candidate_artifact_hash_mismatch")
++
++    cli_metadata = descriptor.get("cli")
++    if cli_metadata.get("path") != resolved["cliEntry"] or cli_metadata.get("sha256") != sha256(Path(resolved["cliEntry"])):
++        raise HarnessError("candidate_cli_hash_mismatch")
++    return {
++        "descriptor_path": str(descriptor_path),
++        "descriptor_sha256": sha256(descriptor_path),
++        "descriptor": {key: descriptor[key] for key in sorted(descriptor) if key not in {"artifacts"}},
++        "resolved_paths": resolved,
++        "repository_root": str(repository_root),
++        "verified_artifacts": len(artifacts),
++        "verified_repository_inputs": len(verified_inputs),
++        "external_source_metadata": source_metadata,
++    }
++
++
++def verify_pinned_source() -> dict:
++    if (not NODE.is_file() or not PROFILE_BRIDGE.is_file() or not UI_DRIVER.is_file()
++            or not NETWORK_GUARD.is_file() or not TITLE_SIDECAR_SOURCE.is_file()):
++        raise HarnessError("fixed_u10_toolchain_or_fixture_missing")
++    commit = subprocess.run(["git", "-C", str(SOURCE), "rev-parse", "HEAD"], capture_output=True, text=True, check=False)
++    status = subprocess.run(["git", "-C", str(SOURCE), "status", "--porcelain"], capture_output=True, text=True, check=False)
++    if commit.returncode or status.returncode or commit.stdout.strip() != PIN or status.stdout.strip():
++        raise HarnessError("fixed_native_source_not_clean_and_pinned")
++    return {"path": str(SOURCE), "commit": commit.stdout.strip(), "clean": True}
++
++
++def output_root(args_output: str | None) -> Path:
++    if args_output is not None:
++        path = Path(args_output)
++        if not path.is_absolute():
++            raise HarnessError("output_must_be_absolute")
++        resolved = path.resolve(strict=False)
++        if resolved.exists():
++            raise HarnessError("output_must_not_exist")
++        resolved.parent.mkdir(parents=True, exist_ok=True)
++        resolved.mkdir()
++        return resolved
++    stamp = time.strftime("%Y%m%d-%H%M%S", time.gmtime())
++    parent = REPO / "evidence/P01-U10/runs"
++    parent.mkdir(parents=True, exist_ok=True)
++    for _ in range(10):
++        candidate = parent / f"{stamp}-{uuid.uuid4().hex[:10]}"
++        try:
++            candidate.mkdir()
++            return candidate
++        except FileExistsError:
++            continue
++    raise HarnessError("could_not_allocate_unique_output")
++
++
++def native_provider_config(origin: str, *, no_key: bool, include_pro: bool) -> dict:
++    if no_key:
++        return {"schemaVersion": 1, "config": {
++            "providerConfigRules": {"providerRules": []},
++            "modelConfigRules": {"providerModelRules": [], "manualProviderModelRules": []},
++        }}
++    model_ids = ["deepseek-flash", "deepseek-v4-pro"] if include_pro else ["deepseek-flash"]
++    provider = {
++        "providerId": "p01-u10-loopback",
++        "providerName": "P01 U10 owned loopback mock",
++        "enabled": True,
++        "config": {
++            "group": "standard-personal",
++            "api": {"type": "openai-chat-completions", "baseUrl": f"{origin}/v1"},
++            "access": {"type": "api-key", "apiKey": SYNTHETIC_KEY},
++            "personalModelIds": model_ids,
++        },
++    }
++    model_rules = []
++    for model_id in model_ids:
++        model_rules.append({
++            "providerId": "p01-u10-loopback",
++            "modelId": model_id,
++            "config": {
++                "properties": {"supportsToolCall": True},
++                "optionSpecs": {
++                    "reasoningLevel": {"values": ["disabled"], "map": '{"thinking":{"type":"disabled"}}'},
++                    "maxOutputTokens": {"max": 1024, "map": '{"max_tokens":maxOutputTokens}'},
++                },
++            },
++        })
++    return {"schemaVersion": 1, "config": {
++        "providerOrder": ["p01-u10-loopback"],
++        "providerConfigRules": {"providerRules": [provider]},
++        "modelConfigRules": {"providerModelRules": model_rules, "manualProviderModelRules": []},
++        "defaultModelSelection": {
++            "providerId": "p01-u10-loopback",
++            "modelId": "deepseek-flash",
++            "options": {"reasoningLevel": "disabled"},
++        },
++    }}
++
++
++def seed_workspace(profile: Path, scenario_output: Path, *, with_history: bool, env: dict[str, str]) -> tuple[Path, list[str] | None]:
++    workspace = profile / "workspace"
++    workspace.mkdir(parents=True, exist_ok=True)
++    (workspace / "readme.txt").write_text("P01_ONLY_READ_VALUE=orchid-42\n", encoding="utf-8", newline="\n")
++    (workspace / "AGENTS.md").write_text(
++        "Use Read only on the exact named fixture file in this workspace. Do not read other files.\n",
++        encoding="utf-8", newline="\n",
++    )
++    git_init = subprocess.run(["git", "init", "--quiet", str(workspace)], env=env, capture_output=True, check=False)
++    if git_init.returncode:
++        raise HarnessError("owned_workspace_git_init_failed")
++    markers = None
++    if with_history:
++        session_id = str(uuid.uuid4())
++        markers = [f"P01 U10 synthetic history {session_id[:8]}", f"P01 U10 persisted assistant {session_id[:8]}"]
++        history_spec = {
++            "source": str(SOURCE),
++            "workspace": str(workspace),
++            "profile_root": str(profile),
++            "session_id": session_id,
++            "user_marker": markers[0],
++            "assistant_marker": markers[1],
++            "out": str(scenario_output),
++        }
++        spec_path = scenario_output / "history-seed.spec.json"
++        write_json(spec_path, history_spec)
++        command = run_logged([str(NODE), str(SEED_HISTORY), str(spec_path)], REPO, env, scenario_output, "history-seed", 60)
++        if command.get("exit_code") != 0:
++            raise HarnessError("native_history_seed_failed")
++    return workspace, markers
++
++
++class MockRelay:
++    """One per UI scenario; only a dynamic 127.0.0.1 listener exists."""
++
++    def read_native_title_system_prompt(self) -> str:
++        source = TITLE_SIDECAR_SOURCE.read_text(encoding="utf-8")
++        match = re.search(r"const SESSION_TITLE_SYSTEM_PROMPT = `([^`]*)`;", source, re.DOTALL)
++        if match is None or "${" in match.group(1):
++            raise HarnessError("pinned_title_prompt_unavailable")
++        return match.group(1)
++
++    def has_native_title_messages(self, body: dict) -> bool:
++        messages = body.get("messages")
++        if not isinstance(messages, list) or len(messages) != 2:
++            return False
++        system, user = messages
++        return (
++            isinstance(system, dict) and system.get("role") == "system"
++            and system.get("content") == self.title_system_prompt
++            and isinstance(user, dict) and user.get("role") == "user"
++            and user.get("content") == scenario_prompt("disabled_native")
++        )
++
++    def wait_for_cancel_observation(self, timeout_seconds: float = 2.0) -> bool:
++        deadline = time.monotonic() + timeout_seconds
++        expected = {"schema": "p01-u10-cancel-observed/v1", "scenario_id": "cancel_recovery",
++                    "action": "clicked-native-stop-button"}
++        while time.monotonic() < deadline:
++            try:
++                if json.loads(self.cancel_observed_file.read_text(encoding="utf-8")) == expected:
++                    return True
++            except (OSError, json.JSONDecodeError):
++                pass
++            time.sleep(0.02)
++        return False
++
++    def __init__(self, scenario_id: str, output: Path, workspace: Path, expected_post_count: int, offline: bool = False):
++        self.scenario_id = scenario_id
++        self.output = output
++        self.workspace = workspace
++        self.expected_post_count = expected_post_count
++        self.offline = offline
++        self.records: list[dict] = []
++        self.lock = threading.Lock()
++        self.server: ThreadingHTTPServer | None = None
++        self.title_system_prompt = self.read_native_title_system_prompt()
++        self.cancel_observed_file = output / "cancel-observed.json"
++
++        outer = self
++
++        class Handler(BaseHTTPRequestHandler):
++            def log_message(self, *_args):
++                return
++
++            def send_body(self, status: int, content_type: str, payload: bytes):
++                self.send_response(status)
++                self.send_header("Content-Type", content_type)
++                self.send_header("Cache-Control", "no-store")
++                self.send_header("Connection", "close")
++                self.send_header("Content-Length", str(len(payload)))
++                self.end_headers()
++                try:
++                    self.wfile.write(payload)
++                    self.wfile.flush()
++                except (BrokenPipeError, ConnectionResetError):
++                    pass
++
++            def do_GET(self):
++                if self.path == "/v1/models":
++                    payload = {"object": "list", "data": [
++                        {"id": "deepseek-flash", "object": "model", "owned_by": "p01-u10"},
++                        {"id": "deepseek-v4-pro", "object": "model", "owned_by": "p01-u10"},
++                    ]}
++                    self.send_body(200, "application/json", json.dumps(payload).encode())
++                else:
++                    self.send_body(404, "application/json", b'{"error":{"message":"P01 route denied"}}')
++
++            def do_POST(self):
++                if self.path != "/v1/chat/completions":
++                    self.send_body(404, "application/json", b'{"error":{"message":"P01 route denied"}}')
++                    return
++                try:
++                    length = int(self.headers.get("Content-Length", "0"))
++                    if length <= 0 or length > 1024 * 1024:
++                        raise HarnessError("request_size_invalid")
++                    body_bytes = self.rfile.read(length)
++                    body = json.loads(body_bytes)
++                    if not isinstance(body, dict):
++                        raise HarnessError("request_body_invalid")
++                except Exception:
++                    with outer.lock:
++                        outer.records.append({"request_index": len(outer.records) + 1, "accepted": False,
++                                              "reason": "invalid_request", "status": 400})
++                    self.send_body(400, "application/json", b'{"error":{"message":"P01 request denied"}}')
++                    return
++
++                with outer.lock:
++                    index = len(outer.records) + 1
++                    record = {
++                        "request_index": index,
++                        "accepted": False,
++                        "request_sha256": hashlib.sha256(body_bytes).hexdigest(),
++                        "request_bytes": len(body_bytes),
++                        "request_shape": summarize_request_shape(body),
++                        "model": body.get("model") if isinstance(body.get("model"), str) else None,
++                        "stream": body.get("stream") is True,
++                        "auth_present": bool(self.headers.get("Authorization")),
++                        "synthetic_auth_only": self.headers.get("Authorization") == f"Bearer {SYNTHETIC_KEY}",
++                        "messages_count": len(body.get("messages", [])) if isinstance(body.get("messages"), list) else None,
++                        "tool_names": sorted({
++                            tool.get("function", {}).get("name")
++                            for tool in body.get("tools", [])
++                            if isinstance(tool, dict) and isinstance(tool.get("function"), dict)
++                            and isinstance(tool["function"].get("name"), str)
++                        }) if isinstance(body.get("tools"), list) else [],
++                        "assistant_tool_call_ids": [],
++                        "tool_result_ids": [],
++                        "upstream_attempted": False,
++                        "auxiliary_title": outer.has_native_title_messages(body),
++                    }
++                    outer.records.append(record)
++
++                try:
++                    self.validate_request(body, record, index)
++                    if outer.offline:
++                        record.update({"accepted": True, "status": 503, "offline_reject": True})
++                        self.send_body(503, "application/json", b'{"error":{"message":"P01 offline mock refusal"}}')
++                        return
++                    if outer.scenario_id == "no_key":
++                        raise HarnessError("no_key_request_must_be_refused_before_relay")
++                    if outer.scenario_id == "pro_denied":
++                        raise HarnessError("unqualified_pro_request_must_be_refused_before_relay")
++                    record["accepted"] = True
++                    record["status"] = 200
++                    if record["auxiliary_title"]:
++                        title_response = {
++                            "id": "chatcmpl-p01-u10-title",
++                            "object": "chat.completion",
++                            "created": 1,
++                            "model": "deepseek-flash",
++                            "choices": [{
++                                "index": 0,
++                                "message": {"role": "assistant", "content": '{"title":"U10 原生 UI 测试"}'},
++                                "finish_reason": "stop",
++                            }],
++                            "usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
++                        }
++                        self.send_body(200, "application/json", json.dumps(title_response, ensure_ascii=False).encode("utf-8"))
++                    else:
++                        self.send_sse(index, record)
++                except CLIENT_DISCONNECT_ERRORS as error:
++                    error_code = getattr(error, "winerror", None)
++                    if not isinstance(error_code, int):
++                        error_code = getattr(error, "errno", None)
++                    if not isinstance(error_code, int):
++                        error_code = None
++                    cancel_confirmed = (
++                        outer.scenario_id == "cancel_recovery" and index == 1
++                        and record.get("partial_stream_sent") is True
++                        and type(error) in CLIENT_DISCONNECT_ERRORS
++                        and error_code in KNOWN_CLIENT_DISCONNECT_CODES
++                        and outer.wait_for_cancel_observation()
++                    )
++                    if cancel_confirmed:
++                        record.update({
++                            "accepted": True,
++                            "status": 200,
++                            "client_cancelled": True,
++                            "cancel_confirmation": {
++                                "source": "native-stop-ui-action",
++                                "exception_type": type(error).__name__,
++                                "exception_code": error_code,
++                            },
++                        })
++                    else:
++                        record.update({"accepted": False, "status": 500,
++                                       "reason": "unconfirmed_client_disconnect",
++                                       "transport_error_type": type(error).__name__,
++                                       "transport_error_code": error_code})
++                        try:
++                            self.send_body(500, "application/json", b'{"error":{"message":"P01 relay failure"}}')
++                        except CLIENT_DISCONNECT_ERRORS:
++                            pass
++                except HarnessError as error:
++                    record.update({"accepted": False, "status": 400, "reason": error.args[0] if error.args and re.fullmatch(r"[a-z0-9_]+", str(error.args[0])) else "request_policy_denied"})
++                    self.send_body(400, "application/json", b'{"error":{"message":"P01 evaluation stopped"}}')
++                except Exception:
++                    record.update({"accepted": False, "status": 500, "reason": "relay_internal_failure"})
++                    self.send_body(500, "application/json", b'{"error":{"message":"P01 relay failure"}}')
++
++            def validate_request(self, body: dict, record: dict, index: int):
++                if SYNTHETIC_KEY.encode() in json.dumps(body, ensure_ascii=False).encode():
++                    raise HarnessError("synthetic_key_in_request_body")
++                if outer.scenario_id not in {"no_key", "pro_denied"} and not record["synthetic_auth_only"]:
++                    raise HarnessError("synthetic_auth_header_mismatch")
++                messages = body.get("messages")
++                if not isinstance(messages, list):
++                    raise HarnessError("messages_missing")
++                if record.get("auxiliary_title"):
++                    if outer.scenario_id != "disabled_native" or index != 2:
++                        raise HarnessError("unexpected_auxiliary_title_request")
++                    stream_is_non_streaming = "stream" not in body or body.get("stream") is False
++                    tools_are_empty = "tools" not in body or body.get("tools") == []
++                    tool_choice_is_none_or_absent = (
++                        "tool_choice" not in body or body.get("tool_choice") == "none"
++                    )
++                    if (body.get("model") != "deepseek-flash" or not stream_is_non_streaming
++                            or not tools_are_empty or not tool_choice_is_none_or_absent):
++                        raise HarnessError("auxiliary_title_request_shape_mismatch")
++                    record["request_kind"] = "auxiliary_title"
++                    return
++                if body.get("model") != "deepseek-flash" or body.get("stream") is not True:
++                    raise HarnessError("model_or_stream_mismatch")
++                record["request_kind"] = "conversation"
++                tool_calls = []
++                tool_results = []
++                for message in messages:
++                    if not isinstance(message, dict):
++                        continue
++                    if message.get("role") == "assistant" and isinstance(message.get("tool_calls"), list):
++                        for call in message["tool_calls"]:
++                            if not isinstance(call, dict):
++                                continue
++                            function = call.get("function") if isinstance(call.get("function"), dict) else {}
++                            tool_calls.append({"id": call.get("id"), "name": function.get("name"), "arguments": function.get("arguments")})
++                    if message.get("role") == "tool":
++                        tool_results.append({"id": message.get("tool_call_id"), "content": message.get("content")})
++                record["assistant_tool_call_ids"] = [call["id"] for call in tool_calls if isinstance(call.get("id"), str)]
++                record["tool_result_ids"] = [item["id"] for item in tool_results if isinstance(item.get("id"), str)]
++                if outer.scenario_id in {"read_success", "read_failure"} and index == 1:
++                    if "Read" not in record["tool_names"]:
++                        raise HarnessError("read_tool_not_offered")
++                    if tool_calls or tool_results:
++                        raise HarnessError("unexpected_prior_tool_transcript")
++                elif outer.scenario_id in {"read_success", "read_failure"} and index == 2:
++                    matching = [call for call in tool_calls if call.get("name") == "Read"]
++                    if len(matching) != 1 or len(tool_results) != 1:
++                        raise HarnessError("read_continuation_not_correlated")
++                    call = matching[0]
++                    if not isinstance(call.get("id"), str) or call["id"] != tool_results[0].get("id"):
++                        raise HarnessError("read_tool_call_id_mismatch")
++                    try:
++                        args = json.loads(call.get("arguments", ""))
++                    except (TypeError, json.JSONDecodeError) as error:
++                        raise HarnessError("read_arguments_invalid") from error
++                    expected_name = "readme.txt" if outer.scenario_id == "read_success" else "missing.txt"
++                    if not isinstance(args, dict) or args.get("file_path") != str(outer.workspace / expected_name):
++                        raise HarnessError("read_target_mismatch")
++                    record["correlated_tool_call_id"] = call["id"]
++                    record["tool_result_sha256"] = hashlib.sha256(str(tool_results[0].get("content", "")).encode()).hexdigest()
++                    record["tool_result_success_shape"] = bool(tool_results[0].get("content"))
++                if index > outer.expected_post_count:
++                    raise HarnessError("unexpected_extra_model_request")
++
++            def frame(self, delta: dict, finish_reason: str | None = None) -> bytes:
++                frame = {"id": f"p01-u10-{outer.scenario_id}", "object": "chat.completion.chunk",
++                         "created": 1, "model": "deepseek-flash",
++                         "choices": [{"index": 0, "delta": delta, "finish_reason": finish_reason}]}
++                return ("data: " + json.dumps(frame, ensure_ascii=False) + "\n\n").encode("utf-8")
++
++            def send_sse(self, index: int, record: dict):
++                self.send_response(200)
++                self.send_header("Content-Type", "text/event-stream")
++                self.send_header("Cache-Control", "no-cache")
++                self.send_header("Connection", "close")
++                self.end_headers()
++                if outer.scenario_id in {"read_success", "read_failure"} and index == 1:
++                    call_id = f"p01-u10-{outer.scenario_id}-read"
++                    target = "readme.txt" if outer.scenario_id == "read_success" else "missing.txt"
++                    arguments = json.dumps({"file_path": str(outer.workspace / target)})
++                    first = {"index": 0, "id": call_id, "type": "function",
++                             "function": {"name": "Read", "arguments": arguments}}
++                    self.wfile.write(self.frame({"role": "assistant", "tool_calls": [first]}))
++                    self.wfile.flush()
++                    self.wfile.write(self.frame({}, "tool_calls"))
++                    self.wfile.write(b"data: [DONE]\n\n")
++                    self.wfile.flush()
++                    record = outer.records[index - 1]
++                    record["tool_call_id"] = call_id
++                    record["tool_target"] = target
++                    return
++                if outer.scenario_id == "cancel_recovery" and index == 1:
++                    self.wfile.write(self.frame({"role": "assistant", "content": "这是一条尚未完成的本地测试回复"}))
++                    self.wfile.flush()
++                    record["partial_stream_sent"] = True
++                    for _ in range(120):
++                        time.sleep(0.25)
++                        self.wfile.write(b": keepalive\n\n")
++                        self.wfile.flush()
++                    record = outer.records[index - 1]
++                    record["stream_completed_without_cancel"] = True
++                    self.wfile.write(self.frame({}, "stop"))
++                    self.wfile.write(b"data: [DONE]\n\n")
++                    self.wfile.flush()
++                    return
++                text = {
++                    "success": "你好，我是遐蝶。我们可以慢慢聊。",
++                    "read_success": "读到的标记是 orchid-42。",
++                    "read_failure": "missing.txt 不存在，这一步未完成，我没有读到文件内容。",
++                    "cancel_recovery": "已恢复。",
++                    "disabled_native": "原生模型路径已通过本地测试。",
++                    "no_dsh": "本地运行正常，没有启动 DSH。",
++                    "offline": "",
++                }.get(outer.scenario_id)
++                if not isinstance(text, str):
++                    raise HarnessError("scenario_response_missing")
++                self.wfile.write(self.frame({"role": "assistant"}))
++                if text:
++                    self.wfile.write(self.frame({"content": text}))
++                self.wfile.write(self.frame({}, "stop"))
++                self.wfile.write(b"data: [DONE]\n\n")
++                self.wfile.flush()
++
++        self.server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
++        self.server.daemon_threads = True
++        self.thread = threading.Thread(target=self.server.serve_forever, name=f"p01-u10-{scenario_id}", daemon=True)
++        self.thread.start()
++
++    @property
++    def origin(self) -> str:
++        assert self.server is not None
++        return f"http://127.0.0.1:{self.server.server_port}"
++
++    def stop(self) -> None:
++        if self.server is not None:
++            self.server.shutdown()
++            self.server.server_close()
++            self.thread.join(timeout=3)
++
++    def save_records(self) -> None:
++        write_json(self.output / "relay-requests.json", self.records)
++
++
++def process_snapshot(env: dict[str, str]) -> list[dict]:
++    powershell = Path(env["SYSTEMROOT"]) / "System32/WindowsPowerShell/v1.0/powershell.exe"
++    command = [str(powershell), "-NoProfile", "-Command",
++               "Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,Name | ConvertTo-Json -Compress"]
++    result = subprocess.run(command, env=env, capture_output=True, text=True, timeout=20, check=False)
++    if result.returncode != 0:
++        raise HarnessError("read_only_process_snapshot_failed")
++    try:
++        parsed = json.loads(result.stdout) if result.stdout.strip() else []
++        return [parsed] if isinstance(parsed, dict) else parsed
++    except json.JSONDecodeError as error:
++        raise HarnessError("process_snapshot_invalid") from error
++
++
++def process_descendants(process_id: int, processes: list[dict]) -> list[dict]:
++    children: dict[int, list[dict]] = {}
++    for item in processes:
++        try:
++            children.setdefault(int(item["ParentProcessId"]), []).append(item)
++        except (KeyError, TypeError, ValueError):
++            continue
++    found = []
++    pending = [process_id]
++    seen = {process_id}
++    while pending:
++        parent = pending.pop()
++        for item in children.get(parent, []):
++            try:
++                pid = int(item["ProcessId"])
++            except (KeyError, TypeError, ValueError):
++                continue
++            if pid in seen:
++                continue
++            seen.add(pid)
++            pending.append(pid)
++            found.append({"pid": pid, "parent_pid": parent, "name": str(item.get("Name", "unknown"))})
++    return found
++
++
++def create_profile_and_spec(
++    scenario_id: str, scenario_output: Path, candidate: dict, relay: MockRelay,
++    system_env: dict[str, str], gate_mode: str,
++) -> tuple[Path, dict, list[str] | None]:
++    profile = scenario_output / "profile"
++    profile.mkdir()
++    scenario_cfg = {
++        "id": scenario_id,
++        "prompt": scenario_prompt(scenario_id),
++        "max_requests": expected_requests(scenario_id),
++        **({"target": "readme.txt"} if scenario_id == "read_success" else {}),
++        **({"target": "missing.txt"} if scenario_id == "read_failure" else {}),
++    }
++    bridge_spec = {
++        "mode": "mock",
++        "model": "deepseek-flash",
++        "scenario": scenario_cfg,
++        "profile_root": str(profile),
++        "relay_origin": relay.origin,
++        "output_dir": str(scenario_output),
++        "system_env": system_env,
++    }
++    bridge_spec_path = scenario_output / "profile-bridge.spec.json"
++    bridge_result_path = scenario_output / "profile-bridge.result.json"
++    write_json(bridge_spec_path, bridge_spec)
++    bridge_command = run_logged([str(NODE), str(PROFILE_BRIDGE), str(bridge_spec_path), str(bridge_result_path)],
++                                REPO, system_env, scenario_output, "profile-bridge", 60)
++    if bridge_command.get("exit_code") != 0:
++        raise HarnessError("profile_bridge_failed")
++    bridge = read_json(bridge_result_path)
++    if not isinstance(bridge, dict) or bridge.get("credential_decision", {}).get("decision") != "no-key":
++        raise HarnessError("profile_bridge_did_not_refuse_credentials")
++    if "credentialRef" in bridge.get("profile", {}):
++        raise HarnessError("mock_profile_contains_credential_reference")
++    paths = bridge.get("paths")
++    env = bridge.get("env")
++    if not isinstance(paths, dict) or not isinstance(env, dict):
++        raise HarnessError("profile_bridge_shape_invalid")
++    for directory in ("home", "data", "temp", "workspace", "storage", "userData", "sessionData", "appData", "localAppData"):
++        if not isinstance(paths.get(directory), str) or not Path(paths[directory]).is_dir():
++            raise HarnessError("owned_profile_path_missing")
++
++    workspace, history_markers = seed_workspace(
++        profile, scenario_output, with_history=scenario_id in {"no_key", "offline"}, env=env
++    )
++    settings_path = Path(paths["data"]) / ".zcode/v2/setting.json"
++    settings_path.parent.mkdir(parents=True, exist_ok=True)
++    write_json(settings_path, {"desktopChromiumHardwareAccelerationEnabled": False})
++    native_config_path = Path(paths["data"]) / ".zcode/v2/provider_config.json"
++    native_config_path.parent.mkdir(parents=True, exist_ok=True)
++    native_config = native_provider_config(
++        relay.origin,
++        no_key=scenario_id == "no_key",
++        include_pro=scenario_id == "pro_denied",
++    )
++    write_json(native_config_path, native_config)
++    env.update({
++        "ZCODE_PERSONAL_PROVIDER_CONFIG_FILE": str(native_config_path),
++        "ZCODE_BUILTIN_PROVIDER_CONFIG_FILE": str(SOURCE / "config/provider/zcode-builtin.json"),
++        "ZCODE_ENV": "test",
++        "NODE_ENV": "production",
++        "ZCODE_DISABLE_FIXED_REMOTE_DEBUGGING_PORT": "1",
++        "P01_U10_GATE_MODE": gate_mode,
++        "P01_GUARD_LOG": str(scenario_output / "network-guard.jsonl"),
++        "P01_GUARD_WRAPPERS": str(scenario_output / "utility-guards"),
++        "P01_GUARD_PROCESS_ROLE": "browser",
++        "P01_GUARD_CLI_ENTRY": candidate["resolved_paths"]["cliEntry"],
++        "P01_GUARD_CLI_ENTRY_SHA256": sha256(Path(candidate["resolved_paths"]["cliEntry"])),
++        "P01_GUARD_ELECTRON_EXE": candidate["resolved_paths"]["electronPath"],
++        "P01_ALLOWED_HTTP_ORIGINS": json.dumps([relay.origin]),
++        "P01_ALLOWED_IPC_PIPE_PREFIX": rf"\\.\pipe\p01-u10-{uuid.uuid4()}-",
++        # Keep each owned UI test attempt bounded. The production adapter defaults to ten retries;
++        # the offline scenario explicitly asserts a single refusal, so its test process uses zero.
++        "ZCODE_MODEL_RETRY_MAX_RETRIES": "0",
++    })
++    # No inherited model command, credentials, NODE_OPTIONS, or user profile reaches Electron.
++    for forbidden in ("ZCODE_AGENT_SERVER_COMMAND", "ZCODE_AGENT_SERVER_ARGS_JSON", "ZCODE_AGENT_SERVER_CWD", "NODE_OPTIONS"):
++        if forbidden in env:
++            raise HarnessError("profile_environment_contains_unexpected_override")
++    if not all(isinstance(key, str) and isinstance(value, str) for key, value in env.items()):
++        raise HarnessError("child_environment_is_not_string_map")
++    if not path_is_inside(profile, Path(paths["workspace"])):
++        raise HarnessError("workspace_outside_owned_profile")
++
++    flow = {
++        "success": "reply", "read_success": "reply", "read_failure": "reply",
++        "cancel_recovery": "cancel_recovery", "disabled_native": "reply",
++        "pro_denied": "pro_denied", "no_key": "no_key", "no_dsh": "reply", "offline": "offline",
++    }[scenario_id]
++    model = "deepseek-v4-pro" if scenario_id == "pro_denied" else "deepseek-flash"
++    prompt = scenario_cfg["prompt"]
++    expected_reply = {
++        "success": "你好，我是遐蝶。我们可以慢慢聊。",
++        "read_success": "读到的标记是 orchid-42。",
++        "read_failure": "missing.txt 不存在，这一步未完成，我没有读到文件内容。",
++        "cancel_recovery": "已恢复。",
++        "disabled_native": "原生模型路径已通过本地测试。",
++        "no_dsh": "本地运行正常，没有启动 DSH。",
++    }.get(scenario_id)
++    spec = {
++        "candidate": candidate["resolved_paths"]["assemblyRoot"],
++        "desktop": candidate["resolved_paths"]["desktopPath"],
++        "electron": candidate["resolved_paths"]["electronPath"],
++        "playwright": candidate["resolved_paths"]["playwrightPath"],
++        "guard": str(NETWORK_GUARD),
++        "workspace": str(workspace),
++        "out": str(scenario_output),
++        "env": env,
++        "scenario_id": scenario_id,
++        "flow": flow,
++        "prompt": prompt,
++        "model": model,
++        "expected_reply": expected_reply,
++        "partial_reply": "这是一条尚未完成的本地测试回复" if scenario_id == "cancel_recovery" else None,
++        "profile_paths": {"home": paths["home"], "user_data": paths["userData"], "session_data": paths["sessionData"]},
++        "gate_mode": gate_mode,
++        "relay_origin": relay.origin,
++        "occupied_ports_before": [],
++        "history_markers": history_markers,
++        "cancel_file": str(scenario_output / "cancel.request"),
++        "cancel_observed_file": str(scenario_output / "cancel-observed.json"),
++    }
++    spec_path = scenario_output / "desktop-ui.spec.json"
++    write_json(spec_path, spec)
++    return spec_path, spec, history_markers
++
++
++def scenario_prompt(scenario_id: str) -> str:
++    return {
++        "success": "请用一句话，温和地回应我。",
++        "read_success": "请只用 Read 读取工作区的 readme.txt，并告诉我其中的标记。",
++        "read_failure": "请用 Read 读取工作区的 missing.txt；若失败，请说明这一步未完成。",
++        "cancel_recovery": "请开始回复一段较长的内容，我会在回复过程中按停止。",
++        "disabled_native": "请简短确认原生模型路径正常。",
++        "pro_denied": "请用 deepseek-v4-pro 回答一个简短问候。",
++        "no_key": "请回复：不应发出无凭据模型请求。",
++        "no_dsh": "请简短回复：本地运行正常。",
++        "offline": "请简短回复：我正在验证离线模型拒绝。",
++    }[scenario_id]
++
++
++def expected_requests(scenario_id: str) -> int:
++    return {"success": 1, "read_success": 2, "read_failure": 2, "cancel_recovery": 2,
++            "disabled_native": 2, "pro_denied": 0, "no_key": 0, "no_dsh": 1, "offline": 1}[scenario_id]
++
++
++def validate_sidecar(scenario_id: str, profile: Path, relay_records: list[dict], ui_result: dict | None) -> dict:
++    path = profile / "u10-turn-projections.jsonl"
++    if scenario_id == "disabled_native":
++        if path.exists():
++            return {"status": "unexpected", "path": str(path), "verified": False}
++        return {"status": "NOT_APPLICABLE", "path": str(path), "verified": True}
++    if not path.is_file():
++        return {"status": "NOT_EXPOSED", "path": str(path), "verified": False}
++    records = []
++    for line in path.read_text(encoding="utf-8").splitlines():
++        if line.strip():
++            records.append(json.loads(line))
++    selected = [record for record in records if isinstance(record, dict)]
++    invalid = [record for record in selected if
++               record.get("schemaVersion") != 1 or not isinstance(record.get("sessionId"), str)
++               or not isinstance(record.get("turnId"), str)]
++    if invalid:
++        return {"status": "invalid", "path": str(path), "verified": False, "invalid_records": len(invalid)}
++    call_id = next((record.get("tool_call_id") for record in relay_records if record.get("tool_call_id")), None)
++    candidate_entries = [record for record in selected if call_id and
++                         (call_id in record.get("requiredToolCallIds", []) or
++                          any(isinstance(receipt, dict) and receipt.get("toolCallId") == call_id
++                              for receipt in record.get("toolReceipts", [])))]
++    if scenario_id in {"read_success", "read_failure"}:
++        if not call_id or len(candidate_entries) != 1:
++            return {"status": "UNVERIFIED", "path": str(path), "verified": False, "matched_turns": len(candidate_entries)}
++        record = candidate_entries[0]
++        receipts = record.get("toolReceipts")
++        receipt = next((item for item in receipts if isinstance(item, dict) and item.get("toolCallId") == call_id), None) if isinstance(receipts, list) else None
++        expected_status = "succeeded" if scenario_id == "read_success" else "failed"
++        if (record.get("projectionStatus") != "projected" or not isinstance(receipt, dict)):
++            return {"status": "UNVERIFIED", "path": str(path), "verified": False}
++        expected_evidence = "verified" if scenario_id == "read_success" else "failed"
++        correlated = receipt.get("status") == expected_status and record.get("evidenceStatus") == expected_evidence
++        return {"status": "verified" if correlated else "mismatch", "verified": correlated,
++                "session_id": record["sessionId"], "turn_id": record["turnId"], "tool_call_id": call_id,
++                "tool_status": receipt.get("status"), "lifecycle": record.get("lifecycle"),
++                "evidence_status": record.get("evidenceStatus"),
++                "projection_status": record.get("projectionStatus"), "reply_sha256": record.get("replySha256")}
++    if not selected:
++        return {"status": "EMPTY", "path": str(path), "verified": False}
++    projection_rows = [record for record in selected if record.get("projectionStatus") == "projected"]
++    if scenario_id in {"success", "no_dsh"}:
++        expected_reply = EXPECTED_REPLIES[scenario_id]
++        expected_bytes = expected_reply.encode("utf-8")
++        expected_sha = hashlib.sha256(expected_bytes).hexdigest()
++        completed = [record for record in projection_rows if record.get("lifecycle") == "completed"
++                     and record.get("resultType") == "success" and record.get("evidenceStatus") == "not_required"
++                     and record.get("requiredToolCallIds") == [] and isinstance(record.get("replyBytes"), int)
++                     and record.get("replyBytes") == len(expected_bytes) and record.get("replySha256") == expected_sha]
++        visible_reply_matches = isinstance(ui_result, dict) and ui_result.get("user_visible_reply") == expected_reply
++        verified = len(completed) == 1 and visible_reply_matches
++        return {"status": "verified" if verified else "mismatch", "verified": verified,
++                "turn_count": len(selected), "completed_reply_turns": len(completed),
++                "visible_reply_matches": visible_reply_matches, "expected_reply_sha256": expected_sha, "path": str(path)}
++    if scenario_id == "cancel_recovery":
++        expected_bytes = EXPECTED_REPLIES[scenario_id].encode("utf-8")
++        expected_sha = hashlib.sha256(expected_bytes).hexdigest()
++        cancelled = [record for record in projection_rows if record.get("lifecycle") == "cancelled"
++                     and record.get("resultType") == "cancelled"]
++        completed = [record for record in projection_rows if record.get("lifecycle") == "completed"
++                     and record.get("resultType") == "success" and record.get("evidenceStatus") == "not_required"
++                     and record.get("replyBytes") == len(expected_bytes) and record.get("replySha256") == expected_sha]
++        visible_reply_matches = isinstance(ui_result, dict) and ui_result.get("user_visible_reply") == EXPECTED_REPLIES[scenario_id]
++        verified = (len(cancelled) == 1 and len(completed) == 1 and
++                    cancelled[0]["turnId"] != completed[0]["turnId"] and visible_reply_matches)
++        return {"status": "verified" if verified else "mismatch", "verified": verified,
++                "cancelled_turns": len(cancelled), "completed_turns": len(completed),
++                "visible_reply_matches": visible_reply_matches, "expected_reply_sha256": expected_sha, "path": str(path)}
++    return {"status": "observed", "path": str(path), "verified": False, "turn_count": len(selected),
++            "projection_statuses": [record.get("projectionStatus") for record in selected]}
++
++
++def validate_network_guard(scenario_id: str, guard_records: list[dict], ui_result: dict | None,
++                           expected_cli_sha256: str) -> dict:
++    runtime = ui_result.get("desktop") if isinstance(ui_result, dict) else None
++    main_pid = runtime.get("main_pid") if isinstance(runtime, dict) else None
++    main_records = [record for record in guard_records if record.get("pid") == main_pid
++                    and record.get("process_role") == "browser"]
++    main_ok = (any(record.get("kind") == "guard_loaded" for record in main_records) and
++               any(record.get("kind") == "egress_canary_denied" for record in main_records))
++
++    utility_children = {record.get("child_pid") for record in main_records
++                        if record.get("kind") == "utility_fork" and isinstance(record.get("child_pid"), int)}
++    guarded_utility_pids = []
++    for pid in utility_children:
++        records = [record for record in guard_records if record.get("pid") == pid
++                   and record.get("process_type") == "utility" and record.get("process_role") == "utility"]
++        if (any(record.get("kind") == "guard_loaded" for record in records) and
++                any(record.get("kind") == "egress_canary_denied" for record in records)):
++            guarded_utility_pids.append(pid)
++
++    cli_spawns = [record for record in guard_records if record.get("kind") == "cli_spawn_injected"
++                  and record.get("process_role") == "utility" and record.get("pid") in guarded_utility_pids]
++    cli_pids = {record.get("child_pid") for record in cli_spawns if isinstance(record.get("child_pid"), int)}
++    cli_guarded_pids = []
++    for pid in cli_pids:
++        records = [record for record in guard_records if record.get("pid") == pid
++                   and record.get("process_role") == "cli"]
++        if (any(record.get("kind") == "guard_loaded" and record.get("cli_entry_sha256") == expected_cli_sha256
++                for record in records) and any(record.get("kind") == "egress_canary_denied" for record in records)):
++            cli_guarded_pids.append(pid)
++
++    cli_required = expected_requests(scenario_id) > 0
++    descendants = runtime.get("descendant_processes") if isinstance(runtime, dict) else None
++    descendant_pids = {item.get("pid") for item in descendants if isinstance(item, dict)} if isinstance(descendants, list) else set()
++    cli_tree_ok = bool(cli_guarded_pids) and all(pid in descendant_pids for pid in cli_guarded_pids) if cli_required else True
++    utility_ok = bool(guarded_utility_pids)
++    cli_ok = (bool(cli_spawns) and set(cli_guarded_pids) == cli_pids and cli_tree_ok) if cli_required else True
++    verified = main_ok and utility_ok and cli_ok
++    return {
++        "status": "verified" if verified else "failed",
++        "verified": verified,
++        "main": {"pid": main_pid, "guard_loaded": any(record.get("kind") == "guard_loaded" for record in main_records),
++                 "egress_canary_denied": any(record.get("kind") == "egress_canary_denied" for record in main_records)},
++        "utility_guarded_pids": sorted(guarded_utility_pids),
++        "cli_required": cli_required,
++        "cli_spawned_pids": sorted(cli_pids),
++        "cli_guarded_pids": sorted(cli_guarded_pids),
++        "cli_descendants_verified": cli_tree_ok,
++    }
++
++
++def run_scenario(scenario_id: str, output: Path, candidate: dict, system_env: dict[str, str]) -> dict:
++    scenario_output = output / "scenarios" / scenario_id
++    scenario_output.mkdir(parents=True)
++    relay = MockRelay(scenario_id, scenario_output, scenario_output / "profile/workspace",
++                      expected_requests(scenario_id), offline=scenario_id == "offline")
++    try:
++        profile = scenario_output / "profile"
++        spec_path, spec, _markers = create_profile_and_spec(
++            scenario_id, scenario_output, candidate, relay, system_env,
++            gate_mode="disabled" if scenario_id == "disabled_native" else "enabled",
++        )
++        driver_env = dict(spec["env"])
++        driver_env.pop("NODE_OPTIONS", None)
++        command = run_ui_driver(spec_path, scenario_output, driver_env, 240)
++        relay.stop()
++        relay.save_records()
++        ui_result_path = scenario_output / "ui-result.json"
++        ui_result = read_json(ui_result_path) if ui_result_path.is_file() else None
++        guard_path = scenario_output / "network-guard.jsonl"
++        guard_records = [json.loads(line) for line in guard_path.read_text(encoding="utf-8").splitlines() if line.strip()] if guard_path.is_file() else []
++        sidecar = validate_sidecar(scenario_id, profile, relay.records, ui_result)
++        guard_evidence = validate_network_guard(
++            scenario_id, guard_records, ui_result, sha256(Path(candidate["resolved_paths"]["cliEntry"])),
++        )
++        runtime = ui_result.get("desktop") if isinstance(ui_result, dict) else None
++        descendants = runtime.get("descendant_processes") if isinstance(runtime, dict) else None
++        if isinstance(runtime, dict) and isinstance(descendants, list):
++            dsh = [item for item in descendants if isinstance(item, dict) and
++                   re.search(r"(^|[-_. ])dsh($|[-_. ])|deepseek.?harness", str(item.get("name", "")), re.I)]
++            process_evidence = {"status": "verified" if not dsh else "failed",
++                                "root_pid": runtime.get("main_pid"), "descendants": descendants,
++                                "dsh_like_descendants": dsh}
++        else:
++            process_evidence = {"status": "unverified", "reason": "live_process_tree_missing"}
++
++        post_count = len(relay.records)
++        expected_count = expected_requests(scenario_id)
++        relay_ok = post_count == expected_count and all(record.get("accepted") for record in relay.records)
++        if scenario_id == "pro_denied" or scenario_id == "no_key":
++            relay_ok = post_count == 0
++        if scenario_id == "offline":
++            relay_ok = post_count == 1 and relay.records[0].get("status") == 503 and relay.records[0].get("offline_reject") is True
++        sidecar_ok = sidecar.get("verified") is True if scenario_id in {
++            "success", "read_success", "read_failure", "cancel_recovery", "no_dsh", "disabled_native",
++        } else True
++        ui_ok = isinstance(ui_result, dict) and ui_result.get("passed") is True and command.get("exit_code") == 0
++        process_ok = process_evidence.get("status") == "verified"
++        passed = ui_ok and relay_ok and sidecar_ok and process_ok and guard_evidence.get("verified") is True
++        result = {
++            "scenario_id": scenario_id,
++            "passed": passed,
++            "exit_code": command.get("exit_code"),
++            "model_requests": post_count,
++            "expected_model_requests": expected_count,
++            "relay_records": relay.records,
++            "sidecar_correlation": sidecar,
++            "actual_ui": ui_result,
++            "network_guard_records": len(guard_records),
++            "network_guard": guard_evidence,
++            "process_evidence": process_evidence,
++            "profile": {"portable_profile_decision": "no-key", "native_provider_config": "empty" if scenario_id == "no_key" else "synthetic-loopback-only",
++                        "api_key_real": False, "model_backend": "parent-owned-loopback",
++                        "adapter_retry_test_override": {"env": "ZCODE_MODEL_RETRY_MAX_RETRIES", "value": "0"}},
++            "limitations": ["network guard is process instrumentation, not an OS sandbox",
++                            "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"],
++        }
++        write_json(scenario_output / "scenario-result.json", result)
++        return result
++    except Exception as error:
++        relay.stop()
++        relay.save_records()
++        failure = {"scenario_id": scenario_id, "passed": False, "failure_code": error.args[0] if error.args and re.fullmatch(r"[a-z0-9_]+", str(error.args[0])) else "scenario_setup_failed",
++                   "model_requests": len(relay.records), "expected_model_requests": expected_requests(scenario_id),
++                   "relay_records": relay.records, "profile": {"api_key_real": False},
++                   "raw_failure_type": type(error).__name__}
++        write_json(scenario_output / "scenario-result.json", failure)
++        return failure
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("--candidate", required=True, help="absolute assembly root with candidate-descriptor.json")
++    parser.add_argument("--suite", choices=("full", "degradation"), default="full")
++    parser.add_argument("--output", help="new absolute run evidence directory; defaults to a unique evidence path")
++    args = parser.parse_args()
++    output = None
++    try:
++        output = output_root(args.output)
++        candidate = verify_candidate(args.candidate)
++        source = verify_pinned_source()
++        system_env = safe_system_environment()
++        bindings_before = execution_bindings()
++        production_before = production_snapshot()
++        snapshot = {
++            "schema": "p01-u10-desktop-run/v1",
++            "suite": args.suite,
++            "run_id": output.name,
++            "output": str(output),
++            "candidate": candidate,
++            "native_source": source,
++            "execution_bindings_before": bindings_before,
++            "production_before": production_before,
++            "real_credentials_used": False,
++            "real_model_requests": 0,
++            "DSH_started": "NOT_VERIFIED_YET",
++            "visual_acceptance": "NOT_RUN",
++            "network_boundary": "instrumented Node/Electron paths plus a parent-owned dynamic loopback relay; not an OS sandbox",
++            "scenario_status": "running",
++        }
++        write_json(output / "run-start.json", snapshot)
++        scenario_ids = FULL_SCENARIOS if args.suite == "full" else DEGRADATION_SCENARIOS
++        results = []
++        for scenario_id in scenario_ids:
++            results.append(run_scenario(scenario_id, output, candidate, system_env))
++        bindings_after = execution_bindings()
++        production_after = production_snapshot()
++        execution_unchanged = bindings_before == bindings_after
++        production_unchanged = production_before == production_after
++        passed = (all(result.get("passed") is True for result in results) and
++                  execution_unchanged and production_unchanged)
++        dsh_verified = all(result.get("process_evidence", {}).get("status") == "verified" for result in results)
++        summary = {**snapshot,
++                   "scenario_status": "passed" if passed else "failed",
++                   "passed": passed,
++                   "execution_bindings_after": bindings_after,
++                   "execution_unchanged": execution_unchanged,
++                   "production_after": production_after,
++                   "production_unchanged": production_unchanged,
++                   "scenarios": results,
++                   "model_requests": sum(result.get("model_requests", 0) for result in results),
++                   "external_model_requests": 0,
++                   "DSH_started": False if dsh_verified else None,
++                   "DSH_process_tree_verified": dsh_verified,
++                   "human_visual_review": "NOT_RUN"}
++        write_json(output / "summary.json", summary)
++        print(json.dumps({"passed": passed, "suite": args.suite, "output": str(output),
++                          "scenarios": [{"id": result["scenario_id"], "passed": result.get("passed"),
++                                         "model_requests": result.get("model_requests")} for result in results]},
++                         ensure_ascii=False), flush=True)
++        return 0 if passed else 1
++    except Exception as error:
++        code = error.args[0] if error.args and re.fullmatch(r"[a-z0-9_]+", str(error.args[0])) else "desktop_runner_failed"
++        if output is not None:
++            try:
++                write_json(output / "runner-failure.json", {"failure_code": code, "error_type": type(error).__name__})
++            except (FileExistsError, OSError):
++                pass
++        print(f"P01_U10_RUNNER_FAILED:{code}", flush=True)
++        return 1
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/tests/integration/P01/electron-network-guard.cjs b/tests/integration/P01/electron-network-guard.cjs
+new file mode 100644
+index 0000000..51f3a56
+--- /dev/null
++++ b/tests/integration/P01/electron-network-guard.cjs
+@@ -0,0 +1,333 @@
++// U10 test instrumentation for the Node/Electron request paths; not an OS sandbox.
++const fs = require("node:fs");
++const childProcess = require("node:child_process");
++const net = require("node:net");
++const path = require("node:path");
++const { createHash } = require("node:crypto");
++const { pathToFileURL } = require("node:url");
++const { syncBuiltinESMExports } = require("node:module");
++
++if (!globalThis.__p01U10GuardInstalled) {
++  globalThis.__p01U10GuardInstalled = true;
++
++  const logFile = process.env.P01_GUARD_LOG;
++  const DENIED_CODE = "P01_EGRESS_DENIED";
++  const processRole = process.env.P01_GUARD_PROCESS_ROLE || process.type || "node";
++
++  function log(entry) {
++    if (typeof logFile !== "string" || !path.isAbsolute(logFile)) {
++      throw new Error("P01 guard log path is required");
++    }
++    fs.appendFileSync(logFile, `${JSON.stringify({ pid: process.pid, process_type: process.type, process_role: processRole, ...entry })}\n`, "utf8");
++  }
++
++  function normalizedPath(value) {
++    if (typeof value !== "string" || !path.isAbsolute(value)) return null;
++    return path.resolve(value).toLowerCase();
++  }
++
++  const cliEntryPath = process.env.P01_GUARD_CLI_ENTRY;
++  const cliEntrySha256 = process.env.P01_GUARD_CLI_ENTRY_SHA256;
++  const electronExecutablePath = process.env.P01_GUARD_ELECTRON_EXE;
++  const normalizedCliEntry = normalizedPath(cliEntryPath);
++  const normalizedElectronExecutable = normalizedPath(electronExecutablePath);
++  let loadedCliEntrySha256 = null;
++  if (processRole === "cli") {
++    const actualEntry = normalizedPath(process.argv[1]);
++    if (!normalizedCliEntry || actualEntry !== normalizedCliEntry ||
++        !/^[a-f0-9]{64}$/.test(cliEntrySha256 || "")) {
++      throw new Error("P01 CLI guard entry identity is invalid");
++    }
++    loadedCliEntrySha256 = createHash("sha256").update(fs.readFileSync(process.argv[1])).digest("hex");
++    if (loadedCliEntrySha256 !== cliEntrySha256) throw new Error("P01 CLI guard entry hash mismatch");
++  }
++
++  function isPlainRecord(value) {
++    if (value === null || typeof value !== "object" || Array.isArray(value)) return false;
++    const prototype = Object.getPrototypeOf(value);
++    return prototype === Object.prototype || prototype === null;
++  }
++
++  function loadAllowedOrigins(serialized) {
++    let values;
++    try { values = JSON.parse(serialized); } catch { throw new Error("P01 allowed origins are invalid"); }
++    if (!Array.isArray(values) || values.length === 0 || values.some((value) => typeof value !== "string")) {
++      throw new Error("P01 allowed origins are invalid");
++    }
++    const origins = new Set();
++    for (const value of values) {
++      let url;
++      try { url = new URL(value); } catch { throw new Error("P01 allowed origins are invalid"); }
++      if (
++        url.protocol !== "http:" || !["127.0.0.1", "[::1]"].includes(url.hostname) || !url.port ||
++        url.pathname !== "/" || url.username || url.password || url.search || url.hash || value !== url.origin
++      ) throw new Error("P01 allowed origins are invalid");
++      origins.add(url.origin);
++    }
++    return origins;
++  }
++
++  const allowedOrigins = loadAllowedOrigins(process.env.P01_ALLOWED_HTTP_ORIGINS);
++  const allowedEndpoints = new Set([...allowedOrigins].map((origin) => {
++    const url = new URL(origin);
++    return `${url.hostname === "[::1]" ? "::1" : url.hostname}|${url.port}`;
++  }));
++  const allowedPipePrefix = process.env.P01_ALLOWED_IPC_PIPE_PREFIX;
++  const ipcPrefixHeader = "\\\\.\\pipe\\p01-u10-";
++  const ipcPrefixSuffix = typeof allowedPipePrefix === "string"
++    ? allowedPipePrefix.slice(ipcPrefixHeader.length).toLowerCase()
++    : "";
++  if (typeof allowedPipePrefix !== "string" || !allowedPipePrefix.toLowerCase().startsWith(ipcPrefixHeader) ||
++      !/^[a-z0-9-]{8,}-$/.test(ipcPrefixSuffix)) {
++    throw new Error("P01 IPC prefix is invalid");
++  }
++
++  function denied() {
++    const error = new Error("P01 U10 egress blocked");
++    error.code = DENIED_CODE;
++    return error;
++  }
++
++  // Electron/Node may call Socket.connect with Node's normalized argument tuple.
++  function connectOptions(args) {
++    if (args.length === 1 && Array.isArray(args[0])) {
++      const normalized = args[0];
++      if (normalized.length !== 2 || !isPlainRecord(normalized[0]) ||
++          (normalized[1] !== null && normalized[1] !== undefined && typeof normalized[1] !== "function")) return null;
++      return normalized[0];
++    }
++    if (args.length < 1 || args.length > 3) return null;
++    if (isPlainRecord(args[0])) {
++      if (args.length > 1 && typeof args[1] !== "function") return null;
++      return args[0];
++    }
++    if (typeof args[0] === "number" || (typeof args[0] === "string" && /^\d+$/.test(args[0]))) {
++      const options = { port: args[0] };
++      if (typeof args[1] === "string") options.host = args[1];
++      else if (args[1] !== undefined && args[1] !== null && typeof args[1] !== "function") return null;
++      if (args.length === 3 && typeof args[2] !== "function") return null;
++      return options;
++    }
++    if (typeof args[0] === "string" && args[0].startsWith("\\\\.\\pipe\\")) return { path: args[0] };
++    return null;
++  }
++
++  function normalizeHost(value) {
++    if (typeof value !== "string" || value.length === 0) return null;
++    const host = value.toLowerCase();
++    return host === "[::1]" ? "::1" : host;
++  }
++
++  function normalizePort(value) {
++    if (typeof value === "number" && Number.isInteger(value) && value >= 1 && value <= 65535) return String(value);
++    if (typeof value === "string" && /^\d{1,5}$/.test(value)) {
++      const port = Number(value);
++      if (port >= 1 && port <= 65535) return String(port);
++    }
++    return null;
++  }
++
++  function isAllowedSocketOptions(options) {
++    if (!isPlainRecord(options) || Object.hasOwn(options, "lookup")) return false;
++    if (typeof options.path === "string") {
++      return options.path.toLowerCase().startsWith(allowedPipePrefix.toLowerCase());
++    }
++    if (options.path !== undefined && options.path !== null) return false;
++    const host = normalizeHost(options.host);
++    const port = normalizePort(options.port);
++    return host !== null && port !== null && allowedEndpoints.has(`${host}|${port}`);
++  }
++
++  const originalSocketConnect = net.Socket.prototype.connect;
++  net.Socket.prototype.connect = function (...args) {
++    const options = connectOptions(args);
++    const allowed = options !== null && isAllowedSocketOptions(options);
++    const target = options?.path ? "candidate-ipc" :
++      options ? `${normalizeHost(options.host) ?? "unknown"}:${normalizePort(options.port) ?? "unknown"}` : "unknown";
++    log({ kind: "socket", allowed, target });
++    if (!allowed) throw denied();
++    return originalSocketConnect.apply(this, args);
++  };
++
++  function requestTarget(input) {
++    if (typeof input === "string" || input instanceof URL) return String(input);
++    if (input !== null && typeof input === "object") {
++      if (typeof input.url === "string") return input.url;
++      if (typeof input.href === "string") return input.href;
++      if (typeof input.hostname === "string" || typeof input.host === "string") {
++        const protocol = typeof input.protocol === "string" ? input.protocol : "https:";
++        const host = input.hostname ?? input.host;
++        const port = input.port ? `:${input.port}` : "";
++        const pathname = typeof input.path === "string" ? input.path : "/";
++        return `${protocol}//${host}${port}${pathname}`;
++      }
++    }
++    return null;
++  }
++
++  function checkRequest(input, api) {
++    const raw = requestTarget(input);
++    let allowed = false;
++    let safeTarget = "denied";
++    try {
++      const url = new URL(raw);
++      if (["file:", "data:", "devtools:", "chrome:", "chrome-extension:"].includes(url.protocol)) {
++        allowed = true;
++        safeTarget = `internal:${url.protocol}`;
++      } else if (url.protocol === "http:" && !url.username && !url.password && allowedOrigins.has(url.origin)) {
++        allowed = true;
++        safeTarget = url.origin;
++      }
++    } catch { /* fail closed */ }
++    log({ kind: "request", api, target: safeTarget, allowed });
++    if (!allowed) throw denied();
++  }
++
++  const originalFetch = globalThis.fetch;
++  if (typeof originalFetch !== "function") throw new Error("P01 Node fetch is unavailable");
++  globalThis.fetch = function (input, ...args) {
++    try { checkRequest(input, "node.fetch"); }
++    catch (error) { return Promise.reject(error); }
++    return originalFetch.call(this, input, ...args);
++  };
++  syncBuiltinESMExports();
++  log({ kind: "guard_loaded", ...(processRole === "cli" ? { cli_entry_sha256: loadedCliEntrySha256 } : {}) });
++  process.on("uncaughtExceptionMonitor", (error) => {
++    const errorType = ["Error", "TypeError", "RangeError", "AssertionError"].includes(error?.name) ? error.name : "Unknown";
++    const errorCode = typeof error?.code === "string" && /^[A-Z][A-Z0-9_]{0,60}$/.test(error.code) ? error.code : "unknown";
++    const message = typeof error?.message === "string" ? error.message.slice(0, 240) : "unknown";
++    const stack = typeof error?.stack === "string" ? error.stack.slice(0, 2400) : "unknown";
++    log({ kind: "uncaught_error", error_type: errorType, error_code: errorCode, message, stack });
++  });
++
++  const canarySocket = new net.Socket();
++  canarySocket.on("error", (error) => {
++    if (error?.code !== DENIED_CODE) {
++      const errorCode = typeof error?.code === "string" && /^[A-Z][A-Z0-9_]{0,60}$/.test(error.code) ? error.code : "unknown";
++      log({ kind: "canary_socket_error", error_code: errorCode });
++    }
++  });
++  try {
++    canarySocket.connect({ host: "p01-u10-egress-canary.invalid", port: 443 });
++    throw new Error("P01 U10 canary guard bypassed");
++  } catch (error) {
++    if (error?.code !== DENIED_CODE) throw error;
++    log({ kind: "egress_canary_denied" });
++  } finally { canarySocket.destroy(); }
++
++  globalThis.__p01Guard = true;
++
++  if (process.type === "browser") {
++    const electron = require("electron");
++    const originalNetRequest = electron.net.request.bind(electron.net);
++    electron.net.request = function (input, ...args) {
++      checkRequest(input, "electron.net.request");
++      return originalNetRequest(input, ...args);
++    };
++    const originalNetFetch = electron.net.fetch.bind(electron.net);
++    electron.net.fetch = function (input, ...args) {
++      try { checkRequest(input, "electron.net.fetch"); }
++      catch (error) { return Promise.reject(error); }
++      return originalNetFetch(input, ...args);
++    };
++
++    const originalUtilityFork = electron.utilityProcess.fork.bind(electron.utilityProcess);
++    electron.utilityProcess.fork = function (modulePath, args, options = {}) {
++      if (typeof modulePath !== "string" || !path.isAbsolute(modulePath)) throw new Error("P01 utility module path invalid");
++      const wrappersRoot = process.env.P01_GUARD_WRAPPERS;
++      if (typeof wrappersRoot !== "string" || !path.isAbsolute(wrappersRoot)) throw new Error("P01 wrapper path invalid");
++      fs.mkdirSync(wrappersRoot, { recursive: true });
++      const wrapper = path.join(wrappersRoot, `${createHash("sha256").update(modulePath).digest("hex")}.mjs`);
++      fs.writeFileSync(wrapper, `import ${JSON.stringify(pathToFileURL(__filename).href)};\nimport ${JSON.stringify(pathToFileURL(modulePath).href)};\n`);
++      const child = originalUtilityFork(wrapper, args, {
++        ...options,
++        execArgv: [...(options.execArgv ?? []), `--require=${__filename}`],
++        env: {
++          ...(options.env ?? process.env),
++          P01_GUARD_LOG: logFile,
++          P01_GUARD_WRAPPERS: wrappersRoot,
++          P01_GUARD_PROCESS_ROLE: "utility",
++          P01_GUARD_CLI_ENTRY: cliEntryPath,
++          P01_GUARD_CLI_ENTRY_SHA256: cliEntrySha256,
++          P01_GUARD_ELECTRON_EXE: electronExecutablePath,
++          P01_ALLOWED_HTTP_ORIGINS: JSON.stringify([...allowedOrigins]),
++          P01_ALLOWED_IPC_PIPE_PREFIX: allowedPipePrefix,
++        },
++      });
++      child.on("spawn", () => log({ kind: "utility_fork", child_pid: child.pid }));
++      child.on("exit", (exitCode) => log({ kind: "utility_exit", child_pid: child.pid, exit_code: exitCode }));
++      return child;
++    };
++
++    for (const method of ["show", "showInactive", "focus", "restore"]) {
++      if (typeof electron.BrowserWindow.prototype[method] === "function") {
++        electron.BrowserWindow.prototype[method] = function () {};
++      }
++    }
++    electron.app.on("browser-window-created", (_event, window) => {
++      window.setSkipTaskbar(true);
++      window.hide();
++      window.on("show", () => window.hide());
++    });
++
++    function guardSession(session) {
++      session.webRequest.onBeforeRequest((details, callback) => {
++        try { checkRequest(details.url, "electron.webRequest"); callback({ cancel: false }); }
++        catch { callback({ cancel: true }); }
++      });
++    }
++    electron.app.on("session-created", (session) => guardSession(session));
++    electron.app.whenReady().then(() => guardSession(electron.session.defaultSession));
++  }
++
++  if (process.type === "utility" || processRole === "utility") {
++    const originalSpawn = childProcess.spawn;
++    childProcess.spawn = function (...callArgs) {
++      const [command, args, options] = callArgs;
++      const matchesExecutable = normalizedPath(command) !== null &&
++        normalizedPath(command) === normalizedElectronExecutable;
++      const matchesEntry = Array.isArray(args) && normalizedPath(args[0]) !== null &&
++        normalizedPath(args[0]) === normalizedCliEntry;
++      if (!matchesExecutable || !matchesEntry) return originalSpawn.apply(this, callArgs);
++
++      if (!normalizedCliEntry || !/^[a-f0-9]{64}$/.test(cliEntrySha256 || "") ||
++          args.length !== 3 || args[1] !== "app-server" || args[2] !== "--stdio" ||
++          !isPlainRecord(options) || !isPlainRecord(options.env) ||
++          options.env.ELECTRON_RUN_AS_NODE !== "1" ||
++          Object.keys(options.env).some((key) => key.toUpperCase() === "NODE_OPTIONS")) {
++        throw new Error("P01 candidate CLI spawn contract is invalid");
++      }
++      const childEnv = {
++        ...options.env,
++        P01_GUARD_PROCESS_ROLE: "cli",
++        P01_GUARD_CLI_ENTRY: cliEntryPath,
++        P01_GUARD_CLI_ENTRY_SHA256: cliEntrySha256,
++        P01_GUARD_ELECTRON_EXE: electronExecutablePath,
++      };
++      const guardedOptions = { ...options, env: childEnv };
++      const guardedArgs = ["--require", __filename, ...args];
++      const child = originalSpawn.call(this, command, guardedArgs, guardedOptions);
++      log({ kind: "cli_spawn_injected", child_pid: child.pid ?? null, cli_entry_sha256: cliEntrySha256 });
++      child.once("error", (error) => {
++        const errorCode = typeof error?.code === "string" && /^[A-Z][A-Z0-9_]{0,60}$/.test(error.code)
++          ? error.code : "unknown";
++        log({ kind: "cli_spawn_error", child_pid: child.pid ?? null, error_code: errorCode });
++      });
++      child.once("exit", (exitCode, signal) => {
++        log({ kind: "cli_exit", child_pid: child.pid ?? null,
++              exit_code: Number.isInteger(exitCode) ? exitCode : null,
++              signal: typeof signal === "string" ? signal : null });
++      });
++      return child;
++    };
++    syncBuiltinESMExports();
++  }
++
++  if (processRole === "cli") {
++    for (const key of ["P01_GUARD_PROCESS_ROLE", "P01_GUARD_CLI_ENTRY", "P01_GUARD_CLI_ENTRY_SHA256",
++      "P01_GUARD_ELECTRON_EXE", "P01_GUARD_LOG", "P01_GUARD_WRAPPERS",
++      "P01_ALLOWED_HTTP_ORIGINS", "P01_ALLOWED_IPC_PIPE_PREFIX"]) {
++      delete process.env[key];
++    }
++  }
++}
+diff --git a/tests/integration/P01/electron-network-guard.test.mjs b/tests/integration/P01/electron-network-guard.test.mjs
+new file mode 100644
+index 0000000..1bc14d1
+--- /dev/null
++++ b/tests/integration/P01/electron-network-guard.test.mjs
+@@ -0,0 +1,228 @@
++import assert from "node:assert/strict";
++import { spawn } from "node:child_process";
++import { createServer as createHttpServer } from "node:http";
++import { createServer as createNetServer } from "node:net";
++import { createHash, randomUUID } from "node:crypto";
++import { lstatSync, mkdtempSync, readFileSync, realpathSync, rmSync, writeFileSync } from "node:fs";
++import os from "node:os";
++import path from "node:path";
++import test from "node:test";
++import { fileURLToPath } from "node:url";
++
++const testDirectory = path.dirname(fileURLToPath(import.meta.url));
++const repositoryRoot = path.resolve(testDirectory, "../../../../../../../");
++const guardPath = path.join(testDirectory, "electron-network-guard.cjs");
++const nodePath = path.join(
++  repositoryRoot,
++  ".runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe",
++);
++
++function safeCleanup(root) {
++  const tempRoot = realpathSync(os.tmpdir());
++  const resolvedRoot = realpathSync(root);
++  const relative = path.relative(tempRoot, resolvedRoot);
++  if (
++    relative.startsWith("..") ||
++    path.isAbsolute(relative) ||
++    path.dirname(resolvedRoot) !== tempRoot ||
++    !path.basename(resolvedRoot).startsWith("p01-u10-guard-") ||
++    lstatSync(root).isSymbolicLink()
++  ) {
++    throw new Error("unsafe_test_temp_cleanup_target");
++  }
++  rmSync(resolvedRoot, { recursive: true, force: true });
++}
++
++test("Electron guard permits only configured loopback and handles normalized Socket.connect args", async (t) => {
++  const tempRoot = mkdtempSync(path.join(os.tmpdir(), "p01-u10-guard-"));
++  t.after(() => safeCleanup(tempRoot));
++  const logPath = path.join(tempRoot, "guard.jsonl");
++  const ipcPrefix = `\\\\.\\pipe\\p01-u10-${randomUUID()}-`;
++
++  const httpServer = createHttpServer((_request, response) => {
++    response.writeHead(200, { "content-type": "text/plain" });
++    response.end("loopback-ok");
++  });
++  httpServer.on("connection", (socket) => socket.on("error", () => {}));
++  await new Promise((resolve) => httpServer.listen(0, "127.0.0.1", resolve));
++  const httpPort = httpServer.address().port;
++  t.after(() => httpServer.close());
++
++  const tcpServer = createNetServer((socket) => {
++    socket.on("error", () => {});
++    socket.end("tcp-ok");
++  });
++  await new Promise((resolve) => tcpServer.listen(0, "127.0.0.1", resolve));
++  const tcpPort = tcpServer.address().port;
++  t.after(() => tcpServer.close());
++
++  const script = String.raw`
++    const assert = require('node:assert/strict');
++    const net = require('node:net');
++    (async () => {
++      const response = await fetch(process.env.P01_TEST_URL);
++      assert.equal(response.status, 200);
++      assert.equal(await response.text(), 'loopback-ok');
++      process.stdout.write('fetch-ok ');
++
++      const socket = net.createConnection({host:'127.0.0.1', port:Number(process.env.P01_TEST_TCP_PORT)});
++      const chunks = [];
++      socket.on('data', chunk => chunks.push(chunk));
++      await new Promise((resolve, reject) => { socket.once('end', resolve); socket.once('error', reject); });
++      assert.equal(Buffer.concat(chunks).toString(), 'tcp-ok');
++      process.stdout.write('socket-ok ');
++
++      await assert.rejects(fetch('https://example.invalid'), error => error.code === 'P01_EGRESS_DENIED');
++      let lookupCalled = false;
++      const lookupSocket = new net.Socket();
++      assert.throws(() => lookupSocket.connect({host:'127.0.0.1', port:Number(process.env.P01_TEST_TCP_PORT),
++        lookup(){ lookupCalled = true; }}), error => error.code === 'P01_EGRESS_DENIED');
++      assert.equal(lookupCalled, false);
++      process.stdout.write('lookup-denied ');
++
++      const unknownSocket = new net.Socket();
++      assert.throws(() => unknownSocket.connect([{host:'localhost', port:Number(process.env.P01_TEST_TCP_PORT)}, null]),
++        error => error.code === 'P01_EGRESS_DENIED');
++      const deniedPipe = new net.Socket();
++      assert.throws(() => deniedPipe.connect({path:'\\\\.\\pipe\\foreign-process-channel'}),
++        error => error.code === 'P01_EGRESS_DENIED');
++      process.stdout.write('pipe-denied ');
++      process.stdout.write('guard-contract-ok');
++      process.exit(0);
++    })().catch(error => { console.error(error); process.exit(1); });
++  `;
++  const safeSystemKeys = ["PATH", "SYSTEMROOT", "WINDIR", "COMSPEC", "PATHEXT"];
++  const env = Object.fromEntries(safeSystemKeys
++    .filter((key) => typeof process.env[key] === "string")
++    .map((key) => [key, process.env[key]]));
++  Object.assign(env, {
++    P01_ALLOWED_HTTP_ORIGINS: JSON.stringify([
++      `http://127.0.0.1:${httpPort}`,
++      `http://127.0.0.1:${tcpPort}`,
++    ]),
++    P01_GUARD_LOG: logPath,
++    P01_TEST_URL: `http://127.0.0.1:${httpPort}/probe`,
++    P01_TEST_TCP_PORT: String(tcpPort),
++    P01_ALLOWED_IPC_PIPE_PREFIX: ipcPrefix,
++    P01_TEST_IPC_PREFIX: ipcPrefix,
++  });
++  const child = spawn(nodePath, ["-r", guardPath, "-e", script], {
++    cwd: repositoryRoot,
++    env,
++    windowsHide: true,
++  });
++  let stdout = "";
++  let stderr = "";
++  child.stdout.setEncoding("utf8").on("data", (chunk) => { stdout += chunk; });
++  child.stderr.setEncoding("utf8").on("data", (chunk) => { stderr += chunk; });
++  const result = await new Promise((resolve) => {
++    const timeout = setTimeout(() => child.kill(), 8_000);
++    child.once("close", (code, signal) => {
++      clearTimeout(timeout);
++      resolve({ code, signal });
++    });
++  });
++  assert.equal(result.code, 0, `${JSON.stringify(result)}\n${stderr}\n${stdout}`);
++  assert.match(stdout, /guard-contract-ok/);
++  const records = readFileSync(logPath, "utf8").trim().split(/\r?\n/).map(JSON.parse);
++  assert.ok(records.some((record) => record.kind === "request" && record.allowed === true));
++  assert.ok(records.some((record) => record.kind === "request" && record.allowed === false));
++  assert.ok(records.some((record) => record.kind === "socket" && record.allowed === true));
++  assert.ok(records.some((record) => record.kind === "socket" && record.allowed === false));
++  assert.ok(records.some((record) => record.kind === "egress_canary_denied"));
++});
++
++test("Electron guard injects CLI instrumentation only for the pinned candidate command", async (t) => {
++  const tempRoot = mkdtempSync(path.join(os.tmpdir(), "p01-u10-guard-"));
++  t.after(() => safeCleanup(tempRoot));
++  const logPath = path.join(tempRoot, "guard.jsonl");
++  const cliPath = path.join(tempRoot, "candidate-cli.cjs");
++  const otherPath = path.join(tempRoot, "other-cli.cjs");
++  const ipcPrefix = `\\\\.\\pipe\\p01-u10-${randomUUID()}-`;
++  writeFileSync(cliPath, "process.stdout.write(JSON.stringify({guarded:globalThis.__p01Guard===true,pid:process.pid,args:process.argv.slice(2),nodeOptions:process.env.NODE_OPTIONS??null}));\n", "utf8");
++  writeFileSync(otherPath, "process.stdout.write(JSON.stringify({guarded:globalThis.__p01Guard===true,nodeOptions:process.env.NODE_OPTIONS??null}));\n", "utf8");
++
++  const helper = String.raw`
++    const assert = require('node:assert/strict');
++    const { spawn } = require('node:child_process');
++    const safeKeys = ['PATH','SYSTEMROOT','WINDIR','COMSPEC','PATHEXT'];
++    const base = Object.fromEntries(safeKeys.filter(k => process.env[k]).map(k => [k, process.env[k]]));
++    for (const key of ['P01_GUARD_LOG','P01_GUARD_PROCESS_ROLE','P01_GUARD_CLI_ENTRY',
++      'P01_GUARD_CLI_ENTRY_SHA256','P01_GUARD_ELECTRON_EXE','P01_GUARD_WRAPPERS',
++      'P01_ALLOWED_HTTP_ORIGINS','P01_ALLOWED_IPC_PIPE_PREFIX']) base[key] = process.env[key];
++    async function run(args) {
++      const child = spawn(process.env.P01_TEST_NODE_PATH, args, {
++        env: {...base, ELECTRON_RUN_AS_NODE:'1'}, stdio:['ignore','pipe','pipe'], windowsHide:true,
++      });
++      let stdout = '', stderr = '';
++      child.stdout.setEncoding('utf8').on('data', part => stdout += part);
++      child.stderr.setEncoding('utf8').on('data', part => stderr += part);
++      const result = await new Promise((resolve, reject) => {
++        const timer = setTimeout(() => { child.kill(); reject(new Error('spawn_probe_timeout')); }, 8000);
++        child.once('error', error => { clearTimeout(timer); reject(error); });
++        child.once('close', (code, signal) => { clearTimeout(timer); resolve({code,signal,stdout,stderr}); });
++      });
++      assert.equal(result.code, 0, JSON.stringify(result));
++      return JSON.parse(result.stdout);
++    }
++    (async () => {
++      const guarded = await run([process.env.P01_GUARD_CLI_ENTRY, 'app-server', '--stdio']);
++      assert.equal(guarded.guarded, true);
++      assert.deepEqual(guarded.args, ['app-server', '--stdio']);
++      assert.equal(guarded.nodeOptions, null);
++      const unmodified = await run([process.env.P01_TEST_OTHER_ENTRY]);
++      assert.equal(unmodified.guarded, false);
++      assert.equal(unmodified.nodeOptions, null);
++      process.stdout.write(JSON.stringify({guarded,unmodified}));
++    })().catch(error => { console.error(error); process.exit(1); });
++  `;
++  const safeSystemKeys = ["PATH", "SYSTEMROOT", "WINDIR", "COMSPEC", "PATHEXT"];
++  const env = Object.fromEntries(safeSystemKeys
++    .filter((key) => typeof process.env[key] === "string")
++    .map((key) => [key, process.env[key]]));
++  Object.assign(env, {
++    P01_GUARD_LOG: logPath,
++    P01_GUARD_PROCESS_ROLE: "utility",
++    P01_GUARD_CLI_ENTRY: cliPath,
++    P01_GUARD_CLI_ENTRY_SHA256: createHash("sha256").update(readFileSync(cliPath)).digest("hex"),
++    P01_GUARD_ELECTRON_EXE: nodePath,
++    P01_GUARD_WRAPPERS: path.join(tempRoot, "wrappers"),
++    P01_ALLOWED_HTTP_ORIGINS: JSON.stringify(["http://127.0.0.1:1"]),
++    P01_ALLOWED_IPC_PIPE_PREFIX: ipcPrefix,
++    P01_TEST_NODE_PATH: nodePath,
++    P01_TEST_OTHER_ENTRY: otherPath,
++  });
++  delete env.NODE_OPTIONS;
++  const child = spawn(nodePath, ["-r", guardPath, "-e", helper], {
++    cwd: repositoryRoot,
++    env,
++    windowsHide: true,
++  });
++  let stdout = "";
++  let stderr = "";
++  child.stdout.setEncoding("utf8").on("data", (chunk) => { stdout += chunk; });
++  child.stderr.setEncoding("utf8").on("data", (chunk) => { stderr += chunk; });
++  const result = await new Promise((resolve) => {
++    const timeout = setTimeout(() => child.kill(), 12_000);
++    child.once("close", (code, signal) => {
++      clearTimeout(timeout);
++      resolve({ code, signal });
++    });
++  });
++  assert.equal(result.code, 0, `${JSON.stringify(result)}\n${stderr}\n${stdout}`);
++  const output = JSON.parse(stdout);
++  assert.equal(output.guarded.guarded, true);
++  assert.deepEqual(output.guarded.args, ["app-server", "--stdio"]);
++  assert.equal(output.guarded.nodeOptions, null);
++  assert.equal(output.unmodified.guarded, false);
++  assert.equal(output.unmodified.nodeOptions, null);
++  const records = readFileSync(logPath, "utf8").trim().split(/\r?\n/).map(JSON.parse);
++  const injected = records.filter((record) => record.kind === "cli_spawn_injected");
++  assert.equal(injected.length, 1);
++  const cliPid = output.guarded.pid;
++  assert.equal(injected[0].child_pid, cliPid);
++  assert.ok(records.some((record) => record.pid === cliPid && record.process_role === "cli" &&
++    record.kind === "guard_loaded" && record.cli_entry_sha256 === env.P01_GUARD_CLI_ENTRY_SHA256));
++  assert.ok(records.some((record) => record.pid === cliPid && record.process_role === "cli" &&
++    record.kind === "egress_canary_denied"));
++});
+diff --git a/tests/integration/P01/factory-entry.mjs b/tests/integration/P01/factory-entry.mjs
+new file mode 100644
+index 0000000..cbfa672
+--- /dev/null
++++ b/tests/integration/P01/factory-entry.mjs
+@@ -0,0 +1,44 @@
++import { createFileSystemError } from "@p01/native-filesystem-contracts";
++import { createNodeExecutionAdapter } from "@p01/native-execution";
++import { createNodeFileSystemAdapter } from "@p01/native-filesystem";
++import { createModelAdapter } from "@p01/native-model-factory";
++import { createRuntimeAiSdkModelExecutionConfig } from "@p01/native-model-config";
++import {
++  addZCodePluginMarketplace,
++  installZCodeMarketplacePlugin,
++  listZCodePlugins,
++  setZCodePluginEnabled,
++} from "@p01/native-plugin-api";
++import { createZCodeApp as nativeCreateZCodeApp } from "@p01/native-app";
++import { getCurrentModelInvocationContext } from "@p01/native-invocation-context";
++import { createXiadieZCodeApp } from "@p01/xiadie-host";
++import { createTurnEventCollector } from "@p01/turn-projection";
++import { parseProfileV1, resolveOwnedProfilePaths } from "@p01/profile";
++import { authorizeCredentialReference } from "@p01/secrets";
++import { createU10ProtocolFactory } from "./factory.mjs";
++
++export const createZCodeApp = createU10ProtocolFactory({
++  nativeCreateZCodeApp,
++  nativeModules: {
++    createNodeExecutionAdapter,
++    createNodeFileSystemAdapter,
++    createFileSystemError,
++    createModelAdapter,
++    createRuntimeAiSdkModelExecutionConfig,
++    pluginApi: {
++      addZCodePluginMarketplace,
++      installZCodeMarketplacePlugin,
++      listZCodePlugins,
++      setZCodePluginEnabled,
++    },
++    getCurrentModelInvocationContext,
++    createXiadieZCodeApp,
++    createTurnEventCollector,
++    profile: { parseProfileV1, resolveOwnedProfilePaths },
++    secrets: { authorizeCredentialReference },
++  },
++  repositoryRoot: __P01_REPOSITORY_ROOT__,
++  nodeExecutable: __P01_NODE_EXECUTABLE__,
++  electronPath: __P01_ELECTRON_EXECUTABLE__,
++});
++
+diff --git a/tests/integration/P01/factory-policy.mjs b/tests/integration/P01/factory-policy.mjs
+new file mode 100644
+index 0000000..b6688e6
+--- /dev/null
++++ b/tests/integration/P01/factory-policy.mjs
+@@ -0,0 +1,89 @@
++const APPROVED_MODEL_ID = "deepseek-flash";
++const SYNTHETIC_API_KEY = "p01-u09-loopback-only";
++
++export function resolveGateMode(value) {
++  if (value === undefined || value === "") return "enabled";
++  if (value === "enabled" || value === "disabled") return value;
++  throw new Error("P01_U10_GATE_MODE must be enabled or disabled");
++}
++
++export function validateLoopbackOrigin(value) {
++  let endpoint;
++  try { endpoint = new URL(value); }
++  catch { throw new Error("P01 relay must use an assigned loopback HTTP origin"); }
++  const hostname = endpoint.hostname.toLowerCase();
++  const port = Number(endpoint.port);
++  if (endpoint.protocol !== "http:" || !["127.0.0.1", "[::1]"].includes(hostname) ||
++      !Number.isInteger(port) || port < 1 || port > 65535 || port === 9229 ||
++      endpoint.username || endpoint.password || endpoint.pathname !== "/" || endpoint.search || endpoint.hash) {
++    throw new Error("P01 relay must use an assigned loopback HTTP origin");
++  }
++  return endpoint.origin;
++}
++
++export function assertQualifiedModel(options, { endpointOrigin }) {
++  if (options?.modelId !== APPROVED_MODEL_ID) throw new Error("P01 model is not qualified");
++  const access = options?.providerConfig?.access;
++  const apiKey = access?.apiKey;
++  if (typeof apiKey !== "string" || apiKey.length === 0) {
++    throw new Error("P01 model credential is unavailable");
++  }
++  if (apiKey !== SYNTHETIC_API_KEY) throw new Error("P01 candidate rejects external credentials");
++  const relay = validateLoopbackOrigin(endpointOrigin);
++  if (options?.providerConfig?.api?.baseUrl !== `${relay}/v1`) {
++    throw new Error("P01 mock provider is not the assigned loopback fixture");
++  }
++  if (options?.requestDependencies?.requestAuth) {
++    throw new Error("P01 candidate rejects external request authentication");
++  }
++}
++
++function guardModel(delegate, modelOptions, policy) {
++  const wrapped = Object.create(delegate);
++  Object.defineProperties(wrapped, {
++    generateText: {
++      value: (...args) => {
++        assertQualifiedModel(modelOptions, policy);
++        return delegate.generateText.apply(delegate, args);
++      },
++    },
++    streamText: {
++      value: (...args) => {
++        assertQualifiedModel(modelOptions, policy);
++        return delegate.streamText.apply(delegate, args);
++      },
++    },
++    bind: {
++      value: (...args) => guardModel(delegate.bind.apply(delegate, args), modelOptions, policy),
++    },
++  });
++  return wrapped;
++}
++
++/** Keep native model construction/warmup intact; refuse unqualified execution at inference. */
++export function createQualifiedModelAdapter(delegate, policy) {
++  return {
++    createModel(modelOptions) {
++      const model = delegate.createModel.call(delegate, modelOptions);
++      return guardModel(model, modelOptions, policy);
++    },
++    addStatusSink(sink) {
++      return delegate.addStatusSink.call(delegate, sink);
++    },
++    setModelIoFullRetentionEnabled(enabled) {
++      return delegate.setModelIoFullRetentionEnabled.call(delegate, enabled);
++    },
++  };
++}
++
++export function createOwnedExecutionLifecycle(executionPort) {
++  let closePromise;
++  return {
++    close() {
++      closePromise ??= Promise.resolve().then(() => executionPort.close?.());
++      return closePromise;
++    },
++    get closed() { return closePromise !== undefined; },
++  };
++}
++
+diff --git a/tests/integration/P01/factory.mjs b/tests/integration/P01/factory.mjs
+new file mode 100644
+index 0000000..6b55aa1
+--- /dev/null
++++ b/tests/integration/P01/factory.mjs
+@@ -0,0 +1,463 @@
++import { appendFile, mkdir, readFile, stat, writeFile } from "node:fs/promises";
++import { createHash } from "node:crypto";
++import path from "node:path";
++import { createReadOnlyWorkspaceFileSystemPort } from "./read-only-workspace.mjs";
++import {
++  createOwnedExecutionLifecycle,
++  createQualifiedModelAdapter,
++  resolveGateMode,
++  validateLoopbackOrigin,
++} from "./factory-policy.mjs";
++
++const GATE_ENV = "P01_U10_GATE_MODE";
++const APPROVED_MODEL_ID = "deepseek-flash";
++const PLUGIN_NAME = "xiadie";
++const SYNTHETIC_ELECTRON_RUN_AS_NODE = "ELECTRON_RUN_AS_NODE";
++
++function physicalChild(root, candidate, label) {
++  const absolute = path.resolve(candidate);
++  const relative = path.relative(root, absolute);
++  if (relative === ".." || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) {
++    throw new Error(`P01 ${label} must remain inside the owned profile`);
++  }
++  return absolute;
++}
++
++async function resolveOwnedContext(env, profileModule, secretsModule) {
++  if (!env || typeof env !== "object") throw new Error("P01 owned environment is missing");
++  const storageRoot = env.ZCODE_STORAGE_DIR;
++  if (typeof storageRoot !== "string" || !path.isAbsolute(storageRoot)) {
++    throw new Error("P01 owned storage directory is missing");
++  }
++  const root = path.dirname(path.resolve(storageRoot));
++  const paths = profileModule.resolveOwnedProfilePaths(root);
++  if (paths.storage !== path.resolve(storageRoot) || paths.home !== env.HOME || paths.home !== env.USERPROFILE ||
++      paths.home !== env.ZCODE_DESKTOP_HOME_DIR ||
++      paths.data !== env.ZCODE_DATA_BASE_DIR || paths.temp !== env.TEMP || paths.temp !== env.TMP ||
++      paths.userData !== env.ZCODE_DESKTOP_USER_DATA_DIR || paths.sessionData !== env.ZCODE_DESKTOP_SESSION_DATA_DIR ||
++      paths.appData !== env.APPDATA || paths.localAppData !== env.LOCALAPPDATA ||
++      env.ZCODE_DISABLE_FIXED_REMOTE_DEBUGGING_PORT !== "1" ||
++      env.ZCODE_BASE_URL !== validateLoopbackOrigin(env.ZCODE_ENDPOINT_ORIGIN)) {
++    throw new Error("P01 child environment does not match its owned profile paths");
++  }
++  const profileFile = physicalChild(root, paths.profileFile, "profile file");
++  if (!(await stat(profileFile)).isFile()) throw new Error("P01 portable profile is missing");
++  const profile = profileModule.parseProfileV1(JSON.parse(await readFile(profileFile, "utf8")));
++  if (profile.credentialRef !== undefined) throw new Error("P01 candidate profile cannot reference credentials");
++  const credentialDecision = secretsModule.authorizeCredentialReference(profile, { kind: "offline" });
++  if (credentialDecision.decision !== "no-key") throw new Error("P01 candidate profile must have no credential");
++  if (profile.modelId !== APPROVED_MODEL_ID) throw new Error("P01 candidate profile model is not qualified");
++  return { root, paths, profile, credentialDecision };
++}
++
++async function installIdentityPlugin({ root, paths, env, pluginApi, repositoryRoot }) {
++  const pluginStorageRoot = path.join(root, "plugin-storage");
++  const userConfigPath = path.join(root, "user.json");
++  const projectConfigPath = path.join(root, "project.json");
++  const marketplaceSource = path.join(repositoryRoot, "plugins", "xiadie", "marketplace.json");
++  await mkdir(pluginStorageRoot, { recursive: true });
++  const marketplace = await pluginApi.addZCodePluginMarketplace({
++    pluginStorageRoot,
++    userConfigPath,
++    projectConfigPath,
++    workingDirectory: paths.workspace,
++    env,
++    source: marketplaceSource,
++  });
++  await pluginApi.installZCodeMarketplacePlugin({
++    pluginStorageRoot,
++    userConfigPath,
++    projectConfigPath,
++    workingDirectory: paths.workspace,
++    env,
++    marketplace: marketplace.id,
++    pluginName: PLUGIN_NAME,
++  });
++  await pluginApi.setZCodePluginEnabled({
++    pluginStorageRoot,
++    userConfigPath,
++    projectConfigPath,
++    workingDirectory: paths.workspace,
++    env,
++    plugin: `${PLUGIN_NAME}@${marketplace.id}`,
++    enabled: true,
++  });
++  let userConfig = {};
++  try { userConfig = JSON.parse(await readFile(userConfigPath, "utf8")); }
++  catch (error) { if (error?.code !== "ENOENT") throw new Error("P01 isolated user config is invalid"); }
++  userConfig.storage = { ...(userConfig.storage ?? {}), dir: paths.storage };
++  const currentFeatures = userConfig.features && typeof userConfig.features === "object" && !Array.isArray(userConfig.features)
++    ? userConfig.features
++    : {};
++  const currentSkills = userConfig.skills && typeof userConfig.skills === "object" && !Array.isArray(userConfig.skills)
++    ? userConfig.skills
++    : {};
++  userConfig.features = { ...currentFeatures, mcp: false, skill: false };
++  userConfig.skills = { ...currentSkills, enabled: false };
++  await writeFile(userConfigPath, `${JSON.stringify(userConfig, null, 2)}\n`, "utf8");
++  const discovered = pluginApi.listZCodePlugins({
++    pluginStorageRoot,
++    userConfigPath,
++    projectConfigPath,
++    workingDirectory: paths.workspace,
++    env,
++  });
++  const plugin = discovered.plugins.find((item) => item.name === PLUGIN_NAME);
++  if (!plugin?.enabled || typeof plugin.rootPath !== "string" || typeof plugin.dataPath !== "string") {
++    throw new Error("P01 identity plugin installation failed");
++  }
++  return { pluginStorageRoot, userConfigPath, projectConfigPath, plugin };
++}
++
++function isIdentityHookRequest(request, installedPluginRoot, electronPath) {
++  const trace = request?.trace;
++  const command = request?.command;
++  const expectedHook = path.resolve(installedPluginRoot, "hooks", "context.mjs");
++  const normalizePath = (value) => path.resolve(value).replaceAll("/", "\\").toLowerCase();
++  const commandFile = typeof command?.file === "string" ? command.file.toLowerCase() : "";
++  return command?.mode === "argv" && Array.isArray(command.args) && command.args.length === 1 &&
++    typeof command.args[0] === "string" && normalizePath(command.args[0]) === normalizePath(expectedHook) &&
++    trace?.attributes?.hookEventName === "UserPromptSubmit" &&
++    (commandFile === "node" || commandFile === "node.exe" ||
++      (commandFile.length > 0 && normalizePath(command.file) === normalizePath(electronPath)));
++}
++
++function pinHookToNode(request, nodeExecutable) {
++  const set = { ...(request.env?.set ?? {}) };
++  for (const key of Object.keys(set)) {
++    if (key.toUpperCase() === SYNTHETIC_ELECTRON_RUN_AS_NODE) delete set[key];
++  }
++  const unset = [...new Set([...(request.env?.unset ?? []), SYNTHETIC_ELECTRON_RUN_AS_NODE])];
++  return {
++    ...request,
++    command: { ...request.command, file: nodeExecutable },
++    env: { ...request.env, set, unset },
++  };
++}
++
++function pinIdentityHookToNode(executionPort, pluginRoot, electronPath, nodeExecutable) {
++  const port = Object.create(executionPort);
++  Object.defineProperty(port, "run", {
++    value(request, options) {
++      if (isIdentityHookRequest(request, pluginRoot, electronPath)) {
++        return executionPort.run.call(executionPort, pinHookToNode(request, nodeExecutable), options);
++      }
++      return executionPort.run.call(executionPort, request, options);
++    },
++  });
++  for (const name of ["start", "getBackgroundTask", "readBackgroundBashOutput", "cancelBackgroundTask", "close"]) {
++    const method = executionPort[name];
++    if (typeof method === "function") {
++      Object.defineProperty(port, name, { value: (...args) => method.apply(executionPort, args) });
++    }
++  }
++  return port;
++}
++
++function eventTurnId(event) {
++  const payload = event?.payload && typeof event.payload === "object" ? event.payload : {};
++  return typeof event?.turnId === "string" ? event.turnId :
++    typeof payload.turnId === "string" ? payload.turnId : undefined;
++}
++
++function scheduledToolId(event) {
++  if (event?.type !== "tool_call_scheduled") return undefined;
++  const payload = event?.payload && typeof event.payload === "object" ? event.payload : {};
++  return typeof payload.toolCallId === "string" ? payload.toolCallId : undefined;
++}
++
++function projectionSidecar(hostApp, root, createTurnEventCollector) {
++  const file = path.join(root, "u10-turn-projections.jsonl");
++  const pendingCleanups = new Set();
++  function wrap(methodName, method) {
++    if (typeof method !== "function") return method;
++    return async (...args) => {
++      const collector = createTurnEventCollector(hostApp.sessionId);
++      const scheduled = [];
++      let unsubscribe;
++      let turnId;
++      let subscriptionFailed = false;
++      let cleaned = false;
++      const cleanup = () => {
++        if (cleaned) return;
++        cleaned = true;
++        pendingCleanups.delete(cleanup);
++        try { unsubscribe?.(); } catch { /* preserve native lifecycle */ }
++        collector.close();
++      };
++      pendingCleanups.add(cleanup);
++      try {
++        unsubscribe = hostApp.runtime.subscribeEvents({
++          onSessionEvent(event) {
++            collector.onSessionEvent(event);
++            const toolCallId = scheduledToolId(event);
++            if (toolCallId) scheduled.push({ turnId: eventTurnId(event), toolCallId });
++          },
++        });
++      } catch {
++        subscriptionFailed = true;
++      }
++      const appendFailure = async (reason) => {
++        const row = {
++          schemaVersion: 1,
++          sessionId: hostApp.sessionId,
++          ...(turnId ? { turnId } : {}),
++          projectionStatus: "unavailable",
++          reason,
++        };
++        try { await appendFile(file, `${JSON.stringify(row)}\n`, "utf8"); }
++        catch { process.stderr.write("P01_PROJECTION_SIDECAR_WRITE_FAILED\n"); }
++        cleanup();
++      };
++      const record = async (id, result, verifiedProjection) => {
++        turnId = id;
++        try {
++          if (subscriptionFailed) throw new Error("event_subscription_failed");
++          if (!turnId) throw new Error("missing_turn_id");
++          const requiredToolCallIds = scheduled.filter((item) => item.turnId === turnId).map((item) => item.toolCallId);
++          const projection = verifiedProjection ?? collector.project(result, requiredToolCallIds);
++          const reply = projection.reply.text;
++          const row = {
++            schemaVersion: 1,
++            sessionId: projection.sessionId,
++            turnId: projection.turnId,
++            projectionStatus: "projected",
++            lifecycle: projection.lifecycle,
++            resultType: projection.resultType,
++            evidenceStatus: projection.evidenceStatus,
++            requiredToolCallIds: projection.requiredToolCallIds,
++            toolReceipts: projection.toolReceipts,
++            hookBlocked: projection.hookBlocked,
++            replySource: projection.reply.source,
++            replyBytes: Buffer.byteLength(reply, "utf8"),
++            replySha256: createHash("sha256").update(reply).digest("hex"),
++            capturedAt: new Date().toISOString(),
++          };
++          await appendFile(file, `${JSON.stringify(row)}\n`, "utf8");
++        } catch {
++          await appendFailure(subscriptionFailed ? "event_subscription_failed" : "projection_failed");
++          return;
++        }
++        cleanup();
++      };
++      const recordCancelledCompletion = async (id) => {
++        turnId = id;
++        let projection;
++        try {
++          if (subscriptionFailed) throw new Error("event_subscription_failed");
++          const requiredToolCallIds = scheduled.filter((item) => item.turnId === turnId).map((item) => item.toolCallId);
++          projection = collector.project(undefined, requiredToolCallIds);
++          if (projection.lifecycle !== "cancelled" || projection.resultType !== "cancelled") {
++            await appendFailure("turn_completion_failed");
++            return;
++          }
++        } catch {
++          await appendFailure("turn_completion_failed");
++          return;
++        }
++        await record(turnId, undefined, projection);
++      };
++      try {
++        const result = await method(...args);
++        if (methodName === "sendInput" && result?.kind === "started_turn" && result.completion && result.turnId) {
++          turnId = result.turnId;
++          collector.bindTurn(turnId);
++          void Promise.resolve(result.completion).then(
++            (completion) => record(turnId, completion),
++            () => recordCancelledCompletion(turnId),
++          );
++        } else if (methodName === "submitPrompt" && typeof result?.turnId === "string") {
++          turnId = result.turnId;
++          collector.bindTurn(turnId);
++          void record(turnId, result);
++        } else {
++          cleanup();
++        }
++        return result;
++      } catch (error) {
++        cleanup();
++        throw error;
++      }
++    };
++  }
++  return {
++    wrap,
++    closePending() { for (const cleanup of [...pendingCleanups]) cleanup(); },
++  };
++}
++
++function createAppFacade(host, sidecar, executionLifecycle) {
++  const app = Object.create(null);
++  let current = host.app;
++  const descriptors = new Map();
++  while (current && current !== Object.prototype) {
++    for (const key of Reflect.ownKeys(current)) {
++      if (!descriptors.has(key)) descriptors.set(key, Object.getOwnPropertyDescriptor(current, key));
++    }
++    current = Object.getPrototypeOf(current);
++  }
++  for (const [key, descriptor] of descriptors) {
++    if (key === "constructor" || key === "sendInput" || key === "submitPrompt" || key === "close") continue;
++    if (descriptor?.get) {
++      Object.defineProperty(app, key, {
++        configurable: true,
++        enumerable: descriptor.enumerable,
++        get: () => Reflect.get(host.app, key, host.app),
++      });
++    } else {
++      const value = Reflect.get(host.app, key, host.app);
++      Object.defineProperty(app, key, {
++        configurable: true,
++        enumerable: descriptor?.enumerable,
++        value: typeof value === "function" ? (...args) => value.apply(host.app, args) : value,
++      });
++    }
++  }
++  Object.defineProperties(app, {
++    sendInput: { configurable: true, value: sidecar.wrap("sendInput", host.sendInput.bind(host)) },
++    submitPrompt: { configurable: true, value: sidecar.wrap("submitPrompt", host.submitPrompt.bind(host)) },
++    close: {
++      configurable: true,
++      writable: true,
++      value: async (...args) => {
++        sidecar.closePending();
++        try { await host.close?.(...args); }
++        finally { await executionLifecycle.close(); }
++      },
++    },
++  });
++  return app;
++}
++
++export function createU10ProtocolFactory({
++  nativeCreateZCodeApp,
++  nativeModules,
++  repositoryRoot,
++  nodeExecutable,
++  electronPath,
++}) {
++  return async function createZCodeApp(appOptions = {}) {
++    const env = appOptions.env ?? process.env;
++    const mode = resolveGateMode(env[GATE_ENV]);
++    if (mode === "disabled") return nativeCreateZCodeApp(appOptions);
++
++    const { root, paths, profile } = await resolveOwnedContext(env, nativeModules.profile, nativeModules.secrets);
++    const pluginInfo = await installIdentityPlugin({
++      root,
++      paths,
++      env,
++      pluginApi: nativeModules.pluginApi,
++      repositoryRoot,
++    });
++
++    let executionLifecycle;
++    try {
++      const baseFileSystem = nativeModules.createNodeFileSystemAdapter({ textSearchEngine: "javascript" });
++      const fileSystemPort = createReadOnlyWorkspaceFileSystemPort(
++        baseFileSystem,
++        paths.workspace,
++        nativeModules.createFileSystemError,
++      );
++  const executionPort = nativeModules.createNodeExecutionAdapter({
++        onToolExecResource: appOptions.onToolExecResource,
++        outputRootDir: path.join(paths.storage, "cli", "exec"),
++        processEnv: env,
++      });
++      executionLifecycle = createOwnedExecutionLifecycle(executionPort);
++      const modelAdapter = createQualifiedModelAdapter(nativeModules.createModelAdapter({
++        env,
++        modelIoDir: path.join(paths.storage, "model-io"),
++        modelIoFullRetentionEnabled: false,
++        executionConfig: nativeModules.createRuntimeAiSdkModelExecutionConfig(env, {
++          appVersion: appOptions.version,
++          sourceTitle: "electron",
++        }),
++      }), { endpointOrigin: env.ZCODE_ENDPOINT_ORIGIN });
++      const runtimeConfig = {
++        ...appOptions.runtimeConfig,
++        mcp: { ...appOptions.runtimeConfig?.mcp, enabled: false, servers: {} },
++        memory: { enabled: false, use: false, extractionEnabled: false },
++        dynamicWorkflowEnabled: false,
++        toolAllowlist: ["Read"],
++        workingDirectory: paths.workspace,
++      };
++      const wrappedOptions = {
++        ...appOptions,
++        env,
++        sourceTitle: "electron",
++        runtimeConfig,
++        executionPort: undefined,
++        modelAdapter: undefined,
++        pluginStorageRoot: pluginInfo.pluginStorageRoot,
++        userConfigPath: pluginInfo.userConfigPath,
++        projectConfigPath: pluginInfo.projectConfigPath,
++        workingDirectory: paths.workspace,
++        skipUserConfig: false,
++        officialPluginRoots: [],
++        fileSystemPort,
++        mcpPortFactory: undefined,
++        mcpPort: undefined,
++        skillPort: undefined,
++      };
++      const hostExecutionPort = pinIdentityHookToNode(
++        executionPort,
++        pluginInfo.plugin.rootPath,
++        electronPath,
++        nodeExecutable,
++      );
++      const host = await nativeModules.createXiadieZCodeApp({
++        native: {
++          createZCodeApp: async (nativeOptions) => {
++            try {
++              // U06 has already wrapped these ports. Keep its wrappers in the
++              // native app; the owned adapter only normalizes its exact plugin
++              // hook request after U06 has authorized the turn.
++              const app = await nativeCreateZCodeApp(nativeOptions);
++              return wrapNativeClose(app, () => executionLifecycle.close());
++            } catch (error) {
++              await executionLifecycle.close();
++              throw error;
++            }
++          },
++          getCurrentModelInvocationContext: nativeModules.getCurrentModelInvocationContext,
++        },
++        appOptions: wrappedOptions,
++        executionPort: hostExecutionPort,
++        modelAdapter,
++        enabled: true,
++        assetsRoot: path.join(repositoryRoot, "assets", "character"),
++        moduleRoot: path.join(repositoryRoot, "dist"),
++        installedPluginRoot: pluginInfo.plugin.rootPath,
++        dataRoot: pluginInfo.plugin.dataPath,
++        pluginStorageRoot: pluginInfo.pluginStorageRoot,
++        ownedProfileRoot: root,
++        // The native Desktop originates this request with Electron execPath.
++        // U06 uses this value to recognize and authorize that exact hook before
++        // the lower adapter pins the spawned process to the bundled Node.
++        nodeExecutable: electronPath,
++      });
++      const sidecar = projectionSidecar(host.app, root, nativeModules.createTurnEventCollector);
++      return createAppFacade(host, sidecar, executionLifecycle);
++    } catch (error) {
++      await executionLifecycle?.close();
++      throw error;
++    }
++  };
++}
++
++function wrapNativeClose(app, closeExecutionPort) {
++  let closePromise;
++  const facade = Object.create(app);
++  Object.defineProperty(facade, "close", {
++    configurable: true,
++    value() {
++      closePromise ??= Promise.resolve().then(async () => {
++        try { await app.close?.(); }
++        finally { await closeExecutionPort(); }
++      });
++      return closePromise;
++    },
++  });
++  return facade;
++}
++
+diff --git a/tests/integration/P01/factory.test.mjs b/tests/integration/P01/factory.test.mjs
+new file mode 100644
+index 0000000..1d1a50b
+--- /dev/null
++++ b/tests/integration/P01/factory.test.mjs
+@@ -0,0 +1,483 @@
++import assert from "node:assert/strict";
++import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
++import { realpathSync } from "node:fs";
++import os from "node:os";
++import path from "node:path";
++import test from "node:test";
++import { pathToFileURL } from "node:url";
++import { createTurnEventCollector } from "../../../dist/packages/application/turn-projection.js";
++import { createU10ProtocolFactory } from "./factory.mjs";
++import {
++  assertQualifiedModel,
++  createOwnedExecutionLifecycle,
++  createQualifiedModelAdapter,
++  resolveGateMode,
++  validateLoopbackOrigin,
++} from "./factory-policy.mjs";
++
++const origin = "http://127.0.0.1:39173";
++const pinnedNode = "C:\\P01\\node.exe";
++const electronPath = "C:\\P01\\electron.exe";
++
++function modelOptions(overrides = {}) {
++  return {
++    modelId: "deepseek-flash",
++    providerConfig: {
++      access: { apiKey: "p01-u09-loopback-only" },
++      api: { baseUrl: `${origin}/v1` },
++    },
++    ...overrides,
++  };
++}
++
++async function withOwnedFactoryFixture(t, {
++  failNativeCreate = false,
++  subscriptionFailure = false,
++  startTurn = false,
++  completionError,
++  terminalType = "turn_complete",
++  terminalPayload = { resultType: "success", response: "fixture reply should only be hashed" },
++  emitTerminal = true,
++} = {}) {
++  const temp = realpathSync.native(os.tmpdir());
++  const root = await mkdtemp(path.join(temp, "p01-u10-factory-"));
++  t.after(async () => {
++    const resolved = realpathSync.native(root);
++    assert.equal(path.dirname(resolved), temp);
++    assert.ok(path.basename(resolved).startsWith("p01-u10-factory-"));
++    await rm(resolved, { recursive: true, force: true });
++  });
++  const dirs = {
++    home: path.join(root, "home"),
++    data: path.join(root, "data"),
++    temp: path.join(root, "temp"),
++    userData: path.join(root, "userData"),
++    sessionData: path.join(root, "sessionData"),
++    appData: path.join(root, "home", "AppData", "Roaming"),
++    localAppData: path.join(root, "home", "AppData", "Local"),
++    storage: path.join(root, "storage"),
++    workspace: path.join(root, "workspace"),
++    profileFile: path.join(root, "profile.json"),
++    projectConfigFile: path.join(root, "project.json"),
++  };
++  for (const directory of new Set(Object.values(dirs).filter((value) => !value.endsWith(".json")))) {
++    await mkdir(directory, { recursive: true });
++  }
++  await writeFile(dirs.profileFile, `${JSON.stringify({
++    schemaVersion: 1,
++    providerId: "deepseek-official",
++    modelId: "deepseek-flash",
++    networkMode: "offline",
++  })}\n`);
++  await writeFile(dirs.projectConfigFile, "{}\n");
++  const env = {
++    P01_U10_GATE_MODE: "enabled",
++    HOME: dirs.home,
++    USERPROFILE: dirs.home,
++    ZCODE_DESKTOP_HOME_DIR: dirs.home,
++    APPDATA: dirs.appData,
++    LOCALAPPDATA: dirs.localAppData,
++    TEMP: dirs.temp,
++    TMP: dirs.temp,
++    ZCODE_STORAGE_DIR: dirs.storage,
++    ZCODE_DATA_BASE_DIR: dirs.data,
++    ZCODE_DESKTOP_USER_DATA_DIR: dirs.userData,
++    ZCODE_DESKTOP_SESSION_DATA_DIR: dirs.sessionData,
++    ZCODE_DISABLE_FIXED_REMOTE_DEBUGGING_PORT: "1",
++    ZCODE_ENDPOINT_ORIGIN: origin,
++    ZCODE_BASE_URL: origin,
++  };
++  let nativeAppCloseCount = 0;
++  let executionCloseCount = 0;
++  let nativeOptions;
++  let gateExecution;
++  let gateModel;
++  let gateRequest;
++  let sessionEventHandler;
++  const pluginRoot = path.join(root, "plugin-storage", "plugins", "xiadie");
++  const nativeModules = {
++    createNodeFileSystemAdapter: () => ({ async readTextFile() {}, async readBinaryFile() {}, async stat() {} }),
++    createFileSystemError: ({ code, message }) => Object.assign(new Error(message), { code }),
++    createNodeExecutionAdapter: () => ({
++      async run(request) { nativeModules.lastExecutionRequest = request; return { status: "completed" }; },
++      async close() { executionCloseCount += 1; },
++    }),
++    createModelAdapter: () => ({
++      createModel: () => ({ generateText: async () => ({ text: "unused" }), streamText: () => ({ textStream: [] }), bind() { return this; } }),
++      addStatusSink() {},
++      setModelIoFullRetentionEnabled() {},
++    }),
++    createRuntimeAiSdkModelExecutionConfig: () => ({}),
++    createTurnEventCollector,
++    profile: {
++      resolveOwnedProfilePaths: (candidateRoot) => ({
++        home: dirs.home,
++        data: dirs.data,
++        temp: dirs.temp,
++        userData: dirs.userData,
++        sessionData: dirs.sessionData,
++        appData: dirs.appData,
++        localAppData: dirs.localAppData,
++        storage: dirs.storage,
++        workspace: dirs.workspace,
++        profileFile: path.join(candidateRoot, "profile.json"),
++      }),
++      parseProfileV1: (value) => value,
++    },
++    secrets: { authorizeCredentialReference: () => ({ decision: "no-key" }) },
++    pluginApi: {
++      async addZCodePluginMarketplace() { return { id: "p01-fixture" }; },
++      async installZCodeMarketplacePlugin() {},
++      async setZCodePluginEnabled() {},
++      listZCodePlugins() { return { plugins: [{ name: "xiadie", enabled: true, rootPath: pluginRoot, dataPath: path.join(pluginRoot, "data") }] }; },
++    },
++    createXiadieZCodeApp: async (input) => {
++      gateExecution = {
++        async run(request, options) {
++          gateRequest = request;
++          return input.executionPort.run.call(input.executionPort, request, options);
++        },
++        async close() { return input.executionPort.close?.(); },
++      };
++      gateModel = { marker: "U06-gated-model" };
++      const app = await input.native.createZCodeApp({
++        ...input.appOptions,
++        executionPort: gateExecution,
++        modelAdapter: gateModel,
++      });
++      return {
++        app,
++        sendInput: (...args) => app.sendInput(...args),
++        submitPrompt: (...args) => app.submitPrompt(...args),
++        async close() { await app.close?.(); },
++      };
++    },
++  };
++  const nativeCreateZCodeApp = async (options) => {
++    nativeOptions = options;
++    if (failNativeCreate) throw new Error("native fixture construction failed");
++    return {
++      sessionId: "fixture-session",
++      runtime: {
++        beginShutdown() {},
++        subscribeEvents({ onSessionEvent }) {
++          if (subscriptionFailure) throw new Error("raw subscription error must not escape");
++          sessionEventHandler = onSessionEvent;
++          return () => { sessionEventHandler = undefined; };
++        },
++      },
++      async sendInput() {
++        if (!startTurn) return { kind: "busy" };
++        const events = [
++          [1, "tool_call_scheduled", { toolCallId: "tool-fixture", toolName: "Read" }],
++          [2, "tool_call_result", { toolCallId: "tool-fixture", toolName: "Read", result: { success: true } }],
++          ...(emitTerminal ? [[3, terminalType, terminalPayload]] : []),
++        ];
++        for (const [sequenceNumber, type, payload] of events) {
++          sessionEventHandler?.({ sessionId: "fixture-session", turnId: "fixture-turn", sequenceNumber, type, payload });
++        }
++        return {
++          kind: "started_turn",
++          turnId: "fixture-turn",
++          completion: completionError
++            ? Promise.reject(completionError)
++            : Promise.resolve({ turnId: "fixture-turn", response: "fixture reply should only be hashed" }),
++        };
++      },
++      async submitPrompt() { return { turnId: "fixture-turn" }; },
++      async close() { nativeAppCloseCount += 1; },
++    };
++  };
++  const create = createU10ProtocolFactory({ nativeCreateZCodeApp, nativeModules, repositoryRoot: root, nodeExecutable: pinnedNode, electronPath });
++  return {
++    create,
++    env,
++    root,
++    pluginRoot,
++    nativeModules,
++    get nativeOptions() { return nativeOptions; },
++    get gateExecution() { return gateExecution; },
++    get gateModel() { return gateModel; },
++    get gateRequest() { return gateRequest; },
++    set gateExecution(value) { gateExecution = value; },
++    set gateModel(value) { gateModel = value; },
++    get nativeAppCloseCount() { return nativeAppCloseCount; },
++    get executionCloseCount() { return executionCloseCount; },
++  };
++}
++
++test("candidate gate defaults on and accepts only its explicit modes", () => {
++  assert.equal(resolveGateMode(undefined), "enabled");
++  assert.equal(resolveGateMode(""), "enabled");
++  assert.equal(resolveGateMode("enabled"), "enabled");
++  assert.equal(resolveGateMode("disabled"), "disabled");
++  for (const value of ["Disabled", "off", "true", " enabled "]) {
++    assert.throws(() => resolveGateMode(value), /must be enabled or disabled/);
++  }
++});
++
++test("unknown gate configuration fails before native app construction; disabled is a pass-through", async () => {
++  let nativeCalls = 0;
++  const nativeCreateZCodeApp = async (options) => {
++    nativeCalls += 1;
++    return options;
++  };
++  const create = createU10ProtocolFactory({ nativeCreateZCodeApp });
++  await assert.rejects(create({ env: { P01_U10_GATE_MODE: "typo" } }), /must be enabled or disabled/);
++  assert.equal(nativeCalls, 0);
++
++  const options = { env: { P01_U10_GATE_MODE: "disabled" }, sentinel: true };
++  assert.equal(await create(options), options);
++  assert.equal(nativeCalls, 1);
++});
++
++test("model warmup remains available while Pro is denied before inference", async () => {
++  let constructions = 0;
++  let inferences = 0;
++  const delegate = {
++    createModel() {
++      constructions += 1;
++      return {
++        async generateText() { inferences += 1; return { text: "unreachable" }; },
++        async streamText() { inferences += 1; return { textStream: [] }; },
++        bind() { return this; },
++      };
++    },
++    addStatusSink() {},
++    setModelIoFullRetentionEnabled() {},
++  };
++  const adapter = createQualifiedModelAdapter(delegate, { endpointOrigin: origin });
++  const model = adapter.createModel(modelOptions({ modelId: "deepseek-v4-pro" }));
++  assert.equal(constructions, 1);
++  await assert.rejects(async () => model.generateText({ prompt: "test" }), /not qualified/);
++  await assert.rejects(async () => model.bind().streamText({ prompt: "test" }), /not qualified/);
++  assert.equal(inferences, 0);
++});
++
++test("only the approved model, synthetic key, and exact assigned loopback API qualify", () => {
++  assert.equal(validateLoopbackOrigin(origin), origin);
++  assert.doesNotThrow(() => assertQualifiedModel(modelOptions(), { endpointOrigin: origin }));
++  const invalid = [
++    [modelOptions({ modelId: "deepseek-v4-pro" }), origin],
++    [modelOptions({ providerConfig: { access: { apiKey: "real-looking-key" }, api: { baseUrl: `${origin}/v1` } } }), origin],
++    [modelOptions({ providerConfig: { access: { apiKey: "p01-u09-loopback-only" }, api: { baseUrl: "https://api.deepseek.com/v1" } } }), origin],
++    [modelOptions({ requestDependencies: { requestAuth: async () => ({ Authorization: "Bearer x" }) } }), origin],
++  ];
++  for (const [options, endpointOrigin] of invalid) {
++    assert.throws(() => assertQualifiedModel(options, { endpointOrigin }));
++  }
++  for (const endpoint of ["https://127.0.0.1:39173", "http://8.8.8.8:39173", "http://127.0.0.1:9229"]) {
++    assert.throws(() => validateLoopbackOrigin(endpoint), /assigned loopback/);
++  }
++});
++
++test("owned execution adapter closes exactly once across duplicate close calls", async () => {
++  let closes = 0;
++  const lifecycle = createOwnedExecutionLifecycle({ async close() { closes += 1; } });
++  await Promise.all([lifecycle.close(), lifecycle.close(), lifecycle.close()]);
++  assert.equal(lifecycle.closed, true);
++  assert.equal(closes, 1);
++});
++
++test("enabled factory preserves U06 injected ports and pins only its exact identity hook to Node", async (t) => {
++  const f = await withOwnedFactoryFixture(t);
++  const baseCreateExecutionAdapter = f.nativeModules.createNodeExecutionAdapter;
++  f.nativeModules.createNodeExecutionAdapter = (...args) => {
++    const port = baseCreateExecutionAdapter(...args);
++    f.nativeModules.baseExecution = port;
++    return port;
++  };
++  const app = await f.create({ env: f.env });
++  assert.equal(f.nativeOptions.executionPort, f.gateExecution);
++  assert.equal(f.nativeOptions.modelAdapter, f.gateModel);
++  assert.equal(f.nativeOptions.sourceTitle, "electron");
++  assert.equal(f.nativeOptions.runtimeConfig.memory.enabled, false);
++  assert.equal(f.nativeOptions.runtimeConfig.mcp.enabled, false);
++  assert.deepEqual(f.nativeOptions.runtimeConfig.mcp.servers, {});
++  assert.equal(f.nativeOptions.fileSystemPort.readTextFile instanceof Function, true);
++
++  const source = process.env.P01_U10_ZCODE_SOURCE ?? "E:/Xiadie/Xiadie/.runtime/P01/desktop-source";
++  const loadNative = (relative) => import(pathToFileURL(path.join(source, relative)).href);
++  const { register } = await loadNative("node_modules/tsx/dist/esm/api/index.mjs");
++  register();
++  const { createConfig } = await loadNative("apps/zcode-cli/packages/adapters/dist/config/index.js");
++  const config = createConfig({
++    env: f.env,
++    userConfigPath: path.join(f.root, "user.json"),
++    projectConfigPath: path.join(f.root, "project.json"),
++    workingDirectory: path.join(f.root, "workspace"),
++  });
++  assert.deepEqual(config.sources.user.diagnostics, []);
++  assert.equal(config.config.features.mcp, false);
++  assert.equal(config.config.features.skill, false);
++  assert.equal(config.config.skills.enabled, false);
++  const persistedUserConfig = JSON.parse(await readFile(path.join(f.root, "user.json"), "utf8"));
++  assert.equal(persistedUserConfig.features.mcp, false);
++  assert.equal(persistedUserConfig.features.skill, false);
++  assert.equal(persistedUserConfig.skills.enabled, false);
++
++  const request = {
++    command: { mode: "argv", file: electronPath, args: [path.join(f.pluginRoot, "hooks", "context.mjs")] },
++    env: { set: { ELECTRON_RUN_AS_NODE: "1", keep: "yes" }, unset: [] },
++    trace: { attributes: { hookEventName: "UserPromptSubmit" } },
++  };
++  await f.nativeOptions.executionPort.run(request);
++  assert.equal(f.gateRequest.command.file, electronPath);
++  assert.equal(f.nativeModules.lastExecutionRequest.command.file, pinnedNode);
++  assert.deepEqual(f.nativeModules.lastExecutionRequest.env.set, { keep: "yes" });
++  assert.ok(f.nativeModules.lastExecutionRequest.env.unset.includes("ELECTRON_RUN_AS_NODE"));
++  const caseVariant = {
++    ...request,
++    command: {
++      ...request.command,
++      file: electronPath.toUpperCase(),
++      args: [request.command.args[0].toUpperCase()],
++    },
++  };
++  await f.nativeOptions.executionPort.run(caseVariant);
++  assert.equal(f.nativeModules.lastExecutionRequest.command.file, pinnedNode);
++  await app.close();
++  assert.equal(f.nativeAppCloseCount, 1);
++  assert.equal(f.executionCloseCount, 1);
++});
++
++test("enabled factory closes its owned adapter if native app construction fails", async (t) => {
++  const f = await withOwnedFactoryFixture(t, { failNativeCreate: true });
++  const baseCreateExecutionAdapter = f.nativeModules.createNodeExecutionAdapter;
++  f.nativeModules.createNodeExecutionAdapter = (...args) => {
++    const port = baseCreateExecutionAdapter(...args);
++    f.nativeModules.baseExecution = port;
++    return port;
++  };
++  await assert.rejects(f.create({ env: f.env }), /native fixture construction failed/);
++  assert.equal(f.executionCloseCount, 1);
++});
++
++test("native ProtocolRuntimeResources can wrap candidate close and close it exactly once", async (t) => {
++  const f = await withOwnedFactoryFixture(t);
++  const app = await f.create({ env: f.env });
++  assert.equal(Object.getOwnPropertyDescriptor(app, "close")?.writable, true);
++
++  const source = process.env.P01_U10_ZCODE_SOURCE ?? "E:/Xiadie/Xiadie/.runtime/P01/desktop-source";
++  const nativeRuntimeResources = await import(pathToFileURL(path.join(
++    source,
++    "apps/zcode-cli/packages/bootstrap/dist/zcode-protocol/runtime-resources.js",
++  )).href);
++  const resources = new nativeRuntimeResources.ProtocolRuntimeResources(async () => app);
++  const managedApp = await resources.create({});
++  assert.equal(managedApp, app);
++
++  await Promise.all([resources.close(), resources.close(), managedApp.close()]);
++  assert.equal(f.nativeAppCloseCount, 1);
++  assert.equal(f.executionCloseCount, 1);
++});
++
++test("projection sidecar records correlated tool evidence and hashes reply text", async (t) => {
++  const f = await withOwnedFactoryFixture(t, { startTurn: true });
++  const baseCreateExecutionAdapter = f.nativeModules.createNodeExecutionAdapter;
++  f.nativeModules.createNodeExecutionAdapter = (...args) => {
++    const port = baseCreateExecutionAdapter(...args);
++    f.nativeModules.baseExecution = port;
++    return port;
++  };
++  const app = await f.create({ env: f.env });
++  const result = await app.sendInput("fixture prompt");
++  await result.completion;
++  const sidecarPath = path.join(f.root, "u10-turn-projections.jsonl");
++  let contents;
++  for (let attempt = 0; attempt < 50; attempt += 1) {
++    try { contents = await readFile(sidecarPath, "utf8"); break; }
++    catch { await new Promise((resolve) => setTimeout(resolve, 10)); }
++  }
++  assert.equal(typeof contents, "string");
++  const row = JSON.parse(contents.trim());
++  assert.equal(row.sessionId, "fixture-session");
++  assert.equal(row.turnId, "fixture-turn");
++  assert.equal(row.projectionStatus, "projected");
++  assert.deepEqual(row.requiredToolCallIds, ["tool-fixture"]);
++  assert.deepEqual(row.toolReceipts, [{ toolCallId: "tool-fixture", toolName: "Read", status: "succeeded" }]);
++  assert.equal(row.evidenceStatus, "verified");
++  assert.equal(row.replyBytes, Buffer.byteLength("fixture reply should only be hashed", "utf8"));
++  assert.equal(contents.includes("fixture reply should only be hashed"), false);
++  await app.close();
++});
++
++test("projection subscription failure is recorded as unavailable without exposing the error", async (t) => {
++  const f = await withOwnedFactoryFixture(t, { startTurn: true, subscriptionFailure: true });
++  const baseCreateExecutionAdapter = f.nativeModules.createNodeExecutionAdapter;
++  f.nativeModules.createNodeExecutionAdapter = (...args) => {
++    const port = baseCreateExecutionAdapter(...args);
++    f.nativeModules.baseExecution = port;
++    return port;
++  };
++  const app = await f.create({ env: f.env });
++  const result = await app.sendInput("fixture prompt");
++  await result.completion;
++  const sidecarPath = path.join(f.root, "u10-turn-projections.jsonl");
++  let contents;
++  for (let attempt = 0; attempt < 50; attempt += 1) {
++    try { contents = await readFile(sidecarPath, "utf8"); break; }
++    catch { await new Promise((resolve) => setTimeout(resolve, 10)); }
++  }
++  assert.equal(typeof contents, "string");
++  const row = JSON.parse(contents.trim());
++  assert.equal(row.projectionStatus, "unavailable");
++  assert.equal(row.reason, "event_subscription_failed");
++  assert.equal(contents.includes("raw subscription error"), false);
++  await app.close();
++});
++
++test("native cancelled terminal event projects cancellation when completion rejects", async (t) => {
++  const cancellation = Object.assign(new Error("Turn was cancelled."), { type: "turn_cancelled" });
++  const f = await withOwnedFactoryFixture(t, {
++    startTurn: true,
++    completionError: cancellation,
++    terminalPayload: { resultType: "cancelled" },
++  });
++  const app = await f.create({ env: f.env });
++  const result = await app.sendInput("fixture prompt");
++  await assert.rejects(result.completion, /Turn was cancelled/);
++
++  const sidecarPath = path.join(f.root, "u10-turn-projections.jsonl");
++  let contents;
++  for (let attempt = 0; attempt < 50; attempt += 1) {
++    try { contents = await readFile(sidecarPath, "utf8"); break; }
++    catch { await new Promise((resolve) => setTimeout(resolve, 10)); }
++  }
++  assert.equal(typeof contents, "string");
++  const row = JSON.parse(contents.trim());
++  assert.equal(row.turnId, "fixture-turn");
++  assert.equal(row.projectionStatus, "projected");
++  assert.equal(row.lifecycle, "cancelled");
++  assert.equal(row.resultType, "cancelled");
++  assert.deepEqual(row.toolReceipts, [{ toolCallId: "tool-fixture", toolName: "Read", status: "succeeded" }]);
++  assert.equal(contents.includes("Turn was cancelled"), false);
++  await app.close();
++});
++
++test("a cancellation-shaped completion rejection without native terminal evidence remains unavailable", async (t) => {
++  const cancellation = Object.assign(new Error("Turn was cancelled."), { type: "turn_cancelled" });
++  const f = await withOwnedFactoryFixture(t, {
++    startTurn: true,
++    completionError: cancellation,
++    emitTerminal: false,
++  });
++  const app = await f.create({ env: f.env });
++  const result = await app.sendInput("fixture prompt");
++  await assert.rejects(result.completion, /Turn was cancelled/);
++
++  const sidecarPath = path.join(f.root, "u10-turn-projections.jsonl");
++  let contents;
++  for (let attempt = 0; attempt < 50; attempt += 1) {
++    try { contents = await readFile(sidecarPath, "utf8"); break; }
++    catch { await new Promise((resolve) => setTimeout(resolve, 10)); }
++  }
++  assert.equal(typeof contents, "string");
++  const row = JSON.parse(contents.trim());
++  assert.equal(row.turnId, "fixture-turn");
++  assert.equal(row.projectionStatus, "unavailable");
++  assert.equal(row.reason, "turn_completion_failed");
++  assert.equal("lifecycle" in row, false);
++  assert.equal(contents.includes("Turn was cancelled"), false);
++  await app.close();
++});
+diff --git a/tests/integration/P01/read-only-workspace.mjs b/tests/integration/P01/read-only-workspace.mjs
+new file mode 100644
+index 0000000..f36aa71
+--- /dev/null
++++ b/tests/integration/P01/read-only-workspace.mjs
+@@ -0,0 +1,48 @@
++// Derived from the accepted P01-U09 filesystem port. This is an application
++// boundary for the local candidate, not an OS sandbox against concurrent actors.
++import { lstatSync, realpathSync } from "node:fs";
++import path from "node:path";
++
++const READ_METHODS = new Set(["stat", "readTextFile", "readBinaryFile", "readTextFileRange"]);
++const isRecord = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
++
++function isInside(root, candidate) {
++  const relative = path.relative(root, candidate);
++  return relative === "" || (!path.isAbsolute(relative) && relative !== ".." && !relative.startsWith(`..${path.sep}`));
++}
++
++function checkPath(root, candidate) {
++  if (!path.isAbsolute(candidate) || !isInside(root, candidate)) throw new Error("filesystem_scope_denied");
++  let current = root;
++  for (const segment of path.relative(root, candidate).split(path.sep).filter(Boolean)) {
++    current = path.join(current, segment);
++    let info;
++    try { info = lstatSync(current); }
++    catch (error) {
++      // Native Read must retain its ordinary missing-file error.
++      if (error?.code === "ENOENT" || error?.code === "ENOTDIR") return;
++      throw new Error("filesystem_scope_denied");
++    }
++    if (info.isSymbolicLink() || !isInside(root, realpathSync.native(current))) {
++      throw new Error("filesystem_scope_denied");
++    }
++  }
++}
++
++export function createReadOnlyWorkspaceFileSystemPort(basePort, workspaceRoot, createFileSystemError) {
++  const physicalRoot = realpathSync.native(workspaceRoot);
++  const denied = () => createFileSystemError({ code: "permission_denied", message: "P01 workspace filesystem scope denied" });
++  return new Proxy(basePort, {
++    get(target, property) {
++      const method = Reflect.get(target, property, target);
++      if (typeof method !== "function") return method;
++      if (!READ_METHODS.has(property)) return async () => { throw denied(); };
++      return async (request, ...rest) => {
++        if (!isRecord(request) || typeof request.path !== "string" || !path.isAbsolute(request.path)) throw denied();
++        try { checkPath(physicalRoot, path.resolve(request.path)); }
++        catch { throw denied(); }
++        return method.call(target, request, ...rest);
++      };
++    },
++  });
++}
+diff --git a/tests/integration/P01/read-only-workspace.test.mjs b/tests/integration/P01/read-only-workspace.test.mjs
+new file mode 100644
+index 0000000..6a62236
+--- /dev/null
++++ b/tests/integration/P01/read-only-workspace.test.mjs
+@@ -0,0 +1,78 @@
++import assert from "node:assert/strict";
++import { mkdtemp, mkdir, readFile, rm, symlink, writeFile } from "node:fs/promises";
++import { realpathSync } from "node:fs";
++import os from "node:os";
++import path from "node:path";
++import test from "node:test";
++import { pathToFileURL } from "node:url";
++import { createReadOnlyWorkspaceFileSystemPort } from "./read-only-workspace.mjs";
++
++async function fixture(t) {
++  const parent = realpathSync.native(os.tmpdir());
++  const directory = await mkdtemp(path.join(parent, "xiadie-u10-fs-"));
++  t.after(async () => {
++    const resolved = realpathSync.native(directory);
++    assert.equal(path.dirname(resolved), parent);
++    assert.ok(path.basename(resolved).startsWith("xiadie-u10-fs-"));
++    await rm(resolved, { recursive: true, force: true });
++  });
++  const workspace = path.join(directory, "workspace");
++  const outside = path.join(directory, "outside");
++  await mkdir(workspace);
++  await mkdir(outside);
++  await writeFile(path.join(workspace, "allowed.txt"), "READ_ONLY_MARKER");
++  await writeFile(path.join(outside, "private.txt"), "OUTSIDE_MARKER");
++  const calls = [];
++  const base = {
++    label: "native-port",
++    async readTextFile(request) { calls.push(request.path); return readFile(request.path, "utf8"); },
++    async writeTextFile() { calls.push("write"); throw new Error("should never delegate write"); },
++  };
++  const port = createReadOnlyWorkspaceFileSystemPort(base, workspace, ({ code, message }) => Object.assign(new Error(message), { code }));
++  return { workspace, outside, calls, port };
++}
++
++test("candidate filesystem delegates bounded reads and preserves native missing-file failure", async (t) => {
++  const f = await fixture(t);
++  assert.equal(await f.port.readTextFile({ path: path.join(f.workspace, "allowed.txt") }), "READ_ONLY_MARKER");
++  assert.equal(f.port.label, "native-port");
++  await assert.rejects(f.port.readTextFile({ path: path.join(f.workspace, "missing.txt") }), { code: "ENOENT" });
++  assert.equal(f.calls.length, 2);
++});
++
++test("candidate filesystem rejects writes, siblings, traversal and relative paths before delegation", async (t) => {
++  const f = await fixture(t);
++  for (const request of [
++    { path: path.join(f.outside, "private.txt") },
++    { path: path.join(f.workspace, "..", "outside", "private.txt") },
++    { path: "allowed.txt" },
++    { path: 7 },
++  ]) await assert.rejects(f.port.readTextFile(request), { code: "permission_denied" });
++  await assert.rejects(f.port.writeTextFile({ path: path.join(f.workspace, "allowed.txt"), text: "changed" }), { code: "permission_denied" });
++  assert.deepEqual(f.calls, []);
++  assert.equal(await readFile(path.join(f.workspace, "allowed.txt"), "utf8"), "READ_ONLY_MARKER");
++});
++
++test("candidate filesystem rejects an escaping directory link on every read", async (t) => {
++  const f = await fixture(t);
++  await symlink(f.outside, path.join(f.workspace, "escape"), process.platform === "win32" ? "junction" : "dir");
++  await assert.rejects(f.port.readTextFile({ path: path.join(f.workspace, "escape", "private.txt") }), { code: "permission_denied" });
++  assert.deepEqual(f.calls, []);
++  assert.equal(await readFile(path.join(f.outside, "private.txt"), "utf8"), "OUTSIDE_MARKER");
++});
++
++test("the pinned native FileSystemPort reads through the candidate boundary", async (t) => {
++  const f = await fixture(t);
++  const source = process.env.P01_U10_ZCODE_SOURCE ?? "E:/Xiadie/Xiadie/.runtime/P01/desktop-source";
++  const load = (file) => import(pathToFileURL(path.join(source, file)).href);
++  const { register } = await load("node_modules/tsx/dist/esm/api/index.mjs");
++  register();
++  const { createNodeFileSystemAdapter } = await load("apps/zcode-cli/packages/adapters/dist/fs/index.js");
++  const { createFileSystemError } = await load("apps/zcode-cli/packages/contracts/dist/interfaces/file-system.port.js");
++  const port = createReadOnlyWorkspaceFileSystemPort(createNodeFileSystemAdapter({ textSearchEngine: "javascript" }), f.workspace, createFileSystemError);
++  const read = await port.readTextFile({ path: path.join(f.workspace, "allowed.txt") });
++  assert.equal(read.content, "READ_ONLY_MARKER");
++  assert.equal(read.truncated, false);
++  await assert.rejects(port.readTextFile({ path: path.join(f.workspace, "missing.txt") }), { code: "not_found" });
++  await assert.rejects(port.readTextFile({ path: path.join(f.outside, "private.txt") }), { code: "permission_denied" });
++});
+diff --git a/tools/run-stage-tests.mjs b/tools/run-stage-tests.mjs
+new file mode 100644
+index 0000000..00a13c0
+--- /dev/null
++++ b/tools/run-stage-tests.mjs
+@@ -0,0 +1,31 @@
++import { spawnSync } from "node:child_process";
++import path from "node:path";
++import { fileURLToPath } from "node:url";
++
++const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
++const [suite, ...rawArgs] = process.argv.slice(2);
++const args = rawArgs.filter((arg) => arg !== "--");
++let command;
++
++if (suite === "eval") {
++  if (args.length !== 0 && !(args.length === 1 && args[0] === "mock")) {
++    console.error("test:eval runs the local mock matrix. Real evaluation uses the explicit authorized relay.py entry point.");
++    process.exitCode = 2;
++  } else {
++    command = ["-X", "utf8", "tests/evals/persona/relay.py", "mock"];
++  }
++} else if (suite === "e2e") {
++  // desktop.py strictly validates its own candidate, output and suite arguments.
++  // It has no real-provider mode and never parses or passes real credentials.
++  // Production files may be hashed to verify they remain unchanged.
++  command = ["-X", "utf8", "tests/integration/P01/desktop.py", ...args];
++} else {
++  console.error("usage: node tools/run-stage-tests.mjs <eval|e2e> [runner arguments]");
++  process.exitCode = 2;
++}
++
++if (command !== undefined) {
++  const result = spawnSync("python", command, { cwd: root, stdio: "inherit" });
++  if (result.error !== undefined) console.error(result.error.message);
++  process.exitCode = result.status ?? 1;
++}
+diff --git a/tools/run-tests.mjs b/tools/run-tests.mjs
+index 548f0f8..730fb56 100644
+--- a/tools/run-tests.mjs
++++ b/tools/run-tests.mjs
+@@ -1,10 +1,11 @@
+ import path from "node:path";
++import { statSync } from "node:fs";
+ import { spawnSync } from "node:child_process";
+ import { fileURLToPath } from "node:url";
+ 
+ const TESTS = Object.freeze({
+   unit: Object.freeze({
+-    all: ["packages/contracts/test/json-value.test.mjs", "packages/character/test/schema.test.mjs", "packages/context/test/context.test.mjs", "packages/adapters/zcode/test/host.test.mjs", "packages/application/test/turn-projection.test.mjs", "packages/config/test/profile.test.mjs", "packages/config/test/desktop-build-paths.test.mjs", "packages/config/test/warmup.test.mjs", "packages/secrets/test/credential.test.mjs", "tests/evals/persona/native.test.mjs"],
++    all: ["packages/contracts/test/json-value.test.mjs", "packages/character/test/schema.test.mjs", "packages/context/test/context.test.mjs", "packages/adapters/zcode/test/host.test.mjs", "packages/application/test/turn-projection.test.mjs", "packages/config/test/profile.test.mjs", "packages/config/test/desktop-build-paths.test.mjs", "packages/config/test/warmup.test.mjs", "packages/secrets/test/credential.test.mjs", "tests/evals/persona/native.test.mjs", "tests/integration/P01/read-only-workspace.test.mjs", "tests/integration/P01/factory.test.mjs", "tests/integration/P01/electron-network-guard.test.mjs"],
+     tasks: Object.freeze({
+       "P01-U03": ["packages/contracts/test/json-value.test.mjs"],
+       "P01-U04": ["packages/character/test/schema.test.mjs"],
+@@ -13,6 +14,7 @@ const TESTS = Object.freeze({
+       "P01-U07": ["packages/application/test/turn-projection.test.mjs"],
+       "P01-U08": ["packages/config/test/profile.test.mjs", "packages/config/test/desktop-build-paths.test.mjs", "packages/config/test/warmup.test.mjs", "packages/secrets/test/credential.test.mjs"],
+       "P01-U09": ["tests/evals/persona/native.test.mjs"],
++      "P01-U10": ["tests/integration/P01/read-only-workspace.test.mjs", "tests/integration/P01/factory.test.mjs", "tests/integration/P01/electron-network-guard.test.mjs"],
+     }),
+   }),
+   contract: Object.freeze({
+@@ -67,6 +69,13 @@ function main(argv) {
+   }
+ 
+   const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
++  for (const file of files) {
++    try {
++      if (statSync(path.join(root, file)).isFile()) continue;
++    } catch { /* Report the declared fixture rather than accepting a partial suite. */ }
++    console.error(`test file is missing: ${file}`);
++    return 1;
++  }
+   const result = spawnSync(process.execPath, ["--test", ...files], {
+     cwd: root,
+     stdio: "inherit",
