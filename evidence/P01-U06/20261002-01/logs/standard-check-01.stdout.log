@@ -1,0 +1,15 @@
+command=pnpm check
+
+> xiadie@0.1.0 check E:\Xiadie\Xiadie\.runtime\P01\worktrees\u06
+> pnpm run typecheck && pnpm run boundary:check
+
+
+> xiadie@0.1.0 typecheck E:\Xiadie\Xiadie\.runtime\P01\worktrees\u06
+> tsc --project tsconfig.json --noEmit
+
+
+> xiadie@0.1.0 boundary:check E:\Xiadie\Xiadie\.runtime\P01\worktrees\u06
+> node tools/check-import-boundaries.mjs
+
+BOUNDARY_SCAN_NOT_RUN: packages/core is absent; no product Core imports were checked.
+pnpmExitCode=0

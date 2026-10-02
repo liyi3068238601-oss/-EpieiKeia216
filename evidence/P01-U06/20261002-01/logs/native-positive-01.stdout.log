@@ -1,0 +1,23 @@
+(node:16032) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ native marketplace install/discovery, Hook process, native Read and local mock model (93.4757ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 120723.9639
+
+✖ failing tests:
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:27:1
+✖ native marketplace install/discovery, Hook process, native Read and local mock model (93.4757ms)
+  Error: Enabled Xiadie requires trusted assets, module, installed-plugin, profile, plugin-storage, and data roots
+      at createXiadieZCodeApp (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/dist/packages/adapters/zcode/src/host.js:14:15)
+      at createFixture (E:\Xiadie\Xiadie\.runtime\P01\worktrees\u06\packages\adapters\zcode\test\native.integration.test.mjs:180:22)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (E:\Xiadie\Xiadie\.runtime\P01\worktrees\u06\packages\adapters\zcode\test\native.integration.test.mjs:28:19)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)

@@ -1,0 +1,138 @@
+(node:38992) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+U06_HOOK_PROCESS {"event":"UserPromptSubmit","kind":"timeout","file":"E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe","args":["E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u06\\packages\\adapters\\zcode\\test\\fixtures\\hook-process-fault.mjs","hang"],"nativeTimeoutMs":8000,"childTimeoutMs":250,"startedAtUtc":"2026-10-02T05:40:28.769Z","completedAtUtc":"2026-10-02T05:40:29.042Z","durationMs":273,"status":"timed_out","signal":"SIGTERM","timedOut":true,"cancelled":false,"stdoutBytes":25,"stdoutSha256":"9726b6b5d49950f81544e11d9762c39288417ab58514e134e54d8b1945d2088b","stderrBytes":0,"stderrSha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","stdoutText":"U06_HANG_FIXTURE_STARTED\n","stderrText":""}
+✖ native UserPromptSubmit blocks timeout before any model request (839.8697ms)
+U06_HOOK_PROCESS {"event":"UserPromptSubmit","kind":"nonzero","file":"E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe","args":["E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u06\\packages\\adapters\\zcode\\test\\fixtures\\hook-process-fault.mjs","nonzero"],"nativeTimeoutMs":8000,"childTimeoutMs":8000,"startedAtUtc":"2026-10-02T05:40:29.553Z","completedAtUtc":"2026-10-02T05:40:29.603Z","durationMs":50,"status":"failed","exitCode":7,"timedOut":false,"cancelled":false,"stdoutBytes":0,"stdoutSha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","stderrBytes":28,"stderrSha256":"58171ec48899d8799cc65b39d56b373daf0452d2d42cb4b0bc2273173d0c12c9","stdoutText":"","stderrText":"U06_NONZERO_FIXTURE_FAILURE\n"}
+✖ native UserPromptSubmit blocks nonzero before any model request (561.1055ms)
+U06_HOOK_PROCESS {"event":"UserPromptSubmit","kind":"bad-json","file":"E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe","args":["E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u06\\packages\\adapters\\zcode\\test\\fixtures\\hook-process-fault.mjs","bad-json"],"nativeTimeoutMs":8000,"childTimeoutMs":8000,"startedAtUtc":"2026-10-02T05:40:30.103Z","completedAtUtc":"2026-10-02T05:40:30.171Z","durationMs":68,"status":"completed","exitCode":0,"timedOut":false,"cancelled":false,"stdoutBytes":9,"stdoutSha256":"60498ebafa3f473a2a72c1242e8c3202bf50a6d81dfc721958be1550f46faf33","stderrBytes":0,"stderrSha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","stdoutText":"not-json\n","stderrText":""}
+✖ native UserPromptSubmit blocks bad-json before any model request (570.4507ms)
+U06_HOOK_PROCESS {"event":"UserPromptSubmit","kind":"installed-hook","file":"E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe","args":["E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u06\\.runtime\\P01\\u06-mock-profiles\\native-int-15wI5k\\plugin-storage\\cache\\xiadie-local\\xiadie\\0.1.0/hooks/context.mjs"],"nativeTimeoutMs":8000,"childTimeoutMs":8000,"startedAtUtc":"2026-10-02T05:40:30.655Z","completedAtUtc":"2026-10-02T05:40:30.721Z","durationMs":66,"status":"completed","exitCode":0,"timedOut":false,"cancelled":false,"stdoutBytes":5519,"stdoutSha256":"4c63932b483c9df96efb596d43437a10d55bdfcac3e6e222e9079d045a97898f","stderrBytes":0,"stderrSha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"}
+✖ native UserPromptSubmit blocks schema before any model request (545.0867ms)
+U06_HOOK_PROCESS {"event":"UserPromptSubmit","kind":"installed-hook","file":"E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe","args":["E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u06\\.runtime\\P01\\u06-mock-profiles\\native-int-2OZdQU\\plugin-storage\\cache\\xiadie-local\\xiadie\\0.1.0/hooks/context.mjs"],"nativeTimeoutMs":8000,"childTimeoutMs":8000,"startedAtUtc":"2026-10-02T05:40:31.208Z","completedAtUtc":"2026-10-02T05:40:31.272Z","durationMs":64,"status":"completed","exitCode":0,"timedOut":false,"cancelled":false,"stdoutBytes":5519,"stdoutSha256":"bb942a7b6f3ad7803eb950c92d6b1f3f7f0ae4bb0d5787c24b3c8c7b60aaa67a","stderrBytes":0,"stderrSha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"}
+✖ native UserPromptSubmit blocks missing-receipt before any model request (551.0697ms)
+U06_HOOK_PROCESS {"event":"UserPromptSubmit","kind":"installed-hook","file":"E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe","args":["E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u06\\.runtime\\P01\\u06-mock-profiles\\native-int-CP1jcu\\plugin-storage\\cache\\xiadie-local\\xiadie\\0.1.0/hooks/context.mjs"],"nativeTimeoutMs":8000,"childTimeoutMs":8000,"startedAtUtc":"2026-10-02T05:40:31.734Z","completedAtUtc":"2026-10-02T05:40:31.801Z","durationMs":67,"status":"completed","exitCode":0,"timedOut":false,"cancelled":false,"stdoutBytes":5519,"stdoutSha256":"cabc96be88f33b13a3e07e6de99479ba0230d20b8d4993c4eb5c8cb7e260e76d","stderrBytes":0,"stderrSha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"}
+✖ native UserPromptSubmit blocks truncated before any model request (528.7844ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 0
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6637.5328
+
+✖ failing tests:
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:86:3
+✖ native UserPromptSubmit blocks timeout before any model request (839.8697ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Xiadie identity gate rejected this turn before model execution. hook-receipt'
+  - ''
+  
+      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:93:12)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Xiadie identity gate rejected this turn before model execution. hook-receipt',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:86:3
+✖ native UserPromptSubmit blocks nonzero before any model request (561.1055ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Xiadie identity gate rejected this turn before model execution. hook-receipt'
+  - ''
+  
+      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:93:12)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Xiadie identity gate rejected this turn before model execution. hook-receipt',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:86:3
+✖ native UserPromptSubmit blocks bad-json before any model request (570.4507ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Xiadie identity gate rejected this turn before model execution. hook-receipt'
+  - ''
+  
+      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:93:12)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Xiadie identity gate rejected this turn before model execution. hook-receipt',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:86:3
+✖ native UserPromptSubmit blocks schema before any model request (545.0867ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Xiadie identity gate rejected this turn before model execution. hook-receipt'
+  - ''
+  
+      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:93:12)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Xiadie identity gate rejected this turn before model execution. hook-receipt',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:86:3
+✖ native UserPromptSubmit blocks missing-receipt before any model request (551.0697ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Xiadie identity gate rejected this turn before model execution. hook-receipt'
+  - ''
+  
+      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:93:12)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Xiadie identity gate rejected this turn before model execution. hook-receipt',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:86:3
+✖ native UserPromptSubmit blocks truncated before any model request (528.7844ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Xiadie identity gate rejected this turn before model execution. hook-receipt'
+  - ''
+  
+      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:93:12)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Xiadie identity gate rejected this turn before model execution. hook-receipt',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

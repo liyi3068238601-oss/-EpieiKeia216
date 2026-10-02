@@ -1,0 +1,297 @@
+(node:68280) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ native marketplace install/discovery, Hook process, native Read and local mock model (194.8301ms)
+✖ native sendInput returns its TurnResult after an installed Hook and native Read (96.4168ms)
+✖ cancelled native sendInput holds exclusivity through completion and permits a fresh turn afterward (91.5602ms)
+✖ native compact uses a one-session operation ticket and next turn creates a fresh Hook receipt (99.1432ms)
+✖ resume performs a fresh approved preflight and next native turn receives a new Hook receipt (100.5602ms)
+✖ disabled native plugin leaves ordinary native model execution available (90.001ms)
+✖ native UserPromptSubmit blocks timeout before any model request (96.5753ms)
+✖ native UserPromptSubmit blocks nonzero before any model request (92.7626ms)
+✖ native UserPromptSubmit blocks bad-json before any model request (105.0926ms)
+✖ native UserPromptSubmit blocks schema before any model request (101.5953ms)
+✖ native UserPromptSubmit blocks missing-receipt before any model request (97.6036ms)
+✖ native UserPromptSubmit blocks truncated before any model request (93.452ms)
+✖ missing native Hook receipt is rejected at model delegate boundary (100.9917ms)
+✖ an unknown Hook path cannot create a native model request (99.5538ms)
+✖ an invalid approved character asset fails before native submit or model work (90.6934ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 0
+ℹ fail 15
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5008.4003
+
+✖ failing tests:
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:31:1
+✖ native marketplace install/discovery, Hook process, native Read and local mock model (194.8301ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:32:19)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:51:1
+✖ native sendInput returns its TurnResult after an installed Hook and native Read (96.4168ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:52:19)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:79:1
+✖ cancelled native sendInput holds exclusivity through completion and permits a fresh turn afterward (91.5602ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:80:19)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:109:1
+✖ native compact uses a one-session operation ticket and next turn creates a fresh Hook receipt (99.1432ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:110:19)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:129:1
+✖ resume performs a fresh approved preflight and next native turn receives a new Hook receipt (100.5602ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:130:19)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:140:1
+✖ disabled native plugin leaves ordinary native model execution available (90.001ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:141:19)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:150:3
+✖ native UserPromptSubmit blocks timeout before any model request (96.5753ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:151:21)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:150:3
+✖ native UserPromptSubmit blocks nonzero before any model request (92.7626ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:151:21)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:150:3
+✖ native UserPromptSubmit blocks bad-json before any model request (105.0926ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:151:21)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:150:3
+✖ native UserPromptSubmit blocks schema before any model request (101.5953ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:151:21)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:150:3
+✖ native UserPromptSubmit blocks missing-receipt before any model request (97.6036ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:151:21)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:150:3
+✖ native UserPromptSubmit blocks truncated before any model request (93.452ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:151:21)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:171:1
+✖ missing native Hook receipt is rejected at model delegate boundary (100.9917ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:172:19)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:179:1
+✖ an unknown Hook path cannot create a native model request (99.5538ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:180:19)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:188:1
+✖ an invalid approved character asset fails before native submit or model work (90.6934ms)
+  AssertionError [ERR_ASSERTION]: the supported fixture profile disables project-memory extraction
+  
+  true !== false
+  
+      at createFixture (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:314:10)
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/native.integration.test.mjs:189:19)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
