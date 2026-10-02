@@ -1,6 +1,6 @@
 {
   "date": "2026-10-02",
-  "goal": "进入P01",
+  "goal": "完成 P01 并在 G01 验收冻结后停止",
   "project_root": "E:\\Xiadie\\Xiadie",
   "baseline_commit": "7ab0e81f63e9559a1b182f43b9e242e8a8e703fa",
   "plan_version": "1.1",
@@ -395,12 +395,14 @@
     },
     "generation_calls_at_authorization": 0,
     "route_independence": "Two valid API model IDs; backend independence is not asserted while official sources disagree on Pro routing",
-    "generation_calls_made": 4,
+    "generation_calls_made": 18,
     "transport_decision": {
       "path": "evidence/P01/transport-decision.json",
       "bytes": 614,
       "sha256": "a527ab46e12bb3c70930e3ea4ea41135f15eceded8266887238c90847b78656b"
-    }
+    },
+    "initial_requests_remaining": 0,
+    "usage_reconciliation": "evidence/P01/model-call-reconciliation-20261002-u09.json"
   },
   "persona_asset_state": "v3 runtime asset accepted; six source-bound fields, hash-pinned/read-only loader; all prior versions preserved",
   "product_implementation_started": true,
@@ -441,7 +443,14 @@
   "model_default": {
     "provider": "DeepSeek official",
     "model_id": "deepseek-flash",
-    "eval_second_model_id": "deepseek-v4-pro"
+    "eval_second_model_id": "deepseek-v4-pro",
+    "candidate_qualified_model_ids": [
+      "deepseek-flash"
+    ],
+    "unqualified_model_ids": [
+      "deepseek-v4-pro"
+    ],
+    "qualification_note": "Pro is measured, but its reversed promise participants require revision; do not present it as P01 persona-qualified."
   },
   "next_task": "P01-U09",
   "pause_history": [
