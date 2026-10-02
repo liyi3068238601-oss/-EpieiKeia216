@@ -113,11 +113,13 @@ function isIdentityHookRequest(request, installedPluginRoot, electronPath) {
   const trace = request?.trace;
   const command = request?.command;
   const expectedHook = path.resolve(installedPluginRoot, "hooks", "context.mjs");
+  const normalizePath = (value) => path.resolve(value).replaceAll("/", "\\").toLowerCase();
+  const commandFile = typeof command?.file === "string" ? command.file.toLowerCase() : "";
   return command?.mode === "argv" && Array.isArray(command.args) && command.args.length === 1 &&
-    path.resolve(command.args[0]) === expectedHook &&
+    typeof command.args[0] === "string" && normalizePath(command.args[0]) === normalizePath(expectedHook) &&
     trace?.attributes?.hookEventName === "UserPromptSubmit" &&
-    (command.file === "node" || command.file === "node.exe" ||
-      path.resolve(command.file ?? "") === path.resolve(electronPath));
+    (commandFile === "node" || commandFile === "node.exe" ||
+      (commandFile.length > 0 && normalizePath(command.file) === normalizePath(electronPath)));
 }
 
 function pinHookToNode(request, nodeExecutable) {

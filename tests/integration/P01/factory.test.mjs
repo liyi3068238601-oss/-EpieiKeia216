@@ -312,6 +312,16 @@ test("enabled factory preserves U06 injected ports and pins only its exact ident
   assert.equal(f.nativeModules.lastExecutionRequest.command.file, pinnedNode);
   assert.deepEqual(f.nativeModules.lastExecutionRequest.env.set, { keep: "yes" });
   assert.ok(f.nativeModules.lastExecutionRequest.env.unset.includes("ELECTRON_RUN_AS_NODE"));
+  const caseVariant = {
+    ...request,
+    command: {
+      ...request.command,
+      file: electronPath.toUpperCase(),
+      args: [request.command.args[0].toUpperCase()],
+    },
+  };
+  await f.nativeOptions.executionPort.run(caseVariant);
+  assert.equal(f.nativeModules.lastExecutionRequest.command.file, pinnedNode);
   await app.close();
   assert.equal(f.nativeAppCloseCount, 1);
   assert.equal(f.executionCloseCount, 1);
