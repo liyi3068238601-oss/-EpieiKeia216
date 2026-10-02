@@ -1,0 +1,33 @@
+[tsup] ZCODE_ENV=test ZCODE_PRODUCT_FLAVOR=preview
+CLI Building entry: {"host/index":"src/host/index.ts","host/tasksStorageWorker":"src/host/tasksStorageWorker.ts"}
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.5.1
+CLI Target: node22
+ESM Build start
+X [ERROR] Could not resolve "src/host/tasksStorageWorker.ts"
+
+X [ERROR] Could not resolve "src/host/index.ts"
+
+ESM Build failed
+E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:1748
+  let error = new Error(text);
+              ^
+
+Error: Build failed with 2 errors:
+error: Could not resolve "src/host/tasksStorageWorker.ts"
+error: Could not resolve "src/host/index.ts"
+    at failureErrorWithLog (E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:1748:15)
+    at E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:1207:25
+    at runOnEndCallbacks (E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:1588:45)
+    at buildResponseToResult (E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:1205:7)
+    at E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:1232:16
+    at responseCallbacks.<computed> (E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:884:9)
+    at handleIncomingPacket (E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:939:12)
+    at Socket.readFromStdout (E:\Xiadie\Xiadie\.runtime\P01\desktop-source\node_modules\esbuild\lib\main.js:862:7)
+    at Socket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:563:12) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+
+Node.js v24.14.0

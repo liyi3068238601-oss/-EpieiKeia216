@@ -1,0 +1,53 @@
+[2026-10-02 18:30:33.778] [pid:44700] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: desktop context prompt config failed: 503
+      at file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:20099
+      at settle (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:19765)
+      at ClientRequest.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:20091)
+      at ClientRequest.emit (node:events:508:28)
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134311)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-02 18:30:34.980] [pid:44700] [main] [renderer-action-trace] config unavailable, using cached decision {
+  error: Error: desktop context prompt config failed: 503
+      at file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:20099
+      at settle (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:19765)
+      at ClientRequest.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:20091)
+      at ClientRequest.emit (node:events:508:28)
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134311)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-02 18:30:34.983] [pid:44700] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: desktop context prompt config failed: 503
+      at file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:20099
+      at settle (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:19765)
+      at ClientRequest.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:20091)
+      at ClientRequest.emit (node:events:508:28)
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134311)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-02 18:30:34.994] [pid:44700] [main] [desktop-context-prompt] config unavailable, using cached decision {
+  error: Error: desktop context prompt config failed: 503
+      at file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:20099
+      at settle (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:19765)
+      at ClientRequest.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/main/index.js:5:20091)
+      at ClientRequest.emit (node:events:508:28)
+      at SimpleURLLoaderWrapper.<anonymous> (node:electron/js2c/browser_init:2:134311)
+      at SimpleURLLoaderWrapper.emit (node:events:508:28),
+  enabled: false
+}
+[2026-10-02 18:30:35.478] [pid:44700] [main] [host-log] (local-1) [host] [2026-10-02 18:30:35.471] [pid:9124] [zcode-host] ExperimentalWarning: SQLite is an experimental feature and might change at any time
+[2026-10-02 18:30:35.609] [pid:44700] [main] [host-log] (local-1) [host] [2026-10-02 18:30:35.607] [pid:9124] [zcode-host] local database startup failed attempt=34d22c1e-16c2-443b-a8da-dcc4a97f6521 {"name":"Error","message":"Storage preparation failed: unsupported_runtime","stack":"Error: Storage preparation failed: unsupported_runtime\n    at statusError (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:1:13935)\n    at prepareSessionStorage (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:1:15051)\n    at Object.prepare (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:2:1364)\n    at async DatabaseStartupCoordinator.run (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:1:10583)\n    at async DatabaseStartupCoordinator.start (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:1:8990)\n    at async ParentPort.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/desktop/out/host/index.js:254:84758)"}
+Debugger ending on ws://127.0.0.1:63698/7e65923b-dd17-440b-be28-c024a199d9d2
+For help, see: https://nodejs.org/en/docs/inspector
+file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u08/packages/config/test/desktop-no-key.mjs:39
+  throw new Error('No-Key native workspace did not become ready');
+        ^
+
+Error: No-Key native workspace did not become ready
+    at ready (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u08/packages/config/test/desktop-no-key.mjs:39:9)
+    at async file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u08/packages/config/test/desktop-no-key.mjs:57:5
+
+Node.js v24.14.0

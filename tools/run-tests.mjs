@@ -4,13 +4,14 @@ import { fileURLToPath } from "node:url";
 
 const TESTS = Object.freeze({
   unit: Object.freeze({
-    all: ["packages/contracts/test/json-value.test.mjs", "packages/character/test/schema.test.mjs", "packages/context/test/context.test.mjs", "packages/adapters/zcode/test/host.test.mjs", "packages/application/test/turn-projection.test.mjs"],
+    all: ["packages/contracts/test/json-value.test.mjs", "packages/character/test/schema.test.mjs", "packages/context/test/context.test.mjs", "packages/adapters/zcode/test/host.test.mjs", "packages/application/test/turn-projection.test.mjs", "packages/config/test/profile.test.mjs", "packages/config/test/warmup.test.mjs", "packages/secrets/test/credential.test.mjs"],
     tasks: Object.freeze({
       "P01-U03": ["packages/contracts/test/json-value.test.mjs"],
       "P01-U04": ["packages/character/test/schema.test.mjs"],
       "P01-U05": ["packages/context/test/context.test.mjs"],
       "P01-U06": ["packages/adapters/zcode/test/host.test.mjs"],
       "P01-U07": ["packages/application/test/turn-projection.test.mjs"],
+      "P01-U08": ["packages/config/test/profile.test.mjs", "packages/config/test/warmup.test.mjs", "packages/secrets/test/credential.test.mjs"],
     }),
   }),
   contract: Object.freeze({
