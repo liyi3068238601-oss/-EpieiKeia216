@@ -1,0 +1,28 @@
+(node:21596) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ native marketplace install/discovery, Hook process, native Read and local mock model (777.1309ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4509.2944
+
+✖ failing tests:
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:27:1
+✖ native marketplace install/discovery, Hook process, native Read and local mock model (777.1309ms)
+  AssertionError [ERR_ASSERTION]: full current packet reaches every model call
+      at TestContext.<anonymous> (E:\Xiadie\Xiadie\.runtime\P01\worktrees\u06\packages\adapters\zcode\test\native.integration.test.mjs:38:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

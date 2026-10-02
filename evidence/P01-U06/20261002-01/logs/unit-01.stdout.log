@@ -1,0 +1,38 @@
+✔ disabled host submits concurrently through the native app without an extension queue (9.3343ms)
+✔ enabled host forces native storage into its owned profile and keeps user-config storage overrides contained (14.1125ms)
+✖ enabled host rejects missing config isolation and external storage environment before native app creation (10.9536ms)
+✔ enabled host rejects a storage junction that resolves outside its owned profile (11.3407ms)
+✔ model adapter rejects a call without the current Hook receipt before delegate and bounds admission history (13.6771ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 122.1272
+
+✖ failing tests:
+
+test at packages\adapters\zcode\test\host.test.mjs:53:1
+✖ enabled host rejects missing config isolation and external storage environment before native app creation (10.9536ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /ZCODE_STORAGE_DIR must equal the owned profile storage root/. Input:
+  
+  'Error: Enabled Xiadie ZCODE_STORAGE_DIR must remain inside its owned profile'
+  
+      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/host.test.mjs:68:3)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Enabled Xiadie ZCODE_STORAGE_DIR must remain inside its owned profile
+        at physicalPathInside (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/dist/packages/adapters/zcode/src/host.js:497:15)
+        at validateOwnedProfile (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/dist/packages/adapters/zcode/src/host.js:467:13)
+        at createXiadieZCodeApp (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/dist/packages/adapters/zcode/src/host.js:17:9)
+        at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u06/packages/adapters/zcode/test/host.test.mjs:69:5)
+        at async Test.run (node:internal/test_runner/test:1125:7)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:787:7),
+    expected: /ZCODE_STORAGE_DIR must equal the owned profile storage root/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

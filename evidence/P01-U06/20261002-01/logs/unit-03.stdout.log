@@ -1,0 +1,15 @@
+✔ disabled host submits concurrently through the native app without an extension queue (10.8639ms)
+✔ enabled host forces native storage into its owned profile and keeps user-config storage overrides contained (12.7969ms)
+✔ enabled host rejects missing config isolation and external storage environment before native app creation (10.2342ms)
+✔ enabled host rejects a storage junction that resolves outside its owned profile (9.8647ms)
+✔ model adapter rejects a call without the current Hook receipt before delegate and bounds admission history (13.5401ms)
+✔ enabled sendInput forces idle admission and holds the host lock until native completion (18.2294ms)
+✔ enabled sendInput clears its ticket and idle lock when native admission rejects (13.8896ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 161.5815

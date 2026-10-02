@@ -1,0 +1,13 @@
+
+  #  C:\Users\liyi\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.exe[33420]: std::shared_ptr<InitializationResultImpl> __cdecl node::InitializeOncePerProcessInternal(const std::vector<std::string> &, ProcessInitializationFlags::Flags) at src\node.cc:1221
+  #  Assertion failed: ncrypto::CSPRNG(nullptr, 0)
+
+----- Native stack trace -----
+
+ 1: 00007FF7984BB9FA EVP_MD_meth_get_input_blocksize+196154
+ 2: 00007FF798515D26 node::InitializeOncePerProcess+2790
+ 3: 00007FF798516E0C node::Start+156
+ 4: 00007FF799533F82 AES_cbc_encrypt+2546
+ 5: 00007FF79A3A71F4 v8::base::UnsignedDivisionByConstant<unsigned __int64>+2830084
+ 6: 00007FFE4450CD87 BaseThreadInitThunk+23
+ 7: 00007FFE45AECAEC RtlUserThreadStart+44

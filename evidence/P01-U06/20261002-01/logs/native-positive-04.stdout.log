@@ -1,0 +1,27 @@
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+Error: tsx must be loaded with --import instead of --loader
+The --loader flag was deprecated in Node v20.6.0 and v18.19.0
+    at initialize (file:///E:/Xiadie/Xiadie/.runtime/P00/zcode/source/node_modules/tsx/dist/esm/index.mjs:1:985)
+    at AsyncLoaderHooksOnLoaderHookWorker.addCustomLoader (node:internal/modules/esm/hooks:212:24)
+    at AsyncLoaderHooksOnLoaderHookWorker.register (node:internal/modules/esm/hooks:186:16)
+    at async MessagePort.handleMessage (node:internal/modules/esm/worker:251:18)
+
+Node.js v24.14.0
+✖ packages\adapters\zcode\test\native.integration.test.mjs (162.9092ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 168.6594
+
+✖ failing tests:
+
+test at packages\adapters\zcode\test\native.integration.test.mjs:1:1
+✖ packages\adapters\zcode\test\native.integration.test.mjs (162.9092ms)
+  'test failed'

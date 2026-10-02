@@ -1,0 +1,2187 @@
+diff --git a/packages/adapters/zcode/src/host.ts b/packages/adapters/zcode/src/host.ts
+new file mode 100644
+index 0000000..a8e0b21
+--- /dev/null
++++ b/packages/adapters/zcode/src/host.ts
+@@ -0,0 +1,873 @@
++import { randomBytes, createHash } from "node:crypto";
++import { closeSync, fstatSync, lstatSync, openSync, readSync, realpathSync } from "node:fs";
++import path from "node:path";
++import { buildContextPacket, renderContextPacket } from "../../../context/src/index.js";
++import { APPROVED_CHARACTER, loadCharacter } from "../../../character/src/loader.js";
++import type { ContextPacket } from "../../../contracts/src/context.js";
++
++const HOOK_RELATIVE_PATH = path.join("hooks", "context.mjs");
++const MAX_TRANSCRIPT_BYTES = 512 * 1024;
++const MAX_HOOK_STDOUT_BYTES = 30 * 1024;
++const GATE_BLOCK = "Xiadie identity gate rejected this turn before model execution.";
++
++export interface XiadieTraceContext {
++  readonly sessionId?: string;
++  readonly turnId?: string;
++  readonly attributes?: Readonly<Record<string, unknown>>;
++}
++
++export interface XiadieModelInvocationContext {
++  readonly modelCall?: { readonly operation?: string };
++  readonly traceContext?: XiadieTraceContext;
++}
++
++export interface XiadieModelRequest {
++  readonly messages: readonly unknown[];
++  readonly [key: string]: unknown;
++}
++
++export interface XiadieModel {
++  readonly providerId: unknown;
++  readonly modelId: unknown;
++  readonly displayName?: unknown;
++  readonly properties: unknown;
++  readonly optionSpecs: unknown;
++  readonly options: unknown;
++  bind(options?: unknown): XiadieModel;
++  generateText(request: XiadieModelRequest): Promise<unknown>;
++  streamText(request: XiadieModelRequest): AsyncIterable<unknown>;
++}
++
++export interface XiadieModelAdapter {
++  createModel(options: unknown): XiadieModel;
++  addStatusSink(sink: unknown): void;
++  setModelIoFullRetentionEnabled(enabled: boolean): void;
++}
++
++export interface XiadieExecutionRequest {
++  readonly command: { readonly mode: string; readonly file?: string; readonly args?: readonly string[] };
++  readonly stdin?: string | Uint8Array;
++  readonly env?: { readonly base?: "inherit" | "empty"; readonly set?: Readonly<Record<string, string>>; readonly unset?: readonly string[] };
++  readonly trace?: XiadieTraceContext;
++  readonly [key: string]: unknown;
++}
++
++export interface XiadieExecutionResult {
++  readonly status: string;
++  readonly exitCode?: number;
++  readonly stdout: { readonly text: string; readonly bytes: number; readonly truncated: boolean; readonly [key: string]: unknown };
++  readonly stderr: { readonly text: string; readonly bytes: number; readonly truncated: boolean; readonly [key: string]: unknown };
++  readonly durationMs: number;
++  readonly timedOut: boolean;
++  readonly cancelled: boolean;
++  readonly startedAt: Date;
++  readonly completedAt: Date;
++  readonly [key: string]: unknown;
++}
++
++export interface XiadieExecutionPort {
++  run(request: XiadieExecutionRequest, options?: unknown): Promise<XiadieExecutionResult>;
++  readonly [key: string]: unknown;
++}
++
++export interface XiadieNativeTurnResult {
++  readonly response: string;
++  readonly turnId: string;
++  readonly traceId: string;
++  readonly events: readonly unknown[];
++  readonly projection: unknown;
++  readonly [key: string]: unknown;
++}
++
++export interface XiadieNativeRuntime {
++  subscribeEvents(sink: { onSessionEvent(event: unknown): void | Promise<void> }): () => void;
++  readonly [key: string]: unknown;
++}
++
++export interface XiadieNativeSendInputStartedTurn {
++  readonly kind: "started_turn";
++  readonly turnId: string;
++  readonly completion: Promise<XiadieNativeTurnResult>;
++}
++
++export type XiadieNativeSendInputResult = XiadieNativeSendInputStartedTurn
++  | { readonly kind: "queued"; readonly pendingInputId: string; readonly queueLength: number; readonly turnId: string }
++  | { readonly kind: "rejected"; readonly activeTurnId?: string; readonly reason: string };
++
++export interface XiadieNativeApp {
++  readonly sessionId: string;
++  readonly runtime: XiadieNativeRuntime;
++  submitPrompt(prompt: unknown, options?: unknown): Promise<XiadieNativeTurnResult>;
++  sendInput(input: unknown, options?: unknown): Promise<XiadieNativeSendInputResult>;
++  resume?(options?: unknown): Promise<unknown>;
++  close?(): Promise<void>;
++  readonly [key: string]: unknown;
++}
++
++export interface XiadieNativeApi {
++  createZCodeApp(options: Record<string, unknown>): Promise<XiadieNativeApp>;
++  getCurrentModelInvocationContext(): XiadieModelInvocationContext | undefined;
++}
++
++export interface XiadieHostOptions {
++  readonly native: XiadieNativeApi;
++  readonly appOptions: Record<string, unknown>;
++  readonly executionPort: XiadieExecutionPort;
++  readonly modelAdapter: XiadieModelAdapter;
++  readonly enabled: boolean;
++  readonly assetsRoot?: string;
++  readonly moduleRoot?: string;
++  readonly installedPluginRoot?: string;
++  readonly dataRoot?: string;
++  readonly pluginStorageRoot?: string;
++  /** Trusted, per-host runtime profile containing the supplied config/storage/HOME/TEMP paths. */
++  readonly ownedProfileRoot?: string;
++  readonly nodeExecutable?: string;
++}
++
++export interface XiadieReceipt {
++  readonly version: 1;
++  readonly nonce: string;
++  readonly event: string;
++  readonly sessionId: string;
++  readonly turnId: string;
++  readonly packetSha256: string;
++  readonly transcriptBytes: number;
++  readonly transcriptSha256: string;
++  readonly character: { readonly id: "xiadie"; readonly version: "v3"; readonly contentSha256: string };
++}
++
++interface Ticket {
++  readonly kind: "turn" | "compact";
++  readonly sessionId: string;
++  readonly nonce: string;
++  readonly packet: ContextPacket;
++  readonly rendered: string;
++  readonly packetSha256: string;
++  readonly characterDigest: string;
++  receipt?: XiadieReceipt;
++  compactTurnId?: string;
++}
++
++type AdmissionCorrelation = {
++  sessionId?: string;
++  turnId?: string;
++  nonce?: string;
++  operation?: string;
++  ticket?: Ticket;
++};
++type ModelBlockRecorder = (
++  reasonCode: "model-receipt" | "compact-session",
++  correlation: AdmissionCorrelation,
++) => void;
++
++export interface XiadieZCodeHost {
++  readonly app: XiadieNativeApp;
++  submitPrompt(prompt: unknown, options?: unknown): Promise<XiadieNativeTurnResult>;
++  sendInput(input: unknown, options?: unknown): Promise<XiadieNativeSendInputResult>;
++  resume(options?: unknown): Promise<unknown>;
++  compact(options?: unknown): Promise<XiadieNativeTurnResult>;
++  readAdmissionFailures(): readonly XiadieAdmissionFailure[];
++  close?(): Promise<void>;
++}
++
++export interface XiadieAdmissionFailure {
++  readonly reasonCode: "host-before-turn" | "missing-ticket" | "hook-receipt" | "model-receipt" | "compact-session";
++  readonly status: string;
++  readonly exitCode?: number;
++  readonly timedOut: boolean;
++  readonly cancelled: boolean;
++  readonly stdoutSha256: string;
++  readonly stderrSha256: string;
++  readonly sessionId?: string;
++  readonly turnId?: string;
++  readonly nonce?: string;
++  readonly operation?: string;
++  readonly identity?: { readonly id: "xiadie"; readonly version: "v3"; readonly digest: string };
++}
++
++/** Wrap the native app's two extension seams while leaving its Loop and tools intact. */
++export async function createXiadieZCodeApp(input: XiadieHostOptions): Promise<XiadieZCodeHost> {
++  if (input.enabled && (!input.assetsRoot || !input.moduleRoot || !input.installedPluginRoot ||
++      !input.dataRoot || !input.pluginStorageRoot || !input.ownedProfileRoot)) {
++    throw new Error("Enabled Xiadie requires trusted assets, module, installed-plugin, profile, plugin-storage, and data roots");
++  }
++  if (input.enabled) {
++    validateOwnedProfile(input);
++    const expectedStorage = realpathSync(input.pluginStorageRoot!);
++    const configuredStorage = input.appOptions.pluginStorageRoot;
++    if (typeof configuredStorage !== "string" || realpathSync(configuredStorage) !== expectedStorage) {
++      throw new Error("Xiadie pluginStorageRoot must match the isolated native app plugin storage root");
++    }
++  }
++
++  const gate = createGate(input);
++  const nativeAppOptions = input.enabled
++    ? {
++        ...input.appOptions,
++        env: {
++          ...(input.appOptions.env as Record<string, string | undefined>),
++          ZCODE_STORAGE_DIR: path.join(input.ownedProfileRoot!, "storage"),
++        },
++      }
++    : input.appOptions;
++  const app = await input.native.createZCodeApp({
++    ...nativeAppOptions,
++    executionPort: gate.executionPort,
++    modelAdapter: gate.modelAdapter,
++  });
++  let activeOperation: object | undefined;
++  let activeOperationName: string | undefined;
++  const enterExclusive = (name: string): (() => void) => {
++    if (activeOperation) throw new Error(`Enabled Xiadie only accepts idle native operations; ${activeOperationName} is in flight`);
++    const token = {};
++    activeOperation = token;
++    activeOperationName = name;
++    return () => {
++      if (activeOperation === token) {
++        activeOperation = undefined;
++        activeOperationName = undefined;
++      }
++    };
++  };
++
++  const submitPrompt = async (prompt: unknown, options?: unknown): Promise<XiadieNativeTurnResult> => {
++    if (!input.enabled) return app.submitPrompt(prompt, options);
++    const release = enterExclusive("submitPrompt");
++    try {
++      if (isCompactCommand(prompt)) return await compactInFlight(options);
++      gate.begin("turn", app.sessionId);
++      return await app.submitPrompt(prompt, options);
++    } finally {
++      gate.clear();
++      release();
++    }
++  };
++
++  const resume = async (options?: unknown): Promise<unknown> => {
++    if (!input.enabled) return app.resume ? app.resume(options) : Promise.resolve(undefined);
++    const release = enterExclusive("resume");
++    try {
++      // Resume is a fresh approved-asset preflight. No stored packet/receipt is trusted;
++      // the next submitted turn creates a new nonce and must pass the ordinary Hook gate.
++      gate.preflight(app.sessionId, "resume");
++      gate.clear();
++      return await app.resume?.(options);
++    } finally {
++      gate.clear();
++      release();
++    }
++  };
++
++  const compactInFlight = async (options?: unknown): Promise<XiadieNativeTurnResult> => {
++    if (!input.enabled) return app.submitPrompt("/compact", options);
++    gate.begin("compact", app.sessionId);
++    try {
++      return await app.submitPrompt("/compact", options);
++    } finally {
++      gate.clear();
++    }
++  };
++
++  const compact = async (options?: unknown): Promise<XiadieNativeTurnResult> => {
++    if (!input.enabled) return app.submitPrompt("/compact", options);
++    const release = enterExclusive("compact");
++    try { return await compactInFlight(options); }
++    finally { release(); }
++  };
++
++  const sendInput = async (prompt: unknown, options?: unknown): Promise<XiadieNativeSendInputResult> => {
++    if (!input.enabled) return app.sendInput(prompt, options);
++    const release = enterExclusive("sendInput");
++    let completionOwnsRelease = false;
++    let cleaned = false;
++    const cleanup = (): void => {
++      if (cleaned) return;
++      cleaned = true;
++      gate.clear();
++      release();
++    };
++    try {
++      gate.begin("turn", app.sessionId);
++      const result = await app.sendInput(prompt, withRequireIdle(options));
++      if (result.kind !== "started_turn" || !isPromiseLike(result.completion)) {
++        throw new Error(`Enabled Xiadie supports only idle native sendInput; native admission returned ${result.kind}`);
++      }
++      completionOwnsRelease = true;
++      void result.completion.then(cleanup, cleanup);
++      return result;
++    } catch (error) {
++      if (!completionOwnsRelease) cleanup();
++      throw error;
++    }
++  };
++  const readAdmissionFailures = (): readonly XiadieAdmissionFailure[] => gate.readAdmissionFailures();
++  const facade = createAppFacade(app, { submitPrompt, sendInput, resume, compact, readAdmissionFailures });
++  return {
++    app: facade,
++    submitPrompt,
++    sendInput,
++    resume,
++    compact,
++    readAdmissionFailures,
++    ...(app.close ? { close: () => app.close!() } : {}),
++  };
++}
++
++function createGate(input: XiadieHostOptions): {
++  executionPort: XiadieExecutionPort;
++  modelAdapter: XiadieModelAdapter;
++  begin(kind: Ticket["kind"], sessionId: string): void;
++  preflight(sessionId: string, operation?: string): Ticket;
++  clear(): void;
++  readAdmissionFailures(): readonly XiadieAdmissionFailure[];
++  recordModelBlock: ModelBlockRecorder;
++} {
++  let ticket: Ticket | undefined;
++  const failures: XiadieAdmissionFailure[] = [];
++  const recordFailure = (failure: XiadieAdmissionFailure): void => {
++    failures.push(failure);
++    if (failures.length > 64) failures.shift();
++  };
++  const recordModelBlock = (
++    reasonCode: "model-receipt" | "compact-session",
++    correlation: AdmissionCorrelation,
++  ): void => {
++    recordFailure({
++      reasonCode,
++      status: "blocked",
++      timedOut: false,
++      cancelled: false,
++      stdoutSha256: sha256(""),
++      stderrSha256: sha256(""),
++      ...(correlation.sessionId ? { sessionId: correlation.sessionId } : {}),
++      ...(correlation.turnId ? { turnId: correlation.turnId } : {}),
++      ...(correlation.nonce ? { nonce: correlation.nonce } : {}),
++      ...(correlation.operation ? { operation: correlation.operation } : {}),
++      ...(correlation.ticket ? { identity: { id: "xiadie", version: "v3", digest: correlation.ticket.characterDigest } } : {}),
++    });
++  };
++  const preflight = (sessionId: string, operation = "turn"): Ticket => {
++    if (!input.enabled) throw new Error("Xiadie is disabled");
++    try {
++      const character = loadCharacter(input.assetsRoot!);
++      const nonce = randomBytes(24).toString("base64url");
++      const packet = buildContextPacket(character, {
++        scope: `zcode-session:${sessionId}`,
++        version: `u06-turn:${nonce}`,
++        max_tokens: 12_000,
++        state: [{ source_refs: ["trusted-host:per-turn-nonce"], value: { kind: "turn-binding", nonce } }],
++        evidence: [],
++        content: [],
++      });
++      const rendered = renderContextPacket(packet);
++      const next: Ticket = {
++        kind: "turn",
++        sessionId,
++        nonce,
++        packet,
++        rendered,
++        packetSha256: sha256(rendered),
++        characterDigest: APPROVED_CHARACTER.contentSha256,
++      };
++      ticket = next;
++      return next;
++    } catch (error) {
++      recordFailure({
++        reasonCode: "host-before-turn",
++        status: "blocked",
++        timedOut: false,
++        cancelled: false,
++        stdoutSha256: sha256(""),
++        stderrSha256: sha256(""),
++        sessionId,
++        operation: `${operation}-preflight`,
++      });
++      throw error;
++    }
++  };
++
++  const begin = (kind: Ticket["kind"], sessionId: string): void => {
++    if (ticket) throw new Error("Xiadie serial admission invariant was violated");
++    const next = preflight(sessionId, kind);
++    ticket = { ...next, kind };
++  };
++
++  const deny = (
++    reasonCode: XiadieAdmissionFailure["reasonCode"],
++    original: XiadieExecutionResult,
++    correlation: AdmissionCorrelation = {},
++  ): XiadieExecutionResult => {
++    recordFailure({
++      reasonCode,
++      status: original.status,
++      ...(original.exitCode === undefined ? {} : { exitCode: original.exitCode }),
++      timedOut: original.timedOut,
++      cancelled: original.cancelled,
++      stdoutSha256: sha256(original.stdout.text),
++      stderrSha256: sha256(original.stderr.text),
++      ...(correlation.sessionId ? { sessionId: correlation.sessionId } : {}),
++      ...(correlation.turnId ? { turnId: correlation.turnId } : {}),
++      ...(correlation.nonce ? { nonce: correlation.nonce } : {}),
++      ...(correlation.operation ? { operation: correlation.operation } : {}),
++      ...(correlation.ticket ? { identity: { id: "xiadie", version: "v3", digest: correlation.ticket.characterDigest } } : {}),
++    });
++    return {
++      ...original,
++      status: "completed",
++      exitCode: 0,
++      timedOut: false,
++      cancelled: false,
++      stdout: stream(JSON.stringify({ decision: "block", reason: `${GATE_BLOCK} ${reasonCode}` })),
++      stderr: stream(""),
++      completedAt: new Date(),
++    };
++  };
++
++  const executionPort: XiadieExecutionPort = Object.create(input.executionPort) as XiadieExecutionPort;
++  Object.defineProperty(executionPort, "run", {
++    value: async (request: XiadieExecutionRequest, options?: unknown): Promise<XiadieExecutionResult> => {
++      if (!input.enabled || !isOwnHookRequest(request, input.installedPluginRoot!, input.nodeExecutable ?? process.execPath)) {
++        return input.executionPort.run.call(input.executionPort, request, options);
++      }
++      const current = ticket;
++      if (!current || current.kind !== "turn" || request.trace?.attributes?.hookEventName !== "UserPromptSubmit") {
++        return deny("missing-ticket", syntheticExecutionResult(), {
++          ...(request.trace?.sessionId ? { sessionId: request.trace.sessionId } : {}),
++          ...(request.trace?.turnId ? { turnId: request.trace.turnId } : {}),
++          operation: "UserPromptSubmit",
++        });
++      }
++      const original = await input.executionPort.run.call(input.executionPort, withTrustedHookEnv(request, input, current), options);
++      try {
++        current.receipt = validateHookResult(request, original, current).receipt;
++      } catch {
++        return deny("hook-receipt", original, {
++          ...(request.trace?.sessionId ? { sessionId: request.trace.sessionId } : {}),
++          ...(request.trace?.turnId ? { turnId: request.trace.turnId } : {}),
++          nonce: current.nonce,
++          operation: "UserPromptSubmit",
++          ticket: current,
++        });
++      }
++      return original;
++    },
++  });
++  for (const name of ["start", "getBackgroundTask", "readBackgroundBashOutput", "cancelBackgroundTask", "close"] as const) {
++    const method = input.executionPort[name];
++    if (typeof method === "function") {
++      Object.defineProperty(executionPort, name, {
++        value: (...args: unknown[]) => method.apply(input.executionPort, args),
++      });
++    }
++  }
++
++  const guardAdapter: XiadieModelAdapter = Object.create(input.modelAdapter) as XiadieModelAdapter;
++  Object.defineProperties(guardAdapter, {
++    createModel: {
++      value: (options: unknown) => wrapModel(input.modelAdapter.createModel.call(input.modelAdapter, options), input, () => ticket, recordModelBlock),
++    },
++    addStatusSink: { value: (sink: unknown) => input.modelAdapter.addStatusSink.call(input.modelAdapter, sink) },
++    setModelIoFullRetentionEnabled: {
++      value: (enabled: boolean) => input.modelAdapter.setModelIoFullRetentionEnabled.call(input.modelAdapter, enabled),
++    },
++  });
++
++  return {
++    executionPort,
++    modelAdapter: guardAdapter,
++    begin,
++    preflight,
++    clear: () => { ticket = undefined; },
++    recordModelBlock,
++    readAdmissionFailures: () => failures.map((failure) => ({ ...failure })),
++  };
++}
++
++function wrapModel(
++  delegate: XiadieModel,
++  input: XiadieHostOptions,
++  getTicket: () => Ticket | undefined,
++  recordModelBlock: ModelBlockRecorder,
++): XiadieModel {
++  const wrapped = Object.create(delegate) as XiadieModel;
++  Object.defineProperties(wrapped, {
++    bind: { value: (options?: unknown) => wrapModel(delegate.bind.call(delegate, options), input, getTicket, recordModelBlock) },
++    generateText: {
++      value: (request: XiadieModelRequest) => {
++        enforceModelGate(request, input, getTicket(), recordModelBlock);
++        return delegate.generateText.call(delegate, request);
++      },
++    },
++    streamText: {
++      value: (request: XiadieModelRequest) => {
++        enforceModelGate(request, input, getTicket(), recordModelBlock);
++        return delegate.streamText.call(delegate, request);
++      },
++    },
++  });
++  return wrapped;
++}
++
++function enforceModelGate(
++  request: XiadieModelRequest,
++  input: XiadieHostOptions,
++  ticket: Ticket | undefined,
++  recordModelBlock: ModelBlockRecorder,
++): void {
++  if (!input.enabled) return;
++  const context = input.native.getCurrentModelInvocationContext();
++  const operation = context?.modelCall?.operation;
++  const compactTurnId = context?.traceContext?.turnId;
++  if (operation === "context_compaction" && ticket?.kind === "compact" &&
++      context?.traceContext?.sessionId === ticket.sessionId && typeof compactTurnId === "string" &&
++      (!ticket.compactTurnId || ticket.compactTurnId === compactTurnId)) {
++    ticket.compactTurnId = compactTurnId;
++    return;
++  }
++  if (operation === "context_compaction" && ticket?.kind === "compact") {
++    recordModelBlock("compact-session", {
++      ...(context?.traceContext?.sessionId ? { sessionId: context.traceContext.sessionId } : {}),
++      ...(context?.traceContext?.turnId ? { turnId: context.traceContext.turnId } : {}),
++      nonce: ticket.nonce,
++      operation,
++      ticket,
++    });
++    throw new Error("Xiadie compact admission does not match the current native compact turn");
++  }
++  const receipt = ticket?.receipt;
++  const trace = context?.traceContext;
++  if (ticket?.kind !== "turn" || !receipt || !trace ||
++      trace.sessionId !== receipt.sessionId || trace.turnId !== receipt.turnId ||
++      !flattenText(request.messages).includes(ticket.rendered)) {
++    recordModelBlock("model-receipt", {
++      ...(trace?.sessionId ? { sessionId: trace.sessionId } : {}),
++      ...(trace?.turnId ? { turnId: trace.turnId } : {}),
++      ...(ticket?.nonce ? { nonce: ticket.nonce } : {}),
++      ...(typeof operation === "string" ? { operation } : { operation: "model" }),
++      ...(ticket ? { ticket } : {}),
++    });
++    throw new Error("Xiadie identity gate rejected model delegation: missing, stale, cross-turn, or incomplete packet receipt");
++  }
++}
++
++function isOwnHookRequest(request: XiadieExecutionRequest, installedRoot: string, nodeExecutable: string): boolean {
++  if (request.command.mode !== "argv" || request.command.args?.length !== 1 ||
++      request.trace?.attributes?.hookEventName !== "UserPromptSubmit") return false;
++  const args0 = request.command.args[0];
++  if (typeof args0 !== "string") return false;
++  const expected = path.resolve(installedRoot, HOOK_RELATIVE_PATH);
++  return normalizePath(args0) === normalizePath(expected) &&
++    (request.command.file === "node" || request.command.file === "node.exe" ||
++      normalizePath(request.command.file ?? "") === normalizePath(nodeExecutable));
++}
++
++function withTrustedHookEnv(request: XiadieExecutionRequest, input: XiadieHostOptions, ticket: Ticket): XiadieExecutionRequest {
++  const event = request.trace?.attributes?.hookEventName;
++  return {
++    ...request,
++    command: { ...request.command, file: input.nodeExecutable ?? process.execPath },
++    env: {
++      ...request.env,
++      set: {
++        ...request.env?.set,
++        XIA_DIE_APPROVED_ASSET_ROOT: input.assetsRoot!,
++        XIA_DIE_HOST_MODULE_ROOT: input.moduleRoot!,
++        XIA_DIE_TICKET_NONCE: ticket.nonce,
++        XIA_DIE_HOOK_EVENT: String(event),
++        XIA_DIE_PLUGIN_DATA_ROOT: input.dataRoot!,
++      },
++    },
++  };
++}
++
++interface HookEnvelope {
++  readonly hookEventName?: unknown;
++  readonly hook_event_name?: unknown;
++  readonly sessionId?: unknown;
++  readonly session_id?: unknown;
++  readonly turnId?: unknown;
++  readonly turn_id?: unknown;
++  readonly transcriptPath?: unknown;
++  readonly transcript_path?: unknown;
++}
++
++function validateHookResult(
++  request: XiadieExecutionRequest,
++  result: XiadieExecutionResult,
++  ticket: Ticket,
++): { receipt: XiadieReceipt; input: HookEnvelope } {
++  if (result.status !== "completed" || result.exitCode !== 0 || result.timedOut || result.cancelled ||
++      result.stdout.truncated || result.stdout.bytes > MAX_HOOK_STDOUT_BYTES) {
++    throw new Error("hook did not complete with bounded stdout");
++  }
++  const raw = result.stdout.text;
++  const actualBytes = Buffer.byteLength(raw, "utf8");
++  if (actualBytes !== result.stdout.bytes || actualBytes > MAX_HOOK_STDOUT_BYTES) throw new Error("hook stdout byte count is invalid");
++  const input = parseHookInput(request.stdin);
++  const event = input.hookEventName ?? input.hook_event_name;
++  const sessionId = input.sessionId ?? input.session_id;
++  const turnId = input.turnId ?? input.turn_id;
++  if (event !== "UserPromptSubmit" || request.trace?.attributes?.hookEventName !== event ||
++      typeof sessionId !== "string" || sessionId.length === 0 ||
++      typeof turnId !== "string" || turnId.length === 0 ||
++      request.trace?.sessionId !== sessionId || request.trace?.turnId !== turnId) {
++    throw new Error("hook event/session/turn does not match the native trace");
++  }
++  const transcriptPath = input.transcriptPath ?? input.transcript_path;
++  if (typeof transcriptPath !== "string" || transcriptPath.length === 0) throw new Error("native Hook transcript path is missing");
++  const transcript = hashBoundedFile(transcriptPath, MAX_TRANSCRIPT_BYTES);
++  let envelope: unknown;
++  try { envelope = JSON.parse(raw) as unknown; } catch { throw new Error("hook output is not strict JSON"); }
++  if (JSON.stringify(envelope) !== raw.trim() || !isPlainRecord(envelope) ||
++      !sameKeys(envelope, ["additionalContext", "xiadieReceipt"]) ||
++      envelope.additionalContext !== ticket.rendered || !isPlainRecord(envelope.xiadieReceipt)) {
++    throw new Error("hook output schema or complete canonical packet is invalid");
++  }
++  const receipt = envelope.xiadieReceipt;
++  const expectedKeys = ["version", "nonce", "event", "sessionId", "turnId", "packetSha256", "transcriptBytes", "transcriptSha256", "character"];
++  if (!sameKeys(receipt, expectedKeys) || receipt.version !== 1 || receipt.nonce !== ticket.nonce ||
++      receipt.event !== event || receipt.sessionId !== sessionId || receipt.turnId !== turnId ||
++      receipt.packetSha256 !== ticket.packetSha256 || receipt.transcriptBytes !== transcript.bytes ||
++      receipt.transcriptSha256 !== transcript.sha256 || !isPlainRecord(receipt.character) ||
++      !sameKeys(receipt.character, ["id", "version", "contentSha256"]) || receipt.character.id !== "xiadie" ||
++      receipt.character.version !== "v3" || receipt.character.contentSha256 !== ticket.characterDigest) {
++    throw new Error("hook receipt is missing, stale, or does not match the native input");
++  }
++  return { receipt: receipt as unknown as XiadieReceipt, input };
++}
++
++function parseHookInput(input: XiadieExecutionRequest["stdin"]): HookEnvelope {
++  if (typeof input === "undefined") throw new Error("native Hook input is missing");
++  const bytes = typeof input === "string" ? Buffer.from(input, "utf8") : Buffer.from(input);
++  if (bytes.byteLength > 128 * 1024) throw new Error("native Hook input exceeds its byte bound");
++  const value = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes)) as unknown;
++  if (!isPlainRecord(value)) throw new Error("native Hook input is not an object");
++  return value as HookEnvelope;
++}
++
++function hashBoundedFile(filename: string, limit: number): { bytes: number; sha256: string } {
++  let descriptor: number | undefined;
++  try {
++    if (lstatSync(filename).isSymbolicLink()) throw new Error("transcript must not be a symlink");
++    const canonical = realpathSync(filename);
++    descriptor = openSync(canonical, "r");
++    if (!fstatSync(descriptor).isFile()) throw new Error("transcript must be a regular file");
++    const buffer = Buffer.alloc(limit + 1);
++    let count = 0;
++    while (count < buffer.length) {
++      const read = readSync(descriptor, buffer, count, buffer.length - count, null);
++      if (read === 0) break;
++      count += read;
++    }
++    if (count > limit) throw new Error("transcript exceeds its byte bound");
++    return { bytes: count, sha256: sha256(buffer.subarray(0, count)) };
++  } catch (error) {
++    throw new Error("transcript could not be read within its bound", { cause: error });
++  } finally {
++    if (descriptor !== undefined) closeSync(descriptor);
++  }
++}
++
++function flattenText(messages: readonly unknown[]): string {
++  const chunks: string[] = [];
++  for (const message of messages) {
++    if (!isPlainRecord(message)) continue;
++    if (typeof message.content === "string") chunks.push(message.content);
++    else if (Array.isArray(message.content)) {
++      for (const block of message.content) {
++        if (isPlainRecord(block) && block.type === "text" && typeof block.text === "string") chunks.push(block.text);
++      }
++    }
++  }
++  return chunks.join("\n");
++}
++
++function isCompactCommand(prompt: unknown): boolean {
++  return prompt === "/compact" || (isPlainRecord(prompt) && prompt.text === "/compact");
++}
++
++function withRequireIdle(options: unknown): unknown {
++  if (options === undefined) return { requireIdle: true };
++  if (!isPlainRecord(options)) throw new Error("Enabled Xiadie sendInput options must be a plain native options object");
++  return { ...options, requireIdle: true };
++}
++
++function isPromiseLike(value: unknown): value is PromiseLike<unknown> {
++  return value !== null && (typeof value === "object" || typeof value === "function") &&
++    typeof (value as { then?: unknown }).then === "function";
++}
++
++function validateOwnedProfile(input: XiadieHostOptions): void {
++  const root = realpathSync(input.ownedProfileRoot!);
++  const userConfig = input.appOptions.userConfigPath;
++  const projectConfig = input.appOptions.projectConfigPath;
++  if (input.appOptions.skipUserConfig === true || typeof userConfig !== "string" || typeof projectConfig !== "string") {
++    throw new Error("Enabled Xiadie requires explicit, isolated user/project config paths and native user-config loading");
++  }
++  const userConfigPath = physicalPathInside(userConfig, root, "userConfigPath");
++  if (!lstatSync(userConfigPath).isFile()) throw new Error("Xiadie userConfigPath must name an owned config file");
++  physicalPathInside(projectConfig, root, "projectConfigPath");
++
++  const env = input.appOptions.env;
++  if (!isPlainRecord(env)) throw new Error("Enabled Xiadie requires an explicit owned native environment");
++  for (const key of ["HOME", "USERPROFILE", "TEMP", "TMP"] as const) {
++    const value = env[key];
++    if (typeof value !== "string" || value.length === 0) throw new Error(`Enabled Xiadie requires ${key} inside the owned profile`);
++    physicalPathInside(value, root, key);
++  }
++  const ownedStorageRoot = path.join(root, "storage");
++  physicalPathInside(ownedStorageRoot, root, "owned storage root");
++  const configuredStorageDir = env.ZCODE_STORAGE_DIR;
++  if (configuredStorageDir !== undefined) {
++    if (typeof configuredStorageDir !== "string" || !path.isAbsolute(configuredStorageDir) ||
++        physicalPathInside(configuredStorageDir, root, "ZCODE_STORAGE_DIR") !== physicalPathInside(ownedStorageRoot, root, "owned storage root")) {
++      throw new Error("Enabled Xiadie ZCODE_STORAGE_DIR must equal the owned profile storage root");
++    }
++  }
++  for (const key of ["ZCODE_SESSION_DB_PATH", "ZCODE_SESSION_DB"] as const) {
++    const value = env[key];
++    if (value !== undefined) {
++      if (typeof value !== "string" || value.length === 0) throw new Error(`Enabled Xiadie ${key} must be an owned path`);
++      physicalPathInside(value, root, key);
++    }
++  }
++
++  const storage = physicalPathInside(input.pluginStorageRoot!, root, "pluginStorageRoot");
++  const dataRoot = physicalPathInside(input.dataRoot!, root, "dataRoot");
++  const installRoot = physicalPathInside(input.installedPluginRoot!, root, "installedPluginRoot");
++  assertPhysicalChild(storage, dataRoot, "dataRoot", "data");
++  assertPhysicalChild(storage, installRoot, "installedPluginRoot", "cache");
++}
++
++function physicalPathInside(candidate: string, root: string, label: string): string {
++  const absolute = path.resolve(candidate);
++  const canonicalRoot = realpathSync(root);
++  let canonicalCandidate: string;
++  try {
++    canonicalCandidate = realpathSync(absolute);
++  } catch {
++    const parent = realpathSync(path.dirname(absolute));
++    canonicalCandidate = path.join(parent, path.basename(absolute));
++  }
++  if (!isWithin(canonicalRoot, canonicalCandidate)) {
++    throw new Error(`Enabled Xiadie ${label} must remain inside its owned profile`);
++  }
++  return canonicalCandidate;
++}
++
++function assertPhysicalChild(root: string, candidate: string, label: string, requiredDirectory: string): void {
++  const requiredBase = realpathSync(path.join(root, requiredDirectory));
++  if (!isWithin(requiredBase, candidate)) {
++    throw new Error(`Enabled Xiadie ${label} must remain under native plugin ${requiredDirectory} storage`);
++  }
++}
++
++function isWithin(root: string, candidate: string): boolean {
++  const relative = path.relative(root, candidate);
++  return relative !== ".." && !relative.startsWith(`..${path.sep}`) && !path.isAbsolute(relative);
++}
++
++function stream(text: string): XiadieExecutionResult["stdout"] {
++  return { text, bytes: Buffer.byteLength(text, "utf8"), truncated: false };
++}
++
++function syntheticExecutionResult(): XiadieExecutionResult {
++  const now = new Date();
++  return {
++    status: "spawn_error",
++    stdout: stream(""),
++    stderr: stream(""),
++    durationMs: 0,
++    timedOut: false,
++    cancelled: false,
++    startedAt: now,
++    completedAt: now,
++  };
++}
++
++function sha256(text: string | Uint8Array): string {
++  return createHash("sha256").update(text).digest("hex");
++}
++
++function normalizePath(value: string): string {
++  return path.resolve(value).replaceAll("/", "\\").toLowerCase();
++}
++
++function isPlainRecord(value: unknown): value is Record<string, unknown> {
++  if (value === null || typeof value !== "object" || Array.isArray(value)) return false;
++  const prototype = Object.getPrototypeOf(value);
++  return prototype === Object.prototype || prototype === null;
++}
++
++function sameKeys(value: Record<string, unknown>, keys: readonly string[]): boolean {
++  const actual = Object.keys(value).sort();
++  const expected = [...keys].sort();
++  return actual.length === expected.length && actual.every((key, index) => key === expected[index]);
++}
++
++function createAppFacade(
++  app: XiadieNativeApp,
++  guarded: {
++    submitPrompt(prompt: unknown, options?: unknown): Promise<XiadieNativeTurnResult>;
++    sendInput(input: unknown, options?: unknown): Promise<XiadieNativeSendInputResult>;
++    resume(options?: unknown): Promise<unknown>;
++    compact(options?: unknown): Promise<XiadieNativeTurnResult>;
++    readAdmissionFailures(): readonly XiadieAdmissionFailure[];
++  },
++): XiadieNativeApp {
++  const facade = Object.create(null) as XiadieNativeApp;
++  const names = new Set<PropertyKey>();
++  let current: object | null = app;
++  while (current && current !== Object.prototype) {
++    for (const key of Reflect.ownKeys(current)) names.add(key);
++    current = Object.getPrototypeOf(current) as object | null;
++  }
++  for (const key of names) {
++    if (key === "constructor") continue;
++    if (key === "submitPrompt") {
++      Object.defineProperty(facade, key, { value: guarded.submitPrompt });
++      continue;
++    }
++    if (key === "sendInput") {
++      Object.defineProperty(facade, key, { value: guarded.sendInput });
++      continue;
++    }
++    if (key === "resume") {
++      Object.defineProperty(facade, key, { value: guarded.resume });
++      continue;
++    }
++    if (key === "compact") {
++      Object.defineProperty(facade, key, { value: guarded.compact });
++      continue;
++    }
++    if (key === "readAdmissionFailures") {
++      Object.defineProperty(facade, key, { value: guarded.readAdmissionFailures });
++      continue;
++    }
++    const descriptor = Object.getOwnPropertyDescriptor(app, key) ?? findDescriptor(Object.getPrototypeOf(app), key);
++    if (descriptor?.get) {
++      Object.defineProperty(facade, key, {
++        ...(descriptor.enumerable === undefined ? {} : { enumerable: descriptor.enumerable }),
++        get: () => Reflect.get(app, key, app),
++      });
++    } else {
++      const value = Reflect.get(app, key, app) as unknown;
++      Object.defineProperty(facade, key, {
++        ...(descriptor?.enumerable === undefined ? {} : { enumerable: descriptor.enumerable }),
++        value: typeof value === "function" ? (...args: unknown[]) => value.apply(app, args) : value,
++      });
++    }
++  }
++  return facade;
++}
++
++function findDescriptor(prototype: object | null, key: PropertyKey): PropertyDescriptor | undefined {
++  let current = prototype;
++  while (current && current !== Object.prototype) {
++    const descriptor = Object.getOwnPropertyDescriptor(current, key);
++    if (descriptor) return descriptor;
++    current = Object.getPrototypeOf(current) as object | null;
++  }
++  return undefined;
++}
+diff --git a/packages/adapters/zcode/src/index.ts b/packages/adapters/zcode/src/index.ts
+new file mode 100644
+index 0000000..e0a5399
+--- /dev/null
++++ b/packages/adapters/zcode/src/index.ts
+@@ -0,0 +1,21 @@
++export { createXiadieZCodeApp } from "./host.js";
++export type {
++  XiadieAdmissionFailure,
++  XiadieExecutionPort,
++  XiadieExecutionRequest,
++  XiadieExecutionResult,
++  XiadieHostOptions,
++  XiadieModel,
++  XiadieModelAdapter,
++  XiadieModelInvocationContext,
++  XiadieModelRequest,
++  XiadieNativeApi,
++  XiadieNativeApp,
++  XiadieNativeRuntime,
++  XiadieNativeSendInputResult,
++  XiadieNativeSendInputStartedTurn,
++  XiadieNativeTurnResult,
++  XiadieReceipt,
++  XiadieTraceContext,
++  XiadieZCodeHost,
++} from "./host.js";
+diff --git a/packages/adapters/zcode/test/contract.test.mjs b/packages/adapters/zcode/test/contract.test.mjs
+new file mode 100644
+index 0000000..6f31c2d
+--- /dev/null
++++ b/packages/adapters/zcode/test/contract.test.mjs
+@@ -0,0 +1,63 @@
++import assert from "node:assert/strict";
++import { readFile } from "node:fs/promises";
++import { spawnSync } from "node:child_process";
++import os from "node:os";
++import path from "node:path";
++import { fileURLToPath } from "node:url";
++import test from "node:test";
++
++const testDirectory = path.dirname(fileURLToPath(import.meta.url));
++const repositoryRoot = path.resolve(testDirectory, "../../../..");
++
++test("Xiadie installs as a narrow ZCode process Hook without adding a Loop or command shell", async () => {
++  const plugin = JSON.parse(await readFile(path.join(repositoryRoot, "plugins", "xiadie", ".zcode-plugin", "plugin.json"), "utf8"));
++  const marketplace = JSON.parse(await readFile(path.join(repositoryRoot, "plugins", "xiadie", "marketplace.json"), "utf8"));
++  const hookConfig = JSON.parse(await readFile(path.join(repositoryRoot, "plugins", "xiadie", "hooks", "hooks.json"), "utf8"));
++
++  assert.equal(plugin.name, "xiadie");
++  assert.equal(plugin.version, "0.1.0");
++  assert.deepEqual(Object.keys(marketplace.plugins[0]).sort(), ["name", "source", "version"]);
++  assert.deepEqual(Object.keys(hookConfig.hooks), ["UserPromptSubmit"]);
++  assert.equal(hookConfig.hooks.UserPromptSubmit.length, 1);
++  const processHook = hookConfig.hooks.UserPromptSubmit[0].hooks[0];
++  assert.equal(processHook.type, "process");
++  assert.equal(processHook.command, "node");
++  assert.deepEqual(processHook.args, ["${ZCODE_PLUGIN_ROOT}/hooks/context.mjs"]);
++  assert.equal(processHook.timeoutMs, 8000);
++  assert.equal(typeof processHook.shell, "undefined");
++  assert.equal(typeof processHook.commandString, "undefined");
++});
++
++test("real Hook process rejects oversized stdin and conflicting JSON aliases before any injection", () => {
++  const hookPath = path.join(repositoryRoot, "plugins", "xiadie", "hooks", "context.mjs");
++  const processEnv = {
++    PATH: process.env.PATH ?? "",
++    TEMP: process.env.TEMP ?? os.tmpdir(),
++    TMP: process.env.TMP ?? os.tmpdir(),
++    ...(process.env.SystemRoot ? { SystemRoot: process.env.SystemRoot } : {}),
++    ...(process.env.WINDIR ? { WINDIR: process.env.WINDIR } : {}),
++  };
++  const oversized = spawnSync(process.execPath, [hookPath], {
++    input: `{"hookEventName":"UserPromptSubmit","padding":"${"x".repeat(128 * 1024)}"}`,
++    encoding: "utf8",
++    env: processEnv,
++    timeout: 5000,
++    windowsHide: true,
++  });
++  assert.equal(oversized.error, undefined);
++  assert.equal(oversized.status, 1);
++  assert.equal(oversized.stdout, "");
++  assert.match(oversized.stderr, /stdin exceeds its byte bound/);
++
++  const conflictingAliases = spawnSync(process.execPath, [hookPath], {
++    input: JSON.stringify({ hookEventName: "UserPromptSubmit", hook_event_name: "Stop" }),
++    encoding: "utf8",
++    env: processEnv,
++    timeout: 5000,
++    windowsHide: true,
++  });
++  assert.equal(conflictingAliases.error, undefined);
++  assert.equal(conflictingAliases.status, 1);
++  assert.equal(conflictingAliases.stdout, "");
++  assert.match(conflictingAliases.stderr, /Hook aliases disagree/);
++});
+diff --git a/packages/adapters/zcode/test/fixtures/hook-process-fault.mjs b/packages/adapters/zcode/test/fixtures/hook-process-fault.mjs
+new file mode 100644
+index 0000000..1e1198b
+--- /dev/null
++++ b/packages/adapters/zcode/test/fixtures/hook-process-fault.mjs
+@@ -0,0 +1,14 @@
++const mode = process.argv[2];
++
++if (mode === "hang") {
++  process.stdout.write("U06_HANG_FIXTURE_STARTED\n");
++  setInterval(() => {}, 1000);
++} else if (mode === "bad-json") {
++  process.stdout.write("not-json\n");
++} else if (mode === "nonzero") {
++  process.stderr.write("U06_NONZERO_FIXTURE_FAILURE\n");
++  process.exitCode = 7;
++} else {
++  process.stderr.write("unknown U06 Hook fixture mode\n");
++  process.exitCode = 64;
++}
+diff --git a/packages/adapters/zcode/test/host.test.mjs b/packages/adapters/zcode/test/host.test.mjs
+new file mode 100644
+index 0000000..24e8c2c
+--- /dev/null
++++ b/packages/adapters/zcode/test/host.test.mjs
+@@ -0,0 +1,257 @@
++import assert from "node:assert/strict";
++import { mkdtemp, mkdir, rm, symlink, writeFile } from "node:fs/promises";
++import os from "node:os";
++import path from "node:path";
++import { fileURLToPath } from "node:url";
++import test from "node:test";
++
++const testDirectory = path.dirname(fileURLToPath(import.meta.url));
++const repositoryRoot = path.resolve(testDirectory, "../../../..");
++const profilesRoot = path.join(repositoryRoot, ".runtime", "P01", "u06-unit-profiles");
++const hostModuleUrl = new URL("../../../../dist/packages/adapters/zcode/src/index.js", import.meta.url);
++const { createXiadieZCodeApp } = await import(hostModuleUrl.href);
++
++test("disabled host submits concurrently through the native app without an extension queue", async (t) => {
++  const profile = await createProfile(t);
++  const entered = [];
++  let releaseFirst;
++  const firstReleased = new Promise((resolve) => { releaseFirst = resolve; });
++  const fixture = await createHost(profile, {
++    enabled: false,
++    submitPrompt: (prompt) => {
++      entered.push(prompt);
++      if (prompt === "first") return firstReleased.then(() => "first-result");
++      return Promise.resolve("second-result");
++    },
++  });
++
++  const first = fixture.host.submitPrompt("first");
++  const second = fixture.host.submitPrompt("second");
++  await Promise.resolve();
++  assert.deepEqual(entered, ["first", "second"]);
++  assert.equal(await second, "second-result");
++  const input = { text: "native disabled input" };
++  const nativeOptions = { requireIdle: false };
++  const directAdmission = await fixture.host.sendInput(input, nativeOptions);
++  assert.strictEqual(directAdmission, fixture.nativeSendResult);
++  assert.strictEqual(fixture.nativeInputCalls[0].input, input);
++  assert.strictEqual(fixture.nativeInputCalls[0].options, nativeOptions);
++  releaseFirst();
++  assert.equal(await first, "first-result");
++  await fixture.host.close?.();
++});
++
++test("enabled host forces native storage into its owned profile and keeps user-config storage overrides contained", async (t) => {
++  const profile = await createProfile(t, {
++    userConfig: { storage: { dir: path.join(os.tmpdir(), "u06-user-config-storage") } },
++    projectConfig: { storage: { dir: path.join(os.tmpdir(), "u06-project-config-storage") } },
++  });
++  const fixture = await createHost(profile, { enabled: true });
++  const expectedStorage = path.join(profile.root, "storage");
++  assert.equal(fixture.nativeOptions.env.ZCODE_STORAGE_DIR, expectedStorage);
++  assert.equal(fixture.nativeOptions.pluginStorageRoot, profile.pluginStorageRoot);
++  assert.equal(fixture.nativeOptions.userConfigPath, profile.userConfigPath);
++  assert.equal(fixture.nativeOptions.projectConfigPath, profile.projectConfigPath);
++  assert.equal(fixture.nativeOptions.skipUserConfig, false);
++  await fixture.host.close?.();
++});
++
++test("enabled host rejects missing config isolation and external storage environment before native app creation", async (t) => {
++  const profile = await createProfile(t);
++  let nativeCreateCalls = 0;
++  const base = hostOptions(profile, {
++    enabled: true,
++    onCreate: () => { nativeCreateCalls += 1; },
++  });
++
++  await assert.rejects(
++    createXiadieZCodeApp({ ...base.input, appOptions: { ...base.input.appOptions, userConfigPath: undefined } }),
++    /explicit, isolated user\/project config paths/,
++  );
++  assert.equal(nativeCreateCalls, 0);
++
++  const outsideStorage = path.join(os.tmpdir(), "u06-external-storage");
++  await assert.rejects(
++    createXiadieZCodeApp({
++      ...base.input,
++      appOptions: { ...base.input.appOptions, env: { ...base.input.appOptions.env, ZCODE_STORAGE_DIR: outsideStorage } },
++    }),
++    /ZCODE_STORAGE_DIR.*owned profile/,
++  );
++  assert.equal(nativeCreateCalls, 0);
++});
++
++test("enabled host rejects a storage junction that resolves outside its owned profile", async (t) => {
++  const profile = await createProfile(t);
++  const outside = await mkdtemp(path.join(os.tmpdir(), "u06-outside-storage-"));
++  t.after(async () => { await rm(outside, { recursive: true, force: true }); });
++  await symlink(outside, path.join(profile.root, "storage"), "junction");
++  let nativeCreateCalls = 0;
++  const fixture = hostOptions(profile, {
++    enabled: true,
++    onCreate: () => { nativeCreateCalls += 1; },
++  });
++
++  await assert.rejects(fixture.create(), /owned storage root must remain inside its owned profile/);
++  assert.equal(nativeCreateCalls, 0);
++});
++
++test("model adapter rejects a call without the current Hook receipt before delegate and bounds admission history", async (t) => {
++  const profile = await createProfile(t);
++  const fixture = await createHost(profile, { enabled: true });
++  const model = fixture.nativeOptions.modelAdapter.createModel({});
++
++  for (let index = 0; index < 70; index += 1) {
++    assert.throws(() => model.generateText({ messages: [] }), /identity gate rejected model delegation/);
++  }
++  assert.equal(fixture.adapterCalls.generateText, 0);
++  const failures = fixture.host.readAdmissionFailures();
++  assert.equal(failures.length, 64);
++  assert.ok(failures.every((failure) => failure.reasonCode === "model-receipt"));
++  assert.ok(failures.every((failure) => !("prompt" in failure) && !("stdout" in failure) && !("stderr" in failure)));
++  await fixture.host.close?.();
++});
++
++test("enabled sendInput forces idle admission and holds the host lock until native completion", async (t) => {
++  const profile = await createProfile(t);
++  let releaseCompletion;
++  const completion = new Promise((resolve) => { releaseCompletion = resolve; });
++  const originalCallback = () => {};
++  const fixture = await createHost(profile, {
++    enabled: true,
++    sendInput: () => ({ kind: "started_turn", turnId: "unit-turn", completion }),
++  });
++
++  const admission = await fixture.host.sendInput({ text: "unit idle turn" }, { onEvent: originalCallback, requireIdle: false });
++  assert.equal(admission.kind, "started_turn");
++  assert.equal(fixture.nativeInputCalls[0].options.requireIdle, true);
++  assert.strictEqual(fixture.nativeInputCalls[0].options.onEvent, originalCallback);
++  await assert.rejects(fixture.host.submitPrompt("overlapping input"), /sendInput is in flight/);
++  releaseCompletion({ response: "done", turnId: "unit-turn", traceId: "unit-trace", events: [], projection: {} });
++  await admission.completion;
++  await new Promise((resolve) => setImmediate(resolve));
++  assert.deepEqual(await fixture.host.submitPrompt("after completion"), { prompt: "after completion" });
++  await fixture.host.close?.();
++});
++
++test("enabled sendInput clears its ticket and idle lock when native admission rejects", async (t) => {
++  const profile = await createProfile(t);
++  const fixture = await createHost(profile, {
++    enabled: true,
++    sendInput: () => ({ kind: "rejected", reason: "busy" }),
++  });
++
++  await assert.rejects(fixture.host.sendInput("synthetic busy input"), /native admission returned rejected/);
++  assert.equal(fixture.nativeInputCalls[0].options.requireIdle, true);
++  assert.deepEqual(await fixture.host.submitPrompt("after rejection"), { prompt: "after rejection" });
++  await fixture.host.close?.();
++});
++
++async function createProfile(t, config = {}) {
++  await mkdir(profilesRoot, { recursive: true });
++  const root = await mkdtemp(path.join(profilesRoot, "host-unit-"));
++  t.after(async () => { await rm(root, { recursive: true, force: true }); });
++  const pluginStorageRoot = path.join(root, "plugin-storage");
++  const installRoot = path.join(pluginStorageRoot, "cache", "xiadie");
++  const dataRoot = path.join(pluginStorageRoot, "data", "xiadie");
++  await Promise.all([
++    mkdir(path.join(root, "home"), { recursive: true }),
++    mkdir(path.join(root, "temp"), { recursive: true }),
++    mkdir(installRoot, { recursive: true }),
++    mkdir(dataRoot, { recursive: true }),
++  ]);
++  const userConfigPath = path.join(root, "user.json");
++  const projectConfigPath = path.join(root, "project.json");
++  await Promise.all([
++    writeFile(userConfigPath, JSON.stringify(config.userConfig ?? {}), "utf8"),
++    writeFile(projectConfigPath, JSON.stringify(config.projectConfig ?? {}), "utf8"),
++  ]);
++  return { root, pluginStorageRoot, installRoot, dataRoot, userConfigPath, projectConfigPath };
++}
++
++function hostOptions(profile, options = {}) {
++  const appOptions = {
++    pluginStorageRoot: profile.pluginStorageRoot,
++    userConfigPath: profile.userConfigPath,
++    projectConfigPath: profile.projectConfigPath,
++    workingDirectory: profile.root,
++    skipUserConfig: false,
++    env: {
++      PATH: process.env.PATH ?? "",
++      HOME: path.join(profile.root, "home"),
++      USERPROFILE: path.join(profile.root, "home"),
++      TEMP: path.join(profile.root, "temp"),
++      TMP: path.join(profile.root, "temp"),
++    },
++  };
++  let nativeOptions;
++  const adapterCalls = { generateText: 0, streamText: 0 };
++  const nativeInputCalls = [];
++  const nativeSendResult = { kind: "queued", pendingInputId: "u06-disabled-queue", queueLength: 1, turnId: "u06-unit-session" };
++  const modelAdapter = {
++    createModel() {
++      const model = {
++        providerId: "unit",
++        modelId: "unit-model",
++        properties: {},
++        optionSpecs: {},
++        options: {},
++        bind(bindOptions) { return { ...model, options: bindOptions ?? {} }; },
++        async generateText() { adapterCalls.generateText += 1; return {}; },
++        async *streamText() { adapterCalls.streamText += 1; yield {}; },
++      };
++      return model;
++    },
++    addStatusSink() {},
++    setModelIoFullRetentionEnabled() {},
++  };
++  const nativeApp = {
++    sessionId: "u06-unit-session",
++    runtime: {},
++    async submitPrompt(prompt) { return options.submitPrompt ? options.submitPrompt(prompt) : { prompt }; },
++    async sendInput(input, nativeOptions) {
++      nativeInputCalls.push({ input, options: nativeOptions });
++      return options.sendInput ? options.sendInput(input, nativeOptions) : nativeSendResult;
++    },
++    async resume() {},
++    async close() {},
++  };
++  const native = {
++    async createZCodeApp(receivedOptions) {
++      options.onCreate?.();
++      nativeOptions = receivedOptions;
++      return nativeApp;
++    },
++    getCurrentModelInvocationContext() { return undefined; },
++  };
++  const executionPort = { async run() { throw new Error("unit fake should not run a Hook"); } };
++  const input = {
++    native,
++    appOptions,
++    executionPort,
++    modelAdapter,
++    enabled: options.enabled,
++    ...(options.enabled ? {
++      assetsRoot: path.join(repositoryRoot, "assets", "character"),
++      moduleRoot: path.join(repositoryRoot, "dist"),
++      installedPluginRoot: profile.installRoot,
++      dataRoot: profile.dataRoot,
++      pluginStorageRoot: profile.pluginStorageRoot,
++      ownedProfileRoot: profile.root,
++    } : {}),
++  };
++  return {
++    input,
++    getNativeOptions: () => nativeOptions,
++    adapterCalls,
++    nativeInputCalls,
++    nativeSendResult,
++    create: () => createXiadieZCodeApp(input),
++  };
++}
++
++async function createHost(profile, options) {
++  const fixture = hostOptions(profile, options);
++  const host = await fixture.create();
++  return { ...fixture, host, nativeOptions: fixture.getNativeOptions() };
++}
+diff --git a/packages/adapters/zcode/test/native.integration.test.mjs b/packages/adapters/zcode/test/native.integration.test.mjs
+new file mode 100644
+index 0000000..bd3eb72
+--- /dev/null
++++ b/packages/adapters/zcode/test/native.integration.test.mjs
+@@ -0,0 +1,706 @@
++import assert from "node:assert/strict";
++import { spawn } from "node:child_process";
++import { createHash } from "node:crypto";
++import { copyFile, mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
++import http from "node:http";
++import os from "node:os";
++import path from "node:path";
++import { fileURLToPath, pathToFileURL } from "node:url";
++import test from "node:test";
++
++const testDirectory = path.dirname(fileURLToPath(import.meta.url));
++const repositoryRoot = path.resolve(testDirectory, "../../../..");
++const profilesRoot = path.join(repositoryRoot, ".runtime", "P01", "u06-mock-profiles");
++const sourceRoot = process.env.P01_U06_ZCODE_SOURCE ?? "E:\\Xiadie\\Xiadie\\.runtime\\P00\\zcode\\source";
++const tsxApiUrl = pathToFileURL(path.join(sourceRoot, "node_modules", "tsx", "dist", "esm", "api", "index.mjs")).href;
++const { register: registerTsx } = await import(tsxApiUrl);
++registerTsx();
++const nativeBootstrapUrl = pathToFileURL(path.join(sourceRoot, "apps", "zcode-cli", "packages", "bootstrap", "dist", "index.js")).href;
++const nativeContractsUrl = pathToFileURL(path.join(sourceRoot, "apps", "zcode-cli", "packages", "contracts", "dist", "model", "invocation-context.js")).href;
++const nativeProviderRegistryUrl = pathToFileURL(path.join(sourceRoot, "packages", "provider", "dist", "registry.js")).href;
++const nativeModelRunnerUrl = pathToFileURL(path.join(sourceRoot, "apps", "zcode-cli", "packages", "adapters", "dist", "model", "runner.js")).href;
++const localFsUrl = pathToFileURL(path.join(sourceRoot, "apps", "zcode-cli", "packages", "adapters", "dist", "fs", "index.js")).href;
++const hostModuleUrl = pathToFileURL(path.join(repositoryRoot, "dist", "packages", "adapters", "zcode", "src", "index.js")).href;
++
++const native = await import(nativeBootstrapUrl);
++const nativeContracts = await import(nativeContractsUrl);
++const providerModule = await import(nativeProviderRegistryUrl);
++const nativeModelRunner = await import(nativeModelRunnerUrl);
++const { createXiadieZCodeApp } = await import(hostModuleUrl);
++
++test("native marketplace install/discovery, Hook process, native Read and local mock model", async (t) => {
++  const fixture = await createFixture(t, { enabled: true });
++  const result = await fixture.host.submitPrompt("Read allowed.txt and report its marker.");
++
++  assert.equal(fixture.execution.hookRuns, 1, "native Loop executes the installed process Hook");
++  assert.ok(fixture.model.delegateCalls >= 2, "the native Loop calls the mock model before and after its tool");
++  assert.ok(fixture.mock.requests.length >= 2, "model calls reach only the loopback HTTP mock");
++  assert.equal(fixture.mock.nonLoopbackRequests, 0, "all mock HTTP requests remain loopback-local");
++  assert.ok(JSON.stringify(fixture.mock.requests).includes("MOCK_ALLOWED_FILE"), "native Read result returns to the model");
++  assert.ok(JSON.stringify(fixture.mock.requests).includes("Do not read forbidden.txt"), "project AGENTS rule reaches the model");
++  assert.ok(fixture.model.contexts.every((context) => context.sessionId === fixture.host.app.sessionId), "model context is bound to this native session");
++  assert.ok(fixture.model.contexts.every((context) => context.turnId), "native model calls carry the native turn id");
++  assert.ok(fixture.model.contexts.every((context) => context.hasCanonicalPacket), "full current packet reaches every model call");
++  assert.equal(result.response, "MOCK_READ_OK");
++  assert.equal(fixture.plugin.enabled, true);
++  assert.equal(fixture.plugin.version, "0.1.0");
++  assert.ok(fixture.plugin.hookDetails.some((hook) => hook.event === "UserPromptSubmit"));
++  assert.deepEqual(fixture.host.readAdmissionFailures(), []);
++});
++
++test("native sendInput returns its TurnResult after an installed Hook and native Read", async (t) => {
++  const fixture = await createFixture(t, { enabled: true });
++  const events = [];
++  const unsubscribe = fixture.host.app.runtime.subscribeEvents({ onSessionEvent: (event) => events.push(event) });
++  const admission = await fixture.host.sendInput(
++    { text: "Read allowed.txt and report its marker." },
++    { inputId: "u06-native-sendinput", requireIdle: false },
++  );
++  assert.equal(admission.kind, "started_turn");
++  assert.ok(admission.turnId);
++  const result = await admission.completion;
++  unsubscribe();
++
++  assert.equal(result.response, "MOCK_READ_OK");
++  assert.ok(result.turnId);
++  assert.ok(result.traceId);
++  assert.ok(Array.isArray(result.events));
++  assert.ok(result.projection);
++  assert.equal(fixture.execution.hookRuns, 1);
++  assert.equal(fixture.model.contexts.every((context) => context.hasCanonicalPacket), true);
++  assert.ok(events.some((event) => event.type === "hook_run_started"), "subscription was active before Hook execution");
++  assert.ok(events.some((event) => event.type === "turn_started"));
++  assert.ok(JSON.stringify(fixture.mock.requests).includes("MOCK_ALLOWED_FILE"));
++  assert.ok(JSON.stringify(fixture.mock.requests).includes("Do not read forbidden.txt"));
++  assert.equal(fixture.mock.nonLoopbackRequests, 0);
++  assert.deepEqual(fixture.host.readAdmissionFailures(), []);
++});
++
++test("cancelled native sendInput holds exclusivity through completion and permits a fresh turn afterward", async (t) => {
++  const fixture = await createFixture(t, { enabled: true, holdFirstMockResponse: true });
++  const controller = new AbortController();
++  const admission = await fixture.host.sendInput(
++    { text: "Say MOCK_NO_TOOL for a cancellation probe." },
++    { abortSignal: controller.signal, inputId: "u06-native-cancel" },
++  );
++  assert.equal(admission.kind, "started_turn");
++  await waitFor(() => fixture.mock.requests.length > 0);
++  await assert.rejects(fixture.host.submitPrompt("overlap while sendInput is active"), /sendInput is in flight/);
++  await assert.rejects(fixture.host.sendInput("overlap while sendInput is active"), /sendInput is in flight/);
++  await assert.rejects(fixture.host.compact(), /sendInput is in flight/);
++
++  controller.abort();
++  const cancellation = await admission.completion.then(
++    (value) => ({ kind: "resolved", result: value }),
++    (error) => ({ kind: "rejected", message: error instanceof Error ? error.message : String(error) }),
++  );
++  assert.ok(cancellation.kind === "resolved" || cancellation.kind === "rejected");
++  await waitFor(() => fixture.mock.abortedResponses > 0);
++
++  const nextAdmission = await fixture.host.sendInput({ text: "Say MOCK_NO_TOOL after cancellation." });
++  assert.equal(nextAdmission.kind, "started_turn");
++  const nextResult = await nextAdmission.completion;
++  assert.equal(nextResult.response, "MOCK_NO_TOOL");
++  assert.equal(fixture.execution.hookRuns, 2, "the next turn receives a fresh native Hook receipt");
++  assert.equal(fixture.model.contexts.every((context) => context.hasCanonicalPacket), true);
++  assert.deepEqual(fixture.host.readAdmissionFailures(), []);
++});
++
++test("native compact uses a one-session operation ticket and next turn creates a fresh Hook receipt", async (t) => {
++  const fixture = await createFixture(t, { enabled: true });
++  await fixture.host.submitPrompt("Say MOCK_NO_TOOL for this synthetic check.");
++  const beforeCompactCalls = fixture.model.delegateCalls;
++  const compactEvents = [];
++  const unsubscribe = fixture.host.app.runtime.subscribeEvents({ onSessionEvent: (event) => compactEvents.push(event) });
++  let compactResult;
++  try {
++    compactResult = await fixture.host.compact();
++  } catch (error) {
++    assert.fail(`native compact failed with session ${fixture.host.app.sessionId}: ${error instanceof Error ? error.message : String(error)}; admissionFailures=${JSON.stringify(fixture.host.readAdmissionFailures())}`);
++  } finally {
++    unsubscribe();
++  }
++  const completed = compactEvents.find((event) => event.type === "compact_completed");
++  assert.ok(completed, "the native compact-completed event reaches the pre-registered subscriber");
++  assert.equal(completed.payload?.status, "completed");
++  assert.ok(completed.payload?.boundaryId, "native compact produced a persisted summary boundary");
++  assert.ok(compactResult.events.some((event) => event.type === "compact_completed" && event.payload?.status === "completed"));
++  assert.ok(fixture.model.contexts.some((context) => context.operation === "context_compaction"));
++  const compactCalls = fixture.model.contexts.filter((context) => context.operation === "context_compaction");
++  assert.ok(compactCalls.every((context) => context.sessionId === fixture.host.app.sessionId));
++  assert.ok(compactCalls.every((context) => context.turnId && context.turnId === compactCalls[0].turnId));
++  assert.ok(fixture.model.delegateCalls > beforeCompactCalls, "the compact ticket admits the native summary request");
++
++  const beforeNextTurn = fixture.execution.hookRuns;
++  await fixture.host.submitPrompt("Say MOCK_NO_TOOL after compact.");
++  assert.equal(fixture.execution.hookRuns, beforeNextTurn + 1, "the next normal turn runs a new Hook");
++  assert.deepEqual(fixture.host.readAdmissionFailures(), []);
++});
++
++test("resume performs a fresh approved preflight and next native turn receives a new Hook receipt", async (t) => {
++  const fixture = await createFixture(t, { enabled: true });
++  await fixture.host.submitPrompt("Say MOCK_NO_TOOL before resume.");
++  const beforeResume = fixture.execution.hookRuns;
++  const oldPacket = fixture.execution.lastHookContext;
++  const sessionId = fixture.host.app.sessionId;
++  await fixture.host.resume();
++  assert.equal(fixture.execution.hookRuns, beforeResume, "resume itself does not claim an old Hook receipt");
++  await fixture.reopen(sessionId);
++  assert.equal(fixture.host.app.sessionId, sessionId, "native resume reuses the same persisted session id");
++  const resumeEvents = [];
++  const unsubscribe = fixture.host.app.runtime.subscribeEvents({ onSessionEvent: (event) => resumeEvents.push(event) });
++  const result = await fixture.host.submitPrompt("Say MOCK_NO_TOOL after process-style resume.");
++  unsubscribe();
++  const resumedEvent = resumeEvents.find((event) => event.type === "session_resumed");
++  assert.ok(resumedEvent, "native resume emitted SessionResumed after loading the saved session");
++  assert.ok(resumedEvent.payload?.messageCount > 0, "the native SessionStore hydrated prior messages");
++  assert.equal(result.response, "MOCK_NO_TOOL");
++  assert.equal(fixture.execution.hookRuns, beforeResume + 1, "the first resumed turn obtains a new native Hook receipt");
++  assert.notEqual(fixture.execution.lastHookContext, oldPacket, "old injected packet/receipt is not reused by a resumed turn");
++  assert.deepEqual(fixture.host.readAdmissionFailures(), []);
++});
++
++test("disabled native plugin leaves ordinary native model execution available", async (t) => {
++  const fixture = await createFixture(t, { enabled: false });
++  const result = await fixture.host.submitPrompt("Say MOCK_NO_TOOL with Xiadie disabled.");
++  assert.equal(fixture.execution.hookRuns, 0);
++  assert.ok(fixture.model.delegateCalls > 0);
++  assert.equal(result.response, "MOCK_NO_TOOL");
++  assert.deepEqual(fixture.host.readAdmissionFailures(), []);
++});
++
++for (const fault of ["timeout", "nonzero", "bad-json", "schema", "missing-receipt", "truncated"]) {
++  test(`native UserPromptSubmit blocks ${fault} before any model request`, async (t) => {
++    const fixture = await createFixture(t, { enabled: true, fault });
++    const result = await fixture.host.submitPrompt("Synthetic fail-closed probe.");
++    assert.equal(fixture.execution.hookRuns, 1, "fault is injected after a real Hook process was launched");
++    assert.equal(fixture.model.delegateCalls, 0);
++    assert.equal(fixture.mock.requests.length, 0);
++    assert.ok(fixture.host.readAdmissionFailures().length > 0);
++    assert.match(result.response, /Xiadie identity gate rejected this turn before model execution\. hook-receipt/);
++    if (fault === "timeout") {
++      assert.equal(fixture.execution.processRecords.at(-1)?.status, "timed_out");
++      assert.equal(fixture.execution.processRecords.at(-1)?.timedOut, true);
++      assert.match(fixture.execution.processRecords.at(-1)?.stdoutText ?? "", /U06_HANG_FIXTURE_STARTED/);
++    }
++    if (fault === "bad-json") {
++      assert.equal(fixture.execution.processRecords.at(-1)?.status, "completed");
++      assert.equal(fixture.execution.processRecords.at(-1)?.exitCode, 0);
++      assert.equal(fixture.execution.processRecords.at(-1)?.stdoutText, "not-json\n");
++    }
++  });
++}
++
++test("missing native Hook receipt is rejected at model delegate boundary", async (t) => {
++  const fixture = await createFixture(t, { enabled: true, pluginEnabled: false });
++  await assert.rejects(fixture.host.submitPrompt("Synthetic missing-hook probe."), (error) =>
++    errorChainIncludes(error, "identity gate rejected model delegation"));
++  assert.equal(fixture.execution.hookRuns, 0);
++  assert.equal(fixture.model.delegateCalls, 0);
++  assert.equal(fixture.mock.requests.length, 0);
++  assert.ok(fixture.host.readAdmissionFailures().some((failure) => failure.reasonCode === "model-receipt"));
++});
++
++test("an unknown Hook path cannot create a native model request", async (t) => {
++  const fixture = await createFixture(t, { enabled: true, fault: "unknown-path" });
++  await assert.rejects(fixture.host.submitPrompt("Synthetic unknown-path probe."));
++  assert.equal(fixture.execution.hookRuns, 1);
++  assert.equal(fixture.model.delegateCalls, 0);
++  assert.equal(fixture.mock.requests.length, 0);
++  assert.ok(fixture.host.readAdmissionFailures().some((failure) => failure.reasonCode === "model-receipt"));
++});
++
++test("an invalid approved character asset fails before native submit or model work", async (t) => {
++  const fixture = await createFixture(t, { enabled: true, invalidAssets: true });
++  await assert.rejects(fixture.host.submitPrompt("Synthetic invalid-persona probe."), /Character|asset|approved/i);
++  assert.equal(fixture.execution.hookRuns, 0);
++  assert.equal(fixture.model.delegateCalls, 0);
++  assert.equal(fixture.mock.requests.length, 0);
++});
++
++async function createFixture(t, options) {
++  await mkdir(profilesRoot, { recursive: true });
++  const profile = await mkdtemp(path.join(profilesRoot, "native-int-"));
++  const home = path.join(profile, "home");
++  const temp = path.join(profile, "temp");
++  const workspace = path.join(profile, "workspace");
++  const pluginStorageRoot = path.join(profile, "plugin-storage");
++  await Promise.all([mkdir(home, { recursive: true }), mkdir(temp, { recursive: true }), mkdir(workspace, { recursive: true })]);
++  await writeFile(path.join(workspace, "AGENTS.md"), "Do not read forbidden.txt. For this test, use only allowed.txt.\n", "utf8");
++  await writeFile(path.join(workspace, "allowed.txt"), "MOCK_ALLOWED_FILE\n", "utf8");
++  await writeFile(path.join(workspace, "forbidden.txt"), "MUST_NOT_BE_READ\n", "utf8");
++
++  const userConfigPath = path.join(profile, "user.json");
++  const projectConfigPath = path.join(profile, "project.json");
++  const marketplace = await native.addZCodePluginMarketplace({
++    pluginStorageRoot,
++    userConfigPath,
++    projectConfigPath,
++    workingDirectory: workspace,
++    env: safeEnvironment(home, temp),
++    source: path.join(repositoryRoot, "plugins", "xiadie", "marketplace.json"),
++  });
++  await native.installZCodeMarketplacePlugin({
++    pluginStorageRoot,
++    userConfigPath,
++    projectConfigPath,
++    workingDirectory: workspace,
++    env: safeEnvironment(home, temp),
++    marketplace: marketplace.id,
++    pluginName: "xiadie",
++  });
++  await native.setZCodePluginEnabled({
++    pluginStorageRoot,
++    userConfigPath,
++    projectConfigPath,
++    workingDirectory: workspace,
++    env: safeEnvironment(home, temp),
++    plugin: `xiadie@${marketplace.id}`,
++    enabled: options.pluginEnabled ?? options.enabled,
++  });
++
++  let userConfig = {};
++  try { userConfig = JSON.parse(await readFile(userConfigPath, "utf8")); } catch {}
++  userConfig.storage = { ...(userConfig.storage ?? {}), dir: path.join(profile, "storage") };
++  await writeFile(userConfigPath, JSON.stringify(userConfig, null, 2), "utf8");
++  const discovered = native.listZCodePlugins({
++    pluginStorageRoot,
++    userConfigPath,
++    projectConfigPath,
++    workingDirectory: workspace,
++    env: safeEnvironment(home, temp),
++  });
++  const plugin = discovered.plugins.find((item) => item.name === "xiadie");
++  assert.ok(plugin, "native plugin discovery finds the installed Xiadie plugin");
++  assert.equal(plugin.enabled, options.pluginEnabled ?? options.enabled);
++  assert.equal(typeof plugin.rootPath, "string", "native runtime metadata supplies the installed plugin root");
++  assert.equal(typeof plugin.dataPath, "string", "native runtime metadata supplies the owned plugin data root");
++  if (options.fault === "unknown-path") {
++    const hookFile = path.join(plugin.rootPath, "hooks", "hooks.json");
++    const hookConfig = JSON.parse(await readFile(hookFile, "utf8"));
++    await copyFile(path.join(plugin.rootPath, "hooks", "context.mjs"), path.join(plugin.rootPath, "hooks", "alternate-context.mjs"));
++    hookConfig.hooks.UserPromptSubmit[0].hooks[0].args = ["${ZCODE_PLUGIN_ROOT}/hooks/alternate-context.mjs"];
++    await writeFile(hookFile, JSON.stringify(hookConfig, null, 2), "utf8");
++  }
++
++  const mock = await startMockProvider(path.join(workspace, "allowed.txt"), { holdFirstResponse: options.holdFirstMockResponse });
++  let host;
++  t.after(async () => {
++    await host?.close?.();
++    await mock.close();
++    if (process.env.P01_U06_KEEP_PROFILES !== "1") await rm(profile, { recursive: true, force: true });
++  });
++  const providerRegistry = new providerModule.ProviderRegistry([createProvider(mock.baseUrl)]);
++  const execution = createExecutionPort({ fault: options.fault, profile, home, temp, nativeContext: nativeContracts.getCurrentModelInvocationContext });
++  const model = createObservedNativeModelAdapter(
++    new nativeModelRunner.AiSdkModelAdapter({ env: safeEnvironment(home, temp) }),
++    nativeContracts.getCurrentModelInvocationContext,
++    () => execution.lastHookContext,
++  );
++  const assetsRoot = options.invalidAssets ? path.join(profile, "invalid-assets") : path.join(repositoryRoot, "assets", "character");
++  if (options.invalidAssets) await mkdir(assetsRoot, { recursive: true });
++  const hostOptions = {
++    native: {
++      createZCodeApp: native.createZCodeApp,
++      getCurrentModelInvocationContext: nativeContracts.getCurrentModelInvocationContext,
++    },
++    appOptions: {
++      providerRegistry,
++      runtimeConfig: {
++        mode: "plan",
++        memory: { enabled: false, use: false, extractionEnabled: false },
++        dynamicWorkflowEnabled: false,
++        modelSelection: { providerId: "u06-mock", modelId: "mock-model", options: { reasoningLevel: "none" } },
++        modelStreaming: "off",
++        toolAllowlist: ["Read"],
++        workingDirectory: workspace,
++        maxTurns: 4,
++      },
++      pluginStorageRoot,
++      userConfigPath,
++      projectConfigPath,
++      workingDirectory: workspace,
++      skipUserConfig: false,
++      officialPluginRoots: [],
++      fileSystemPort: await createBoundedFileSystemPort(),
++      env: safeEnvironment(home, temp),
++    },
++    executionPort: execution.port,
++    modelAdapter: model.adapter,
++    enabled: options.enabled,
++    assetsRoot,
++    moduleRoot: path.join(repositoryRoot, "dist"),
++    installedPluginRoot: plugin.rootPath,
++    dataRoot: plugin.dataPath,
++    ownedProfileRoot: profile,
++    pluginStorageRoot,
++    nodeExecutable: process.execPath,
++  };
++  host = await createXiadieZCodeApp(hostOptions);
++  assert.equal(host.app.runtime.isProjectMemoryEnabled(), false, "the supported fixture profile disables project-memory extraction");
++  const fixture = { profile, workspace, home, temp, host, plugin, mock, model, execution };
++  fixture.reopen = async (sessionId) => {
++    await host.close?.();
++    host = await createXiadieZCodeApp({
++      ...hostOptions,
++      appOptions: { ...hostOptions.appOptions, sessionId, resume: true },
++    });
++    fixture.host = host;
++    assert.equal(host.app.runtime.isProjectMemoryEnabled(), false);
++    return host;
++  };
++  return fixture;
++}
++
++function createProvider(baseUrl) {
++  return {
++    providerId: "u06-mock",
++    providerName: "U06 local mock",
++    config: {
++      group: "standard-personal",
++      access: { type: "api-key", apiKey: "u06-synthetic-only" },
++      api: { type: "openai-chat-completions", baseUrl },
++      builtinModelIds: ["mock-model"],
++      personalModelIds: [],
++      modelOrder: ["mock-model"],
++      visibility: "visible",
++    },
++    models: [{
++      modelId: "mock-model",
++      config: {
++        enabled: true,
++        properties: {
++          requiresMfjsToolSchema: false,
++          contextWindow: 32768,
++          inputFormat: { supportsText: true, supportsImage: false, supportsVideo: false, supportsAudio: false, supportsPdf: false },
++          outputFormat: { supportsText: true },
++          supportsToolCall: true,
++          supportsJsonSchemaOutput: false,
++          supportsNativeWebSearch: false,
++          supportsMidConversationSystem: true,
++        },
++        optionSpecs: {
++          reasoningLevel: { values: ["none"], map: "{}" },
++          maxOutputTokens: { max: 4096, map: "{}" },
++        },
++      },
++    }],
++  };
++}
++
++function createObservedNativeModelAdapter(delegate, getContext, getExpectedPacket) {
++  const state = { delegateCalls: 0, contexts: [] };
++  const observeModel = (model) => {
++    const observed = Object.create(model);
++    Object.defineProperties(observed, {
++      bind: { value: (options) => observeModel(model.bind.call(model, options)) },
++      generateText: { value: (request) => {
++        observeCall(request);
++        return model.generateText.call(model, request);
++      } },
++      streamText: { value: (request) => {
++        observeCall(request);
++        return model.streamText.call(model, request);
++      } },
++    });
++    return observed;
++  };
++  const observeCall = (request) => {
++    const context = getContext();
++    const expectedPacket = getExpectedPacket();
++    state.delegateCalls += 1;
++    state.contexts.push({
++      operation: context?.modelCall?.operation,
++      sessionId: context?.traceContext?.sessionId,
++      turnId: context?.traceContext?.turnId,
++      operationId: context?.modelCall?.operationId,
++      hasCanonicalPacket: typeof expectedPacket === "string" && collectMessageText(request.messages).includes(expectedPacket),
++    });
++  };
++  const adapter = Object.create(delegate);
++  Object.defineProperties(adapter, {
++    createModel: { value: (options) => observeModel(delegate.createModel.call(delegate, options)) },
++    addStatusSink: { value: (sink) => delegate.addStatusSink.call(delegate, sink) },
++    setModelIoFullRetentionEnabled: { value: (enabled) => delegate.setModelIoFullRetentionEnabled.call(delegate, enabled) },
++  });
++  return {
++    adapter,
++    get delegateCalls() { return state.delegateCalls; },
++    contexts: state.contexts,
++  };
++}
++
++async function startMockProvider(readTarget, mode = {}) {
++  const state = { requests: [], readTarget, ports: [], nonLoopbackRequests: 0, abortedResponses: 0 };
++  const server = http.createServer(async (request, response) => {
++    response.on("close", () => {
++      if (!response.writableEnded) state.abortedResponses += 1;
++    });
++    const remote = request.socket.remoteAddress ?? "";
++    if (!(remote === "127.0.0.1" || remote === "::1" || remote.startsWith("::ffff:127.0.0.1"))) {
++      state.nonLoopbackRequests += 1;
++      response.writeHead(403).end("loopback only");
++      return;
++    }
++    const chunks = [];
++    for await (const chunk of request) chunks.push(chunk);
++    let body;
++    try { body = JSON.parse(Buffer.concat(chunks).toString("utf8")); }
++    catch { response.writeHead(400).end("invalid json"); return; }
++    state.requests.push({ method: request.method, path: request.url, body });
++    if (mode.holdFirstResponse && state.requests.length === 1) return;
++    const serializedMessages = JSON.stringify(body.messages ?? []);
++    const hadReadResult = serializedMessages.includes("MOCK_ALLOWED_FILE");
++    const readRequested = serializedMessages.includes("Read allowed.txt") && (body.tools ?? []).some((tool) =>
++      tool.name === "Read" || tool.function?.name === "Read");
++    const callRead = readRequested && !hadReadResult;
++    const text = hadReadResult ? "MOCK_READ_OK" : "MOCK_NO_TOOL";
++    const completion = {
++      id: `chatcmpl-u06-${state.requests.length}`,
++      object: "chat.completion",
++      created: 1,
++      model: "mock-model",
++      choices: [{
++        index: 0,
++        message: {
++          role: "assistant",
++          content: callRead ? null : text,
++          ...(callRead ? { tool_calls: [{
++            id: `u06-read-${state.requests.length}`,
++            type: "function",
++            function: { name: "Read", arguments: JSON.stringify({ file_path: state.readTarget }) },
++          }] } : {}),
++        },
++        finish_reason: callRead ? "tool_calls" : "stop",
++      }],
++      usage: { prompt_tokens: 1, completion_tokens: 1, total_tokens: 2 },
++    };
++    if ((request.headers.accept ?? "").includes("text/event-stream")) {
++      response.writeHead(200, { "content-type": "text/event-stream" });
++      const delta = callRead
++        ? { role: "assistant", tool_calls: [{ index: 0, id: `u06-read-${state.requests.length}`, type: "function", function: { name: "Read", arguments: JSON.stringify({ file_path: state.readTarget }) } }] }
++        : { role: "assistant", content: text };
++      response.write(`data: ${JSON.stringify({ id: completion.id, object: "chat.completion.chunk", created: 1, model: "mock-model", choices: [{ index: 0, delta, finish_reason: null }] })}\n\n`);
++      response.write(`data: ${JSON.stringify({ id: completion.id, object: "chat.completion.chunk", created: 1, model: "mock-model", choices: [{ index: 0, delta: {}, finish_reason: callRead ? "tool_calls" : "stop" }] })}\n\n`);
++      response.end("data: [DONE]\n\n");
++    } else {
++      response.writeHead(200, { "content-type": "application/json" }).end(JSON.stringify(completion));
++    }
++  });
++  await new Promise((resolve, reject) => {
++    server.once("error", reject);
++    server.listen(0, "127.0.0.1", resolve);
++  });
++  const address = server.address();
++  assert.ok(address && typeof address === "object");
++  state.ports.push(address.port);
++  return {
++    requests: state.requests,
++    ports: state.ports,
++    baseUrl: `http://127.0.0.1:${address.port}/v1`,
++    get nonLoopbackRequests() { return state.nonLoopbackRequests; },
++    get abortedResponses() { return state.abortedResponses; },
++    close: () => new Promise((resolve, reject) => {
++      server.close((error) => error ? reject(error) : resolve());
++      server.closeAllConnections();
++    }),
++  };
++}
++
++async function waitFor(predicate, timeoutMs = 5000) {
++  const deadline = Date.now() + timeoutMs;
++  while (!predicate()) {
++    if (Date.now() >= deadline) throw new Error("Timed out waiting for the native mock condition");
++    await new Promise((resolve) => setTimeout(resolve, 10));
++  }
++}
++
++function createExecutionPort(options) {
++  const state = { hookRuns: 0, previousOutput: undefined, lastHookContext: undefined, processRecords: [] };
++  const safeEnv = safeEnvironment(options.home, options.temp);
++  const run = async (request) => {
++    const isUserPromptHook = request.trace?.attributes?.hookEventName === "UserPromptSubmit";
++    state.hookRuns += isUserPromptHook ? 1 : 0;
++    assert.equal(request.command.mode, "argv", "the hook must be a native argv process");
++    const fixtureFault = isUserPromptHook && ["timeout", "bad-json", "nonzero"].includes(options.fault)
++      ? options.fault
++      : undefined;
++    const fixtureMode = fixtureFault === "timeout" ? "hang" : fixtureFault;
++    const executedRequest = fixtureFault
++      ? {
++          ...request,
++          command: {
++            ...request.command,
++            file: process.execPath,
++            args: [path.join(testDirectory, "fixtures", "hook-process-fault.mjs"), fixtureMode],
++          },
++          // Bound the real hanging child for this fault fixture while the pinned native
++          // Hook deadline remains unchanged. This exercises a real killed process and
++          // a timed_out ExecutionResult without waiting for the full 8-second deadline.
++          ...(fixtureFault === "timeout" ? { timeoutMs: Math.min(request.timeoutMs ?? 1000, 250) } : {}),
++        }
++      : request;
++    const real = await runChild(executedRequest, safeEnv, options);
++    if (isUserPromptHook) {
++      const record = {
++        event: "UserPromptSubmit",
++        kind: fixtureFault ?? "installed-hook",
++        file: executedRequest.command.file,
++        args: executedRequest.command.args,
++        nativeTimeoutMs: request.timeoutMs,
++        childTimeoutMs: executedRequest.timeoutMs,
++        startedAtUtc: real.startedAt.toISOString(),
++        completedAtUtc: real.completedAt.toISOString(),
++        durationMs: real.durationMs,
++        status: real.status,
++        exitCode: real.exitCode,
++        signal: real.signal,
++        timedOut: real.timedOut,
++        cancelled: real.cancelled,
++        stdoutBytes: real.stdout.bytes,
++        stdoutSha256: hash(real.stdout.text),
++        stderrBytes: real.stderr.bytes,
++        stderrSha256: hash(real.stderr.text),
++        ...(fixtureFault ? { stdoutText: real.stdout.text, stderrText: real.stderr.text } : {}),
++      };
++      state.processRecords.push(record);
++      process.stdout.write(`U06_HOOK_PROCESS ${JSON.stringify(record)}\n`);
++    }
++    if (request.trace?.attributes?.hookEventName === "UserPromptSubmit" && real.status === "completed") {
++      try {
++        const envelope = JSON.parse(real.stdout.text);
++        state.lastHookContext = typeof envelope.additionalContext === "string" ? envelope.additionalContext : undefined;
++      } catch {
++        state.lastHookContext = undefined;
++      }
++    }
++    if (!options.fault) {
++      state.previousOutput = real.stdout.text;
++      return real;
++    }
++    const stdoutBytes = (text) => ({ text, bytes: Buffer.byteLength(text), truncated: false });
++    switch (options.fault) {
++      case "timeout":
++      case "nonzero":
++      case "bad-json":
++        return real;
++      case "schema": return { ...real, stdout: stdoutBytes(JSON.stringify({ unexpected: true })) };
++      case "missing-receipt": {
++        const envelope = JSON.parse(real.stdout.text);
++        delete envelope.xiadieReceipt;
++        return { ...real, stdout: stdoutBytes(JSON.stringify(envelope)) };
++      }
++      case "truncated": {
++        const envelope = JSON.parse(real.stdout.text);
++        envelope.additionalContext = envelope.additionalContext.slice(0, -1);
++        return { ...real, stdout: stdoutBytes(JSON.stringify(envelope)) };
++      }
++      default: return real;
++    }
++  };
++  return {
++    port: { run },
++    ...state,
++    get hookRuns() { return state.hookRuns; },
++    get lastHookContext() { return state.lastHookContext; },
++  };
++}
++
++function collectMessageText(messages) {
++  const chunks = [];
++  for (const message of messages ?? []) {
++    if (typeof message?.content === "string") chunks.push(message.content);
++    else if (Array.isArray(message?.content)) {
++      for (const block of message.content) {
++        if (typeof block?.text === "string") chunks.push(block.text);
++      }
++    }
++  }
++  return chunks.join("\n");
++}
++
++function errorChainIncludes(error, fragment) {
++  let current = error;
++  for (let depth = 0; depth < 8 && current !== undefined && current !== null; depth += 1) {
++    if (current instanceof Error && current.message.includes(fragment)) return true;
++    current = typeof current === "object" ? current.cause : undefined;
++  }
++  return false;
++}
++
++async function runChild(request, safeEnv, runOptions = {}) {
++  const startedAt = new Date();
++  const env = { ...safeEnv, ...(request.env?.set ?? {}) };
++  for (const key of request.env?.unset ?? []) delete env[key];
++  const child = spawn(request.command.file, [...(request.command.args ?? [])], {
++    cwd: request.cwd,
++    env,
++    shell: false,
++    windowsHide: true,
++    stdio: ["pipe", "pipe", "pipe"],
++  });
++  const stdoutChunks = [];
++  const stderrChunks = [];
++  child.stdout.on("data", (chunk) => stdoutChunks.push(chunk));
++  child.stderr.on("data", (chunk) => stderrChunks.push(chunk));
++  if (request.stdin !== undefined) child.stdin.end(request.stdin);
++  else child.stdin.end();
++  let timedOut = false;
++  let cancelled = false;
++  const timeoutMs = Number.isSafeInteger(request.timeoutMs) && request.timeoutMs > 0 ? request.timeoutMs : undefined;
++  const timer = timeoutMs === undefined ? undefined : setTimeout(() => {
++    timedOut = true;
++    child.kill();
++  }, timeoutMs);
++  const signal = runOptions?.signal;
++  const onAbort = () => {
++    cancelled = true;
++    child.kill();
++  };
++  if (signal?.aborted) onAbort();
++  else signal?.addEventListener("abort", onAbort, { once: true });
++  const exit = await new Promise((resolve) => {
++    child.once("error", (error) => resolve({ error }));
++    child.once("close", (code, signal) => resolve({ code, signal }));
++  });
++  if (timer !== undefined) clearTimeout(timer);
++  signal?.removeEventListener("abort", onAbort);
++  const completedAt = new Date();
++  const stdout = Buffer.concat(stdoutChunks);
++  const stderr = Buffer.concat(stderrChunks);
++  return {
++    status: exit.error ? "spawn_error" : cancelled ? "cancelled" : timedOut ? "timed_out" : exit.code === 0 ? "completed" : "failed",
++    ...(exit.code === null || exit.code === undefined ? {} : { exitCode: exit.code }),
++    ...(exit.signal ? { signal: exit.signal } : {}),
++    stdout: { text: stdout.toString("utf8"), bytes: stdout.byteLength, truncated: false },
++    stderr: { text: stderr.toString("utf8"), bytes: stderr.byteLength, truncated: false },
++    durationMs: completedAt.getTime() - startedAt.getTime(),
++    timedOut,
++    cancelled,
++    startedAt,
++    completedAt,
++    ...(exit.error ? { error: { type: "spawn_error", message: exit.error.message } } : {}),
++  };
++}
++
++async function createBoundedFileSystemPort() {
++  const { NodeFileSystemAdapter } = await import(localFsUrl);
++  return new NodeFileSystemAdapter({ textSearchEngine: "javascript" });
++}
++
++function safeEnvironment(home, temp) {
++  const env = {
++    PATH: process.env.PATH ?? "",
++    HOME: home,
++    USERPROFILE: home,
++    TEMP: temp,
++    TMP: temp,
++  };
++  if (process.env.SystemRoot) env.SystemRoot = process.env.SystemRoot;
++  if (process.env.WINDIR) env.WINDIR = process.env.WINDIR;
++  return env;
++}
++
++function hash(value) {
++  return createHash("sha256").update(value).digest("hex");
++}
+diff --git a/plugins/xiadie/.zcode-plugin/plugin.json b/plugins/xiadie/.zcode-plugin/plugin.json
+new file mode 100644
+index 0000000..d034be0
+--- /dev/null
++++ b/plugins/xiadie/.zcode-plugin/plugin.json
+@@ -0,0 +1,5 @@
++{
++  "name": "xiadie",
++  "version": "0.1.0",
++  "description": "Approved Xiadie identity context for the native ZCode turn loop."
++}
+diff --git a/plugins/xiadie/hooks/context.mjs b/plugins/xiadie/hooks/context.mjs
+new file mode 100644
+index 0000000..97b8ae8
+--- /dev/null
++++ b/plugins/xiadie/hooks/context.mjs
+@@ -0,0 +1,110 @@
++import { createHash } from "node:crypto";
++import { closeSync, fstatSync, lstatSync, openSync, readSync, realpathSync } from "node:fs";
++import path from "node:path";
++import { pathToFileURL } from "node:url";
++
++const MAX_INPUT_BYTES = 128 * 1024;
++const MAX_TRANSCRIPT_BYTES = 512 * 1024;
++const ASSET_DIGEST = "a688c669c4f556495131ac69cdc868a5b2ee93614eff814fc0793b1690c99bb4";
++
++async function main() {
++  const rawInput = await readStdin(MAX_INPUT_BYTES);
++  const input = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(rawInput));
++  const event = selectAlias(input, "hookEventName", "hook_event_name");
++  const sessionId = selectAlias(input, "sessionId", "session_id");
++  const turnId = selectAlias(input, "turnId", "turn_id");
++  const transcriptPath = selectAlias(input, "transcriptPath", "transcript_path");
++  const expectedEvent = process.env.XIA_DIE_HOOK_EVENT;
++  if (event !== expectedEvent || event !== "UserPromptSubmit" ||
++      typeof sessionId !== "string" || sessionId.length === 0 ||
++      typeof turnId !== "string" || turnId.length === 0 ||
++      typeof transcriptPath !== "string" || transcriptPath.length === 0) {
++    throw new Error("Native Hook input did not match the host admission ticket");
++  }
++
++  const moduleRoot = requiredEnv("XIA_DIE_HOST_MODULE_ROOT");
++  const assetRoot = requiredEnv("XIA_DIE_APPROVED_ASSET_ROOT");
++  const nonce = requiredEnv("XIA_DIE_TICKET_NONCE");
++  const loaderUrl = pathToFileURL(path.join(moduleRoot, "packages", "character", "src", "loader.js"));
++  const contextUrl = pathToFileURL(path.join(moduleRoot, "packages", "context", "src", "index.js"));
++  const { loadCharacter } = await import(loaderUrl.href);
++  const { buildContextPacket, renderContextPacket } = await import(contextUrl.href);
++  const character = loadCharacter(assetRoot);
++  const packet = buildContextPacket(character, {
++    scope: `zcode-session:${sessionId}`,
++    version: `u06-turn:${nonce}`,
++    max_tokens: 12_000,
++    state: [{ source_refs: ["trusted-host:per-turn-nonce"], value: { kind: "turn-binding", nonce } }],
++    evidence: [],
++    content: [],
++  });
++  const additionalContext = renderContextPacket(packet);
++  const transcript = readBoundedTranscript(transcriptPath);
++  const receipt = {
++    version: 1,
++    nonce,
++    event,
++    sessionId,
++    turnId,
++    packetSha256: digest(Buffer.from(additionalContext, "utf8")),
++    transcriptBytes: transcript.bytes,
++    transcriptSha256: transcript.sha256,
++    character: { id: character.id, version: character.version, contentSha256: ASSET_DIGEST },
++  };
++  process.stdout.write(JSON.stringify({ additionalContext, xiadieReceipt: receipt }));
++}
++
++function selectAlias(record, camel, snake) {
++  if (record === null || typeof record !== "object" || Array.isArray(record)) throw new Error("Hook input must be an object");
++  const left = record[camel];
++  const right = record[snake];
++  if (left !== undefined && right !== undefined && left !== right) throw new Error(`Hook aliases disagree: ${camel}`);
++  return left ?? right;
++}
++
++function requiredEnv(name) {
++  const value = process.env[name];
++  if (typeof value !== "string" || value.length === 0) throw new Error(`Missing trusted host variable: ${name}`);
++  return value;
++}
++
++async function readStdin(limit) {
++  const chunks = [];
++  let bytes = 0;
++  for await (const chunk of process.stdin) {
++    bytes += chunk.length;
++    if (bytes > limit) throw new Error("Hook stdin exceeds its byte bound");
++    chunks.push(chunk);
++  }
++  return Buffer.concat(chunks, bytes);
++}
++
++function readBoundedTranscript(filename) {
++  let descriptor;
++  try {
++    if (lstatSync(filename).isSymbolicLink()) throw new Error("transcript must not be a symlink");
++    const canonical = realpathSync(filename);
++    descriptor = openSync(canonical, "r");
++    if (!fstatSync(descriptor).isFile()) throw new Error("transcript must be a regular file");
++    const buffer = Buffer.alloc(MAX_TRANSCRIPT_BYTES + 1);
++    let count = 0;
++    while (count < buffer.length) {
++      const read = readSync(descriptor, buffer, count, buffer.length - count, null);
++      if (read === 0) break;
++      count += read;
++    }
++    if (count > MAX_TRANSCRIPT_BYTES) throw new Error("transcript exceeds its byte bound");
++    return { bytes: count, sha256: digest(buffer.subarray(0, count)) };
++  } finally {
++    if (descriptor !== undefined) closeSync(descriptor);
++  }
++}
++
++function digest(value) {
++  return createHash("sha256").update(value).digest("hex");
++}
++
++main().catch((error) => {
++  process.stderr.write(`Xiadie Hook rejected input: ${error instanceof Error ? error.message : String(error)}`);
++  process.exitCode = 1;
++});
+diff --git a/plugins/xiadie/hooks/hooks.json b/plugins/xiadie/hooks/hooks.json
+new file mode 100644
+index 0000000..ab54a7a
+--- /dev/null
++++ b/plugins/xiadie/hooks/hooks.json
+@@ -0,0 +1,17 @@
++{
++  "hooks": {
++    "UserPromptSubmit": [
++      {
++        "hooks": [
++          {
++            "type": "process",
++            "command": "node",
++            "args": ["${ZCODE_PLUGIN_ROOT}/hooks/context.mjs"],
++            "timeoutMs": 8000,
++            "statusMessage": "Loading approved Xiadie identity context"
++          }
++        ]
++      }
++    ]
++  }
++}
+diff --git a/plugins/xiadie/marketplace.json b/plugins/xiadie/marketplace.json
+new file mode 100644
+index 0000000..36be913
+--- /dev/null
++++ b/plugins/xiadie/marketplace.json
+@@ -0,0 +1,11 @@
++{
++  "name": "xiadie-local",
++  "description": "Local U06 author-test marketplace for the Xiadie ZCode plugin.",
++  "plugins": [
++    {
++      "name": "xiadie",
++      "version": "0.1.0",
++      "source": "."
++    }
++  ]
++}
+diff --git a/tools/run-tests.mjs b/tools/run-tests.mjs
+index 0d58cd4..f61177f 100644
+--- a/tools/run-tests.mjs
++++ b/tools/run-tests.mjs
+@@ -4,27 +4,30 @@ import { fileURLToPath } from "node:url";
+ 
+ const TESTS = Object.freeze({
+   unit: Object.freeze({
+-    all: ["packages/contracts/test/json-value.test.mjs", "packages/character/test/schema.test.mjs", "packages/context/test/context.test.mjs"],
++    all: ["packages/contracts/test/json-value.test.mjs", "packages/character/test/schema.test.mjs", "packages/context/test/context.test.mjs", "packages/adapters/zcode/test/host.test.mjs"],
+     tasks: Object.freeze({
+       "P01-U03": ["packages/contracts/test/json-value.test.mjs"],
+       "P01-U04": ["packages/character/test/schema.test.mjs"],
+       "P01-U05": ["packages/context/test/context.test.mjs"],
++      "P01-U06": ["packages/adapters/zcode/test/host.test.mjs"],
+     }),
+   }),
+   contract: Object.freeze({
+-    all: ["packages/contracts/test/contracts.test.mjs", "packages/character/test/contract.test.mjs", "packages/context/test/contract.test.mjs"],
++    all: ["packages/contracts/test/contracts.test.mjs", "packages/character/test/contract.test.mjs", "packages/context/test/contract.test.mjs", "packages/adapters/zcode/test/contract.test.mjs"],
+     tasks: Object.freeze({
+       "P01-U03": ["packages/contracts/test/contracts.test.mjs"],
+       "P01-U04": ["packages/character/test/contract.test.mjs"],
+       "P01-U05": ["packages/context/test/contract.test.mjs"],
++      "P01-U06": ["packages/adapters/zcode/test/contract.test.mjs"],
+     }),
+   }),
+   integration: Object.freeze({
+-    all: ["packages/contracts/test/import-boundaries.test.mjs", "packages/character/test/loader.test.mjs", "packages/context/test/integration.test.mjs"],
++    all: ["packages/contracts/test/import-boundaries.test.mjs", "packages/character/test/loader.test.mjs", "packages/context/test/integration.test.mjs", "packages/adapters/zcode/test/native.integration.test.mjs"],
+     tasks: Object.freeze({
+       "P01-U03": ["packages/contracts/test/import-boundaries.test.mjs"],
+       "P01-U04": ["packages/character/test/loader.test.mjs"],
+       "P01-U05": ["packages/context/test/integration.test.mjs"],
++      "P01-U06": ["packages/adapters/zcode/test/native.integration.test.mjs"],
+     }),
+   }),
+ });
+diff --git a/tsconfig.json b/tsconfig.json
+index 14fe575..35609c9 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -14,6 +14,6 @@
+     "rootDir": ".",
+     "outDir": "dist"
+   },
+-  "include": ["packages/contracts/src/**/*.ts", "packages/character/src/**/*.ts", "packages/context/src/**/*.ts"],
++  "include": ["packages/contracts/src/**/*.ts", "packages/character/src/**/*.ts", "packages/context/src/**/*.ts", "packages/adapters/zcode/src/**/*.ts"],
+   "exclude": ["dist", "node_modules"]
+ }

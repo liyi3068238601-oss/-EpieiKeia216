@@ -1,0 +1,44 @@
+command=pnpm test:unit P01-U03 P01-U04 P01-U05 P01-U06
+
+> xiadie@0.1.0 test:unit E:\Xiadie\Xiadie\.runtime\P01\worktrees\u06
+> pnpm run build && node tools/run-tests.mjs unit "P01-U03" "P01-U04" "P01-U05" "P01-U06"
+
+
+> xiadie@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\worktrees\u06
+> tsc --project tsconfig.json
+
+✔ disabled host submits concurrently through the native app without an extension queue (9.6004ms)
+✔ enabled host forces native storage into its owned profile and keeps user-config storage overrides contained (15.7188ms)
+✔ enabled host rejects missing config isolation and external storage environment before native app creation (12.8649ms)
+✔ enabled host rejects a storage junction that resolves outside its owned profile (12.8027ms)
+✔ model adapter rejects a call without the current Hook receipt before delegate and bounds admission history (13.2194ms)
+✔ enabled sendInput forces idle admission and holds the host lock until native completion (18.5658ms)
+✔ enabled sendInput clears its ticket and idle lock when native admission rejects (15.2421ms)
+✔ six-field approved schema preserves provenance and fictional example labels (1.5079ms)
+✔ missing, empty and unknown fields fail validation (1.5754ms)
+✔ wrong character, name and version cannot become a generic identity (1.2642ms)
+✔ source, license and fiction metadata must match the approved schema (0.6775ms)
+✔ field and total limits count UTF-8 bytes (0.4261ms)
+✔ accessors and cycles are rejected without invoking asset code (0.3585ms)
+✔ constructs immutable instructions only from the approved snapshot and puts canon in fictional state (4.8062ms)
+✔ schema-only and copied role values cannot create instruction packets (2.2483ms)
+✔ hostile memory and trusted facts stay in their data partitions (2.1667ms)
+✔ stable serialization sorts nested object keys and correctly escapes strings (4.2629ms)
+✔ rejects structurally valid packets copied or deserialized outside the builder (2.0619ms)
+✔ rejects missing references, invalid scope and caller-supplied instruction keys (2.3432ms)
+✔ rejects accessor input without invoking it and enforces finite payload limits (2.0346ms)
+✔ snapshots descriptor values once without invoking Proxy get traps (1.7849ms)
+✔ input mutation cannot alter the packet snapshot or rendered bytes (2.3277ms)
+✔ budget is checked against the whole serialized packet and never returns a partial string (3.7531ms)
+✔ accepts ordinary JSON values and shared non-cyclic references (0.6226ms)
+✔ rejects values JSON.stringify would omit, coerce, or fail to encode (0.1105ms)
+✔ rejects cycles, sparse arrays, accessors, symbols, and hidden fields (0.6926ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 163.8423
+pnpmExitCode=0
