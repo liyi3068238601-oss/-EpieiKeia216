@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\u06-final\\negative-fixtures\\independent-probes.mjs",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\u06-final",
+    "f716a444d1889ba33991ca05c36611d7bef2a096"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06",
+  "started_at": "2026-10-03T09:29:33.129248+00:00",
+  "completed_at": "2026-10-03T09:29:47.630320+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 240,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "(node:47552) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nnode:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r\n+ actual - expected\r\n\r\n+ 'queue_full'\r\n- 'queued'\r\n        ^\r\n\r\n    at observationPageLimitProbe (file:///E:/Xiadie/Xiadie/.runtime/P02/reviews/u06-final/negative-fixtures/independent-probes.mjs:140:14)\r\n    at async file:///E:/Xiadie/Xiadie/.runtime/P02/reviews/u06-final/negative-fixtures/independent-probes.mjs:176:43 {\r\n  generatedMessage: true,\r\n  code: 'ERR_ASSERTION',\r\n  actual: 'queue_full',\r\n  expected: 'queued',\r\n  operator: 'strictEqual',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.14.0\r\n"
+}

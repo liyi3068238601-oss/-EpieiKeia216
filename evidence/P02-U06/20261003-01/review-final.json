@@ -1,0 +1,317 @@
+{
+  "schema": "p02-independent-review/v1",
+  "decision": "pass",
+  "task": "P02-U06",
+  "review_target": {
+    "author_commit": "f716a444d1889ba33991ca05c36611d7bef2a096",
+    "baseline_commit": "a1b611dadafdcf2337d80d62b9d68da485a0a3a2",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06"
+  },
+  "reviewer": "p02_u04_review",
+  "scope": "U06 冻结精确提交的独立单元审查：验证 EvidenceReport 的进程/收据/来源/artifact 接受逻辑及其 U05 EventStore 读口。不构成 U10、原生 Desktop 或整个产品集成验收。",
+  "checks": [
+    {
+      "id": "exact-target-prerequisite-and-manifest",
+      "status": "pass",
+      "detail": "author WT 精确位于 f716a444d1889ba33991ca05c36611d7bef2a096，baseline a1b611dadafdcf2337d80d62b9d68da485a0a3a2 是祖先且 WT clean。独立 verify-author 核实 30 个 manifest 条目/31 条 changed path，raw Git blob 与磁盘逐项一致、0 mismatch；manifest SHA-256 8a240cf787f10b711197ff78df2752edbecea8c9cc68d90664e212e8cb00ff05。冻结卡/source lock 与 U05 accepted prerequisite、U02/U03 accepted 输入均核对。"
+    },
+    {
+      "id": "scope-and-command-index",
+      "status": "pass",
+      "detail": "31 条变更全部位于 packages/application/evidence、tools/run-tests.mjs、evidence/P02-U06/20261003-01 登记范围内。18/18 command-index entries 的 bytes/SHA 与 author evidence 副本及 .runtime/P02/runs/u06 原始归档相同。作者最终 build/unit 均 exit 0；历史 build 01、unit 08、diff helper 16 的失败及修正记录均保留，16 是错误工作目录的记账命令失败，不是产品测试失败。"
+    },
+    {
+      "id": "independent-input-bindings",
+      "status": "pass",
+      "detail": "固定 Node v24.14.0 / TypeScript 6.0.2。独立 build 前与 U06 suite/反例后绑定各 112 项（显式含 migrations/001-event-store.ts），与作者 inputs-final-pre/post 的逐项 bindings 完全相同；digest 均为 88bc92d32c60fcf95339e76ce54d59faeed39e2ed43121f9b9144018e1592be4，前后无漂移。另有 run-command 留存的 bind recheck 前后均相同。"
+    },
+    {
+      "id": "independent-build-and-u06-suite",
+      "status": "pass",
+      "detail": "固定 Node 24 独立运行 tsc --project tsconfig.json：exit 0；tools/run-tests.mjs unit P02-U06：exit 0，8 passed / 0 failed。真实 argv、cwd、stdout/stderr 与 exit 记录在 review commands。Node node:sqlite ExperimentalWarning 按原样保留。"
+    },
+    {
+      "id": "independent-fault-counterexamples",
+      "status": "pass",
+      "detail": "独立反例 2/2：同一 (source,eventId) 的 conflicting redelivery 返回 conflict，reader 保留 first receipt，但 builder 将 toolReceipt 标为 invalid/profile failed；8193 条真实 EventStore observation 超过 32 页×256 行上限，分页读抛出 page-limit error，builder 捕获后拒绝 profile pass。两条均使用冻结版本 builder、真实 U05 SQLite EventStore，并由冻结仓库内真实 tracked Node script 的 U06 launcher 产生 owned run。首轮 probe 的 queue_full、复用旧 DB 与未捕获预期 page-limit throw 等 reviewer harness 失败均留档；修正后最终 2/2 通过。"
+    },
+    {
+      "id": "source-choice-and-evidence-boundaries",
+      "status": "pass",
+      "detail": "U05 accepted 且 U02/U03 接受记录可核对；D02/H14 仅为 sources.lock 固定版本参考，未复制第三方代码或安装依赖。实现审查确认 report 只接纳与精确 scope/attempt/toolCall/source 匹配的 committed operation_receipt，writer receipt first sequence/canonical hash 回查，conflict/read-limit fail closed；process execution 与机械 profileResult 分开，raw log/回复文本不进入报告，artifact 读取受 8 MiB 与路径/链接边界约束。"
+    }
+  ],
+  "limitations": [
+    "NOT_RUN：U10 Host/native Desktop composition、已安装 ZCode/Electron、production databases、native effects、real models/network、Windows package behavior、physical disk exhaustion/power loss、complete runtime dependency closure。",
+    "本审查的 SQLite 数据库、artifact 与 child Node process 均为 review 夹具；不代表产品 DB、原生 Hook 集成或完整运行时/依赖隔离。作者 rollback 仅回退冻结 U06 commit；U06 未触碰持久产品数据库或外部副作用。",
+    "审查工具调用的首个 verify-author 参数顺序错误已被后续 exact invocation 修正；相关失败命令记录保留且不影响最终验证。"
+  ],
+  "artifacts": [
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U06/20261003-01/baseline.json",
+      "bytes": 1315,
+      "sha256": "6b3508cdda222830be483fc260d6b0fba4da5663844d52ad38755925986f17f8"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U06/20261003-01/manifest.json",
+      "bytes": 7622,
+      "sha256": "8a240cf787f10b711197ff78df2752edbecea8c9cc68d90664e212e8cb00ff05"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U06/20261003-01/command-index.json",
+      "bytes": 3145,
+      "sha256": "beadd53bed0f899b0ce5a4676177dfda13cc24fd37ea1d3e47e3e7d54b08f20f"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U06/20261003-01/result.md",
+      "bytes": 6951,
+      "sha256": "d1f9d196da287ef22747eb3f62ba60c7e8cbc6bece957e9fe2cd1512f20a591f"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U06/20261003-01/source-decision.md",
+      "bytes": 2458,
+      "sha256": "e5e4b82e12b0a36c10a3e9d988157d1023fe9bc2b35379d1a08dfd85c1911c43"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U06/20261003-01/inputs-final-pre.json",
+      "bytes": 26030,
+      "sha256": "1d84144f104bfd4e9d5012fa9ce5dce3c2f9dba4ed289477dbf82714257fcb74"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U06/20261003-01/inputs-final-post.json",
+      "bytes": 26138,
+      "sha256": "df14c3eb2839efd51207c8868badf0b3f1f7c3deb022f72fa2e61d6b07bb74c7"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/application/evidence/src/index.ts",
+      "bytes": 30855,
+      "sha256": "05e44e804035f487aedbcfe4881d6f28c7cb40477ed231fc7615e705de06d247"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/application/evidence/test/evidence.test.mjs",
+      "bytes": 18325,
+      "sha256": "f3b93d0e422344240920a100fcb075ee75572cfe05005ab828d212ff6ffa9e66"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tools/run-tests.mjs",
+      "bytes": 5382,
+      "sha256": "707b3619b611ccc41bdf153843c62c8c8a0602e7861e402846ed4e7b2bddf4d3"
+    },
+    {
+      "root": "review_directory",
+      "path": "author-verification.json",
+      "bytes": 552,
+      "sha256": "bd7dde9d9692dc8a227ee9442745f2b94d066b8ed4a37a3e02712c2e1b565f86"
+    },
+    {
+      "root": "review_directory",
+      "path": "audit-results.json",
+      "bytes": 6026,
+      "sha256": "802722d9ca76af771ff757f35a37680aa75cb562b2a1d8f1c32aea3db7a6c28a"
+    },
+    {
+      "root": "review_directory",
+      "path": "audit-u06.py",
+      "bytes": 9781,
+      "sha256": "c5cda33c6e9f7832cca08e00b30a5f31701725c2d3a4668021ebb7fdf5c8c6c3"
+    },
+    {
+      "root": "review_directory",
+      "path": "build-review-final.py",
+      "bytes": 7399,
+      "sha256": "709c22f4fc5bce70300a45744582c54d8eca2d3088365c998401aad7d187e301"
+    },
+    {
+      "root": "review_directory",
+      "path": "review-summary.md",
+      "bytes": 2157,
+      "sha256": "cec60e99b7eea3a9e3cf03b96b72251a3045c0a0c95905b82929d1f83a2927de"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-pre.json",
+      "bytes": 26030,
+      "sha256": "9d8d3ab614da791e870291d5da383994a28303b1f270d279173964031161cf1f"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-post-final.json",
+      "bytes": 26138,
+      "sha256": "4bcda218aa3123b923f98ee3a930bc0e559f58dd500a171829e59f8459970ec9"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-bind-recheck-pre.json",
+      "bytes": 26030,
+      "sha256": "e2c83943e3cd54e5961b31a42da32541084b79ee67d5242627dbe00807fa214d"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-bind-recheck-post.json",
+      "bytes": 26138,
+      "sha256": "3159ad6067305fc9934ef05fa21f2bc0679dfaf8e75d332c45a409361dbb9df3"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/independent-probes.mjs",
+      "bytes": 7599,
+      "sha256": "83e11c9e12168ccdd36bf454c94132f16ffcd8bd3f905e39ae01c466e5ddbf3e"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/probe-results.json",
+      "bytes": 848,
+      "sha256": "33b02e6e6b4ad3314e25aa608d8803e30ecd2fd67aea34f2281600cde97a9806"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/audit-review.json",
+      "bytes": 5494,
+      "sha256": "c855f0e75672c71eb430466d32eae29c9e9a9de1e15eb11fb2275b5e0195a9a5"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/bind-recheck-post.json",
+      "bytes": 974,
+      "sha256": "2456d15eaa43f6b5492e8c0d94cef4303864c5fd7c2a72198215168c29aaf5f7"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/bind-recheck-pre.json",
+      "bytes": 864,
+      "sha256": "0f33dedd52de1bd701fa58fcce5e937b5f9f86ff6a00a09128a6002d6d722888"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/build-independent.json",
+      "bytes": 479,
+      "sha256": "e658469a888875f0f1f9cbccd6fabb077aff55a66bb92438415b782aeb4c25e5"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/counterexamples-02.json",
+      "bytes": 1641,
+      "sha256": "7cbd7025824759c1bfe6469805d34c3636f1a53cf0e067f94205feedb208db2d"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/counterexamples-03.json",
+      "bytes": 1719,
+      "sha256": "af760cb0a9572d434e9a4087462a539fd0fb185cffb0cc400a6104b47d0a1e60"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/counterexamples-04.json",
+      "bytes": 1506,
+      "sha256": "00aad877a43d51082b890c9c5d597ce8811cf00e9f40764661362c0114954459"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/counterexamples.json",
+      "bytes": 1529,
+      "sha256": "c46d54d945412c993da5d6fcca9bba15418102efef916aac954683a291054cb4"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/unit-independent.json",
+      "bytes": 1607,
+      "sha256": "b0c065d6437cdacc061ec4855b1439017d48d9d6756f4dcfc3c9e115c2bd4dab"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/verify-author-command.json",
+      "bytes": 1011,
+      "sha256": "f5d28843f3095fbf74f6798dddc1c09feaed56988af56433997404c716f5e13d"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/verify-author-independent.json",
+      "bytes": 1249,
+      "sha256": "22ba5c81cf9e11af6b697b2e5b58fc95cd54af6b2d195580b2bb8f87a229986b"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "root": "baseline_repository",
+      "path": "AGENTS.md",
+      "bytes": 1787,
+      "sha256": "b6ab92bf4c41d1cbc44fede9c152614b38bc24e5de8c293a55db258735ef53f4"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U06.md",
+      "bytes": 2105,
+      "sha256": "cb443521f7ff3c69a145da425c921610bb406e066640b27a3dce95cb2fb53ff4"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U05/20261003-01/acceptance.json",
+      "bytes": 6903,
+      "sha256": "8f1f28f4a0b71768cec6300d4e0e554f0a51c26b08c8031cf01d72eca89bc357"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U03/20261003-01/acceptance.json",
+      "bytes": 1852,
+      "sha256": "049abb37c43d4a9edc1a55d230047461a50948fea590b1510a85379cb9d1abac"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U02/20261003-01/acceptance.json",
+      "bytes": 1252,
+      "sha256": "715724b9c83abc17fb8536b7a5c02dd72653bf794a199deb531a036d5867caa8"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "docs/adr/P02-reuse.md",
+      "bytes": 6041,
+      "sha256": "dcb2f3eb461423947652db04ff2e846e3f27fa4dfc1534953d3a27d9ff7d2541"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "spikes/P02/sqlite-notes.md",
+      "bytes": 10658,
+      "sha256": "ad7695498095352d3847fae642b24f02347061c06b99024b42844c3e0fa954eb"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "packages/contracts/src/events.ts",
+      "bytes": 17373,
+      "sha256": "c2a7d013164b1c3e5e6c27748a3b06ef1856cf22346acd11e356c191718500ee"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "packages/storage/events/src/index.ts",
+      "bytes": 58109,
+      "sha256": "04f4ecc5f54122dbfa14eff2de982cb3f81967f6d41b205d1694d24127eb9545"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "packages/adapters/zcode/src/transcript.ts",
+      "bytes": 24870,
+      "sha256": "73fcaf64d5932fc15ea7c24d47f103891807ca96015c2ff81fc79ada8f4f3174"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "packages/application/turn-projection.ts",
+      "bytes": 16936,
+      "sha256": "2fc3f675856588b2ae8e6e3eb668f913b43bc9acb892a066b7e59a9e4e375292"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "tools/run-tests.mjs",
+    "unit",
+    "P02-U06"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06",
+  "started_at": "2026-10-03T09:25:12.859233+00:00",
+  "completed_at": "2026-10-03T09:25:25.363394+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 240,
+  "environment_overrides": {},
+  "stdout": "(node:34948) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n✔ real Node run, SQLite operation receipt, owned artifact and exact Git revision pass without log injection (576.7683ms)\n✔ DONE prose, unowned idle state and caller-supplied pass claims cannot satisfy the profile (617.1819ms)\n✔ queued admission is not evidence until SQLite readback has committed the operation receipt (902.0047ms)\n✔ exit zero with a real artifact but no committed tool receipt is execution-only success (520.0424ms)\n✔ missing artifact and changed artifact bytes reject a receipt's claimed integrity (1625.3229ms)\n✔ tool receipt must match exact scope, attempt, tool call and coordinator-fixed source (5232.2674ms)\n✔ frozen expected commit, current clean revision and originating repository all have to match (2372.3537ms)\n✔ Node scripts must be tracked, nonignored and byte-identical to the HEAD blob (522.3997ms)\nℹ tests 8\nℹ suites 0\nℹ pass 8\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 12427.4056\n",
+  "stderr": ""
+}
