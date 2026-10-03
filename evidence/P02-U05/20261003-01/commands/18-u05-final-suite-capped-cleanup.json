@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "& 'E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe' 'tools/run-tests.mjs' unit P02-U05"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+  "started_at": "2026-10-03T07:51:25.489009+00:00",
+  "completed_at": "2026-10-03T07:51:27.868301+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 180,
+  "environment_overrides": {},
+  "stdout": "(node:40196) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n✔ atomic first fact, origin, capture material and receipt; retry, resequence and conflict remain auditable (32.7416ms)\n✔ scope and operation queries page complete facts and observations explicitly (10.0494ms)\n✔ invalid raw, over-limit event, forged mask and mismatched capture are refused before enqueue (10.4414ms)\n✔ readback recomputes facts and rejects tampered mirror columns as CORRUPT_STORE (17.4733ms)\n✔ bounded FIFO rejects overflow and close drains its accepted frontier (7.3052ms)\n✔ lost COMMIT acknowledgements are unknown for new and repeated observations, then reconciled by receipt (10.1946ms)\n✔ failed COMMIT with capture rolls back fact, observation, origin, material, receipt and writer sequence atomically (16.9309ms)\n✔ failed rollback quarantines the writer, settles queued successors unknown, and close rolls back (13.2565ms)\n✔ close reports a SQLite close failure after settling accepted work (12.5748ms)\n✔ actual SQLite BUSY, controlled SQLITE_FULL, readonly refusal and future-schema preflight (328.075ms)\n✔ owned process hard-kill before COMMIT rolls back; after COMMIT before ACK is found by receipt without duplication (264.9876ms)\nℹ tests 11\nℹ suites 0\nℹ pass 11\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2179.3045\n",
+  "stderr": ""
+}

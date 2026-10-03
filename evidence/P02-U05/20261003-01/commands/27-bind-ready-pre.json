@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "python",
+    "..\\..\\coord\\bind-execution.py",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05\\evidence\\P02-U05\\20261003-01\\inputs-final-pre.json",
+    "--extra",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05\\migrations\\001-event-store.ts"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+  "started_at": "2026-10-03T07:53:55.574205+00:00",
+  "completed_at": "2026-10-03T07:53:55.649491+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\bind-execution.py\", line 14, in <module>\r\n    assert out.is_relative_to(root) and not out.exists()\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nAssertionError\r\n"
+}

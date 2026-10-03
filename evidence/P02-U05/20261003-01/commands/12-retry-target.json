@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "rg -n -C 6 'existingObservation|status: \\",
+    "duplicate\\' packages/storage/events/src/index.ts"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+  "started_at": "2026-10-03T07:40:01.911527+00:00",
+  "completed_at": "2026-10-03T07:40:04.198508+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "packages\\storage\\events\\src\\index.ts-635-function appendTransaction(database: DatabaseSync, bundle: NormalizedBundle): AppendResult {\npackages\\storage\\events\\src\\index.ts-636-  let inTransaction = false;\npackages\\storage\\events\\src\\index.ts-637-  let commitAttempted = false;\npackages\\storage\\events\\src\\index.ts-638-  try {\npackages\\storage\\events\\src\\index.ts-639-    database.exec(\"BEGIN IMMEDIATE\");\npackages\\storage\\events\\src\\index.ts-640-    inTransaction = true;\npackages\\storage\\events\\src\\index.ts:641:    const existingObservation = selectObservationRow(database, bundle.observationKey);\npackages\\storage\\events\\src\\index.ts:642:    if (existingObservation !== undefined) {\npackages\\storage\\events\\src\\index.ts:643:      const fact = loadFactRecord(database, String(existingObservation.source), String(existingObservation.event_id));\npackages\\storage\\events\\src\\index.ts:644:      const prior = decodeObservation(database, existingObservation);\npackages\\storage\\events\\src\\index.ts-645-      validateObservationDisposition(prior, fact);\npackages\\storage\\events\\src\\index.ts-646-      if (canonicalizeAppendBundle(prior) !== bundle.bundleJson) {\npackages\\storage\\events\\src\\index.ts-647-        throw new EventStoreError(\"CORRUPT_STORE\", \"observation key maps to different stored content\");\npackages\\storage\\events\\src\\index.ts-648-      }\npackages\\storage\\events\\src\\index.ts-649-      database.exec(\"COMMIT\");\npackages\\storage\\events\\src\\index.ts-650-      inTransaction = false;\n",
+  "stderr": ""
+}

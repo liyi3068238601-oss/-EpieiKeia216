@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "git rev-parse HEAD; git status --short; git log -3 --oneline --decorate; Get-Content -Raw 'evidence/P02-U05/20261003-01/baseline.json' | ConvertFrom-Json | Select-Object baseline_commit,branch,author_status | Format-List"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+  "started_at": "2026-10-03T07:55:38.134435+00:00",
+  "completed_at": "2026-10-03T07:55:38.490791+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "18a35406efaccce964ea53327d7af6d636c115f1\n M tools/run-tests.mjs\n M tsconfig.json\n?? evidence/P02-U05/\n?? migrations/\n?? packages/storage/\n18a3540 (HEAD -> p02-u05, p02-stage) docs(p02): accept P02-U04 and advance to P02-U05\n72d2b3f merge independently reviewed P02-U04\n1b28920 (p02-u04) Implement bounded transcript capture and host delivery receipts\n\r\n\r\nbaseline_commit : 18a35406efaccce964ea53327d7af6d636c115f1\r\nbranch          : p02-u05\r\nauthor_status   : ready_for_review\r\n\r\n\r\n\r\n",
+  "stderr": ""
+}

@@ -1,0 +1,66 @@
+{
+  "task": "P02-U05",
+  "baseline": "18a35406efaccce964ea53327d7af6d636c115f1",
+  "scope": [
+    "packages/storage/events",
+    "migrations",
+    "tsconfig.json",
+    "tools/run-tests.mjs",
+    "evidence/P02-U05/20261003-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "18a35406efaccce964ea53327d7af6d636c115f1"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+      "exit_code": 0,
+      "stdout": " evidence/P02-U05/20261003-01/baseline.json         |   38 +\n evidence/P02-U05/20261003-01/command-index.json    |  212 ++++\n .../20261003-01/commands/01-source-map.json        |   16 +\n .../commands/02-contracts-and-capture-shapes.json  |   16 +\n .../03-boundaries-and-migration-types.json         |   16 +\n .../20261003-01/commands/04-build-initial.json     |   16 +\n .../commands/05-build-post-implementation.json     |   16 +\n .../20261003-01/commands/06-u05-first-suite.json   |   16 +\n .../20261003-01/commands/07-build-after-fixes.json |   16 +\n .../20261003-01/commands/08-u05-after-fixes.json   |   16 +\n .../20261003-01/commands/09-u05-pagecap.json       |   16 +\n .../commands/10-u05-full-rollback-reset.json       |   16 +\n .../20261003-01/commands/11-source-targets.json    |   17 +\n .../20261003-01/commands/12-retry-target.json      |   17 +\n .../commands/13-retry-result-lines.json            |   16 +\n .../commands/14-is-transaction-api.json            |   16 +\n .../commands/15-build-recovery-close.json          |   16 +\n .../20261003-01/commands/16-u05-final-suite.json   |   16 +\n .../commands/17-u05-final-suite-repair.json        |   16 +\n .../18-u05-final-suite-capped-cleanup.json         |   16 +\n .../20261003-01/commands/19-build-final.json       |   16 +\n .../P02-U05/20261003-01/commands/20-bind-help.json |   15 +\n .../20261003-01/commands/21-bind-final-pre.json    |   18 +\n .../commands/22-u05-tests-final-bound.json         |   16 +\n .../20261003-01/commands/23-bind-final-post.json   |   20 +\n .../20261003-01/commands/24-prestage-status.json   |   16 +\n .../commands/25-owned-file-inventory.json          |   16 +\n .../commands/26-build-final-contract-guard.json    |   16 +\n .../20261003-01/commands/27-bind-ready-pre.json    |   18 +\n .../20261003-01/commands/28-bind-ready-pre.json    |   18 +\n .../29-u05-tests-final-contract-guard.json         |   16 +\n .../20261003-01/commands/30-bind-ready-post.json   |   20 +\n .../commands/31-remove-superseded-bindings.json    |   16 +\n .../20261003-01/commands/32-freeze-stage.json      |   22 +\n .../20261003-01/commands/33-author-head-check.json |   16 +\n .../20261003-01/commands/34-freeze-stage.json      |   22 +\n .../20261003-01/commands/35-cached-diff-check.json |   16 +\n .../commands/36-staged-scope-review.json           |   16 +\n .../20261003-01/commands/37-commit-u05.json        |   16 +\n .../20261003-01/commands/38-postcommit-status.json |   15 +\n .../20261003-01/commands/39-postcommit-head.json   |   15 +\n .../20261003-01/commands/40-manifest-sha.json      |   15 +\n .../P02-U05/20261003-01/commands/41-diff-unit.json |   22 +\n .../P02-U05/20261003-01/inputs-final-02-post.json  |  553 ++++++++\n .../P02-U05/20261003-01/inputs-final-02-pre.json   |  551 ++++++++\n evidence/P02-U05/20261003-01/manifest.json         |   69 +\n evidence/P02-U05/20261003-01/ready-for-review.md   |   13 +\n evidence/P02-U05/20261003-01/result.md             |   36 +\n migrations/001-event-store.ts                      |  106 ++\n packages/storage/events/src/index.ts               | 1332 ++++++++++++++++++++\n packages/storage/events/test/events.test.mjs       |  638 ++++++++++\n packages/storage/events/test/sqlite-worker.mjs     |   34 +\n tools/run-tests.mjs                                |    3 +-\n tsconfig.json                                      |    2 +-\n 54 files changed, 4271 insertions(+), 2 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "18a35406efaccce964ea53327d7af6d636c115f1"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+      "exit_code": 0,
+      "stdout": "38\t0\tevidence/P02-U05/20261003-01/baseline.json\n212\t0\tevidence/P02-U05/20261003-01/command-index.json\n16\t0\tevidence/P02-U05/20261003-01/commands/01-source-map.json\n16\t0\tevidence/P02-U05/20261003-01/commands/02-contracts-and-capture-shapes.json\n16\t0\tevidence/P02-U05/20261003-01/commands/03-boundaries-and-migration-types.json\n16\t0\tevidence/P02-U05/20261003-01/commands/04-build-initial.json\n16\t0\tevidence/P02-U05/20261003-01/commands/05-build-post-implementation.json\n16\t0\tevidence/P02-U05/20261003-01/commands/06-u05-first-suite.json\n16\t0\tevidence/P02-U05/20261003-01/commands/07-build-after-fixes.json\n16\t0\tevidence/P02-U05/20261003-01/commands/08-u05-after-fixes.json\n16\t0\tevidence/P02-U05/20261003-01/commands/09-u05-pagecap.json\n16\t0\tevidence/P02-U05/20261003-01/commands/10-u05-full-rollback-reset.json\n17\t0\tevidence/P02-U05/20261003-01/commands/11-source-targets.json\n17\t0\tevidence/P02-U05/20261003-01/commands/12-retry-target.json\n16\t0\tevidence/P02-U05/20261003-01/commands/13-retry-result-lines.json\n16\t0\tevidence/P02-U05/20261003-01/commands/14-is-transaction-api.json\n16\t0\tevidence/P02-U05/20261003-01/commands/15-build-recovery-close.json\n16\t0\tevidence/P02-U05/20261003-01/commands/16-u05-final-suite.json\n16\t0\tevidence/P02-U05/20261003-01/commands/17-u05-final-suite-repair.json\n16\t0\tevidence/P02-U05/20261003-01/commands/18-u05-final-suite-capped-cleanup.json\n16\t0\tevidence/P02-U05/20261003-01/commands/19-build-final.json\n15\t0\tevidence/P02-U05/20261003-01/commands/20-bind-help.json\n18\t0\tevidence/P02-U05/20261003-01/commands/21-bind-final-pre.json\n16\t0\tevidence/P02-U05/20261003-01/commands/22-u05-tests-final-bound.json\n20\t0\tevidence/P02-U05/20261003-01/commands/23-bind-final-post.json\n16\t0\tevidence/P02-U05/20261003-01/commands/24-prestage-status.json\n16\t0\tevidence/P02-U05/20261003-01/commands/25-owned-file-inventory.json\n16\t0\tevidence/P02-U05/20261003-01/commands/26-build-final-contract-guard.json\n18\t0\tevidence/P02-U05/20261003-01/commands/27-bind-ready-pre.json\n18\t0\tevidence/P02-U05/20261003-01/commands/28-bind-ready-pre.json\n16\t0\tevidence/P02-U05/20261003-01/commands/29-u05-tests-final-contract-guard.json\n20\t0\tevidence/P02-U05/20261003-01/commands/30-bind-ready-post.json\n16\t0\tevidence/P02-U05/20261003-01/commands/31-remove-superseded-bindings.json\n22\t0\tevidence/P02-U05/20261003-01/commands/32-freeze-stage.json\n16\t0\tevidence/P02-U05/20261003-01/commands/33-author-head-check.json\n22\t0\tevidence/P02-U05/20261003-01/commands/34-freeze-stage.json\n16\t0\tevidence/P02-U05/20261003-01/commands/35-cached-diff-check.json\n16\t0\tevidence/P02-U05/20261003-01/commands/36-staged-scope-review.json\n16\t0\tevidence/P02-U05/20261003-01/commands/37-commit-u05.json\n15\t0\tevidence/P02-U05/20261003-01/commands/38-postcommit-status.json\n15\t0\tevidence/P02-U05/20261003-01/commands/39-postcommit-head.json\n15\t0\tevidence/P02-U05/20261003-01/commands/40-manifest-sha.json\n22\t0\tevidence/P02-U05/20261003-01/commands/41-diff-unit.json\n553\t0\tevidence/P02-U05/20261003-01/inputs-final-02-post.json\n551\t0\tevidence/P02-U05/20261003-01/inputs-final-02-pre.json\n69\t0\tevidence/P02-U05/20261003-01/manifest.json\n13\t0\tevidence/P02-U05/20261003-01/ready-for-review.md\n36\t0\tevidence/P02-U05/20261003-01/result.md\n106\t0\tmigrations/001-event-store.ts\n1332\t0\tpackages/storage/events/src/index.ts\n638\t0\tpackages/storage/events/test/events.test.mjs\n34\t0\tpackages/storage/events/test/sqlite-worker.mjs\n2\t1\ttools/run-tests.mjs\n1\t1\ttsconfig.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "18a35406efaccce964ea53327d7af6d636c115f1"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P02-U05/20261003-01/baseline.json\nA\tevidence/P02-U05/20261003-01/command-index.json\nA\tevidence/P02-U05/20261003-01/commands/01-source-map.json\nA\tevidence/P02-U05/20261003-01/commands/02-contracts-and-capture-shapes.json\nA\tevidence/P02-U05/20261003-01/commands/03-boundaries-and-migration-types.json\nA\tevidence/P02-U05/20261003-01/commands/04-build-initial.json\nA\tevidence/P02-U05/20261003-01/commands/05-build-post-implementation.json\nA\tevidence/P02-U05/20261003-01/commands/06-u05-first-suite.json\nA\tevidence/P02-U05/20261003-01/commands/07-build-after-fixes.json\nA\tevidence/P02-U05/20261003-01/commands/08-u05-after-fixes.json\nA\tevidence/P02-U05/20261003-01/commands/09-u05-pagecap.json\nA\tevidence/P02-U05/20261003-01/commands/10-u05-full-rollback-reset.json\nA\tevidence/P02-U05/20261003-01/commands/11-source-targets.json\nA\tevidence/P02-U05/20261003-01/commands/12-retry-target.json\nA\tevidence/P02-U05/20261003-01/commands/13-retry-result-lines.json\nA\tevidence/P02-U05/20261003-01/commands/14-is-transaction-api.json\nA\tevidence/P02-U05/20261003-01/commands/15-build-recovery-close.json\nA\tevidence/P02-U05/20261003-01/commands/16-u05-final-suite.json\nA\tevidence/P02-U05/20261003-01/commands/17-u05-final-suite-repair.json\nA\tevidence/P02-U05/20261003-01/commands/18-u05-final-suite-capped-cleanup.json\nA\tevidence/P02-U05/20261003-01/commands/19-build-final.json\nA\tevidence/P02-U05/20261003-01/commands/20-bind-help.json\nA\tevidence/P02-U05/20261003-01/commands/21-bind-final-pre.json\nA\tevidence/P02-U05/20261003-01/commands/22-u05-tests-final-bound.json\nA\tevidence/P02-U05/20261003-01/commands/23-bind-final-post.json\nA\tevidence/P02-U05/20261003-01/commands/24-prestage-status.json\nA\tevidence/P02-U05/20261003-01/commands/25-owned-file-inventory.json\nA\tevidence/P02-U05/20261003-01/commands/26-build-final-contract-guard.json\nA\tevidence/P02-U05/20261003-01/commands/27-bind-ready-pre.json\nA\tevidence/P02-U05/20261003-01/commands/28-bind-ready-pre.json\nA\tevidence/P02-U05/20261003-01/commands/29-u05-tests-final-contract-guard.json\nA\tevidence/P02-U05/20261003-01/commands/30-bind-ready-post.json\nA\tevidence/P02-U05/20261003-01/commands/31-remove-superseded-bindings.json\nA\tevidence/P02-U05/20261003-01/commands/32-freeze-stage.json\nA\tevidence/P02-U05/20261003-01/commands/33-author-head-check.json\nA\tevidence/P02-U05/20261003-01/commands/34-freeze-stage.json\nA\tevidence/P02-U05/20261003-01/commands/35-cached-diff-check.json\nA\tevidence/P02-U05/20261003-01/commands/36-staged-scope-review.json\nA\tevidence/P02-U05/20261003-01/commands/37-commit-u05.json\nA\tevidence/P02-U05/20261003-01/commands/38-postcommit-status.json\nA\tevidence/P02-U05/20261003-01/commands/39-postcommit-head.json\nA\tevidence/P02-U05/20261003-01/commands/40-manifest-sha.json\nA\tevidence/P02-U05/20261003-01/commands/41-diff-unit.json\nA\tevidence/P02-U05/20261003-01/inputs-final-02-post.json\nA\tevidence/P02-U05/20261003-01/inputs-final-02-pre.json\nA\tevidence/P02-U05/20261003-01/manifest.json\nA\tevidence/P02-U05/20261003-01/ready-for-review.md\nA\tevidence/P02-U05/20261003-01/result.md\nA\tmigrations/001-event-store.ts\nA\tpackages/storage/events/src/index.ts\nA\tpackages/storage/events/test/events.test.mjs\nA\tpackages/storage/events/test/sqlite-worker.mjs\nM\ttools/run-tests.mjs\nM\ttsconfig.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "18a35406efaccce964ea53327d7af6d636c115f1"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

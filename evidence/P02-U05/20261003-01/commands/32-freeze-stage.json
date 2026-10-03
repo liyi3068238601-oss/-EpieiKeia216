@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "python",
+    "..\\..\\coord\\freeze-unit.py",
+    "P02-U05",
+    "evidence/P02-U05/20261003-01/baseline.json",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+    "packages/storage/events",
+    "migrations",
+    "tsconfig.json",
+    "tools/run-tests.mjs",
+    "evidence/P02-U05/20261003-01"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+  "started_at": "2026-10-03T07:55:29.045783+00:00",
+  "completed_at": "2026-10-03T07:55:29.137938+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\freeze-unit.py\", line 21, in <module>\r\n    raise RuntimeError('author baseline differs')\r\nRuntimeError: author baseline differs\r\n"
+}

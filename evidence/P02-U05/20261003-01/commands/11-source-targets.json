@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "rg -n -C 5 'status: \\",
+    "duplicate\\|const maxPending|const readOnly =|function nextCommitSequence|function normalizeOpenOptions' packages/storage/events/src/index.ts"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+  "started_at": "2026-10-03T07:39:49.372916+00:00",
+  "completed_at": "2026-10-03T07:39:49.518812+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "438-      }\n439-    });\n440-  }\n441-}\n442-\n443:function normalizeOpenOptions(value: OpenEventStoreOptions): Required<OpenEventStoreOptions> {\n444-  if (!hasExactFields(value, [\"path\"], [\"maxPending\", \"readOnly\"])) {\n445-    throw new EventStoreError(\"INVALID_INPUT\", \"openEventStore options have invalid fields\");\n446-  }\n447-  if (typeof value.path !== \"string\" || value.path.trim().length === 0 || value.path.includes(\"\\0\") ||\n448-      value.path === \":memory:\") {\n--\n450-  }\n451-  const maxPending = value.maxPending ?? DEFAULT_MAX_PENDING;\n452-  if (!Number.isSafeInteger(maxPending) || maxPending < 1 || maxPending > MAX_PENDING) {\n453-    throw new EventStoreError(\"INVALID_INPUT\", `maxPending must be an integer from 1 through ${MAX_PENDING}`);\n454-  }\n455:  const readOnly = value.readOnly ?? false;\n456-  if (typeof readOnly !== \"boolean\") throw new EventStoreError(\"INVALID_INPUT\", \"readOnly must be boolean\");\n457-  return Object.freeze({ path: path.resolve(value.path), maxPending, readOnly });\n458-}\n459-\n460-function readUserVersionReadOnly(databasePath: string): number {\n--\n711-      code: commitAttempted ? \"UNKNOWN_COMMIT\" : mapped.code as AppendResult extends { status: \"failed\"; code: infer C } ? C : never,\n712-    });\n713-  }\n714-}\n715-\n716:function nextCommitSequence(database: DatabaseSync): number {\n717-  const row = database.prepare(\"SELECT last_commit_sequence FROM writer_state WHERE singleton = 1\").get();\n718-  if (row === undefined) throw new EventStoreError(\"CORRUPT_STORE\", \"writer state is missing\");\n719-  const prior = numberColumn(row as Record<string, unknown>, \"last_commit_sequence\");\n720-  if (!Number.isSafeInteger(prior) || prior < 0 || prior >= MAX_SAFE_SEQUENCE) {\n721-    throw new EventStoreError(prior >= MAX_SAFE_SEQUENCE ? \"SEQUENCE_EXHAUSTED\" : \"CORRUPT_STORE\", \"writer sequence is invalid\");\n",
+  "stderr": ""
+}
