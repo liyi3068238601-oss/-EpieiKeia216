@@ -1,0 +1,195 @@
+{
+  "status": "passed",
+  "createdAt": "2026-10-03T05:19:12.184Z",
+  "worktree": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02",
+    "head": "e809d5c7e9969cbf2f5efd68df326e115cf6f1e6",
+    "branch": "p02-u02"
+  },
+  "runtime": {
+    "nodeExe": "E:/Xiadie/Xiadie/.runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe",
+    "nodeVersion": "v24.14.0",
+    "nodeSha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02"
+  },
+  "zcode": {
+    "path": "E:/Xiadie/Xiadie/.runtime/P01/desktop-source",
+    "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "distInputs": [
+      {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\dist\\hooks\\configured-runner-input.js",
+        "bytes": 5125,
+        "sha256": "8286c86ddc367488c4ccf59103789d7adb87edde38fbbddf70d3a39638ad504c"
+      },
+      {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\dist\\hooks\\configured-runner-callback.js",
+        "bytes": 7546,
+        "sha256": "dc3eefeaef68e33b0a11dbfbadb0b1b7115ad123f146868ea464dbc39041e391"
+      },
+      {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\contracts\\dist\\events\\in-memory-session-event-store.js",
+        "bytes": 4374,
+        "sha256": "2249d6af25e83481823cf50a65613b1dbf5174c398f7de9e6a87b908a318e45b"
+      },
+      {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\contracts\\dist\\events\\session.events.js",
+        "bytes": 8942,
+        "sha256": "ac7a9aab5b546d75e3cce3d3047cc59f1786ccbb9ab0ca441a526e144cee46ee"
+      },
+      {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\contracts\\dist\\events\\session-event-retention.js",
+        "bytes": 3185,
+        "sha256": "0d6b25efff9634bf377b13255116bff6b85e64abbedb126c18cdeea5a89abda5"
+      }
+    ]
+  },
+  "syntheticOnly": true,
+  "networkUsed": false,
+  "modelOrServiceStarted": false,
+  "hook": {
+    "nativeFunctions": [
+      "createCompatibleHookStdin",
+      "createConfiguredHookCallback"
+    ],
+    "success": {
+      "exitCode": 0,
+      "sourceBytes": 96,
+      "sourceSha256": "99007743fd562eeacada95c6aea7b9668c86b0ce076c9b93739910e92606cde3",
+      "redactedSha256": "e4a2f729ebf9de5eb56f81c95496fbb913a0f549b97906b75a29cc0c86cb9d9b",
+      "messageCount": 1,
+      "rawRetained": false,
+      "tempDeletedBeforeReturn": true,
+      "priorHistoryExcluded": true
+    },
+    "exit2Block": {
+      "exitCode": 2,
+      "continue": false,
+      "tempDeletedBeforeReturn": true
+    },
+    "nonzeroFailure": {
+      "exitCode": 7,
+      "callbackRejected": true,
+      "tempDeletedBeforeRejection": true
+    },
+    "directTranscript": {
+      "messageCount": 1,
+      "exactCurrentMessage": true,
+      "priorHistoryExcluded": true,
+      "otherHook": "PostToolUse",
+      "otherHookBytes": 0,
+      "pathsDeleted": true
+    }
+  },
+  "boundedCaptureCandidate": {
+    "maxBytes": 524288,
+    "cases": {
+      "oversize": {
+        "status": "oversize",
+        "saved": false,
+        "observed": 524289,
+        "maxBytes": 524288
+      },
+      "halfWrite": {
+        "status": "incomplete",
+        "saved": false,
+        "observed": 37
+      },
+      "unreadable": {
+        "status": "unreadable",
+        "saved": false,
+        "reason": "ENOENT"
+      }
+    }
+  },
+  "writeFailureInjection": {
+    "fault": "writeFile(transcript.jsonl) throws after native mkdtemp",
+    "rejected": true,
+    "cleanupReturned": false,
+    "errorCode": "synthetic_write_fault",
+    "leakedDirectoriesObservedBeforeProbeCleanup": [
+      "zcode-hook-qogim1"
+    ],
+    "provesCleanupGap": true,
+    "cleanup": "probe removes only directories created during this isolated child"
+  },
+  "nativeEventStore": {
+    "duplicateId": {
+      "records": 2,
+      "ids": [
+        "same-source-id",
+        "same-source-id"
+      ],
+      "seqs": [
+        1,
+        2
+      ],
+      "deduplicated": false
+    },
+    "outOfOrder": {
+      "appendSeqs": [
+        20,
+        5,
+        21
+      ],
+      "latestSequence": 21,
+      "readResorts": false
+    },
+    "retention": {
+      "beforeNextTurn": [
+        "t1-start",
+        "t1-stream",
+        "t1-complete"
+      ],
+      "afterNextTurn": [
+        "t1-start",
+        "t1-complete",
+        "t2-start"
+      ],
+      "transientEvicted": true,
+      "terminalRetained": true,
+      "freshInstanceEvents": 0,
+      "persistenceClaim": false
+    }
+  },
+  "limitations": {
+    "timeoutCancel": "NOT_RUN; bounded executor kills only its own direct child pid",
+    "realModel": "NOT_RUN",
+    "unreadable": "missing synthetic file/ENOENT tested; ACL denial NOT_RUN",
+    "crashRecovery": "NOT_RUN; new in-memory store is not a crash test"
+  },
+  "childRuns": [
+    {
+      "pid": 47456,
+      "exitCode": 0,
+      "status": "completed",
+      "temp": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\runtime\\profile\\hook-child-temp",
+      "transcriptPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\runtime\\profile\\native-temp\\zcode-hook-BMsAuo\\transcript.jsonl",
+      "stdoutBytes": 67,
+      "stderrBytes": 0,
+      "stdout": "{\"continue\":true,\"additionalContext\":\"P02 synthetic Hook success\"}\n",
+      "stderr": ""
+    },
+    {
+      "pid": 47424,
+      "exitCode": 2,
+      "status": "completed",
+      "temp": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\runtime\\profile\\hook-child-temp",
+      "transcriptPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\runtime\\profile\\native-temp\\zcode-hook-hnIZ65\\transcript.jsonl",
+      "stdoutBytes": 0,
+      "stderrBytes": 27,
+      "stdout": "",
+      "stderr": "P02 synthetic exit-2 block\n"
+    },
+    {
+      "pid": 23348,
+      "exitCode": 7,
+      "status": "failed",
+      "temp": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\runtime\\profile\\hook-child-temp",
+      "transcriptPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\runtime\\profile\\native-temp\\zcode-hook-5W7FPR\\transcript.jsonl",
+      "stdoutBytes": 0,
+      "stderrBytes": 30,
+      "stdout": "",
+      "stderr": "P02 synthetic nonzero failure\n"
+    }
+  ]
+}

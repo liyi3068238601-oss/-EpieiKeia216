@@ -1,0 +1,278 @@
+{
+  "task": "P02-U02 isolated node:sqlite spike",
+  "status": "ready_for_review",
+  "baseline": {
+    "worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02",
+    "branch": "p02-u02",
+    "commit": "e809d5c7e9969cbf2f5efd68df326e115cf6f1e6",
+    "node": "v24.14.0",
+    "sqlite": "3.51.2",
+    "moduleAbi": "137",
+    "napi": "10",
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02",
+    "networkUsed": false,
+    "dependenciesInstalled": false,
+    "productionDataUsed": false
+  },
+  "outputRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\sqlite",
+  "runDir": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\sqlite\\run-2026-10-03T051736-957Z-97650251",
+  "scenarioCount": 10,
+  "passed": 10,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "identity-transaction-and-pragmas",
+      "status": "PASS",
+      "elapsedMs": 15,
+      "details": {
+        "pragmas": {
+          "journal": "wal",
+          "foreignKeys": 1,
+          "synchronous": 2,
+          "busyTimeout": 0
+        },
+        "foreignKeyRejectErrcode": 787,
+        "first": "inserted",
+        "sameCanonicalReplay": "duplicate",
+        "differentHashReplay": "conflict",
+        "rows": {
+          "events": 1,
+          "origins": 1,
+          "receipts": 1
+        },
+        "stateHash": "7bc138b2d540e08a24fe8ebb311b5716dfbdecdb8c96c5985391302b21881021",
+        "integrity": "ok"
+      }
+    },
+    {
+      "name": "kill-before-commit-all-or-none",
+      "status": "PASS",
+      "elapsedMs": 64,
+      "details": {
+        "childPid": 27296,
+        "pid": 27296,
+        "exitCode": null,
+        "exitSignal": "SIGKILL",
+        "signalRequested": "SIGKILL",
+        "workerStdout": "",
+        "workerStderr": "(node:27296) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+        "rowsAfterKill": {
+          "events": 0,
+          "origins": 0,
+          "receipts": 0
+        },
+        "integrity": "ok"
+      }
+    },
+    {
+      "name": "commit-before-ack-lost-ack-receipt-recheck",
+      "status": "PASS",
+      "elapsedMs": 75,
+      "details": {
+        "childPid": 35048,
+        "pid": 35048,
+        "exitCode": null,
+        "exitSignal": "SIGKILL",
+        "signalRequested": "SIGKILL",
+        "ackObserved": false,
+        "retryAfterLostAck": "duplicate",
+        "rows": {
+          "events": 1,
+          "origins": 1,
+          "receipts": 1
+        },
+        "stateHash": "7bc138b2d540e08a24fe8ebb311b5716dfbdecdb8c96c5985391302b21881021",
+        "integrity": "ok"
+      }
+    },
+    {
+      "name": "synthetic-file-effect-before-receipt-unknown-no-replay",
+      "status": "PASS",
+      "elapsedMs": 66,
+      "details": {
+        "childPid": 27068,
+        "pid": 27068,
+        "exitCode": null,
+        "exitSignal": "SIGKILL",
+        "signalRequested": "SIGKILL",
+        "effect": "mock local file only; no service",
+        "receiptExists": false,
+        "recovery": {
+          "state": "unknown-effect-may-have-happened",
+          "action": "manual-reconciliation-required",
+          "autoReplay": false,
+          "effectHash": "c55f45defc58ae032013ab5bc9ac184c0d42b14116fb5a04c5db4e313fc8559a"
+        },
+        "rows": {
+          "events": 0,
+          "origins": 0,
+          "receipts": 0
+        }
+      }
+    },
+    {
+      "name": "sqlite-busy-full-readonly",
+      "status": "PASS",
+      "elapsedMs": 217,
+      "details": {
+        "error": {
+          "name": "Error",
+          "message": "database is locked",
+          "code": "ERR_SQLITE_ERROR",
+          "errcode": 5,
+          "errstr": "database is locked",
+          "busyAttempts": 6,
+          "busyWaitMs": 189
+        },
+        "elapsedMs": 189,
+        "limitMs": 180,
+        "acquiredAfterRelease": {
+          "attempts": 1,
+          "waitedMs": 0
+        },
+        "full": {
+          "pageCount": 2,
+          "maxPageCount": 3,
+          "insertedBeforeFull": 1,
+          "error": {
+            "name": "Error",
+            "message": "database or disk is full",
+            "code": "ERR_SQLITE_ERROR",
+            "errcode": 13,
+            "errstr": "database or disk is full"
+          },
+          "physicalDiskFill": false
+        },
+        "readonly": {
+          "mode": "DatabaseSync readOnly:true",
+          "error": {
+            "name": "Error",
+            "message": "attempt to write a readonly database",
+            "code": "ERR_SQLITE_ERROR",
+            "errcode": 8,
+            "errstr": "attempt to write a readonly database"
+          },
+          "rows": {
+            "events": 1,
+            "origins": 1,
+            "receipts": 1
+          },
+          "filesystemAclChanged": false,
+          "integrity": "ok"
+        }
+      }
+    },
+    {
+      "name": "active-wal-backup-restore-and-main-file-negative-control",
+      "status": "PASS",
+      "elapsedMs": 35,
+      "details": {
+        "walBytesBeforeBackup": 28872,
+        "walBytesAfterBackup": 28872,
+        "onlineBackupPages": 8,
+        "progressSamples": 7,
+        "committedHash": "9098182650b496c278a3096efcc00535f65edce308d1f31ac901e77b7f1480f5",
+        "snapshotHash": "9098182650b496c278a3096efcc00535f65edce308d1f31ac901e77b7f1480f5",
+        "restoredHash": "9098182650b496c278a3096efcc00535f65edce308d1f31ac901e77b7f1480f5",
+        "restoredCounts": {
+          "events": 1,
+          "origins": 1,
+          "receipts": 1
+        },
+        "mainOnlyNegativeControlRows": 0,
+        "mainOnlyIntegrity": "ok",
+        "otherConnectionUncommittedDuringBackup": true,
+        "integrity": "ok"
+      }
+    },
+    {
+      "name": "migration-prebackup-success-failure-restore",
+      "status": "PASS",
+      "elapsedMs": 21,
+      "details": {
+        "preflightVersion": 1,
+        "backupPages": 3,
+        "publish": "same-volume hardlink, no-clobber",
+        "sourceVersion": 2,
+        "restoreVersion": 1,
+        "beforeHash": "c05e5f10e5c025e0cb53d0ab7880ef7176bc75e56ede1dab15803aa802edf93a",
+        "restoreHash": "c05e5f10e5c025e0cb53d0ab7880ef7176bc75e56ede1dab15803aa802edf93a",
+        "integrity": "ok"
+      }
+    },
+    {
+      "name": "migration-failure-rollback-and-backup-recovery",
+      "status": "PASS",
+      "elapsedMs": 17,
+      "details": {
+        "observedMigrationError": {
+          "name": "Error",
+          "message": "UNIQUE constraint failed: legacy.id",
+          "code": "ERR_SQLITE_ERROR",
+          "errcode": 1555,
+          "errstr": "constraint failed"
+        },
+        "sourceRolledBack": true,
+        "backupUsed": true,
+        "beforeHash": "c05e5f10e5c025e0cb53d0ab7880ef7176bc75e56ede1dab15803aa802edf93a",
+        "restoreHash": "c05e5f10e5c025e0cb53d0ab7880ef7176bc75e56ede1dab15803aa802edf93a",
+        "integrity": "ok"
+      }
+    },
+    {
+      "name": "existing-backup-target-and-backup-error-block-migration",
+      "status": "PASS",
+      "elapsedMs": 10,
+      "details": {
+        "existingTargetError": {
+          "name": "Error",
+          "message": "BACKUP_TARGET_EXISTS",
+          "code": "BACKUP_TARGET_EXISTS"
+        },
+        "existingTargetHashBefore": "463f17db6374e4e984329f8ec702adea7a7d34748dbf4b2ac4f62bb2efcee8bc",
+        "existingTargetHashAfter": "463f17db6374e4e984329f8ec702adea7a7d34748dbf4b2ac4f62bb2efcee8bc",
+        "backupApiError": {
+          "name": "Error",
+          "message": "unable to open database file",
+          "code": "ERR_SQLITE_ERROR",
+          "errcode": 14,
+          "errstr": "unable to open database file"
+        },
+        "migrationStarted": false,
+        "sourceVersion": 1,
+        "sourceRowsHash": "c05e5f10e5c025e0cb53d0ab7880ef7176bc75e56ede1dab15803aa802edf93a"
+      }
+    },
+    {
+      "name": "future-schema-readonly-preflight-before-write",
+      "status": "PASS",
+      "elapsedMs": 7,
+      "details": {
+        "error": {
+          "name": "Error",
+          "message": "FUTURE_SCHEMA:99>2",
+          "code": "FUTURE_SCHEMA"
+        },
+        "fileHashBefore": "8149966b8e8e1c13a44f90d673e0f9a6f1e62a9132e124b023cbf9d20a1fafed",
+        "fileHashAfter": "8149966b8e8e1c13a44f90d673e0f9a6f1e62a9132e124b023cbf9d20a1fafed",
+        "sidecarsBefore": [
+          {
+            "name": "future.sqlite",
+            "sha256": "8149966b8e8e1c13a44f90d673e0f9a6f1e62a9132e124b023cbf9d20a1fafed",
+            "bytes": 12288
+          }
+        ],
+        "sidecarsAfter": [
+          {
+            "name": "future.sqlite",
+            "sha256": "8149966b8e8e1c13a44f90d673e0f9a6f1e62a9132e124b023cbf9d20a1fafed",
+            "bytes": 12288
+          }
+        ],
+        "backupCreated": false,
+        "walOrDdlStarted": false,
+        "version": 99
+      }
+    }
+  ]
+}

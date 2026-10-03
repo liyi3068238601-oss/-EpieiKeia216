@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "task": "P02-U02",
+  "status": "pass",
+  "cases": [
+    {
+      "name": "same identity/facts redelivery is a no-op despite changed observed time",
+      "status": "pass",
+      "boundary": "synthetic policy experiment"
+    },
+    {
+      "name": "same identity/different facts cannot overwrite the original or seal a turn",
+      "status": "pass",
+      "boundary": "synthetic policy experiment"
+    },
+    {
+      "name": "identity is source plus event ID, not a cross-session/global sequence",
+      "status": "pass",
+      "boundary": "synthetic policy experiment"
+    },
+    {
+      "name": "native duplicate append may resequence the same ID without creating a new fact",
+      "status": "pass",
+      "boundary": "synthetic policy experiment"
+    },
+    {
+      "name": "sequence ties belong to distinct source IDs and cannot deduplicate unrelated facts",
+      "status": "pass",
+      "boundary": "synthetic policy experiment"
+    },
+    {
+      "name": "progress watermark cannot discard an older but valid terminal",
+      "status": "pass",
+      "boundary": "synthetic policy experiment"
+    },
+    {
+      "name": "cancel/complete race preserves the first committed terminal in both orders",
+      "status": "pass",
+      "boundary": "synthetic policy experiment"
+    },
+    {
+      "name": "late success from an old attempt cannot finish the current attempt",
+      "status": "pass",
+      "boundary": "synthetic policy experiment"
+    },
+    {
+      "name": "partial streams remain drafts and failed turns have no formal reply",
+      "status": "pass",
+      "boundary": "synthetic policy experiment"
+    },
+    {
+      "name": "unregistered scope is rejected without committing a fact",
+      "status": "pass",
+      "boundary": "synthetic policy experiment"
+    },
+    {
+      "name": "retry requires a sealed earlier attempt and a fresh attempt identity",
+      "status": "pass",
+      "boundary": "synthetic policy experiment"
+    }
+  ],
+  "node": "v24.14.0",
+  "command": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02\\spikes\\P02\\events-poc.mjs",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\events"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02",
+  "source": "CloudEvents source+id identity design and accepted U01 native observation; no copied implementation",
+  "limitations": [
+    "In-memory synthetic policy experiment; no product contract or persistence proof",
+    "Commit ordering stands for serial writer acceptance; source_seq records runtime order separately and resequencing is an audit observation",
+    "Native unassigned sequence=0 must be normalized at the adapter boundary, not silently treated as a committed sequence",
+    "No native Loop, Desktop, real model, physical power loss or production transcript used"
+  ]
+}
