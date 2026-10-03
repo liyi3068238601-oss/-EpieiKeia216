@@ -1,0 +1,78 @@
+{
+  "schema": "p02-u09-independent-evidence-audit/v1",
+  "author_commit": "90034445be3175038e976b04211369ffada5e975",
+  "baseline_commit": "99c8702a34660f36b528efa0cca8c7257e6f98a5",
+  "worktree_clean": true,
+  "manifest": {
+    "files": 21,
+    "changed_paths": 22,
+    "sha256": "a9b1f78b8e92cf12f12201bc3fd2e7d08a29c8638179af3b401b1353c941d859"
+  },
+  "scope": "pass",
+  "prerequisite_u08": "accepted",
+  "migration_unchanged": true,
+  "source_sha256": "e91e73753c37cf236720dc14abe38a2253c24b02c2b55cfeb2ff2b4f313a0f99",
+  "author_command_archive": {
+    "records": 10,
+    "checks": [
+      {
+        "path": "commands/01-source-build.json",
+        "exit_code": 0,
+        "sha256": "3e33c3cf089c47dacddd236cf29add4ee98a41d07aa26aeb0df1153ad9d85577"
+      },
+      {
+        "path": "commands/02-receipt-unverified-build.json",
+        "exit_code": 2,
+        "sha256": "1de2c0dbea66baade39714df8e39399e0e96e686bdf2eae1afc124283220c17a"
+      },
+      {
+        "path": "commands/03-receipt-unverified-build.json",
+        "exit_code": 0,
+        "sha256": "409fd1987c9c484232e0f39b5b6fb039fa6acb7e25a2a06d021334293ffa60ef"
+      },
+      {
+        "path": "commands/04-bind-pre.json",
+        "exit_code": 0,
+        "sha256": "f36c2660cd8355009476b9cc78ba8dfece2c10aeb7fbaa7b06c7175b4c411ae5"
+      },
+      {
+        "path": "commands/05-final-unit.json",
+        "exit_code": 0,
+        "sha256": "8c370ff7f1a89d43c7182f1c6eac7212c0ece8e08f76823a1efd4b441601216f"
+      },
+      {
+        "path": "commands/06-bind-post.json",
+        "exit_code": 0,
+        "sha256": "f08247b4686e00d5f8fa7a5de53a6d7b5ec01f91d08643f828c2981684e5c486"
+      },
+      {
+        "path": "commands/tests-01-unit-initial.json",
+        "exit_code": 1,
+        "sha256": "53493449c8e9e55007310e90da738829f7ed13a3a9e1158b5cd16a6c8bf8674a"
+      },
+      {
+        "path": "commands/tests-02-unit-final.json",
+        "exit_code": 0,
+        "sha256": "f09184e86e9351519494237192f4f6bf049ee51f9aa329f62dd5ee6072ff2d34"
+      },
+      {
+        "path": "commands/tests-03-unit-default-pagination.json",
+        "exit_code": 0,
+        "sha256": "ce5de388601f4a2bed935ba0fdd96bdb71cdb41d9ec852e1eaf89b54d1cb7e7c"
+      },
+      {
+        "path": "commands/tests-04-unit-receipt-unverified-page.json",
+        "exit_code": 0,
+        "sha256": "27e98e8bf4c278f4456a477dc9582e47b442ca2c4dbfaac158c0c8071c68c63f"
+      }
+    ]
+  },
+  "bindings": {
+    "count": 126,
+    "digest": "eacb66d78f784afcccc7d21d185b44877be853a667ca4bd0c85ad3c4c9b76284",
+    "author_pre_post_equal": true,
+    "review_pre_post_equal": true,
+    "review_matches_author": true,
+    "migration_included": true
+  }
+}
