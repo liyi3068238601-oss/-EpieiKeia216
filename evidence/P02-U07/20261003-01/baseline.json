@@ -1,0 +1,36 @@
+{
+  "schema": "p02-unit-baseline/v1",
+  "task": "P02-U07",
+  "baseline_commit": "6f445086853126227396029cf973c2fd33f90229",
+  "branch": "p02-u07",
+  "coordinator_branch": "p02-stage",
+  "prerequisites": [
+    {
+      "task": "P02-U06",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U06/20261003-01/acceptance.json",
+        "bytes": 5204,
+        "sha256": "da6486ebaf884e3723e45a0e1f93712f7e6d32755dd608b4336eafb65d868cb5"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P02-U07.md",
+    "bytes": 2039,
+    "sha256": "d7c81ed71d23ba465f8a375e79c9d8921fb1e678984cb050ab5816d72ffc89c8"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "packages/application/recovery",
+    "tools/run-tests.mjs",
+    "evidence/P02-U07/20261003-01"
+  ],
+  "test_mapping": "packages/application/recovery/test/recovery.test.mjs",
+  "author_status": "ready_for_review",
+  "checked_at_utc": "2026-10-03T09:46:41.910823+00:00"
+}
