@@ -36,6 +36,12 @@
       "exit_code": 1,
       "error": "Two Markdown hard-break trailing spaces in SQLite research report",
       "resolution": "Removed trailing spaces; source files and assertions unchanged; rebuild final manifest before commit"
+    },
+    {
+      "command": "freeze-unit.py after Markdown formatting correction",
+      "exit_code": 1,
+      "error": "Windows write_text introduced CRLF, staged Git bytes were LF; disk/index mismatch was detected",
+      "resolution": "Normalize owned author research files with write_bytes. A dependent commit was mistakenly executed before checking failed freeze (851272b); it was never submitted for acceptance. Preserve it and add a normal corrective commit containing regenerated exact manifest. No history rewrite."
     }
   ],
   "product_execution": "NOT_RUN",
