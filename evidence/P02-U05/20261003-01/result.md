@@ -34,3 +34,7 @@ Historical failed command outputs remain archived, including the first test asse
 ## Boundaries
 
 Physical disk exhaustion and physical power loss were not tested. SQLITE_FULL used a controlled SQLite page cap. Process-kill checks terminated only test-owned children. U08 online backup/migration/recovery, U10 pairing with a native hook ID, Host integration, production databases, network services, and model calls were not exercised. No new dependencies were installed.
+
+## Rollback and recovery
+
+If U05 must be withdrawn after integration, revert the U05 author commits as a unit (including implementation commit `33d2c121db735f89bf639dd36c54724f0ed4a4f4` and evidence commit `218e7792ce152075725d9b4b10695679bd6cc9a2`) back to prerequisite commit `18a35406efaccce964ea53327d7af6d636c115f1`; retain commit history, archived evidence, and owned experiment databases. U05 has not migrated any production database and refuses future-schema and non-empty v0 stores rather than auto-initializing or downgrading unknown existing data. For a committed or `unknown` append, query its durable receipt before retrying; never blindly replay an external side effect. Any recovery of real persisted data must follow the accepted U08 backup/restore procedure.
