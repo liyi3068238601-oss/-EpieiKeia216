@@ -1,0 +1,64 @@
+{
+  "task": "P02-U07",
+  "baseline": "6f445086853126227396029cf973c2fd33f90229",
+  "scope": [
+    "packages/application/recovery",
+    "tools/run-tests.mjs",
+    "evidence/P02-U07/20261003-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "6f445086853126227396029cf973c2fd33f90229"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u07",
+      "exit_code": 0,
+      "stdout": " evidence/P02-U07/20261003-01/baseline.json         |  36 ++\n evidence/P02-U07/20261003-01/command-index.json    |  66 +++\n .../P02-U07/20261003-01/commands/01-build.json     |  16 +\n .../P02-U07/20261003-01/commands/02-build.json     |  16 +\n .../commands/03-recovery-review-tests.json         |  15 +\n .../20261003-01/commands/04-final-build.json       |  16 +\n .../P02-U07/20261003-01/commands/05-bind-pre.json  |  18 +\n .../20261003-01/commands/06-final-unit.json        |  16 +\n .../P02-U07/20261003-01/commands/07-bind-post.json |  20 +\n .../historical-01-recovery-initial-failure.json    |  22 +\n .../P02-U07/20261003-01/inputs-final-post.json     | 598 ++++++++++++++++++++\n evidence/P02-U07/20261003-01/inputs-final-pre.json | 596 ++++++++++++++++++++\n evidence/P02-U07/20261003-01/result.md             |  36 ++\n evidence/P02-U07/20261003-01/source-decision.md    |  17 +\n packages/application/recovery/src/index.ts         | 283 ++++++++++\n .../application/recovery/test/effect-worker.mjs    |  35 ++\n .../application/recovery/test/recovery.test.mjs    | 617 +++++++++++++++++++++\n tools/run-tests.mjs                                |   3 +-\n 18 files changed, 2425 insertions(+), 1 deletion(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "6f445086853126227396029cf973c2fd33f90229"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u07",
+      "exit_code": 0,
+      "stdout": "36\t0\tevidence/P02-U07/20261003-01/baseline.json\n66\t0\tevidence/P02-U07/20261003-01/command-index.json\n16\t0\tevidence/P02-U07/20261003-01/commands/01-build.json\n16\t0\tevidence/P02-U07/20261003-01/commands/02-build.json\n15\t0\tevidence/P02-U07/20261003-01/commands/03-recovery-review-tests.json\n16\t0\tevidence/P02-U07/20261003-01/commands/04-final-build.json\n18\t0\tevidence/P02-U07/20261003-01/commands/05-bind-pre.json\n16\t0\tevidence/P02-U07/20261003-01/commands/06-final-unit.json\n20\t0\tevidence/P02-U07/20261003-01/commands/07-bind-post.json\n22\t0\tevidence/P02-U07/20261003-01/commands/historical-01-recovery-initial-failure.json\n598\t0\tevidence/P02-U07/20261003-01/inputs-final-post.json\n596\t0\tevidence/P02-U07/20261003-01/inputs-final-pre.json\n36\t0\tevidence/P02-U07/20261003-01/result.md\n17\t0\tevidence/P02-U07/20261003-01/source-decision.md\n283\t0\tpackages/application/recovery/src/index.ts\n35\t0\tpackages/application/recovery/test/effect-worker.mjs\n617\t0\tpackages/application/recovery/test/recovery.test.mjs\n2\t1\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "6f445086853126227396029cf973c2fd33f90229"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u07",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P02-U07/20261003-01/baseline.json\nA\tevidence/P02-U07/20261003-01/command-index.json\nA\tevidence/P02-U07/20261003-01/commands/01-build.json\nA\tevidence/P02-U07/20261003-01/commands/02-build.json\nA\tevidence/P02-U07/20261003-01/commands/03-recovery-review-tests.json\nA\tevidence/P02-U07/20261003-01/commands/04-final-build.json\nA\tevidence/P02-U07/20261003-01/commands/05-bind-pre.json\nA\tevidence/P02-U07/20261003-01/commands/06-final-unit.json\nA\tevidence/P02-U07/20261003-01/commands/07-bind-post.json\nA\tevidence/P02-U07/20261003-01/commands/historical-01-recovery-initial-failure.json\nA\tevidence/P02-U07/20261003-01/inputs-final-post.json\nA\tevidence/P02-U07/20261003-01/inputs-final-pre.json\nA\tevidence/P02-U07/20261003-01/result.md\nA\tevidence/P02-U07/20261003-01/source-decision.md\nA\tpackages/application/recovery/src/index.ts\nA\tpackages/application/recovery/test/effect-worker.mjs\nA\tpackages/application/recovery/test/recovery.test.mjs\nM\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "6f445086853126227396029cf973c2fd33f90229"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u07",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

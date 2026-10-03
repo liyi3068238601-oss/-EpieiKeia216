@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "packages/application/recovery/test/recovery.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u07",
+  "started_at": "2026-10-03T09:59:23.203051+00:00",
+  "completed_at": "2026-10-03T09:59:23.973458+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "(node:28856) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n✔ same operation concurrent/repeated calls dispatch once and freeze the committed descriptor (27.7864ms)\n✔ changed descriptor and foreign owner are conflicts and never dispatch (12.234ms)\n✔ same source/event identity cannot be relabelled to another operation or owner (14.7566ms)\n✔ intent COMMIT followed by lost ACK remains unknown and a retry does not dispatch (8.8621ms)\n✔ receipt COMMIT lost ACK is reconciled from SQLite and reopen prevents redispatch (17.8487ms)\n✔ hard-kill after fsynced external effect but before receipt never automatically repeats effect (89.0553ms)\n✔ known success and failure receipts survive close/reopen and block replay (26.1997ms)\n✔ unknown can be reconciled by a verified receipt; contradictory verified outcomes become conflict (17.6833ms)\n✔ verified receipt without an owned intent is absent and writes no history (11.6002ms)\n✔ attempt projection keeps the first terminal by writer order and audits later terminal and receipt (23.6802ms)\n✔ restart closes an open attempt once; absent attempt stays absent (13.3665ms)\n✔ operation inspection paginates complete history and incomplete pages never become absent (407.0298ms)\nℹ tests 12\nℹ suites 0\nℹ pass 12\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 731.2888\n",
+  "stderr": ""
+}

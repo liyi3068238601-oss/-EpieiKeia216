@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "packages/application/recovery/test/recovery.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u07",
+  "started_at": null,
+  "completed_at": null,
+  "exit_code": 1,
+  "timeout_seconds": null,
+  "environment_overrides": {},
+  "stdout": null,
+  "stderr": null,
+  "combined_output": "(node:9592) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n✔ same operation concurrent/repeated calls dispatch once and freeze the committed descriptor (40.435ms)\n✔ changed descriptor and foreign owner are conflicts and never dispatch (16.1244ms)\n✔ intent COMMIT followed by lost ACK remains unknown and a retry does not dispatch (9.9263ms)\n✖ receipt COMMIT lost ACK is reconciled from SQLite and reopen prevents redispatch (21.0366ms)\n✔ hard-kill after fsynced external effect but before receipt never automatically repeats effect (96.2138ms)\n✔ known success and failure receipts survive close/reopen and block replay (25.0497ms)\n✔ unknown can be reconciled by a verified receipt; contradictory verified outcomes become conflict (19.0362ms)\n✖ verified receipt without an owned intent is absent and writes no history (13.2937ms)\n✔ attempt projection keeps the first terminal by writer order and audits later terminal and receipt (22.2938ms)\n✔ restart closes an open attempt once; absent attempt stays absent (12.1086ms)\n✔ operation inspection paginates complete history and incomplete pages never become absent (284.0395ms)\nℹ tests 11\nℹ suites 0\nℹ pass 9\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 646.7738\n\n✖ failing tests:\n\ntest at packages/application/recovery/test/recovery.test.mjs:123:1\n✖ receipt COMMIT lost ACK is reconciled from SQLite and reopen prevents redispatch (21.0366ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n  + actual - expected\n  \n  + [Object: null prototype] {\n  - {\n      durableId: 'fixture-1'\n    }\n  \n      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/u07/packages/application/recovery/test/recovery.test.mjs:161:10)\n      at async Test.run (node:internal/test_runner/test:1125:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: { durableId: 'fixture-1' },\n    expected: { durableId: 'fixture-1' },\n    operator: 'deepStrictEqual',\n    diff: 'simple'\n  }\n\ntest at packages/application/recovery/test/recovery.test.mjs:266:1\n✖ verified receipt without an owned intent is absent and writes no history (13.2937ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n  + actual - expected\n  \n  + 'conflict'\n  - 'absent'\n  \n      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/u07/packages/application/recovery/test/recovery.test.mjs:290:10)\n      at async Test.run (node:internal/test_runner/test:1125:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {\n    generatedMessage: true,\n    actual: 'conflict',\n    expected: 'absent',\n    operator: 'strictEqual'\n  }\n",
+  "stream_separation": "functions.exec_command returned a combined output string; stdout/stderr streams were not separately recorded in that result",
+  "tool_result": {
+    "chunk_id": "53ea6e8",
+    "wall_time_seconds": 0.845,
+    "original_token_count": 739
+  }
+}
