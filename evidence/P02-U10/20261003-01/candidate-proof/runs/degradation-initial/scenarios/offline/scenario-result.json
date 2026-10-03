@@ -1,0 +1,214 @@
+{
+  "scenario_id": "offline",
+  "passed": true,
+  "exit_code": 0,
+  "model_requests": 1,
+  "expected_model_requests": 1,
+  "relay_records": [
+    {
+      "request_index": 1,
+      "accepted": true,
+      "request_sha256": "31a0d12f0081f92fb32f7333c2db90fe26853f26866324191b059e4f8ffaf534",
+      "request_bytes": 14649,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "stream",
+          "stream_options",
+          "thinking",
+          "tool_choice",
+          "tools"
+        ],
+        "stream_present": true,
+        "stream": "true",
+        "tools": "nonempty",
+        "tool_choice": "auto"
+      },
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 4,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 503,
+      "offline_reject": true
+    }
+  ],
+  "sidecar_correlation": {
+    "status": "observed",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-01\\scenarios\\offline\\profile\\u10-turn-projections.jsonl",
+    "verified": false,
+    "turn_count": 1,
+    "projection_statuses": [
+      "unavailable"
+    ]
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "offline",
+    "status": "completed",
+    "gate_mode": "enabled",
+    "flow": "offline",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "opened-native-synthetic-history-in-renderer",
+      "clicked-new-conversation-task",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send",
+      "opened-native-settings-page",
+      "opened-native-synthetic-history-in-renderer"
+    ],
+    "user_visible_reply": null,
+    "error_banner": {
+      "visible": true,
+      "error_code": "model_request_failed"
+    },
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 4516,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\candidate-01",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-01\\scenarios\\offline\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-01\\scenarios\\offline\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-01\\scenarios\\offline\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 39464,
+          "parent_pid": 4516,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 13516,
+          "parent_pid": 4516,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 8160,
+          "parent_pid": 4516,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 37756,
+          "parent_pid": 4516,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 33868,
+          "parent_pid": 4516,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 23496,
+          "parent_pid": 37756,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 28144,
+          "parent_pid": 37756,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "network_guard_records": 336,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 4516,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      37756
+    ],
+    "cli_required": true,
+    "cli_spawned_pids": [
+      23496,
+      28144
+    ],
+    "cli_guarded_pids": [
+      23496,
+      28144
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 4516,
+    "descendants": [
+      {
+        "pid": 39464,
+        "parent_pid": 4516,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 13516,
+        "parent_pid": 4516,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 8160,
+        "parent_pid": 4516,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 37756,
+        "parent_pid": 4516,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 33868,
+        "parent_pid": 4516,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 23496,
+        "parent_pid": 37756,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 28144,
+        "parent_pid": 37756,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ],
+  "ledger_verification": {
+    "passed": true,
+    "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-01\\scenarios\\offline\\ledger-verification.json",
+    "admission": "admitted",
+    "admitted_turns": 1,
+    "backup_restore": null
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "scenario_id": "no_key",
+  "passed": false,
+  "exit_code": 1,
+  "model_requests": 0,
+  "expected_model_requests": 0,
+  "relay_records": [],
+  "sidecar_correlation": {
+    "status": "NOT_EXPOSED",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-02\\scenarios\\no_key\\profile\\u10-turn-projections.jsonl",
+    "verified": false
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "no_key",
+    "status": "failed",
+    "gate_mode": "enabled",
+    "flow": "no_key",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "opened-native-synthetic-history-in-renderer",
+      "clicked-new-conversation-task",
+      "filled-v4-composer-input",
+      "pressed-enter-with-send-disabled",
+      "opened-native-settings-page"
+    ],
+    "user_visible_reply": null,
+    "error_banner": {
+      "visible": false,
+      "refused_by_disabled_control": true
+    },
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 39820,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\candidate-01",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-02\\scenarios\\no_key\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-02\\scenarios\\no_key\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-02\\scenarios\\no_key\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 29384,
+          "parent_pid": 39820,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 23576,
+          "parent_pid": 39820,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 30608,
+          "parent_pid": 39820,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 38832,
+          "parent_pid": 39820,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 21620,
+          "parent_pid": 38832,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "no_key_send_button_enabled": false,
+    "passed": false,
+    "failure_code": "ui_assertion_failed",
+    "failure_details": {
+      "name": "TimeoutError",
+      "code": "unknown",
+      "operator": null,
+      "message": "locator.click: Timeout 30000ms exceeded.",
+      "stack": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('settings-back-button')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-size=\"lg\" aria-label=\"返回工作区\" data-state=\"closed\" data-variant=\"ghost\" data-slot=\"tooltip-trigger\" data-testid=\"settings-back-button\" class=\"group/button inline-flex items-center border border-transparent bg-clip-padding whitespace-nowrap transition-colors outline-none select-none disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-d…>…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n",
+      "windows": 1
+    }
+  },
+  "network_guard_records": 327,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 39820,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      38832
+    ],
+    "cli_required": false,
+    "cli_spawned_pids": [
+      21620
+    ],
+    "cli_guarded_pids": [
+      21620
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 39820,
+    "descendants": [
+      {
+        "pid": 29384,
+        "parent_pid": 39820,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 23576,
+        "parent_pid": 39820,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 30608,
+        "parent_pid": 39820,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 38832,
+        "parent_pid": 39820,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 21620,
+        "parent_pid": 38832,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "empty",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ],
+  "ledger_verification": {
+    "passed": true,
+    "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-02\\scenarios\\no_key\\ledger-verification.json",
+    "admission": "not_admitted",
+    "admitted_turns": 0,
+    "backup_restore": null
+  }
+}

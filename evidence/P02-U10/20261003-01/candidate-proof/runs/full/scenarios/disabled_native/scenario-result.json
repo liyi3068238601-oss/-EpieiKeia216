@@ -1,0 +1,244 @@
+{
+  "scenario_id": "disabled_native",
+  "passed": true,
+  "exit_code": 0,
+  "model_requests": 2,
+  "expected_model_requests": 2,
+  "relay_records": [
+    {
+      "request_index": 1,
+      "accepted": true,
+      "request_sha256": "9993f12365405f2deba40f717c0654af90c1d8a335cf9b6cc92b8b9c222a8df7",
+      "request_bytes": 51823,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "stream",
+          "stream_options",
+          "thinking",
+          "tool_choice",
+          "tools"
+        ],
+        "stream_present": true,
+        "stream": "true",
+        "tools": "nonempty",
+        "tool_choice": "auto"
+      },
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 3,
+      "tool_names": [
+        "Agent",
+        "AskUserQuestion",
+        "Bash",
+        "CronCreate",
+        "CronDelete",
+        "CronList",
+        "CronUpdate",
+        "Edit",
+        "EnterPlanMode",
+        "ExitPlanMode",
+        "OffPeakCreate",
+        "OffPeakList",
+        "Read",
+        "ReadSessionContext",
+        "SendMessage",
+        "Skill",
+        "TaskOutput",
+        "TaskStop",
+        "TodoRead",
+        "TodoWrite",
+        "WebFetch",
+        "Write"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 200
+    },
+    {
+      "request_index": 2,
+      "accepted": true,
+      "request_sha256": "6281f72d444f80bca140a891a816c609580ef168be747b2339c5c43a46df1c32",
+      "request_bytes": 1216,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "thinking"
+        ],
+        "stream_present": false,
+        "stream": "absent",
+        "tools": "absent",
+        "tool_choice": "absent"
+      },
+      "model": "deepseek-flash",
+      "stream": false,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 2,
+      "tool_names": [],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": true,
+      "request_kind": "auxiliary_title",
+      "status": 200
+    }
+  ],
+  "sidecar_correlation": {
+    "status": "NOT_APPLICABLE",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02\\scenarios\\disabled_native\\profile\\u10-turn-projections.jsonl",
+    "verified": true
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "disabled_native",
+    "status": "completed",
+    "gate_mode": "disabled",
+    "flow": "reply",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send"
+    ],
+    "user_visible_reply": "原生模型路径已通过本地测试。",
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 13096,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\candidate-02",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02\\scenarios\\disabled_native\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02\\scenarios\\disabled_native\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02\\scenarios\\disabled_native\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 3632,
+          "parent_pid": 13096,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 20632,
+          "parent_pid": 13096,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 37680,
+          "parent_pid": 13096,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 6452,
+          "parent_pid": 13096,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 37848,
+          "parent_pid": 13096,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 18152,
+          "parent_pid": 6452,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "network_guard_records": 330,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 13096,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      6452
+    ],
+    "cli_required": true,
+    "cli_spawned_pids": [
+      18152
+    ],
+    "cli_guarded_pids": [
+      18152
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 13096,
+    "descendants": [
+      {
+        "pid": 3632,
+        "parent_pid": 13096,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 20632,
+        "parent_pid": 13096,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 37680,
+        "parent_pid": 13096,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 6452,
+        "parent_pid": 13096,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 37848,
+        "parent_pid": 13096,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 18152,
+        "parent_pid": 6452,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ],
+  "ledger_verification": {
+    "passed": true,
+    "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02\\scenarios\\disabled_native\\ledger-verification.json",
+    "admission": "ledger_absent_not_admitted_allowed",
+    "admitted_turns": 0,
+    "backup_restore": null
+  }
+}

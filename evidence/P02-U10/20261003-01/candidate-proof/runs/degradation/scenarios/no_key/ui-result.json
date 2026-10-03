@@ -1,0 +1,69 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "no_key",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "no_key",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "opened-native-synthetic-history-in-renderer",
+    "clicked-new-conversation-task",
+    "filled-v4-composer-input",
+    "pressed-enter-with-send-disabled",
+    "opened-native-settings-page",
+    "verified-return-to-native-workspace"
+  ],
+  "user_visible_reply": null,
+  "error_banner": {
+    "visible": false,
+    "refused_by_disabled_control": true
+  },
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 7540,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\candidate-02",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-03\\scenarios\\no_key\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-03\\scenarios\\no_key\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-03\\scenarios\\no_key\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 26464,
+        "parent_pid": 7540,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 40176,
+        "parent_pid": 7540,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 14676,
+        "parent_pid": 7540,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 12096,
+        "parent_pid": 7540,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 23276,
+        "parent_pid": 12096,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "no_key_send_button_enabled": false,
+  "settings_navigation": {
+    "back_click": "timed_out_after_unmount",
+    "settings_closed": true,
+    "workspace_visible": true
+  },
+  "passed": true
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "success",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "reply",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send"
+  ],
+  "user_visible_reply": "你好，我是遐蝶。我们可以慢慢聊。",
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 40936,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\candidate-02",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02\\scenarios\\success\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02\\scenarios\\success\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02\\scenarios\\success\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 37756,
+        "parent_pid": 40936,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 21716,
+        "parent_pid": 40936,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 5844,
+        "parent_pid": 40936,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 24000,
+        "parent_pid": 40936,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 14828,
+        "parent_pid": 40936,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 21292,
+        "parent_pid": 24000,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": true
+}
