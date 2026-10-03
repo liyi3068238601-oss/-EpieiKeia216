@@ -1,0 +1,234 @@
+{
+  "scenario_id": "success",
+  "passed": true,
+  "exit_code": 0,
+  "model_requests": 1,
+  "expected_model_requests": 1,
+  "relay_records": [
+    {
+      "request_index": 1,
+      "accepted": true,
+      "request_sha256": "c130d3ea6ea9576ae5d2810ed1126c7399d2d663fb42c0a7b2e17a7cb2b8996d",
+      "request_bytes": 14620,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "stream",
+          "stream_options",
+          "thinking",
+          "tool_choice",
+          "tools"
+        ],
+        "stream_present": true,
+        "stream": "true",
+        "tools": "nonempty",
+        "tool_choice": "auto"
+      },
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 4,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 200
+    }
+  ],
+  "sidecar_correlation": {
+    "status": "verified",
+    "verified": true,
+    "turn_count": 1,
+    "completed_reply_turns": 1,
+    "visible_reply_matches": true,
+    "expected_reply_sha256": "0769a1974cb8021d8250b52c0e4c0524bae98147698f0403606d8f2bd61baff2",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\desktop-full-01\\scenarios\\success\\profile\\u10-turn-projections.jsonl"
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "success",
+    "status": "completed",
+    "gate_mode": "enabled",
+    "flow": "reply",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send"
+    ],
+    "user_visible_reply": "你好，我是遐蝶。我们可以慢慢聊。",
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 41120,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\desktop-full-01\\scenarios\\success\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\desktop-full-01\\scenarios\\success\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\desktop-full-01\\scenarios\\success\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 41956,
+          "parent_pid": 41120,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 39116,
+          "parent_pid": 41120,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 26272,
+          "parent_pid": 41120,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 19412,
+          "parent_pid": 41120,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 42552,
+          "parent_pid": 41120,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 42628,
+          "parent_pid": 19412,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "network_guard_records": 328,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 41120,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      19412
+    ],
+    "cli_required": true,
+    "cli_spawned_pids": [
+      42628
+    ],
+    "cli_guarded_pids": [
+      42628
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 41120,
+    "descendants": [
+      {
+        "pid": 41956,
+        "parent_pid": 41120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 39116,
+        "parent_pid": 41120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 26272,
+        "parent_pid": 41120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 19412,
+        "parent_pid": 41120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 42552,
+        "parent_pid": 41120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 42628,
+        "parent_pid": 19412,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ],
+  "ledger_verification": {
+    "passed": true,
+    "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\desktop-full-01\\scenarios\\success\\ledger-verification.json",
+    "admission": "admitted",
+    "admitted_turns": 1,
+    "backup_restore": {
+      "passed": true,
+      "mode": "snapshot-v1-only",
+      "backupPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\desktop-full-01\\scenarios\\success\\ledger-maintenance\\backups\\events-2026-10-03T14-50-19.292Z.sqlite",
+      "backupSha256": "978d48e13a80cd4235163eac5c0332a5de4cc2931b8d3811877a61a6f3060bf1",
+      "restoredDatabasePath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\desktop-full-01\\scenarios\\success\\ledger-maintenance\\restored-root\\events.sqlite",
+      "restoredDatabaseSha256": "978d48e13a80cd4235163eac5c0332a5de4cc2931b8d3811877a61a6f3060bf1",
+      "verification": {
+        "userVersion": 1,
+        "schemaVersion": 1,
+        "integrityCheck": "ok",
+        "foreignKeyCheck": "ok",
+        "facts": {
+          "count": 5,
+          "sha256": "5aeb304c66bc401eb9b146b4ec9a998395eeb43ad50fe5ad01ab09c2ff3921f2"
+        },
+        "observations": {
+          "count": 5,
+          "sha256": "fec74188a2b399d508d595955b243426d869fb4d1add5f7d709b797a4ca3b3ac"
+        },
+        "origins": {
+          "count": 5,
+          "sha256": "8ea394e9a565240728a9d8db7faaa6d29688785606f7fac1553ec1a0d94952bd"
+        },
+        "receipts": {
+          "count": 5,
+          "sha256": "d0437b3822324b221b69e3e404c40592da4fefd43af79de5afd601bf1790cf1c"
+        },
+        "captures": {
+          "count": 1,
+          "sha256": "0925dfc6051fae8347f9e8b47d80a1629c2fb8a606eb82d58c2367ee897f1b0e"
+        },
+        "materials": {
+          "count": 1,
+          "sha256": "96e92a06d379a264daa1f210c30a5b6bf82b16bd7dd93bbcbb1ed32d2f973b7b"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "pro_denied",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "pro_denied",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step"
+  ],
+  "user_visible_reply": null,
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-v4-pro",
+    "pro_item_available": false,
+    "selected": null,
+    "pro_selected": false
+  },
+  "desktop": {
+    "main_pid": 41864,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\desktop-full-01\\scenarios\\pro_denied\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\desktop-full-01\\scenarios\\pro_denied\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\desktop-full-01\\scenarios\\pro_denied\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 43908,
+        "parent_pid": 41864,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 15424,
+        "parent_pid": 41864,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 43528,
+        "parent_pid": 41864,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 43376,
+        "parent_pid": 41864,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 38888,
+        "parent_pid": 43376,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": true
+}

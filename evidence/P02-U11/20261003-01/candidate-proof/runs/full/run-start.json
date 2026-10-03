@@ -1,0 +1,652 @@
+{
+  "schema": "p01-u10-desktop-run/v1",
+  "suite": "full",
+  "run_id": "desktop-full-01",
+  "output": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\desktop-full-01",
+  "candidate": {
+    "descriptor_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01\\candidate-descriptor.json",
+    "descriptor_sha256": "e1b7b4fed3a910b709c89d2d9f5f861027b0394eb5236a3eeeac69b67e642d47",
+    "descriptor": {
+      "assemblyRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01",
+      "candidateModel": "deepseek-flash",
+      "cli": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "bytes": 16895919,
+        "sha256": "3ae3a5dc8514fb0e2a9c4527706f58284afced0499419654ebf677d2098446e4"
+      },
+      "cliEntry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01",
+      "deniedModel": "deepseek-v4-pro",
+      "desktopPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01\\packages\\desktop",
+      "electronPath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe",
+      "factory": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u11\\tests\\integration\\P02\\factory-entry.mjs",
+        "bytes": 1750,
+        "sha256": "60330aa9e25d017c74679319ebebb4d0f1ffd0c4f61d6e1552deca89b787bf4d"
+      },
+      "factoryEntry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u11\\tests\\integration\\P02\\factory-entry.mjs",
+      "gateDefault": "enabled",
+      "gateEnv": "P01_U10_GATE_MODE",
+      "invocationContext": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\contracts\\dist\\model\\invocation-context.js",
+        "bytes": 1227,
+        "sha256": "adf401be3fcfcaac63ca2318d67e0bc426f0bed4ea4d6bc4067d9db9dff8a9ef"
+      },
+      "invocationContextModuleCount": 1,
+      "nodePath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "nodeVersion": "v24.14.0",
+      "playwrightPath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\playwright-core\\index.js",
+      "protocolPatch": {
+        "file": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\bootstrap\\dist\\zcode-protocol-entrypoint.js",
+        "originalSha256": "065f08151c8b7de4ac31c9fe28894a208d23a1278c7820d3acba1bafbf5d3729",
+        "patchedSha256": "16c9353d7015b8ef02cf898600e698e83ed7ae9da2b46c6903e25b6a191cd817"
+      },
+      "providerConfig": {
+        "source": {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\config\\provider\\zcode-builtin.json",
+          "bytes": 180680,
+          "sha256": "0b3d735e0c2334353eecadfa8c0756a1a19fc4f7938fc62882048d6630c5f424"
+        },
+        "recipe": {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\scripts\\builtin-provider-config.mjs",
+          "bytes": 3133,
+          "sha256": "f9f8900d3081dfb70ebc44f92f6c789928a73663d57d2be3ee257c7ab74fbbf2"
+        },
+        "environment": "production"
+      },
+      "recipe": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u11\\tests\\integration\\P02\\build-candidate.mjs",
+        "bytes": 12737,
+        "sha256": "41ebd9e49221f84aba9ebf74384852ad693df2818597b2cdf7ce3e30fec80a3e"
+      },
+      "repositoryCommit": "e3d15af210ee6df3871bc6c10b99a093817db819",
+      "repositoryInputs": [
+        {
+          "path": "assets/character/xiadie/v3/manifest.json",
+          "bytes": 534,
+          "sha256": "3bedae784adae2182f3396cccbc3c91663fe96a58d18373481fbb7155d888f62"
+        },
+        {
+          "path": "assets/character/xiadie/v3/persona.json",
+          "bytes": 5580,
+          "sha256": "a688c669c4f556495131ac69cdc868a5b2ee93614eff814fc0793b1690c99bb4"
+        },
+        {
+          "path": "assets/manifest.json",
+          "bytes": 4304,
+          "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"
+        },
+        {
+          "path": "migrations/001-event-store.ts",
+          "bytes": 4362,
+          "sha256": "dd63a073f14172808cc75564e41681045cdadca89db2f2933ae12337bbcaa7e1"
+        },
+        {
+          "path": "package.json",
+          "bytes": 859,
+          "sha256": "8e86bbecd704386665b0bb081e18df60f31595183f351c2d981043d2730d78e4"
+        },
+        {
+          "path": "packages/adapters/zcode/src/host.ts",
+          "bytes": 41642,
+          "sha256": "71bfd252831db5216983bdea8361bd68e0a54296de5f9444cf1e15b908f0725b"
+        },
+        {
+          "path": "packages/adapters/zcode/src/index.ts",
+          "bytes": 687,
+          "sha256": "afb9a0529925d832b96c757ce2a765c4b86483c74a2d276d29e29a074e98c20c"
+        },
+        {
+          "path": "packages/adapters/zcode/src/transcript.ts",
+          "bytes": 24870,
+          "sha256": "73fcaf64d5932fc15ea7c24d47f103891807ca96015c2ff81fc79ada8f4f3174"
+        },
+        {
+          "path": "packages/adapters/zcode/test/contract.test.mjs",
+          "bytes": 3003,
+          "sha256": "4a502df5e212ab328f2b0e3e98c10bc4aa9dc1d496db8dd388fb022d77e06240"
+        },
+        {
+          "path": "packages/adapters/zcode/test/fixtures/hook-process-fault.mjs",
+          "bytes": 420,
+          "sha256": "7aabbc6093e51c422729208bb9e1f95879b0e891309f55e0153236fa2a34b832"
+        },
+        {
+          "path": "packages/adapters/zcode/test/host.test.mjs",
+          "bytes": 11039,
+          "sha256": "3d8d1dda066de99180d792fdf2afe7cf0d277051c83a906d41af944bd6c4d1c9"
+        },
+        {
+          "path": "packages/adapters/zcode/test/native.integration.test.mjs",
+          "bytes": 34314,
+          "sha256": "83530e286072830eafeb67eede29c6266c7b17d5dede41a2b8d302442f3f8fd4"
+        },
+        {
+          "path": "packages/adapters/zcode/test/transcript-host.test.mjs",
+          "bytes": 7559,
+          "sha256": "133322b502f0b2d274452f02663a0f89636f94403cc57f060d57d6852fb5499c"
+        },
+        {
+          "path": "packages/adapters/zcode/test/transcript.test.mjs",
+          "bytes": 16506,
+          "sha256": "8357c801719b1f887d5609df2afe5ec67645437c4736f72fdb962106326aff94"
+        },
+        {
+          "path": "packages/application/evidence/src/index.ts",
+          "bytes": 30855,
+          "sha256": "05e44e804035f487aedbcfe4881d6f28c7cb40477ed231fc7615e705de06d247"
+        },
+        {
+          "path": "packages/application/evidence/test/evidence.test.mjs",
+          "bytes": 18325,
+          "sha256": "f3b93d0e422344240920a100fcb075ee75572cfe05005ab828d212ff6ffa9e66"
+        },
+        {
+          "path": "packages/application/recovery/src/index.ts",
+          "bytes": 15896,
+          "sha256": "fdfefa068a5a29ce33ad0c890df6f2c25367fba88b8513dc4733e545bb32c6b7"
+        },
+        {
+          "path": "packages/application/recovery/test/effect-worker.mjs",
+          "bytes": 1319,
+          "sha256": "363fcd3ea0e4566cf2dc737943ac68977496cccfa9cf489950d83fc24e61ab95"
+        },
+        {
+          "path": "packages/application/recovery/test/recovery.test.mjs",
+          "bytes": 28591,
+          "sha256": "3f9ad79c8d321506d7743eedbf08a48800f6a91c32d13e5bfe75ad9b6086ce6b"
+        },
+        {
+          "path": "packages/application/test/native-projection.integration.test.mjs",
+          "bytes": 12796,
+          "sha256": "d6886de8026243a18d3421ef3255ab0ce70f5c89b61d0faa3271804ff56d4446"
+        },
+        {
+          "path": "packages/application/test/turn-projection.test.mjs",
+          "bytes": 10840,
+          "sha256": "75770fff9256c78b5a30312ae3985a42ab2ae7c840b68cdb51288ac457e35db4"
+        },
+        {
+          "path": "packages/application/turn-projection.ts",
+          "bytes": 16936,
+          "sha256": "2fc3f675856588b2ae8e6e3eb668f913b43bc9acb892a066b7e59a9e4e375292"
+        },
+        {
+          "path": "packages/character/src/index.ts",
+          "bytes": 305,
+          "sha256": "29530de7d311d5cb8894ce943c90146edd6b890a74fb144f113ec4f9679d11d5"
+        },
+        {
+          "path": "packages/character/src/loader.ts",
+          "bytes": 5333,
+          "sha256": "a8505ecbcc7d179d66ccb7e31c4cea873faa103d1366fa0681adf182d97acc0f"
+        },
+        {
+          "path": "packages/character/src/schema.ts",
+          "bytes": 4311,
+          "sha256": "b3405d98a976a19436d1e4191cac3a79153156c67d827208a930ab2024a956ed"
+        },
+        {
+          "path": "packages/character/test/contract.test.mjs",
+          "bytes": 927,
+          "sha256": "ec53f86e0417ee757ca83440cbef107c23429d647513ae3eedab61ad00c542a9"
+        },
+        {
+          "path": "packages/character/test/loader.test.mjs",
+          "bytes": 4729,
+          "sha256": "d94dc4c8b9c7ba2c0b75017b606c292587242556f887aa3cad2e785321d532c2"
+        },
+        {
+          "path": "packages/character/test/readonly.type-fixture.ts",
+          "bytes": 589,
+          "sha256": "73a2d07ea1d992480f1a1f286b081cfa11f7a063bfdf42105c9e74615accf750"
+        },
+        {
+          "path": "packages/character/test/schema.test.mjs",
+          "bytes": 2633,
+          "sha256": "d5cfdfa7bcfc3eb5fe474af60509763006af9884011138ee5bc7ed0d24241f00"
+        },
+        {
+          "path": "packages/config/desktop-build.mjs",
+          "bytes": 8328,
+          "sha256": "1b72f8b3660ffb0093e9ef1e272c26ac3b2e6d6439a065fbcc97f47cae6b6c0d"
+        },
+        {
+          "path": "packages/config/src/index.ts",
+          "bytes": 10039,
+          "sha256": "73fc5f901b17f4575e19977d655aff701db422b6e513277c30e3a33dbcf08dbf"
+        },
+        {
+          "path": "packages/config/test/desktop-build-paths.test.mjs",
+          "bytes": 2856,
+          "sha256": "817d151eb18169d84deae423ca7951bb016fc7e72aa28581a0ee61d8cce4c925"
+        },
+        {
+          "path": "packages/config/test/desktop-no-key.mjs",
+          "bytes": 5367,
+          "sha256": "78addb297be6f85e4bbd8f68f182a5584f627628bea64ca2be337c32ec754998"
+        },
+        {
+          "path": "packages/config/test/profile-spec.mjs",
+          "bytes": 972,
+          "sha256": "b60dba882a0c72c86e196fa2bafa79af20be23dde8e7301ee375a0cc47f28b5b"
+        },
+        {
+          "path": "packages/config/test/profile.test.mjs",
+          "bytes": 6591,
+          "sha256": "29fb1be4971f673f3404796d0d4e99c61c3670d30927632e16e54bf0a18f5be7"
+        },
+        {
+          "path": "packages/config/test/run-desktop-no-key.py",
+          "bytes": 9419,
+          "sha256": "a42451929c56f4d83361aae9ca4af4b1e583782e72b950b17b27b860c25af65a"
+        },
+        {
+          "path": "packages/config/test/seed-history.mjs",
+          "bytes": 2574,
+          "sha256": "abf3cbfa757eb76b6421a1493fc9011406116113433b79ea8c3d1b1387254772"
+        },
+        {
+          "path": "packages/config/test/warmup.test.mjs",
+          "bytes": 5788,
+          "sha256": "c63b5f1e1c00fea8291049463e5f42b41ace2b935c02bf54a6f923964a43ec67"
+        },
+        {
+          "path": "packages/context/src/index.ts",
+          "bytes": 11781,
+          "sha256": "6fcc5b6ca892a0106a1063f15587db24633d799603846b55ddcab8fe77b50fd7"
+        },
+        {
+          "path": "packages/context/test/context.test.mjs",
+          "bytes": 8934,
+          "sha256": "c64c2939d27dcaf16b988df740046d04c64133edfd099a1eab368e2c213dcf18"
+        },
+        {
+          "path": "packages/context/test/contract.test.mjs",
+          "bytes": 937,
+          "sha256": "b09d590cc42617df21ca111796d5a317573895f57864f2904edd760cc8f78207"
+        },
+        {
+          "path": "packages/context/test/integration.test.mjs",
+          "bytes": 1840,
+          "sha256": "d6f7a9f3d34b86eba2296a0721d9a975791225fce3558a8e0130bc45d8976745"
+        },
+        {
+          "path": "packages/context/test/readonly.type-fixture.ts",
+          "bytes": 608,
+          "sha256": "9b1f935ec0de08c774ac9ecc4024aa22e9291602f6faf3983aefc5a11990db0c"
+        },
+        {
+          "path": "packages/contracts/src/context.ts",
+          "bytes": 1801,
+          "sha256": "ffc855d2d496d97b25508fdbcad540d6c01ba755fe7d56837a5873c3f367d071"
+        },
+        {
+          "path": "packages/contracts/src/events.ts",
+          "bytes": 17373,
+          "sha256": "c2a7d013164b1c3e5e6c27748a3b06ef1856cf22346acd11e356c191718500ee"
+        },
+        {
+          "path": "packages/contracts/src/index.ts",
+          "bytes": 904,
+          "sha256": "08d6c0826c13f48b5fb0ce877c1efdd3e8a5da7dbcfe78fb07f9a97e5fd9cfe9"
+        },
+        {
+          "path": "packages/contracts/src/json-value.ts",
+          "bytes": 2660,
+          "sha256": "10ef265e18f7a074c5ef4ea8a936fc3b958ed69cf62ded9b9cb3775ceeaf92f8"
+        },
+        {
+          "path": "packages/contracts/test/contracts.test.mjs",
+          "bytes": 1422,
+          "sha256": "7bd481d8fcfd57e812fda179dda9fef871a94c8fbce84aa4ac71743ddad616cb"
+        },
+        {
+          "path": "packages/contracts/test/events.test.mjs",
+          "bytes": 9873,
+          "sha256": "b06a0a3cbc64247c6bff3caf9c3cd59b4c56d3e4f8aad9cadebfb1e6527153d1"
+        },
+        {
+          "path": "packages/contracts/test/events.type-fixture.ts",
+          "bytes": 1737,
+          "sha256": "cf98b5d229dc7c8579fbf3bc9702627a069aed15e7d1569b654559b09d52e8fc"
+        },
+        {
+          "path": "packages/contracts/test/import-boundaries.test.mjs",
+          "bytes": 14793,
+          "sha256": "4dc9ef4be91f184c97f782c4a6cde47e275f1842fe36c83cdd3298cc554b318f"
+        },
+        {
+          "path": "packages/contracts/test/json-value.test.mjs",
+          "bytes": 1624,
+          "sha256": "dafb2b586cf1f6ec2b4ab2e224bb56d3e91452935cf00f0afc8579e7cb7b0f49"
+        },
+        {
+          "path": "packages/contracts/test/json-value.type-fixture.ts",
+          "bytes": 418,
+          "sha256": "12ef9b4289afdc349e1e020dce496180059958904a5c9140d132d07c54048785"
+        },
+        {
+          "path": "packages/contracts/test/tsconfig.json",
+          "bytes": 267,
+          "sha256": "0edf39c026a0f088c7fb582d3172af14579383301c48e575537593a88d09711e"
+        },
+        {
+          "path": "packages/diagnostics/src/index.ts",
+          "bytes": 41664,
+          "sha256": "e91e73753c37cf236720dc14abe38a2253c24b02c2b55cfeb2ff2b4f313a0f99"
+        },
+        {
+          "path": "packages/diagnostics/test/diagnostics.test.mjs",
+          "bytes": 26048,
+          "sha256": "95436d50bb4a37e7e354ffdb8eac358fcf976dae93ba09542ed3978c0b641cf5"
+        },
+        {
+          "path": "packages/secrets/src/index.ts",
+          "bytes": 4227,
+          "sha256": "aea3b31c87187726683b6fe36b1fabea88d9554f646cb0784bd1f9dfe40ead09"
+        },
+        {
+          "path": "packages/secrets/test/credential.test.mjs",
+          "bytes": 5566,
+          "sha256": "cee8f64b9e50c08aa43caca82c4fdd4bf06731290456bcb20a23daec0a9b63c8"
+        },
+        {
+          "path": "packages/storage/backup/src/index.ts",
+          "bytes": 41646,
+          "sha256": "bcda0776bc2c75ba4a3f39ebc2818b418fd13a9d0bc3f6983c35e64f6491d9c0"
+        },
+        {
+          "path": "packages/storage/backup/test/backup-worker.mjs",
+          "bytes": 4648,
+          "sha256": "3cba2cabe94a609243f6243ac467fdd3fc6b4bf32b2b257d00e738ec4a67efb3"
+        },
+        {
+          "path": "packages/storage/backup/test/backup.test.mjs",
+          "bytes": 33248,
+          "sha256": "5403b502fcce5d990d5bf0475bc51d47a0e8e61996e3ac8aac289bca80aa2711"
+        },
+        {
+          "path": "packages/storage/events/src/index.ts",
+          "bytes": 58109,
+          "sha256": "04f4ecc5f54122dbfa14eff2de982cb3f81967f6d41b205d1694d24127eb9545"
+        },
+        {
+          "path": "packages/storage/events/test/events.test.mjs",
+          "bytes": 28414,
+          "sha256": "5b215c75525bec91e65c7d83cf2740256887102ce5b30ea5c9471bae7209f303"
+        },
+        {
+          "path": "packages/storage/events/test/sqlite-worker.mjs",
+          "bytes": 1545,
+          "sha256": "2a323493a263d2149a806dd56095ff1ff81bf163ea8ef8cef8f809783b6ab282"
+        },
+        {
+          "path": "plugins/xiadie/.zcode-plugin/plugin.json",
+          "bytes": 130,
+          "sha256": "79c2465cae65293220d5e08e91beead1c8a4bf247bb7d47f5d2afb15d1eaba90"
+        },
+        {
+          "path": "plugins/xiadie/hooks/context.mjs",
+          "bytes": 4597,
+          "sha256": "f8d6bd19ab406bc296b6edc3193945f08c687cafd61ca871279042c14e5d966f"
+        },
+        {
+          "path": "plugins/xiadie/hooks/hooks.json",
+          "bytes": 351,
+          "sha256": "729c69089429928ed50e507a22e2556df81233d04066bf358cd03bfd1fc1491b"
+        },
+        {
+          "path": "plugins/xiadie/marketplace.json",
+          "bytes": 214,
+          "sha256": "665dddf5c68c68fc6daa74ecdf7d8a213b281172b626545752253e171d0d6302"
+        },
+        {
+          "path": "pnpm-lock.yaml",
+          "bytes": 910,
+          "sha256": "73a7f0c772915e255001e331c960d547153efc460d4f19bc57709bff183b3f64"
+        },
+        {
+          "path": "tests/integration/P01/.gitattributes",
+          "bytes": 72,
+          "sha256": "308a40fa1d89ae5ea4390b4c9b46a0108b09f171f07898f25d451fa0c69c4e9f"
+        },
+        {
+          "path": "tests/integration/P01/build-candidate.mjs",
+          "bytes": 12694,
+          "sha256": "046a5d0145e86ca8d0f4f8ba180ce5231ea6ad2d096afd3c0a5e0af148576bc6"
+        },
+        {
+          "path": "tests/integration/P01/desktop-ui.mjs",
+          "bytes": 17187,
+          "sha256": "5a24c9844114b9dda02f94ee2a36a69ea843db37ba85c04a4dabcebf9be12d27"
+        },
+        {
+          "path": "tests/integration/P01/desktop.py",
+          "bytes": 73299,
+          "sha256": "c4ed49c9940f0b83f06f04a71234e8907fcd5ff82c21a58d2dc9cc2e80002dbe"
+        },
+        {
+          "path": "tests/integration/P01/electron-network-guard.cjs",
+          "bytes": 15465,
+          "sha256": "8a1212d760377ec29f1df079686b9502ad00ff4ee45ad5ce880084f10737901b"
+        },
+        {
+          "path": "tests/integration/P01/electron-network-guard.test.mjs",
+          "bytes": 11205,
+          "sha256": "c82deb3fba51d3aa6f33b62972de529b503f3dfb62020509681ac3ab206fff54"
+        },
+        {
+          "path": "tests/integration/P01/factory-entry.mjs",
+          "bytes": 1728,
+          "sha256": "3dc95c93059149c7c4ab30e4dccd1586e14a2d81bc0fa75ba4f6f01c42ac5d74"
+        },
+        {
+          "path": "tests/integration/P01/factory-policy.mjs",
+          "bytes": 3275,
+          "sha256": "160863a8acec66ea3bfa10f7359b35e701852fcbfb27a8297ff3a563fdd10764"
+        },
+        {
+          "path": "tests/integration/P01/factory.mjs",
+          "bytes": 19082,
+          "sha256": "c0758c684c7d43e8f6eafa146770214f5a00d7306294f8dadbdb81c7a4bbfc0e"
+        },
+        {
+          "path": "tests/integration/P01/factory.test.mjs",
+          "bytes": 21018,
+          "sha256": "0cc5866ed2fac07bde3dcf13242ca3e9ea11dda033ba3ad8447170e702402a0a"
+        },
+        {
+          "path": "tests/integration/P01/read-only-workspace.mjs",
+          "bytes": 2246,
+          "sha256": "5d190d9a1976573942144876e97b4d6b547375ef953f4f6bb0c178e80c0aa9e7"
+        },
+        {
+          "path": "tests/integration/P01/read-only-workspace.test.mjs",
+          "bytes": 4409,
+          "sha256": "9a286509fc6a6c3a4b9db3157746465bd0f909bed1ee52c876847c5406466a1e"
+        },
+        {
+          "path": "tests/integration/P02/build-candidate.mjs",
+          "bytes": 12737,
+          "sha256": "41ebd9e49221f84aba9ebf74384852ad693df2818597b2cdf7ce3e30fec80a3e"
+        },
+        {
+          "path": "tests/integration/P02/desktop-ui.mjs",
+          "bytes": 18150,
+          "sha256": "cc3d97f4048d8a8ddcbb894a1a13e7ec60f2213b4583a250503c80e125d3882b"
+        },
+        {
+          "path": "tests/integration/P02/desktop.py",
+          "bytes": 6260,
+          "sha256": "4cc73f06643565b59004136b85f78f0d208da927d242f82efcbe4cd40c617e45"
+        },
+        {
+          "path": "tests/integration/P02/durable-host.mjs",
+          "bytes": 19477,
+          "sha256": "faf5d2c1102d9ab6d2dafb7b1ff2c8fd299543380602ee73789302eeebd67e54"
+        },
+        {
+          "path": "tests/integration/P02/factory-entry.mjs",
+          "bytes": 1750,
+          "sha256": "60330aa9e25d017c74679319ebebb4d0f1ffd0c4f61d6e1552deca89b787bf4d"
+        },
+        {
+          "path": "tests/integration/P02/native.integration.test.mjs",
+          "bytes": 3612,
+          "sha256": "33014fdc2194c4f3ca8d82aa99b7441b157811ea7de2fd39a4e44e9a53edbae6"
+        },
+        {
+          "path": "tests/integration/P02/native.worker.mjs",
+          "bytes": 31323,
+          "sha256": "a814b1ddba9b36ccd8cdce73fafedfca449327d89f5dadf55cae7b057589bbe7"
+        },
+        {
+          "path": "tests/integration/P02/verify-ledger.mjs",
+          "bytes": 17529,
+          "sha256": "a83eb5e227e0c8c6e724b7a8e1b7a0e02f29e7bf00acb3c0119794bc32ed8942"
+        },
+        {
+          "path": "tools/check-import-boundaries.mjs",
+          "bytes": 19535,
+          "sha256": "2ebec7a4e27b9ca7f32c7d3f9ad9a784f63fdd88e3e1d7b4bf439c3895ff479f"
+        },
+        {
+          "path": "tools/not-implemented.mjs",
+          "bytes": 324,
+          "sha256": "586ff4e526feb7fc0dc103bd8b2896364963553904e34566d80067424d091462"
+        },
+        {
+          "path": "tools/run-stage-tests.mjs",
+          "bytes": 1332,
+          "sha256": "0e80e18741628ff24cb93a8d3170577573c1947d64e1ee64121369d8bb22a772"
+        },
+        {
+          "path": "tools/run-tests.mjs",
+          "bytes": 5872,
+          "sha256": "7d9f105fc6478cf076105cf083a94ca374264116706a049490b51ad046b1d2c6"
+        },
+        {
+          "path": "tsconfig.json",
+          "bytes": 820,
+          "sha256": "fb1355b9ffcd007e8460c222047649c53562faa6fbc600381ccb401e348f5563"
+        }
+      ],
+      "resourcesRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01\\xiadie",
+      "schemaVersion": 1,
+      "scope": "Local development candidate with borrowed pinned dependencies; not a portable installer. U08 base manifest precedes the CLI overlay; this descriptor binds final files and excludes itself.",
+      "sourceCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "sourceRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source"
+    },
+    "resolved_paths": {
+      "assemblyRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01",
+      "desktopPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01\\packages\\desktop",
+      "cliEntry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01",
+      "electronPath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe",
+      "playwrightPath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\playwright-core\\index.js",
+      "sourceRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+      "nodePath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe"
+    },
+    "repository_root": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u11",
+    "verified_artifacts": 6689,
+    "verified_repository_inputs": 94,
+    "external_source_metadata": {
+      "factory_matches_current_file": true,
+      "recipe_matches_current_file": true,
+      "cli_matches_current_file": true,
+      "invocationContext_matches_current_file": true,
+      "build_repository_commit": "e3d15af210ee6df3871bc6c10b99a093817db819",
+      "verification_repository_commit": "e3d15af210ee6df3871bc6c10b99a093817db819"
+    }
+  },
+  "native_source": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+    "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "clean": true
+  },
+  "execution_bindings_before": {
+    "repository": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u11",
+    "commit": "e3d15af210ee6df3871bc6c10b99a093817db819",
+    "files": [
+      {
+        "label": "desktop_runner",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u11\\tests\\integration\\P01\\desktop.py",
+        "bytes": 73299,
+        "sha256": "c4ed49c9940f0b83f06f04a71234e8907fcd5ff82c21a58d2dc9cc2e80002dbe"
+      },
+      {
+        "label": "desktop_ui",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u11\\tests\\integration\\P02\\desktop-ui.mjs",
+        "bytes": 18150,
+        "sha256": "cc3d97f4048d8a8ddcbb894a1a13e7ec60f2213b4583a250503c80e125d3882b"
+      },
+      {
+        "label": "electron_network_guard",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u11\\tests\\integration\\P01\\electron-network-guard.cjs",
+        "bytes": 15465,
+        "sha256": "8a1212d760377ec29f1df079686b9502ad00ff4ee45ad5ce880084f10737901b"
+      },
+      {
+        "label": "profile_bridge",
+        "path": "E:\\Xiadie\\Xiadie\\tests\\evals\\persona\\profile-bridge.mjs",
+        "bytes": 4174,
+        "sha256": "2d0317c916467bb4ed35b9a57ff268e867845e8c7e7440346a9e1925adc8b47f"
+      },
+      {
+        "label": "seed_history",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u11\\packages\\config\\test\\seed-history.mjs",
+        "bytes": 2574,
+        "sha256": "abf3cbfa757eb76b6421a1493fc9011406116113433b79ea8c3d1b1387254772"
+      }
+    ]
+  },
+  "production_before": {
+    "global_file_hashes": [
+      {
+        "label": "production-0",
+        "exists": true,
+        "sha256": "f5cd8f9a1417af9309b6c24ce5a2547a7452560fc941b5863704c38a4ea8f597"
+      },
+      {
+        "label": "production-1",
+        "exists": true,
+        "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+      },
+      {
+        "label": "production-2",
+        "exists": true,
+        "sha256": "9b6fdc5e5165e99d4eb4dc0bada9b1515da380bf4e190faff31993d69c3c76c1"
+      },
+      {
+        "label": "production-3",
+        "exists": true,
+        "sha256": "03963f81db35bcec8b5b0403ff7563a6e09b869bfddb416f9d2d6c7f2c466cb3"
+      },
+      {
+        "label": "production-4",
+        "exists": true,
+        "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+      }
+    ],
+    "official_provider_config": {
+      "path": "C:\\Users\\liyi\\.zcode\\v2\\provider_config.json",
+      "exists": true,
+      "bytes": 3667,
+      "sha256": "c6e9b3fee17989d971d5fde2d38704153a7cedfb310844f5d4d30c341f7e967a"
+    },
+    "model_call_ledger": {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01\\model-calls.jsonl",
+      "exists": true,
+      "bytes": 4603,
+      "sha256": "64363c24a57f63e334a180e571bd44b5a87bae1f8c25129b7233a98ad205380b",
+      "line_count": 18
+    }
+  },
+  "real_credentials_used": false,
+  "real_model_requests": 0,
+  "DSH_started": "NOT_VERIFIED_YET",
+  "visual_acceptance": "NOT_RUN",
+  "network_boundary": "instrumented Node/Electron paths plus a parent-owned dynamic loopback relay; not an OS sandbox",
+  "scenario_status": "running"
+}
