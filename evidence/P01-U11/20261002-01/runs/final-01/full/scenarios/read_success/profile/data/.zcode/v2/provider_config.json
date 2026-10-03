@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "config": {
+    "providerOrder": [
+      "p01-u10-loopback"
+    ],
+    "providerConfigRules": {
+      "providerRules": [
+        {
+          "providerId": "p01-u10-loopback",
+          "providerName": "P01 U10 owned loopback mock",
+          "enabled": true,
+          "config": {
+            "group": "standard-personal",
+            "access": {
+              "type": "api-key",
+              "apiKey": "p01-u09-loopback-only"
+            },
+            "api": {
+              "type": "openai-chat-completions",
+              "baseUrl": "http://127.0.0.1:54915/v1"
+            },
+            "personalModelIds": [
+              "deepseek-flash"
+            ]
+          }
+        }
+      ]
+    },
+    "modelConfigRules": {
+      "providerModelRules": [
+        {
+          "modelId": "deepseek-flash",
+          "config": {
+            "properties": {
+              "supportsToolCall": true
+            },
+            "optionSpecs": {
+              "reasoningLevel": {
+                "values": [
+                  "disabled"
+                ],
+                "map": "{\"thinking\":{\"type\":\"disabled\"}}"
+              },
+              "maxOutputTokens": {
+                "max": 1024,
+                "map": "{\"max_tokens\":maxOutputTokens}"
+              }
+            }
+          },
+          "providerId": "p01-u10-loopback"
+        }
+      ],
+      "manualProviderModelRules": []
+    },
+    "defaultModelSelection": {
+      "providerId": "p01-u10-loopback",
+      "modelId": "deepseek-flash",
+      "options": {
+        "reasoningLevel": "disabled"
+      }
+    }
+  }
+}

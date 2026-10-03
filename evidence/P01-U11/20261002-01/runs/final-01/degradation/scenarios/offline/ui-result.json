@@ -1,0 +1,82 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "offline",
+  "status": "failed",
+  "gate_mode": "enabled",
+  "flow": "offline",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "opened-native-synthetic-history-in-renderer",
+    "clicked-new-conversation-task",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send",
+    "opened-native-settings-page",
+    "opened-native-synthetic-history-in-renderer"
+  ],
+  "user_visible_reply": null,
+  "error_banner": {
+    "visible": true,
+    "error_code": "model_request_failed"
+  },
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 47544,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\degradation\\scenarios\\offline\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\degradation\\scenarios\\offline\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\degradation\\scenarios\\offline\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 55104,
+        "parent_pid": 47544,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 34364,
+        "parent_pid": 47544,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 46432,
+        "parent_pid": 47544,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 47176,
+        "parent_pid": 47544,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 53508,
+        "parent_pid": 47544,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 51292,
+        "parent_pid": 47176,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 55680,
+        "parent_pid": 47176,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": false,
+  "failure_code": "ui_assertion_failed",
+  "failure_details": {
+    "name": "Error",
+    "code": "EEXIST",
+    "operator": null,
+    "message": "EEXIST: file already exists, open 'E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\degradation\\scenarios\\offline\\ui-offline-history.txt'",
+    "stack": "Error: EEXIST: file already exists, open 'E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\degradation\\scenarios\\offline\\ui-offline-history.txt'\n    at async open (node:internal/fs/promises:637:25)\n    at async writeFile (node:internal/fs/promises:1239:14)\n    at async snapshot (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u11/tests/integration/P01/desktop-ui.mjs:71:3)\n    at async inspectHistory (file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u11/tests/integration/P01/desktop-ui.mjs:233:3)\n    at async file:///E:/Xiadie/Xiadie/.runtime/P01/worktrees/u11/tests/integration/P01/desktop-ui.mjs:334:31",
+    "windows": 1
+  }
+}

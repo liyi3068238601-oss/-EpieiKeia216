@@ -1,0 +1,190 @@
+{
+  "scenario_id": "success",
+  "passed": true,
+  "exit_code": 0,
+  "model_requests": 1,
+  "expected_model_requests": 1,
+  "relay_records": [
+    {
+      "request_index": 1,
+      "accepted": true,
+      "request_sha256": "49b84d2f59780f0d62c1c2ecb84c7f177481966c21445fb91751c5ab7224fa7f",
+      "request_bytes": 14614,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "stream",
+          "stream_options",
+          "thinking",
+          "tool_choice",
+          "tools"
+        ],
+        "stream_present": true,
+        "stream": "true",
+        "tools": "nonempty",
+        "tool_choice": "auto"
+      },
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 4,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 200
+    }
+  ],
+  "sidecar_correlation": {
+    "status": "verified",
+    "verified": true,
+    "turn_count": 1,
+    "completed_reply_turns": 1,
+    "visible_reply_matches": true,
+    "expected_reply_sha256": "0769a1974cb8021d8250b52c0e4c0524bae98147698f0403606d8f2bd61baff2",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full\\scenarios\\success\\profile\\u10-turn-projections.jsonl"
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "success",
+    "status": "completed",
+    "gate_mode": "enabled",
+    "flow": "reply",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send"
+    ],
+    "user_visible_reply": "你好，我是遐蝶。我们可以慢慢聊。",
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 56308,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full\\scenarios\\success\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full\\scenarios\\success\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full\\scenarios\\success\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 47904,
+          "parent_pid": 56308,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 16660,
+          "parent_pid": 56308,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 19260,
+          "parent_pid": 56308,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 21100,
+          "parent_pid": 56308,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 49960,
+          "parent_pid": 56308,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 43760,
+          "parent_pid": 21100,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "network_guard_records": 328,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 56308,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      21100
+    ],
+    "cli_required": true,
+    "cli_spawned_pids": [
+      43760
+    ],
+    "cli_guarded_pids": [
+      43760
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 56308,
+    "descendants": [
+      {
+        "pid": 47904,
+        "parent_pid": 56308,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 16660,
+        "parent_pid": 56308,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 19260,
+        "parent_pid": 56308,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 21100,
+        "parent_pid": 56308,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 49960,
+        "parent_pid": 56308,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 43760,
+        "parent_pid": 21100,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ]
+}
