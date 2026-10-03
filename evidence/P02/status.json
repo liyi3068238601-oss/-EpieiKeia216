@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-03",
+  "stage": "P02",
+  "product_version": "0.2.0",
+  "plan_version": "1.1",
+  "project_root": "E:\\Xiadie\\Xiadie",
+  "baseline_commit": "9a39bde69545ac0ad28f484c5318425c2e5d4bf9",
+  "goal": "进入 P02，按依赖完成至 U11/G02 并停止，不自动进入 P03",
+  "stage_status": "running",
+  "G01": "pass",
+  "G02": "pending",
+  "current_task": "P02-U01",
+  "next_task": "P02-U01",
+  "next_stage_started": false,
+  "tasks": [
+    {
+      "id": "P02-U01",
+      "title": "现成方案调查与来源比较",
+      "dependencies": [
+        "P01-U11"
+      ],
+      "status": "running",
+      "card_sha256": "99c5b0ced555d4ee8da4068c10a3e38bbfc6908e57b381a5aa70750a3a2682b1"
+    },
+    {
+      "id": "P02-U02",
+      "title": "隔离试验与复用决定",
+      "dependencies": [
+        "P02-U01"
+      ],
+      "status": "not_started",
+      "card_sha256": "6bdf8ad7f6d7ed5d6d1aa56e3b400f6120ab2d64d06fc1a8e13705aefe4e53d0"
+    },
+    {
+      "id": "P02-U03",
+      "title": "事件ID和终态契约",
+      "dependencies": [
+        "P02-U02"
+      ],
+      "status": "not_started",
+      "card_sha256": "c16482cd4822a1c9dfd9f16b4dae6348661822caff99550acce98999b564464e"
+    },
+    {
+      "id": "P02-U04",
+      "title": "transcript摄取",
+      "dependencies": [
+        "P02-U03"
+      ],
+      "status": "not_started",
+      "card_sha256": "e067e018ef747c1d4193e7df8e7ee82804fb23873be521e2d4d7bab8c0f4d1db"
+    },
+    {
+      "id": "P02-U05",
+      "title": "规范化事件存储",
+      "dependencies": [
+        "P02-U04"
+      ],
+      "status": "not_started",
+      "card_sha256": "1e43db642edc3d6d2229f199789c4c8b494fe50ad95d3c73215b708835c02b99"
+    },
+    {
+      "id": "P02-U06",
+      "title": "工作证据报告",
+      "dependencies": [
+        "P02-U05"
+      ],
+      "status": "not_started",
+      "card_sha256": "cb443521f7ff3c69a145da425c921610bb406e066640b27a3dce95cb2fb53ff4"
+    },
+    {
+      "id": "P02-U07",
+      "title": "运行恢复与未知效果",
+      "dependencies": [
+        "P02-U06"
+      ],
+      "status": "not_started",
+      "card_sha256": "d7c81ed71d23ba465f8a375e79c9d8921fb1e678984cb050ab5816d72ffc89c8"
+    },
+    {
+      "id": "P02-U08",
+      "title": "一致性备份和迁移",
+      "dependencies": [
+        "P02-U07"
+      ],
+      "status": "not_started",
+      "card_sha256": "b087b678b25159ba1bec3805e685c7efa4f280d7e5277d707d2df51b86b05a6c"
+    },
+    {
+      "id": "P02-U09",
+      "title": "诊断与来源追踪",
+      "dependencies": [
+        "P02-U08"
+      ],
+      "status": "not_started",
+      "card_sha256": "acb786a8dd962910b409b6d309e35081549c3016dc7dc76759922834aa69c42e"
+    },
+    {
+      "id": "P02-U10",
+      "title": "阶段集成与独立回归",
+      "dependencies": [
+        "P02-U03",
+        "P02-U04",
+        "P02-U05",
+        "P02-U06",
+        "P02-U07",
+        "P02-U08",
+        "P02-U09"
+      ],
+      "status": "not_started",
+      "card_sha256": "ade1d9901aee017b61f87b338b26c0ede6b6d0e9d0e175441b9b9dc4fa51fa18"
+    },
+    {
+      "id": "P02-U11",
+      "title": "验收并冻结 0.2.0",
+      "dependencies": [
+        "P02-U10"
+      ],
+      "status": "not_started",
+      "card_sha256": "d6d925953dc34c01f31dcc1d3a4a9af441c22f424c99e4da3b8a5942a24a2624"
+    }
+  ],
+  "previous_stage_acceptance": {
+    "path": "evidence/P01-U11/20261002-01/acceptance.json",
+    "bytes": 1650,
+    "sha256": "f7b8f9e31439093f0442298ea544bf390ec142fdd508ce4e107ceb241540a63f"
+  },
+  "authorization": {
+    "user_objective": "进入P02",
+    "scope": "Local project research, isolated fixtures, implementation and verification through G02; preserve production projects, profiles and credentials.",
+    "real_model_calls": "not authorized for P02; no new calls planned for deterministic event/storage work",
+    "production_raw_transcript_export": "not authorized; use synthetic owned fixtures only"
+  },
+  "startup_port_policy": {
+    "user_reply": "启动时占用端口不要和本机zcode一样",
+    "strategy": "loopback OS-allocated ports; disable native fixed 9229",
+    "verified_launches": 2,
+    "ports": [
+      [
+        63946,
+        63948
+      ],
+      [
+        63103,
+        63105
+      ]
+    ],
+    "product_launcher_enforcement": "Verified for the owned Desktop candidate: numeric loopback OS-allocated ports, fixed 9229 disabled, installed ZCode preserved.",
+    "latest_validation": {
+      "full": {
+        "path": "evidence/P01-U11/20261002-01/runs/final-01/full/summary.json",
+        "bytes": 63611,
+        "sha256": "fa42cf053f3cd4c299c801f6e04aeee2ec446ab35f2801dc4497fdc7e1a8d479"
+      },
+      "degradation": {
+        "path": "evidence/P01-U11/20261002-01/runs/final-02/degradation/summary.json",
+        "bytes": 40777,
+        "sha256": "41d3dfbb5445dba0c688e1dcc1af63e0872129191cc37a98bafdec47bc394709"
+      },
+      "historical_verified_launches_and_ports": "Earlier U02 launches retained above; these are not cumulative P01 counts."
+    }
+  }
+}

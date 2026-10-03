@@ -2,7 +2,7 @@
 
 The authoritative planning baseline is `planning/Xiadie_V2_v1.1/`, extracted from the original v1.1 archive. Keep this planning copy unchanged. The other archive is historical reference, not an execution baseline.
 
-The user has authorized entering P01 after G00 passed. Execute P01 in task-card dependency order, through its independent integration and G01 gate; do not start P02 automatically. Preserve the accepted P00 evidence as a historical baseline. Read the current task card, prerequisite evidence, and relevant sources. Research existing solutions, run isolated experiments, then implement the smallest verified gap. Product implementation requires accepted P01-U01 research and P01-U02 experiments.
+P01/G01 is accepted and frozen as the historical 0.1.0 baseline. The user has now explicitly authorized entering P02. Execute P02 in task-card dependency order through independent integration and G02; do not start P03 automatically. Keep P00/P01 evidence unchanged. Read current cards, prerequisite evidence and relevant sources. Product implementation requires accepted P02-U01 research and P02-U02 experiments. Research existing solutions, run isolated experiments, then implement the smallest verified gap.
 
 Preserve existing projects, production runtime profiles, credentials, and user data. References are read-only; experiments use independent data roots. Do not print secrets or store them in evidence or Git.
 
