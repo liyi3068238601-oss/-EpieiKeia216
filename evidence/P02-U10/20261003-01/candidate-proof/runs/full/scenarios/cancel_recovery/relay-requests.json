@@ -1,0 +1,81 @@
+[
+  {
+    "request_index": 1,
+    "accepted": true,
+    "request_sha256": "2e63f8b0d955e181f0119c49ff53e8ae2389a9c69e6c95e3bda56835f07112a1",
+    "request_bytes": 14672,
+    "request_shape": {
+      "body_keys": [
+        "max_tokens",
+        "messages",
+        "model",
+        "stream",
+        "stream_options",
+        "thinking",
+        "tool_choice",
+        "tools"
+      ],
+      "stream_present": true,
+      "stream": "true",
+      "tools": "nonempty",
+      "tool_choice": "auto"
+    },
+    "model": "deepseek-flash",
+    "stream": true,
+    "auth_present": true,
+    "synthetic_auth_only": true,
+    "messages_count": 4,
+    "tool_names": [
+      "Read"
+    ],
+    "assistant_tool_call_ids": [],
+    "tool_result_ids": [],
+    "upstream_attempted": false,
+    "auxiliary_title": false,
+    "request_kind": "conversation",
+    "status": 200,
+    "partial_stream_sent": true,
+    "client_cancelled": true,
+    "cancel_confirmation": {
+      "source": "native-stop-ui-action",
+      "exception_type": "ConnectionAbortedError",
+      "exception_code": 10053
+    }
+  },
+  {
+    "request_index": 2,
+    "accepted": true,
+    "request_sha256": "809dbe4c6285369b2570d04915258ce7c834a04cfd7a7a768305b3111317b348",
+    "request_bytes": 19927,
+    "request_shape": {
+      "body_keys": [
+        "max_tokens",
+        "messages",
+        "model",
+        "stream",
+        "stream_options",
+        "thinking",
+        "tool_choice",
+        "tools"
+      ],
+      "stream_present": true,
+      "stream": "true",
+      "tools": "nonempty",
+      "tool_choice": "auto"
+    },
+    "model": "deepseek-flash",
+    "stream": true,
+    "auth_present": true,
+    "synthetic_auth_only": true,
+    "messages_count": 7,
+    "tool_names": [
+      "Read"
+    ],
+    "assistant_tool_call_ids": [],
+    "tool_result_ids": [],
+    "upstream_attempted": false,
+    "auxiliary_title": false,
+    "request_kind": "conversation",
+    "status": 200
+  }
+]

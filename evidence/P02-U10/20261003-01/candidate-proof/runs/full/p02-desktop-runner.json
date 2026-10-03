@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "suite": "full",
+  "candidate": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\candidate-02",
+  "output": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02",
+  "runner": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10\\tests\\integration\\P02\\desktop.py",
+    "sha256": "4cc73f06643565b59004136b85f78f0d208da927d242f82efcbe4cd40c617e45"
+  },
+  "ledgerVerifier": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10\\tests\\integration\\P02\\verify-ledger.mjs",
+    "sha256": "a83eb5e227e0c8c6e724b7a8e1b7a0e02f29e7bf00acb3c0119794bc32ed8942"
+  },
+  "uiDriver": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10\\tests\\integration\\P02\\desktop-ui.mjs",
+    "sha256": "cc3d97f4048d8a8ddcbb894a1a13e7ec60f2213b4583a250503c80e125d3882b"
+  },
+  "fixedNode": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+  },
+  "harness": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10\\tests\\integration\\P01\\desktop.py",
+    "sha256": "c4ed49c9940f0b83f06f04a71234e8907fcd5ff82c21a58d2dc9cc2e80002dbe"
+  },
+  "qualificationBoundary": "Actual qualification uses the Electron UI with the pinned fixed Node CLI. The durable host and SQLite ledger run in the wrapped CLI protocol process, not Electron main.",
+  "sidecarBoundary": "P01 turn sidecar remains UI correlation evidence; durable claims come only from the read-only SQLite and diagnostics checks recorded per scenario.",
+  "exitCode": 0
+}

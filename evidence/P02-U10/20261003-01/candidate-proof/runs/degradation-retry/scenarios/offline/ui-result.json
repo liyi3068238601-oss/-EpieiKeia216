@@ -1,0 +1,73 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "offline",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "offline",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "opened-native-synthetic-history-in-renderer",
+    "clicked-new-conversation-task",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send",
+    "opened-native-settings-page",
+    "opened-native-synthetic-history-in-renderer"
+  ],
+  "user_visible_reply": null,
+  "error_banner": {
+    "visible": true,
+    "error_code": "model_request_failed"
+  },
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 21188,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\candidate-01",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-02\\scenarios\\offline\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-02\\scenarios\\offline\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-02\\scenarios\\offline\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 31752,
+        "parent_pid": 21188,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 7540,
+        "parent_pid": 21188,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 24268,
+        "parent_pid": 21188,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 31656,
+        "parent_pid": 21188,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 32476,
+        "parent_pid": 21188,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 6260,
+        "parent_pid": 31656,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 15768,
+        "parent_pid": 31656,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": true
+}

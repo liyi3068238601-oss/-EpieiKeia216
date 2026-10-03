@@ -1,0 +1,16 @@
+# P02 requirement evidence
+
+This is the P02 stage mapping, not a claim that every later-stage Must is complete. Author results are historical ready-for-review snapshots; accepted state comes from `evidence/P02/status.json` and exact independent acceptance records. G02 belongs to U11.
+
+| Requirement / stage obligation | Actual implementation and evidence | Limits |
+| --- | --- | --- |
+| R03 research before implementation | Accepted U01 source comparisons and U02 isolated experiments; each U03-U09 source decision; U10 reuses their tested APIs and the frozen P01 candidate seam | No floating dependency or installation; references remain read-only |
+| R04 event identity and honest terminal state | U03 exact scope/attempt, first committed terminal, conflict and resequencing; U05 actual atomic SQLite facts/origins/capture/receipts; U10 actual Native envelopes, tool error, model failure, cancel and close | Native outcome, durability and mechanical business evidence are distinct; idle/DONE/queue admission is not success |
+| R04 provenance and evidence | U04 fully masked current UserPromptSubmit material and historical raw hash/locator; U06 actual owned Git/Node/artifact/SQLite profile; U09 redacted receipt-verified diagnostics; U10 Native hook and read-back integration | Original prompt/reply/reasoning/tool IO is not retained in the new ledger; current original-source validation remains NOT_VERIFIED; fixed artifact-integrity profile does not establish arbitrary business truth |
+| R05 recovery and honest history | U07 deterministic recovery from committed facts, actual owned child-kill effect fixture and no blind retry; U10 reopen with real Native session and unknown owned effect prevents resume/replay; Desktop cancel then fresh turn | No complete message editing/concurrent-session/history reconstruction claim; effect fixture is owned synthetic, not external write/send/generation |
+| R24 backup/restore and isolation | U08 actual online backup, new-root restore, empty-v0 migration and future/nonempty refusal; U10 actual Native and Desktop ledgers back up and restore with matching canonical content hashes | Not physical power/disk failure or production migration; old projects/profiles and installed ZCode are preserved |
+| G02 source is traceable | Actual Native event identity/sequence/time, fixed source pin, exact hook correlation, derived capture source and receipt; candidate inputs/artifacts bound | Historical source provenance is separate from availability/current raw integrity |
+| G02 committed facts recover | Reopen exact committed history and new-root verified restore; first terminal preserved; empty/failed ledger stays unavailable | No invented original text or absent-history success |
+| G02 failed retry does not fabricate history | BUSY is failed/unavailable; unknown effect does not dispatch twice; accepted U05 dedupe/conflict/lost-ACK and U07 no replay | Arbitrary external effect reconciliation is not qualified |
+
+U10 Native and actual Electron UI use only owned profiles, synthetic local effects and dynamic loopback model fixtures. Paid P01 model evaluation is historical and separate. A local development assembly is not an installer, portable package or public distribution; character public distribution rights are not asserted. P03 is not started here.

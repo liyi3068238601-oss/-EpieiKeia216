@@ -1,0 +1,244 @@
+{
+  "scenario_id": "cancel_recovery",
+  "passed": true,
+  "exit_code": 0,
+  "model_requests": 2,
+  "expected_model_requests": 2,
+  "relay_records": [
+    {
+      "request_index": 1,
+      "accepted": true,
+      "request_sha256": "18512f252e57df4a3177273b368af8100fe40a23c595fe7c8e36e61d0bd09887",
+      "request_bytes": 14672,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "stream",
+          "stream_options",
+          "thinking",
+          "tool_choice",
+          "tools"
+        ],
+        "stream_present": true,
+        "stream": "true",
+        "tools": "nonempty",
+        "tool_choice": "auto"
+      },
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 4,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 200,
+      "partial_stream_sent": true,
+      "client_cancelled": true,
+      "cancel_confirmation": {
+        "source": "native-stop-ui-action",
+        "exception_type": "ConnectionAbortedError",
+        "exception_code": 10053
+      }
+    },
+    {
+      "request_index": 2,
+      "accepted": true,
+      "request_sha256": "2c740233e0547470307cab737aec52231b9021b36349b250107ee5e43d76754c",
+      "request_bytes": 19927,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "stream",
+          "stream_options",
+          "thinking",
+          "tool_choice",
+          "tools"
+        ],
+        "stream_present": true,
+        "stream": "true",
+        "tools": "nonempty",
+        "tool_choice": "auto"
+      },
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 7,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 200
+    }
+  ],
+  "sidecar_correlation": {
+    "status": "verified",
+    "verified": true,
+    "cancelled_turns": 1,
+    "completed_turns": 1,
+    "visible_reply_matches": true,
+    "expected_reply_sha256": "d84106ccb884e202a9ca6137bbbac6038ec97529fbc40fb302b93cabaf35f153",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-01\\scenarios\\cancel_recovery\\profile\\u10-turn-projections.jsonl"
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "cancel_recovery",
+    "status": "completed",
+    "gate_mode": "enabled",
+    "flow": "cancel_recovery",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send",
+      "observed-streaming-partial-in-renderer",
+      "clicked-native-stop-button",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send"
+    ],
+    "user_visible_reply": "已恢复。",
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 3392,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\candidate-01",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-01\\scenarios\\cancel_recovery\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-01\\scenarios\\cancel_recovery\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-01\\scenarios\\cancel_recovery\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 15368,
+          "parent_pid": 3392,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 25328,
+          "parent_pid": 3392,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 24556,
+          "parent_pid": 3392,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 10812,
+          "parent_pid": 3392,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 8116,
+          "parent_pid": 3392,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 9084,
+          "parent_pid": 10812,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "network_guard_records": 331,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 3392,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      10812
+    ],
+    "cli_required": true,
+    "cli_spawned_pids": [
+      9084
+    ],
+    "cli_guarded_pids": [
+      9084
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 3392,
+    "descendants": [
+      {
+        "pid": 15368,
+        "parent_pid": 3392,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 25328,
+        "parent_pid": 3392,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 24556,
+        "parent_pid": 3392,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 10812,
+        "parent_pid": 3392,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 8116,
+        "parent_pid": 3392,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 9084,
+        "parent_pid": 10812,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ],
+  "ledger_verification": {
+    "passed": true,
+    "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-01\\scenarios\\cancel_recovery\\ledger-verification.json",
+    "admission": "admitted",
+    "admitted_turns": 2,
+    "backup_restore": null
+  }
+}

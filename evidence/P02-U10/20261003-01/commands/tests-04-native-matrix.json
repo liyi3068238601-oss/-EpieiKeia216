@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "tools/run-tests.mjs",
+    "integration",
+    "P02-U10"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10",
+  "started_at": "2026-10-03T13:30:14.482801+00:00",
+  "completed_at": "2026-10-03T13:31:36.752091+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 240,
+  "environment_overrides": {},
+  "stdout": "▶ P02 U10 uses independent fixed-Node workers for actual Native integration\n  ✔ success and fresh-root backup restore (3987.872ms)\n  ✖ actual Native tool failure (60241.0232ms)\n  ✔ caller cancellation (4060.9298ms)\n  ✔ in-flight close settles cancellation before writer close (3928.0977ms)\n  ✔ actual SQLite writer BUSY does not become Saved (5908.4748ms)\n  ✔ reopen recovers committed history without replay (3990.5009ms)\n✖ P02 U10 uses independent fixed-Node workers for actual Native integration (82118.2779ms)\nℹ tests 7\nℹ suites 0\nℹ pass 5\nℹ fail 2\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 82176.9114\n\n✖ failing tests:\n\ntest at tests\\integration\\P02\\native.integration.test.mjs:24:13\n✖ actual Native tool failure (60241.0232ms)\n  AssertionError [ERR_ASSERTION]: Native worker scenario tool-failure failed (exit=1, timedOut=true).\n  (node:38624) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n  (Use `node --trace-warnings ...` to show where the warning was created)\n  P02_NATIVE_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\u10\\\\native\\\\native-1EIzqM\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T13:30:22.269Z\",\"completedAtUtc\":\"2026-10-03T13:30:22.327Z\",\"durationMs\":58,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5520,\"stdoutSha256\":\"177d6deb7ef2352a3f910ba055675e1daa94ce1958f174725354735c18224ae9\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\n  \n  \n  \n  1 !== 0\n  \n      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/u10/tests/integration/P02/native.integration.test.mjs:26:14)\n      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n      at async Test.run (node:internal/test_runner/test:1125:7)\n      at async TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/u10/tests/integration/P02/native.integration.test.mjs:24:5)\n      at async Test.run (node:internal/test_runner/test:1125:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: 1,\n    expected: 0,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": ""
+}

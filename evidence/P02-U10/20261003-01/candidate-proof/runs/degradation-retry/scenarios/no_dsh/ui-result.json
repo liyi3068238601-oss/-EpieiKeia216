@@ -1,0 +1,64 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "no_dsh",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "reply",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send"
+  ],
+  "user_visible_reply": "本地运行正常，没有启动 DSH。",
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 15696,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\candidate-01",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-02\\scenarios\\no_dsh\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-02\\scenarios\\no_dsh\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-degradation-02\\scenarios\\no_dsh\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 38460,
+        "parent_pid": 15696,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 35180,
+        "parent_pid": 15696,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 19420,
+        "parent_pid": 15696,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 2980,
+        "parent_pid": 15696,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 23184,
+        "parent_pid": 15696,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 27508,
+        "parent_pid": 2980,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": true
+}

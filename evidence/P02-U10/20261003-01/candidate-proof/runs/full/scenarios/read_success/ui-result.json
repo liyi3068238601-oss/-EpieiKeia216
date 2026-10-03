@@ -1,0 +1,64 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "read_success",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "reply",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send"
+  ],
+  "user_visible_reply": "读到的标记是 orchid-42。",
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 41888,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\candidate-02",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02\\scenarios\\read_success\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02\\scenarios\\read_success\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u10\\desktop-full-02\\scenarios\\read_success\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 41080,
+        "parent_pid": 41888,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 4268,
+        "parent_pid": 41888,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 3416,
+        "parent_pid": 41888,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 41260,
+        "parent_pid": 41888,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 40804,
+        "parent_pid": 41888,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 28244,
+        "parent_pid": 41260,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": true
+}

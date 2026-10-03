@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "tests/integration/P02/native.worker.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10",
+  "started_at": "2026-10-03T13:28:31.793172+00:00",
+  "completed_at": "2026-10-03T13:28:54.674788+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\nError [ERR_MODULE_NOT_FOUND]: Cannot find module 'E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\packages\\provider\\dist\\registry.js' imported from E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10\\tests\\integration\\P02\\native.worker.mjs\n    at finalizeResolution (node:internal/modules/esm/resolve:275:11)\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n    at defaultResolve (node:internal/modules/esm/resolve:991:11)\n    at nextResolve (node:internal/modules/esm/hooks:785:28)\n    at resolveBase (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/node_modules/tsx/dist/esm/index.mjs?1791034112177:2:3744)\n    at resolveDirectory (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/node_modules/tsx/dist/esm/index.mjs?1791034112177:2:4243)\n    at resolveTsPaths (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/node_modules/tsx/dist/esm/index.mjs?1791034112177:2:4984)\n    at resolve (file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/node_modules/tsx/dist/esm/index.mjs?1791034112177:2:5361)\n    at nextResolve (node:internal/modules/esm/hooks:785:28)\n    at AsyncLoaderHooksOnLoaderHookWorker.resolve (node:internal/modules/esm/hooks:269:30) {\n  code: 'ERR_MODULE_NOT_FOUND',\n  url: 'file:///E:/Xiadie/Xiadie/.runtime/P01/desktop-source/packages/provider/dist/registry.js'\n}\n\nNode.js v24.14.0\n✖ tests\\integration\\P02\\native.worker.mjs (22819.1749ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 22828.6436\n\n✖ failing tests:\n\ntest at tests\\integration\\P02\\native.worker.mjs:1:1\n✖ tests\\integration\\P02\\native.worker.mjs (22819.1749ms)\n  'test failed'\n",
+  "stderr": ""
+}
