@@ -1,0 +1,68 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "cancel_recovery",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "cancel_recovery",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send",
+    "observed-streaming-partial-in-renderer",
+    "clicked-native-stop-button",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send"
+  ],
+  "user_visible_reply": "已恢复。",
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 37140,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full\\scenarios\\cancel_recovery\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full\\scenarios\\cancel_recovery\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full\\scenarios\\cancel_recovery\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 50764,
+        "parent_pid": 37140,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 16660,
+        "parent_pid": 37140,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 56148,
+        "parent_pid": 37140,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 54064,
+        "parent_pid": 37140,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 56252,
+        "parent_pid": 37140,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 29136,
+        "parent_pid": 54064,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": true
+}

@@ -1,0 +1,9 @@
+
+> xiadie@0.1.0 test:e2e E:\Xiadie\Xiadie\.runtime\P01\worktrees\u11
+> pnpm run build && node tools/run-stage-tests.mjs e2e "--" "--candidate" "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06" "--suite" "full" "--output" "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full"
+
+
+> xiadie@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\worktrees\u11
+> tsc --project tsconfig.json
+
+{"passed": true, "suite": "full", "output": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full", "scenarios": [{"id": "success", "passed": true, "model_requests": 1}, {"id": "read_success", "passed": true, "model_requests": 2}, {"id": "read_failure", "passed": true, "model_requests": 2}, {"id": "cancel_recovery", "passed": true, "model_requests": 2}, {"id": "disabled_native", "passed": true, "model_requests": 2}, {"id": "pro_denied", "passed": true, "model_requests": 0}]}

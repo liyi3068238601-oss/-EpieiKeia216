@@ -1,0 +1,10 @@
+
+> xiadie@0.1.0 test:e2e E:\Xiadie\Xiadie\.runtime\P01\worktrees\u11
+> pnpm run build && node tools/run-stage-tests.mjs e2e "--" "--candidate" "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06" "--suite" "degradation" "--output" "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\degradation"
+
+
+> xiadie@0.1.0 build E:\Xiadie\Xiadie\.runtime\P01\worktrees\u11
+> tsc --project tsconfig.json
+
+{"passed": false, "suite": "degradation", "output": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\degradation", "scenarios": [{"id": "no_key", "passed": true, "model_requests": 0}, {"id": "no_dsh", "passed": true, "model_requests": 1}, {"id": "offline", "passed": false, "model_requests": 1}]}
+ ELIFECYCLE  Command failed with exit code 1.

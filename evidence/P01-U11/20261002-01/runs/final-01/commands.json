@@ -1,0 +1,53 @@
+{
+  "execution_commit": "7a284538250d54c228a3a67fcabff4882c8afeff",
+  "candidate": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06",
+  "candidate_descriptor_sha256": "25f92e7604b41479fdcdd9dcc089afe0ce6441db4586a7f7e7614805632a8907",
+  "commands": [
+    {
+      "name": "full",
+      "command": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "test:e2e",
+        "--",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06",
+        "--suite",
+        "full",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11",
+      "exit_code": 0,
+      "seconds": 247.675,
+      "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full.log",
+      "bytes": 885,
+      "sha256": "ab6cfa87a143d3b8dd6aace5fff561bf3a1f3133b5b49cc6a105ccc41f55d6ac"
+    },
+    {
+      "name": "degradation",
+      "command": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node_modules\\corepack\\dist\\corepack.js",
+        "pnpm@10.33.2",
+        "run",
+        "test:e2e",
+        "--",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06",
+        "--suite",
+        "degradation",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\degradation"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11",
+      "exit_code": 1,
+      "seconds": 108.771,
+      "log": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\degradation.log",
+      "bytes": 766,
+      "sha256": "3d8c3c6885d834ba3b7d5362b974466b657e499cdf0f23c3f12b2724894ffefd"
+    }
+  ]
+}

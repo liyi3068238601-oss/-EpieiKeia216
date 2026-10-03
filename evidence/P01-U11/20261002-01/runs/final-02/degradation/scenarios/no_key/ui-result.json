@@ -1,0 +1,63 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "no_key",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "no_key",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "opened-native-synthetic-history-in-renderer",
+    "clicked-new-conversation-task",
+    "filled-v4-composer-input",
+    "pressed-enter-with-send-disabled",
+    "opened-native-settings-page"
+  ],
+  "user_visible_reply": null,
+  "error_banner": {
+    "visible": false,
+    "refused_by_disabled_control": true
+  },
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 31312,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-02\\degradation\\scenarios\\no_key\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-02\\degradation\\scenarios\\no_key\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-02\\degradation\\scenarios\\no_key\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 30468,
+        "parent_pid": 31312,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 10840,
+        "parent_pid": 31312,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 21272,
+        "parent_pid": 31312,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 3328,
+        "parent_pid": 31312,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 14432,
+        "parent_pid": 3328,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "no_key_send_button_enabled": false,
+  "passed": true
+}

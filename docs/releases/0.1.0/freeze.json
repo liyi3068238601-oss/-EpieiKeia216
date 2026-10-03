@@ -1,0 +1,224 @@
+{
+  "schema": "xiadie-release-freeze/v1",
+  "product": "Xiadie",
+  "version": "0.1.0",
+  "artifact_kind": "local_windows_development_assembly",
+  "author_status": "ready_for_review",
+  "accepted": false,
+  "published": false,
+  "gate": {
+    "name": "P01-G01",
+    "status": "pending_independent_review",
+    "next_stage_started": false
+  },
+  "baseline": {
+    "accepted_unit": "P01-U10",
+    "commit": "7a284538250d54c228a3a67fcabff4882c8afeff"
+  },
+  "execution": {
+    "worktree": ".runtime/P01/worktrees/u11",
+    "branch": "p01-u11",
+    "execution_commit": "c90e8c14e7437e84b088212694bc3ae6a1a5cfcc",
+    "change_scope": "Five-line test snapshot naming fix in tests/integration/P01/desktop-ui.mjs; no product scope expansion."
+  },
+  "candidate": {
+    "id": "u10-candidate-06",
+    "source_commit": "82298c735dfbc4f278b5e920d79be7a83f979b55",
+    "upstream": {
+      "name": "zai-org/ZCode",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "license": "Apache-2.0"
+    },
+    "descriptor": {
+      "path": ".runtime/P01/u10-candidate-06/candidate-descriptor.json",
+      "sha256": "25f92e7604b41479fdcdd9dcc089afe0ce6441db4586a7f7e7614805632a8907",
+      "repository_inputs": 66,
+      "artifacts": 6673
+    },
+    "cli_sha256": "56bc58a658d938b9090e6004b1ab3cc4ab4ec32ed1c1b6e2138aeb2676cce44d",
+    "source_lock": {
+      "path": "docs/sources.lock.json",
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    "freeze_input_inventory": {
+      "path": "evidence/P01-U11/20261002-01/coordinator/freeze-inputs.json",
+      "sha256": "3f968f4005cb0cd9bacdde3d1b2e7584a07e3c6e1b91828c68cfa727e22875df",
+      "files": 50
+    },
+    "key_assets": {
+      "persona_v3": {
+        "path": "assets/character/xiadie/v3/persona.json",
+        "sha256": "a688c669c4f556495131ac69cdc868a5b2ee93614eff814fc0793b1690c99bb4"
+      },
+      "persona_manifest": {
+        "path": "assets/character/xiadie/v3/manifest.json",
+        "sha256": "3bedae784adae2182f3396cccbc3c91663fe96a58d18373481fbb7155d888f62"
+      },
+      "asset_manifest": {
+        "path": "assets/manifest.json",
+        "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"
+      }
+    }
+  },
+  "validation": {
+    "toolchain": {
+      "node": "v24.14.0",
+      "pnpm": "10.33.2"
+    },
+    "full_run": {
+      "path": "evidence/P01-U11/20261002-01/runs/final-01",
+      "execution_commit": "7a284538250d54c228a3a67fcabff4882c8afeff",
+      "suite": "full",
+      "scenarios_passed": 6,
+      "scenarios_total": 6,
+      "exit_code": 0,
+      "log_sha256": "ab6cfa87a143d3b8dd6aace5fff561bf3a1f3133b5b49cc6a105ccc41f55d6ac",
+      "scenarios": [
+        "success",
+        "read_success",
+        "read_failure",
+        "cancel_recovery",
+        "disabled_native",
+        "pro_denied"
+      ],
+      "model_backend": "isolated loopback mock",
+      "external_model_requests": 0
+    },
+    "superseded_degradation_attempt": {
+      "path": "evidence/P01-U11/20261002-01/runs/final-01",
+      "exit_code": 1,
+      "failed_at": "offline history snapshot reused a filename and raised EEXIST after the UI had shown the 503 failure",
+      "retained": true,
+      "log_sha256": "3d8c3c6885d834ba3b7d5362b974466b657e499cdf0f23c3f12b2724894ffefd"
+    },
+    "degradation_rerun": {
+      "path": "evidence/P01-U11/20261002-01/runs/final-02",
+      "suite": "degradation",
+      "scenarios_passed": 3,
+      "scenarios_total": 3,
+      "exit_code": 0,
+      "seconds": 156.43,
+      "log_sha256": "ae7209532de88721d3c1ec8fb1824038fa3e369ef9b3503a22b03f4ce14f2079",
+      "scenarios": {
+        "no_key": {
+          "passed": true,
+          "provider_rules": [],
+          "model_rules": [],
+          "send_disabled": true,
+          "settings_opened": true,
+          "model_requests": 0
+        },
+        "no_dsh": {
+          "passed": true,
+          "model_requests": 1,
+          "response_status": 200,
+          "backend": "loopback mock",
+          "dsh_process_tree_verified": true
+        },
+        "offline": {
+          "passed": true,
+          "model_requests": 1,
+          "relay_status": 503,
+          "offline_reject": true,
+          "failure_visible": true,
+          "error_code": "model_request_failed",
+          "success_reply": false,
+          "before_and_after_history_markers": true
+        }
+      },
+      "external_model_requests": 0,
+      "dsh_process_tree_verified": true,
+      "production_unchanged": true,
+      "execution_unchanged": true,
+      "retry_override": {
+        "environment": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+        "value": "0",
+        "scope": "owned isolated test harness only"
+      }
+    },
+    "u09_model_evaluation": {
+      "p01_cumulative_real_requests": 18,
+      "budget_preapproved": 18,
+      "u02_requests": 4,
+      "u09_requests": 14,
+      "qualified": [
+        "deepseek-flash"
+      ],
+      "measured_not_qualified": [
+        "deepseek-v4-pro"
+      ],
+      "human_review": "not_reviewed"
+    },
+    "visual_review": "NOT_RUN",
+    "core_boundary_scan": "NOT_RUN",
+    "desktop_real_model_requests_in_u11": 0
+  },
+  "g01_evidence_map": [
+    {
+      "criterion": "identity_assets_verifiable",
+      "status": "evidence_recorded_pending_independent_review",
+      "evidence": [
+        "evidence/P01-U04/20261001-01/acceptance.json",
+        "assets/character/xiadie/v3/manifest.json",
+        "assets/character/xiadie/v3/persona.json",
+        "evidence/P01-U11/20261002-01/baseline.json"
+      ]
+    },
+    {
+      "criterion": "main_interaction_runnable",
+      "status": "evidence_recorded_pending_independent_review",
+      "evidence": [
+        "evidence/P01-U11/20261002-01/runs/final-01/full/summary.json",
+        "evidence/P01-U11/20261002-01/runs/final-01/commands.json"
+      ],
+      "boundary": "Actual Desktop UI automation with local mock backend; not a real provider call."
+    },
+    {
+      "criterion": "failure_is_not_reported_as_success",
+      "status": "evidence_recorded_pending_independent_review",
+      "evidence": [
+        "evidence/P01-U11/20261002-01/runs/final-01/full/scenarios/read_failure/scenario-result.json",
+        "evidence/P01-U11/20261002-01/runs/final-02/degradation/scenarios/offline/scenario-result.json"
+      ]
+    },
+    {
+      "criterion": "disabled_extension_preserves_native_runtime",
+      "status": "evidence_recorded_pending_independent_review",
+      "evidence": [
+        "evidence/P01-U11/20261002-01/runs/final-01/full/scenarios/disabled_native/scenario-result.json",
+        "evidence/P01-U06/20261002-01/result.md",
+        "evidence/P01-U10/20261002-01/acceptance.json"
+      ],
+      "boundary": "Verified in isolated Desktop/mock evidence; not a production provider test."
+    }
+  ],
+  "limits": {
+    "assembly_not_installer_or_portable": true,
+    "persona_is_not_claimed_original_ip": true,
+    "public_distribution_authorization_not_established": true,
+    "sidecar_is_not_renderer_evidence_panel": true,
+    "network_guard_is_instrumentation_not_os_sandbox": true,
+    "application_level_persistence": "not_started; P02 not started",
+    "fully_unauthenticated_provider_ui": "not_claimed",
+    "supported_models": [
+      "deepseek-flash"
+    ]
+  },
+  "next_unit": {
+    "id": "P02-U01",
+    "scope": "Runtime event/transcript and SQLite migration backup investigation",
+    "started": false
+  },
+  "author_evidence": {
+    "result": "evidence/P01-U11/20261002-01/result.md",
+    "baseline": "evidence/P01-U11/20261002-01/baseline.json",
+    "source_decision": "evidence/P01-U11/20261002-01/source-decision.md",
+    "rollback": "evidence/P01-U11/20261002-01/rollback.md"
+  },
+  "acceptance_status_kind": "author_snapshot",
+  "status_authority": {
+    "current_status": "evidence/P01/status.json",
+    "acceptance_record": "evidence/P01-U11/20261002-01/acceptance.json",
+    "current_acceptance_comes_from": "acceptance.json and status.json"
+  }
+}

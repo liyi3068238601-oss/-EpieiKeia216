@@ -1,0 +1,203 @@
+{
+  "schema": "p01-u11-freeze-baseline/v1",
+  "unit": "P01-U11",
+  "author_status": "ready_for_review",
+  "accepted": false,
+  "baseline_commit": "7a284538250d54c228a3a67fcabff4882c8afeff",
+  "execution_commit": "c90e8c14e7437e84b088212694bc3ae6a1a5cfcc",
+  "candidate": {
+    "id": "u10-candidate-06",
+    "repository_commit": "82298c735dfbc4f278b5e920d79be7a83f979b55",
+    "upstream": {
+      "name": "zai-org/ZCode",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "license": "Apache-2.0"
+    },
+    "descriptor_path": ".runtime/P01/u10-candidate-06/candidate-descriptor.json",
+    "descriptor_sha256": "25f92e7604b41479fdcdd9dcc089afe0ce6441db4586a7f7e7614805632a8907",
+    "descriptor_artifacts": 6673,
+    "descriptor_repository_inputs": 66,
+    "cli_sha256": "56bc58a658d938b9090e6004b1ab3cc4ab4ec32ed1c1b6e2138aeb2676cce44d",
+    "candidate_model": "deepseek-flash",
+    "denied_model": "deepseek-v4-pro"
+  },
+  "prerequisite_audit": {
+    "path": "evidence/P01-U11/20261002-01/coordinator/prerequisite-audit.json",
+    "sha256": "012ecb911d3c449f64dd463c48658e9cfa358850e6b9d8ac63a8b5bad54cd703",
+    "baseline_commit": "7a284538250d54c228a3a67fcabff4882c8afeff",
+    "tracked_planned_files": 424,
+    "package_manifest_entries": 423,
+    "package_manifest_matches": 423,
+    "accepted_prerequisite_units": [
+      "P01-U01",
+      "P01-U02",
+      "P01-U03",
+      "P01-U04",
+      "P01-U05",
+      "P01-U06",
+      "P01-U07",
+      "P01-U08",
+      "P01-U09",
+      "P01-U10"
+    ],
+    "next_stage_started": false
+  },
+  "freeze_input_inventory": {
+    "path": "evidence/P01-U11/20261002-01/coordinator/freeze-inputs.json",
+    "sha256": "3f968f4005cb0cd9bacdde3d1b2e7584a07e3c6e1b91828c68cfa727e22875df",
+    "files": 50
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "hash_method": {
+    "algorithm": "SHA-256",
+    "group_input": "candidate descriptor repositoryInputs",
+    "canonical_record": "path<TAB>bytes<TAB>sha256",
+    "ordering": "ordinal path order",
+    "encoding": "UTF-8 without BOM; one LF after every record",
+    "exclusions": "candidate descriptor excludes itself; its SHA-256 separately binds the complete descriptor and artifact inventory"
+  },
+  "hash_groups": {
+    "persona_prompt": {
+      "count": 1,
+      "sha256": "bfead658368a234e5cf6203317343c5f17016dbf01e628c5e125d84a3d414bd8",
+      "paths": [
+        "assets/character/xiadie/v3/persona.json"
+      ]
+    },
+    "schemas_and_asset_manifests": {
+      "count": 6,
+      "sha256": "ed17bdd572de4da910617af6aae0000e94b1e2c1c2db98539cb679d3c3417caf",
+      "paths": [
+        "assets/character/xiadie/v3/manifest.json",
+        "assets/manifest.json",
+        "packages/character/src/schema.ts",
+        "packages/contracts/src/context.ts",
+        "packages/contracts/src/index.ts",
+        "packages/contracts/src/json-value.ts"
+      ]
+    },
+    "extension_resources": {
+      "count": 4,
+      "sha256": "68254c1895828a7fea9936a25cd206be58503228b5af41781d243bbf5238286f",
+      "paths": [
+        "plugins/xiadie/.zcode-plugin/plugin.json",
+        "plugins/xiadie/hooks/context.mjs",
+        "plugins/xiadie/hooks/hooks.json",
+        "plugins/xiadie/marketplace.json"
+      ]
+    },
+    "lock_and_config": {
+      "count": 3,
+      "sha256": "603e47be76d6b27bc7ebd4fe62f43b6431bf3a789d4786f85ace28bfe9775fa4",
+      "paths": [
+        "package.json",
+        "pnpm-lock.yaml",
+        "tsconfig.json"
+      ]
+    },
+    "implementation_and_tests": {
+      "count": 52,
+      "sha256": "4400e40aff4748ff0b6db4b35056bdca2bb0287fcdb740631a999382b7267dc9",
+      "paths": [
+        "packages/adapters/zcode/src/host.ts",
+        "packages/adapters/zcode/src/index.ts",
+        "packages/adapters/zcode/test/contract.test.mjs",
+        "packages/adapters/zcode/test/fixtures/hook-process-fault.mjs",
+        "packages/adapters/zcode/test/host.test.mjs",
+        "packages/adapters/zcode/test/native.integration.test.mjs",
+        "packages/application/test/native-projection.integration.test.mjs",
+        "packages/application/test/turn-projection.test.mjs",
+        "packages/application/turn-projection.ts",
+        "packages/character/src/index.ts",
+        "packages/character/src/loader.ts",
+        "packages/character/test/contract.test.mjs",
+        "packages/character/test/loader.test.mjs",
+        "packages/character/test/readonly.type-fixture.ts",
+        "packages/character/test/schema.test.mjs",
+        "packages/config/desktop-build.mjs",
+        "packages/config/src/index.ts",
+        "packages/config/test/desktop-build-paths.test.mjs",
+        "packages/config/test/desktop-no-key.mjs",
+        "packages/config/test/profile-spec.mjs",
+        "packages/config/test/profile.test.mjs",
+        "packages/config/test/run-desktop-no-key.py",
+        "packages/config/test/seed-history.mjs",
+        "packages/config/test/warmup.test.mjs",
+        "packages/context/src/index.ts",
+        "packages/context/test/context.test.mjs",
+        "packages/context/test/contract.test.mjs",
+        "packages/context/test/integration.test.mjs",
+        "packages/context/test/readonly.type-fixture.ts",
+        "packages/contracts/test/contracts.test.mjs",
+        "packages/contracts/test/import-boundaries.test.mjs",
+        "packages/contracts/test/json-value.test.mjs",
+        "packages/contracts/test/json-value.type-fixture.ts",
+        "packages/contracts/test/tsconfig.json",
+        "packages/secrets/src/index.ts",
+        "packages/secrets/test/credential.test.mjs",
+        "tests/integration/P01/.gitattributes",
+        "tests/integration/P01/build-candidate.mjs",
+        "tests/integration/P01/desktop-ui.mjs",
+        "tests/integration/P01/desktop.py",
+        "tests/integration/P01/electron-network-guard.cjs",
+        "tests/integration/P01/electron-network-guard.test.mjs",
+        "tests/integration/P01/factory-entry.mjs",
+        "tests/integration/P01/factory-policy.mjs",
+        "tests/integration/P01/factory.mjs",
+        "tests/integration/P01/factory.test.mjs",
+        "tests/integration/P01/read-only-workspace.mjs",
+        "tests/integration/P01/read-only-workspace.test.mjs",
+        "tools/check-import-boundaries.mjs",
+        "tools/not-implemented.mjs",
+        "tools/run-stage-tests.mjs",
+        "tools/run-tests.mjs"
+      ]
+    }
+  },
+  "key_input_hashes": {
+    "persona_v3": {
+      "path": "assets/character/xiadie/v3/persona.json",
+      "bytes": 5580,
+      "sha256": "a688c669c4f556495131ac69cdc868a5b2ee93614eff814fc0793b1690c99bb4"
+    },
+    "persona_manifest": {
+      "path": "assets/character/xiadie/v3/manifest.json",
+      "bytes": 534,
+      "sha256": "3bedae784adae2182f3396cccbc3c91663fe96a58d18373481fbb7155d888f62"
+    },
+    "asset_manifest": {
+      "path": "assets/manifest.json",
+      "bytes": 4304,
+      "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"
+    }
+  },
+  "toolchain": {
+    "node": "v24.14.0",
+    "pnpm": "10.33.2",
+    "python": "3.12.10"
+  },
+  "u11_delta": {
+    "path": "tests/integration/P01/desktop-ui.mjs",
+    "change": "Unique checkpoint filenames for the two offline history snapshots",
+    "changed_lines": 5,
+    "product_code_changed": false,
+    "candidate_rebuilt": false
+  },
+  "scope": {
+    "product": "Local development assembly on ZCode native UI/Runtime",
+    "requirements": [
+      "R01",
+      "R02",
+      "R03",
+      "R05",
+      "R06",
+      "R13"
+    ],
+    "p01_status_changed": false,
+    "p02_started": false
+  },
+  "status_semantics": "Author snapshot only; current state is in evidence/P01/status.json and acceptance is recorded in evidence/P01-U11/20261002-01/acceptance.json if present."
+}

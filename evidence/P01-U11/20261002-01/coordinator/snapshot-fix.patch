@@ -1,0 +1,39 @@
+diff --git a/tests/integration/P01/desktop-ui.mjs b/tests/integration/P01/desktop-ui.mjs
+index 7eb0db2..7d0c1b7 100644
+--- a/tests/integration/P01/desktop-ui.mjs
++++ b/tests/integration/P01/desktop-ui.mjs
+@@ -223,14 +223,14 @@ async function waitForError(page) {
+   await snapshot(page, `ui-${spec.scenario_id}-error`);
+ }
+ 
+-async function inspectHistory(page) {
++async function inspectHistory(page, checkpoint = "history") {
+   if (!Array.isArray(spec.history_markers) || spec.history_markers.length !== 2) throw new Error("history_markers_missing");
+   const userMarker = page.getByText(spec.history_markers[0], { exact: true }).first();
+   await userMarker.waitFor({ state: "visible", timeout: 25_000 });
+   await userMarker.click();
+   await page.getByText(spec.history_markers[1], { exact: true }).waitFor({ state: "visible", timeout: 25_000 });
+   result.ui_actions.push("opened-native-synthetic-history-in-renderer");
+-  await snapshot(page, `ui-${spec.scenario_id}-history`);
++  await snapshot(page, `ui-${spec.scenario_id}-${checkpoint}`);
+ }
+ 
+ async function inspectSettings(page) {
+@@ -323,7 +323,7 @@ try {
+     await inspectSettings(first);
+   } else if (spec.flow === "offline") {
+     if (spec.history_markers) {
+-      await inspectHistory(first);
++      await inspectHistory(first, "history-before-offline");
+       await first.getByTestId("conversation-new-task").click();
+       result.ui_actions.push("clicked-new-conversation-task");
+     }
+@@ -331,7 +331,7 @@ try {
+     await send(first, spec.prompt);
+     await waitForError(first);
+     await inspectSettings(first);
+-    if (spec.history_markers) await inspectHistory(first);
++    if (spec.history_markers) await inspectHistory(first, "history-after-offline");
+   } else if (spec.flow === "pro_denied") {
+     const selected = await selectModel(first, "deepseek-v4-pro");
+     result.model_selection.pro_selected = selected;
