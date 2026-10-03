@@ -1,0 +1,36 @@
+{
+  "schema": "p02-u01-baseline/v1",
+  "baseline_commit": "2d02355bcc6453d8e54e78fde17a86676e82c932",
+  "branch": "p02-u01",
+  "coordinator_branch": "p02-stage",
+  "stage_entry_commit": "2d02355bcc6453d8e54e78fde17a86676e82c932",
+  "previous_stage_baseline": "9a39bde69545ac0ad28f484c5318425c2e5d4bf9",
+  "prerequisite": {
+    "task": "P01-U11",
+    "status": "accepted",
+    "G01": "pass",
+    "acceptance": {
+      "path": "evidence/P01-U11/20261002-01/acceptance.json",
+      "bytes": 1650,
+      "sha256": "f7b8f9e31439093f0442298ea544bf390ec142fdd508ce4e107ceb241540a63f"
+    }
+  },
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P02-U01.md",
+    "bytes": 2826,
+    "sha256": "99c5b0ced555d4ee8da4068c10a3e38bbfc6908e57b381a5aa70750a3a2682b1"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": {
+    "product": "docs/research/P02/",
+    "required_evidence": "evidence/P02-U01/20261003-01/",
+    "implementation": "NOT_RUN - prohibited before U01/U02 acceptance"
+  },
+  "test_mapping": "No production unit test for research. Verify exact source snapshots, indexed SHA and reviewed manifest; U02 runs actual isolated PoC.",
+  "author_status": "ready_for_review",
+  "checked_at_utc": "2026-10-03T04:33:17.695907+00:00"
+}

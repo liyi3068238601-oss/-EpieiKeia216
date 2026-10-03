@@ -1,0 +1,44 @@
+{
+  "cwd": "E:/Xiadie/Xiadie",
+  "date": "2026-10-03",
+  "commands": [
+    {
+      "command": "git status --short; git log -4 --oneline; Get-Content AGENTS.md; Get-Content evidence/P02/status.json",
+      "exit_code": 0,
+      "result": "clean p02-stage at 2d02355; G01 pass / P02-U01 running"
+    },
+    {
+      "command": "Public-document read-only GETs via stdlib urllib (queries.json contains URL/time/HTTP/body hash)",
+      "exit_code": 0,
+      "result": "2 primary docs HTTP200; no code execution from documents"
+    },
+    {
+      "command": "Fixed Node capability probe (node-probe-command.json contains exact argv/cwd)",
+      "exit_code": 0,
+      "stdout": "node-probe.stdout.json",
+      "stderr": "node-probe.stderr.txt"
+    },
+    {
+      "command": "python .runtime/P02/worktrees/u01/docs/research/P02/verify-research.py --source-root E:/Xiadie/Xiadie --output .runtime/P02/worktrees/u01/evidence/P02-U01/20261003-01/source-verification.json",
+      "exit_code": 0,
+      "result": "88 indexed file observations, 4 clean pinned trees, no mismatch"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "command": "verify-research.py initial hash list parser",
+      "exit_code": 1,
+      "error": "ValueError unpacking a header/comment line in SQLite text hash inventory",
+      "resolution": "Allow documented blank/comment inventory lines; validate each actual hash and indexed bytes unchanged; final verification exit0"
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit_code": 1,
+      "error": "Two Markdown hard-break trailing spaces in SQLite research report",
+      "resolution": "Removed trailing spaces; source files and assertions unchanged; rebuild final manifest before commit"
+    }
+  ],
+  "product_execution": "NOT_RUN",
+  "real_model": "NOT_RUN",
+  "scope": "Research files + explicitly required task evidence only; public sources and authorized paths read-only."
+}

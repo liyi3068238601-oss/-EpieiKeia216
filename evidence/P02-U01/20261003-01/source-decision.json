@@ -1,0 +1,24 @@
+{
+  "status": "candidate-only-pending-U02",
+  "default_candidate": "fixed ZCode Runtime/Hook exits + thin bounded ingestion + node:sqlite normalized fact sidecar",
+  "implementation_authorized_by_this_record": false,
+  "reuse": {
+    "dependency": "existing fixed Node 24.14.0 built-in SQLite API, conditional on U02",
+    "thin_adapter": "existing native Loop, Hook execution wrapper and subscribeEvents",
+    "design_only": [
+      "CloudEvents source+id dedup identity",
+      "ZCode transactional/checksum migrations",
+      "Herta manifest provenance",
+      "DSH attempt/recovery vocabulary"
+    ]
+  },
+  "rejected": [
+    "second main Runtime/model client",
+    "raw main-db copy as consistent WAL backup",
+    "transcript-path-only evidence",
+    "success inferred from queue/idle or assistant prose"
+  ],
+  "license": "ZCode Apache-2.0; Herta code MIT with explicit role-asset exclusion; DSH MIT. No upstream code/assets copied in this research unit. Official docs are linked, snapshots retained only in ignored local research root.",
+  "product_code_written": false,
+  "model_calls": 0
+}

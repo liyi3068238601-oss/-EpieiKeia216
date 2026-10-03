@@ -1,0 +1,35 @@
+{
+  "schema": "p02-u01-research-log/v1",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "method": "stdlib urllib read-only GET; web primary page corroboration",
+  "exit_code": 0,
+  "queries": [
+    {
+      "query": "CloudEvents v1.0.2 source id duplicate identity",
+      "url": "https://raw.githubusercontent.com/cloudevents/spec/v1.0.2/cloudevents/spec.md",
+      "file": "cloudevents-1.0.2.md",
+      "decision": "Design reference only; do not claim wire conformance or install framework.",
+      "http_status": 200,
+      "bytes": 25542,
+      "sha256": "e327435c858d19fd171e4ab9781a01fc22dfa949d23c4220976529ebd16a1aa3",
+      "resolved_url": "https://raw.githubusercontent.com/cloudevents/spec/v1.0.2/cloudevents/spec.md",
+      "status": "observed",
+      "observed_at_utc": "2026-10-03T04:28:35.025313+00:00"
+    },
+    {
+      "query": "ZCode hooks transcript_path documented lifetime",
+      "url": "https://zcode.z.ai/en/docs/hooks",
+      "file": "zcode-hooks.html",
+      "decision": "Current mutable docs compared with fixed source; fixed source governs experiment.",
+      "http_status": 200,
+      "bytes": 168854,
+      "sha256": "d2fec546016ae8e4fca4fe8910416a04acdb51ed3eed64ed88ba75441533891b",
+      "resolved_url": "https://zcode.z.ai/en/docs/hooks",
+      "status": "observed",
+      "observed_at_utc": "2026-10-03T04:28:35.514701+00:00"
+    }
+  ],
+  "product_tests": "NOT_RUN - research unit",
+  "models": "NOT_RUN - no model requests",
+  "permission": "Public docs read only. No global or production config mutation."
+}

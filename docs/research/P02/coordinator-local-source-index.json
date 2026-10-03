@@ -1,0 +1,85 @@
+{
+  "checked_at_utc": "2026-10-03T04:30:21.998231+00:00",
+  "baseline_commit": "2d02355bcc6453d8e54e78fde17a86676e82c932",
+  "previous_gate": "G01 pass, exact acceptance hash verified",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 1787,
+      "sha256": "b6ab92bf4c41d1cbc44fede9c152614b38bc24e5de8c293a55db258735ef53f4",
+      "read_scope": "Relevant complete methods/definitions in main source files; full small Hook and event retention modules."
+    },
+    {
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e",
+      "read_scope": "Relevant complete methods/definitions in main source files; full small Hook and event retention modules."
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U01.md",
+      "bytes": 2826,
+      "sha256": "99c5b0ced555d4ee8da4068c10a3e38bbfc6908e57b381a5aa70750a3a2682b1",
+      "read_scope": "Relevant complete methods/definitions in main source files; full small Hook and event retention modules."
+    },
+    {
+      "path": "evidence/P01-U11/20261002-01/acceptance.json",
+      "bytes": 1650,
+      "sha256": "f7b8f9e31439093f0442298ea544bf390ec142fdd508ce4e107ceb241540a63f",
+      "read_scope": "Relevant complete methods/definitions in main source files; full small Hook and event retention modules."
+    },
+    {
+      "path": "packages/application/turn-projection.ts",
+      "bytes": 16936,
+      "sha256": "2fc3f675856588b2ae8e6e3eb668f913b43bc9acb892a066b7e59a9e4e375292",
+      "read_scope": "Relevant complete methods/definitions in main source files; full small Hook and event retention modules."
+    },
+    {
+      "path": "packages/adapters/zcode/src/host.ts",
+      "bytes": 35854,
+      "sha256": "3d76e104f12cd9995f33d1a031e73bac2121947c9e7c063a932deaf2725d6615",
+      "read_scope": "Relevant complete methods/definitions in main source files; full small Hook and event retention modules."
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/hooks/configured-runner-input.ts",
+      "bytes": 5392,
+      "sha256": "ba409c54bf3137256b66c0aa75f9d5faa9515e7d03eb1c7acc4217272c710656",
+      "read_scope": "Relevant complete methods/definitions in main source files; full small Hook and event retention modules."
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/core/src/hooks/configured-runner-callback.ts",
+      "bytes": 7664,
+      "sha256": "450d2e711977431152e1c0ab62c184798eaf69a88e3d3f0289c49d05b502b08c",
+      "read_scope": "Relevant complete methods/definitions in main source files; full small Hook and event retention modules."
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/in-memory-session-event-store.ts",
+      "bytes": 5546,
+      "sha256": "4e4d4c2b020b90838fcf9d4445fa66735ac4a9f45b8684cbd1b0f3b96b976051",
+      "read_scope": "Relevant complete methods/definitions in main source files; full small Hook and event retention modules."
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/contracts/src/events/session-event-retention.ts",
+      "bytes": 3989,
+      "sha256": "5a44b7bf05d6ba544613076350e81c140dcf9869c8cc813f7b986e51adca366b",
+      "read_scope": "Relevant complete methods/definitions in main source files; full small Hook and event retention modules."
+    },
+    {
+      "path": "references/zcode-29628c9/apps/zcode-cli/packages/adapters/src/storage/session-store/migration-runner.ts",
+      "bytes": 11910,
+      "sha256": "e8139b07b070777a7bea424c2a6b57ce29b8c51a0dded0467310e1be9a3c2146",
+      "read_scope": "Relevant complete methods/definitions in main source files; full small Hook and event retention modules."
+    }
+  ],
+  "write_scope": "ignored coordinator research only",
+  "failed_research_commands": [
+    {
+      "issue": "Assumed storage source path omitted session-store subdirectory",
+      "resolution": "rg --files located actual source, read-only follow-up performed"
+    },
+    {
+      "issue": "Assumed contracts events.ts file; wildcard positional rg on PowerShell failed",
+      "resolution": "rg --files located events/ tree; explicit paths used subsequently"
+    }
+  ],
+  "production_mutation": false
+}
