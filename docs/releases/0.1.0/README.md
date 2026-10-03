@@ -1,6 +1,6 @@
 # Xiadie 0.1.0 冻结候选
 
-**作者提交时状态快照：ready_for_review；独立接受尚未记录。** 这是 P01 阶段的 Windows 本地开发 assembly 冻结记录，不是安装器、可移植发行包或公开发布物。当前权威状态见 [evidence/P01/status.json](../../../evidence/P01/status.json)；后续 acceptance.json 写入后，当前接受结果以该记录和 status.json 为准。本文中的 accepted:false 是作者快照。机器冻结索引见 [freeze.json](freeze.json)；作者材料见 [result](../../../evidence/P01-U11/20261002-01/result.md)、[baseline](../../../evidence/P01-U11/20261002-01/baseline.json)、[source decision](../../../evidence/P01-U11/20261002-01/source-decision.md) 和 [rollback](../../../evidence/P01-U11/20261002-01/rollback.md)。
+**作者提交时状态快照：ready_for_review；独立接受尚未记录。** 这是 P01 阶段的 Windows 本地开发 assembly 冻结记录，不是安装器、可移植发行包或公开发布物。当前权威状态见 [evidence/P01/status.json](../../../evidence/P01/status.json)；当前接受结果见 [G01 acceptance](../../../evidence/P01-U11/20261002-01/acceptance.json) 和 status.json（acceptance 在协调验收后写入）。本文中的 accepted:false 是作者快照。机器冻结索引见 [freeze.json](freeze.json)；作者材料见 [result](../../../evidence/P01-U11/20261002-01/result.md)、[baseline](../../../evidence/P01-U11/20261002-01/baseline.json)、[source decision](../../../evidence/P01-U11/20261002-01/source-decision.md) 和 [rollback](../../../evidence/P01-U11/20261002-01/rollback.md)。
 
 本候选沿用 ZCode 原生 UI 和 Runtime。用户看到 ZCode 原生对话；Xiadie 提供已验收的遐蝶身份资产和上下文接缝。宿主侧 sidecar 保存 turn/tool 核验证据，不是 renderer 回复面板。固定上游为 ZCode commit 29628c9acdb81b703bbd4080c207a0e7ce5e276e，candidate-06 源码为 82298c735dfbc4f278b5e920d79be7a83f979b55。
 
@@ -27,4 +27,4 @@ final-01 degradation 的 offline 检查确实收到 503、打开 Settings 并读
 
 此范围不证明完整多会话编辑/并发/重启恢复、应用级持久化、DSH 集成、完整无凭据 UI 状态、真实 Desktop provider 调用、可安装/可移植交付或生产网络隔离。网络 guard 是进程 instrumentation，不是 OS sandbox。视觉审查和 Core boundary scan 均为 NOT_RUN。P01 的 R01/R02/R03/R05/R06/R13 仍只是阶段范围证据，不代表全项目 Must 已完成。
 
-U11 作者材料待独立核验，G01 尚未被判为 pass，根状态仍为 running。下一节点为 P02-U01 的 Runtime event/transcript/SQLite 迁移备份调查；本轮未启动 P02，也未发布或上传任何产物。
+作者提交时，U11 材料待独立核验，G01 尚未被判为 pass，根状态为 running；这些是历史快照，当前判定以页首接受索引为准。下一节点为 P02-U01 的 Runtime event/transcript/SQLite 迁移备份调查；本轮未启动 P02，也未发布或上传任何产物。
