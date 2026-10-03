@@ -1,0 +1,38 @@
+{
+  "schema": "p02-unit-baseline/v1",
+  "task": "P02-U05",
+  "baseline_commit": "18a35406efaccce964ea53327d7af6d636c115f1",
+  "branch": "p02-u05",
+  "coordinator_branch": "p02-stage",
+  "prerequisites": [
+    {
+      "task": "P02-U04",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U04/20261003-01/acceptance.json",
+        "bytes": 2388,
+        "sha256": "51ea833ad4017e0f909e3dca6a4ba1b88a348162c9198672c5f0dbed892b928c"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P02-U05.md",
+    "bytes": 1936,
+    "sha256": "1e43db642edc3d6d2229f199789c4c8b494fe50ad95d3c73215b708835c02b99"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "packages/storage/events",
+    "migrations",
+    "tsconfig.json",
+    "tools/run-tests.mjs",
+    "evidence/P02-U05/20261003-01"
+  ],
+  "test_mapping": "target packages/storage/events/ maps src/*.ts + test/*.mjs including owned kill worker; migrations/*.ts supplies versioned DDL, tsconfig includes new storage/migration sources, run-tests maps U05 task; no Host/P01/reference/global edits",
+  "author_status": "ready_for_review",
+  "checked_at_utc": "2026-10-03T07:16:23.958483+00:00"
+}

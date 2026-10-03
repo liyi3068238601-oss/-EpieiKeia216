@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "& 'E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe' 'node_modules/typescript/bin/tsc' --project tsconfig.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+  "started_at": "2026-10-03T07:31:20.132673+00:00",
+  "completed_at": "2026-10-03T07:31:21.173229+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "packages/storage/events/src/index.ts(1012,3): error TS2322: Type 'Readonly<{ sql: `SELECT source, event_id FROM events ${string} ORDER BY first_commit_sequence LIMIT ?`; values: readonly (string | number | null)[]; limit: number; }>' is not assignable to type 'QueryPlan'.\r\n  Types of property 'values' are incompatible.\r\n    The type 'readonly (string | number | null)[]' is 'readonly' and cannot be assigned to the mutable type '(string | number | null)[]'.\r\npackages/storage/events/src/index.ts(1027,3): error TS2322: Type 'Readonly<{ sql: `SELECT source, event_id, observation_key, commit_sequence FROM event_observations ${string} ORDER BY commit_sequence LIMIT ?`; values: readonly (string | number | null)[]; limit: number; }>' is not assignable to type 'QueryPlan'.\r\n  Types of property 'values' are incompatible.\r\n    The type 'readonly (string | number | null)[]' is 'readonly' and cannot be assigned to the mutable type '(string | number | null)[]'.\r\n",
+  "stderr": ""
+}

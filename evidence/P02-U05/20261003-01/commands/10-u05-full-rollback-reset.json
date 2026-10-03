@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "& 'E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe' 'tools/run-tests.mjs' unit P02-U05"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+  "started_at": "2026-10-03T07:38:25.119653+00:00",
+  "completed_at": "2026-10-03T07:38:25.959254+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "(node:46520) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n✔ atomic first fact, origin, capture material and receipt; retry, resequence and conflict remain auditable (32.007ms)\n✔ scope and operation queries page complete facts and observations explicitly (10.4153ms)\n✔ invalid raw, over-limit event, forged mask and mismatched capture are refused before enqueue (10.2773ms)\n✔ readback recomputes facts and rejects tampered mirror columns as CORRUPT_STORE (16.1585ms)\n✔ bounded FIFO rejects overflow and close drains its accepted frontier (6.8953ms)\n✔ actual SQLite BUSY, controlled SQLITE_FULL, readonly refusal and future-schema preflight (316.1682ms)\n✔ owned process hard-kill before COMMIT rolls back; after COMMIT before ACK is found by receipt without duplication (189.7215ms)\nℹ tests 7\nℹ suites 0\nℹ pass 7\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 639.8569\n",
+  "stderr": ""
+}

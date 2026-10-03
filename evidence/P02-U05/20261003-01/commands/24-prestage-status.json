@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "git status --short; git diff --stat; Get-ChildItem -Recurse -File packages/storage/events migrations evidence/P02-U05/20261003-01 | Select-Object -ExpandProperty FullName"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+  "started_at": "2026-10-03T07:52:27.572811+00:00",
+  "completed_at": "2026-10-03T07:52:28.081045+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": " M tools/run-tests.mjs\n M tsconfig.json\n?? evidence/P02-U05/\n?? migrations/\n?? packages/storage/\n tools/run-tests.mjs | 3 ++-\n tsconfig.json       | 2 +-\n 2 files changed, 3 insertions(+), 2 deletions(-)\n",
+  "stderr": "Get-ChildItem : A positional parameter cannot be found that accepts argument 'packages/storage/events'.\r\nAt line:1 char:38\r\n+ ... iff --stat; Get-ChildItem -Recurse -File packages/storage/events migr ...\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : InvalidArgument: (:) [Get-ChildItem], ParameterBindingException\r\n    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand\r\n \r\n"
+}

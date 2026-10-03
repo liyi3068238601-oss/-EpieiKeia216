@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "rg -n -C 5 'isTransaction|close\\(\\): void' node_modules/@types/node/sqlite.d.ts"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+  "started_at": "2026-10-03T07:41:52.000820+00:00",
+  "completed_at": "2026-10-03T07:41:52.345547+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "278-        /**\n279-         * Closes the database connection. An exception is thrown if the database is not\n280-         * open. This method is a wrapper around [`sqlite3_close_v2()`](https://www.sqlite.org/c3ref/close.html).\n281-         * @since v22.5.0\n282-         */\n283:        close(): void;\n284-        /**\n285-         * Loads a shared library into the database connection. This method is a wrapper\n286-         * around [`sqlite3_load_extension()`](https://www.sqlite.org/c3ref/load_extension.html). It is required to enable the\n287-         * `allowExtension` option when constructing the `DatabaseSync` instance.\n288-         * @since v22.13.0\n--\n408-        /**\n409-         * Whether the database is currently within a transaction. This method\n410-         * is a wrapper around [`sqlite3_get_autocommit()`](https://sqlite.org/c3ref/get_autocommit.html).\n411-         * @since v24.0.0\n412-         */\n413:        readonly isTransaction: boolean;\n414-        /**\n415-         * Opens the database specified in the `path` argument of the `DatabaseSync`constructor. This method should only be used when the database is not opened via\n416-         * the constructor. An exception is thrown if the database is already open.\n417-         * @since v22.5.0\n418-         */\n--\n538-        /**\n539-         * Closes the session. An exception is thrown if the database or the session is not open. This method is a\n540-         * wrapper around\n541-         * [`sqlite3session_delete()`](https://www.sqlite.org/session/sqlite3session_delete.html).\n542-         */\n543:        close(): void;\n544-        /**\n545-         * Closes the session. If the session is already closed, does nothing.\n546-         * @since v24.9.0\n547-         */\n548-        [Symbol.dispose](): void;\n",
+  "stderr": ""
+}

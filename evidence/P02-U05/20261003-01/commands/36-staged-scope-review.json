@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "git status --short; git diff --cached --stat; git diff --cached --name-only; (Get-FileHash 'evidence/P02-U05/20261003-01/manifest.json' -Algorithm SHA256).Hash"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05",
+  "started_at": "2026-10-03T07:56:04.371393+00:00",
+  "completed_at": "2026-10-03T07:56:04.678210+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "A  evidence/P02-U05/20261003-01/baseline.json\nA  evidence/P02-U05/20261003-01/inputs-final-02-post.json\nA  evidence/P02-U05/20261003-01/inputs-final-02-pre.json\nA  evidence/P02-U05/20261003-01/manifest.json\nA  evidence/P02-U05/20261003-01/ready-for-review.md\nA  migrations/001-event-store.ts\nA  packages/storage/events/src/index.ts\nA  packages/storage/events/test/events.test.mjs\nA  packages/storage/events/test/sqlite-worker.mjs\nM  tools/run-tests.mjs\nM  tsconfig.json\n evidence/P02-U05/20261003-01/baseline.json         |   38 +\n .../P02-U05/20261003-01/inputs-final-02-post.json  |  553 ++++++++\n .../P02-U05/20261003-01/inputs-final-02-pre.json   |  551 ++++++++\n evidence/P02-U05/20261003-01/manifest.json         |   69 +\n evidence/P02-U05/20261003-01/ready-for-review.md   |   13 +\n migrations/001-event-store.ts                      |  106 ++\n packages/storage/events/src/index.ts               | 1332 ++++++++++++++++++++\n packages/storage/events/test/events.test.mjs       |  638 ++++++++++\n packages/storage/events/test/sqlite-worker.mjs     |   34 +\n tools/run-tests.mjs                                |    3 +-\n tsconfig.json                                      |    2 +-\n 11 files changed, 3337 insertions(+), 2 deletions(-)\nevidence/P02-U05/20261003-01/baseline.json\nevidence/P02-U05/20261003-01/inputs-final-02-post.json\nevidence/P02-U05/20261003-01/inputs-final-02-pre.json\nevidence/P02-U05/20261003-01/manifest.json\nevidence/P02-U05/20261003-01/ready-for-review.md\nmigrations/001-event-store.ts\npackages/storage/events/src/index.ts\npackages/storage/events/test/events.test.mjs\npackages/storage/events/test/sqlite-worker.mjs\ntools/run-tests.mjs\ntsconfig.json\n",
+  "stderr": "Get-FileHash : The term 'Get-FileHash' is not recognized as the name of a cmdlet, function, script file, or operable pr\r\nogram. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.\r\nAt line:1 char:79\r\n+ ... --cached --stat; git diff --cached --name-only; (Get-FileHash 'eviden ...\r\n+                                                      ~~~~~~~~~~~~\r\n    + CategoryInfo          : ObjectNotFound: (Get-FileHash:String) [], CommandNotFoundException\r\n    + FullyQualifiedErrorId : CommandNotFoundException\r\n \r\n"
+}
