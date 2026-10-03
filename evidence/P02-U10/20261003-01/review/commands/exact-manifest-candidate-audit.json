@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\u10\\verify_u10_exact.py"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10",
+  "started_at": "2026-10-03T14:20:25.416812+00:00",
+  "completed_at": "2026-10-03T14:20:52.229406+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 240,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\u10\\verify_u10_exact.py\", line 115, in <module>\r\n    ensure(not extra and not missing,f'candidate tree coverage mismatch extra={sorted(extra)[:10]} missing={sorted(missing)[:10]}')\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\u10\\verify_u10_exact.py\", line 25, in ensure\r\n    if not cond: raise AssertionError(msg)\r\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^\r\nAssertionError: candidate tree coverage mismatch extra=['%SystemDrive%/ProgramData/Microsoft/Windows/Caches/cversions.2.db', '%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{53B625E6-252A-4FA7-93E1-BA4A07258BB9}.2.ver0x0000000000000001.db', '%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{621B6E11-9A7A-4201-92E9-7520D6A3457C}.2.ver0x0000000000000001.db', '%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{6AF0698E-D558-4F6E-9B3C-3716689AF493}.2.ver0x0000000000000001.db', '%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{6C5932C1-B26B-4B70-8D1A-1C581F8D8682}.2.ver0x0000000000000001.db', '%SystemDrive%/ProgramData/Microsoft/Windows/Caches/{DDF571F2-BE98-426D-8288-1A9A39C3FDA2}.2.ver0x0000000000000001.db', 'node_modules/.bin/0ecdsa-generate-keypair', 'node_modules/.bin/0ecdsa-generate-keypair.CMD', 'node_modules/.bin/0ecdsa-generate-keypair.ps1', 'node_modules/.bin/0gentesthtml'] missing=[]\r\n"
+}

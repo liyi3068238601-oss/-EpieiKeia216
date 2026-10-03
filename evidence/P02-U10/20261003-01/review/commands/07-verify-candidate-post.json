@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\u10\\verify_candidate_post.py"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10",
+  "started_at": "2026-10-03T14:30:54.804364+00:00",
+  "completed_at": "2026-10-03T14:31:15.621513+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 180,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\u10\\verify_candidate_post.py\", line 10, in <module>\r\n    if any(not p.startswith('evidence/P02-U10/20261003-01/') for p in diff): raise RuntimeError('post-build source drift detected')\r\n                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nRuntimeError: post-build source drift detected\r\n"
+}

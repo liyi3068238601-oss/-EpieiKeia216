@@ -1,0 +1,473 @@
+{
+  "schema": "p02-independent-review/v1",
+  "decision": "pass",
+  "task": "P02-U10",
+  "review_target": {
+    "author_commit": "c894d0525b43cf0e3c47639b7246b4007b45114b",
+    "baseline_commit": "da364514f78d486564b26d3973a66b821a937503",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10"
+  },
+  "reviewer": "p02_u10_independent",
+  "scope": "Exact-commit independent qualification of the bounded P02-U10 Native durable host, candidate-02 build mapping, actual Desktop full/degradation evidence and SQLite receipt/readback. No product/upstream/P01 edits or public-release qualification.",
+  "checks": [
+    {
+      "id": "exact-target-manifest-and-scope",
+      "status": "pass",
+      "detail": "verify-author independently confirms exact HEAD c894d0525b43cf0e3c47639b7246b4007b45114b, clean author worktree, 347 manifest files/348 changed paths, manifest SHA-256 eabeca1704f7806aab08b00834b482b7f21a3ceabf5515a29b8b2a9f869f4729, and zero disk/Git mismatches; pre and post checks agree. The source review found no critical scope, hook-correlation, durable-receipt, or close-order defect."
+    },
+    {
+      "id": "candidate-build-provenance",
+      "status": "pass",
+      "detail": "Frozen verify_candidate pre/post confirms candidate-02 descriptor SHA-256 751d005573354d5f09aa676c2c306c744f1754432506915a08eb874a7e14cb45, source commit 7f947b3abc172aa2e8dc3614abec0679b0b8d24d, pinned Native source 29628c9acdb81b703bbd4080c207a0e7ce5e276e, all 94 repository inputs and 6,689 declared physical artifacts; contract checks cover factory, recipe, CLI, protocol patch, provider config, Desktop paths and fixed Node v24.14.0. Post-build source/test drift is zero; only the allowed docs/evals/P02/requirement-evidence.md evidence update is outside candidate inputs."
+    },
+    {
+      "id": "native-integration-and-regression",
+      "status": "pass",
+      "detail": "Independent fixed Node v24.14.0 selector tools/run-tests.mjs integration P02-U10 exited 0: 8/8 passed, 0 failed/skipped, including backup/restore, actual tool and Native failures, cancellation, in-flight close, SQLite writer BUSY and recovery without replay. Author’s final pre/post Native input bindings match (132 inputs, digest 588e587c5d6580cdc1cbc4c43afcebedeeaa265899dbc0b33664151d2be3b964); accepted U03-U09 regression is 82/82."
+    },
+    {
+      "id": "actual-desktop-and-sqlite-readback",
+      "status": "pass",
+      "detail": "Candidate-02 final Desktop full suite is 6/6 and degradation suite 3/3; retained original run evidence and candidate-proof index bind the archived proof. Independent read-only verifier rechecked all 319 archived proof copies and freshly read back all 9 actual SQLite ledgers: every expected report passed. The no-Key case is not admitted, with zero turns and zero fact rows; it retains its ledger refusal record. Final suites report production/execution unchanged, DSH not started and zero external model calls."
+    },
+    {
+      "id": "durability-and-lifecycle-review",
+      "status": "pass",
+      "detail": "Reviewed durable-host against the compiled ZCode host, event-store and event-contract APIs. Native envelope identity and installed UserPromptSubmit correlation stay tied to the current run/attempt; capture is derived/masked; Saved follows commit plus matching persisted receipt/readback and is separate from Native outcome; close stops admission, aborts its owned work and awaits completion before Native/storage close."
+    },
+    {
+      "id": "license-and-asset-boundary",
+      "status": "pass",
+      "detail": "Candidate upstream license is byte-identical to the fixed P01 source LICENSE (Apache-2.0). Asset manifest remains research_only with zero approved assets; persona manifest says local user-approved adaptation and explicitly does not assert public distribution rights. This review grants no redistribution rights."
+    }
+  ],
+  "limitations": [
+    "This is local candidate qualification only. It does not establish a portable/hermetic dependency closure (candidate borrows a node_modules junction/runtime), installed production use, full historical-data correctness, physical power-loss behavior, human visual acceptance, or public distribution clearance.",
+    "Desktop scenarios use owned profiles and loopback fixtures; there were zero external/paid model calls and no real credentials. The durable host/SQLite qualification is in the CLI protocol process, not Electron main. Human visual review was not run.",
+    "Earlier candidate-01 no-Key UI runs and their failures are retained. The P02-only driver repair accepts a Settings timeout only when the real Settings page is detached and workspace composer visible; candidate-02 full and degradation reruns passed. This DOM postcondition is not a human visual review.",
+    "Three failed reviewer-helper attempts are retained in commands: an overbroad whole-candidate-tree assertion counted borrowed node_modules/runtime paths outside the declared descriptor boundary; an initial readback helper chose the wrong profile-root parent and failed before DB reads; an initial post-build helper rejected the permitted evidence-only docs/evals/P02/requirement-evidence.md update. The scope-appropriate frozen verifiers and corrected readback then passed; no author source or database was changed by those failures."
+  ],
+  "artifacts": [
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/manifest.json",
+      "bytes": 102879,
+      "sha256": "eabeca1704f7806aab08b00834b482b7f21a3ceabf5515a29b8b2a9f869f4729"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/baseline.json",
+      "bytes": 2759,
+      "sha256": "7f7432872a36d38ed9591c4d5d1a92e15670948f7e3cbde48fac901992ecea3f"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/diff.json",
+      "bytes": 97202,
+      "sha256": "7edb50248b7ffabea0fa4ccf16b2cbc34012acdff3aa71f1b283a032e93c051b"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/command-index.json",
+      "bytes": 3113,
+      "sha256": "3d189105645fd9a6edafcaaf451e45de2aebe7318bb876bec97eede85f4ca1b4"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/result.md",
+      "bytes": 7057,
+      "sha256": "000303088c82773a5b63ce01512fd63ded11294a5901e1afa18fdfa5adf4d10b"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/source-decision.md",
+      "bytes": 3572,
+      "sha256": "78520f8195789d654f248ce3c05ceafb580a74ed8c50e2e5594ae58b65afc228"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/candidate-proof-index.json",
+      "bytes": 111224,
+      "sha256": "de59ce391575ea88efc32f3e6261dcd64feb82830ce5e20808ec6c96a3cb024d"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/candidate-proof/candidate-descriptor.json",
+      "bytes": 1327392,
+      "sha256": "751d005573354d5f09aa676c2c306c744f1754432506915a08eb874a7e14cb45"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/candidate-proof/runs/full/summary.json",
+      "bytes": 73035,
+      "sha256": "d92cc9dc766e9077f234bb3bc37068a427f4fc797c7cc3783c6e7cbfead21f2c"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/candidate-proof/runs/degradation/summary.json",
+      "bytes": 47870,
+      "sha256": "0fbccd07ce3e0d2f55734f131210cb224300e1e1c74c07fad9ba0c173fd8b85a"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/candidate-proof/runs/degradation-initial/summary.json",
+      "bytes": 48454,
+      "sha256": "531cc68cecf78835c486d4334158a465e2eaf6c74991b888a32d6e97fcca117e"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/candidate-proof/runs/degradation-retry/summary.json",
+      "bytes": 48480,
+      "sha256": "ee55744609298768de9acd088bbc56c6fa2211f414ba39529793b621921d9b19"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/commands/tests-07-final-native-matrix.json",
+      "bytes": 25767,
+      "sha256": "3e984e3c6364b29e7cfa4a3543e93f417cb2ebc2367c318c039c1a08a9fdf647"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/commands/tests-06-final-inputs-before.json",
+      "bytes": 30693,
+      "sha256": "831ba86c71062cea65c1b29369e2d8038fa98660f69a22a01c1874d0b0e1e005"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/commands/tests-08-final-inputs-after.json",
+      "bytes": 30801,
+      "sha256": "9f8cf6b42eb778ad5a1ea68fc469623b7b5a95dc0d97bef2554a1b1a9d402d72"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/commands/03-accepted-unit-regression.json",
+      "bytes": 10028,
+      "sha256": "2f70f17b0a155d8a6bc6900e89c25ce495523ed716844ac831f6585fff8e65bc"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/commands/01-build.json",
+      "bytes": 480,
+      "sha256": "27622629341804c8d7b549a60904f34db30c5aabb758e5f759e478b349ec4647"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U10/20261003-01/commands/02-wrapper-syntax.json",
+      "bytes": 464,
+      "sha256": "9fc931cea50ba44b1cbd5925c014cdee263b8df907d72621c307c931a1880894"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P02/durable-host.mjs",
+      "bytes": 19477,
+      "sha256": "faf5d2c1102d9ab6d2dafb7b1ff2c8fd299543380602ee73789302eeebd67e54"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P02/factory-entry.mjs",
+      "bytes": 1750,
+      "sha256": "60330aa9e25d017c74679319ebebb4d0f1ffd0c4f61d6e1552deca89b787bf4d"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P02/desktop.py",
+      "bytes": 6260,
+      "sha256": "4cc73f06643565b59004136b85f78f0d208da927d242f82efcbe4cd40c617e45"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P02/desktop-ui.mjs",
+      "bytes": 18150,
+      "sha256": "cc3d97f4048d8a8ddcbb894a1a13e7ec60f2213b4583a250503c80e125d3882b"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P02/verify-ledger.mjs",
+      "bytes": 17529,
+      "sha256": "a83eb5e227e0c8c6e724b7a8e1b7a0e02f29e7bf00acb3c0119794bc32ed8942"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P02/native.integration.test.mjs",
+      "bytes": 3612,
+      "sha256": "33014fdc2194c4f3ca8d82aa99b7441b157811ea7de2fd39a4e44e9a53edbae6"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P02/native.worker.mjs",
+      "bytes": 31323,
+      "sha256": "a814b1ddba9b36ccd8cdce73fafedfca449327d89f5dadf55cae7b057589bbe7"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tools/run-tests.mjs",
+      "bytes": 5872,
+      "sha256": "7d9f105fc6478cf076105cf083a94ca374264116706a049490b51ad046b1d2c6"
+    },
+    {
+      "root": "author_worktree",
+      "path": "dist/packages/adapters/zcode/src/host.js",
+      "bytes": 34472,
+      "sha256": "71c52358d92446bb7cc8b0ce37b7c5f0b696acb2da883a4d2a049e093dd6e570"
+    },
+    {
+      "root": "author_worktree",
+      "path": "dist/packages/storage/events/src/index.js",
+      "bytes": 53220,
+      "sha256": "4e5d627140d678ccb67296f268a298fdad84fe8b7dbb322773cdea585bc7665f"
+    },
+    {
+      "root": "author_worktree",
+      "path": "dist/packages/contracts/src/events.js",
+      "bytes": 12261,
+      "sha256": "c9f786983d0fda3b0bbaa2a91e2e5e5703add8bae50bc691faadac93c4e1e5a3"
+    },
+    {
+      "root": "author_worktree",
+      "path": "migrations/001-event-store.ts",
+      "bytes": 4362,
+      "sha256": "dd63a073f14172808cc75564e41681045cdadca89db2f2933ae12337bbcaa7e1"
+    },
+    {
+      "root": "author_worktree",
+      "path": "assets/manifest.json",
+      "bytes": 4304,
+      "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"
+    },
+    {
+      "root": "author_worktree",
+      "path": "assets/character/xiadie/v3/manifest.json",
+      "bytes": 534,
+      "sha256": "3bedae784adae2182f3396cccbc3c91663fe96a58d18373481fbb7155d888f62"
+    },
+    {
+      "root": "author_worktree",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U10.md",
+      "bytes": 2788,
+      "sha256": "ade1d9901aee017b61f87b338b26c0ede6b6d0e9d0e175441b9b9dc4fa51fa18"
+    },
+    {
+      "root": "review_directory",
+      "path": "u10-independent-review-20261003-candidate01-and-driver-fix.md",
+      "bytes": 3882,
+      "sha256": "f479cdb959f0de8700249f2114d4350f65bbf3d5597d7a3cdca0c76843da1754"
+    },
+    {
+      "root": "review_directory",
+      "path": "author-manifest-verification.json",
+      "bytes": 556,
+      "sha256": "bd9b377f7d76a241576da902e026a7344a294ecd0e2bfb922e9a3a14297f4208"
+    },
+    {
+      "root": "review_directory",
+      "path": "author-manifest-verification-post.json",
+      "bytes": 556,
+      "sha256": "6593d4ebdba8eb9c656520c65fc07af2855279857ef4e2a2497dba8d116881b4"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/01-verify-author.json",
+      "bytes": 1220,
+      "sha256": "a0cb1003c07f3548f3662ee05c87a3e0c34e56270ca7f555d6c5ccf353898e3e"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/02-verify-candidate.json",
+      "bytes": 944,
+      "sha256": "2269798da88affbe3f36469ec7394322b9e9794c7a408a3eb15a3830aaa60115"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/03-native-selector.json",
+      "bytes": 25769,
+      "sha256": "b7ca7b04f0ee71f6b8e44f52d661f1baf4d3cf1f6bc35ce2a5a0d4698dd35083"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/04-desktop-ledger-readback.json",
+      "bytes": 898,
+      "sha256": "33850f26e7b5bdd7fa45243eb2880ff6594765de8a7a6555bdb62deedc82bb48"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/05-desktop-ledger-readback-final.json",
+      "bytes": 8517,
+      "sha256": "d8335f4e77ee3bd04ff5dbf0f6374b435ca1044837d23c418442b938c7b7e1d4"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/06-verify-author-post.json",
+      "bytes": 1225,
+      "sha256": "a70f46d19abe6b122bca1bb3d3e90372ed2bc544bbc7e3d40494a55b05583a07"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/07-verify-candidate-post.json",
+      "bytes": 857,
+      "sha256": "ff3163c79b415bdbecb370ff26e427609e19b7762b5e1d5c2d5144a13a609262"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/08-verify-candidate-post-final.json",
+      "bytes": 1012,
+      "sha256": "2cf646dd0d2f68289318d2b5d93a220f3eceea0c7f88cfbea766da3412ac977a"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/exact-manifest-candidate-audit.json",
+      "bytes": 1774,
+      "sha256": "3cba85f4e39201828dabb4862c6690010bc370bbfdd55a2fc13c9b6cee691e06"
+    },
+    {
+      "root": "review_directory",
+      "path": "ledger-readback-final/degradation-no_dsh.json",
+      "bytes": 7104,
+      "sha256": "562e5fc0e3ca84d8572b2ce08590a27df69ca2d2461f3362d35e5858617fa5d0"
+    },
+    {
+      "root": "review_directory",
+      "path": "ledger-readback-final/degradation-no_key.json",
+      "bytes": 1047,
+      "sha256": "317516d18e884213a435ac360954fc76a6d9d6bc607dc98a45620fcdbc0f65e8"
+    },
+    {
+      "root": "review_directory",
+      "path": "ledger-readback-final/degradation-offline.json",
+      "bytes": 7105,
+      "sha256": "6b5050e05c3dd396e92407a1414d33cc95c063a26a92db97c21c13618c3b28a1"
+    },
+    {
+      "root": "review_directory",
+      "path": "ledger-readback-final/full-cancel_recovery.json",
+      "bytes": 13174,
+      "sha256": "e9182591cb57483a47447de26cb43950e861bb964eb1bc8f6a557db04b8c39ad"
+    },
+    {
+      "root": "review_directory",
+      "path": "ledger-readback-final/full-disabled_native.json",
+      "bytes": 466,
+      "sha256": "a849671065b13c56ee24bfa7436884944c70ac587e525842adb3ba2e44d70c15"
+    },
+    {
+      "root": "review_directory",
+      "path": "ledger-readback-final/full-pro_denied.json",
+      "bytes": 1051,
+      "sha256": "03cb957fa0c2d14ddce6429925574da3a4011e7a4339bcff698c1c2707d97606"
+    },
+    {
+      "root": "review_directory",
+      "path": "ledger-readback-final/full-read_failure.json",
+      "bytes": 8409,
+      "sha256": "66ed36608d2b1a74fd56a0a8bf8c076c948326df0b578794d890454eee2cf781"
+    },
+    {
+      "root": "review_directory",
+      "path": "ledger-readback-final/full-read_success.json",
+      "bytes": 8409,
+      "sha256": "38cdbe449b072a3166e05a2e7128bc88b3f6201dd2a629cbf46e896522504380"
+    },
+    {
+      "root": "review_directory",
+      "path": "ledger-readback-final/full-success.json",
+      "bytes": 7105,
+      "sha256": "f503a45aa1b100c33a2a536707269019023e78b402c3013f46921b73d668a06f"
+    },
+    {
+      "root": "review_directory",
+      "path": "verify_candidate_only.py",
+      "bytes": 938,
+      "sha256": "475636d131869f990bbe45e313bf2357de659e716ebef754e228bda01bc1c2ff"
+    },
+    {
+      "root": "review_directory",
+      "path": "verify_candidate_post.py",
+      "bytes": 1318,
+      "sha256": "06a663a5c600f2a58782f6640a71d516c082930aacdd53927ad3db41a2a67fe3"
+    },
+    {
+      "root": "review_directory",
+      "path": "verify_candidate_post_final.py",
+      "bytes": 1398,
+      "sha256": "5d615ca456920b832ea567b0578bd792ce02be7eb45302b8a1b900ed0033f9e8"
+    },
+    {
+      "root": "review_directory",
+      "path": "verify_desktop_readbacks.py",
+      "bytes": 6105,
+      "sha256": "a90a106224524ea56188dfbd73acbcc219ae0c82e27522bc862bc09409f85ae8"
+    },
+    {
+      "root": "review_directory",
+      "path": "verify_desktop_readbacks_final.py",
+      "bytes": 6110,
+      "sha256": "5377cdeafa7358dfef2bf7a0b18ae0454c5136a2be10a8878aba2a9516f18ba9"
+    },
+    {
+      "root": "review_directory",
+      "path": "verify_u10_exact.py",
+      "bytes": 8581,
+      "sha256": "5472ba39463c77c37ac3aff542acd2a0155c64d5f331bec9b4a16e24c3bf1ce8"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u10-candidate/06-build-final.json",
+      "bytes": 3613,
+      "sha256": "55b6778070c729ba2851d6cc0666302fbebf1f1303da5068a6270f6d64d0c013"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u10-candidate/07-final-desktop-full.json",
+      "bytes": 1132,
+      "sha256": "757d3feaa9829d05bb9447e947f3f112d3ba732320a1be9edca9385e1e0bc14d"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u10-candidate/08-final-desktop-degradation.json",
+      "bytes": 937,
+      "sha256": "3197299c49cdeab35b333f6d922c65eceda5e56d7ee5da17caf9587a5d9c5621"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u10-tests/07-final-native-matrix.json",
+      "bytes": 25767,
+      "sha256": "3e984e3c6364b29e7cfa4a3543e93f417cb2ebc2367c318c039c1a08a9fdf647"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P01/desktop-source/LICENSE",
+      "bytes": 11344,
+      "sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/experiments/u10/candidate-02/candidate-descriptor.json",
+      "bytes": 1327392,
+      "sha256": "751d005573354d5f09aa676c2c306c744f1754432506915a08eb874a7e14cb45"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/experiments/u10/candidate-02/UPSTREAM-LICENSE",
+      "bytes": 11344,
+      "sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/experiments/u10/candidate-02/xiadie/assets/manifest.json",
+      "bytes": 4304,
+      "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/experiments/u10/candidate-02/xiadie/assets/character/xiadie/v3/manifest.json",
+      "bytes": 534,
+      "sha256": "3bedae784adae2182f3396cccbc3c91663fe96a58d18373481fbb7155d888f62"
+    },
+    {
+      "root": "review_directory",
+      "path": "build-review-final.py",
+      "bytes": 10434,
+      "sha256": "ace7f3c6d3a166f429075c1fb3ebcf1f0c1822a34a0b683158a225458cac7a93"
+    }
+  ],
+  "immutable_inputs": []
+}

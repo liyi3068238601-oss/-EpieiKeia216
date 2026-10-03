@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "scenario": "no_key",
+  "profileRoot": "owned-profile-redacted",
+  "ledgerCount": 1,
+  "admission": "not_admitted",
+  "databases": [
+    {
+      "passed": true,
+      "databaseRelativePath": "plugin-storage/data/xiadie@xiadie-local/event-ledger.sqlite",
+      "databaseBytes": 73728,
+      "databaseSha256": "0d8a947f4c6d9858bab0cb22b8c58391732dde4c5224323c009109144a9e41fe",
+      "admission": "not_admitted",
+      "admittedTurns": [],
+      "nativeEventCount": 0,
+      "transcriptEventCount": 0,
+      "factCount": 0,
+      "observationCount": 0,
+      "backupRestore": null,
+      "temporarySourceBoundary": "Locator is historical provenance only; U09 currentValidation remains NOT_VERIFIED and no temporary source path was read."
+    }
+  ],
+  "admitted_turns": 0,
+  "backup_restore": null,
+  "passed": true,
+  "qualificationBoundary": "Electron UI with pinned fixed Node CLI; durable host and SQLite ledger are in the wrapped CLI protocol process, not Electron main. P01 sidecar remains UI correlation evidence."
+}

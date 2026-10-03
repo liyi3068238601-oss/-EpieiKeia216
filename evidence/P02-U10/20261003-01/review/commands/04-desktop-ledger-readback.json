@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\u10\\verify_desktop_readbacks.py"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10",
+  "started_at": "2026-10-03T14:28:22.309745+00:00",
+  "completed_at": "2026-10-03T14:28:22.545070+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 180,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\u10\\verify_desktop_readbacks.py\", line 49, in <module>\r\n    ensure(profile.parent.parent.name==expected_run,f'{group}/{scenario} final run path mismatch')\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\u10\\verify_desktop_readbacks.py\", line 11, in ensure\r\n    if not x: raise AssertionError(msg)\r\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\r\nAssertionError: full/success final run path mismatch\r\n"
+}
