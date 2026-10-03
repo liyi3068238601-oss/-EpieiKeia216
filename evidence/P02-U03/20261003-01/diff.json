@@ -1,0 +1,68 @@
+{
+  "task": "P02-U03",
+  "baseline": "f20b2efbbfc1dcb5e6f52e5916419cff27578cf2",
+  "scope": [
+    "packages/contracts/src/events.ts",
+    "packages/contracts/src/index.ts",
+    "packages/contracts/test/events.test.mjs",
+    "packages/contracts/test/events.type-fixture.ts",
+    "packages/contracts/test/tsconfig.json",
+    "tools/run-tests.mjs",
+    "evidence/P02-U03/20261003-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "f20b2efbbfc1dcb5e6f52e5916419cff27578cf2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u03",
+      "exit_code": 0,
+      "stdout": " evidence/P02-U03/20261003-01/baseline.json         |  40 ++\n .../commands/binding-before-command.json           |  17 +\n .../commands/binding-final-post-02-command.json    |  18 +\n .../commands/binding-final-post-command.json       |  18 +\n .../commands/binding-final-pre-02-command.json     |  17 +\n .../commands/binding-final-pre-command.json        |  17 +\n .../P02-U03/20261003-01/commands/build-01.json     |  16 +\n .../P02-U03/20261003-01/commands/build-02.json     |  16 +\n .../P02-U03/20261003-01/commands/build-03.json     |  16 +\n .../P02-U03/20261003-01/commands/build-04.json     |  16 +\n .../20261003-01/commands/build-final-02.json       |  16 +\n .../P02-U03/20261003-01/commands/contract-01.json  |  16 +\n .../20261003-01/commands/contract-final-02.json    |  16 +\n .../20261003-01/commands/contract-final.json       |  16 +\n .../20261003-01/commands/diff-check-01.json        |  17 +\n evidence/P02-U03/20261003-01/commands/unit-01.json |  16 +\n .../20261003-01/commands/unit-final-02.json        |  16 +\n .../P02-U03/20261003-01/commands/unit-final.json   |  16 +\n .../P02-U03/20261003-01/input-comparison-02.json   |   8 +\n evidence/P02-U03/20261003-01/input-comparison.json |   8 +\n evidence/P02-U03/20261003-01/inputs-before.json    | 102 +++++\n .../P02-U03/20261003-01/inputs-final-post-02.json  | 112 +++++\n .../P02-U03/20261003-01/inputs-final-post.json     | 112 +++++\n .../P02-U03/20261003-01/inputs-final-pre-02.json   | 112 +++++\n evidence/P02-U03/20261003-01/inputs-final-pre.json | 112 +++++\n evidence/P02-U03/20261003-01/result.md             |  29 ++\n packages/contracts/src/events.ts                   | 449 +++++++++++++++++++++\n packages/contracts/src/index.ts                    |  25 ++\n packages/contracts/test/events.test.mjs            | 194 +++++++++\n packages/contracts/test/events.type-fixture.ts     |  56 +++\n packages/contracts/test/tsconfig.json              |   2 +-\n tools/run-tests.mjs                                |   4 +-\n 32 files changed, 1643 insertions(+), 2 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "f20b2efbbfc1dcb5e6f52e5916419cff27578cf2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u03",
+      "exit_code": 0,
+      "stdout": "40\t0\tevidence/P02-U03/20261003-01/baseline.json\n17\t0\tevidence/P02-U03/20261003-01/commands/binding-before-command.json\n18\t0\tevidence/P02-U03/20261003-01/commands/binding-final-post-02-command.json\n18\t0\tevidence/P02-U03/20261003-01/commands/binding-final-post-command.json\n17\t0\tevidence/P02-U03/20261003-01/commands/binding-final-pre-02-command.json\n17\t0\tevidence/P02-U03/20261003-01/commands/binding-final-pre-command.json\n16\t0\tevidence/P02-U03/20261003-01/commands/build-01.json\n16\t0\tevidence/P02-U03/20261003-01/commands/build-02.json\n16\t0\tevidence/P02-U03/20261003-01/commands/build-03.json\n16\t0\tevidence/P02-U03/20261003-01/commands/build-04.json\n16\t0\tevidence/P02-U03/20261003-01/commands/build-final-02.json\n16\t0\tevidence/P02-U03/20261003-01/commands/contract-01.json\n16\t0\tevidence/P02-U03/20261003-01/commands/contract-final-02.json\n16\t0\tevidence/P02-U03/20261003-01/commands/contract-final.json\n17\t0\tevidence/P02-U03/20261003-01/commands/diff-check-01.json\n16\t0\tevidence/P02-U03/20261003-01/commands/unit-01.json\n16\t0\tevidence/P02-U03/20261003-01/commands/unit-final-02.json\n16\t0\tevidence/P02-U03/20261003-01/commands/unit-final.json\n8\t0\tevidence/P02-U03/20261003-01/input-comparison-02.json\n8\t0\tevidence/P02-U03/20261003-01/input-comparison.json\n102\t0\tevidence/P02-U03/20261003-01/inputs-before.json\n112\t0\tevidence/P02-U03/20261003-01/inputs-final-post-02.json\n112\t0\tevidence/P02-U03/20261003-01/inputs-final-post.json\n112\t0\tevidence/P02-U03/20261003-01/inputs-final-pre-02.json\n112\t0\tevidence/P02-U03/20261003-01/inputs-final-pre.json\n29\t0\tevidence/P02-U03/20261003-01/result.md\n449\t0\tpackages/contracts/src/events.ts\n25\t0\tpackages/contracts/src/index.ts\n194\t0\tpackages/contracts/test/events.test.mjs\n56\t0\tpackages/contracts/test/events.type-fixture.ts\n1\t1\tpackages/contracts/test/tsconfig.json\n3\t1\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "f20b2efbbfc1dcb5e6f52e5916419cff27578cf2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u03",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P02-U03/20261003-01/baseline.json\nA\tevidence/P02-U03/20261003-01/commands/binding-before-command.json\nA\tevidence/P02-U03/20261003-01/commands/binding-final-post-02-command.json\nA\tevidence/P02-U03/20261003-01/commands/binding-final-post-command.json\nA\tevidence/P02-U03/20261003-01/commands/binding-final-pre-02-command.json\nA\tevidence/P02-U03/20261003-01/commands/binding-final-pre-command.json\nA\tevidence/P02-U03/20261003-01/commands/build-01.json\nA\tevidence/P02-U03/20261003-01/commands/build-02.json\nA\tevidence/P02-U03/20261003-01/commands/build-03.json\nA\tevidence/P02-U03/20261003-01/commands/build-04.json\nA\tevidence/P02-U03/20261003-01/commands/build-final-02.json\nA\tevidence/P02-U03/20261003-01/commands/contract-01.json\nA\tevidence/P02-U03/20261003-01/commands/contract-final-02.json\nA\tevidence/P02-U03/20261003-01/commands/contract-final.json\nA\tevidence/P02-U03/20261003-01/commands/diff-check-01.json\nA\tevidence/P02-U03/20261003-01/commands/unit-01.json\nA\tevidence/P02-U03/20261003-01/commands/unit-final-02.json\nA\tevidence/P02-U03/20261003-01/commands/unit-final.json\nA\tevidence/P02-U03/20261003-01/input-comparison-02.json\nA\tevidence/P02-U03/20261003-01/input-comparison.json\nA\tevidence/P02-U03/20261003-01/inputs-before.json\nA\tevidence/P02-U03/20261003-01/inputs-final-post-02.json\nA\tevidence/P02-U03/20261003-01/inputs-final-post.json\nA\tevidence/P02-U03/20261003-01/inputs-final-pre-02.json\nA\tevidence/P02-U03/20261003-01/inputs-final-pre.json\nA\tevidence/P02-U03/20261003-01/result.md\nA\tpackages/contracts/src/events.ts\nM\tpackages/contracts/src/index.ts\nA\tpackages/contracts/test/events.test.mjs\nA\tpackages/contracts/test/events.type-fixture.ts\nM\tpackages/contracts/test/tsconfig.json\nM\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "f20b2efbbfc1dcb5e6f52e5916419cff27578cf2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u03",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "py",
+    "-3",
+    "-c",
+    "from pathlib import Path; import hashlib,json,sys,subprocess; root=Path(r'E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u03'); node=Path(r'E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe'); names=['packages/contracts/src/events.ts','packages/contracts/src/index.ts','packages/contracts/src/json-value.ts','packages/contracts/test/events.test.mjs','packages/contracts/test/events.type-fixture.ts','packages/contracts/test/contracts.test.mjs','packages/contracts/test/tsconfig.json','tools/run-tests.mjs','package.json','pnpm-lock.yaml','node_modules/typescript/package.json','node_modules/typescript/bin/tsc','node_modules/typescript/lib/tsc.js','node_modules/@types/node/package.json','dist/packages/contracts/src/events.js','dist/packages/contracts/src/index.js','dist/packages/contracts/src/json-value.js']; files=[]; [(lambda p,d: files.append({'path':p,'bytes':len(d),'sha256':hashlib.sha256(d).hexdigest()}))(name,(root/name).read_bytes()) for name in names]; nd=node.read_bytes(); tsc=root/'node_modules/typescript/bin/tsc'; report={'phase':'before-final-tests','files':files,'toolchain':{'node':{'path':str(node),'bytes':len(nd),'sha256':hashlib.sha256(nd).hexdigest(),'version':subprocess.check_output([str(node),'--version'],text=True).strip()},'typescript':{'version':subprocess.check_output([str(node),str(tsc),'--version'],cwd=root,text=True).strip(),'entry':'node_modules/typescript/bin/tsc'}}}; Path(sys.argv[1]).write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\\n',encoding='utf-8',newline='\\n') ",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u03\\evidence\\P02-U03\\20261003-01\\inputs-before.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u03",
+  "started_at": "2026-10-03T06:23:56.909603+00:00",
+  "completed_at": "2026-10-03T06:23:57.188377+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": ""
+}

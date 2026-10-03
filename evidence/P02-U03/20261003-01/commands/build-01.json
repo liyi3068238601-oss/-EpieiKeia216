@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u03\\node_modules\\typescript\\bin\\tsc",
+    "--project",
+    "tsconfig.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u03",
+  "started_at": "2026-10-03T06:20:01.017369+00:00",
+  "completed_at": "2026-10-03T06:20:02.233582+00:00",
+  "exit_code": 2,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "packages/contracts/src/events.ts(412,80): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }'.\r\n  No index signature with a parameter of type 'string' was found on type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }'.\r\npackages/contracts/src/events.ts(421,74): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }'.\r\n  No index signature with a parameter of type 'string' was found on type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }'.\r\n",
+  "stderr": ""
+}
