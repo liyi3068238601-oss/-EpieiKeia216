@@ -5,6 +5,9 @@ import { buildContextPacket, renderContextPacket } from "../../../context/src/in
 import { APPROVED_CHARACTER, loadCharacter } from "../../../character/src/loader.js";
 import type { ContextPacket } from "../../../contracts/src/context.js";
 
+import { captureTranscript, createTranscriptQueue, type TranscriptSink } from "./transcript.js";
+
+const TRANSCRIPT_SOURCE_PIN = "29628c9acdb81b703bbd4080c207a0e7ce5e276e";
 const HOOK_RELATIVE_PATH = path.join("hooks", "context.mjs");
 const MAX_TRANSCRIPT_BYTES = 512 * 1024;
 const MAX_HOOK_STDOUT_BYTES = 30 * 1024;
@@ -109,6 +112,16 @@ export interface XiadieNativeApi {
   getCurrentModelInvocationContext(): XiadieModelInvocationContext | undefined;
 }
 
+export interface XiadieTranscriptDelivery {
+  readonly status: "queued" | "saving" | "saved" | "failed" | "unknown" | "unavailable";
+  readonly sessionId?: string;
+  readonly turnId?: string;
+  readonly jobId?: number;
+  readonly snapshotSha256?: string;
+  readonly code?: string;
+  readonly receiptId?: string;
+}
+
 export interface XiadieHostOptions {
   readonly native: XiadieNativeApi;
   readonly appOptions: Record<string, unknown>;
@@ -123,6 +136,9 @@ export interface XiadieHostOptions {
   /** Trusted, per-host runtime profile containing the supplied config/storage/HOME/TEMP paths. */
   readonly ownedProfileRoot?: string;
   readonly nodeExecutable?: string;
+  /** A local bounded writer; absence is explicitly unavailable, never saved. */
+  readonly transcriptSink?: TranscriptSink;
+  readonly transcriptMaxPending?: number;
 }
 
 export interface XiadieReceipt {
@@ -168,6 +184,8 @@ export interface XiadieZCodeHost {
   resume(options?: unknown): Promise<unknown>;
   compact(options?: unknown): Promise<XiadieNativeTurnResult>;
   readAdmissionFailures(): readonly XiadieAdmissionFailure[];
+  readTranscriptDeliveries(): readonly XiadieTranscriptDelivery[];
+  drainTranscripts(): Promise<readonly XiadieTranscriptDelivery[]>;
   close?(): Promise<void>;
 }
 
@@ -216,9 +234,12 @@ export async function createXiadieZCodeApp(input: XiadieHostOptions): Promise<Xi
     executionPort: gate.executionPort,
     modelAdapter: gate.modelAdapter,
   });
+  let closing = false;
+  let closePromise: Promise<void> | undefined;
   let activeOperation: object | undefined;
   let activeOperationName: string | undefined;
   const enterExclusive = (name: string): (() => void) => {
+    if (closing) throw new Error("Xiadie host is closing or closed");
     if (activeOperation) throw new Error(`Enabled Xiadie only accepts idle native operations; ${activeOperationName} is in flight`);
     const token = {};
     activeOperation = token;
@@ -302,7 +323,26 @@ export async function createXiadieZCodeApp(input: XiadieHostOptions): Promise<Xi
     }
   };
   const readAdmissionFailures = (): readonly XiadieAdmissionFailure[] => gate.readAdmissionFailures();
-  const facade = createAppFacade(app, { submitPrompt, sendInput, resume, compact, readAdmissionFailures });
+  const readTranscriptDeliveries = (): readonly XiadieTranscriptDelivery[] => gate.readTranscriptDeliveries();
+  const drainTranscripts = async (): Promise<readonly XiadieTranscriptDelivery[]> => {
+    await gate.drainTranscripts();
+    return readTranscriptDeliveries();
+  };
+  const close = (): Promise<void> => {
+    if (!closePromise) {
+      closing = true;
+      closePromise = (async () => {
+        try { await app.close?.(); }
+        finally { await gate.closeTranscripts(); }
+      })();
+    }
+    return closePromise;
+  };
+  const facade = createAppFacade(app, { submitPrompt, sendInput, resume, compact, readAdmissionFailures, close });
+  Object.defineProperties(facade, {
+    readTranscriptDeliveries: { value: readTranscriptDeliveries },
+    drainTranscripts: { value: drainTranscripts },
+  });
   return {
     app: facade,
     submitPrompt,
@@ -310,7 +350,9 @@ export async function createXiadieZCodeApp(input: XiadieHostOptions): Promise<Xi
     resume,
     compact,
     readAdmissionFailures,
-    ...(app.close ? { close: () => app.close!() } : {}),
+    readTranscriptDeliveries,
+    drainTranscripts,
+    close,
   };
 }
 
@@ -322,8 +364,75 @@ function createGate(input: XiadieHostOptions): {
   clear(): void;
   readAdmissionFailures(): readonly XiadieAdmissionFailure[];
   recordModelBlock: ModelBlockRecorder;
+  readTranscriptDeliveries(): readonly XiadieTranscriptDelivery[];
+  drainTranscripts(): Promise<void>;
+  closeTranscripts(): Promise<void>;
 } {
   let ticket: Ticket | undefined;
+  const transcriptQueue = input.enabled && input.transcriptSink
+    ? createTranscriptQueue({ sink: input.transcriptSink, maxPending: input.transcriptMaxPending ?? 32 })
+    : undefined;
+  const deliveries: XiadieTranscriptDelivery[] = [];
+  const recordDelivery = (delivery: XiadieTranscriptDelivery): void => {
+    deliveries.push(Object.freeze(delivery));
+    if (deliveries.length > 64) deliveries.shift();
+  };
+  const readTranscriptDeliveries = (): readonly XiadieTranscriptDelivery[] => deliveries.map((delivery) => {
+    if (!delivery.jobId || !transcriptQueue) return { ...delivery };
+    const current = transcriptQueue.getStatus(delivery.jobId);
+    if (!current) return { ...delivery, status: "unknown", code: "status_evicted" };
+    return { ...delivery, status: current.status,
+      ...(current.code ? { code: current.code } : {}),
+      ...(current.receiptId ? { receiptId: current.receiptId } : {}),
+    };
+  });
+  const captureOwnTranscript = (request: XiadieExecutionRequest, current: Ticket): void => {
+    const scope = {
+      ...(request.trace?.sessionId ? { sessionId: request.trace.sessionId } : {}),
+      ...(request.trace?.turnId ? { turnId: request.trace.turnId } : {}),
+    };
+    try {
+      const envelope = parseHookInput(request.stdin);
+      const event = envelope.hookEventName ?? envelope.hook_event_name;
+      const sessionId = envelope.sessionId ?? envelope.session_id;
+      const turnId = envelope.turnId ?? envelope.turn_id;
+      const transcriptPath = envelope.transcriptPath ?? envelope.transcript_path;
+      const aliases = [
+        [envelope.hookEventName, envelope.hook_event_name],
+        [envelope.sessionId, envelope.session_id],
+        [envelope.turnId, envelope.turn_id],
+        [envelope.transcriptPath, envelope.transcript_path],
+      ];
+      if (aliases.some(([camel, snake]) => camel !== undefined && snake !== undefined && camel !== snake) ||
+          event !== "UserPromptSubmit" || sessionId !== current.sessionId ||
+          typeof sessionId !== "string" || typeof turnId !== "string" ||
+          typeof transcriptPath !== "string" || typeof envelope.prompt !== "string" ||
+          typeof request.trace?.attributes?.hookEventName !== "string" ||
+          typeof request.trace.sessionId !== "string" || typeof request.trace.turnId !== "string") {
+        throw new Error("invalid capture binding");
+      }
+      const ownedEnv = input.appOptions.env as Record<string, unknown>;
+      const captured = captureTranscript({
+        hookInput: { hookEventName: "UserPromptSubmit", sessionId, turnId, transcriptPath, prompt: envelope.prompt },
+        trace: { hookEventName: request.trace.attributes.hookEventName, sessionId: request.trace.sessionId, turnId: request.trace.turnId },
+        ownedTempRoot: String(ownedEnv.TEMP), sourcePin: TRANSCRIPT_SOURCE_PIN,
+      });
+      if (captured.status !== "captured") {
+        recordDelivery({ ...scope, status: "unavailable", code: captured.code });
+      } else if (!transcriptQueue) {
+        recordDelivery({ ...scope, status: "unavailable", snapshotSha256: captured.capture.snapshotSha256, code: "sink_unconfigured" });
+      } else {
+        const admission = transcriptQueue.enqueue(captured.capture);
+        recordDelivery({ ...scope, snapshotSha256: captured.capture.snapshotSha256,
+          ...(admission.status === "queued"
+            ? { status: "queued", jobId: admission.jobId }
+            : { status: "unavailable", code: admission.status }),
+        });
+      }
+    } catch {
+      recordDelivery({ ...scope, status: "unavailable", code: "invalid_capture_binding" });
+    }
+  };
   const failures: XiadieAdmissionFailure[] = [];
   const recordFailure = (failure: XiadieAdmissionFailure): void => {
     failures.push(failure);
@@ -438,6 +547,7 @@ function createGate(input: XiadieHostOptions): {
           operation: "UserPromptSubmit",
         });
       }
+      captureOwnTranscript(request, current);
       const original = await input.executionPort.run.call(input.executionPort, withTrustedHookEnv(request, input, current), options);
       try {
         current.receipt = validateHookResult(request, original, current).receipt;
@@ -481,6 +591,9 @@ function createGate(input: XiadieHostOptions): {
     clear: () => { ticket = undefined; },
     recordModelBlock,
     readAdmissionFailures: () => failures.map((failure) => ({ ...failure })),
+    readTranscriptDeliveries,
+    drainTranscripts: async () => { await transcriptQueue?.drain(); },
+    closeTranscripts: async () => { await transcriptQueue?.close(); },
   };
 }
 
@@ -582,6 +695,7 @@ function withTrustedHookEnv(request: XiadieExecutionRequest, input: XiadieHostOp
 }
 
 interface HookEnvelope {
+  readonly prompt?: unknown;
   readonly hookEventName?: unknown;
   readonly hook_event_name?: unknown;
   readonly sessionId?: unknown;
@@ -814,6 +928,7 @@ function createAppFacade(
     resume(options?: unknown): Promise<unknown>;
     compact(options?: unknown): Promise<XiadieNativeTurnResult>;
     readAdmissionFailures(): readonly XiadieAdmissionFailure[];
+    close(): Promise<void>;
   },
 ): XiadieNativeApp {
   const facade = Object.create(null) as XiadieNativeApp;
@@ -839,6 +954,10 @@ function createAppFacade(
     }
     if (key === "compact") {
       Object.defineProperty(facade, key, { value: guarded.compact });
+      continue;
+    }
+    if (key === "close") {
+      Object.defineProperty(facade, key, { value: guarded.close });
       continue;
     }
     if (key === "readAdmissionFailures") {

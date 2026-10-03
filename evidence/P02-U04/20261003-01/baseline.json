@@ -1,0 +1,40 @@
+{
+  "schema": "p02-unit-baseline/v1",
+  "task": "P02-U04",
+  "baseline_commit": "d9f5912b093e16ec6c335a74ab99ca842eb8937d",
+  "branch": "p02-u04",
+  "coordinator_branch": "p02-stage",
+  "prerequisites": [
+    {
+      "task": "P02-U03",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U03/20261003-01/acceptance.json",
+        "bytes": 1852,
+        "sha256": "049abb37c43d4a9edc1a55d230047461a50948fea590b1510a85379cb9d1abac"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P02-U04.md",
+    "bytes": 2013,
+    "sha256": "e067e018ef747c1d4193e7df8e7ee82804fb23873be521e2d4d7bab8c0f4d1db"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "packages/adapters/zcode/src/transcript.ts",
+    "packages/adapters/zcode/src/host.ts",
+    "packages/adapters/zcode/src/index.ts",
+    "packages/adapters/zcode/test/transcript.test.mjs",
+    "packages/adapters/zcode/test/transcript-host.test.mjs",
+    "tools/run-tests.mjs",
+    "evidence/P02-U04/20261003-01"
+  ],
+  "test_mapping": "unit:transcript.test.mjs+transcript-host.test.mjs+existing host.test.mjs; target transcript.ts maps src/transcript.ts and minimal existing host caller wiring/lifecycle+index exports are required to make capture reachable",
+  "author_status": "ready_for_review",
+  "checked_at_utc": "2026-10-03T06:42:55.026029+00:00"
+}

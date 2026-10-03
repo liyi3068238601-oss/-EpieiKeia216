@@ -17,5 +17,9 @@ export type {
   XiadieNativeTurnResult,
   XiadieReceipt,
   XiadieTraceContext,
+  XiadieTranscriptDelivery,
   XiadieZCodeHost,
 } from "./host.js";
+
+export { captureTranscript, createTranscriptQueue } from "./transcript.js";
+export type { TranscriptCapture, TranscriptSink } from "./transcript.js";
