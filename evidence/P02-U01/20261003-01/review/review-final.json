@@ -1,0 +1,248 @@
+{
+  "schema": "xiadie-independent-review/v1",
+  "task": "P02-U01",
+  "gate": "P02-U01",
+  "decision": "pass",
+  "reviewed_at_utc": "2026-10-03T04:53:27Z",
+  "decision_scope": "P02-U01 research deliverable only; no product adoption or U02 acceptance.",
+  "review_target": {
+    "author_commit": "40d809150811c8d4287de44f6cce8e7f2edc1948",
+    "baseline_commit": "2d02355bcc6453d8e54e78fde17a86676e82c932",
+    "tree": "f563729ed201e5e2415195a872a28b565a2f43e4",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u01",
+    "author_worktree_clean": true,
+    "baseline_is_ancestor": true,
+    "branch": "p02-u01"
+  },
+  "verification": {
+    "author_identity": {
+      "decision": "pass",
+      "checked_head": "40d809150811c8d4287de44f6cce8e7f2edc1948",
+      "clean": true,
+      "independent_coordinator_verification": "reported by coordinator; reviewer recomputed below"
+    },
+    "frozen_manifest": {
+      "decision": "pass",
+      "path": "evidence/P02-U01/20261003-01/manifest.json",
+      "bytes": 4740,
+      "sha256": "d2bdd351f1b66ebd0380117f011dde2b217859226873987718641935f1322713",
+      "expected_sha256": "d2bdd351f1b66ebd0380117f011dde2b217859226873987718641935f1322713",
+      "listed_files": 19,
+      "changed_paths": 20,
+      "coverage": "all changed paths equal manifest entries plus manifest.json",
+      "disk_sha256_byte_and_git_blob_mismatches": 0,
+      "out_of_scope_paths": 0,
+      "self_excluded": true
+    },
+    "source_hash_audit": {
+      "decision": "pass",
+      "command": "python docs/research/P02/verify-research.py --source-root E:/Xiadie/Xiadie --output .runtime/P02/reviews/u01-final/source-verification.json",
+      "exit_code": 0,
+      "independent_output": ".runtime/P02/reviews/u01-final/source-verification.json",
+      "indexed_file_observations": 99,
+      "pinned_clean_reference_trees": 4,
+      "mismatches": 0,
+      "runtime_csv_rows": 68,
+      "runtime_index_rows": 68,
+      "runtime_csv_index_mismatches": 0,
+      "checks": "Source bytes/SHA-256, four pinned clean Git trees, and runtime CSV/index correspondence."
+    },
+    "prerequisite": {
+      "decision": "pass",
+      "task": "P01-U11",
+      "status": "accepted",
+      "G01": "pass",
+      "acceptance_sha256": "f7b8f9e31439093f0442298ea544bf390ec142fdd508ce4e107ceb241540a63f",
+      "scope": "Frozen local 0.1.0 Windows development candidate only."
+    },
+    "research_completeness": {
+      "decision": "pass",
+      "candidate_routes": [
+        "A: native exits + bounded ingestion + normalized sidecar facts",
+        "B: native store/replay as complete evidence",
+        "C: DSH/Herta or full event framework"
+      ],
+      "candidate_routes_compared": 3,
+      "sqlite_choices": [
+        "fixed Node v24.14.0 node:sqlite as conditional U02 PoC",
+        "better-sqlite3 v13.0.3 static comparison only, not installed or run"
+      ],
+      "source_version_license_dependency_permission_and_gap_records": "Present in final reports and pinned source indexes; 11 supplemental Herta/DSH package/workspace/install inputs are bound; 68 runtime inputs matched CSV/index; Herta excluded assets are called out.",
+      "U02_matrix": "Runtime and SQLite failure matrices describe test inputs and pass conditions; all are clearly NOT_RUN in U01."
+    },
+    "scope_and_decision": {
+      "decision": "pass",
+      "only_allowed_research_and_evidence_paths": true,
+      "product_code_changed": false,
+      "business_database_created": false,
+      "model_or_service_started": false,
+      "dependency_installed": false,
+      "source_decision_status": "candidate-only-pending-U02",
+      "implementation_authorized_by_record": false,
+      "candidate_boundary": "No production route is accepted by U01; node:sqlite is a candidate for U02 only."
+    },
+    "consistency": {
+      "decision": "pass",
+      "readme_runtime_sqlite_source_decision": "Agree on A/B/C comparison, bounded/redacted Hook capture with provenance/hash linkage, no raw transcript persistence by default, and U02-only validation.",
+      "latest_terminal": "Correctly distinguishes U01 native terminal observations from P02 mutually exclusive terminal rules; no direct reuse claim.",
+      "author_history": "commands.json discloses the failed freeze and mistakenly created intermediate commit; the final tree is clean and correctly frozen with history preserved. The 88-to-99 source-verification chronology is explicitly recorded above and independently reproduced.",
+      "commands_log_reconciliation": "commands.json records the earlier 88-observation check before 11 metadata inputs were added; final source-verification.json states 99, and the reviewer reran the frozen verifier on the final inputs with 99 observations, 4 clean pinned trees, and 0 mismatches."
+    },
+    "primary_source_checks": [
+      {
+        "verified": "Pinned v24.14 marks node:sqlite Stability 1.1 Active development; DatabaseSync APIs are synchronous; backup returns a Promise and may restart on writes from other connections.",
+        "url": "https://nodejs.org/download/release/v24.14.0/docs/api/sqlite.html"
+      },
+      {
+        "verified": "Current v24.21.0 comparison marks SQLite release candidate since v24.15.0; kept distinct from pinned v24.14.0.",
+        "url": "https://nodejs.org/download/release/latest-v24.x/docs/api/sqlite.html"
+      },
+      {
+        "verified": "v26.8.1 docs state release candidate since v25.7.0; kept distinct from pinned runtime.",
+        "url": "https://nodejs.org/download/release/v26.8.1/docs/api/sqlite.html"
+      },
+      {
+        "verified": "Release page confirms v26.10.0 release on 2026-09-22; the report does not claim its SQLite API page was accessible.",
+        "url": "https://nodejs.org/en/blog/release/v26.10.0"
+      },
+      {
+        "verified": "Completed online backup yields a consistent snapshot; external writes can restart backup and sustained restarts may prevent completion.",
+        "url": "https://www.sqlite.org/backup.html"
+      },
+      {
+        "verified": "Committed records can remain in the -wal file; WAL is persistent DB state and must be kept with the database or handled through SQLite backup API.",
+        "url": "https://www.sqlite.org/wal.html"
+      },
+      {
+        "verified": "BEGIN IMMEDIATE can fail SQLITE_BUSY when another write transaction is active.",
+        "url": "https://www.sqlite.org/lang_transaction.html"
+      }
+    ],
+    "root_repository": {
+      "head": "2d02355bcc6453d8e54e78fde17a86676e82c932",
+      "clean": true,
+      "author_tree_separate": true
+    }
+  },
+  "limitations": [
+    "This pass accepts only the U01 research deliverable. The proposed Runtime or SQLite route remains candidate-only pending U02 isolation experiments and acceptance.",
+    "U01 does not create a SQLite database, run migrations, exercise online backup, inject interruption/locking/full-disk failures, install packages, or run product tests.",
+    "Real model/API behavior, production transcript export, full Desktop behavior, and physical power-loss recovery remain outside this evidence."
+  ],
+  "artifacts": [
+    {
+      "path": "evidence/P02-U01/20261003-01/manifest.json",
+      "sha256": "d2bdd351f1b66ebd0380117f011dde2b217859226873987718641935f1322713",
+      "bytes": 4740,
+      "label": "Frozen manifest covering all changed unit files",
+      "root": "author_worktree"
+    },
+    {
+      "path": "docs/research/P02/README.md",
+      "sha256": "33e906b36c3d7aa63d87ccbe3e18d504b4892ac5a59826a6731d89e44743a19d",
+      "bytes": 6252,
+      "label": "P02 overview and candidate comparison",
+      "root": "author_worktree"
+    },
+    {
+      "path": "docs/research/P02/runtime-reuse.md",
+      "sha256": "c1612c0f8c59a442da6819f41b43a1fd1f851c0d7f2dcf6a8a702fc67df9eb03",
+      "bytes": 13977,
+      "label": "Runtime, transcript, Hook source review and U02 matrix",
+      "root": "author_worktree"
+    },
+    {
+      "path": "docs/research/P02/sqlite-reuse.md",
+      "sha256": "82ccfcfb3f65b4edcd062a2cc04ddb1498d3458ec5d6fb11636f5a137400a4b6",
+      "bytes": 8665,
+      "label": "SQLite candidate and failure matrix review",
+      "root": "author_worktree"
+    },
+    {
+      "path": "docs/research/P02/runtime-source-index.json",
+      "sha256": "1905f41a469d460b574043b618495a7e659878396048496b7199ee7fdd6367c2",
+      "bytes": 47495,
+      "label": "Pinned Runtime source index",
+      "root": "author_worktree"
+    },
+    {
+      "path": "docs/research/P02/sqlite-source-index.json",
+      "sha256": "b5cf12935ce6ef4b0313b08f6f54ba6a57db6973b2f7098dd052588dda9fdb4d",
+      "bytes": 7788,
+      "label": "SQLite official source index",
+      "root": "author_worktree"
+    },
+    {
+      "path": "docs/research/P02/runtime-inputs.sha256.csv",
+      "sha256": "4b7a1fc5a18c53b5d487b005df4ed5aca496a28c9306c9303216a9abd0fd367b",
+      "bytes": 10026,
+      "label": "Runtime local input hash list",
+      "root": "author_worktree"
+    },
+    {
+      "path": "evidence/P02-U01/20261003-01/baseline.json",
+      "sha256": "b32f7301d80d1ce9fa35cf61baf9e8e7e02ed571becdcc515b32dce38c2e5b27",
+      "bytes": 1367,
+      "label": "Frozen baseline and prerequisite record",
+      "root": "author_worktree"
+    },
+    {
+      "path": "evidence/P02-U01/20261003-01/source-decision.json",
+      "sha256": "8ad0e1204fec7f5006397f989b2adcc5f25128475d1c4bca882cfd4a5aae7061",
+      "bytes": 1098,
+      "label": "Candidate-only reuse decision",
+      "root": "author_worktree"
+    },
+    {
+      "path": "evidence/P02-U01/20261003-01/source-verification.json",
+      "sha256": "1aefefc306068127b861111dc0c34db614caeb801d3068891203251046c3a3fd",
+      "bytes": 288,
+      "label": "Author source verification summary",
+      "root": "author_worktree"
+    },
+    {
+      "path": "evidence/P02-U01/20261003-01/commands.json",
+      "sha256": "4e9755c7619ea1b352c75387562ac78cf46812e1b773c0a6bdb1de3b3736a315",
+      "bytes": 2783,
+      "label": "Research commands and disclosed failures",
+      "root": "author_worktree"
+    },
+    {
+      "path": "evidence/P02-U01/20261003-01/result.md",
+      "sha256": "da5a75c87706ca2be989a29cc88e4545070287981028f3c90a7fb037f6684e53",
+      "bytes": 1513,
+      "label": "Author delivery and limitations",
+      "root": "author_worktree"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U01.md",
+      "sha256": "99c5b0ced555d4ee8da4068c10a3e38bbfc6908e57b381a5aa70750a3a2682b1",
+      "bytes": 2826,
+      "label": "Frozen P02-U01 task card",
+      "root": "baseline_repository"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U02.md",
+      "sha256": "6bdf8ad7f6d7ed5d6d1aa56e3b400f6120ab2d64d06fc1a8e13705aefe4e53d0",
+      "bytes": 2825,
+      "label": "Frozen dependent U02 task card used for matrix review",
+      "root": "baseline_repository"
+    },
+    {
+      "path": "docs/sources.lock.json",
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e",
+      "bytes": 18354,
+      "label": "Frozen source lock",
+      "root": "baseline_repository"
+    },
+    {
+      "path": "evidence/P01-U11/20261002-01/acceptance.json",
+      "sha256": "f7b8f9e31439093f0442298ea544bf390ec142fdd508ce4e107ceb241540a63f",
+      "bytes": 1650,
+      "label": "Accepted P01-U11/G01 prerequisite",
+      "root": "baseline_repository"
+    }
+  ]
+}
