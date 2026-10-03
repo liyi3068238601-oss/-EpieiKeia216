@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "tests/integration/P02/native.worker.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u10",
+  "started_at": "2026-10-03T13:29:35.763267+00:00",
+  "completed_at": "2026-10-03T13:29:40.050649+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "(node:25956) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nP02_NATIVE_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\u10\\\\native\\\\native-dzvVYW\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T13:29:39.817Z\",\"completedAtUtc\":\"2026-10-03T13:29:39.886Z\",\"durationMs\":69,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5520,\"stdoutSha256\":\"9f64eabb7359c3918dbccbd50489901e42f1efebb7f0bd5a01f976a3336e4aab\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\n✖ actual Native scenario uses scoped durable SQLite and masked source evidence (728.2151ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4247.754\n\n✖ failing tests:\n\ntest at tests\\integration\\P02\\native.worker.mjs:47:1\n✖ actual Native scenario uses scoped durable SQLite and masked source evidence (728.2151ms)\n  TypeError: diagnostics input has invalid fields\n      at normalizeInput (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/u10/dist/packages/diagnostics/src/index.js:111:15)\n      at buildTurnDiagnostics (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/u10/dist/packages/diagnostics/src/index.js:16:24)\n      at Object.exportDiagnostics (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/u10/tests/integration/P02/durable-host.mjs:308:36)\n      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/u10/tests/integration/P02/native.worker.mjs:90:46)\n      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n      at async Test.run (node:internal/test_runner/test:1125:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)\n",
+  "stderr": ""
+}
