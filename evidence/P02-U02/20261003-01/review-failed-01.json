@@ -1,0 +1,421 @@
+{
+  "schema": "xiadie-independent-review/v1",
+  "task": "P02-U02",
+  "gate": "P02-U02",
+  "decision": "fail",
+  "reviewed_at_utc": "2026-10-03T05:49:15.5311381+00:00",
+  "decision_scope": "P02-U02 isolated experiment and adoption decision only. P02-U02 is not accepted; do not release dependent U03 until the native test execution inputs are bound and re-reviewed.",
+  "review_target": {
+    "author_commit": "e922939e67596c570e75cb9b06a36d303023c9c5",
+    "baseline_commit": "e809d5c7e9969cbf2f5efd68df326e115cf6f1e6",
+    "tree": "70d402b1f19d90347fbf7e89c8f127efb6754235",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02",
+    "author_worktree_clean": true,
+    "baseline_is_ancestor": true,
+    "branch": "p02-u02"
+  },
+  "verification": {
+    "author_identity": {
+      "decision": "pass",
+      "checked_head": "e922939e67596c570e75cb9b06a36d303023c9c5",
+      "clean": true,
+      "branch": "p02-u02",
+      "baseline_is_ancestor": true,
+      "main_repository_head": "e809d5c7e9969cbf2f5efd68df326e115cf6f1e6",
+      "main_repository_clean": true
+    },
+    "frozen_manifest": {
+      "decision": "pass",
+      "path": "evidence/P02-U02/20261003-01/manifest.json",
+      "bytes": 17181,
+      "sha256": "7857fce0b728212496ed54233239917367f52cf4d39947748851886554222c47",
+      "expected_sha256": "7857fce0b728212496ed54233239917367f52cf4d39947748851886554222c47",
+      "listed_files": 67,
+      "changed_paths": 68,
+      "coverage": "all changed paths equal manifest entries plus manifest.json",
+      "disk_sha256_byte_and_git_blob_mismatches": 0,
+      "out_of_scope_paths": 0,
+      "diff_check_exit": 0,
+      "self_excluded": true
+    },
+    "prerequisite": {
+      "decision": "pass",
+      "task": "P02-U01",
+      "status": "accepted",
+      "acceptance_sha256": "a5721cc5ac9c2e8f9d8a748f6427cbc136c8feb611e1832450723d524319b196",
+      "U01_review_sha256": "5072a85db67e7211e5b7971f08430e04f11975d047737fb0f577f97ee3f37f10",
+      "source_lock_sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    "scope": {
+      "decision": "pass",
+      "allowed_paths_only": true,
+      "changed_paths": 68,
+      "categories": [
+        "spikes/P02/",
+        "docs/adr/P02-reuse.md",
+        "evidence/P02-U02/20261003-01/"
+      ],
+      "product_code_changed": false,
+      "production_profile_or_global_configuration_changed": false,
+      "dependencies_installed": false,
+      "real_model_or_external_service_started": false
+    },
+    "events": {
+      "decision": "pass",
+      "evidence": "Frozen final summary and command record",
+      "scenario_count": 11,
+      "all_pass": true,
+      "scope": "Synthetic in-memory policy only; not a product contract or persistence proof."
+    },
+    "runtime": {
+      "decision": "pass_with_limits",
+      "evidence": "Frozen summary, command and input-hash record",
+      "command_exit": 0,
+      "node": "v24.14.0",
+      "pinned_zcode_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "observed": "Hook exit 0/2/7; bounded redacted capture and ENOENT/half-line/oversize rejection; writeFile cleanup gap reproduced; native memory-store duplicate/resequence/order/retention.",
+      "limits": "Own executionPort and synthetic Hook child; not production runner, no model/service/ACL denial/timeout-cancel/crash recovery."
+    },
+    "native": {
+      "recorded_decision": "16 pass / 0 fail in both recorded runs",
+      "pinned_zcode_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "shadow_test_mappings": 2,
+      "assertions_modified": false,
+      "port_audit": {
+        "listener_count": 16,
+        "requested_port_zero_all": true,
+        "loopback_127001_all": true,
+        "collision_with_pre_start_listeners": 0,
+        "duplicate_ports": 0
+      },
+      "verification_decision": "fail: actual executable dist inputs used by the native tests are ignored/untracked and their execution-time hashes are absent from the frozen run record."
+    },
+    "sqlite": {
+      "decision": "pass",
+      "author_final_runs": [
+        "10/10",
+        "10/10"
+      ],
+      "initial_fixture_failure": "Preserved and corrected before two full passing runs.",
+      "reviewer_rerun": {
+        "path": ".runtime/P02/experiments/u02/sqlite/run-2026-10-03T054219-873Z-a0f46f00/summary.json",
+        "exit_code": 0,
+        "status": "ready_for_review",
+        "scenarios": 10,
+        "passed": 10,
+        "failed": 0,
+        "summary_sha256": "c6174207b93392480a240990b19c7b845e1de19146d549b66db69bd71f4055ec"
+      },
+      "limits": "Real local SQLite API with synthetic DBs and owned worker SIGKILL; not physical power loss, OS ACL, or real external side effects."
+    },
+    "native_dist_input_gap": {
+      "severity": "blocking",
+      "id": "native-dist-inputs-not-bound",
+      "details": "The native shadow tests import worktree outputs dist/packages/adapters/zcode/src/index.js and dist/packages/application/turn-projection.js. The recorded build-01 TypeScript compile exited 0, but dist/ is ignored/untracked and the native command record does not hash the executed WT dist JavaScript tree or bind the Node/TypeScript package, bin and tsc versions/hashes at execution. Current post-run hashes are observations only and do not prove the bytes used during mapped-02. Thus the 16 passing assertions are not bound to exact executable inputs and the pinned native adoption claim is not independently reproducible from the frozen commit.",
+      "current_snapshot_only": [
+        {
+          "path": "dist/packages/adapters/zcode/src/index.js",
+          "sha256": "e5f7e2686931982d2a5b09a38dd800e4b50afdd839a28830458ce13db4c88264",
+          "ignored_untracked": true,
+          "at_execution_time_proven": false
+        },
+        {
+          "path": "dist/packages/application/turn-projection.js",
+          "sha256": "4d614c765b7099eac4aead479bf14674043e62c2a71884714fa15e93473b7e27",
+          "ignored_untracked": true,
+          "at_execution_time_proven": false
+        }
+      ],
+      "required_fix": "Before/after the native test run, hash the complete WT dist executable JS inputs used by the two mapped test files and their local dependencies, fixed Node and TypeScript package/bin/tsc version+hashes, plus the pinned ZCode executable entry/tsx loader inputs and source baseline. Rerun the same 16 assertions with only the port-recording preload, preserve old failure/success evidence, commit the added binding/result and regenerate exact manifest; then request an exact-commit delta review."
+    },
+    "adoption": {
+      "decision": "reasonable_candidate_decision_if_native_inputs_are_rebound",
+      "summary": "ADR selects the accepted fixed ZCode Runtime/Loop plus thin normalized facts and fixed Node 24.14 node:sqlite; excludes full Herta/DSH adoption and dependency installation. Node SQLite experimental/synchronous limits and all NOT_RUN boundaries are stated.",
+      "deferred_contracts": [
+        "U03 operation_id and unknown-receipt behavior",
+        "U03 native sequence 0 vs writer commit_sequence"
+      ],
+      "scope_overclaim_detected": false
+    },
+    "source_verification": {
+      "recorded_status": "pass",
+      "indexed_file_observations": 99,
+      "pinned_clean_trees": 4,
+      "mismatches": 0,
+      "not_independently_rerun": "Accepted U01 verifier output was read; this review did not rerun the broader source verifier."
+    },
+    "archive_binding": {
+      "output_index_items": 604,
+      "raw_fixture_export": false,
+      "archived_report_items": 52,
+      "archived_report_mismatches": 0,
+      "policy": "Bound output-index Git content and checked only its 52 archived reports; volatile experiment sidecars/caches are not acceptance inputs."
+    },
+    "independent_checks": {
+      "node_syntax": [
+        "events-poc.mjs",
+        "hook-child.mjs",
+        "native-probe.mjs",
+        "native-network-audit.cjs",
+        "runtime-poc.mjs",
+        "sqlite-poc.mjs",
+        "sqlite-worker.mjs"
+      ],
+      "all_exit_0": true,
+      "sqlite_fresh_run": "10/10 scenarios passed using the script-generated unique runRoot; no author output overwritten.",
+      "events_runtime_native_rerun": "NOT_RUN; fixed output roots and native mapped run are reviewed from frozen records/source. Native re-run is required with corrected input-binding instrumentation."
+    }
+  },
+  "findings": [
+    {
+      "id": "native-dist-inputs-not-bound",
+      "severity": "blocking",
+      "status": "needs_changes",
+      "evidence": "`spikes/P02/native-probe.mjs` binds the mapped test files and pinned ZCode commit, but mapped tests import WT `dist/packages/adapters/zcode/src/index.js` and `dist/packages/application/turn-projection.js`. These reside under `.gitignore` `dist/`; `build-01` records only tsc exit 0. `runs/native/mapped-02/command.json` contains no execution-time hash list for that dist tree or TypeScript/Node build inputs. Current file hashes are post-run observations only.",
+      "impact": "Cannot prove the 16 passing native assertions executed the intended exact baseline product bytes; this is a core input/provenance gap in the native adoption evidence.",
+      "required_fix": "Add pre/post hash binding for all loaded WT dist JS plus pinned ZCode entry/tsx loader and Node/TypeScript package/bin/tsc version+hashes, rerun the unchanged 16 assertions with the listener-only preload, archive command/output and commit a refreshed manifest."
+    }
+  ],
+  "limitations": [
+    "This review evaluates the U02 isolated experiment/adoption decision only, not P02 product implementation, G02, or Windows package acceptance.",
+    "Native test evidence is recorded as 16/16 pass twice, with all 16 observed listener addresses requested on 127.0.0.1:0 and distinct from the pre-run listener snapshot; exact executable dist inputs remain unbound, so U02 fails acceptance.",
+    "Real model, P02 Desktop, installer, physical power loss, Windows ACL denial, process-tree termination and production recovery remain NOT_RUN. External-effect fault is a local synthetic file; unknown/no-auto-replay is a design policy, not a product recovery manager.",
+    "Events and Runtime were reviewed from frozen source/results but not independently rerun. Fresh reviewer SQLite run passed 10/10.",
+    "operation_id and native sequence 0/writer commit-sequence contract are explicitly deferred to U03; this U02 fail is the separate native executable-input binding gap."
+  ],
+  "artifacts": [
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/manifest.json",
+      "bytes": 17181,
+      "sha256": "7857fce0b728212496ed54233239917367f52cf4d39947748851886554222c47",
+      "label": "冻结manifest，67项文件"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/baseline.json",
+      "bytes": 1439,
+      "sha256": "ef7c0a5cb3431fdf2a4264a07743c37b1fb94581fd392a5a743b18883befab42",
+      "label": "baseline及U01前置接受绑定"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/output-index.json",
+      "bytes": 237940,
+      "sha256": "65d1fee2d434d04e59bee302412a9b704c71617aef9456d9809085179d738f9a",
+      "label": "不可变归档索引内容；不将604个易变fixture要求持续不变"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/result.md",
+      "bytes": 2891,
+      "sha256": "52d2737e5c85be8710f7a0c12a018a627fca8ca32c235eb212aa2bb6c7e8aba9",
+      "label": "U02结果与范围/限制"
+    },
+    {
+      "root": "author_worktree",
+      "path": "docs/adr/P02-reuse.md",
+      "bytes": 5392,
+      "sha256": "b091bd8b5f1c9aefd2afeb676558748e2696ce8d8bf0d0062fd4e9dbf17a637d",
+      "label": "候选采用ADR"
+    },
+    {
+      "root": "author_worktree",
+      "path": "spikes/P02/events-poc.mjs",
+      "bytes": 10714,
+      "sha256": "eb0d9cf3d861a6373cf8ea22b7fe248864f276f0edde74098c26d033bb1e9c74",
+      "label": "事件策略PoC"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/runs/events/summary.json",
+      "bytes": 2937,
+      "sha256": "6918cd6193e5a24ba40867dab4fae1b80f78b1a054fc123a51163cc676a64d6b",
+      "label": "最终11个合成事件场景"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/runs/events/command-02.json",
+      "bytes": 643,
+      "sha256": "ff4bfe363bb8cea731fbcb7816cd70e4e5a42ac2e809d16b4fb4e4fecb9fe8c9",
+      "label": "最终事件命令记录"
+    },
+    {
+      "root": "author_worktree",
+      "path": "spikes/P02/native-probe.mjs",
+      "bytes": 5673,
+      "sha256": "6bfcd8667472b9b9d7f32886845e5cff96cc42981bfb64701420eca9113d924c",
+      "label": "native影子测试映射/端口探针"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/runs/native/mapped-02/command.json",
+      "bytes": 38476,
+      "sha256": "9020cedc072f1afb4a8f781280f1b2444c177af080743e5c6e5b0e744690815e",
+      "label": "16项native最终运行与端口记录"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/runs/native/mapping-failure-01.json",
+      "bytes": 692,
+      "sha256": "ffe93d230a49e92a724796e7d15874e5c00df63894e1c96181672f4529ee05cc",
+      "label": "保留的映射失败摘要"
+    },
+    {
+      "root": "author_worktree",
+      "path": "spikes/P02/runtime-poc.mjs",
+      "bytes": 18384,
+      "sha256": "c2760a53aed4ecf6997ea1470a74f862b4dfcd60f79587b5b570f570371b8aab",
+      "label": "Runtime/Hook隔离PoC"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/runs/runtime/summary.json",
+      "bytes": 6365,
+      "sha256": "0e4518164395d026ddbbd8e5d6a88b669b711ca616b1fe779885cb88f537be84",
+      "label": "Runtime/Hook结果与限制"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/runs/runtime/input-sha256.json",
+      "bytes": 2068,
+      "sha256": "855596fd005f9c0605cdb064c81354f7949ac4848f2da2df42b2ccee8c9edcef",
+      "label": "已绑定的Runtime直接输入摘要"
+    },
+    {
+      "root": "author_worktree",
+      "path": "spikes/P02/sqlite-poc.mjs",
+      "bytes": 25351,
+      "sha256": "8b9b7ad5b192840c62733435d8464cee9215a62957d5fff824c320a230276241",
+      "label": "SQLite PoC"
+    },
+    {
+      "root": "author_worktree",
+      "path": "spikes/P02/sqlite-worker.mjs",
+      "bytes": 2108,
+      "sha256": "76e96b42f72960fc1c991f3171ca36fd7001f05012289faa9f77e3475007dccf",
+      "label": "SQLite受控worker中断"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/runs/sqlite/run-2026-10-03T051848-688Z-b138f547/summary.json",
+      "bytes": 8759,
+      "sha256": "ece18c7bbfba3ccf8962413082e643d5fc4f8e1cbc8ee86e3d1909e5ece1573d",
+      "label": "最终作者SQLite 10场景结果"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/runs/sqlite/verification-record.json",
+      "bytes": 2789,
+      "sha256": "96c79b46d267d0e6579ba5d00272b45ddf3785f335b6d3f71ce3acd40e5a8f9f",
+      "label": "Node/SQLite能力与语法记录"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "AGENTS.md",
+      "bytes": 1787,
+      "sha256": "b6ab92bf4c41d1cbc44fede9c152614b38bc24e5de8c293a55db258735ef53f4",
+      "label": "仓库执行/端口/范围规则"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U02.md",
+      "bytes": 2825,
+      "sha256": "6bdf8ad7f6d7ed5d6d1aa56e3b400f6120ab2d64d06fc1a8e13705aefe4e53d0",
+      "label": "U02任务卡"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U01/20261003-01/acceptance.json",
+      "bytes": 1257,
+      "sha256": "a5721cc5ac9c2e8f9d8a748f6427cbc136c8feb611e1832450723d524319b196",
+      "label": "U01正式接受记录"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U01/20261003-01/review/review-final.json",
+      "bytes": 11604,
+      "sha256": "5072a85db67e7211e5b7971f08430e04f11975d047737fb0f577f97ee3f37f10",
+      "label": "U01独立审查输入"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e",
+      "label": "固定来源/版本锁"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/experiments/u02/sqlite/run-2026-10-03T054219-873Z-a0f46f00/summary.json",
+      "bytes": 8760,
+      "sha256": "c6174207b93392480a240990b19c7b845e1de19146d549b66db69bd71f4055ec",
+      "label": "本审查fresh unique-runroot SQLite复跑 summary"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/experiments/u02/sqlite/reviewer-rerun-20261003.stdout.log",
+      "bytes": 11159,
+      "sha256": "8795eb7b5d521665736eca069d073951e2018f20dcf8b917b2a0d4fb6bd73839",
+      "label": "本审查SQLite复跑stdout"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/experiments/u02/sqlite/reviewer-rerun-20261003.stderr.log",
+      "bytes": 171,
+      "sha256": "07f6b4f659478edb6607fc7a64d9fbb2d00dd8eada8601c72b94399245c8bafd",
+      "label": "本审查SQLite复跑stderr"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe",
+      "bytes": 91380224,
+      "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+      "label": "固定Node 24.14.0二进制"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "root": "baseline_repository",
+      "path": "AGENTS.md",
+      "bytes": 1787,
+      "sha256": "b6ab92bf4c41d1cbc44fede9c152614b38bc24e5de8c293a55db258735ef53f4",
+      "label": "仓库执行/端口/范围规则"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U02.md",
+      "bytes": 2825,
+      "sha256": "6bdf8ad7f6d7ed5d6d1aa56e3b400f6120ab2d64d06fc1a8e13705aefe4e53d0",
+      "label": "U02任务卡"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U01/20261003-01/acceptance.json",
+      "bytes": 1257,
+      "sha256": "a5721cc5ac9c2e8f9d8a748f6427cbc136c8feb611e1832450723d524319b196",
+      "label": "U01正式接受记录"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U01/20261003-01/review/review-final.json",
+      "bytes": 11604,
+      "sha256": "5072a85db67e7211e5b7971f08430e04f11975d047737fb0f577f97ee3f37f10",
+      "label": "U01独立审查输入"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e",
+      "label": "固定来源/版本锁"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe",
+      "bytes": 91380224,
+      "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+      "label": "固定Node 24.14.0二进制"
+    }
+  ]
+}

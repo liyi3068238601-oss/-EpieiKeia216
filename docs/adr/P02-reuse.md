@@ -24,3 +24,5 @@ SQLite 10 场景第二轮修复后通过，另做一次清理核查后的最终�
 来源：ZCode Apache-2.0；Herta/DSH MIT 代码设计（角色资产排除）；SQLite public-domain 与 Node MIT。固定源、官方 API/backup/WAL 文档、许可证/依赖索引沿用已接受 U01。CloudEvents 1.0.2 的 source+ID 用作身份设计参考，不宣称 wire protocol 实现。代码无整段第三方移植。
 
 证据在 `evidence/P02-U02/20261003-01/`；spike 在 `spikes/P02/`；实际数据、worker、运行副本与失败目录在忽略的 `.runtime/P02/experiments/u02/`。现有 native fixture 在 U02 作者树内使用 `.runtime/P01/` 名称，不写主项目冻结 P01 目录。无真实 Key、生产资料、全局设置、固定端口、模型或 DSH 副作用。回滚为本单元独立提交 revert；已接受计划/证据和失败工作根保留，未知效果先核查。
+
+独立首审对作者 e922939 给出 fail：旧 16 项记录没有绑定实际加载的本地 dist/编译工具链字节。旧作者树与报告原样保留，修补树为 `.runtime/P02/worktrees/u02-inputs/`。重新编译并在第三次原生运行前后绑定全部本地可执行 dist JS、TS 来源、Node/TypeScript 工具链字节/版本与直接 native 入口，所有输入 hash 前后不变、产品源 diff 为空，16 项断言再次通过。端口预检及实际 loopback port=0 记录保留，parent HOME/TEMP 也隔离。完整上游依赖闭包/安装包仍不作本 spike 声明，U10/U11另验；修补仍待独立复审接受。

@@ -15,3 +15,5 @@
 运行结果分层：事件策略为 synthetic policy；16 项为实际原生 Runtime/工具/Hook 与 loopback mock 模型；当前 P02 新产品、Desktop、安装包、真实模型、物理断电全部 NOT_RUN。SQLite 事务/进程 kill 和恢复由另一独立 PoC 给证据，不能由这些内存结果推断。
 
 回滚采用独立提交 revert；试验失败输出、源 hash 和隔离目录保留。作者提交 ready_for_review，尚不自行接受整个 U02。
+
+独立首审要求补齐实际本地 dist 和编译工具链输入绑定。保留旧作者树后，在 u02-inputs 修补树重新编译；mapped-03 绑定运行前后所有本地 executable dist/TS源、Node/TypeScript 字节与版本及直接 native 入口，输入不变、同 16 项断言再次通过，监听预检/动态回环端口也通过。旧成功16项不倒填缺失hash。父测试进程HOME/TEMP此次也指向独立profile。完整native依赖闭包仍非本spike包验证范围。

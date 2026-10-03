@@ -2,14 +2,14 @@
   "schema_version": 1,
   "task_id": "P02-U02",
   "baseline_commit": "e809d5c7e9969cbf2f5efd68df326e115cf6f1e6",
-  "branch": "p02-u02",
+  "branch": "p02-u02-inputs",
   "manifest_excludes_itself": true,
   "files": [
     {
       "path": "docs/adr/P02-reuse.md",
-      "bytes": 5392,
-      "sha256": "b091bd8b5f1c9aefd2afeb676558748e2696ce8d8bf0d0062fd4e9dbf17a637d",
-      "git_blob": "799f2313e68bf0dc2cc9c3b8c667ff4c6cb60c96"
+      "bytes": 6041,
+      "sha256": "dcb2f3eb461423947652db04ff2e846e3f27fa4dfc1534953d3a27d9ff7d2541",
+      "git_blob": "c32c7a556cb3f3ea3623526afa9ef21d53138d68"
     },
     {
       "path": "evidence/P02-U02/20261003-01/baseline.json",
@@ -18,10 +18,22 @@
       "git_blob": "af2d4523ff06a59d3c2dd8dd4db7266c6d83dbb0"
     },
     {
+      "path": "evidence/P02-U02/20261003-01/diff-02.json",
+      "bytes": 15683,
+      "sha256": "275632307855c636b7f6b17f378f3aa83e798bc0daf2759e17ef64279860b9f1",
+      "git_blob": "7897fd44d9a136c396b24e6dc665949b853f947c"
+    },
+    {
       "path": "evidence/P02-U02/20261003-01/diff.json",
       "bytes": 14148,
       "sha256": "c13d10133b4119f33e0fe1611abe0aaa6b5418e7ea4f7516b5ef58d62ddf8d4d",
       "git_blob": "73de97ddf25d95845bc0b0e108c20415431de46a"
+    },
+    {
+      "path": "evidence/P02-U02/20261003-01/input-binding-repair.json",
+      "bytes": 1753,
+      "sha256": "17c3151b4e745f90477c7168abee3a4291706e6dd57c6e8c4d4c6d8437671362",
+      "git_blob": "d0122731597026431bff1a8b67e061ba87843170"
     },
     {
       "path": "evidence/P02-U02/20261003-01/output-index.json",
@@ -31,9 +43,15 @@
     },
     {
       "path": "evidence/P02-U02/20261003-01/result.md",
-      "bytes": 2891,
-      "sha256": "52d2737e5c85be8710f7a0c12a018a627fca8ca32c235eb212aa2bb6c7e8aba9",
-      "git_blob": "ac0df9d52012662797c08e9557359c12e4afe59d"
+      "bytes": 3628,
+      "sha256": "062f8159f34d7524952b0d092968323733e1230b4310711974d9c13269bf6710",
+      "git_blob": "b174c605ce13d1cd3e44b5be6e7a4dfc1688f090"
+    },
+    {
+      "path": "evidence/P02-U02/20261003-01/review-failed-01.json",
+      "bytes": 19618,
+      "sha256": "f23284ffb1a4f75e71945008e65a963f6fe2046b097afbdceb7ec62c87fef1d2",
+      "git_blob": "36fd0fb885f8c625d652d3bb7bc5f43254055bac"
     },
     {
       "path": "evidence/P02-U02/20261003-01/runs/events/command-01.json",
@@ -54,6 +72,12 @@
       "git_blob": "ebf635fde5c1da6741b82a705c00230a204e2a44"
     },
     {
+      "path": "evidence/P02-U02/20261003-01/runs/native/build-repair-01.json",
+      "bytes": 509,
+      "sha256": "a77e8481d9418a0bedcbde4f357a56ddc4c89d743b68f990bd59cbfc24ca9919",
+      "git_blob": "95f3baaaab9a07eb09b24394f89e457d602eabac"
+    },
+    {
       "path": "evidence/P02-U02/20261003-01/runs/native/mapped-01/command.json",
       "bytes": 23737,
       "sha256": "faa20cf77f9fccd986d244a51ca0f285108989a6341333cd4dc14a11eb6189fe",
@@ -66,6 +90,18 @@
       "git_blob": "6bc70c71830fcc38165133cd36ab2d4967eff948"
     },
     {
+      "path": "evidence/P02-U02/20261003-01/runs/native/mapped-03/command.json",
+      "bytes": 38639,
+      "sha256": "0c2d6486112f3d64c0dbb67d1565f9ca15ce350372d6df1d8618bd64e85c01db",
+      "git_blob": "a9ac48155b88cf96fae13407c139c1d66c7ccb1f"
+    },
+    {
+      "path": "evidence/P02-U02/20261003-01/runs/native/mapped-03/execution-inputs.json",
+      "bytes": 7697,
+      "sha256": "703acc4b730a090661f60aca3a85633f5655b157f54f010da41faedf4ec4883d",
+      "git_blob": "799c874aabbad71b017516124d2281eff6ad074e"
+    },
+    {
       "path": "evidence/P02-U02/20261003-01/runs/native/mapped-command-01.json",
       "bytes": 1922,
       "sha256": "6917777271199844c35b6b11ad5b2b9283c108488fe8ee52bf479a0a73e9fafb",
@@ -76,6 +112,12 @@
       "bytes": 1946,
       "sha256": "bd79e574543d612de2f2f99b18f65a1c8cd67a47907b6b1cc08dabe182c8b3b6",
       "git_blob": "9866398dde8e56c3ba29915799ad312bcb94ad98"
+    },
+    {
+      "path": "evidence/P02-U02/20261003-01/runs/native/mapped-command-03.json",
+      "bytes": 1950,
+      "sha256": "3e9b1bd85e88a2017b3721951daf51fd2e797f888d8560acb2f0de94d82c9999",
+      "git_blob": "3f5cff7d27ad4bb563f663213bee7124dd8d2bc8"
     },
     {
       "path": "evidence/P02-U02/20261003-01/runs/native/mapping-failure-01.json",
@@ -349,9 +391,9 @@
     },
     {
       "path": "spikes/P02/events-notes.md",
-      "bytes": 3386,
-      "sha256": "7cc9d876c01cad2c37d7d2a1b6d57446aa23e04d61db6f2edbaa1109c6f3ce03",
-      "git_blob": "0ce9d08804c74faf0cc400779d7b89e3c3ce58a0"
+      "bytes": 3884,
+      "sha256": "7a921e8ed3770c2fbe492f1d633b1bf869167ae4b94942d84dba231a56b536b5",
+      "git_blob": "d0c9b080c8e146fcefba8d809cdc147de44a731e"
     },
     {
       "path": "spikes/P02/events-poc.mjs",
@@ -373,9 +415,9 @@
     },
     {
       "path": "spikes/P02/native-probe.mjs",
-      "bytes": 5673,
-      "sha256": "6bfcd8667472b9b9d7f32886845e5cff96cc42981bfb64701420eca9113d924c",
-      "git_blob": "f5785ee079eb6909dbda52cf4e2071e1fdb64195"
+      "bytes": 9373,
+      "sha256": "4124f85bb2fe038bd7873eb5c6b05e81a58c4977c5f3545f36cb6a171e73ae20",
+      "git_blob": "6714d47aa241ea8b08b5d2c10af89e780f0f7965"
     },
     {
       "path": "spikes/P02/runtime-notes.md",

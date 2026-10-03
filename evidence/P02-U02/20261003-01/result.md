@@ -15,3 +15,5 @@ Native 两份原测试缺 Provider 编译入口时首次失败，隔离副本只
 限制：所有事件策略只是 synthetic in-memory；SQLite 与进程 kill 是真实本地路径，外部 effect 是合成文件；既有原生 Loop 使用 loopback mock 模型。真实模型、P02 Desktop、Windows 包、物理断电、OS ACL 拒绝 NOT_RUN。原生 Hook 与 store 差额不得隐去；未摄取/未提交/未知 effect 不声称保存、成功或自动可重试。
 
 回滚 revert 本单元独立提交；保留历史 P00/P01 和隔离失败证据，未知外部效果先核查。本单元通过也不等于 G02：下一节点 U03 事件 ID/互斥终态/operation_id/seq0 合约。
+
+独立首审 fail 已原样保存为 review-failed-01.json，理由是旧 native 记录未绑定实际 WT dist 与工具链输入。修補在另一个树 u02-inputs 完成，原 u02/e922 仍冻结不改：同源重新编译，最终 mapped-03 运行前后绑定全部本地可执行 dist JS / TS 源、Node24.14/TypeScript6.0.2 工具链及直接 native 入口，hash 未变化，16 项同样断言全部通过。具体计数/hash与新作者树在 input-binding-repair.json；旧历史报告仍对应当时原 u02 路径，不以它们冒充修补后的运行证明。完整 upstream 依赖闭包非本 spike 通过范围，P02新产品/包仍NOT_RUN。作者依然 ready_for_review，需新提交独立复审，不自行放行 U03。
