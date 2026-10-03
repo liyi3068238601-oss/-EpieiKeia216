@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "tools/run-tests.mjs",
+    "unit",
+    "P02-U08"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u08",
+  "started_at": "2026-10-03T10:49:08.656421+00:00",
+  "completed_at": "2026-10-03T10:49:08.815050+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 240,
+  "environment_overrides": {},
+  "stdout": "file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/u08/packages/storage/backup/test/backup.test.mjs:424\n  const database = new DatabaseSync(databasePath, { readOnly: true });\n        ^\n\nSyntaxError: Identifier 'database' has already been declared\n    at compileSourceTextModule (node:internal/modules/esm/utils:318:16)\n    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:99:18)\n    at #translate (node:internal/modules/esm/loader:473:20)\n    at afterLoad (node:internal/modules/esm/loader:529:29)\n    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)\n    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:577:36)\n    at afterResolve (node:internal/modules/esm/loader:625:52)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:631:12)\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:650:32)\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\n\nNode.js v24.14.0\n✖ packages\\storage\\backup\\test\\backup.test.mjs (55.0001ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 61.5325\n\n✖ failing tests:\n\ntest at packages\\storage\\backup\\test\\backup.test.mjs:1:1\n✖ packages\\storage\\backup\\test\\backup.test.mjs (55.0001ms)\n  'test failed'\n",
+  "stderr": ""
+}

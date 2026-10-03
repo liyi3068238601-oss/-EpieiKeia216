@@ -1,0 +1,38 @@
+{
+  "schema": "p02-unit-baseline/v1",
+  "task": "P02-U08",
+  "baseline_commit": "6198ddcf963c7ee594b983f3b1c1fe33f692fb15",
+  "branch": "p02-u08",
+  "coordinator_branch": "p02-stage",
+  "prerequisites": [
+    {
+      "task": "P02-U07",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U07/20261003-01/acceptance.json",
+        "bytes": 3962,
+        "sha256": "cf63a8fc3a869c55797df8677520462cdcbd67514b16982d6231002112135fdc"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P02-U08.md",
+    "bytes": 1867,
+    "sha256": "b087b678b25159ba1bec3805e685c7efa4f280d7e5277d707d2df51b86b05a6c"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "packages/storage/backup",
+    "migrations",
+    "tsconfig.json",
+    "tools/run-tests.mjs",
+    "evidence/P02-U08/20261003-01"
+  ],
+  "test_mapping": "packages/storage/backup/test/backup.test.mjs",
+  "author_status": "ready_for_review",
+  "checked_at_utc": "2026-10-03T10:13:50.675962+00:00"
+}
