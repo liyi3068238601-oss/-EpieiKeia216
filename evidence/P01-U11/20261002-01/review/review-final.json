@@ -1,0 +1,381 @@
+{
+  "schema": "xiadie-independent-review/v1",
+  "task": "P01-U11",
+  "gate": "P01-G01",
+  "decision": "pass",
+  "review_target": {
+    "author_commit": "b0a19ccb9bec82b358e7ac447d7433572b5e507f",
+    "baseline_commit": "7a284538250d54c228a3a67fcabff4882c8afeff",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11",
+    "author_worktree_clean": true
+  },
+  "verification": {
+    "author_identity": {
+      "decision": "pass",
+      "checker_output": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u11-review\\final-fresh\\author-verification.json",
+      "files": 782,
+      "changed_paths": 783,
+      "manifest_bytes": 246734,
+      "manifest_sha256": "0584fbe3c68ce5c48c1334dcdeae58e874d8cfa55db370cb12aac695c97aa39b",
+      "disk_and_git_mismatches": []
+    },
+    "candidate": {
+      "id": "u10-candidate-06",
+      "descriptor_path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06\\candidate-descriptor.json",
+      "descriptor_bytes": 1319380,
+      "descriptor_sha256": "25f92e7604b41479fdcdd9dcc089afe0ce6441db4586a7f7e7614805632a8907",
+      "artifacts": 6673,
+      "repository_inputs": 66,
+      "source_commit": "82298c735dfbc4f278b5e920d79be7a83f979b55",
+      "git_blob_matches": 66,
+      "accepted_by_u10_review": true
+    },
+    "baseline_hash_groups": [
+      {
+        "name": "persona_prompt",
+        "count": 1,
+        "paths_count": 1,
+        "sha256": "bfead658368a234e5cf6203317343c5f17016dbf01e628c5e125d84a3d414bd8",
+        "matches": true
+      },
+      {
+        "name": "schemas_and_asset_manifests",
+        "count": 6,
+        "paths_count": 6,
+        "sha256": "ed17bdd572de4da910617af6aae0000e94b1e2c1c2db98539cb679d3c3417caf",
+        "matches": true
+      },
+      {
+        "name": "extension_resources",
+        "count": 4,
+        "paths_count": 4,
+        "sha256": "68254c1895828a7fea9936a25cd206be58503228b5af41781d243bbf5238286f",
+        "matches": true
+      },
+      {
+        "name": "lock_and_config",
+        "count": 3,
+        "paths_count": 3,
+        "sha256": "603e47be76d6b27bc7ebd4fe62f43b6431bf3a789d4786f85ace28bfe9775fa4",
+        "matches": true
+      },
+      {
+        "name": "implementation_and_tests",
+        "count": 52,
+        "paths_count": 52,
+        "sha256": "4400e40aff4748ff0b6db4b35056bdca2bb0287fcdb740631a999382b7267dc9",
+        "matches": true
+      }
+    ],
+    "freeze_inputs": {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\coordinator\\freeze-inputs.json",
+      "files": 50,
+      "sha256": "3f968f4005cb0cd9bacdde3d1b2e7584a07e3c6e1b91828c68cfa727e22875df",
+      "file_hash_matches": 50
+    },
+    "runs": {
+      "final_01_full": {
+        "summary": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\runs\\final-01\\full\\summary.json",
+        "command_exit_code": 0,
+        "passed": 6,
+        "total": 6,
+        "scenarios": [
+          "success",
+          "read_success",
+          "read_failure",
+          "cancel_recovery",
+          "disabled_native",
+          "pro_denied"
+        ],
+        "backend": "actual Desktop UI automation with isolated loopback mock",
+        "local_model_requests": 9,
+        "external_model_requests": 0,
+        "real_credentials_used": false,
+        "DSH_started": false,
+        "DSH_process_tree_verified": true,
+        "network_guard_verified_all_scenarios": true,
+        "production_unchanged": true,
+        "execution_unchanged": true
+      },
+      "final_02_degradation": {
+        "summary": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\runs\\final-02\\degradation\\summary.json",
+        "command_exit_code": 0,
+        "passed": 3,
+        "total": 3,
+        "scenarios": {
+          "no_key": {
+            "passed": true,
+            "model_requests": 0,
+            "send_disabled": true
+          },
+          "no_dsh": {
+            "passed": true,
+            "model_requests": 1,
+            "response_status": 200,
+            "dsh_descendants": 0
+          },
+          "offline": {
+            "passed": true,
+            "model_requests": 1,
+            "response_status": 503,
+            "failure_visible": true,
+            "success_reply": false
+          }
+        },
+        "external_model_requests": 0,
+        "real_credentials_used": false,
+        "DSH_started": false,
+        "DSH_process_tree_verified": true,
+        "network_guard_verified_all_scenarios": true,
+        "production_unchanged": true,
+        "execution_unchanged": true
+      },
+      "preserved_final_01_degradation_failure": {
+        "summary": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\runs\\final-01\\degradation\\summary.json",
+        "scenario_result": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\runs\\final-01\\degradation\\scenarios\\offline\\scenario-result.json",
+        "command_exit_code": 1,
+        "offline_received_status": 503,
+        "failure_visible": true,
+        "success_reply": false,
+        "runner_error_code": "EEXIST",
+        "preserved": true
+      },
+      "full_run_reuse_rationale": "The only implementation diff changes history snapshot naming in tests/integration/P01/desktop-ui.mjs; full has six scenarios and does not invoke the offline history path. The full and degradation runs bind the same candidate descriptor SHA, so reuse of final-01 full remains applicable.",
+      "log_hash_matches": [
+        {
+          "name": "full",
+          "exit_code": 0,
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full.log",
+          "bytes": 885,
+          "sha256": "ab6cfa87a143d3b8dd6aace5fff561bf3a1f3133b5b49cc6a105ccc41f55d6ac",
+          "matches": true
+        },
+        {
+          "name": "degradation",
+          "exit_code": 1,
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\degradation.log",
+          "bytes": 766,
+          "sha256": "3d8c3c6885d834ba3b7d5362b974466b657e499cdf0f23c3f12b2724894ffefd",
+          "matches": true
+        },
+        {
+          "name": "degradation",
+          "exit_code": 0,
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-02\\degradation.log",
+          "bytes": 714,
+          "sha256": "ae7209532de88721d3c1ec8fb1824038fa3e369ef9b3503a22b03f4ce14f2079",
+          "matches": true
+        }
+      ]
+    },
+    "prerequisites": {
+      "P01_U01_through_U10": "accepted",
+      "u10_review_decision": "pass",
+      "u10_descriptor_artifacts_verified": 6673,
+      "u10_repository_inputs_verified": 66,
+      "P02_started": false,
+      "current_status": "P01 running at U11; G01 pending before this review"
+    }
+  },
+  "G01": {
+    "decision": "pass",
+    "criteria": [
+      {
+        "id": "identity_assets_verifiable",
+        "decision": "pass",
+        "evidence": [
+          "P01-U04 accepted identity assets",
+          "baseline key_input_hashes match the three v3/asset files",
+          "candidate descriptor binds 66 source inputs and 6,673 artifacts"
+        ]
+      },
+      {
+        "id": "main_interaction_runnable",
+        "decision": "pass",
+        "evidence": [
+          "final-01 full Desktop UI automation: 6/6 scenarios",
+          "isolated loopback mock",
+          "zero external model requests"
+        ]
+      },
+      {
+        "id": "failure_is_not_reported_as_success",
+        "decision": "pass",
+        "evidence": [
+          "read_failure scenario reports missing content truthfully",
+          "offline scenario receives loopback 503, displays model_request_failed, and has no success reply"
+        ]
+      },
+      {
+        "id": "disabled_extension_preserves_native_runtime",
+        "decision": "pass",
+        "evidence": [
+          "final-01 disabled_native scenario passed",
+          "P01-U06 and P01-U10 accepted evidence",
+          "U10 independent review records native pass-through"
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "Model qualification remains limited to the recorded five-scenario small sample: deepseek-flash qualifies; deepseek-v4-pro was measured but did not qualify; human persona review is not_reviewed.",
+    "U11 Desktop evidence uses actual UI automation and a loopback mock; it records zero external model requests and no real credentials.",
+    "Visual acceptance was NOT_RUN.",
+    "The frozen candidate is a local Windows development assembly, not an installer, portable package, or published release.",
+    "The sidecar records host-side verification evidence; it is not a renderer reply panel.",
+    "The network guard is process instrumentation, not an OS sandbox.",
+    "Core boundary scan was NOT_RUN; P02 has not started."
+  ],
+  "artifacts": [
+    {
+      "label": "independent_author_verification",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u11-review\\final-fresh\\author-verification.json",
+      "bytes": 556,
+      "sha256": "a8929d2a3844d363fa44791b5acac540f5860764a916c9423fc44e20f1380f09"
+    },
+    {
+      "label": "author_manifest",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\manifest.json",
+      "bytes": 246734,
+      "sha256": "0584fbe3c68ce5c48c1334dcdeae58e874d8cfa55db370cb12aac695c97aa39b"
+    },
+    {
+      "label": "author_document",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\docs\\releases\\0.1.0\\README.md",
+      "bytes": 4201,
+      "sha256": "e0c58040c95916aa8e152383778da64a814ef1c425ad712e945974e7fdb6f73b"
+    },
+    {
+      "label": "author_document",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\docs\\releases\\0.1.0\\freeze.json",
+      "bytes": 7938,
+      "sha256": "bf30d2ea3425fea221883c1369b83d260c76b147c0d8f3f9ef226cf867e51ae7"
+    },
+    {
+      "label": "author_document",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\result.md",
+      "bytes": 5516,
+      "sha256": "b6fdbb847753f6d92297dc63bb6430f888fbcbbcc7519918dc61307835579270"
+    },
+    {
+      "label": "author_document",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\baseline.json",
+      "bytes": 7768,
+      "sha256": "9870bcca43d34d6a32c31ddcb377d2c05e790e2e83044c027f4c80fad0ab88b6"
+    },
+    {
+      "label": "author_document",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\source-decision.md",
+      "bytes": 1683,
+      "sha256": "453fec2d3a8317b27014d6158164c3f03e2ebc53e6432e75c73adeb845c2c01f"
+    },
+    {
+      "label": "author_document",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\rollback.md",
+      "bytes": 939,
+      "sha256": "c90064f3c21a6b24c65416fc7b7a255aacbba0e33e9b54fe2e938d68015ec1a1"
+    },
+    {
+      "label": "full_suite_summary",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\runs\\final-01\\full\\summary.json",
+      "bytes": 63611,
+      "sha256": "fa42cf053f3cd4c299c801f6e04aeee2ec446ab35f2801dc4497fdc7e1a8d479"
+    },
+    {
+      "label": "preserved_failed_degradation_summary",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\runs\\final-01\\degradation\\summary.json",
+      "bytes": 41805,
+      "sha256": "a26b4cc34535e7e2aca84e2b479b174cbacb2496ae3f86c1487fa00c70f4c9f3"
+    },
+    {
+      "label": "degradation_rerun_summary",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\runs\\final-02\\degradation\\summary.json",
+      "bytes": 40777,
+      "sha256": "41d3dfbb5445dba0c688e1dcc1af63e0872129191cc37a98bafdec47bc394709"
+    },
+    {
+      "label": "preserved_EEXIST_scenario",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\runs\\final-01\\degradation\\scenarios\\offline\\scenario-result.json",
+      "bytes": 6280,
+      "sha256": "ffbcc6fffb4ff2c390569c503d2f24bb9d5caec098730d49855ce99a698fe81b"
+    },
+    {
+      "label": "final_01_commands",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\runs\\final-01\\commands.json",
+      "bytes": 2118,
+      "sha256": "407badbd2190d22b10fce3457c9e2435b980b6b3d3f9266f9195eed7d882779f"
+    },
+    {
+      "label": "final_02_commands",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\runs\\final-02\\commands.json",
+      "bytes": 1202,
+      "sha256": "dd64ef480f200bd801f5330adc22c59605f448c5e60124846e46097cbe99520a"
+    },
+    {
+      "label": "candidate_descriptor",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\u10-candidate-06\\candidate-descriptor.json",
+      "bytes": 1319380,
+      "sha256": "25f92e7604b41479fdcdd9dcc089afe0ce6441db4586a7f7e7614805632a8907"
+    },
+    {
+      "label": "freeze_input_inventory",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\worktrees\\u11\\evidence\\P01-U11\\20261002-01\\coordinator\\freeze-inputs.json",
+      "bytes": 10447,
+      "sha256": "3f968f4005cb0cd9bacdde3d1b2e7584a07e3c6e1b91828c68cfa727e22875df"
+    },
+    {
+      "label": "accepted_u10_review",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01-U10\\20261002-01\\review-final.json",
+      "bytes": 7641,
+      "sha256": "7c37d7770793d0daaa952f6c61c7211bd0b1d8632d8dc9c4a29ff8326a57c404"
+    },
+    {
+      "label": "accepted_u04_acceptance",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01-U04\\20261001-01\\acceptance.json",
+      "bytes": 3120,
+      "sha256": "2b9a858886656c7fa38af0fd6d0da600948a32d05bcc4575be978c942f5700cf"
+    },
+    {
+      "label": "current_p01_status",
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01\\status.json",
+      "bytes": 19861,
+      "sha256": "5d73e7d5c031dc94a2d402655141216c30676d76f9cde96f056be204a063ae55"
+    },
+    {
+      "label": "persona_v3",
+      "path": "E:\\Xiadie\\Xiadie\\assets\\character\\xiadie\\v3\\persona.json",
+      "bytes": 5580,
+      "sha256": "a688c669c4f556495131ac69cdc868a5b2ee93614eff814fc0793b1690c99bb4"
+    },
+    {
+      "label": "persona_manifest",
+      "path": "E:\\Xiadie\\Xiadie\\assets\\character\\xiadie\\v3\\manifest.json",
+      "bytes": 534,
+      "sha256": "3bedae784adae2182f3396cccbc3c91663fe96a58d18373481fbb7155d888f62"
+    },
+    {
+      "label": "asset_manifest",
+      "path": "E:\\Xiadie\\Xiadie\\assets\\manifest.json",
+      "bytes": 4304,
+      "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"
+    },
+    {
+      "label": "run_log",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\full.log",
+      "bytes": 885,
+      "sha256": "ab6cfa87a143d3b8dd6aace5fff561bf3a1f3133b5b49cc6a105ccc41f55d6ac"
+    },
+    {
+      "label": "run_log",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-01\\degradation.log",
+      "bytes": 766,
+      "sha256": "3d8c3c6885d834ba3b7d5362b974466b657e499cdf0f23c3f12b2724894ffefd"
+    },
+    {
+      "label": "run_log",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\validation\\u11-final-02\\degradation.log",
+      "bytes": 714,
+      "sha256": "ae7209532de88721d3c1ec8fb1824038fa3e369ef9b3503a22b03f4ce14f2079"
+    }
+  ]
+}

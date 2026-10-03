@@ -6,10 +6,10 @@
   "plan_version": "1.1",
   "product_version": "0.1.0",
   "stage": "P01",
-  "stage_status": "completed",
-  "current_task": null,
+  "stage_status": "running",
+  "current_task": "P01-U11",
   "G00": "pass",
-  "G01": "pass",
+  "G01": "pending",
   "tasks": [
     {
       "id": "P01-U01",
@@ -400,25 +400,8 @@
       "dependencies": [
         "P01-U10"
       ],
-      "status": "accepted",
-      "card_sha256": "df5d3ca973d3035ada4554102523e5864b220abbed3050c4447a5ae212235952",
-      "author_commit": "b0a19ccb9bec82b358e7ac447d7433572b5e507f",
-      "integration_commit": "5f5f23802173e4156f7076d3c733d23699ca50f4",
-      "acceptance": {
-        "path": "evidence/P01-U11/20261002-01/acceptance.json",
-        "bytes": 1650,
-        "sha256": "f7b8f9e31439093f0442298ea544bf390ec142fdd508ce4e107ceb241540a63f"
-      },
-      "review": {
-        "status": "pass",
-        "reviewer": "u11_final_review",
-        "reviewed_commit": "b0a19ccb9bec82b358e7ac447d7433572b5e507f",
-        "evidence": {
-          "path": "evidence/P01-U11/20261002-01/review-final.json",
-          "bytes": 15709,
-          "sha256": "0022e123e6617dc14aa3ee7b533dc2ce45e29a346d3b65b4e2edcaffa2707b35"
-        }
-      }
+      "status": "running",
+      "card_sha256": "df5d3ca973d3035ada4554102523e5864b220abbed3050c4447a5ae212235952"
     }
   ],
   "model_authorization": {
@@ -503,7 +486,7 @@
     ],
     "qualification_note": "Pro is measured, but its reversed promise participants require revision; do not present it as P01 persona-qualified."
   },
-  "next_task": "P02-U01",
+  "next_task": "P01-U11",
   "pause_history": [
     {
       "user_reply": "准备在最完整的可暂定点停止",
@@ -547,16 +530,5 @@
       "after_task": "P01-U06",
       "fulfilled_at_utc": "2026-10-02T09:26:37.774992+00:00"
     }
-  ],
-  "freeze": {
-    "product_version": "0.1.0",
-    "author_commit": "b0a19ccb9bec82b358e7ac447d7433572b5e507f",
-    "integration_commit": "5f5f23802173e4156f7076d3c733d23699ca50f4",
-    "acceptance": {
-      "path": "evidence/P01-U11/20261002-01/acceptance.json",
-      "bytes": 1650,
-      "sha256": "f7b8f9e31439093f0442298ea544bf390ec142fdd508ce4e107ceb241540a63f"
-    },
-    "scope": "Local development candidate; limitations and exact artifact hashes in docs/releases/0.1.0/"
-  }
+  ]
 }
