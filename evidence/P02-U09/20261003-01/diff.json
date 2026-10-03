@@ -1,0 +1,65 @@
+{
+  "task": "P02-U09",
+  "baseline": "99c8702a34660f36b528efa0cca8c7257e6f98a5",
+  "scope": [
+    "packages/diagnostics",
+    "tsconfig.json",
+    "tools/run-tests.mjs",
+    "evidence/P02-U09/20261003-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "99c8702a34660f36b528efa0cca8c7257e6f98a5"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u09",
+      "exit_code": 0,
+      "stdout": " evidence/P02-U09/20261003-01/baseline.json         |  37 +\n evidence/P02-U09/20261003-01/command-index.json    |  72 ++\n .../20261003-01/commands/01-source-build.json      |  16 +\n .../commands/02-receipt-unverified-build.json      |  16 +\n .../commands/03-receipt-unverified-build.json      |  16 +\n .../P02-U09/20261003-01/commands/04-bind-pre.json  |  18 +\n .../20261003-01/commands/05-final-unit.json        |  16 +\n .../P02-U09/20261003-01/commands/06-bind-post.json |  20 +\n .../commands/tests-01-unit-initial.json            |  16 +\n .../20261003-01/commands/tests-02-unit-final.json  |  16 +\n .../commands/tests-03-unit-default-pagination.json |  16 +\n .../tests-04-unit-receipt-unverified-page.json     |  16 +\n .../P02-U09/20261003-01/inputs-final-post.json     | 643 ++++++++++++++\n evidence/P02-U09/20261003-01/inputs-final-pre.json | 641 ++++++++++++++\n evidence/P02-U09/20261003-01/result.md             |  31 +\n evidence/P02-U09/20261003-01/source-decision.md    |  11 +\n packages/diagnostics/src/index.ts                  | 947 +++++++++++++++++++++\n packages/diagnostics/test/diagnostics.test.mjs     | 605 +++++++++++++\n tools/run-tests.mjs                                |   3 +-\n tsconfig.json                                      |   2 +-\n 20 files changed, 3156 insertions(+), 2 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "99c8702a34660f36b528efa0cca8c7257e6f98a5"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u09",
+      "exit_code": 0,
+      "stdout": "37\t0\tevidence/P02-U09/20261003-01/baseline.json\n72\t0\tevidence/P02-U09/20261003-01/command-index.json\n16\t0\tevidence/P02-U09/20261003-01/commands/01-source-build.json\n16\t0\tevidence/P02-U09/20261003-01/commands/02-receipt-unverified-build.json\n16\t0\tevidence/P02-U09/20261003-01/commands/03-receipt-unverified-build.json\n18\t0\tevidence/P02-U09/20261003-01/commands/04-bind-pre.json\n16\t0\tevidence/P02-U09/20261003-01/commands/05-final-unit.json\n20\t0\tevidence/P02-U09/20261003-01/commands/06-bind-post.json\n16\t0\tevidence/P02-U09/20261003-01/commands/tests-01-unit-initial.json\n16\t0\tevidence/P02-U09/20261003-01/commands/tests-02-unit-final.json\n16\t0\tevidence/P02-U09/20261003-01/commands/tests-03-unit-default-pagination.json\n16\t0\tevidence/P02-U09/20261003-01/commands/tests-04-unit-receipt-unverified-page.json\n643\t0\tevidence/P02-U09/20261003-01/inputs-final-post.json\n641\t0\tevidence/P02-U09/20261003-01/inputs-final-pre.json\n31\t0\tevidence/P02-U09/20261003-01/result.md\n11\t0\tevidence/P02-U09/20261003-01/source-decision.md\n947\t0\tpackages/diagnostics/src/index.ts\n605\t0\tpackages/diagnostics/test/diagnostics.test.mjs\n2\t1\ttools/run-tests.mjs\n1\t1\ttsconfig.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "99c8702a34660f36b528efa0cca8c7257e6f98a5"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u09",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P02-U09/20261003-01/baseline.json\nA\tevidence/P02-U09/20261003-01/command-index.json\nA\tevidence/P02-U09/20261003-01/commands/01-source-build.json\nA\tevidence/P02-U09/20261003-01/commands/02-receipt-unverified-build.json\nA\tevidence/P02-U09/20261003-01/commands/03-receipt-unverified-build.json\nA\tevidence/P02-U09/20261003-01/commands/04-bind-pre.json\nA\tevidence/P02-U09/20261003-01/commands/05-final-unit.json\nA\tevidence/P02-U09/20261003-01/commands/06-bind-post.json\nA\tevidence/P02-U09/20261003-01/commands/tests-01-unit-initial.json\nA\tevidence/P02-U09/20261003-01/commands/tests-02-unit-final.json\nA\tevidence/P02-U09/20261003-01/commands/tests-03-unit-default-pagination.json\nA\tevidence/P02-U09/20261003-01/commands/tests-04-unit-receipt-unverified-page.json\nA\tevidence/P02-U09/20261003-01/inputs-final-post.json\nA\tevidence/P02-U09/20261003-01/inputs-final-pre.json\nA\tevidence/P02-U09/20261003-01/result.md\nA\tevidence/P02-U09/20261003-01/source-decision.md\nA\tpackages/diagnostics/src/index.ts\nA\tpackages/diagnostics/test/diagnostics.test.mjs\nM\ttools/run-tests.mjs\nM\ttsconfig.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "99c8702a34660f36b528efa0cca8c7257e6f98a5"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u09",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
