@@ -1,0 +1,62 @@
+{
+  "schema": "p02-u04-post-rerun-integrity/v1",
+  "author_commit": "1b289208c9f777fc462bb34680022a33f69baa38",
+  "baseline_commit": "d9f5912b093e16ec6c335a74ab99ca842eb8937d",
+  "reviewer_inputs": {
+    "files": 103,
+    "digest": "b56b6d2f2b8751f06e70923531ff92ff86b67afb48815294f43dcea4563e0191",
+    "match_author_final_pre": true,
+    "match_author_final_post": true,
+    "review_pre_equals_post": true,
+    "node_version": "v24.14.0",
+    "typescript_version": "6.0.2"
+  },
+  "author_inputs": {
+    "files": 103,
+    "digest": "b56b6d2f2b8751f06e70923531ff92ff86b67afb48815294f43dcea4563e0191",
+    "final_pre_equals_post": true
+  },
+  "commands": {
+    "build": {
+      "path": "build-rerun.json",
+      "exit_code": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    },
+    "unit": {
+      "path": "unit-rerun.json",
+      "exit_code": 0,
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "skipped": 0
+    },
+    "diff_check": {
+      "path": "diff-check.json",
+      "exit_code": 0
+    }
+  },
+  "prerequisite_acceptance_bytes": [
+    {
+      "path": "evidence/P02-U02/20261003-01/acceptance.json",
+      "bytes": 1252,
+      "sha256": "715724b9c83abc17fb8536b7a5c02dd72653bf794a199deb531a036d5867caa8",
+      "baseline_commit_match": true,
+      "repository_root_match": true,
+      "status": "pass"
+    },
+    {
+      "path": "evidence/P02-U03/20261003-01/acceptance.json",
+      "bytes": 1852,
+      "sha256": "049abb37c43d4a9edc1a55d230047461a50948fea590b1510a85379cb9d1abac",
+      "baseline_commit_match": true,
+      "repository_root_match": true,
+      "status": "pass"
+    }
+  ],
+  "author_worktree_after_rerun": {
+    "head": "1b289208c9f777fc462bb34680022a33f69baa38",
+    "clean": true
+  },
+  "status": "pass"
+}

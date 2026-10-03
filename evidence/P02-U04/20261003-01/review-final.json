@@ -1,0 +1,222 @@
+{
+  "schema": "p02-independent-review/v1",
+  "decision": "pass",
+  "task": "P02-U04",
+  "review_target": {
+    "author_commit": "1b289208c9f777fc462bb34680022a33f69baa38",
+    "baseline_commit": "d9f5912b093e16ec6c335a74ab99ca842eb8937d",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u04"
+  },
+  "reviewer": "p02_u04_review",
+  "scope": "独立 exact-commit 单元验收；只接受 U04 有界 transcript helper 与实际 UserPromptSubmit 摄取接线，不构成 P02-G02 验收。",
+  "checks": [
+    {
+      "id": "exact-target-and-prerequisite",
+      "status": "pass",
+      "detail": "作者 WT HEAD 精确为 1b289208c9f777fc462bb34680022a33f69baa38，baseline d9f5912b093e16ec6c335a74ab99ca842eb8937d 是祖先，测试前后工作树均 clean。U02 与 U03 acceptance 均为 accepted，两个 integration commit 都是 baseline 祖先。冻结 U04 card、U02 ADR、sources.lock 与 baseline 提交及仓库根副本逐字节一致；注册 scope/test mapping 与提交变更一致。"
+    },
+    {
+      "id": "manifest-and-scope",
+      "status": "pass",
+      "detail": "独立重算 manifest SHA ef08b33dbb01dbe3a5d51d537d890ad63855257ba3ee5bb835b31b32d77b166f。26 个 manifest 文件与 baseline..author 的 27 条路径精确相等（加 manifest 自身）；每个文件的 bytes/SHA-256、工作树 Git blob 与 author commit blob 均匹配。变更仅在允许的 transcript helper/Host 最小接线、导出、选择器、测试及 U04 证据范围内。"
+    },
+    {
+      "id": "input-binding",
+      "status": "pass",
+      "detail": "独立 Node/TypeScript 构建和单测前后绑定 103 项源码、测试、编译输出、Node/TS 工具链、v3 资源与实际插件 Hook；审查侧 pre/post bindings 相同，且与作者 authoritative final-pre-02/final-post-02 bindings 完全一致。工具版本为 Node v24.14.0、TypeScript 6.0.2。"
+    },
+    {
+      "id": "independent-build-and-tests",
+      "status": "pass",
+      "detail": "使用固定 Node v24.14.0 与 Node 加载的 TypeScript 6.0.2 重新执行 author 命令：tsc --project tsconfig.json exit 0；tools/run-tests.mjs unit P02-U04 exit 0，20/20 pass、0 fail、0 skipped。冻结提交的 git diff --check exit 0。作者命令记录显示 build-final-01 exit 0；较早 helper-typecheck-01/02 分别 exit 2、helper-compile-transcript-01 exit 1、02 exit 2，diff-check-01 exit 2（测试文件末尾空行）；这些失败均保留。最终 build-final-02 与 unit-final-02 exit 0，且独立 diff --check exit 0。"
+    },
+    {
+      "id": "transcript-and-queue-contract",
+      "status": "pass",
+      "detail": "静态复审实现与反例测试：Hook trace/event/session/turn 与当前 UserPromptSubmit prompt 绑定；只读 owned TEMP 中单条完整 UTF-8 JSONL，512 KiB 有界、稳定 fd/path 检查，拒绝缺失/超限/半写/畸形/链接/不稳定内容；输出仅含 full-mask-v1 单条快照、canonical snapshot SHA、原始字节 hash 与 historical-only locator，rawRetained=false。队列以 active+waiting 限流、单 writer 异步排队不等 sink，只有匹配 snapshot hash 和非空 receiptId 的回执才为 saved，抛错/畸形为 unknown；drain 捕获调用时 frontier，close 拒新队列项并等待已接受任务。"
+    },
+    {
+      "id": "runtime-boundary-and-claims",
+      "status": "pass",
+      "detail": "接线只在插件实际使用的 UserPromptSubmit Hook 执行前捕获；Stop 仅由 helper 合成输入测试覆盖，未声称真实 Stop 接线。单测中 Hook 脚本由真实 Node 子进程执行并读真实 owned fixture 文件，但 native app/TEMP cleanup 为 fixture、sink 是 mock receipt；实现和报告未声称完整 ZCode/Electron Runtime、SQLite commit、全历史或原文恢复已验证。"
+    }
+  ],
+  "limitations": [
+    "这只是 U04 helper / UserPromptSubmit 路径的独立单元验收，不是 P02-G02、U05/U10/U11、产品桌面或安装包验收。",
+    "运行时测试的 native app 与临时目录清理是 fixture，sink 是 mock；未验证实际 SQLite COMMIT、完整原生 Runtime 或完整产品启动链。",
+    "Stop 输入只做 helper 合成测试；没有实际 Stop Hook 接线或 full-history 读取，也不提供正文恢复。",
+    "EACCES/文件变化是注入测试，不是 NTFS ACL、物理断电或外部服务故障实测；有界同步读取仍会增加单次 Hook 前置处理时间。"
+  ],
+  "artifacts": [
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U04/20261003-01/manifest.json",
+      "bytes": 6645,
+      "sha256": "ef08b33dbb01dbe3a5d51d537d890ad63855257ba3ee5bb835b31b32d77b166f"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U04/20261003-01/baseline.json",
+      "bytes": 1492,
+      "sha256": "25bbf3384470920c9166eaa6311758f5735b6fbb161793f23dc3cf6760f5d34f"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U04/20261003-01/result.md",
+      "bytes": 3795,
+      "sha256": "131e6c3636b283a3ff1fb16772b71469cab3a5dc518ed3fe14f63d0d4100d797"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U04/20261003-01/command-index-02.json",
+      "bytes": 2618,
+      "sha256": "781511623c37506046937520d2686256eb47eebbedec0c8bcdda91efe42ba49d"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U04/20261003-01/commands/build-final-01.json",
+      "bytes": 502,
+      "sha256": "3d64c0d6c0b08569821ec14bcd4e63f54a2da11d2e24e38aa9ae963ca2c6e593"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U04/20261003-01/commands/build-final-02.json",
+      "bytes": 502,
+      "sha256": "b010f4fae6ea398655bfe9c09f3cd57b33f4e4b833cefbc377cc0a758960fffa"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U04/20261003-01/commands/diff-check-01.json",
+      "bytes": 425,
+      "sha256": "a8fc4a43dc20221c61a85df22189c3630e1b09e4a3315d95928a3ce0e3182104"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U04/20261003-01/commands/unit-final-02.json",
+      "bytes": 2579,
+      "sha256": "83b319433bfccb37c2282bccb7295af477a01d8c2e96c5a622ccc7cad90e6771"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U04/20261003-01/inputs-final-pre-02.json",
+      "bytes": 23927,
+      "sha256": "ad8c2175b0e3abb6adea0f62454b21ded70db9ab847aefac0df57e904f4c5a28"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U04/20261003-01/inputs-final-post-02.json",
+      "bytes": 24035,
+      "sha256": "87ff4d7797828488d0d1a50d6c41b4a9d61a3feee0c62a4cd49772ae4cb8fb96"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/adapters/zcode/src/transcript.ts",
+      "bytes": 24870,
+      "sha256": "73fcaf64d5932fc15ea7c24d47f103891807ca96015c2ff81fc79ada8f4f3174"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/adapters/zcode/src/host.ts",
+      "bytes": 41642,
+      "sha256": "71bfd252831db5216983bdea8361bd68e0a54296de5f9444cf1e15b908f0725b"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/adapters/zcode/src/index.ts",
+      "bytes": 687,
+      "sha256": "afb9a0529925d832b96c757ce2a765c4b86483c74a2d276d29e29a074e98c20c"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/adapters/zcode/test/transcript.test.mjs",
+      "bytes": 16506,
+      "sha256": "8357c801719b1f887d5609df2afe5ec67645437c4736f72fdb962106326aff94"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/adapters/zcode/test/transcript-host.test.mjs",
+      "bytes": 7559,
+      "sha256": "133322b502f0b2d274452f02663a0f89636f94403cc57f060d57d6852fb5499c"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tools/run-tests.mjs",
+      "bytes": 5136,
+      "sha256": "54c1a31df7bf61ed579db8777435dfda455ab77f2fc4e04c1c827d136658acfb"
+    },
+    {
+      "root": "review_directory",
+      "path": "manifest-input-check.json",
+      "bytes": 11571,
+      "sha256": "97b6f57c426827b7ccc2866ad4dfa3d6cd3a20b9f8d614801ca417e48cdcd3e5"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-pre.json",
+      "bytes": 23927,
+      "sha256": "d55286a125adbc9fc88414ea5099cdfbade5a5abba776b6746be7ad95b00c341"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-post.json",
+      "bytes": 24035,
+      "sha256": "8dee162be58fc4c3907898c0229b35800d0ea8f8131d068bd053eca750d65402"
+    },
+    {
+      "root": "review_directory",
+      "path": "build-rerun.json",
+      "bytes": 502,
+      "sha256": "73fe3687633ebba86f865b19ee838754e81da34335521c5dfd00b44136358760"
+    },
+    {
+      "root": "review_directory",
+      "path": "unit-rerun.json",
+      "bytes": 2581,
+      "sha256": "1a22a826e6d905e827043b9ceee74822816a8ef150dfa21a7ceafa48d4bb2f4d"
+    },
+    {
+      "root": "review_directory",
+      "path": "diff-check.json",
+      "bytes": 427,
+      "sha256": "5ce275dc4ccf250306a9c09fc11b7d8f4e725d7988c70ce98ac70c1d7969b6b0"
+    },
+    {
+      "root": "review_directory",
+      "path": "post-rerun-integrity.json",
+      "bytes": 1747,
+      "sha256": "0fcd37d01aa6436a5706df46078ac99f20a74863018b20c31b21a3a34cfa2e6c"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "root": "author_worktree",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U04.md",
+      "bytes": 2013,
+      "sha256": "e067e018ef747c1d4193e7df8e7ee82804fb23873be521e2d4d7bab8c0f4d1db"
+    },
+    {
+      "root": "author_worktree",
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    {
+      "root": "author_worktree",
+      "path": "docs/adr/P02-reuse.md",
+      "bytes": 6041,
+      "sha256": "dcb2f3eb461423947652db04ff2e846e3f27fa4dfc1534953d3a27d9ff7d2541"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U02/20261003-01/acceptance.json",
+      "bytes": 1252,
+      "sha256": "715724b9c83abc17fb8536b7a5c02dd72653bf794a199deb531a036d5867caa8"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U03/20261003-01/acceptance.json",
+      "bytes": 1852,
+      "sha256": "049abb37c43d4a9edc1a55d230047461a50948fea590b1510a85379cb9d1abac"
+    }
+  ]
+}
