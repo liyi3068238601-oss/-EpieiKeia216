@@ -5,11 +5,12 @@ import { fileURLToPath } from "node:url";
 
 const TESTS = Object.freeze({
   unit: Object.freeze({
-    all: ["packages/contracts/test/json-value.test.mjs", "packages/contracts/test/events.test.mjs", "packages/adapters/zcode/test/transcript.test.mjs", "packages/adapters/zcode/test/transcript-host.test.mjs", "packages/character/test/schema.test.mjs", "packages/context/test/context.test.mjs", "packages/adapters/zcode/test/host.test.mjs", "packages/application/test/turn-projection.test.mjs", "packages/config/test/profile.test.mjs", "packages/config/test/desktop-build-paths.test.mjs", "packages/config/test/warmup.test.mjs", "packages/secrets/test/credential.test.mjs", "tests/evals/persona/native.test.mjs", "tests/integration/P01/read-only-workspace.test.mjs", "tests/integration/P01/factory.test.mjs", "tests/integration/P01/electron-network-guard.test.mjs"],
+    all: ["packages/contracts/test/json-value.test.mjs", "packages/contracts/test/events.test.mjs", "packages/adapters/zcode/test/transcript.test.mjs", "packages/adapters/zcode/test/transcript-host.test.mjs", "packages/character/test/schema.test.mjs", "packages/context/test/context.test.mjs", "packages/adapters/zcode/test/host.test.mjs", "packages/application/test/turn-projection.test.mjs", "packages/config/test/profile.test.mjs", "packages/config/test/desktop-build-paths.test.mjs", "packages/config/test/warmup.test.mjs", "packages/secrets/test/credential.test.mjs", "packages/storage/events/test/events.test.mjs", "tests/evals/persona/native.test.mjs", "tests/integration/P01/read-only-workspace.test.mjs", "tests/integration/P01/factory.test.mjs", "tests/integration/P01/electron-network-guard.test.mjs"],
     tasks: Object.freeze({
       "P01-U03": ["packages/contracts/test/json-value.test.mjs"],
       "P02-U03": ["packages/contracts/test/events.test.mjs"],
       "P02-U04": ["packages/adapters/zcode/test/transcript.test.mjs", "packages/adapters/zcode/test/transcript-host.test.mjs", "packages/adapters/zcode/test/host.test.mjs"],
+      "P02-U05": ["packages/storage/events/test/events.test.mjs"],
       "P01-U04": ["packages/character/test/schema.test.mjs"],
       "P01-U05": ["packages/context/test/context.test.mjs"],
       "P01-U06": ["packages/adapters/zcode/test/host.test.mjs"],
