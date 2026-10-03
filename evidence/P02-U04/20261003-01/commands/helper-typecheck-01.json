@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--project",
+    "tsconfig.json",
+    "--noEmit"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u04",
+  "started_at": "2026-10-03T06:53:33.671110+00:00",
+  "completed_at": "2026-10-03T06:53:34.896285+00:00",
+  "exit_code": 2,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "packages/adapters/zcode/src/host.ts(382,47): error TS2345: Argument of type 'string' is not assignable to parameter of type 'number'.\r\npackages/adapters/zcode/src/host.ts(426,24): error TS2379: Argument of type '{ status: \"queued\"; jobId: number; snapshotSha256: string; turnId?: string; sessionId?: string; } | { status: \"unavailable\"; code: \"queue_full\" | \"closed\" | \"invalid_capture\"; snapshotSha256: string; turnId?: string; sessionId?: string; }' is not assignable to parameter of type 'XiadieTranscriptDelivery' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.\r\n  Type '{ status: \"queued\"; jobId: number; snapshotSha256: string; turnId?: string; sessionId?: string; }' is not assignable to type 'XiadieTranscriptDelivery' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.\r\n    Types of property 'jobId' are incompatible.\r\n      Type 'number' is not assignable to type 'string'.\r\npackages/adapters/zcode/src/transcript.ts(381,3): error TS2322: Type 'Readonly<{ hookInput: Readonly<{ hookEventName: \"UserPromptSubmit\"; sessionId: string; turnId: string; transcriptPath: string; prompt: string; }> | Readonly<{ responsePreview?: string; responseText?: string; hookEventName: string; sessionId: string; turnId: string; transcriptPath: string; }>; ownedTempRoot: string; ...' is not assignable to type 'NormalizedCaptureInput'.\r\n  Types of property 'hookInput' are incompatible.\r\n    Type 'Readonly<{ hookEventName: \"UserPromptSubmit\"; sessionId: string; turnId: string; transcriptPath: string; prompt: string; }> | Readonly<{ responsePreview?: string; responseText?: string; hookEventName: string; sessionId: string; turnId: string; transcriptPath: string; }>' is not assignable to type 'TranscriptHookInput'.\r\n      Type 'Readonly<{ responsePreview?: string; responseText?: string; hookEventName: string; sessionId: string; turnId: string; transcriptPath: string; }>' is not assignable to type 'TranscriptHookInput'.\r\n        Type 'Readonly<{ responsePreview?: string; responseText?: string; hookEventName: string; sessionId: string; turnId: string; transcriptPath: string; }>' is not assignable to type 'StopTranscriptInput' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.\r\n          Types of property 'hookEventName' are incompatible.\r\n            Type 'string' is not assignable to type '\"Stop\"'.\r\n",
+  "stderr": ""
+}

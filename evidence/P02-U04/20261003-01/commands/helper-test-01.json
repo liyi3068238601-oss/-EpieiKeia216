@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "packages/adapters/zcode/test/transcript.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u04",
+  "started_at": "2026-10-03T06:57:59.903775+00:00",
+  "completed_at": "2026-10-03T06:58:00.128185+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "✔ capture reads only the current prompt and returns a frozen full-mask historical snapshot (18.174ms)\n✔ capture uses Stop responseText (or responsePreview fallback) and verifies the trace (7.205ms)\n✔ capture rejects external, malformed, half-written, oversized, and linked transcript inputs (24.147ms)\n✔ capture reports injected EACCES without treating it as an NTFS ACL test (4.5098ms)\n✔ capture detects a file changed during the bounded read (3.7722ms)\n✔ queue returns immediately, bounds active plus waiting work, and saves only a matching receipt (6.1772ms)\n✔ queue distinguishes explicit failure from throwing or malformed unknown receipts (6.8385ms)\n✔ queue close rejects new work and drains accepted jobs; status history stays within 64 (5.981ms)\n✔ queue rejects forged captures that add raw transcript material (6.3469ms)\n✔ drain waits only for jobs accepted at its call frontier (6.5386ms)\nℹ tests 10\nℹ suites 0\nℹ pass 10\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 168.8982\n",
+  "stderr": ""
+}

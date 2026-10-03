@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "tools/run-tests.mjs",
+    "unit",
+    "P02-U04"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u04",
+  "started_at": "2026-10-03T07:00:27.021725+00:00",
+  "completed_at": "2026-10-03T07:00:27.447344+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "✔ disabled host submits concurrently through the native app without an extension queue (7.7213ms)\n✔ enabled host forces native storage into its owned profile and keeps user-config storage overrides contained (15.0926ms)\n✔ enabled host rejects missing config isolation and external storage environment before native app creation (10.7709ms)\n✔ enabled host rejects a storage junction that resolves outside its owned profile (11.3823ms)\n✔ model adapter rejects a call without the current Hook receipt before delegate and bounds admission history (14.2289ms)\n✔ enabled sendInput forces idle admission and holds the host lock until native completion (18.8193ms)\n✔ enabled sendInput clears its ticket and idle lock when native admission rejects (16.6602ms)\n✔ Hook returns while its masked material is queued; only a matching receipt reports saved (80.4963ms)\n✔ missing sink and uncertain writes remain explicit rather than becoming saved (138.55ms)\n✔ close waits for accepted material, rejects new turns and delegates native close once (66.8817ms)\n✔ capture reads only the current prompt and returns a frozen full-mask historical snapshot (9.0125ms)\n✔ capture uses Stop responseText (or responsePreview fallback) and verifies the trace (4.2812ms)\n✔ capture rejects external, malformed, half-written, oversized, and linked transcript inputs (17.9625ms)\n✔ capture reports injected EACCES without treating it as an NTFS ACL test (4.5785ms)\n✔ capture detects a file changed during the bounded read (4.0025ms)\n✔ queue returns immediately, bounds active plus waiting work, and saves only a matching receipt (4.163ms)\n✔ queue distinguishes explicit failure from throwing or malformed unknown receipts (3.9873ms)\n✔ queue close rejects new work and drains accepted jobs; status history stays within 64 (5.56ms)\n✔ queue rejects forged captures that add raw transcript material (3.68ms)\n✔ drain waits only for jobs accepted at its call frontier (3.5765ms)\nℹ tests 20\nℹ suites 0\nℹ pass 20\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 351.1363\n",
+  "stderr": ""
+}

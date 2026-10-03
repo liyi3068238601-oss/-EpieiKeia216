@@ -1,0 +1,68 @@
+{
+  "task": "P02-U04",
+  "baseline": "d9f5912b093e16ec6c335a74ab99ca842eb8937d",
+  "scope": [
+    "packages/adapters/zcode/src/transcript.ts",
+    "packages/adapters/zcode/src/host.ts",
+    "packages/adapters/zcode/src/index.ts",
+    "packages/adapters/zcode/test/transcript.test.mjs",
+    "packages/adapters/zcode/test/transcript-host.test.mjs",
+    "tools/run-tests.mjs",
+    "evidence/P02-U04/20261003-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "d9f5912b093e16ec6c335a74ab99ca842eb8937d"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u04",
+      "exit_code": 0,
+      "stdout": " evidence/P02-U04/20261003-01/baseline.json         |  40 ++\n evidence/P02-U04/20261003-01/command-index-02.json |  75 +++\n evidence/P02-U04/20261003-01/command-index.json    | 160 ++++++\n .../20261003-01/commands/build-final-01.json       |  16 +\n .../20261003-01/commands/build-final-02.json       |  16 +\n .../20261003-01/commands/diff-check-01.json        |  16 +\n .../commands/helper-compile-transcript-01.json     |  31 +\n .../commands/helper-compile-transcript-02.json     |  32 ++\n .../commands/helper-compile-transcript-03.json     |  32 ++\n .../20261003-01/commands/helper-test-01.json       |  15 +\n .../20261003-01/commands/helper-typecheck-01.json  |  17 +\n .../20261003-01/commands/helper-typecheck-02.json  |  17 +\n .../20261003-01/commands/unit-final-01.json        |  16 +\n .../20261003-01/commands/unit-final-02.json        |  16 +\n .../P02-U04/20261003-01/inputs-final-post-02.json  | 528 +++++++++++++++++\n .../P02-U04/20261003-01/inputs-final-post.json     | 528 +++++++++++++++++\n .../P02-U04/20261003-01/inputs-final-pre-02.json   | 526 +++++++++++++++++\n evidence/P02-U04/20261003-01/inputs-final-pre.json | 526 +++++++++++++++++\n evidence/P02-U04/20261003-01/result.md             |  17 +\n packages/adapters/zcode/src/host.ts                | 123 +++-\n packages/adapters/zcode/src/index.ts               |   4 +\n packages/adapters/zcode/src/transcript.ts          | 628 +++++++++++++++++++++\n .../adapters/zcode/test/transcript-host.test.mjs   | 142 +++++\n packages/adapters/zcode/test/transcript.test.mjs   | 374 ++++++++++++\n tools/run-tests.mjs                                |   3 +-\n 25 files changed, 3895 insertions(+), 3 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "d9f5912b093e16ec6c335a74ab99ca842eb8937d"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u04",
+      "exit_code": 0,
+      "stdout": "40\t0\tevidence/P02-U04/20261003-01/baseline.json\n75\t0\tevidence/P02-U04/20261003-01/command-index-02.json\n160\t0\tevidence/P02-U04/20261003-01/command-index.json\n16\t0\tevidence/P02-U04/20261003-01/commands/build-final-01.json\n16\t0\tevidence/P02-U04/20261003-01/commands/build-final-02.json\n16\t0\tevidence/P02-U04/20261003-01/commands/diff-check-01.json\n31\t0\tevidence/P02-U04/20261003-01/commands/helper-compile-transcript-01.json\n32\t0\tevidence/P02-U04/20261003-01/commands/helper-compile-transcript-02.json\n32\t0\tevidence/P02-U04/20261003-01/commands/helper-compile-transcript-03.json\n15\t0\tevidence/P02-U04/20261003-01/commands/helper-test-01.json\n17\t0\tevidence/P02-U04/20261003-01/commands/helper-typecheck-01.json\n17\t0\tevidence/P02-U04/20261003-01/commands/helper-typecheck-02.json\n16\t0\tevidence/P02-U04/20261003-01/commands/unit-final-01.json\n16\t0\tevidence/P02-U04/20261003-01/commands/unit-final-02.json\n528\t0\tevidence/P02-U04/20261003-01/inputs-final-post-02.json\n528\t0\tevidence/P02-U04/20261003-01/inputs-final-post.json\n526\t0\tevidence/P02-U04/20261003-01/inputs-final-pre-02.json\n526\t0\tevidence/P02-U04/20261003-01/inputs-final-pre.json\n17\t0\tevidence/P02-U04/20261003-01/result.md\n121\t2\tpackages/adapters/zcode/src/host.ts\n4\t0\tpackages/adapters/zcode/src/index.ts\n628\t0\tpackages/adapters/zcode/src/transcript.ts\n142\t0\tpackages/adapters/zcode/test/transcript-host.test.mjs\n374\t0\tpackages/adapters/zcode/test/transcript.test.mjs\n2\t1\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "d9f5912b093e16ec6c335a74ab99ca842eb8937d"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u04",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P02-U04/20261003-01/baseline.json\nA\tevidence/P02-U04/20261003-01/command-index-02.json\nA\tevidence/P02-U04/20261003-01/command-index.json\nA\tevidence/P02-U04/20261003-01/commands/build-final-01.json\nA\tevidence/P02-U04/20261003-01/commands/build-final-02.json\nA\tevidence/P02-U04/20261003-01/commands/diff-check-01.json\nA\tevidence/P02-U04/20261003-01/commands/helper-compile-transcript-01.json\nA\tevidence/P02-U04/20261003-01/commands/helper-compile-transcript-02.json\nA\tevidence/P02-U04/20261003-01/commands/helper-compile-transcript-03.json\nA\tevidence/P02-U04/20261003-01/commands/helper-test-01.json\nA\tevidence/P02-U04/20261003-01/commands/helper-typecheck-01.json\nA\tevidence/P02-U04/20261003-01/commands/helper-typecheck-02.json\nA\tevidence/P02-U04/20261003-01/commands/unit-final-01.json\nA\tevidence/P02-U04/20261003-01/commands/unit-final-02.json\nA\tevidence/P02-U04/20261003-01/inputs-final-post-02.json\nA\tevidence/P02-U04/20261003-01/inputs-final-post.json\nA\tevidence/P02-U04/20261003-01/inputs-final-pre-02.json\nA\tevidence/P02-U04/20261003-01/inputs-final-pre.json\nA\tevidence/P02-U04/20261003-01/result.md\nM\tpackages/adapters/zcode/src/host.ts\nM\tpackages/adapters/zcode/src/index.ts\nA\tpackages/adapters/zcode/src/transcript.ts\nA\tpackages/adapters/zcode/test/transcript-host.test.mjs\nA\tpackages/adapters/zcode/test/transcript.test.mjs\nM\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "d9f5912b093e16ec6c335a74ab99ca842eb8937d"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u04",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
