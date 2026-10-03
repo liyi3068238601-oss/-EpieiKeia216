@@ -6,11 +6,11 @@
   "project_root": "E:\\Xiadie\\Xiadie",
   "baseline_commit": "9a39bde69545ac0ad28f484c5318425c2e5d4bf9",
   "goal": "进入 P02，按依赖完成至 U11/G02 并停止，不自动进入 P03",
-  "stage_status": "running",
+  "stage_status": "completed",
   "G01": "pass",
-  "G02": "pending",
-  "current_task": "P02-U11",
-  "next_task": "P02-U11",
+  "G02": "pass",
+  "current_task": null,
+  "next_task": "P03-U01",
   "next_stage_started": false,
   "tasks": [
     {
@@ -285,8 +285,25 @@
       "dependencies": [
         "P02-U10"
       ],
-      "status": "running",
-      "card_sha256": "d6d925953dc34c01f31dcc1d3a4a9af441c22f424c99e4da3b8a5942a24a2624"
+      "status": "accepted",
+      "card_sha256": "d6d925953dc34c01f31dcc1d3a4a9af441c22f424c99e4da3b8a5942a24a2624",
+      "author_commit": "ead4b6bff78250ae9a538819062fd7cb00bd4113",
+      "integration_commit": "745ce481238bf5f8e82bd22fbc271bf13f3f5f48",
+      "acceptance": {
+        "path": "evidence/P02-U11/20261003-01/acceptance.json",
+        "bytes": 5895,
+        "sha256": "c8efa67d98c948a52e5269c2a11e168f0f6e5ff395f83c70ebd622892b2304f3"
+      },
+      "review": {
+        "status": "pass",
+        "reviewer": "u10_independent",
+        "reviewed_commit": "ead4b6bff78250ae9a538819062fd7cb00bd4113",
+        "evidence": {
+          "path": "evidence/P02-U11/20261003-01/review-final.json",
+          "bytes": 41313,
+          "sha256": "eadea0c155baf4299ee1f8a2378534d8a7240a05ffa0e6d76e310cd7d9e6dc7f"
+        }
+      }
     }
   ],
   "previous_stage_acceptance": {
@@ -328,5 +345,16 @@
       },
       "historical_verified_launches_and_ports": "Earlier U02 launches retained above; these are not cumulative P01 counts."
     }
+  },
+  "freeze": {
+    "product_version": "0.2.0",
+    "author_commit": "ead4b6bff78250ae9a538819062fd7cb00bd4113",
+    "integration_commit": "745ce481238bf5f8e82bd22fbc271bf13f3f5f48",
+    "acceptance": {
+      "path": "evidence/P02-U11/20261003-01/acceptance.json",
+      "bytes": 5895,
+      "sha256": "c8efa67d98c948a52e5269c2a11e168f0f6e5ff395f83c70ebd622892b2304f3"
+    },
+    "scope": "Local development candidate; limitations and exact artifact hashes in docs/releases/0.2.0/"
   }
 }
