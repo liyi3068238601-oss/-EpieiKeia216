@@ -14,6 +14,7 @@ import sys
 REPO = Path(__file__).resolve().parents[3]
 P01_RUNNER = REPO / "tests/integration/P01/desktop.py"
 VERIFY_LEDGER = Path(__file__).with_name("verify-ledger.mjs")
+UI_DRIVER = Path(__file__).with_name("desktop-ui.mjs")
 ROOT = Path(r"E:\Xiadie\Xiadie")
 NODE = ROOT / ".runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe"
 
@@ -114,6 +115,7 @@ def main() -> int:
         raise RuntimeError("fixed_node_or_ledger_verifier_missing")
 
     harness = load_p01_runner()
+    harness.UI_DRIVER = UI_DRIVER
     original_run_scenario = harness.run_scenario
 
     def run_scenario(scenario_id: str, run_output: Path, verified_candidate: dict, system_env: dict[str, str]) -> dict:
@@ -136,6 +138,7 @@ def main() -> int:
             "output": str(output.resolve(strict=False)),
             "runner": {"path": str(Path(__file__).resolve()), "sha256": sha256(Path(__file__).resolve())},
             "ledgerVerifier": {"path": str(VERIFY_LEDGER.resolve()), "sha256": sha256(VERIFY_LEDGER)},
+            "uiDriver": {"path": str(UI_DRIVER.resolve()), "sha256": sha256(UI_DRIVER)},
             "fixedNode": {"path": str(NODE.resolve()), "sha256": sha256(NODE)},
             "harness": {"path": str(P01_RUNNER.resolve()), "sha256": sha256(P01_RUNNER)},
             "qualificationBoundary": "Actual qualification uses the Electron UI with the pinned fixed Node CLI. The durable host and SQLite ledger run in the wrapped CLI protocol process, not Electron main.",
