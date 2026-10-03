@@ -1,0 +1,4 @@
+(node:24256) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL migration-prebackup-success-failure-restore {"name":"Error","message":"table legacy has 3 columns but 2 values were supplied","code":"ERR_SQLITE_ERROR","errcode":1,"errstr":"SQL logic error"}
+FAIL migration-failure-rollback-and-backup-recovery {"name":"AssertionError","message":"The expression evaluated to a falsy value:\n\n  assert(error&&((Number(error.errcode)&255)===19))\n","code":"ERR_ASSERTION"}

@@ -1,0 +1,36 @@
+{
+  "schema": "p02-unit-baseline/v1",
+  "task": "P02-U02",
+  "baseline_commit": "e809d5c7e9969cbf2f5efd68df326e115cf6f1e6",
+  "branch": "p02-u02",
+  "coordinator_branch": "p02-stage",
+  "prerequisites": [
+    {
+      "task": "P02-U01",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U01/20261003-01/acceptance.json",
+        "bytes": 1257,
+        "sha256": "a5721cc5ac9c2e8f9d8a748f6427cbc136c8feb611e1832450723d524319b196"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P02-U02.md",
+    "bytes": 2825,
+    "sha256": "6bdf8ad7f6d7ed5d6d1aa56e3b400f6120ab2d64d06fc1a8e13705aefe4e53d0"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "spikes/P02/: isolated mock policies and native/runtime/sqlite probes; no product implementation",
+    "docs/adr/P02-reuse.md: final adoption decision submitted for independent acceptance",
+    "evidence/P02-U02/20261003-01/: required command/provenance/results; author only ready_for_review"
+  ],
+  "test_mapping": "Task target tests/units/P02-U02.test.ts maps to Node assert PoCs in spikes/P02/ plus unchanged native P01 test assertions loaded from isolated mapped copies; no empty product unit test.",
+  "author_status": "ready_for_review",
+  "checked_at_utc": "2026-10-03T05:14:48.965346+00:00"
+}

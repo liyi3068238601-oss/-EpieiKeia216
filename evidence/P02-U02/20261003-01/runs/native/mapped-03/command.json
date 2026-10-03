@@ -1,0 +1,614 @@
+{
+  "task": "P02-U02",
+  "command": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--require",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02-inputs\\spikes\\P02\\native-network-audit.cjs",
+    "--test",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\native\\mapped-03\\native.integration.test.mjs",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\native\\mapped-03\\native-projection.integration.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02-inputs",
+  "started_at": "2026-10-03T05:49:49.165Z",
+  "completed_at": "2026-10-03T05:50:01.143Z",
+  "code": 0,
+  "signal": null,
+  "timed_out": false,
+  "stdout": "(node:20664) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61961}}\nU07_NATIVE_SAMPLE {\"name\":\"success\",\"events\":[{\"type\":\"session_title_updated\",\"sequenceNumber\":1},{\"type\":\"turn_started\",\"sequenceNumber\":2},{\"type\":\"model_request\",\"sequenceNumber\":3},{\"type\":\"model_network_status\",\"sequenceNumber\":4},{\"type\":\"model_network_status\",\"sequenceNumber\":5},{\"type\":\"model_complete\",\"sequenceNumber\":6},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":7,\"toolCallId\":\"u07-read-success\",\"toolName\":\"Read\"},{\"type\":\"tool_call_scheduled\",\"sequenceNumber\":8,\"toolCallId\":\"u07-read-success\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":9,\"toolCallId\":\"u07-read-success\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":10,\"toolCallId\":\"u07-read-success\",\"toolName\":\"Read\"},{\"type\":\"tool_call_started\",\"sequenceNumber\":11,\"toolCallId\":\"u07-read-success\",\"toolName\":\"Read\"},{\"type\":\"tool_call_result\",\"sequenceNumber\":12,\"toolCallId\":\"u07-read-success\",\"success\":true},{\"type\":\"tool_batch_complete\",\"sequenceNumber\":13},{\"type\":\"stream_recovery_anchor_created\",\"sequenceNumber\":14,\"toolCallId\":\"u07-read-success\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":15,\"toolCallId\":\"u07-read-success\",\"toolName\":\"Read\"},{\"type\":\"model_request\",\"sequenceNumber\":16},{\"type\":\"model_network_status\",\"sequenceNumber\":17},{\"type\":\"model_network_status\",\"sequenceNumber\":18},{\"type\":\"model_complete\",\"sequenceNumber\":19},{\"type\":\"turn_complete\",\"sequenceNumber\":20,\"resultType\":\"success\"}]}\nU07_NATIVE_SAMPLE {\"name\":\"failure\",\"events\":[{\"type\":\"turn_started\",\"sequenceNumber\":21},{\"type\":\"model_request\",\"sequenceNumber\":22},{\"type\":\"model_network_status\",\"sequenceNumber\":23},{\"type\":\"model_network_status\",\"sequenceNumber\":24},{\"type\":\"model_complete\",\"sequenceNumber\":25},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":26,\"toolCallId\":\"u07-read-failure\",\"toolName\":\"Read\"},{\"type\":\"tool_call_scheduled\",\"sequenceNumber\":27,\"toolCallId\":\"u07-read-failure\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":28,\"toolCallId\":\"u07-read-failure\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":29,\"toolCallId\":\"u07-read-failure\",\"toolName\":\"Read\"},{\"type\":\"tool_call_started\",\"sequenceNumber\":30,\"toolCallId\":\"u07-read-failure\",\"toolName\":\"Read\"},{\"type\":\"tool_call_error\",\"sequenceNumber\":31,\"toolCallId\":\"u07-read-failure\",\"terminalError\":true},{\"type\":\"tool_batch_complete\",\"sequenceNumber\":32},{\"type\":\"stream_recovery_anchor_created\",\"sequenceNumber\":33,\"toolCallId\":\"u07-read-failure\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":34,\"toolCallId\":\"u07-read-failure\",\"toolName\":\"Read\"},{\"type\":\"model_request\",\"sequenceNumber\":35},{\"type\":\"model_network_status\",\"sequenceNumber\":36},{\"type\":\"model_network_status\",\"sequenceNumber\":37},{\"type\":\"model_complete\",\"sequenceNumber\":38},{\"type\":\"turn_complete\",\"sequenceNumber\":39,\"resultType\":\"success\"}]}\nU07_NATIVE_SAMPLE {\"name\":\"partial\",\"events\":[{\"type\":\"turn_started\",\"sequenceNumber\":40},{\"type\":\"model_request\",\"sequenceNumber\":41},{\"type\":\"model_network_status\",\"sequenceNumber\":42},{\"type\":\"model_network_status\",\"sequenceNumber\":43},{\"type\":\"model_complete\",\"sequenceNumber\":44},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":45,\"toolCallId\":\"u07-partial-ok\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":46,\"toolCallId\":\"u07-partial-missing\",\"toolName\":\"Read\"},{\"type\":\"tool_call_scheduled\",\"sequenceNumber\":47,\"toolCallId\":\"u07-partial-ok\",\"toolName\":\"Read\"},{\"type\":\"tool_call_scheduled\",\"sequenceNumber\":48,\"toolCallId\":\"u07-partial-missing\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":49,\"toolCallId\":\"u07-partial-ok\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":50,\"toolCallId\":\"u07-partial-missing\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":51,\"toolCallId\":\"u07-partial-ok\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":52,\"toolCallId\":\"u07-partial-missing\",\"toolName\":\"Read\"},{\"type\":\"tool_call_started\",\"sequenceNumber\":53,\"toolCallId\":\"u07-partial-ok\",\"toolName\":\"Read\"},{\"type\":\"tool_call_started\",\"sequenceNumber\":54,\"toolCallId\":\"u07-partial-missing\",\"toolName\":\"Read\"},{\"type\":\"tool_call_error\",\"sequenceNumber\":55,\"toolCallId\":\"u07-partial-missing\",\"terminalError\":true},{\"type\":\"tool_call_result\",\"sequenceNumber\":56,\"toolCallId\":\"u07-partial-ok\",\"success\":true},{\"type\":\"tool_batch_complete\",\"sequenceNumber\":57},{\"type\":\"stream_recovery_anchor_created\",\"sequenceNumber\":58,\"toolCallId\":\"u07-partial-ok\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":59,\"toolCallId\":\"u07-partial-ok\",\"toolName\":\"Read\"},{\"type\":\"stream_recovery_anchor_created\",\"sequenceNumber\":60,\"toolCallId\":\"u07-partial-missing\",\"toolName\":\"Read\"},{\"type\":\"streaming_tool_ledger_updated\",\"sequenceNumber\":61,\"toolCallId\":\"u07-partial-missing\",\"toolName\":\"Read\"},{\"type\":\"model_request\",\"sequenceNumber\":62},{\"type\":\"model_network_status\",\"sequenceNumber\":63},{\"type\":\"model_network_status\",\"sequenceNumber\":64},{\"type\":\"model_complete\",\"sequenceNumber\":65},{\"type\":\"turn_complete\",\"sequenceNumber\":66,\"resultType\":\"success\"}]}\nU07_NATIVE_SAMPLE {\"name\":\"cancel\",\"events\":[{\"type\":\"turn_started\",\"sequenceNumber\":67},{\"type\":\"model_request\",\"sequenceNumber\":68},{\"type\":\"model_network_status\",\"sequenceNumber\":69},{\"type\":\"model_network_status\",\"sequenceNumber\":70},{\"type\":\"turn_complete\",\"sequenceNumber\":71,\"resultType\":\"cancelled\"}]}\n✔ pinned native Loop events project success, failure, cancel, and partial tool samples (739.5915ms)\n(node:33864) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61962}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-F7Ej95\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:53.613Z\",\"completedAtUtc\":\"2026-10-03T05:49:53.685Z\",\"durationMs\":72,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5520,\"stdoutSha256\":\"f3faf6c48bf87e36e48d4e48d3c08d8d617d7f41c819c75304539bba9163da86\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\n✔ native marketplace install/discovery, Hook process, native Read and local mock model (750.7762ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61967}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-TyVZfx\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:54.238Z\",\"completedAtUtc\":\"2026-10-03T05:49:54.294Z\",\"durationMs\":56,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5520,\"stdoutSha256\":\"82c755b0e911cc00f585116c8c1951ce8bc732d019968d560db5af64cb26c5cd\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\n✔ native sendInput returns its TurnResult after an installed Hook and native Read (549.5126ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61969}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-sQzuCC\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:54.794Z\",\"completedAtUtc\":\"2026-10-03T05:49:54.852Z\",\"durationMs\":58,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5520,\"stdoutSha256\":\"3b73c2d271ee461314e463de60dc43862dffcbee6cd3d57762801be54e17fcbb\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-sQzuCC\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:54.932Z\",\"completedAtUtc\":\"2026-10-03T05:49:54.987Z\",\"durationMs\":55,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5520,\"stdoutSha256\":\"3d917a97f4a8c17ff7901206757b5e69700c635b4049ce7ba1835db071d85ac7\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\n✔ cancelled native sendInput holds exclusivity through completion and permits a fresh turn afterward (671.9428ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61973}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-mKu3CH\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:55.444Z\",\"completedAtUtc\":\"2026-10-03T05:49:55.501Z\",\"durationMs\":57,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5520,\"stdoutSha256\":\"419541c00b81e9f4ab9ca7c02ee1faf244e4285658f9f76953e2a6a6e29f05f2\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-mKu3CH\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:55.561Z\",\"completedAtUtc\":\"2026-10-03T05:49:55.618Z\",\"durationMs\":57,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5519,\"stdoutSha256\":\"f599d6e396106fdf3a811b442ba34e336606f70c43e930f8f0cc509fdfa5e680\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\n✔ native compact uses a one-session operation ticket and next turn creates a fresh Hook receipt (630.0777ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61976}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-ipujCA\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:56.071Z\",\"completedAtUtc\":\"2026-10-03T05:49:56.130Z\",\"durationMs\":59,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5519,\"stdoutSha256\":\"264f9fdd181c333f099c242e99390aa6e86b33fce954f3e5ff892bb71a39e806\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-ipujCA\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:56.190Z\",\"completedAtUtc\":\"2026-10-03T05:49:56.246Z\",\"durationMs\":56,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5520,\"stdoutSha256\":\"8832d74909bd5fe820f7a9e6d0835377c63a9e88c237e9c8b3e14db3817b98f8\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\n✔ resume performs a fresh approved preflight and next native turn receives a new Hook receipt (627.6123ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61978}}\n✔ disabled native plugin leaves ordinary native model execution available (455.4111ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61980}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"timeout\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\packages\\\\adapters\\\\zcode\\\\test\\\\fixtures\\\\hook-process-fault.mjs\",\"hang\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":250,\"startedAtUtc\":\"2026-10-03T05:49:57.156Z\",\"completedAtUtc\":\"2026-10-03T05:49:57.416Z\",\"durationMs\":260,\"status\":\"timed_out\",\"signal\":\"SIGTERM\",\"timedOut\":true,\"cancelled\":false,\"stdoutBytes\":25,\"stdoutSha256\":\"9726b6b5d49950f81544e11d9762c39288417ab58514e134e54d8b1945d2088b\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stdoutText\":\"U06_HANG_FIXTURE_STARTED\\n\",\"stderrText\":\"\"}\n✔ native UserPromptSubmit blocks timeout before any model request (700.7168ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61981}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"nonzero\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\packages\\\\adapters\\\\zcode\\\\test\\\\fixtures\\\\hook-process-fault.mjs\",\"nonzero\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:57.858Z\",\"completedAtUtc\":\"2026-10-03T05:49:57.902Z\",\"durationMs\":44,\"status\":\"failed\",\"exitCode\":7,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":0,\"stdoutSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderrBytes\":28,\"stderrSha256\":\"58171ec48899d8799cc65b39d56b373daf0452d2d42cb4b0bc2273173d0c12c9\",\"stdoutText\":\"\",\"stderrText\":\"U06_NONZERO_FIXTURE_FAILURE\\n\"}\n✔ native UserPromptSubmit blocks nonzero before any model request (485.2596ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61984}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"bad-json\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\packages\\\\adapters\\\\zcode\\\\test\\\\fixtures\\\\hook-process-fault.mjs\",\"bad-json\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:58.350Z\",\"completedAtUtc\":\"2026-10-03T05:49:58.394Z\",\"durationMs\":44,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":9,\"stdoutSha256\":\"60498ebafa3f473a2a72c1242e8c3202bf50a6d81dfc721958be1550f46faf33\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stdoutText\":\"not-json\\n\",\"stderrText\":\"\"}\n✔ native UserPromptSubmit blocks bad-json before any model request (491.4083ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61985}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-ivC7Zr\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:58.852Z\",\"completedAtUtc\":\"2026-10-03T05:49:58.911Z\",\"durationMs\":59,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5519,\"stdoutSha256\":\"d0d15d6992b7288b81f31ecf097da65b689df92398a20e45cc241d3cc02ebd2d\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\n✔ native UserPromptSubmit blocks schema before any model request (524.4539ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61986}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-lfSjCi\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:59.375Z\",\"completedAtUtc\":\"2026-10-03T05:49:59.437Z\",\"durationMs\":62,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5519,\"stdoutSha256\":\"93c832ef16294b85d58487fefce1a79897d8c858cada96becf876aed49e420ee\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\n✔ native UserPromptSubmit blocks missing-receipt before any model request (526.0027ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61991}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P01\\\\desktop-build-evidence\\\\toolchain\\\\node-v24.14.0-win-x64\\\\node.exe\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-jcjjkM\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:49:59.889Z\",\"completedAtUtc\":\"2026-10-03T05:49:59.947Z\",\"durationMs\":58,\"status\":\"completed\",\"exitCode\":0,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":5519,\"stdoutSha256\":\"cf0853dcf771c9a1474bf598fb85221eb87e06dc82d145b938cc4119ec8078e0\",\"stderrBytes\":0,\"stderrSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}\n✔ native UserPromptSubmit blocks truncated before any model request (509.8485ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61992}}\n✔ missing native Hook receipt is rejected at model delegate boundary (458.1401ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61993}}\nU06_HOOK_PROCESS {\"event\":\"UserPromptSubmit\",\"kind\":\"installed-hook\",\"file\":\"node\",\"args\":[\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\u02-inputs\\\\.runtime\\\\P01\\\\u06-mock-profiles\\\\native-int-EvEIMG\\\\plugin-storage\\\\cache\\\\xiadie-local\\\\xiadie\\\\0.1.0/hooks/alternate-context.mjs\"],\"nativeTimeoutMs\":8000,\"childTimeoutMs\":8000,\"startedAtUtc\":\"2026-10-03T05:50:00.868Z\",\"completedAtUtc\":\"2026-10-03T05:50:00.931Z\",\"durationMs\":63,\"status\":\"failed\",\"exitCode\":1,\"timedOut\":false,\"cancelled\":false,\"stdoutBytes\":0,\"stdoutSha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderrBytes\":85,\"stderrSha256\":\"97baad7da456bc213fb32b97001625b6a70e29c6028d4c74c9d4dbe9846c9d46\"}\n✔ an unknown Hook path cannot create a native model request (533.5148ms)\nP02_NATIVE_LISTENER {\"requested\":[0,\"127.0.0.1\"],\"address\":{\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":61994}}\n✔ an invalid approved character asset fails before native submit or model work (74.6287ms)\nℹ tests 16\nℹ suites 0\nℹ pass 16\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 11854.1024\n",
+  "stderr": "",
+  "mappings": [
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02-inputs\\packages\\adapters\\zcode\\test\\native.integration.test.mjs",
+      "original_sha256": "83530e286072830eafeb67eede29c6266c7b17d5dede41a2b8d302442f3f8fd4",
+      "generated": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\native\\mapped-03\\native.integration.test.mjs",
+      "generated_sha256": "56290a2347226fc27d604fa24c91e102ece8855041cb327a040d4e177e0b6ffd",
+      "changes": [
+        "One provider registry dist import mapped to pinned source TS",
+        "Test root/relative projection import bound to the author worktree; assertions unchanged"
+      ]
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02-inputs\\packages\\application\\test\\native-projection.integration.test.mjs",
+      "original_sha256": "d6886de8026243a18d3421ef3255ab0ce70f5c89b61d0faa3271804ff56d4446",
+      "generated": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\native\\mapped-03\\native-projection.integration.test.mjs",
+      "generated_sha256": "8091103c34bebd391b5716cc21641b67e8d85b67d286c1f58e39d83950eeb980",
+      "changes": [
+        "One provider registry dist import mapped to pinned source TS",
+        "Test root/relative projection import bound to the author worktree; assertions unchanged"
+      ]
+    }
+  ],
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "port_policy": {
+    "pass": true,
+    "snapshot_command": [
+      "powershell.exe",
+      "-NoProfile",
+      "-Command",
+      "Get-NetTCPConnection -State Listen | Select-Object LocalAddress,LocalPort,OwningProcess | ConvertTo-Json -Compress"
+    ],
+    "snapshot_exit": 0,
+    "listening_before": [
+      {
+        "LocalAddress": "::",
+        "LocalPort": 54253,
+        "OwningProcess": 1908
+      },
+      {
+        "LocalAddress": "::",
+        "LocalPort": 50052,
+        "OwningProcess": 6516
+      },
+      {
+        "LocalAddress": "::",
+        "LocalPort": 49668,
+        "OwningProcess": 5368
+      },
+      {
+        "LocalAddress": "::",
+        "LocalPort": 49667,
+        "OwningProcess": 4124
+      },
+      {
+        "LocalAddress": "::",
+        "LocalPort": 49666,
+        "OwningProcess": 3008
+      },
+      {
+        "LocalAddress": "::",
+        "LocalPort": 49665,
+        "OwningProcess": 2036
+      },
+      {
+        "LocalAddress": "::",
+        "LocalPort": 49664,
+        "OwningProcess": 2064
+      },
+      {
+        "LocalAddress": "::1",
+        "LocalPort": 42050,
+        "OwningProcess": 2888
+      },
+      {
+        "LocalAddress": "::",
+        "LocalPort": 8000,
+        "OwningProcess": 8012
+      },
+      {
+        "LocalAddress": "::",
+        "LocalPort": 7680,
+        "OwningProcess": 7816
+      },
+      {
+        "LocalAddress": "::",
+        "LocalPort": 445,
+        "OwningProcess": 4
+      },
+      {
+        "LocalAddress": "::",
+        "LocalPort": 135,
+        "OwningProcess": 2384
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 61476,
+        "OwningProcess": 9584
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 57943,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 57100,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 56240,
+        "OwningProcess": 18416
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 55379,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 54253,
+        "OwningProcess": 1908
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 54222,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 54221,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 54219,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 54217,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 54215,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 54214,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 52748,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 51927,
+        "OwningProcess": 6524
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 51160,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 51156,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 51153,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 51100,
+        "OwningProcess": 18780
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 50923,
+        "OwningProcess": 3368
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 50100,
+        "OwningProcess": 5256
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 50071,
+        "OwningProcess": 8012
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 50051,
+        "OwningProcess": 6468
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 49797,
+        "OwningProcess": 6440
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 49668,
+        "OwningProcess": 5368
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 49667,
+        "OwningProcess": 4124
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 49666,
+        "OwningProcess": 3008
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 49665,
+        "OwningProcess": 2036
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 49664,
+        "OwningProcess": 2064
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 31105,
+        "OwningProcess": 8280
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 31104,
+        "OwningProcess": 6588
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 31100,
+        "OwningProcess": 6588
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 28317,
+        "OwningProcess": 17468
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 27339,
+        "OwningProcess": 4
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 25426,
+        "OwningProcess": 9584
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 24830,
+        "OwningProcess": 6216
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 22112,
+        "OwningProcess": 6556
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 13032,
+        "OwningProcess": 5256
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 13031,
+        "OwningProcess": 5256
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 13030,
+        "OwningProcess": 6556
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 11001,
+        "OwningProcess": 6280
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 10000,
+        "OwningProcess": 30912
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 9410,
+        "OwningProcess": 32112
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 9211,
+        "OwningProcess": 43940
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 9013,
+        "OwningProcess": 23588
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 9012,
+        "OwningProcess": 23588
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 7897,
+        "OwningProcess": 33364
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 7778,
+        "OwningProcess": 3368
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 6850,
+        "OwningProcess": 30396
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5283,
+        "OwningProcess": 43940
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 5040,
+        "OwningProcess": 15916
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 4709,
+        "OwningProcess": 24164
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 4312,
+        "OwningProcess": 43940
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 4303,
+        "OwningProcess": 43940
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 4003,
+        "OwningProcess": 43940
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 1042,
+        "OwningProcess": 6188
+      },
+      {
+        "LocalAddress": "198.18.0.1",
+        "LocalPort": 139,
+        "OwningProcess": 4
+      },
+      {
+        "LocalAddress": "172.26.192.1",
+        "LocalPort": 139,
+        "OwningProcess": 4
+      },
+      {
+        "LocalAddress": "172.20.35.26",
+        "LocalPort": 139,
+        "OwningProcess": 4
+      },
+      {
+        "LocalAddress": "0.0.0.0",
+        "LocalPort": 135,
+        "OwningProcess": 2384
+      }
+    ],
+    "actual_test_listeners": [
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61961
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61962
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61967
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61969
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61973
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61976
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61978
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61980
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61981
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61984
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61985
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61986
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61991
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61992
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61993
+        }
+      },
+      {
+        "requested": [
+          0,
+          "127.0.0.1"
+        ],
+        "address": {
+          "address": "127.0.0.1",
+          "family": "IPv4",
+          "port": 61994
+        }
+      }
+    ],
+    "fixed_9229_disabled": "No Desktop/inspector launched"
+  },
+  "audit_preload": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u02-inputs\\spikes\\P02\\native-network-audit.cjs",
+    "sha256": "9c912cc778bdb097b0c0e77b99939c194f240b6ee470b742b7544d1533112926",
+    "purpose": "record listen(0) addresses only; no assertion/runtime/provider replacement"
+  },
+  "execution_inputs": {
+    "manifest": {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\native\\mapped-03\\execution-inputs.json",
+      "bytes": 7697,
+      "sha256": "703acc4b730a090661f60aca3a85633f5655b157f54f010da41faedf4ec4883d"
+    },
+    "before_digest": "119a01e80a4dc749022e482c007438f3e8aadeeef7cde3e0878785a9eda34c9e",
+    "after_digest": "119a01e80a4dc749022e482c007438f3e8aadeeef7cde3e0878785a9eda34c9e",
+    "unchanged": true,
+    "source_baseline": "e809d5c7e9969cbf2f5efd68df326e115cf6f1e6",
+    "product_diff_empty": true,
+    "owned_parent_profile": {
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\native\\mapped-03\\profile\\home",
+      "temp": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u02\\native\\mapped-03\\profile\\temp"
+    }
+  },
+  "registry": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\packages\\provider\\src\\registry.ts",
+    "sha256": "fbf0c2c1dd4842b1b2d6d22f52dbc8cc1bddaae9c6737ae0a120f9ba89d0581a"
+  },
+  "boundary": "Existing native ZCode Loop/Read/Hook tests with loopback mock model; no product P02 implementation, real model, Desktop or package assertion"
+}
