@@ -1,12 +1,12 @@
 # P01-U11 作者结果：0.1.0 冻结候选
 
-**作者结论：ready_for_review；尚非 accepted。** 根状态仍为 U11 running，G01 尚待独立审查。本文只记录 P01-U11 冻结材料与验证证据。
+**作者提交时状态快照：ready_for_review；本记录尚未包含 accepted。** 当前状态以 [P01 status](../../P01/status.json) 为准；后续 acceptance.json 写入后，以该记录和 status.json 为接受依据。G01 的独立审查状态不由本作者文档改写。
 
 ## 基线与范围
 
 P01-U10 accepted 基线为 7a284538250d54c228a3a67fcabff4882c8afeff。U11 执行提交为 c90e8c14e7437e84b088212694bc3ae6a1a5cfcc。验证使用 candidate-06，仓库构建提交 82298c735dfbc4f278b5e920d79be7a83f979b55，固定 ZCode 源提交 29628c9acdb81b703bbd4080c207a0e7ce5e276e。
 
-本单元唯一差异是 tests/integration/P01/desktop-ui.mjs 的五行测试快照命名调整：offline 流程的前后历史快照使用不同 checkpoint 文件名，避免二次写入触发 EEXIST。candidate 未重建；产品 packages、prompt、schema、assets、plugins、配置和 lock 文件未变。该改动修复既有 gate 测试，不扩大产品范围。
+本单元唯一实现差异是 tests/integration/P01/desktop-ui.mjs 的五行测试快照命名调整：offline 流程的前后历史快照使用不同 checkpoint 文件名，避免二次写入触发 EEXIST。candidate 未重建；产品 packages、prompt、schema、assets、plugins、配置和 lock 文件未变。该改动修复既有 gate 测试，不扩大产品范围。
 
 candidate descriptor SHA-256 为 25f92e7604b41479fdcdd9dcc089afe0ce6441db4586a7f7e7614805632a8907；descriptor 绑定 6,673 个产物、66 个项目输入。分组摘要与来源 hash 见 baseline.json；文件级冻结清单由 coordinator/freeze-inputs.json 和 descriptor hash 绑定。
 
@@ -33,7 +33,7 @@ final-02 只重跑三项 degradation；full suite 复用同 candidate 的 final-
 | 失败不报成功 | final-01 full 的 read_failure；[final-02 offline scenario](runs/final-02/degradation/scenarios/offline/scenario-result.json) | 503 与错误提示可见，无成功回复；旧 EEXIST runner 失败仍保留 |
 | 禁用扩展仍保留原生 Runtime | final-01 full 的 disabled_native scenario；U06 accepted 结果 | 隔离 Desktop/mock 验证，不等于生产 provider 验证 |
 
-前置 U01-U10 accepted 文件及摘要哈希由 [prerequisite audit](coordinator/prerequisite-audit.json) 固定：424 个计划跟踪文件中，PACKAGE_MANIFEST 列出的 423 项全部匹配。U09 共 18 次获批真实请求（历史 U02 4 次、U09 14 次）；其中只把 Flash 评为合格，Pro 测过但未合格，人工审阅为 not_reviewed。U10/U11 没有真实模型调用。
+前置 U01-U10 accepted 文件及摘要哈希由 [prerequisite audit](coordinator/prerequisite-audit.json) 固定：424 个计划跟踪文件中，PACKAGE_MANIFEST 列出的 423 项全部匹配。P01 累计 18 次获批真实请求（U02 4 次、U09 14 次）；其中只把 Flash 评为合格，Pro 测过但未合格，人工审阅为 not_reviewed。U10/U11 没有真实模型调用。
 
 ## 限制与后续
 

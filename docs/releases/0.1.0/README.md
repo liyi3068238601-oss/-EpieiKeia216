@@ -1,6 +1,6 @@
 # Xiadie 0.1.0 冻结候选
 
-**作者状态：ready_for_review；独立接受：pending。** 这是 P01 阶段的 Windows 本地开发 assembly 冻结记录，不是安装器、可移植发行包或公开发布物。机器冻结索引见 [freeze.json](freeze.json)；作者材料见 [result](../../../evidence/P01-U11/20261002-01/result.md)、[baseline](../../../evidence/P01-U11/20261002-01/baseline.json)、[source decision](../../../evidence/P01-U11/20261002-01/source-decision.md) 和 [rollback](../../../evidence/P01-U11/20261002-01/rollback.md)。
+**作者提交时状态快照：ready_for_review；独立接受尚未记录。** 这是 P01 阶段的 Windows 本地开发 assembly 冻结记录，不是安装器、可移植发行包或公开发布物。当前权威状态见 [evidence/P01/status.json](../../../evidence/P01/status.json)；后续 acceptance.json 写入后，当前接受结果以该记录和 status.json 为准。本文中的 accepted:false 是作者快照。机器冻结索引见 [freeze.json](freeze.json)；作者材料见 [result](../../../evidence/P01-U11/20261002-01/result.md)、[baseline](../../../evidence/P01-U11/20261002-01/baseline.json)、[source decision](../../../evidence/P01-U11/20261002-01/source-decision.md) 和 [rollback](../../../evidence/P01-U11/20261002-01/rollback.md)。
 
 本候选沿用 ZCode 原生 UI 和 Runtime。用户看到 ZCode 原生对话；Xiadie 提供已验收的遐蝶身份资产和上下文接缝。宿主侧 sidecar 保存 turn/tool 核验证据，不是 renderer 回复面板。固定上游为 ZCode commit 29628c9acdb81b703bbd4080c207a0e7ce5e276e，candidate-06 源码为 82298c735dfbc4f278b5e920d79be7a83f979b55。
 
@@ -12,7 +12,7 @@ candidate-06 descriptor SHA-256 为 25f92e7604b41479fdcdd9dcc089afe0ce6441db4586
 
 U11 final-01 的 Desktop full suite 为 6/6、exit 0。final-02 只重跑 degradation suite：no-key、no-DSH、offline 为 3/3、exit 0。Desktop 使用实际界面与隔离 profile，模型请求由 loopback mock 接管；本轮外部模型调用为 0。no-key 为 0 请求，no-DSH 为 1 次本地请求且未启动 DSH，offline 收到本地 503 并显示失败提示，不显示成功回复。
 
-U09 另有 18 次获批的官方请求记录（U02 4 次生成、U09 14 次评测）。只有 deepseek-flash 获得当前候选资格；deepseek-v4-pro 已测但未合格；人工角色审阅为 not_reviewed。这些评测不是 U11 Desktop 的真实凭据或付费链路证明。
+P01 累计使用 18 次获批官方请求（U02 4 次生成、U09 14 次评测）。只有 deepseek-flash 获得当前候选资格；deepseek-v4-pro 已测但未合格；人工角色审阅为 not_reviewed。这些评测不是 U11 Desktop 的真实凭据或付费链路证明。
 
 ## 运行复核
 

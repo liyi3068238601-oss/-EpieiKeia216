@@ -73,7 +73,14 @@
       "scenarios_total": 6,
       "exit_code": 0,
       "log_sha256": "ab6cfa87a143d3b8dd6aace5fff561bf3a1f3133b5b49cc6a105ccc41f55d6ac",
-      "scenarios": ["success", "read_success", "read_failure", "cancel_recovery", "disabled_native", "pro_denied"],
+      "scenarios": [
+        "success",
+        "read_success",
+        "read_failure",
+        "cancel_recovery",
+        "disabled_native",
+        "pro_denied"
+      ],
       "model_backend": "isolated loopback mock",
       "external_model_requests": 0
     },
@@ -130,11 +137,16 @@
       }
     },
     "u09_model_evaluation": {
-      "preapproved_real_requests": 18,
-      "historical_u02_requests": 4,
+      "p01_cumulative_real_requests": 18,
+      "budget_preapproved": 18,
+      "u02_requests": 4,
       "u09_requests": 14,
-      "qualified": ["deepseek-flash"],
-      "measured_not_qualified": ["deepseek-v4-pro"],
+      "qualified": [
+        "deepseek-flash"
+      ],
+      "measured_not_qualified": [
+        "deepseek-v4-pro"
+      ],
       "human_review": "not_reviewed"
     },
     "visual_review": "NOT_RUN",
@@ -145,23 +157,38 @@
     {
       "criterion": "identity_assets_verifiable",
       "status": "evidence_recorded_pending_independent_review",
-      "evidence": ["evidence/P01-U04/20261001-01/acceptance.json", "assets/character/xiadie/v3/manifest.json", "assets/character/xiadie/v3/persona.json", "evidence/P01-U11/20261002-01/baseline.json"]
+      "evidence": [
+        "evidence/P01-U04/20261001-01/acceptance.json",
+        "assets/character/xiadie/v3/manifest.json",
+        "assets/character/xiadie/v3/persona.json",
+        "evidence/P01-U11/20261002-01/baseline.json"
+      ]
     },
     {
       "criterion": "main_interaction_runnable",
       "status": "evidence_recorded_pending_independent_review",
-      "evidence": ["evidence/P01-U11/20261002-01/runs/final-01/full/summary.json", "evidence/P01-U11/20261002-01/runs/final-01/commands.json"],
+      "evidence": [
+        "evidence/P01-U11/20261002-01/runs/final-01/full/summary.json",
+        "evidence/P01-U11/20261002-01/runs/final-01/commands.json"
+      ],
       "boundary": "Actual Desktop UI automation with local mock backend; not a real provider call."
     },
     {
       "criterion": "failure_is_not_reported_as_success",
       "status": "evidence_recorded_pending_independent_review",
-      "evidence": ["evidence/P01-U11/20261002-01/runs/final-01/full/scenarios/read_failure/scenario-result.json", "evidence/P01-U11/20261002-01/runs/final-02/degradation/scenarios/offline/scenario-result.json"]
+      "evidence": [
+        "evidence/P01-U11/20261002-01/runs/final-01/full/scenarios/read_failure/scenario-result.json",
+        "evidence/P01-U11/20261002-01/runs/final-02/degradation/scenarios/offline/scenario-result.json"
+      ]
     },
     {
       "criterion": "disabled_extension_preserves_native_runtime",
       "status": "evidence_recorded_pending_independent_review",
-      "evidence": ["evidence/P01-U11/20261002-01/runs/final-01/full/scenarios/disabled_native/scenario-result.json", "evidence/P01-U06/20261002-01/result.md", "evidence/P01-U10/20261002-01/acceptance.json"],
+      "evidence": [
+        "evidence/P01-U11/20261002-01/runs/final-01/full/scenarios/disabled_native/scenario-result.json",
+        "evidence/P01-U06/20261002-01/result.md",
+        "evidence/P01-U10/20261002-01/acceptance.json"
+      ],
       "boundary": "Verified in isolated Desktop/mock evidence; not a production provider test."
     }
   ],
@@ -173,7 +200,9 @@
     "network_guard_is_instrumentation_not_os_sandbox": true,
     "application_level_persistence": "not_started; P02 not started",
     "fully_unauthenticated_provider_ui": "not_claimed",
-    "supported_models": ["deepseek-flash"]
+    "supported_models": [
+      "deepseek-flash"
+    ]
   },
   "next_unit": {
     "id": "P02-U01",
@@ -185,5 +214,11 @@
     "baseline": "evidence/P01-U11/20261002-01/baseline.json",
     "source_decision": "evidence/P01-U11/20261002-01/source-decision.md",
     "rollback": "evidence/P01-U11/20261002-01/rollback.md"
+  },
+  "acceptance_status_kind": "author_snapshot",
+  "status_authority": {
+    "current_status": "evidence/P01/status.json",
+    "acceptance_record": "evidence/P01-U11/20261002-01/acceptance.json",
+    "current_acceptance_comes_from": "acceptance.json and status.json"
   }
 }
