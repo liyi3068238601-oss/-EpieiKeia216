@@ -41,4 +41,3 @@ export const createZCodeApp = createU10ProtocolFactory({
   nodeExecutable: __P01_NODE_EXECUTABLE__,
   electronPath: __P01_ELECTRON_EXECUTABLE__,
 });
-
