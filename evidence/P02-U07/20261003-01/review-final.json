@@ -1,0 +1,305 @@
+{
+  "schema": "p02-independent-review/v1",
+  "decision": "pass",
+  "task": "P02-U07",
+  "review_target": {
+    "author_commit": "bbabe95348b166332a072130fe4b394995c018d7",
+    "baseline_commit": "6f445086853126227396029cf973c2fd33f90229",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u07"
+  },
+  "reviewer": "p02_u04_review",
+  "scope": "U07 冻结精确提交的独立逻辑、构建和单元验收：检查操作 intent/receipt、完整分页读、恢复与 first-terminal projection 的安全边界。不是 U10、Native/Desktop 或完整产品集成验收。",
+  "checks": [
+    {
+      "id": "exact-target-prerequisite-and-manifest",
+      "status": "pass",
+      "detail": "冻结 author WT 精确位于 bbabe95348b166332a072130fe4b394995c018d7，baseline 6f445086853126227396029cf973c2fd33f90229 是祖先且 worktree clean。独立 verify-author 核对 19 个 manifest 条目/20 条 changed path，raw Git blob 与磁盘 0 mismatch；manifest SHA-256 ae3d8d163dad24199943a55e2dd0161c7b08d4dde0a773d85f92f0c8b445bcb9。U07 卡片、source lock 与已接受 U02-U06 前置记录均按 baseline 核对。"
+    },
+    {
+      "id": "scope-and-command-index",
+      "status": "pass",
+      "detail": "20 条变更均在登记范围 packages/application/recovery、tools/run-tests.mjs 与 U07 evidence 内；8/8 command-index 记录的 bytes/SHA 与 evidence 副本及原始归档相同。作者最终 build/unit exit 0。早期 9/11 失败以 exit 1 保留，之后修正断言/夹具并完成 12/12；历史记录时间字段为 null，未伪造。"
+    },
+    {
+      "id": "independent-input-bindings",
+      "status": "pass",
+      "detail": "固定 Node v24.14.0 / TypeScript 6.0.2。独立 build 前与 suite、两条反例后的绑定共 117 项，显式包含 migrations/001-event-store.ts；逐项匹配作者 pre/post，digest 均为 b33f5b52393427fb1738720333686f64eeceae0177704b0f90dfec3d46fae781，执行前后无漂移。"
+    },
+    {
+      "id": "independent-build-and-u07-suite",
+      "status": "pass",
+      "detail": "独立运行固定 Node 的 tsc --project tsconfig.json：exit 0；tools/run-tests.mjs unit P02-U07：exit 0，12 passed / 0 failed / 0 skipped。实际 argv、cwd、输出及 exit 均保存在 review commands；SQLite ExperimentalWarning 原样保留。"
+    },
+    {
+      "id": "independent-fault-counterexamples",
+      "status": "pass",
+      "detail": "独立反例 2/2，使用冻结 U07 实现和真实本地 U05 SQLite event store。同一 receipt identity 被不同 operation/owner 重用时 append 返回 conflict、first receipt 保留，inspect 为 conflict/HISTORY_CONFLICT/needsReview；实际 8,193 条 observations 超过 32×256 完整扫描界限时，inspect 返回 unavailable/READ_UNAVAILABLE/needsReview，未声称 absence。"
+    },
+    {
+      "id": "critical-recovery-logic-review",
+      "status": "pass",
+      "detail": "实现检查与实际 suite 覆盖 complete bounded observation scan、owner/descriptor conflict、只有新提交 intent 且 ACK 后才 dispatch、receipt canonical aggregation/first receipt、unknown effect 不自动重放，以及 first terminal ordering。并发 recovery 使用首次 committed attempt event 的occurredAt 作为稳定事实时间基准、discovery 写入 observedAt；不会推测 crash instant 或产生 timestamp identity conflict。"
+    },
+    {
+      "id": "source-choice-and-evidence-boundaries",
+      "status": "pass",
+      "detail": "复用已接受 U03 immutable event/first-terminal projection 与 U05 EventStore；sources.lock 中协议版本仅作固定参考，未复制上游代码或安装依赖。结论限于 U07 coordinator-internal recovery unit，不宣称原生集成或任意外部效果的幂等性。"
+    }
+  ],
+  "limitations": [
+    "NOT_RUN：U10 Native/Desktop composition、生产数据库/数据、真实外部发送或生成、付费模型、已安装 ZCode、installer/portable package、physical power-loss/storage-exhaustion、complete runtime dependency closure。",
+    "SQLite 数据库、owned files 与 child process 都是 review/test 夹具；child kill 仅验证进程故障路径，不代表断电或真实生产效果。调用方仍须提供稳定 operation ID 与可信 reconciliation evidence。",
+    "U05 没有 source/event identity observation query；U07 完整扫描上限为 32×256 rows，超过 8,192 observations 返回 unavailable/needsReview。读操作是同步 single-writer call-time view，不构成跨多进程全局快照保证。",
+    "作者最初测试为 9/11，失败命令及输出继续归档，时间戳未采集并保留 null；修正后的 final run 为 12/12。协调器有一次 verify-author 将 branch 名误作 commit SHA 的失败调用，随后 exact-SHA 验证通过且 author WT clean。"
+  ],
+  "artifacts": [
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U07/20261003-01/baseline.json",
+      "bytes": 1108,
+      "sha256": "a623c8c0e4d3b79e4804f1b5aa47995e8b72bead2924e6241ddf999c407e769b"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U07/20261003-01/manifest.json",
+      "bytes": 4884,
+      "sha256": "ae3d8d163dad24199943a55e2dd0161c7b08d4dde0a773d85f92f0c8b445bcb9"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U07/20261003-01/command-index.json",
+      "bytes": 2406,
+      "sha256": "95c45849adf9c51c1defdf3425adc77a6b0a1ecf5f573c41db796b8399fb66af"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U07/20261003-01/result.md",
+      "bytes": 6042,
+      "sha256": "119a83134f71976f77d315d52f868d9b5ff76af052c565ad37afb6bc849ad60f"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U07/20261003-01/source-decision.md",
+      "bytes": 3660,
+      "sha256": "b49d1988d61abed4412ed225161fa4dc69510bb30368a016cb5de786706ac15c"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U07/20261003-01/inputs-final-pre.json",
+      "bytes": 27227,
+      "sha256": "7b1436e5ed5d5a977fa28937bf384e6e1aa2737155618bf5102ff73934688a24"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U07/20261003-01/inputs-final-post.json",
+      "bytes": 27335,
+      "sha256": "e6bcc03e550e91c9c2dff738fe83507006b662baed2ec80a523acc4f3b84ba78"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/application/recovery/src/index.ts",
+      "bytes": 15896,
+      "sha256": "fdfefa068a5a29ce33ad0c890df6f2c25367fba88b8513dc4733e545bb32c6b7"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/application/recovery/test/recovery.test.mjs",
+      "bytes": 28591,
+      "sha256": "3f9ad79c8d321506d7743eedbf08a48800f6a91c32d13e5bfe75ad9b6086ce6b"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tools/run-tests.mjs",
+      "bytes": 5513,
+      "sha256": "009deed8bde7d4dcefa03c4924e2cfaa5af96eb68a45e86d56fb89228d6e2c94"
+    },
+    {
+      "root": "review_directory",
+      "path": "author-verification.json",
+      "bytes": 552,
+      "sha256": "7e580c8f2a149f87d1a90a13fa91cd73511c215f26d98acd0fa4f042503efe2f"
+    },
+    {
+      "root": "review_directory",
+      "path": "audit-results.json",
+      "bytes": 3811,
+      "sha256": "875845512d8f395949688864744c603917b850c117d7286b52899dc856bbaf00"
+    },
+    {
+      "root": "review_directory",
+      "path": "audit-u07.py",
+      "bytes": 5970,
+      "sha256": "d0f1bb066a0c87dff2fb3893633dcceac9aa299f22f9218b2f588b0640ab2eb5"
+    },
+    {
+      "root": "review_directory",
+      "path": "build-review-final.py",
+      "bytes": 9449,
+      "sha256": "94a2e559cb6b05ec663312c60f73a1af13aeddaad43f38d34aec451c9d47c551"
+    },
+    {
+      "root": "review_directory",
+      "path": "review-summary.md",
+      "bytes": 2220,
+      "sha256": "8708f825985aa6066906ce6f3bc8657ace6780f3de7811941ee96f5b29a1241d"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-pre.json",
+      "bytes": 27227,
+      "sha256": "0d9b6654205e9a3e3cc6ecd93beece7a2da7d4b7748a12ea2a9acc30e7014dd5"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-post-final.json",
+      "bytes": 27335,
+      "sha256": "15fa8d9c9722f3dd9bf606572e38985ce6954dd1d0894728a3f7bd7fdf4afa0e"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/u07-counterexamples.mjs",
+      "bytes": 7089,
+      "sha256": "60f95542dea119f63c2b739a1ab05efe1f857b658d7f62a7104e46d2762ce7c1"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/counterexample-results.json",
+      "bytes": 670,
+      "sha256": "911d42fa3e3520d06719da02201ad9a14a17f4969248c8b3cb7eda1b9e9545e6"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/receipt-identity-conflict.sqlite",
+      "bytes": 86016,
+      "sha256": "4e5d5567a46c2eb878de7f3622b692b36d53a4b07d5b55d9190dfb1cbb4d6617"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/global-observation-limit.sqlite",
+      "bytes": 14811136,
+      "sha256": "1fc8d5859fb5e27dba884a56b7e0f709c31fb53683f77eed6b7d60ac972502ef"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/bind-post-final.json",
+      "bytes": 947,
+      "sha256": "09e4587aae740da3c90a4a0286bf755d40c8e2dbd7e471652f0059c557ee3941"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/bind-post.json",
+      "bytes": 935,
+      "sha256": "c9de181fda55525d1312f125c684a1f08bac40ace3225b49dd1f700c251a1bcb"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/bind-pre.json",
+      "bytes": 838,
+      "sha256": "8a6e3f10d88897f2245d7296644e325639ba347e92abf12a3cb343a623f503ab"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/build-independent.json",
+      "bytes": 479,
+      "sha256": "248db67bf8214a79dc562591828517d43900118f8f8f61ec2476abd3e966d93e"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/counterexamples.json",
+      "bytes": 1388,
+      "sha256": "f20db27d1ecae04edcd43de9b99238ccb025ce4c7323728b75352123e6385c7d"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/unit-independent.json",
+      "bytes": 1945,
+      "sha256": "2629e73271db1c5b9b85b6c583ed34bb40353dbdd99f960ecfb92a9de802f783"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/verify-author.json",
+      "bytes": 1249,
+      "sha256": "2ad5b94e87566c7a33b62167d92c66ce362d2db997b38d433d4f7c00062c61a3"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "root": "baseline_repository",
+      "path": "AGENTS.md",
+      "bytes": 1787,
+      "sha256": "b6ab92bf4c41d1cbc44fede9c152614b38bc24e5de8c293a55db258735ef53f4"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U07.md",
+      "bytes": 2039,
+      "sha256": "d7c81ed71d23ba465f8a375e79c9d8921fb1e678984cb050ab5816d72ffc89c8"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U06/20261003-01/acceptance.json",
+      "bytes": 5204,
+      "sha256": "da6486ebaf884e3723e45a0e1f93712f7e6d32755dd608b4336eafb65d868cb5"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U05/20261003-01/acceptance.json",
+      "bytes": 6903,
+      "sha256": "8f1f28f4a0b71768cec6300d4e0e554f0a51c26b08c8031cf01d72eca89bc357"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U03/20261003-01/acceptance.json",
+      "bytes": 1852,
+      "sha256": "049abb37c43d4a9edc1a55d230047461a50948fea590b1510a85379cb9d1abac"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U02/20261003-01/acceptance.json",
+      "bytes": 1252,
+      "sha256": "715724b9c83abc17fb8536b7a5c02dd72653bf794a199deb531a036d5867caa8"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "docs/adr/P02-reuse.md",
+      "bytes": 6041,
+      "sha256": "dcb2f3eb461423947652db04ff2e846e3f27fa4dfc1534953d3a27d9ff7d2541"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "spikes/P02/sqlite-notes.md",
+      "bytes": 10658,
+      "sha256": "ad7695498095352d3847fae642b24f02347061c06b99024b42844c3e0fa954eb"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "packages/contracts/src/events.ts",
+      "bytes": 17373,
+      "sha256": "c2a7d013164b1c3e5e6c27748a3b06ef1856cf22346acd11e356c191718500ee"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "packages/storage/events/src/index.ts",
+      "bytes": 58109,
+      "sha256": "04f4ecc5f54122dbfa14eff2de982cb3f81967f6d41b205d1694d24127eb9545"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "packages/adapters/zcode/src/transcript.ts",
+      "bytes": 24870,
+      "sha256": "73fcaf64d5932fc15ea7c24d47f103891807ca96015c2ff81fc79ada8f4f3174"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "packages/application/turn-projection.ts",
+      "bytes": 16936,
+      "sha256": "2fc3f675856588b2ae8e6e3eb668f913b43bc9acb892a066b7e59a9e4e375292"
+    }
+  ]
+}

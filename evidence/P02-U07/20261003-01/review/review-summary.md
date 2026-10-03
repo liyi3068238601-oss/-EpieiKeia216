@@ -1,0 +1,11 @@
+# P02-U07 independent exact-commit review
+
+Decision: **PASS** for author commit `bbabe95348b166332a072130fe4b394995c018d7` against baseline `6f445086853126227396029cf973c2fd33f90229`.
+
+The frozen author worktree is clean. Its manifest covers 19 files and 20 changed paths with SHA-256 `ae3d8d163dad24199943a55e2dd0161c7b08d4dde0a773d85f92f0c8b445bcb9`; independent verification found no disk/Git-blob mismatches or out-of-scope paths. All eight indexed author command records match their archived originals by bytes and SHA-256. The initial 9/11 test failure remains archived (exit 1; timestamps were not captured); the final author and independent runs pass.
+
+Using the fixed Node v24.14.0 and TypeScript 6.0.2, independent TypeScript build exited 0 and `tools/run-tests.mjs unit P02-U07` passed 12/12 with no skips. The 117 author inputs match the independent pre-run and post-run bindings, digest `b33f5b52393427fb1738720333686f64eeceae0177704b0f90dfec3d46fae781`; no input drift occurred.
+
+Two independent counterexamples passed against the frozen implementation and actual local SQLite event store: a receipt identity reused with a changed operation/owner is reported as `conflict` while preserving the first receipt; a complete observation scan over 8,193 rows exceeds the 32×256 bound and returns `unavailable`/`needsReview`, never absence. Code review and the final suite also cover no-ACK dispatch gating, receipt reconciliation/conflict handling, first-terminal ordering, concurrent recovery identity stability, and unknown effects not being replayed.
+
+The decision is limited to U07's coordinator-internal recovery unit. Native/Desktop composition (U10), production data, real external effects, paid models, installed ZCode/package behavior, physical power-loss/storage exhaustion, and full runtime dependency closure were not run. The process-kill test is a controlled child-process fixture, not a power-loss claim. The complete observation scan is deliberately bounded; histories over 8,192 observations fail closed. A coordinator verify-author invocation initially supplied a branch name where a commit SHA was required; the corrected exact-SHA verification passed and the author worktree remained clean.
