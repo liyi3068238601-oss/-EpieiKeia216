@@ -1,6 +1,6 @@
 # Xiadie V2
 
-P01 的 U01–U11 已独立验收，G01 通过，冻结本机 **0.1.0 开发候选**。本轮在此停止；下一节点为 **P02-U01**，尚未启动。当前接受索引见 [P01 状态](evidence/P01/status.json)，版本范围、产物哈希、验证边界和回滚见 [0.1.0 冻结说明](docs/releases/0.1.0/README.md)。
+P01 的 U01–U11 已独立验收，G01 通过，冻结本机 **0.1.0 开发候选**。P02 已获授权并进入执行：U01 来源调查已接受，当前节点为 **P02-U02 隔离试验**。当前进度见 [P02 状态](evidence/P02/status.json)；[P01 状态](evidence/P01/status.json)与[0.1.0 冻结说明](docs/releases/0.1.0/README.md)保留为历史冻结记录。
 
 项目根为 `E:/Xiadie/Xiadie`。权威计划是原始 v1.1 ZIP 内的 `planning/Xiadie_V2_v1.1/`，保留原文件并核验 SHA-256；执行状态独立记录。
 
