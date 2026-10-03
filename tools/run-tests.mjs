@@ -35,13 +35,14 @@ const TESTS = Object.freeze({
     }),
   }),
   integration: Object.freeze({
-    all: ["packages/contracts/test/import-boundaries.test.mjs", "packages/character/test/loader.test.mjs", "packages/context/test/integration.test.mjs", "packages/adapters/zcode/test/native.integration.test.mjs", "packages/application/test/native-projection.integration.test.mjs"],
+    all: ["packages/contracts/test/import-boundaries.test.mjs", "packages/character/test/loader.test.mjs", "packages/context/test/integration.test.mjs", "packages/adapters/zcode/test/native.integration.test.mjs", "packages/application/test/native-projection.integration.test.mjs", "tests/integration/P02/native.integration.test.mjs"],
     tasks: Object.freeze({
       "P01-U03": ["packages/contracts/test/import-boundaries.test.mjs"],
       "P01-U04": ["packages/character/test/loader.test.mjs"],
       "P01-U05": ["packages/context/test/integration.test.mjs"],
       "P01-U06": ["packages/adapters/zcode/test/native.integration.test.mjs"],
       "P01-U07": ["packages/application/test/native-projection.integration.test.mjs"],
+      "P02-U10": ["tests/integration/P02/native.integration.test.mjs"],
     }),
   }),
 });
