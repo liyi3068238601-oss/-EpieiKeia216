@@ -1,0 +1,233 @@
+{
+  "schema": "p02-independent-review/v1",
+  "decision": "pass",
+  "task": "P02-U05",
+  "review_target": {
+    "author_commit": "339d8cc7417e430faa21483bbc10b29baed46cac",
+    "baseline_commit": "18a35406efaccce964ea53327d7af6d636c115f1",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u05"
+  },
+  "reviewer": "p02_u04_review",
+  "scope": "P02-U05 exact-commit 独立单元验收；不构成 P02-G02 或后续 U08/U10 产品集成验收。",
+  "checks": [
+    {
+      "id": "exact-target-prerequisite-and-manifest",
+      "status": "pass",
+      "detail": "冻结 author WT 精确为 339d8cc7417e430faa21483bbc10b29baed46cac，branch p02-u05、clean；baseline 18a35406efaccce964ea53327d7af6d636c115f1 为祖先。独立 verify-author 重算 55 个 manifest 条目/56 条变化路径，逐项比对 author raw Git blob 与磁盘，0 mismatch；manifest SHA-256 f3c888a158c75ea27c2daf9d248fab8422a3b07971869cc6ec13fee6666c5f57。冻结 baseline 中 U05 卡、sources.lock、U04 accepted prerequisite 的 bytes/SHA 均吻合；U02/U03 接受记录与 ADR/SQLite 来源笔记保持原样。"
+    },
+    {
+      "id": "scope-and-command-index",
+      "status": "pass",
+      "detail": "56 条变化路径都在已登记映射范围：packages/storage/events、migrations、tsconfig.json、tools/run-tests.mjs、U05 evidence；没有 P01/Host/reference/global 改动。42/42 command-index 记录与原始 run JSON 及归档副本的 byte length/SHA 完全匹配；后续两个冻结/evidence commit 相对实现提交只改 U05 evidence。"
+    },
+    {
+      "id": "independent-input-bindings",
+      "status": "pass",
+      "detail": "固定 Node v24.14.0 / TypeScript 6.0.2；独立 pre/post 各 108 项（含 --extra migrations/001-event-store.ts）逐行等于作者 inputs-final-02-pre/post，digest 均为 34c5146d0fa68e4440cc31b38626a2a603afd8709b2b559775d2b589457eab39；build、11 项 suite 及补充反例前后 bindings 无变化。"
+    },
+    {
+      "id": "independent-build-and-u05-suite",
+      "status": "pass",
+      "detail": "用固定 Node 独立运行 tsc --project tsconfig.json：exit 0；tools/run-tests.mjs unit P02-U05：exit 0，11/11 pass、0 fail。原始 argv/cwd/stdout/stderr 保存在 review commands。Node SQLite ExperimentalWarning 与作者证据一致。"
+    },
+    {
+      "id": "independent-fault-counterexamples",
+      "status": "pass",
+      "detail": "独立 scratch 3/3：真实 SQLite COMMIT 完成后注入 ACK throw，append 返回 unknown/UNKNOWN_COMMIT，重开 receipt found，重试 duplicate 且仅 1 fact/1 observation；transcript_materials 插入 trigger 失败时 fact/observation/origin/receipt/material 全部为 0、writer sequence 为 0，解除故障后从序号 1 成功；篡改 receipt hash 后 queryReceipt 以 CORRUPT_STORE fail closed。复审夹具前两次尝试分别遇到 reviewer cleanup 的 Windows -shm EBUSY 与 Node SQLite null-prototype 行比较；调整 reviewer 自有夹具后最终 3/3 通过，失败命令原样留档。"
+    },
+    {
+      "id": "source-choice-and-evidence-boundaries",
+      "status": "pass",
+      "detail": "实现采用已接受 U02 选择的固定 Node 内置 node:sqlite，无新增依赖；来源 ADR、PoC 注记、U02/U03/U04 accepted inputs 均保留。SQLite/page-cap 与 owned worker 终止是实际本地 SQLite/子进程证据，不代表物理断电或磁盘填满；transcript 仍受 U04 full-mask/capture contract 限定。"
+    }
+  ],
+  "limitations": [
+    "未运行完整 P01 回归或完整产品 Host/Electron/原生 Hook 配对；U10 负责 hook pairing，U08 负责在线备份/迁移/恢复。",
+    "本轮未打开或改写产品数据库；无物理磁盘耗尽、物理断电或生产恢复演练。SQLITE_FULL 使用受控 page cap，崩溃检查只终止本测试拥有的 Node worker。",
+    "Node v24.14.0 的 node:sqlite 显示 ExperimentalWarning；本审查验证固定 Node 工具链，不据此声称 Electron ABI/原生运行时兼容。"
+  ],
+  "artifacts": [
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U05/20261003-01/baseline.json",
+      "bytes": 1325,
+      "sha256": "92cd50926d8e832e6d00c44371f4f25d678e08d58d6e25a80b30b6d747ed52f9"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U05/20261003-01/manifest.json",
+      "bytes": 14176,
+      "sha256": "f3c888a158c75ea27c2daf9d248fab8422a3b07971869cc6ec13fee6666c5f57"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U05/20261003-01/command-index.json",
+      "bytes": 7439,
+      "sha256": "6582dc7bb8078f1373990fcecdc8b7de076a23524c812482ded3e7181f8bd9a6"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U05/20261003-01/result.md",
+      "bytes": 7322,
+      "sha256": "3f63456e7bc95dc83667495b4c3359bd61ef42cbdc2bdeda9dd24dd52050bd06"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U05/20261003-01/ready-for-review.md",
+      "bytes": 2873,
+      "sha256": "7a6f1bb19c881528d6439ae33292956d41ef269f6223e1dc84b64704dc93566a"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U05/20261003-01/inputs-final-02-pre.json",
+      "bytes": 25075,
+      "sha256": "33ee331836a8c29c9d974181a253af7902101daa0d5b635a2a6773954d43c8b3"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U05/20261003-01/inputs-final-02-post.json",
+      "bytes": 25183,
+      "sha256": "cea5695daf4c9949cf351179b0e926744a6fd5f2e84565463bc3fe32ae98a675"
+    },
+    {
+      "root": "review_directory",
+      "path": "author-verification.json",
+      "bytes": 553,
+      "sha256": "0ab5cfec092dd19a062b762acd822ba9b78cd4ab07b72acafe3fcfa395039f10"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-pre.json",
+      "bytes": 25075,
+      "sha256": "391592c705c5b19cf9c70913d599508577b0f5a96eb70e0302b4386da53b6e8c"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-post.json",
+      "bytes": 25183,
+      "sha256": "a2058095f932e53a48481e75bf498f2f8a12244143a8c60d483633e5589d1bf4"
+    },
+    {
+      "root": "review_directory",
+      "path": "binding-comparison.json",
+      "bytes": 686,
+      "sha256": "934f0c479e85726007c623e51d8f8ab8b04343cae6e6408c65263ecbd239d05a"
+    },
+    {
+      "root": "review_directory",
+      "path": "counterexamples-03.json",
+      "bytes": 819,
+      "sha256": "f11720ab8637d92a0072b6df9a76c8d67288a23ca33c975ec102ea096dd006ae"
+    },
+    {
+      "root": "review_directory",
+      "path": "scratch/independent-counterexamples.mjs",
+      "bytes": 7845,
+      "sha256": "c86265661d4d33c3f2b91c660815b081c2b5ad9ff9f08e64b5ff742747a577c7"
+    },
+    {
+      "root": "review_directory",
+      "path": "scratch/audit-freeze-index.py",
+      "bytes": 3713,
+      "sha256": "ce05b9ad914ac47e5f6bd6c2b680feae6616d9e1d3941cfdcec90e6912a12a1f"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/verify-author.json",
+      "bytes": 1250,
+      "sha256": "7aa6c9d751d51c5887a4f620fee4e295f977389732f0402c270be15e7820cfb2"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/bind-pre.json",
+      "bytes": 786,
+      "sha256": "1fec36db13b5531037883ad9018b7f54500716772077e6b87149afadbc72522a"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/build-independent.json",
+      "bytes": 480,
+      "sha256": "2f17d76842eef1eb625eae3ff6e2cab6734c07e1a7f83f59676571fa6e73bd1b"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/unit-u05-independent.json",
+      "bytes": 1942,
+      "sha256": "42addd996adc30cb68e28d7ccecac610479f92a351a3bfe097396862a20ea787"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/bind-post.json",
+      "bytes": 883,
+      "sha256": "ad307fe9deb2812e3ff6b012cab9a94e8fcbad78b3f75ef5edca80faccde32e3"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/freeze-index-audit.json",
+      "bytes": 5624,
+      "sha256": "68cdb88190450d503cd6acab867ebf2727461f80d293693945a8ee1d9636e8d8"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/counterexamples-independent.json",
+      "bytes": 1265,
+      "sha256": "e5193c2f6b803928c7b823a405469563c255b2ed104b7b2b941aab41fc685b1b"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/counterexamples-independent-02.json",
+      "bytes": 1740,
+      "sha256": "a0c37d9fb79f508bd131feb1c266bd12e6750e94345eddf373dda7b472fb4f03"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/counterexamples-independent-03.json",
+      "bytes": 960,
+      "sha256": "0017d256e9063672b2d0e5bed440cdded20b935f08e2208165ddc5513dab5165"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "root": "baseline_repository",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U05.md",
+      "bytes": 1936,
+      "sha256": "1e43db642edc3d6d2229f199789c4c8b494fe50ad95d3c73215b708835c02b99"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U04/20261003-01/acceptance.json",
+      "bytes": 2388,
+      "sha256": "51ea833ad4017e0f909e3dca6a4ba1b88a348162c9198672c5f0dbed892b928c"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U03/20261003-01/acceptance.json",
+      "bytes": 1852,
+      "sha256": "049abb37c43d4a9edc1a55d230047461a50948fea590b1510a85379cb9d1abac"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U02/20261003-01/acceptance.json",
+      "bytes": 1252,
+      "sha256": "715724b9c83abc17fb8536b7a5c02dd72653bf794a199deb531a036d5867caa8"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "docs/adr/P02-reuse.md",
+      "bytes": 6041,
+      "sha256": "dcb2f3eb461423947652db04ff2e846e3f27fa4dfc1534953d3a27d9ff7d2541"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "spikes/P02/sqlite-notes.md",
+      "bytes": 10658,
+      "sha256": "ad7695498095352d3847fae642b24f02347061c06b99024b42844c3e0fa954eb"
+    }
+  ]
+}

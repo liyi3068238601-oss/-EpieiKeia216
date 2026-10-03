@@ -1,0 +1,35 @@
+{
+  "schema": "p02-u05-independent-counterexamples/v1",
+  "results": [
+    {
+      "id": "commit-ack-lost",
+      "passed": true,
+      "outcome": "unknown",
+      "code": "UNKNOWN_COMMIT",
+      "receiptAfterReopen": "found",
+      "retry": "duplicate",
+      "factCountAfterRetry": 1,
+      "observationCountAfterRetry": 1
+    },
+    {
+      "id": "capture-transaction-atomicity",
+      "passed": true,
+      "failedWrite": "failed",
+      "rowCountsAfterRollback": {
+        "facts": 0,
+        "observations": 0,
+        "origins": 0,
+        "receipts": 0,
+        "materials": 0,
+        "last_sequence": 0
+      },
+      "recoveredCommitSequence": 1
+    },
+    {
+      "id": "corrupt-receipt-read-fail-closed",
+      "passed": true,
+      "api": "queryReceipt",
+      "expectedCode": "CORRUPT_STORE"
+    }
+  ]
+}
