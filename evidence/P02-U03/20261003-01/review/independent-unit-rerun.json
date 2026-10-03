@@ -1,0 +1,17 @@
+{
+  "review_command": "independent-unit-rerun",
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "tools/run-tests.mjs",
+    "unit",
+    "P02-U03"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u03",
+  "started_at_utc": "2026-10-03T06:39:41.5474170Z",
+  "completed_at_utc": "2026-10-03T06:39:41.6921469Z",
+  "timeout_seconds": 120,
+  "timed_out": false,
+  "exit_code": 0,
+  "stdout": "✔ native source sequence zero becomes unassigned and invalid integers are rejected (0.901ms)\n✔ canonical event facts exclude observation metadata but include occurredAt (0.4304ms)\n✔ normalization rejects forged writer fields and snapshots strict JSON input (0.2282ms)\n✔ commit order selects the first terminal despite later source sequence or earlier event time (0.6358ms)\n✔ same source and event ID deduplicates facts and audits resequencing without replacing the first (0.3204ms)\n✔ identity conflict preserves the first fact and cannot seal a turn (0.2023ms)\n✔ identity is source plus event ID, while writer sequence collisions reject distinct events (0.461ms)\n✔ scope must bind all IDs; old attempt events remain audit-only (0.2926ms)\n✔ drafts and failures never become formal replies; operation receipts do not seal turns (0.2659ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 60.5718\n",
+  "stderr": ""
+}

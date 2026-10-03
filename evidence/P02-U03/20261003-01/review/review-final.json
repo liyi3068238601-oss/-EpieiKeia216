@@ -1,0 +1,197 @@
+{
+  "schema": "p02-independent-review/v1",
+  "decision": "pass",
+  "task": "P02-U03",
+  "review_target": {
+    "author_commit": "d0567259a750822ebf10a488452b11b923cc9232",
+    "baseline_commit": "f20b2efbbfc1dcb5e6f52e5916419cff27578cf2",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u03"
+  },
+  "reviewer": "p02_u01_review",
+  "scope": "独立 exact-commit 单元验收；不构成 P02-G02 验收。",
+  "checks": [
+    {
+      "id": "exact-target-and-prerequisite",
+      "status": "pass",
+      "detail": "Author WT 精确位于 d0567259a750822ebf10a488452b11b923cc9232 且 clean；baseline f20b2efbbfc1dcb5e6f52e5916419cff27578cf2 是祖先。baseline 内 U02 acceptance、U03 card、ADR、sources.lock 的哈希均与冻结输入一致。"
+    },
+    {
+      "id": "manifest-and-scope",
+      "status": "pass",
+      "detail": "独立重算 manifest SHA、35 个文件的 bytes/SHA256/工作树 Git blob/author commit blob；与 baseline..author 的 36 条变化路径精确相等（含 manifest 本身），变更只涉及 U03 事件合同/导出、测试与选择器、U03 证据。"
+    },
+    {
+      "id": "input-binding",
+      "status": "pass",
+      "detail": "19 项 final pre/post 输入逐项相同且与 WT 当前实际 bytes/SHA256 相符；Node v24.14.0 与 TypeScript 6.0.2 版本/工具链绑定。独立测试后再次哈希，19 项全部未变。"
+    },
+    {
+      "id": "event-contract-counterexamples",
+      "status": "pass",
+      "detail": "检查实现与断言：identity=(source,eventId)；observedAt/sourceSequence 不进入 canonical facts，occurredAt 进入；原生 sequence 0 归一为 null；writer commitSequence 独立且必须正安全整数；不同 identity 或异 facts 撞 writer sequence 抛错；同 identity 异 facts 保留首事实并审计；首终态按 writer commit order 选取，迟到事件只审计；old attempt 只审计；draft/failure/unknown receipt 不形成正式回复；operation 事件需要非空 operationId。"
+    },
+    {
+      "id": "independent-test-rerun",
+      "status": "pass",
+      "detail": "冻结 WT 上使用绑定 Node 24.14.0 定向复跑 unit P02-U03：9/9 pass、0 fail；contract P02-U03：1/1 pass、0 fail；两个命令均 exit 0、无超时。"
+    },
+    {
+      "id": "scope-and-limitations",
+      "status": "pass",
+      "detail": "无应用/产品 runtime、上游参考树或全局配置改动；作者报告只声称纯 TypeScript 合同/内存投影。当前 diff --check exit 0。持久化事务、SQLite、崩溃恢复、外部副作用、模型/服务及 P02 新产品 Desktop 集成均未运行或实现；不据此推断。"
+    }
+  ],
+  "limitations": [
+    "仅接受 P02-U03 合同/内存投影单元，不是 U10/U11 或 P02-G02 验收。",
+    "writer commit sequence 的生成、SQLite 事务原子性、durability、恢复与副作用幂等由后续单元验证；本实现接收 writer 已提交序号，不自行落库。",
+    "未运行真实 Runtime/模型/服务、产品 Desktop、安装器、物理断电或 ACL 故障试验。"
+  ],
+  "artifacts": [
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U03/20261003-01/manifest.json",
+      "bytes": 8846,
+      "sha256": "4d9768221a17ace684abf944cfa7969845b0a07259dac011d58145ac833593d4"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U03/20261003-01/baseline.json",
+      "bytes": 1364,
+      "sha256": "003a93b86af54e51c7b925fed5ded241902dc9a0e01acbeed8e0ab9181939b4e"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U03/20261003-01/result.md",
+      "bytes": 4405,
+      "sha256": "cebba14e3734e423e56008d239991cdaa8b544d3c0a700c22585ce1aaa564c69"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U03/20261003-01/diff-02.json",
+      "bytes": 7834,
+      "sha256": "8f504ebac947154e0ad37d9b84aa14d09027b0cd498e11cc980a2293dcc91b97"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U03/20261003-01/input-comparison-02.json",
+      "bytes": 174,
+      "sha256": "60d37a41206e7b6464eff1652c19dc9daa89edbd156a98245c1f4d7c167fff84"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U03/20261003-01/inputs-final-pre-02.json",
+      "bytes": 3733,
+      "sha256": "e4d7745288781f1ab9f33ff87228b999c4b588077b1d6536c74bc1e70326f4f5"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U03/20261003-01/inputs-final-post-02.json",
+      "bytes": 3734,
+      "sha256": "7b22ce2fc17b8c0c1b8314eed5b12ad3fb91c92b4f7e6184a10f2b33b426df72"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U03/20261003-01/commands/unit-final-02.json",
+      "bytes": 1443,
+      "sha256": "60bb5d9a7753165380f2d9e5503985c3fea4ecf65f9858e8b5fb2d78d6c59dc6"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U03/20261003-01/commands/contract-final-02.json",
+      "bytes": 667,
+      "sha256": "d5577b2b401d2f46b1a2a0c3d9bb1b0d6b0756f18ed3e8d6da6b4d9e9bdbb38f"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/contracts/src/events.ts",
+      "bytes": 17373,
+      "sha256": "c2a7d013164b1c3e5e6c27748a3b06ef1856cf22346acd11e356c191718500ee"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/contracts/src/index.ts",
+      "bytes": 904,
+      "sha256": "08d6c0826c13f48b5fb0ce877c1efdd3e8a5da7dbcfe78fb07f9a97e5fd9cfe9"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/contracts/test/events.test.mjs",
+      "bytes": 9873,
+      "sha256": "b06a0a3cbc64247c6bff3caf9c3cd59b4c56d3e4f8aad9cadebfb1e6527153d1"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/contracts/test/events.type-fixture.ts",
+      "bytes": 1737,
+      "sha256": "cf98b5d229dc7c8579fbf3bc9702627a069aed15e7d1569b654559b09d52e8fc"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/contracts/test/tsconfig.json",
+      "bytes": 267,
+      "sha256": "0edf39c026a0f088c7fb582d3172af14579383301c48e575537593a88d09711e"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tools/run-tests.mjs",
+      "bytes": 4853,
+      "sha256": "50d5af6e64c94fe68b380a6ba43875275da13476783c4a0011b45870c7f46bde"
+    },
+    {
+      "root": "author_worktree",
+      "path": "docs/research/P02/runtime-reuse.md",
+      "bytes": 13977,
+      "sha256": "c1612c0f8c59a442da6819f41b43a1fd1f851c0d7f2dcf6a8a702fc67df9eb03"
+    },
+    {
+      "root": "review_directory",
+      "path": "manifest-input-check.json",
+      "bytes": 9985,
+      "sha256": "b1fb1aa52fed10c80632e6c8d53e7993eb31600567d94eca98d9674f81fe0191"
+    },
+    {
+      "root": "review_directory",
+      "path": "independent-unit-rerun.json",
+      "bytes": 1493,
+      "sha256": "9adfe4f3c916235dca5da030ccbcd8bb2e0a6ec1b135fba3445c706a90fc2aab"
+    },
+    {
+      "root": "review_directory",
+      "path": "independent-contract-rerun.json",
+      "bytes": 723,
+      "sha256": "8b3c08163bcd673c8ce542936c3bc393d7398c113f790872c096fe164d3d3b19"
+    },
+    {
+      "root": "review_directory",
+      "path": "post-rerun-integrity.json",
+      "bytes": 4064,
+      "sha256": "e1f60999140e5b976873cbd153611174631586179389f9326506d79ca0eb394a"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "root": "baseline_repository",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U03.md",
+      "bytes": 2044,
+      "sha256": "c16482cd4822a1c9dfd9f16b4dae6348661822caff99550acce98999b564464e"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U02/20261003-01/acceptance.json",
+      "bytes": 1252,
+      "sha256": "715724b9c83abc17fb8536b7a5c02dd72653bf794a199deb531a036d5867caa8"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "docs/adr/P02-reuse.md",
+      "bytes": 6041,
+      "sha256": "dcb2f3eb461423947652db04ff2e846e3f27fa4dfc1534953d3a27d9ff7d2541"
+    }
+  ]
+}
