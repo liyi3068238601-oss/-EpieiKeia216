@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "tools/run-tests.mjs",
+    "unit",
+    "P02-U08"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u08",
+  "started_at": "2026-10-03T10:50:16.024661+00:00",
+  "completed_at": "2026-10-03T10:50:17.996986+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "(node:46168) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n✔ empty v0 is backed up as empty v0 before the source initializes to v1 (27.7425ms)\n✔ active-WAL v1 snapshot restores committed facts, observations, writer receipts and capture hashes (132.2997ms)\n✔ backup publication never replaces a pre-existing name (57.9417ms)\n▶ a real COMMIT followed by a lost acknowledgement is read back or reported unresolved without replay\n  ✔ verified readback resolves the committed migration as success (18.1031ms)\n  ✔ unavailable readback reports unresolved and preserves the verified snapshot (17.8166ms)\n✔ a real COMMIT followed by a lost acknowledgement is read back or reported unresolved without replay (36.7333ms)\n▶ future schema and non-empty v0 user objects are refused without changing source main or WAL bytes\n  ✔ future schema (26.9946ms)\n  ✔ non-empty v0 table and view (20.4195ms)\n✔ future schema and non-empty v0 user objects are refused without changing source main or WAL bytes (47.8333ms)\n✔ a second SQLite BEGIN IMMEDIATE makes maintenance return bounded BUSY before backup or DDL (287.8859ms)\n✔ a controlled deadline aborts the real SQLite backup progress callback before v0 DDL (949.0764ms)\n✔ real SQLite SQLITE_FULL during migration preserves v0 and the already published backup (16.126ms)\n▶ an owned worker killed immediately before or after COMMIT reopens as valid v0 or v1 with a usable v0 backup\n  ✔ before COMMIT (120.3186ms)\n  ✔ after COMMIT (117.2442ms)\n✔ an owned worker killed immediately before or after COMMIT reopens as valid v0 or v1 with a usable v0 backup (238.0467ms)\nℹ tests 15\nℹ suites 0\nℹ pass 15\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1868.6929\n",
+  "stderr": ""
+}

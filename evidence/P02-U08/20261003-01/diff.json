@@ -1,0 +1,65 @@
+{
+  "task": "P02-U08",
+  "baseline": "6198ddcf963c7ee594b983f3b1c1fe33f692fb15",
+  "scope": [
+    "packages/storage/backup",
+    "tsconfig.json",
+    "tools/run-tests.mjs",
+    "evidence/P02-U08/20261003-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "6198ddcf963c7ee594b983f3b1c1fe33f692fb15"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u08",
+      "exit_code": 0,
+      "stdout": " evidence/P02-U08/20261003-01/baseline.json         |  38 +\n evidence/P02-U08/20261003-01/command-index.json    |  93 ++\n .../20261003-01/commands/01-build-initial.json     |  16 +\n .../P02-U08/20261003-01/commands/02-build-src.json |  16 +\n .../commands/03-build-src-review-fixes.json        |  16 +\n .../commands/04-build-src-final-pretest.json       |  16 +\n .../commands/05-build-temp-cleanup-fix.json        |  16 +\n .../commands/06-build-preserve-failed-staging.json |  16 +\n .../commands/07-build-commit-outcome-readback.json |  16 +\n .../P02-U08/20261003-01/commands/08-bind-pre.json  |  18 +\n .../20261003-01/commands/09-final-unit.json        |  16 +\n .../P02-U08/20261003-01/commands/10-bind-post.json |  20 +\n .../commands/tests-01-test-ack-final.json          |  16 +\n .../20261003-01/commands/tests-02-test-final.json  |  16 +\n .../20261003-01/commands/tests-03-test-final.json  |  16 +\n .../P02-U08/20261003-01/inputs-final-post.json     | 623 +++++++++++++\n evidence/P02-U08/20261003-01/inputs-final-pre.json | 621 +++++++++++++\n evidence/P02-U08/20261003-01/result.md             |  28 +\n evidence/P02-U08/20261003-01/source-decision.md    |  13 +\n packages/storage/backup/src/index.ts               | 964 +++++++++++++++++++++\n packages/storage/backup/test/backup-worker.mjs     | 109 +++\n packages/storage/backup/test/backup.test.mjs       | 743 ++++++++++++++++\n tools/run-tests.mjs                                |   3 +-\n tsconfig.json                                      |   2 +-\n 24 files changed, 3449 insertions(+), 2 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "6198ddcf963c7ee594b983f3b1c1fe33f692fb15"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u08",
+      "exit_code": 0,
+      "stdout": "38\t0\tevidence/P02-U08/20261003-01/baseline.json\n93\t0\tevidence/P02-U08/20261003-01/command-index.json\n16\t0\tevidence/P02-U08/20261003-01/commands/01-build-initial.json\n16\t0\tevidence/P02-U08/20261003-01/commands/02-build-src.json\n16\t0\tevidence/P02-U08/20261003-01/commands/03-build-src-review-fixes.json\n16\t0\tevidence/P02-U08/20261003-01/commands/04-build-src-final-pretest.json\n16\t0\tevidence/P02-U08/20261003-01/commands/05-build-temp-cleanup-fix.json\n16\t0\tevidence/P02-U08/20261003-01/commands/06-build-preserve-failed-staging.json\n16\t0\tevidence/P02-U08/20261003-01/commands/07-build-commit-outcome-readback.json\n18\t0\tevidence/P02-U08/20261003-01/commands/08-bind-pre.json\n16\t0\tevidence/P02-U08/20261003-01/commands/09-final-unit.json\n20\t0\tevidence/P02-U08/20261003-01/commands/10-bind-post.json\n16\t0\tevidence/P02-U08/20261003-01/commands/tests-01-test-ack-final.json\n16\t0\tevidence/P02-U08/20261003-01/commands/tests-02-test-final.json\n16\t0\tevidence/P02-U08/20261003-01/commands/tests-03-test-final.json\n623\t0\tevidence/P02-U08/20261003-01/inputs-final-post.json\n621\t0\tevidence/P02-U08/20261003-01/inputs-final-pre.json\n28\t0\tevidence/P02-U08/20261003-01/result.md\n13\t0\tevidence/P02-U08/20261003-01/source-decision.md\n964\t0\tpackages/storage/backup/src/index.ts\n109\t0\tpackages/storage/backup/test/backup-worker.mjs\n743\t0\tpackages/storage/backup/test/backup.test.mjs\n2\t1\ttools/run-tests.mjs\n1\t1\ttsconfig.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "6198ddcf963c7ee594b983f3b1c1fe33f692fb15"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u08",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P02-U08/20261003-01/baseline.json\nA\tevidence/P02-U08/20261003-01/command-index.json\nA\tevidence/P02-U08/20261003-01/commands/01-build-initial.json\nA\tevidence/P02-U08/20261003-01/commands/02-build-src.json\nA\tevidence/P02-U08/20261003-01/commands/03-build-src-review-fixes.json\nA\tevidence/P02-U08/20261003-01/commands/04-build-src-final-pretest.json\nA\tevidence/P02-U08/20261003-01/commands/05-build-temp-cleanup-fix.json\nA\tevidence/P02-U08/20261003-01/commands/06-build-preserve-failed-staging.json\nA\tevidence/P02-U08/20261003-01/commands/07-build-commit-outcome-readback.json\nA\tevidence/P02-U08/20261003-01/commands/08-bind-pre.json\nA\tevidence/P02-U08/20261003-01/commands/09-final-unit.json\nA\tevidence/P02-U08/20261003-01/commands/10-bind-post.json\nA\tevidence/P02-U08/20261003-01/commands/tests-01-test-ack-final.json\nA\tevidence/P02-U08/20261003-01/commands/tests-02-test-final.json\nA\tevidence/P02-U08/20261003-01/commands/tests-03-test-final.json\nA\tevidence/P02-U08/20261003-01/inputs-final-post.json\nA\tevidence/P02-U08/20261003-01/inputs-final-pre.json\nA\tevidence/P02-U08/20261003-01/result.md\nA\tevidence/P02-U08/20261003-01/source-decision.md\nA\tpackages/storage/backup/src/index.ts\nA\tpackages/storage/backup/test/backup-worker.mjs\nA\tpackages/storage/backup/test/backup.test.mjs\nM\ttools/run-tests.mjs\nM\ttsconfig.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "6198ddcf963c7ee594b983f3b1c1fe33f692fb15"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u08",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
