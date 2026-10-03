@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "tools/run-tests.mjs",
+    "unit",
+    "P02-U08"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u08",
+  "started_at": "2026-10-03T10:56:36.500556+00:00",
+  "completed_at": "2026-10-03T10:56:38.359329+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "(node:52932) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n✔ empty v0 is backed up as empty v0 before the source initializes to v1 (34.1526ms)\n✔ active-WAL v1 snapshot restores committed facts, observations, writer receipts and capture hashes (142.3639ms)\n✔ backup publication never replaces a pre-existing name (49.7315ms)\n▶ a real COMMIT followed by a lost acknowledgement is read back or reported unresolved without replay\n  ✔ verified readback resolves the committed migration as success (18.9188ms)\n  ✔ unavailable readback reports unresolved and preserves the verified snapshot (14.8346ms)\n✔ a real COMMIT followed by a lost acknowledgement is read back or reported unresolved without replay (34.2301ms)\n▶ future schema and non-empty v0 user objects are refused without changing source main or WAL bytes\n  ✔ future schema (20.3939ms)\n  ✔ non-empty v0 table and view (18.8099ms)\n✔ future schema and non-empty v0 user objects are refused without changing source main or WAL bytes (39.5754ms)\n✔ a second SQLite BEGIN IMMEDIATE makes maintenance return bounded BUSY before backup or DDL (283.8029ms)\n✔ a controlled deadline aborts the real SQLite backup progress callback before v0 DDL (850.3558ms)\n✔ real SQLite SQLITE_FULL during migration preserves v0 and the already published backup (13.2632ms)\n▶ an owned worker killed immediately before or after COMMIT reopens as valid v0 or v1 with a usable v0 backup\n  ✔ before COMMIT (111.5321ms)\n  ✔ after COMMIT (107.7681ms)\n✔ an owned worker killed immediately before or after COMMIT reopens as valid v0 or v1 with a usable v0 backup (219.7966ms)\nℹ tests 15\nℹ suites 0\nℹ pass 15\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1748.2244\n",
+  "stderr": ""
+}

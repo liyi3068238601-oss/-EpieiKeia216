@@ -1,0 +1,491 @@
+{
+  "schema": "p02-independent-review/v1",
+  "decision": "pass",
+  "task": "P02-U08",
+  "review_target": {
+    "author_commit": "066125b86ad01ed811ed88c1da4fb3d91aa884e3",
+    "baseline_commit": "6198ddcf963c7ee594b983f3b1c1fe33f692fb15",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u08"
+  },
+  "reviewer": "p02_u04_review",
+  "scope": "U08 冻结精确提交的一致性备份/迁移独立复审。核对固定空 v0→v1 DDL、SQLite 在线 WAL 快照、完整内容验证、future/nonempty-v0 拒绝、BUSY/FULL/COMMIT/close 边界与新根恢复；不涵盖 U10 原生集成。",
+  "checks": [
+    {
+      "id": "exact-target-prerequisite-and-manifest",
+      "status": "pass",
+      "detail": "独立 verify-author 对精确 author commit/baseline/worktree 执行校验：worktree clean，25 个 manifest 文件覆盖 26 条 changed paths，raw Git blob 与磁盘 0 mismatch，manifest SHA-256 6de478d11cedcee1883fddcb77371493896d6a2ec64822cff5007194aca2ca9e。U07 acceptance 为 accepted；卡片、source lock 与 baseline 记录一致。"
+    },
+    {
+      "id": "scope-and-command-history",
+      "status": "pass",
+      "detail": "所有变更都在登记的 packages/storage/backup、tsconfig、tools/run-tests 与 U08 evidence 范围内；静态 migrations/001-event-store.ts 与 baseline 字节相同。13/13 command-index 项均与归档原件逐字节匹配并核对 SHA/exit；保留初始 build exit 2、两次测试 exit 1，最终 author build/unit 均 exit 0。"
+    },
+    {
+      "id": "independent-input-bindings",
+      "status": "pass",
+      "detail": "固定 Node v24.14.0 / TypeScript 6.0.2。独立 build 前与 unit/反例之后各绑定 122 项，显式含 migrations/001-event-store.ts；pre/post 与作者 pre/post 的 bindings 完全一致，digest 均为 3fdfbd02b2343f10428900836e93ba2c6fc8dd7ea6c90e638e601e7e2e878648，无执行期间漂移。"
+    },
+    {
+      "id": "independent-build-and-unit",
+      "status": "pass",
+      "detail": "固定 Node 执行 tsc --project tsconfig.json exit 0；实际 selector tools/run-tests.mjs unit P02-U08 exit 0，15 passed / 0 failed / 0 skipped。argv、cwd、输出和 exit 均保存在 review commands。"
+    },
+    {
+      "id": "independent-close-and-corruption-counterexamples",
+      "status": "pass",
+      "detail": "两条独立 owned-fixture 反例均通过：仅对 BEGIN IMMEDIATE 捕获的维护 RW coordinator 注入真实 close 后 ACK throw，返回 UNRESOLVED_TRANSACTION/migrate，源 v1 与发布 v0 备份均 integrity ok；为含 1 个真实 capture 的 v1 backup 改写 material BLOB 而保留旧 snapshot SHA，restore 返回 CORRUPT_DATABASE/restore-source，目标目录未创建。"
+    },
+    {
+      "id": "backup-migration-and-restore-logic",
+      "status": "pass",
+      "detail": "实现使用 SQLite online backup、锁内复查、migration 前发布并验证的 no-clobber 快照；固定 DDL 在单事务将空 v0 初始化至 v1；future schema/nonempty v0 在写操作前拒绝。源/快照/恢复库均验证 integrity/FK/精确 schema，分页核对 facts、observations、origins、receipts、captures 与材料摘要，并比较 SHA/count。lost COMMIT ACK 仅在完整状态读回后决定成功、保留 v0 失败或 UNRESOLVED；真实协调连接 close 失败不返回成功且保留失败 stage。"
+    },
+    {
+      "id": "source-choice-and-evidence-boundaries",
+      "status": "pass",
+      "detail": "来源决定复用 Node 24.14 SQLite backup API 与已接受 U05 EventStore/静态 v1 schema；无复制上游代码、无新依赖。结论限于本地 unit 与 owned SQLite fixtures，不声称完整原生/桌面或生产环境验证。"
+    }
+  ],
+  "limitations": [
+    "NOT_RUN：U10 Native/Desktop composition、完整 P01 回归、生产数据库/数据、已安装 ZCode、外部付费模型、installer/portable package、完整原生依赖闭包。",
+    "controlled SQLITE_FULL 使用 SQLite max_page_count，验证真实 SQLite 页数上限失败和事务回滚；它不代表实际磁盘耗尽。进程强杀覆盖 COMMIT 前/后状态，不代表断电、内核崩溃或文件系统故障。",
+    "独立 close ACK 与 material 篡改均为 review-owned fixture；不触碰作者 tracked 源文件或用户数据。WAL/SHM 可能被 SQLite 读连接创建/使用，审查不声称所有旁路文件字节保持不变。",
+    "SQLite API 当前带 ExperimentalWarning。维护 API 假定可信协调器先暂停 producer、drain/reconcile 并关闭旧 writer；不声称对抗恶意文件系统竞争或任意多进程写入。"
+  ],
+  "artifacts": [
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/baseline.json",
+      "bytes": 1133,
+      "sha256": "8def0421b94ad34d95c855e3655b2650be2f1dbc6fb43f473133029399113464"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/command-index.json",
+      "bytes": 3567,
+      "sha256": "986c716caef87ccb2920b0572a5b35d4f5bb511d17a8bfa64a02869a84794902"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/01-build-initial.json",
+      "bytes": 624,
+      "sha256": "f2f6e7e8ae9544d9803d78412eea21e359465125666c5e73e8c84ab82fdfcece"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/02-build-src.json",
+      "bytes": 534,
+      "sha256": "119de1dafbcecec36808af09be1e212c672a75d0bc76d0aa8bcf7ff8d16fd689"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/03-build-src-review-fixes.json",
+      "bytes": 534,
+      "sha256": "4382c587d6e421c72be862016a5eac7436bf76025f0d6d3954596991f3ffdbe5"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/04-build-src-final-pretest.json",
+      "bytes": 534,
+      "sha256": "0badce9253bb9334a45f8867dfa104d895807897ca62fcf7a45b642ddc6e0c6b"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/05-build-temp-cleanup-fix.json",
+      "bytes": 534,
+      "sha256": "4e097705050de171f7d31f0c0896bac2d6ccf447d534520dd76c7c431d2c2776"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/06-build-preserve-failed-staging.json",
+      "bytes": 534,
+      "sha256": "5b2aca5aaccf69471a7165354bbf74a9fad2c317875f6220f76a379e5326261f"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/07-build-commit-outcome-readback.json",
+      "bytes": 534,
+      "sha256": "8710ae9d4e5a5228cfdb85c3a647b5ee1456a39920ffa541596148c652e757db"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/08-bind-pre.json",
+      "bytes": 912,
+      "sha256": "de313b2bfbdde4409ae0ed7229fbb9a76667d7e60d08dc1977c4625702eb2bec"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/09-final-unit.json",
+      "bytes": 2341,
+      "sha256": "2702d8c34bfd012511baae31660fdc28d5a0cc5a719c6490c5e438b12e065bff"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/10-bind-post.json",
+      "bytes": 1043,
+      "sha256": "401d6a213e089b8e83a493dd9e8443168c0380d7df43d062391e75bf1e25acfd"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/tests-01-test-ack-final.json",
+      "bytes": 3903,
+      "sha256": "075cf0d0f5a1382d5c270cac7b480bc64583f42df468ab11bade076d9132c558"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/tests-02-test-final.json",
+      "bytes": 1820,
+      "sha256": "3f17e1353ece375c7226ef0b958dffe267042086e5c8907765f0ec71eee4063b"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/commands/tests-03-test-final.json",
+      "bytes": 2338,
+      "sha256": "f5448c908480810ab3d1e786384151c59c3090e18296d28b5fa3c9e48b835454"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/diff.json",
+      "bytes": 5961,
+      "sha256": "3b6fb8748a9c44e2de0b3a9546fdcb5976915c983855fb39f64e2d8ed1b6e9c0"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/inputs-final-post.json",
+      "bytes": 28500,
+      "sha256": "5da9875e4dbd5fdbe0d7a183145c62704fce3d2db735098e2b551dc254ff94af"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/inputs-final-pre.json",
+      "bytes": 28392,
+      "sha256": "3d7d7c280dcdb0892c94699228b870898b94b742ff5bb84ebedfa056824470ef"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/manifest.json",
+      "bytes": 6406,
+      "sha256": "6de478d11cedcee1883fddcb77371493896d6a2ec64822cff5007194aca2ca9e"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/result.md",
+      "bytes": 5314,
+      "sha256": "1fe2faf4b768d5eb4d15b318d21d9bf26d28396808bb3eca220fce708aba73bd"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U08/20261003-01/source-decision.md",
+      "bytes": 3755,
+      "sha256": "51d9fdff4930b9fc9166da357f0bbb9bbdb365c0be60b1174265d15bc3a57691"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/storage/backup/src/index.ts",
+      "bytes": 41646,
+      "sha256": "bcda0776bc2c75ba4a3f39ebc2818b418fd13a9d0bc3f6983c35e64f6491d9c0"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/storage/backup/test/backup-worker.mjs",
+      "bytes": 4648,
+      "sha256": "3cba2cabe94a609243f6243ac467fdd3fc6b4bf32b2b257d00e738ec4a67efb3"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/storage/backup/test/backup.test.mjs",
+      "bytes": 33248,
+      "sha256": "5403b502fcce5d990d5bf0475bc51d47a0e8e61996e3ac8aac289bca80aa2711"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tools/run-tests.mjs",
+      "bytes": 5628,
+      "sha256": "a3573f563147d6d822f0d97859a8e0e529d841d6014c98d3155eb65cd65fbb1a"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tsconfig.json",
+      "bytes": 784,
+      "sha256": "1394d52440c4e3871545e9b12777af1c0aaaab2318490a0f13028cb7f3dd8fd5"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/storage/events/src/index.ts",
+      "bytes": 58109,
+      "sha256": "04f4ecc5f54122dbfa14eff2de982cb3f81967f6d41b205d1694d24127eb9545"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/contracts/src/events.ts",
+      "bytes": 17373,
+      "sha256": "c2a7d013164b1c3e5e6c27748a3b06ef1856cf22346acd11e356c191718500ee"
+    },
+    {
+      "root": "author_worktree",
+      "path": "migrations/001-event-store.ts",
+      "bytes": 4362,
+      "sha256": "dd63a073f14172808cc75564e41681045cdadca89db2f2933ae12337bbcaa7e1"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08/01-build-initial.json",
+      "bytes": 624,
+      "sha256": "f2f6e7e8ae9544d9803d78412eea21e359465125666c5e73e8c84ab82fdfcece"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08/02-build-src.json",
+      "bytes": 534,
+      "sha256": "119de1dafbcecec36808af09be1e212c672a75d0bc76d0aa8bcf7ff8d16fd689"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08/03-build-src-review-fixes.json",
+      "bytes": 534,
+      "sha256": "4382c587d6e421c72be862016a5eac7436bf76025f0d6d3954596991f3ffdbe5"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08/04-build-src-final-pretest.json",
+      "bytes": 534,
+      "sha256": "0badce9253bb9334a45f8867dfa104d895807897ca62fcf7a45b642ddc6e0c6b"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08/05-build-temp-cleanup-fix.json",
+      "bytes": 534,
+      "sha256": "4e097705050de171f7d31f0c0896bac2d6ccf447d534520dd76c7c431d2c2776"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08/06-build-preserve-failed-staging.json",
+      "bytes": 534,
+      "sha256": "5b2aca5aaccf69471a7165354bbf74a9fad2c317875f6220f76a379e5326261f"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08/07-build-commit-outcome-readback.json",
+      "bytes": 534,
+      "sha256": "8710ae9d4e5a5228cfdb85c3a647b5ee1456a39920ffa541596148c652e757db"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08/08-bind-pre.json",
+      "bytes": 912,
+      "sha256": "de313b2bfbdde4409ae0ed7229fbb9a76667d7e60d08dc1977c4625702eb2bec"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08/09-final-unit.json",
+      "bytes": 2341,
+      "sha256": "2702d8c34bfd012511baae31660fdc28d5a0cc5a719c6490c5e438b12e065bff"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08/10-bind-post.json",
+      "bytes": 1043,
+      "sha256": "401d6a213e089b8e83a493dd9e8443168c0380d7df43d062391e75bf1e25acfd"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08-tests/01-test-ack-final.json",
+      "bytes": 3903,
+      "sha256": "075cf0d0f5a1382d5c270cac7b480bc64583f42df468ab11bade076d9132c558"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08-tests/02-test-final.json",
+      "bytes": 1820,
+      "sha256": "3f17e1353ece375c7226ef0b958dffe267042086e5c8907765f0ec71eee4063b"
+    },
+    {
+      "root": "baseline_repository",
+      "path": ".runtime/P02/commands/u08-tests/03-test-final.json",
+      "bytes": 2338,
+      "sha256": "f5448c908480810ab3d1e786384151c59c3090e18296d28b5fa3c9e48b835454"
+    },
+    {
+      "root": "review_directory",
+      "path": "author-verification.json",
+      "bytes": 552,
+      "sha256": "3cd3f8adb84cddf78f4aaf31c68136e2f350be24378ce41a4b91099d52c44d60"
+    },
+    {
+      "root": "review_directory",
+      "path": "audit-evidence.py",
+      "bytes": 7816,
+      "sha256": "a6ca45e39f42fc66a7f8ae234aa8643e415312709659cd1d437a772835d8a4ce"
+    },
+    {
+      "root": "review_directory",
+      "path": "audit-results.json",
+      "bytes": 5983,
+      "sha256": "ddf7bfdf8fd6d854a211381d56dfbd543d9ef488bc53e47f10c16ff2a8543fd6"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-pre.json",
+      "bytes": 28500,
+      "sha256": "61345f2e49651b9108ceaa68ed2d045f98dad2d64d7fe26483ea243b16cb06ef"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-post.json",
+      "bytes": 28500,
+      "sha256": "d78fb6908e3bd51dbe42037bb6896561eb13f50e693811185e9b06156ea698f6"
+    },
+    {
+      "root": "review_directory",
+      "path": "build-review-final.py",
+      "bytes": 7766,
+      "sha256": "58a62d3472795221fb2094acab2d14067bb93991bbc49810c3babaf1c0a00f21"
+    },
+    {
+      "root": "review_directory",
+      "path": "review-summary.md",
+      "bytes": 1928,
+      "sha256": "e938933314362a6ada6ec20fe3a242b61c006f112420d6ffba6fc3fcec03f2c6"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/u08-counterexamples.mjs",
+      "bytes": 9744,
+      "sha256": "349ca7a0b2d5ae47e90c793c90d9111f2f355f24f875f585976b72ccfaa6dc3a"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/counterexample-results.json",
+      "bytes": 1682,
+      "sha256": "4beec75e04789bc59bbfc1d0a307c0b6625913bbe059a0fa8cb5f7f46a9b0fb1"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/audit-evidence.json",
+      "bytes": 853,
+      "sha256": "91f03a6e1582ebe14000915ff61f244b1f5e328b057f929c53659136643dc6b1"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/bind-post.json",
+      "bytes": 910,
+      "sha256": "700bdc2f1892e32b20ebdaf4faf0241202c92e298238e142a0691de8a7983e3c"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/bind-pre.json",
+      "bytes": 942,
+      "sha256": "7534ec1c306af222f1ff290efdbd86ff6dea9801199e12c186a6f2e91145ae63"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/build-independent.json",
+      "bytes": 534,
+      "sha256": "2f3f3eb863d31a116a53e1a582342ac7784c7da3a9a1ce5078ce0ef0d0033ef5"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/counterexamples.json",
+      "bytes": 2077,
+      "sha256": "f11fe6883815ab832ecb5ec88459fee64fb8ec3cb83d0f563c0fc7d5d0cd543d"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/unit-independent.json",
+      "bytes": 2343,
+      "sha256": "ea6b33fef0a77a30112a99181d9852b8a48e671bd445072ef13c5f45ddc83052"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/verify-author.json",
+      "bytes": 1188,
+      "sha256": "e8d886b50f7a6450df3fdaef41b948c6a82eb78057519fc65daa944bc291f833"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/fixtures-1791025198780/capture-material-corruption/backups/capture.sqlite",
+      "bytes": 73728,
+      "sha256": "80e885f0ed375fd859786af69336e5de202ce8549e6f4b586dd082676641504f"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/fixtures-1791025198780/capture-material-corruption/backups/capture.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/fixtures-1791025198780/capture-material-corruption/backups/capture.sqlite-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/fixtures-1791025198780/capture-material-corruption/events.sqlite",
+      "bytes": 73728,
+      "sha256": "0b9674a509a353a95585936d1ef125ba2e119ce2868702de2d536990f3994583"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/fixtures-1791025198780/coordinator-close-ack/backups/.p02-snapshot-jfFmMP/snapshot.sqlite",
+      "bytes": 4096,
+      "sha256": "9ff512da93adb6095017b7a0c069a2fc939d7412d089d57f4ca0cb183494c189"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/fixtures-1791025198780/coordinator-close-ack/backups/before-close-ack.sqlite",
+      "bytes": 4096,
+      "sha256": "9ff512da93adb6095017b7a0c069a2fc939d7412d089d57f4ca0cb183494c189"
+    },
+    {
+      "root": "review_directory",
+      "path": "negative-fixtures/fixtures-1791025198780/coordinator-close-ack/events.sqlite",
+      "bytes": 73728,
+      "sha256": "0a865caed32cf9b44f87de5d976493bd95071c368fd13b30cde5025d44027adb"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "root": "baseline_repository",
+      "path": "AGENTS.md",
+      "bytes": 1787,
+      "sha256": "b6ab92bf4c41d1cbc44fede9c152614b38bc24e5de8c293a55db258735ef53f4"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U08.md",
+      "bytes": 1867,
+      "sha256": "b087b678b25159ba1bec3805e685c7efa4f280d7e5277d707d2df51b86b05a6c"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "migrations/001-event-store.ts",
+      "bytes": 4362,
+      "sha256": "dd63a073f14172808cc75564e41681045cdadca89db2f2933ae12337bbcaa7e1"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "packages/storage/events/src/index.ts",
+      "bytes": 58109,
+      "sha256": "04f4ecc5f54122dbfa14eff2de982cb3f81967f6d41b205d1694d24127eb9545"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U05/20261003-01/acceptance.json",
+      "bytes": 6903,
+      "sha256": "8f1f28f4a0b71768cec6300d4e0e554f0a51c26b08c8031cf01d72eca89bc357"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "evidence/P02-U07/20261003-01/acceptance.json",
+      "bytes": 3962,
+      "sha256": "cf63a8fc3a869c55797df8677520462cdcbd67514b16982d6231002112135fdc"
+    }
+  ]
+}
