@@ -42,3 +42,9 @@
 | 未知外部效果 | 子进程执行期间 timeout/abort/硬杀；扫描隔离 TMP/profile、检查残留进程/写入和下一轮状态 | 记录 process 是否终止、清理是否发生、失败是否阻止模型调用、下轮能否重新 admission；先 mock，真实外部模型/API 不在本任务授权范围 |
 
 矩阵依据 P02-U02 卡片的“临时文件失效、乱序、重复、断电窗口和未知外部效果”及“先 mock 再获授权的真实路径”；本报告没有启动上述路径。固定 ZCode 来源许可证为 Apache-2.0（另核 NOTICE/第三方边界后再移植）；Herta/DSH 根许可证为 MIT，Herta LICENSE 明列角色素材排除。
+
+## 补充的依赖与安装边界核查
+
+独立预审指出初稿的来源索引缺少相关 package/install 输入，作者补读并登记 11 个固定文件；CSV 与 source index 现在包含 68 个 Runtime 观察输入。Herta root pnpm9.15.0 / Node ^20.19.0 或 >=22.12.0，build tsc -b、test vitest；knowledge 依赖 @herta/core、@herta/herta、better-sqlite3 ^11.5.0、linkedom 和 zod。这是固定 Herta 的依赖，不能误写成 ZCode 的绑定。herta prompt serializer 仅依赖 core workspace，core manifest 未声明安装生命周期脚本。workspace 对 electron/esbuild/better-sqlite3 的 build 许可也已静态检查；不执行安装。
+
+DSH root pnpm11.7.0 / Node ^22.19.0 或 >=24.0.0，session/Hook/SDK 分属 workspace 包，SDK 依赖 dsh 和多个 peer；build/test 会涉及额外原生工具链。root postinstall 指向 scripts/install-lefthook.mjs：相关完整 main/runLefthook 入口会申请安装锁、检查已有 hooksPath 所有权、设置 worktree core.hooksPath 并运行 lefthook install --force，失败尝试恢复。它会更改 Git 配置，不能把依赖安装当只读动作；本阶段不运行。这里只借事件语义，不引入其 runtime/install graph。大脚本的无关辅助函数未全量审计，不以此宣称安装安全或已安装通过。

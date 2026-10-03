@@ -4,7 +4,8 @@
     "rg transcript_path/createCompatibleHookStdin/cleanup in fixed ZCode Hook code",
     "rg subscribeEvents/appendEvent/sequenceNumber/terminal durable source code",
     "read relevant full Hook methods, event contracts, native tests and license/install declarations",
-    "read Herta manifest/actor serializer and DSH event/Hook/SDK methods with associated tests"
+    "read Herta manifest/actor serializer and DSH event/Hook/SDK methods with associated tests",
+    "Read fixed Herta/DSH package manifests, workspace install policy and DSH postinstall main/lefthook entry; no install executed."
   ],
   "source_records": [
     {
@@ -576,6 +577,127 @@
       "source_path": "LICENSE",
       "git_blob_sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b",
       "fixed_url": "https://github.com/zai-org/ZCode/blob/29628c9acdb81b703bbd4080c207a0e7ce5e276e/LICENSE"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\references\\herta-4623df12\\package.json",
+      "bytes": "1178",
+      "sha256": "d4abd6e904918ea1e1065560f7dcff910ef31a74803a1cfcb4a2a57507419e33",
+      "project_relative_path": "references/herta-4623df12/package.json",
+      "source_commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "source_path": "package.json",
+      "git_blob_sha256": "d4abd6e904918ea1e1065560f7dcff910ef31a74803a1cfcb4a2a57507419e33",
+      "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/package.json",
+      "read_scope": "Full package metadata/workspace install policy; for large postinstall script, complete main/runLefthook and relevant ownership/guard methods, not all unrelated utilities."
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\references\\herta-4623df12\\packages\\knowledge\\package.json",
+      "bytes": "670",
+      "sha256": "e8f3d77bb957290af29a1246b9fbd9ff6e3c7a35e6bbd186ab0800d06c2e3721",
+      "project_relative_path": "references/herta-4623df12/packages/knowledge/package.json",
+      "source_commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "source_path": "packages/knowledge/package.json",
+      "git_blob_sha256": "e8f3d77bb957290af29a1246b9fbd9ff6e3c7a35e6bbd186ab0800d06c2e3721",
+      "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/knowledge/package.json",
+      "read_scope": "Full package metadata/workspace install policy; for large postinstall script, complete main/runLefthook and relevant ownership/guard methods, not all unrelated utilities."
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\references\\herta-4623df12\\packages\\herta\\package.json",
+      "bytes": "445",
+      "sha256": "3acbe475a6fa586bdb73aeee58bb8770b9e0fd55e3c7a36f5fcf39c2d9f7f1cc",
+      "project_relative_path": "references/herta-4623df12/packages/herta/package.json",
+      "source_commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "source_path": "packages/herta/package.json",
+      "git_blob_sha256": "3acbe475a6fa586bdb73aeee58bb8770b9e0fd55e3c7a36f5fcf39c2d9f7f1cc",
+      "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/herta/package.json",
+      "read_scope": "Full package metadata/workspace install policy; for large postinstall script, complete main/runLefthook and relevant ownership/guard methods, not all unrelated utilities."
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\references\\herta-4623df12\\packages\\core\\package.json",
+      "bytes": "515",
+      "sha256": "ce184981657444881c2d59093ab01acae348916ab304d91397d974f428aa98d6",
+      "project_relative_path": "references/herta-4623df12/packages/core/package.json",
+      "source_commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "source_path": "packages/core/package.json",
+      "git_blob_sha256": "ce184981657444881c2d59093ab01acae348916ab304d91397d974f428aa98d6",
+      "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/packages/core/package.json",
+      "read_scope": "Full package metadata/workspace install policy; for large postinstall script, complete main/runLefthook and relevant ownership/guard methods, not all unrelated utilities."
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\references\\herta-4623df12\\pnpm-workspace.yaml",
+      "bytes": "1195",
+      "sha256": "68b2e696804a0d5efa08f6ad30f8c7983d872c6c2a16b023e45ec3f5943c364d",
+      "project_relative_path": "references/herta-4623df12/pnpm-workspace.yaml",
+      "source_commit": "4623df120adf99340ce5f7e25ed829466975e3ae",
+      "source_path": "pnpm-workspace.yaml",
+      "git_blob_sha256": "68b2e696804a0d5efa08f6ad30f8c7983d872c6c2a16b023e45ec3f5943c364d",
+      "fixed_url": "https://github.com/PersonaCLI/Herta/blob/4623df120adf99340ce5f7e25ed829466975e3ae/pnpm-workspace.yaml",
+      "read_scope": "Full package metadata/workspace install policy; for large postinstall script, complete main/runLefthook and relevant ownership/guard methods, not all unrelated utilities."
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\package.json",
+      "bytes": "17200",
+      "sha256": "a303ffb8994be8e7a874bc887db1abd47a77a6e08872e65f1d65281f43eab91b",
+      "project_relative_path": "references/dsh-639ed015/package.json",
+      "source_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "source_path": "package.json",
+      "git_blob_sha256": "a303ffb8994be8e7a874bc887db1abd47a77a6e08872e65f1d65281f43eab91b",
+      "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/package.json",
+      "read_scope": "Full package metadata/workspace install policy; for large postinstall script, complete main/runLefthook and relevant ownership/guard methods, not all unrelated utilities."
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\core\\session\\package.json",
+      "bytes": "1716",
+      "sha256": "ac6fe6cf7778add8f4e97494c9eb7379880b57823836454a70f797ee5382d047",
+      "project_relative_path": "references/dsh-639ed015/packages/core/session/package.json",
+      "source_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "source_path": "packages/core/session/package.json",
+      "git_blob_sha256": "ac6fe6cf7778add8f4e97494c9eb7379880b57823836454a70f797ee5382d047",
+      "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/core/session/package.json",
+      "read_scope": "Full package metadata/workspace install policy; for large postinstall script, complete main/runLefthook and relevant ownership/guard methods, not all unrelated utilities."
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\hooks\\hook-protocol\\package.json",
+      "bytes": "1341",
+      "sha256": "3039f93d8a0a2b1a2996ba37625a3d429f0d4b2dddb7d70c4ad5963aad3f7c4b",
+      "project_relative_path": "references/dsh-639ed015/packages/hooks/hook-protocol/package.json",
+      "source_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "source_path": "packages/hooks/hook-protocol/package.json",
+      "git_blob_sha256": "3039f93d8a0a2b1a2996ba37625a3d429f0d4b2dddb7d70c4ad5963aad3f7c4b",
+      "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/hooks/hook-protocol/package.json",
+      "read_scope": "Full package metadata/workspace install policy; for large postinstall script, complete main/runLefthook and relevant ownership/guard methods, not all unrelated utilities."
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\packages\\sdk\\client\\package.json",
+      "bytes": "1262",
+      "sha256": "59c49c60bfb4c93088d0dc60af4786bd76a6b683ba4330b7e02998111ebe8e21",
+      "project_relative_path": "references/dsh-639ed015/packages/sdk/client/package.json",
+      "source_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "source_path": "packages/sdk/client/package.json",
+      "git_blob_sha256": "59c49c60bfb4c93088d0dc60af4786bd76a6b683ba4330b7e02998111ebe8e21",
+      "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/packages/sdk/client/package.json",
+      "read_scope": "Full package metadata/workspace install policy; for large postinstall script, complete main/runLefthook and relevant ownership/guard methods, not all unrelated utilities."
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\pnpm-workspace.yaml",
+      "bytes": "5411",
+      "sha256": "8486cab8bfbba2b0f740eac3d5109132b18a3bd53d3b07aebf441e4f1462eb4e",
+      "project_relative_path": "references/dsh-639ed015/pnpm-workspace.yaml",
+      "source_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "source_path": "pnpm-workspace.yaml",
+      "git_blob_sha256": "8486cab8bfbba2b0f740eac3d5109132b18a3bd53d3b07aebf441e4f1462eb4e",
+      "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/pnpm-workspace.yaml",
+      "read_scope": "Full package metadata/workspace install policy; for large postinstall script, complete main/runLefthook and relevant ownership/guard methods, not all unrelated utilities."
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\references\\dsh-639ed015\\scripts\\install-lefthook.mjs",
+      "bytes": "28528",
+      "sha256": "f3db8265995d47d886e7367035cf46e50be77ec7700eda17d07b3aa22b8f1f20",
+      "project_relative_path": "references/dsh-639ed015/scripts/install-lefthook.mjs",
+      "source_commit": "639ed015397290b3745d163aafe02ffee4aa3f84",
+      "source_path": "scripts/install-lefthook.mjs",
+      "git_blob_sha256": "f3db8265995d47d886e7367035cf46e50be77ec7700eda17d07b3aa22b8f1f20",
+      "fixed_url": "https://github.com/deepseek-ai/deepseek-harness/blob/639ed015397290b3745d163aafe02ffee4aa3f84/scripts/install-lefthook.mjs",
+      "read_scope": "Full package metadata/workspace install policy; for large postinstall script, complete main/runLefthook and relevant ownership/guard methods, not all unrelated utilities."
     }
   ],
   "read_scope": "Full relevant implementations/interfaces and related tests as described in runtime-reuse.md; large modules restricted to relevant complete methods. CSV hashes bind full files, not an assertion that every unrelated line was reviewed.",
