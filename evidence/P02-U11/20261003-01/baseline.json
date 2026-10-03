@@ -1,0 +1,37 @@
+{
+  "schema": "p02-unit-baseline/v1",
+  "task": "P02-U11",
+  "baseline_commit": "8620d00eecec67d0884efa8d211242acb21eb1c8",
+  "branch": "p02-u11",
+  "coordinator_branch": "p02-stage",
+  "prerequisites": [
+    {
+      "task": "P02-U10",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U10/20261003-01/acceptance.json",
+        "bytes": 6899,
+        "sha256": "a2da2baf0e4f3de931a3c2eed865d5c3dbd0cff019cd2dfc988fcd7c4784ded3"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P02-U11.md",
+    "bytes": 2719,
+    "sha256": "d6d925953dc34c01f31dcc1d3a4a9af441c22f424c99e4da3b8a5942a24a2624"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "docs/releases/0.2.0",
+    "package.json",
+    "README.md",
+    "evidence/P02-U11/20261003-01"
+  ],
+  "test_mapping": "Actual P02 Desktop candidate full and degradation; accepted U10 Native matrix and typed unit regressions",
+  "author_status": "ready_for_review",
+  "checked_at_utc": "2026-10-03T14:43:17.361186+00:00"
+}

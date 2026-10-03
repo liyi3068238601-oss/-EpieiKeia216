@@ -1,0 +1,2293 @@
+{
+  "schema": "p02-stage-input-audit/v1",
+  "at_utc": "2026-10-03T14:44:08.199172+00:00",
+  "current_task": "P02-U11",
+  "worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u11",
+  "head": "8620d00eecec67d0884efa8d211242acb21eb1c8",
+  "status": {
+    "path": "evidence/P02/status.json",
+    "bytes": 12143,
+    "sha256": "28598ed01470dcfe73ba5a1086504e34ca06646cd2cf1ad0e2d101524fa90fc4"
+  },
+  "accepted_prerequisites": [
+    {
+      "task": "P02-U01",
+      "author_commit": "40d809150811c8d4287de44f6cce8e7f2edc1948",
+      "acceptance": {
+        "path": "evidence/P02-U01/20261003-01/acceptance.json",
+        "bytes": 1257,
+        "sha256": "a5721cc5ac9c2e8f9d8a748f6427cbc136c8feb611e1832450723d524319b196"
+      },
+      "review": {
+        "path": "evidence/P02-U01/20261003-01/review-final.json",
+        "bytes": 11604,
+        "sha256": "5072a85db67e7211e5b7971f08430e04f11975d047737fb0f577f97ee3f37f10"
+      }
+    },
+    {
+      "task": "P02-U02",
+      "author_commit": "4c40e367d963ea626572514603d496c5a762d2b4",
+      "acceptance": {
+        "path": "evidence/P02-U02/20261003-01/acceptance.json",
+        "bytes": 1252,
+        "sha256": "715724b9c83abc17fb8536b7a5c02dd72653bf794a199deb531a036d5867caa8"
+      },
+      "review": {
+        "path": "evidence/P02-U02/20261003-01/review-final.json",
+        "bytes": 24557,
+        "sha256": "ff9451d2bdb10c65c7ee484e779d752f2183781b4f97c3a22c7f17100a202fe2"
+      }
+    },
+    {
+      "task": "P02-U03",
+      "author_commit": "d0567259a750822ebf10a488452b11b923cc9232",
+      "acceptance": {
+        "path": "evidence/P02-U03/20261003-01/acceptance.json",
+        "bytes": 1852,
+        "sha256": "049abb37c43d4a9edc1a55d230047461a50948fea590b1510a85379cb9d1abac"
+      },
+      "review": {
+        "path": "evidence/P02-U03/20261003-01/review-final.json",
+        "bytes": 8293,
+        "sha256": "fbdad8e449c180293b07c66a18ad792ea7cf83038a5e5eea4900bd1da0a27357"
+      }
+    },
+    {
+      "task": "P02-U04",
+      "author_commit": "1b289208c9f777fc462bb34680022a33f69baa38",
+      "acceptance": {
+        "path": "evidence/P02-U04/20261003-01/acceptance.json",
+        "bytes": 2388,
+        "sha256": "51ea833ad4017e0f909e3dca6a4ba1b88a348162c9198672c5f0dbed892b928c"
+      },
+      "review": {
+        "path": "evidence/P02-U04/20261003-01/review-final.json",
+        "bytes": 10458,
+        "sha256": "dcab4ab653e0b1863f24dea55f0b4c538b410a989fd82e6c57154174057f3fb3"
+      }
+    },
+    {
+      "task": "P02-U05",
+      "author_commit": "339d8cc7417e430faa21483bbc10b29baed46cac",
+      "acceptance": {
+        "path": "evidence/P02-U05/20261003-01/acceptance.json",
+        "bytes": 6903,
+        "sha256": "8f1f28f4a0b71768cec6300d4e0e554f0a51c26b08c8031cf01d72eca89bc357"
+      },
+      "review": {
+        "path": "evidence/P02-U05/20261003-01/review-final.json",
+        "bytes": 10176,
+        "sha256": "7a47ea40df0863a9c5d7f9c9f1e1a19066fd2a3cef900cc644760e99afee56a4"
+      }
+    },
+    {
+      "task": "P02-U06",
+      "author_commit": "f716a444d1889ba33991ca05c36611d7bef2a096",
+      "acceptance": {
+        "path": "evidence/P02-U06/20261003-01/acceptance.json",
+        "bytes": 5204,
+        "sha256": "da6486ebaf884e3723e45a0e1f93712f7e6d32755dd608b4336eafb65d868cb5"
+      },
+      "review": {
+        "path": "evidence/P02-U06/20261003-01/review-final.json",
+        "bytes": 13794,
+        "sha256": "ccc14bac18c785fa582afbeb472ec2fc760abe4680aabb1bb752cbd9d7c93c3f"
+      }
+    },
+    {
+      "task": "P02-U07",
+      "author_commit": "bbabe95348b166332a072130fe4b394995c018d7",
+      "acceptance": {
+        "path": "evidence/P02-U07/20261003-01/acceptance.json",
+        "bytes": 3962,
+        "sha256": "cf63a8fc3a869c55797df8677520462cdcbd67514b16982d6231002112135fdc"
+      },
+      "review": {
+        "path": "evidence/P02-U07/20261003-01/review-final.json",
+        "bytes": 13521,
+        "sha256": "0ff873fdf8af29e9fb210f60b7fa7aec6ccd303212a2e6ca64c718de31115a51"
+      }
+    },
+    {
+      "task": "P02-U08",
+      "author_commit": "066125b86ad01ed811ed88c1da4fb3d91aa884e3",
+      "acceptance": {
+        "path": "evidence/P02-U08/20261003-01/acceptance.json",
+        "bytes": 3772,
+        "sha256": "4b3b92d21c8dc81cb9592cbb54be6177731b49598fdf1876cb560aa15cb97629"
+      },
+      "review": {
+        "path": "evidence/P02-U08/20261003-01/review-final.json",
+        "bytes": 20709,
+        "sha256": "e65b17b14f3d17bc393546e17342b739e0d741e8b1c36f5cb4f1a056a5f17661"
+      }
+    },
+    {
+      "task": "P02-U09",
+      "author_commit": "90034445be3175038e976b04211369ffada5e975",
+      "acceptance": {
+        "path": "evidence/P02-U09/20261003-01/acceptance.json",
+        "bytes": 4360,
+        "sha256": "f190a4591754020f0c50f7d34e8527750f3181090aa7945198ef5d515b078fb8"
+      },
+      "review": {
+        "path": "evidence/P02-U09/20261003-01/review-final.json",
+        "bytes": 15363,
+        "sha256": "035288787f176509d3ffe1cea747ea077552460ed17ca72e6a3c0f1536b0ab03"
+      }
+    },
+    {
+      "task": "P02-U10",
+      "author_commit": "c894d0525b43cf0e3c47639b7246b4007b45114b",
+      "acceptance": {
+        "path": "evidence/P02-U10/20261003-01/acceptance.json",
+        "bytes": 6899,
+        "sha256": "a2da2baf0e4f3de931a3c2eed865d5c3dbd0cff019cd2dfc988fcd7c4784ded3"
+      },
+      "review": {
+        "path": "evidence/P02-U10/20261003-01/review-final.json",
+        "bytes": 20925,
+        "sha256": "fda518aa68e3c3d02f350deb7c405d49091713a8b94d364478ddfeafe3fa5f15"
+      }
+    }
+  ],
+  "plan_manifest": {
+    "path": "planning/Xiadie_V2_v1.1/PACKAGE_MANIFEST.json",
+    "bytes": 64965,
+    "sha256": "a15f544b52df97b47845a5635ad943a8557c31d50f5f33c647cb07944e29eb8a"
+  },
+  "plan_files": [
+    {
+      "path": "planning/Xiadie_V2_v1.1/00_\u9605\u8bfb\u5165\u53e3.html",
+      "bytes": 6197,
+      "sha256": "a777ff2731fc0af97a1e9a91993901934d4c3b3a406846c0e8984f087d263a04"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/00_\u9605\u8bfb\u5165\u53e3.md",
+      "bytes": 1981,
+      "sha256": "3af4260e16705fe9af086b08db9ab93a82fd317b024be9ddc859e281376a4de9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/01_\u9879\u76ee\u8ba1\u5212\u4e66.html",
+      "bytes": 73685,
+      "sha256": "9e6d97b478bed48554276bf7d0cf5310593963dbfbe6ef4f4e15e97a2d2e7960"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/01_\u9879\u76ee\u8ba1\u5212\u4e66.md",
+      "bytes": 51084,
+      "sha256": "77e4265fb3ee9278c088b3147c8c106eb9462dd7795cd7da8e433a581d7a48a7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/02_\u8ba1\u5212\u6267\u884c\u4e66.html",
+      "bytes": 492602,
+      "sha256": "17b5565447370c68f3ff5b6e822a9298ae8a2ccb874815193e769cd688cd8cc0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/02_\u8ba1\u5212\u6267\u884c\u4e66.md",
+      "bytes": 366530,
+      "sha256": "5f8fe397e4622c208e866827d7b528e3efacfd7912e74c602182c8465aa6d5b4"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/03_\u4ee3\u7801\u53c2\u8003\u4e0e\u590d\u7528\u6e05\u5355.html",
+      "bytes": 52717,
+      "sha256": "db5a4c46dc063eddd246f0111f3ce8f6c6d5ffc06f3625e0e766333d38e1f413"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/03_\u4ee3\u7801\u53c2\u8003\u4e0e\u590d\u7528\u6e05\u5355.md",
+      "bytes": 37108,
+      "sha256": "ddf362b98f53530307473d04e3056886e45da27bbe298ac115dcf40793a36145"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/04_\u9700\u6c42\u8ffd\u8e2a\u77e9\u9635.html",
+      "bytes": 46005,
+      "sha256": "04f3ceff9d44fc39a302edede952710ff480fabad4b9533deabac52f59d3fead"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/04_\u9700\u6c42\u8ffd\u8e2a\u77e9\u9635.md",
+      "bytes": 27657,
+      "sha256": "99ee9e66febd42aa4b11a10e783fc8b980df68002884dd874070c7110b829f2f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/05_\u5355\u5143\u7d22\u5f15.html",
+      "bytes": 34436,
+      "sha256": "495e1bc8d8a66ede207faa8886779d067b1205a679179038675f06c8d7cd9f4a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/05_\u5355\u5143\u7d22\u5f15.md",
+      "bytes": 18173,
+      "sha256": "f1463033ec7f9f37a9339f59e25429a63b3e6926c187ed03967df84561535a5b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/06_\u91cd\u5efa\u4e0e\u4fee\u8ba2\u8bb0\u5f55.html",
+      "bytes": 5174,
+      "sha256": "61cba8290e0ef447b2f276a1e9b95de77d9293177c7da406d4d7f7f065632cd9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/06_\u91cd\u5efa\u4e0e\u4fee\u8ba2\u8bb0\u5f55.md",
+      "bytes": 1141,
+      "sha256": "fc0252b07cefb4eb6ff2474f4394e4ea039de32471f72b42a9910a7d7c89c167"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/DOCUMENT_QA.json",
+      "bytes": 720,
+      "sha256": "91eddb825a27c6483cd4a05e6dcc6c7b2c15cdf8101aab6f713d3570e12de588"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/PLAN_VALIDATION.json",
+      "bytes": 169,
+      "sha256": "565141b3f91e36be437053e617da2d4ba5a265826931f9450a6ce16828089801"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/index.html",
+      "bytes": 6157,
+      "sha256": "53950d0661b5113646346eefbdc616c83a6b3df8a4effeea66e1bf3ff391adcc"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/00_\u63d0\u793a\u8bcd\u8bf4\u660e.html",
+      "bytes": 4299,
+      "sha256": "892b3202f96642b5cf85cb5fdffb195355c89f49ac2662a3fe2b547aa4139199"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/00_\u63d0\u793a\u8bcd\u8bf4\u660e.md",
+      "bytes": 598,
+      "sha256": "e8c1a694260ebba85e426309806585a47af6969e9e10d4cc2d93e04ed917e1c3"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/01_worthiness.html",
+      "bytes": 4899,
+      "sha256": "5c1ac48458b27052a12d1f78a1d720d9b742f4c7de344139759a08f54dae3cfa"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/01_worthiness.md",
+      "bytes": 1190,
+      "sha256": "3cc62bdd8da650d0acaf6935e6d30fcc53cf8454a8964795ba5035838844f260"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/02_same-event.html",
+      "bytes": 4882,
+      "sha256": "57d234ea4bab7a363ac3216862278cce2ea7db05e0ae4908458dbc7a031cf53d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/02_same-event.md",
+      "bytes": 1125,
+      "sha256": "e46d624a8172cf309d07d68813e7462216695c370c92ff0712b96bf924b631ff"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/03_narrative.html",
+      "bytes": 4897,
+      "sha256": "98f48baed07cf1cbcae4bd7fbac88547a6c1ecad6626b5534100e911adbe2414"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/03_narrative.md",
+      "bytes": 1116,
+      "sha256": "f3f913a33233b4aa1dd73f0b7a180854ded44fdc885a33772a164750768e45c7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/04_review.html",
+      "bytes": 4935,
+      "sha256": "2a3da8b911974b44c3b1eadacd95a8edabb4fbcde7127bf0c71b6d9f67d64310"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/04_review.md",
+      "bytes": 1166,
+      "sha256": "e53773c3c5af577ee0abb075e79ea895ac1b28410449669d66eaedf8f30e4d8f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/05_reconsolidation.html",
+      "bytes": 4852,
+      "sha256": "304555c5c43308ff3a3eb8b6fe8a11963f8d5f51065a8fd10d34dba73bfc7379"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/05_reconsolidation.md",
+      "bytes": 1131,
+      "sha256": "a0cfc5700a11540e0bb1a7f3a5c1aff5904bfcb8e165e6286fbd7fd17ee4e8dc"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/06_semantic-note.html",
+      "bytes": 4948,
+      "sha256": "963bf349d0f71375e4b8e709b8ea3073f8209740a26764bd022a6eeee09ce720"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/06_semantic-note.md",
+      "bytes": 1215,
+      "sha256": "f4fc68202f228e70083788cd0ba3f90ba4195b42da396bbd1392688e36fe81b0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/07_notes-audit.html",
+      "bytes": 4845,
+      "sha256": "2dcd2a05676c3d73cfb5c0b7f59adfcc8728f32549c80ee9c412869b888dd0e5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/07_notes-audit.md",
+      "bytes": 1076,
+      "sha256": "94750fb81bbc57544593ba5eda5fe6ccdcb7fd28f20d5c5bbe60c2b353d2dad0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/08_\u6267\u884cAgent\u5165\u53e3.html",
+      "bytes": 4238,
+      "sha256": "19ecf991bc7daa5ce1729bb3fa0d8e30387f275b666c7a8bac73dc8702e95d2c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/prompts/08_\u6267\u884cAgent\u5165\u53e3.md",
+      "bytes": 579,
+      "sha256": "eb0ae93cfd909d5d9f09447d84dcf1d94f8318ec88202f89128da3642e114d2c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/requirements.json",
+      "bytes": 21995,
+      "sha256": "3d3a89844ecc1a71efb1a49094762ec1826dfb4e66dcc76802fe91b497fc3505"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/schemas/work-package.schema.json",
+      "bytes": 1521,
+      "sha256": "b3cf9852304272469f49456057d028d998d86ed6ff0ccbb5d5fca9abd477ac45"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/sources.json",
+      "bytes": 25330,
+      "sha256": "5fc07ce9498b6bdf60b0b1734c19437ca9e7ca9edad4ef75894d631282f9dfc9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U01.html",
+      "bytes": 6991,
+      "sha256": "f417f17f497895bf8212e25b95db2597d7aae07cb112dab8924959b33c1feb67"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U01.md",
+      "bytes": 3187,
+      "sha256": "60f6206b224e3fa39a297e95832f9df8157d6cb7af04816d813615b7c6fd791a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U02.html",
+      "bytes": 6933,
+      "sha256": "d5bd5f31d41f9f41eb1d39d5d7817da04588477635c9516d44039414946c53dc"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U02.md",
+      "bytes": 3153,
+      "sha256": "5cae01929a22482946dd92dc7725135cb505b34c4fb3d486653debfc354c15e1"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U03.html",
+      "bytes": 6167,
+      "sha256": "a7dc8ea79d45c9f695326db7ec2fdce96c5f2fc2a63fb2d033bebdc2541ca411"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U03.md",
+      "bytes": 2038,
+      "sha256": "16d689e535931efe981cf76743b8d4397ea51e5501deb0891c6986289bd64343"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U04.html",
+      "bytes": 6277,
+      "sha256": "61a650c27991a1cb060b36d648f9fa878d5e1850fcc12d6169436d05b4a7262a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U04.md",
+      "bytes": 2211,
+      "sha256": "ec7d91ca3850a605278f7b9277803bd411c08aa718e9f219f6bc3c4eb6cb6527"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U05.html",
+      "bytes": 6146,
+      "sha256": "0e3bdc4b0b90d6a23a47eff9d7524ff909235f8a849109ca31571a9dc270eae8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U05.md",
+      "bytes": 1993,
+      "sha256": "3f1c9ee77f2c60031e86baa472b7110ee95801955ca456da989c88ba7cb392b5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U06.html",
+      "bytes": 6167,
+      "sha256": "7b506e8f41e74ce3ad0414e233eafab9c5303e3f7f8c2ceeb7bdc00bf660afdf"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U06.md",
+      "bytes": 2126,
+      "sha256": "e4d4f008c871992a218112500bbb1c28034e88d9c22a9646610cf76335e0421d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U07.html",
+      "bytes": 6277,
+      "sha256": "2f47c51fd87841b486db2ef27dff0933fdbae8f2070405cb0c9b17785dcbc61d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U07.md",
+      "bytes": 2287,
+      "sha256": "df23d391098a2a9c9a73ee27f1be5238810137da11abd2077361b897f404206c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U08.html",
+      "bytes": 6407,
+      "sha256": "bade9eeed350aa7f7c235babfce479aae507fa2ffaec6cce1ce00a54feeb5f32"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U08.md",
+      "bytes": 2516,
+      "sha256": "c96843beab5d9e12b3ae6acb1190bc3d24fe5bc91483a4fd45f03bb403a33ec2"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U09.html",
+      "bytes": 6305,
+      "sha256": "2f64fa96cad193913ddd06171ad3d5c75658ee8bc4faf8650e80d69e3f3d7cb9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U09.md",
+      "bytes": 2312,
+      "sha256": "f66b710d7cb72cde43f8d3364c74948bc5476a69f44f1972c4a80610ae7d9e6e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U10.html",
+      "bytes": 6284,
+      "sha256": "4be0265c67b136e6651b35bb9054dc26eca63d5123bff8df801c829a964ef4a2"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U10.md",
+      "bytes": 2218,
+      "sha256": "619da667c1b9da9b05e9146b25ba62eb9eaed9330965f094734c8915f1e7c6ea"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U11.html",
+      "bytes": 6926,
+      "sha256": "6596e897fb1a8aa46a560c40b9323fbaf62533bd7fd062af9794322fdfe60316"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U11.md",
+      "bytes": 3146,
+      "sha256": "edd098ce4479553ea999945f866d679c82494ce4372276d8ab95d75139e8796a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U12.html",
+      "bytes": 6823,
+      "sha256": "9fdcdff05f42445f23a0d25bdd855292f6a615d0bdd0f416468e76cfd5169ea1"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P00-U12.md",
+      "bytes": 3067,
+      "sha256": "4308ed6fa9edac29a8ed1c1f2320abb4f18ff38c9ada090c3967152f0eeccc95"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U01.html",
+      "bytes": 6744,
+      "sha256": "44459f1ad709d81164103afd0ea2163a8f27765c36185d8920a1662d0e188d96"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U01.md",
+      "bytes": 2838,
+      "sha256": "1dcbc0cf345b9920e2f33d162f31e6d9d6d02864f0ef7495be5bc3dd409c2634"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U02.html",
+      "bytes": 6723,
+      "sha256": "36138a13e3618c57d3b2f53eb14b27e19e01bd3c6be6ed9ab26b38214fa747c3"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U02.md",
+      "bytes": 2841,
+      "sha256": "f65e1a36fb777b7f722a020a6366befc53e095965569b7c14ef0f6dfb4717d6f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U03.html",
+      "bytes": 6124,
+      "sha256": "0fbec6e362ae40a997261934af7d51c2a05d8214399de238432ef4b440641874"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U03.md",
+      "bytes": 2027,
+      "sha256": "e5641391e17900de2bc954b1b7cbf23e83e25225ebf9a6c61f75f99d527afe7a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U04.html",
+      "bytes": 6255,
+      "sha256": "639bdf700965d40dc0456dd571d9a1fb51fdcf86b7d789d507df606cdb0736b6"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U04.md",
+      "bytes": 2172,
+      "sha256": "011b011490d5826fa37e80b24c22c75f1e57bbe0314f359fd89805b17ff44f28"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U05.html",
+      "bytes": 6070,
+      "sha256": "89945baf4a500f00224ed6e531d6c0749ab8cd83b0d4d46a09afa659ac59606e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U05.md",
+      "bytes": 2035,
+      "sha256": "a1e3de1e6bc42e47694c06959fb708e3b8008fc9c1046983e6a93b389e60fcc8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U06.html",
+      "bytes": 6139,
+      "sha256": "05b248db37e339d486feca405e33d8c236f2773879a3aace5dc25d2f66eb1120"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U06.md",
+      "bytes": 2128,
+      "sha256": "673b724c74fa683478c109970219080e171babfeecca2b99b9ce7418bab2148a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U07.html",
+      "bytes": 6116,
+      "sha256": "fcd887f4181f57b28476417c0ff94ffde00bebc6df6e8a8c44dbbd8a88949b7a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U07.md",
+      "bytes": 2094,
+      "sha256": "71b278061dd71273d66143ac527916be718a59c8ea1ebcb5d71dab5ab1e017e5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U08.html",
+      "bytes": 6063,
+      "sha256": "5797bbcf7d43c645411855ae9622c61439512797dc363a095064f0f603d1c56f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U08.md",
+      "bytes": 1981,
+      "sha256": "15b4961ca908c9343c09eb81d20c5ec290a9fff4a21563a16a6642e9233e89a0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U09.html",
+      "bytes": 6098,
+      "sha256": "d07b44cbce862b687b3c1767a9167787d926dd5122e3a7a7a725925a4e684df6"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U09.md",
+      "bytes": 2000,
+      "sha256": "2d73e570a0e7cad4a39707e9bef279326c70dc4730c9e4914a577e1b39f103a8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U10.html",
+      "bytes": 6718,
+      "sha256": "687a45ab6169ad37fb15ab06124a5fe781b4795aa269b54a00d0e98ff5ed93c8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U10.md",
+      "bytes": 2836,
+      "sha256": "d283c623a14fad26d0a56f22d0f7e60fee4762ae1f3fabb8ae8dd6f1a8982cb0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U11.html",
+      "bytes": 6625,
+      "sha256": "6385e584ad662ea0d8d785da21df54730fd0fe13a2f46ea53d721604f8e8a431"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P01-U11.md",
+      "bytes": 2767,
+      "sha256": "df5d3ca973d3035ada4554102523e5864b220abbed3050c4447a5ae212235952"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U01.html",
+      "bytes": 6768,
+      "sha256": "0f1ac06bbe2965272e6d80b439e7a05c13fc772eec172675af5fe45c692be891"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U01.md",
+      "bytes": 2826,
+      "sha256": "99c5b0ced555d4ee8da4068c10a3e38bbfc6908e57b381a5aa70750a3a2682b1"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U02.html",
+      "bytes": 6743,
+      "sha256": "7abebdababd5079e49132976c1de9d796761a705761309631b81612518313796"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U02.md",
+      "bytes": 2825,
+      "sha256": "6bdf8ad7f6d7ed5d6d1aa56e3b400f6120ab2d64d06fc1a8e13705aefe4e53d0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U03.html",
+      "bytes": 6125,
+      "sha256": "cd648a0586e839f67720e0338689ebaf19ef1db7e358861425deeddf0ac894a5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U03.md",
+      "bytes": 2044,
+      "sha256": "c16482cd4822a1c9dfd9f16b4dae6348661822caff99550acce98999b564464e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U04.html",
+      "bytes": 6074,
+      "sha256": "c9677b1ac18d9687001436176b3520fe823a8b2435f6d56f7e104a61a39aa799"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U04.md",
+      "bytes": 2013,
+      "sha256": "e067e018ef747c1d4193e7df8e7ee82804fb23873be521e2d4d7bab8c0f4d1db"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U05.html",
+      "bytes": 6071,
+      "sha256": "14b33a929f78362b01aa0b5988d00a2426f0c1c460f013bc2e42c3f79d6d3a43"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U05.md",
+      "bytes": 1936,
+      "sha256": "1e43db642edc3d6d2229f199789c4c8b494fe50ad95d3c73215b708835c02b99"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U06.html",
+      "bytes": 6081,
+      "sha256": "7d7348dd0cc4c9079be096d2550b7d29c9a5949f9df934be68ae403474631aa1"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U06.md",
+      "bytes": 2105,
+      "sha256": "cb443521f7ff3c69a145da425c921610bb406e066640b27a3dce95cb2fb53ff4"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U07.html",
+      "bytes": 6107,
+      "sha256": "61e01f4340571cdc4e9ea2570c30086b2614ca0fa1d1772ba86c23b4d67fef83"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U07.md",
+      "bytes": 2039,
+      "sha256": "d7c81ed71d23ba465f8a375e79c9d8921fb1e678984cb050ab5816d72ffc89c8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U08.html",
+      "bytes": 6005,
+      "sha256": "672a4ae40b3a26112f8c9f0206112ad9810c554c75e363ddca2526ddd6aef421"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U08.md",
+      "bytes": 1867,
+      "sha256": "b087b678b25159ba1bec3805e685c7efa4f280d7e5277d707d2df51b86b05a6c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U09.html",
+      "bytes": 6012,
+      "sha256": "8b34d354baf671db0d494311af5463f496c63cd1db1f3f08e54e4b3ed5ff68c7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U09.md",
+      "bytes": 1939,
+      "sha256": "acb786a8dd962910b409b6d309e35081549c3016dc7dc76759922834aa69c42e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U10.html",
+      "bytes": 6706,
+      "sha256": "064dc0758f29df20e24c906497b67f68f9c975df0f64d1db2c3b0c0627386475"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U10.md",
+      "bytes": 2788,
+      "sha256": "ade1d9901aee017b61f87b338b26c0ede6b6d0e9d0e175441b9b9dc4fa51fa18"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U11.html",
+      "bytes": 6613,
+      "sha256": "7b1c69952ffd31251e6d4cebaa2af57fb19efcd76b3e639d98fae39118f4fe87"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U11.md",
+      "bytes": 2719,
+      "sha256": "d6d925953dc34c01f31dcc1d3a4a9af441c22f424c99e4da3b8a5942a24a2624"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U01.html",
+      "bytes": 6834,
+      "sha256": "00b60f282998f142191775d5988d9f1d2b5e61bd98f9e93326da4bcf1c7efba5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U01.md",
+      "bytes": 3110,
+      "sha256": "481ad4396712dc964ab278d85518dd6ece49201bc9fdff18c5e19332e320c682"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U02.html",
+      "bytes": 6799,
+      "sha256": "a29312a293c2bdac794a5d36c24682bd95be2834394070bd1e6fb744269d5931"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U02.md",
+      "bytes": 3099,
+      "sha256": "47b7725dc24f9821c6f1a12b59d7ecb4a8d49a0d24396dfffedc1d1ac5c04137"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U03.html",
+      "bytes": 5998,
+      "sha256": "4ff5c2c6f1e7e859196f85ff0fd7d83ec28d23c217d9c786a4c81c58d2b5f4cc"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U03.md",
+      "bytes": 1977,
+      "sha256": "e5de922f3cfbe81928a09e181c31fad6d08056b63bcabe0239cca26bc4b543d5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U04.html",
+      "bytes": 7038,
+      "sha256": "d3e9a16360c86d7a60fcefee752aa5517d884728e64b6caa74b26a891e3d9855"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U04.md",
+      "bytes": 2965,
+      "sha256": "451bc2361bb66516eb52e9bb1ceec4a568d6b7f04814a47def8d94b830b10440"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U05.html",
+      "bytes": 6103,
+      "sha256": "aecc39f05becb37ba370fefc8616558038469490cbd00770509d71ee7c746c60"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U05.md",
+      "bytes": 2072,
+      "sha256": "e869085114fcf44b90de9b8355f47859d8232aea07f1af8bf2111a05b4413e99"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U06.html",
+      "bytes": 6033,
+      "sha256": "74bbd66d72a13fd1b14c4f01d2cc11091b1586866473e4a3b2370e36f2988823"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U06.md",
+      "bytes": 2032,
+      "sha256": "81c35ace7e2f4369d3735bc43745c3d02db9c74a22fda61fc46e3d7972ec29b3"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U07.html",
+      "bytes": 6860,
+      "sha256": "b7c60929a35cf9cac09dcfed51f37dbbdd7ef238402efffd2366b0b05e2c0313"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U07.md",
+      "bytes": 2807,
+      "sha256": "b2d4d41a1b7ff38be32b6cc9148099510e7891aa8a8864a5e87bce55de15bd59"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U08.html",
+      "bytes": 6128,
+      "sha256": "18ab6be1cde9de00efd98046adf77d367e78505ede218c384d4311d4e1872080"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U08.md",
+      "bytes": 2129,
+      "sha256": "a07051293a1c6090b7eef010a98469cbc3c90a179167e6fb142f5725b17da507"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U09.html",
+      "bytes": 6759,
+      "sha256": "5c73380285c1922ac9a3264500d4d80f21b4c0092ce14049b0fd1803d4c76daf"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U09.md",
+      "bytes": 3059,
+      "sha256": "504a0ae5b2f7b08a65a98e8a9b2b97f38ce58c44437490282ee761804ec7d365"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U10.html",
+      "bytes": 6676,
+      "sha256": "262ca3b984ea77ac9f66d1d88826b7e0138b0e97f5845a26a33351f1a961d934"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U10.md",
+      "bytes": 3000,
+      "sha256": "46b4243d6f67d2965e492a0db3a2ea192208dee09baa0323d9ba92368a9cc4d7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U01.html",
+      "bytes": 6922,
+      "sha256": "b9932259c6f0b9187a42b1185f9c808a06d1a6d75362c0225779b53411ad435d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U01.md",
+      "bytes": 3113,
+      "sha256": "d9842c051e2bc4fd10a8d0fc1dffbefe2d8331d9ca870774e794a59aae01977d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U02.html",
+      "bytes": 6879,
+      "sha256": "967842ba79b70c5684e67c26e6991de15149d3a542578fa25bd2478d9627eeba"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U02.md",
+      "bytes": 3094,
+      "sha256": "2cbaf158e5c43d49e8cb9508941920ba80ca4141a700de548e56ffd0e37c1dfb"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U03.html",
+      "bytes": 6072,
+      "sha256": "c72a2a144e56a8bd302d1f7c9d7ecfab05892abb5da565ac8e96288d73dd119f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U03.md",
+      "bytes": 2050,
+      "sha256": "31b231d18ddcde6e818491d58957c0d48c94d6343aa12349ba187f6d5fd36a04"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U04.html",
+      "bytes": 6151,
+      "sha256": "029401db400310941a9806f274341e59ac9cac44a014e9a1dfd10469af7369c3"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U04.md",
+      "bytes": 2054,
+      "sha256": "9a5a211f70d8e442f0355c3f7a0cdf3a774a92f525a63bd1f426ea60a68498a0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U05.html",
+      "bytes": 6119,
+      "sha256": "41c8da9aeb8b2f4017f1a659877c55a4e690d735b3fc2f581b266d1f4a4d638a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U05.md",
+      "bytes": 2119,
+      "sha256": "498692f1421871cba694044c226fe9a6b530fcff1d2bcea25d533d604555a9b6"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U06.html",
+      "bytes": 6093,
+      "sha256": "98e5e651505d6225911567299baf29d5897ced72c3ac73e6e39cdf1acd67bc6c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U06.md",
+      "bytes": 2103,
+      "sha256": "019fa67f6717db08af8b8ac316721505ae9d1e5d79ef0cb7790fe15d2fe19e7f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U07.html",
+      "bytes": 7127,
+      "sha256": "11701ace4838c2f8052134d9565e2b56168a3bb64554232c68bd8730f0b64f53"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U07.md",
+      "bytes": 3066,
+      "sha256": "d29eca27effbd56432abb78ede3c7160f73d56d9d1d0d14ae60dd25b4d0ef217"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U08.html",
+      "bytes": 6092,
+      "sha256": "5e53c2a2836942a12e15d2ff3db58e66c79ffcd844049bf22ee3f5ad9e9d399c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U08.md",
+      "bytes": 2117,
+      "sha256": "52cddfd6589c8ac5fd1a684c35ce1cf7b75fbefbc58fcc438e91806dd230c828"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U09.html",
+      "bytes": 6042,
+      "sha256": "e24444d1eee4909fdd6138e90e984da06360738106dac84a2b07337950810eb5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U09.md",
+      "bytes": 2013,
+      "sha256": "d640bdc34c66b9e482d48b078b36261d861d06e573e4570e1580c241cab1a789"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U10.html",
+      "bytes": 6855,
+      "sha256": "95bd92c42a2ee62cd181a33212b2eb3a97f5e10d2efc9e95f86ca64dd1149215"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U10.md",
+      "bytes": 3070,
+      "sha256": "94e276b506708956075641350bbc07d8da463042344e169597eaf8f1fc3e48a3"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U11.html",
+      "bytes": 6762,
+      "sha256": "f2860df0428936ff750dec20ef9fef53e93607228c4e9e264284a686debba880"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P04-U11.md",
+      "bytes": 3001,
+      "sha256": "b7f9603edbf80a54513a7ef052d0701d5f895d060fed57869b95352c6dc2ff6b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U01.html",
+      "bytes": 7178,
+      "sha256": "6f6cb322e6c8fc5958d224f9e6099b21c78498882db483d7b7e010c076807687"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U01.md",
+      "bytes": 3697,
+      "sha256": "683f22e4070606eb744a7dc901b52deb775eadf0061fe3adbd9b0b65aaca53ba"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U02.html",
+      "bytes": 7142,
+      "sha256": "157e1e3a9e578b60098c36889baef2a97ed0adcbd86e7e38b272c364d2376eaa"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U02.md",
+      "bytes": 3685,
+      "sha256": "be33af082e0ea5c49aa156a26cd6a7586142df1cbd95980628ae4b06c870f1e5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U03.html",
+      "bytes": 6272,
+      "sha256": "bb8e710044d74680a32d3d5f5289701dacd340074b57c4bf0715f6e9cd59b572"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U03.md",
+      "bytes": 2279,
+      "sha256": "39b24430023db82c0646782c283918ded7f35d7542ec2f5f7ffe467425643582"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U04.html",
+      "bytes": 6056,
+      "sha256": "74c91960e600cccd6fe4f5b9f8e20ef5bc9e8c6a27c4b4c92540c994421ac177"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U04.md",
+      "bytes": 2075,
+      "sha256": "228629ee01c9c6d6ab8dc500ebf2cde244ec09494586375eabf645202375574d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U05.html",
+      "bytes": 6217,
+      "sha256": "ec2aceb4ced2ae16132f21dded36f6ccb73dbcf5f8e06eb2bc80dd0e22ec9220"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U05.md",
+      "bytes": 2225,
+      "sha256": "c8aae377e9069dae7b778f426992d6a6676b6e1c5636bf32935f4c7126d73cc2"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U06.html",
+      "bytes": 6309,
+      "sha256": "f45818dbc25cb156bf462c22719d53de98287d2a990452e273d58aadf934f8e4"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U06.md",
+      "bytes": 2271,
+      "sha256": "ec8a3142612c6ed4bd2bd801d0216966c0a73e56d4a0647ce80e04de70449816"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U07.html",
+      "bytes": 6073,
+      "sha256": "2bc5420aa79e56fade716ec8134a88633bb5adec21613d825b23395098246bf7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U07.md",
+      "bytes": 2110,
+      "sha256": "7e9cb8622f077f498e1afc666ce3adddabafc336c5695684bcd186492fd01f00"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U08.html",
+      "bytes": 6074,
+      "sha256": "eeb1a8d2ff82326fb1dc9650aae3b577ee3f51a1d08ccf871e09d4828f0f0e2b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U08.md",
+      "bytes": 2081,
+      "sha256": "0fd431c561af8f33ba576352bdf430802e58c0c3d6d1aeb74f75ee3c0ebf6b7b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U09.html",
+      "bytes": 6138,
+      "sha256": "98c90c7489a4d3a40b33bfc76316be57f557d18145f2bd01fa4a74da62baea7a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U09.md",
+      "bytes": 2110,
+      "sha256": "9eb79a1f11514b5c7c9252574ba8f39114e5574e8be4fa70226ee02039f36877"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U10.html",
+      "bytes": 7214,
+      "sha256": "4d15cdbe045608f7ccfd6ef073221a17c104f4816feda223e68ef3b713996352"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U10.md",
+      "bytes": 3086,
+      "sha256": "0d5963e4a0a9e45614ec18ad44106a8359347049fbab854da43d56b0d3302f7f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U11.html",
+      "bytes": 6090,
+      "sha256": "e26fc524916f556e6aee5eea343f3ff902fdc8f4fe2d9e91b0ac9caceca1c6aa"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U11.md",
+      "bytes": 2105,
+      "sha256": "cb17e27442bffcf40d7670bb4bc73d23b0bc9ad497d0dc404ef19f3f4625b3fa"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U12.html",
+      "bytes": 7139,
+      "sha256": "9467e0a768134d69e3668c8f8aeb23d021272f396175f3dce42d675273e8e71a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U12.md",
+      "bytes": 3682,
+      "sha256": "a5451d71643728dffb18c232d1c6b7fc1250f2cf0acb0beac0956ea0cad76305"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U13.html",
+      "bytes": 7026,
+      "sha256": "d464a9a815db4909ab6cff17836e7cb2ff99145ef49e608f6b871cb9189ee18a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P05-U13.md",
+      "bytes": 3593,
+      "sha256": "6a288675e8b8aa07c29789ab79e26b8444dad8f3ade5f91ec1d27ab1bb14fa7c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U01.html",
+      "bytes": 6848,
+      "sha256": "1fd3a55282a476fd3ea8118775f17f80ce5bf21e635f16c4300006e50722211e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U01.md",
+      "bytes": 2976,
+      "sha256": "acc45dd66aede9ae307ee608fc0dfb922079c654c1e0ad8dc00542fe8b740b4f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U02.html",
+      "bytes": 6827,
+      "sha256": "197abe9588608837fcd3c7c5686a9ca9bd2b0806612b9a3e8c4a1bce01f10c15"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U02.md",
+      "bytes": 2979,
+      "sha256": "bb8a302889922f88a2025a83be91f47a6a8065fe4f93e182a74b7f98893234aa"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U03.html",
+      "bytes": 6130,
+      "sha256": "c93dd5e38ca39f68b2d55cb7f962d57e3bfdac459c8e23535138fdf9853213d5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U03.md",
+      "bytes": 2036,
+      "sha256": "7f8fd55a266021b1c21bb333806aaf9577fe6da122c96cd6453231e9426c11f4"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U04.html",
+      "bytes": 6062,
+      "sha256": "58be3b6ba83f5b7a4cf2be1982edb274e40a4804b4f399eebe47861c002e4e91"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U04.md",
+      "bytes": 2069,
+      "sha256": "6c506163c6e4d3d622acff909e0c2e0342e581e061994cd2a5ed225a0d1e0f66"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U05.html",
+      "bytes": 6119,
+      "sha256": "524b50deb4c0c79e1e14cd7eb248b2ddec6f8eb776152ce421efa9616b7caf1b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U05.md",
+      "bytes": 1969,
+      "sha256": "834ede53971379d562808e57034c6e4ebe4d6275e4897c5ad3935d7cf028268b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U06.html",
+      "bytes": 6784,
+      "sha256": "ab366abb37578d15f2b1f6723b2b2282d1ec01c084e31f5a9488700b455352a5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U06.md",
+      "bytes": 2718,
+      "sha256": "e5e1a02f80665e5c7bc9a41f6219442e908aa3f2aa77b3550cddabac2b59fa01"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U07.html",
+      "bytes": 6002,
+      "sha256": "24dc83d68dd805014ea7a9e659cfd11b12b8c56a5e8b81862bd5a50acbce998a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U07.md",
+      "bytes": 2009,
+      "sha256": "a8bfd4b1b8a3d5f5f9b71406bed4a232aae1f74b5711293e1f06333cff73d786"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U08.html",
+      "bytes": 6115,
+      "sha256": "3d6d4a5a04960aa1bde66c34c123be4f359f75738abd103cc6f447960c9b0e09"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U08.md",
+      "bytes": 2094,
+      "sha256": "371641bb287c949189aaf44499a9f094010b7e4725c68ca7a466ae3ec185db6f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U09.html",
+      "bytes": 6023,
+      "sha256": "195b4fa2a03b530f14b9b6b80341d98963e639fb6abc00842f36b1134a40c07c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U09.md",
+      "bytes": 1992,
+      "sha256": "0d0f683f71862a64661277f995dbb7002a5fd71bb5089504e4f1622623f349c9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U10.html",
+      "bytes": 6133,
+      "sha256": "31ae6d94e0fb1caaeaec165739e66d5ee55d23bf9a35ca85cc922ed1d9a367d6"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U10.md",
+      "bytes": 2119,
+      "sha256": "65f185830e695a6f5f6fb29157007f3b309f75c84459d074f2623dea2a591824"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U11.html",
+      "bytes": 6789,
+      "sha256": "c7fb6c84e7129e13e0d7d890c06c528002177f1b420f80eca45142867ab9e37c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U11.md",
+      "bytes": 2941,
+      "sha256": "1092b4cf51408787a3ed0feed548b38e9d9d2aa4c98d5126799af354683eeff2"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U12.html",
+      "bytes": 6686,
+      "sha256": "ef7cef8440340695633f806fba4f9fe9f246a05181c475efcbc0c076a7abe672"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P06-U12.md",
+      "bytes": 2862,
+      "sha256": "f9cbc2aeb60420c4b0c6da55b48469d0010fa4bee2691d7d751fa2d173af68f8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U01.html",
+      "bytes": 6915,
+      "sha256": "b2066b4ea3dc00fc23019e3c7867e2db0e16d25ed1378e3f2583e62350b701f1"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U01.md",
+      "bytes": 3182,
+      "sha256": "b951bc7127a53247936a0537163a40091ebfbd82b958edd3fea9d779b4815285"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U02.html",
+      "bytes": 6904,
+      "sha256": "256f8ef69b0e29e575cbbe486dad7bbce7801986f4f7b50fd6707eac008c1c1a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U02.md",
+      "bytes": 3195,
+      "sha256": "55b08f67b0f8e34ec123721201e95ddc8b8f6b8cae1ce11571b9efdf5aa00ee9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U03.html",
+      "bytes": 6066,
+      "sha256": "3792fd85da8410c2077ae51820c4362201e61c376b2003f414b07898909f7b70"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U03.md",
+      "bytes": 2066,
+      "sha256": "6b3a20b49f73b8403f0401b3bdc490e9b8d6820cf84f052c394185dc5e2a58d2"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U04.html",
+      "bytes": 6054,
+      "sha256": "44ca7c6920d0edf7edfd04646e4736ddf60d5cf2122475ae79f4f82c243c9c39"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U04.md",
+      "bytes": 1985,
+      "sha256": "90398aaf977e4cda724f224ac30c8a2dfa6c6caa7fb61a71b53878c144fc5b93"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U05.html",
+      "bytes": 6242,
+      "sha256": "a07cc533a6ba1f10b1ad1ecf07380517fdbdc0587a2559b298f41475b847759f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U05.md",
+      "bytes": 2237,
+      "sha256": "8d9e01624e9cd5b0b907311ba199bea9c863ef59a3e5a3302fb152a6080e4810"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U06.html",
+      "bytes": 6105,
+      "sha256": "b83a11040be5578e5810c0880021bdd5b8336c3127cedfc478cd01339934a305"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U06.md",
+      "bytes": 2093,
+      "sha256": "d44f94573b34f2f135b22d4b1c4af5eec7bd3082e06af15d49f07c5751ad05df"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U07.html",
+      "bytes": 6058,
+      "sha256": "a69d55c8cff19e0d20b0dde32c2dc2054efeaaa6c239bdd4babca47649f24138"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U07.md",
+      "bytes": 2066,
+      "sha256": "dc0a5c724d7c5a30e32ee975e9533798e901f65813021ba5445f3f04f976fb1b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U08.html",
+      "bytes": 7023,
+      "sha256": "43d5821a293e91fade6e7300c9af9aeadc38faca785bf39d043f4e87856a33b3"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U08.md",
+      "bytes": 2941,
+      "sha256": "f98c404ab7918fa1482bad34ce48e7b65a69045087c67a3a4600cb8b9215f580"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U09.html",
+      "bytes": 6170,
+      "sha256": "625dcc7938033931d740cb02849681876825ee2fd772c02a30465754f2603b54"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U09.md",
+      "bytes": 2070,
+      "sha256": "2c54c9f8803317c4195b84e66901b48f57cd85e55265a24fee9ad055bb4da943"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U10.html",
+      "bytes": 6248,
+      "sha256": "0cd1c67fbad27525954ef24e9567f678878a446b79795a3d69fbdcf906be3621"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U10.md",
+      "bytes": 2220,
+      "sha256": "6a44e84268788ef19cfb6eb13430fa71e74e29fb6a62f6f404d7fad1f4490931"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U11.html",
+      "bytes": 6870,
+      "sha256": "987f7563fdcdb9b358df64d46c51123f7257f6c9e501e7567fa811082e74d0dd"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U11.md",
+      "bytes": 3161,
+      "sha256": "78400a3cedca0f17dc88c7ca7458b40f3539320ed768c3cb922c5d81f06f53af"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U12.html",
+      "bytes": 6767,
+      "sha256": "a90f53606fd1b4c2d9e872428c036e19101056a2414e14e192f975dc4dd3a663"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P07-U12.md",
+      "bytes": 3082,
+      "sha256": "5110b8b844580a3f6c7e0409cd7b453361916b54f0fe501ba444811ef3291831"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U01.html",
+      "bytes": 6798,
+      "sha256": "010b5c9a241351f9c041c1b5c3b8e2197e2309375234b0666d650970121691f7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U01.md",
+      "bytes": 2946,
+      "sha256": "c0618fa84c2c5bf79425732a7554d96df2feec04724a301258464d196c04156d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U02.html",
+      "bytes": 6768,
+      "sha256": "4160f8c2343fa73ab0f08bc4859b3e6874e947b02e9235859346114b4fa66afe"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U02.md",
+      "bytes": 2940,
+      "sha256": "2d2c1b3b49e8a108f182ea0dfd2cd334c83d8f08bfff31a857954dbdc89d959e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U03.html",
+      "bytes": 6056,
+      "sha256": "0483508d137c03636f8cd996a3db6f26ed3d6785d88ec23abc08b3c6b29c7e25"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U03.md",
+      "bytes": 1977,
+      "sha256": "3a3018af993ff9ac44955f6bf7222b153b96db57d5c1b24c6498bd66137f8534"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U04.html",
+      "bytes": 5988,
+      "sha256": "4d6fad7ebac4f68807c047fce4f0aa3622400778a51213a5d210bfede409c85c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U04.md",
+      "bytes": 1899,
+      "sha256": "1c389e723bd20975cf3d6661aa0c1834cf24e6e2ff28d4bfe74d8adc2b5ac325"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U05.html",
+      "bytes": 7026,
+      "sha256": "c434b0f343079b26831a26d49fd2aa8157a68f781bb35333e4dafa9fd4aa9363"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U05.md",
+      "bytes": 2832,
+      "sha256": "0f57595bdd660d5a93437d606349ee3663e97918b95ab05e5f05ee87811b23e3"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U06.html",
+      "bytes": 6098,
+      "sha256": "62fe6be2bec994873ca3a3a7f2fdd131fef41d81ccf30cda81aafc2970adcbd0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U06.md",
+      "bytes": 2012,
+      "sha256": "2a73b3c216598d4b7cf2e7b3d1a6e9061fa450bddca82fce9cfad3259140f0a5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U07.html",
+      "bytes": 6117,
+      "sha256": "7263ca807fe3df5e2de808ffc8976d239fdccb59e0d5f74096a5ca85cff2be24"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U07.md",
+      "bytes": 2101,
+      "sha256": "b2a6009ecb68a22b858ff0a14b82a204da3425b7ceff1aa123141a10317aebd9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U08.html",
+      "bytes": 6071,
+      "sha256": "c81524381a6cc2cbd6ac0c3809aa6b314e768881a498b4381a2da526daad892e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U08.md",
+      "bytes": 1958,
+      "sha256": "49c2df50cecf05e25ec012ab3bbc8447b3f4f6f30bd21b2a22fdde4a6dded39b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U09.html",
+      "bytes": 6282,
+      "sha256": "62490c104529da14cc9cba70fd865fb050a2bbcfe6d526203316cc49e77a0bb6"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U09.md",
+      "bytes": 2290,
+      "sha256": "bc41e148161b08e7500996883bd54a9b6dc173a4af89ec9acbaa831838b73b8b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U10.html",
+      "bytes": 6052,
+      "sha256": "b6ca8b778031a13d2d3d9b016a3b8c7d1445d0192acb4e0a3bc196c802aa3c75"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U10.md",
+      "bytes": 2055,
+      "sha256": "ccffa46d2dbd0fa2e95e815865a5c878da1645c035c51bfdb71d550ce03e4abe"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U11.html",
+      "bytes": 6757,
+      "sha256": "2ea49c6a03debaf3891078a3fa83af8a129b89860c4266c284059bd1d4016f86"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U11.md",
+      "bytes": 2929,
+      "sha256": "3a8afd089152e850191244f7456f09c03c496970e61ef26c0388c5c4b5dc7fa9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U12.html",
+      "bytes": 6654,
+      "sha256": "59afd149cb5ac5e20d3a6986f314296467f72e149afa2e3d5443fc9d1b9cfc7b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P08-U12.md",
+      "bytes": 2850,
+      "sha256": "8168776d4ac0eea69657892d8a8d5e7994d6c82717b567d0eac5fb095b4c66d7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U01.html",
+      "bytes": 6885,
+      "sha256": "0b272da9cdca6d43faa78e11dae518faf1222ccd97aebb9a5e906869c9d98f21"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U01.md",
+      "bytes": 3197,
+      "sha256": "731371489961d75b3b50f86cb7749ca14b1dfb192fffea7f5afdeccb674a9d4b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U02.html",
+      "bytes": 6866,
+      "sha256": "0d84628657647165aab64cd328dc3e80d0b447bfa691528f73d5178ef116ffe2"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U02.md",
+      "bytes": 3202,
+      "sha256": "c547002d86d7ae5489dbec0e6fcdf0c094e75518e1e16edab56c654603c0cec3"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U03.html",
+      "bytes": 6106,
+      "sha256": "b47633298131fd01e8225a96c79d3910c6435a9ebcc7e37ba89037b21cb62eae"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U03.md",
+      "bytes": 2096,
+      "sha256": "bfd87f08a9390ccbcb75e90f86b9d6dbb654eb0f03fff4edc67966226f01b51e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U04.html",
+      "bytes": 7004,
+      "sha256": "062a05ab8a22565c3a9be7d62299fd0bcbfcba83eb026edbdeaf93885b1e6fc8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U04.md",
+      "bytes": 2919,
+      "sha256": "344347239d76204ce9c38d9f1598107acd4c55a81e962a09e851a64816f4bfb9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U05.html",
+      "bytes": 6625,
+      "sha256": "7e34b878a946064e725f47d82abd4fc2c539e35d799299a2b7146ba634c5a2e8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U05.md",
+      "bytes": 2430,
+      "sha256": "9a19d17f763208e94219a1e77aad8fac9811b371331adf023a02660a60f55aad"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U06.html",
+      "bytes": 6258,
+      "sha256": "ab52d9ece02f8bfe6583d2fdc3b3234deeda13da42b9e682bdd046dd9f2f777f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U06.md",
+      "bytes": 2116,
+      "sha256": "7008e1436afd4f13084135a000e5cbeebe3f9cc33b5fdb72f70b6cab419e5a29"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U07.html",
+      "bytes": 6149,
+      "sha256": "d1a37d8811410c7e2bc32b25ec4ae4a5b7638e7fee77ac466453c089600a0bb1"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U07.md",
+      "bytes": 2148,
+      "sha256": "b3a3e51a825ee9740d06230596a705dcc9234ab88d9b95bcca6670bb1f7cc52d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U08.html",
+      "bytes": 6038,
+      "sha256": "cc44c1ca558a0487939879d9bdea614596c8ef957593c0391775ad299ee76b14"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U08.md",
+      "bytes": 1993,
+      "sha256": "ef7a185e0e364d8c6ba5c4375a5219771433b5adb60b7f43c50426f94963e0e0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U09.html",
+      "bytes": 6826,
+      "sha256": "0942e9e46c905d8bce62aa08079ddf96bcb0f7579b39ee16a66cf5dc3bb81f3b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U09.md",
+      "bytes": 3162,
+      "sha256": "19204db11bb05a1defc64736a2f6b5195cc9c1b77045ec09556cd588c10848fb"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U10.html",
+      "bytes": 6743,
+      "sha256": "eb738439b004f1492cb91093acc8a5e3f6d5b57e8479c2d074fd17d3f6656580"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P09-U10.md",
+      "bytes": 3103,
+      "sha256": "03478dec30155214384fefbee45b7940b2540d010bf3157b7cfa0c0bf2acdd4a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U01.html",
+      "bytes": 6681,
+      "sha256": "6a237bbc93bbd3c00e7822db9e48a3d6d01d7dccbdd60f05606099ed9106b7a9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U01.md",
+      "bytes": 2712,
+      "sha256": "63f23496e1dab2a3cc83dc5c365f0ce2c461f7ad432097ce1de6ad109559df50"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U02.html",
+      "bytes": 6650,
+      "sha256": "c8647007f85aaa545ea5020536125299747161b41239365e5b90d392c10e59b4"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U02.md",
+      "bytes": 2705,
+      "sha256": "fc77a08d6d465fd8943798eadd8a3280e79294b461987f7d37e551f452213625"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U03.html",
+      "bytes": 6019,
+      "sha256": "97ecd1a5ebd8b3ae43f586c33bae8f04f81ffa01c0824e647613e10e09e2c7ae"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U03.md",
+      "bytes": 1982,
+      "sha256": "b59d3fac23af58e0daf9789a5d8ee8c8556ce3d6403daac930e0a0b8d302484c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U04.html",
+      "bytes": 6018,
+      "sha256": "94a367efb6f03a8af2da090db7a7ae035ff2c65b44f651cd9787b7e851090ac6"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U04.md",
+      "bytes": 1933,
+      "sha256": "bb45104157a8196c766712ae6fee0d36d9cd7d73472b178deff54a67627bfab0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U05.html",
+      "bytes": 6045,
+      "sha256": "15bfc2a396b044536ad57665f6472fb91c45ce4d3b2eb30f0004731ab510cd44"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U05.md",
+      "bytes": 1952,
+      "sha256": "af04ac145660b77ec396d3f4a12631768bbd888e0705d98381c78dc897f16594"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U06.html",
+      "bytes": 6084,
+      "sha256": "625b09ec8be20ed15115922f4efc76a22c73626bdfd65d5ae03b40059b043c1f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U06.md",
+      "bytes": 2011,
+      "sha256": "f11dd45b43bf3294087a55201a8875e5436db02333c84fd34b802adaaf546b88"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U07.html",
+      "bytes": 5991,
+      "sha256": "772c7d9d50597c0cb177e9df14209528aca0e364285dedaea3722931d72b53f6"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U07.md",
+      "bytes": 1930,
+      "sha256": "b6a97131ea1f10507770fee953a8527502c42fccab2746af2bb7ba1fb8aec947"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U08.html",
+      "bytes": 6017,
+      "sha256": "322ccf061d24ebe415abb7b21b359523403f38accb2f527012ac74d4e0d4849a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U08.md",
+      "bytes": 1920,
+      "sha256": "0b956ec51cec8a48cd2c951a1ee191475af84318eaa2d9e3efbdf9bd9191e4e2"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U09.html",
+      "bytes": 5986,
+      "sha256": "660fdce810fdac1e95472a24d434f3470133a46116e080f10ea8d388ef5b2117"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U09.md",
+      "bytes": 1913,
+      "sha256": "43fd93a269979c7d8279d4c23c3995aacaf8cadfee17fec57abd81c2d366781f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U10.html",
+      "bytes": 6140,
+      "sha256": "b9e594427b0817ebe93889b7cf7fce4f4e4d98d1d5088ca5afdb70f1c8b671c1"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U10.md",
+      "bytes": 2063,
+      "sha256": "f9f7ac9a2b9f8d5234daa468d28576d5a8c8db48c683d87561328cc183f0bdb2"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U11.html",
+      "bytes": 6641,
+      "sha256": "1bec7ca27eaaac5a5cb95e9d3d833601576422418d3672b984585dd4326c7dde"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U11.md",
+      "bytes": 2696,
+      "sha256": "7da74444ca6694a1a8ddc138f66c322c085e7350b9687cba5b0689c337f94aa9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U12.html",
+      "bytes": 6544,
+      "sha256": "489968a7ffd2752b3e54937a797f476ca967c08a02519073aadffc2a7d06dbf8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P10-U12.md",
+      "bytes": 2619,
+      "sha256": "ed87fc2d599a330dbef70ceaf79757443b828526df918702c799485525a809de"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U01.html",
+      "bytes": 6679,
+      "sha256": "2dcf019d55730bd78473a4d7fd68e4c5f4948d7be5be2d8ba9d66b8d030b2307"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U01.md",
+      "bytes": 2664,
+      "sha256": "1a080fb23ecb8f1c10f385c7eccd23fbb2d018f830d7556954b510ac8fda013b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U02.html",
+      "bytes": 6642,
+      "sha256": "951797f96f47ea2ac08768ff282cf4eb0955501900e05e594f9f16f5e975acaa"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U02.md",
+      "bytes": 2651,
+      "sha256": "f81ff25c15cf5bff608b2f555fa0848c2f935600302fd5a1a6d0a1b238e91117"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U03.html",
+      "bytes": 6067,
+      "sha256": "33e401ec610aa6f1cfaec681406fdd1d94601c481ab2e9b83aa7ad9b9c39dfcb"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U03.md",
+      "bytes": 1845,
+      "sha256": "5721d9d57899f103e94d6676d98d87a620aa00010de124349ed19cf8bf0f41a2"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U04.html",
+      "bytes": 6039,
+      "sha256": "798f88d197b88d42bca6854a0ebe5a3c70c880d1fda79c9f05814d38a515ad9d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U04.md",
+      "bytes": 1833,
+      "sha256": "9aef37817405ac18014f64da56fd1b9d3ae3335cbbb1f3ff6e8544b12a29a538"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U05.html",
+      "bytes": 6024,
+      "sha256": "2d724f3d6d717149a89f35d6af4af6e957cee73e60c274ce16e595422a7ef7ff"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U05.md",
+      "bytes": 1915,
+      "sha256": "73df3e639f9837b9bf64746bbbece5c51a7c555c66a14deb870e70a61c0beefc"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U06.html",
+      "bytes": 6028,
+      "sha256": "211b8d09011b5abab07842d7b8259466e8ce1f43ec0590145a8aa30dbce1afc4"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U06.md",
+      "bytes": 1974,
+      "sha256": "e26cf87d29c9f362e9e428ccbf57d07aa0bebe0e6af43dd471d417d0bb0c517b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U07.html",
+      "bytes": 6025,
+      "sha256": "9dff34176326b7f6c19ea21e0316f44224bf78f1ab1826f8c6990ede87d531ca"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U07.md",
+      "bytes": 1959,
+      "sha256": "27b84ca4e34444ae18734a7193dd0e240e4176b39b554c1a001e9a1aaf43cd3a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U08.html",
+      "bytes": 6047,
+      "sha256": "d8beb9c006c07e42602ddf4e1a1b19cede17b5a1b1f18f0283931aa983d12932"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U08.md",
+      "bytes": 1888,
+      "sha256": "f44f82792d2551f807e395a3692b60fce9e2642cc6824317386bdb52392154ab"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U09.html",
+      "bytes": 6602,
+      "sha256": "4c5005839a6349fc5f623bfe2fd89d728ee1f18c4fc1f90acb3be961cfcf2e8a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U09.md",
+      "bytes": 2611,
+      "sha256": "f5921cd25bca34a1e1e64d1a3c524947b387498072ba59bb2bae8c13470aee47"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U10.html",
+      "bytes": 6525,
+      "sha256": "e00f71c32d4d9d701b8762eed304fe9a7be9ad1b9d1020e2b3caea1bddbe7ab5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P11-U10.md",
+      "bytes": 2554,
+      "sha256": "976d8e07c4426c2f13a83f27c7aebad3ddd8d9223fa8a7f78827bbc272a053e7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U01.html",
+      "bytes": 6718,
+      "sha256": "1eff0787ca9b9893b5ea57db29a8cbefc0b8ddf9760b7ba227b9ad3df8042db6"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U01.md",
+      "bytes": 2656,
+      "sha256": "099223732512083fc37601cf3c9d9b4806446aa95a2f75a11cc69fcc309a54a3"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U02.html",
+      "bytes": 6675,
+      "sha256": "fa9053052d3b82f144fed13d9cbb5e786ccc4fec5f322d6f4d66d065abd2ca06"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U02.md",
+      "bytes": 2637,
+      "sha256": "937458d26b048740cc16a1b821d154a0eacd4271f5d07a810d8c16fcc9ea8cab"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U03.html",
+      "bytes": 6082,
+      "sha256": "93a2d162cd1d4821d89ba1fe608f851ee7ecea10b87f597888c5554409fb7d18"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U03.md",
+      "bytes": 1927,
+      "sha256": "4da337131c3d3aeec84c601c2b5eb2e600589d1181c93ed6155ad34711316ac0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U04.html",
+      "bytes": 5997,
+      "sha256": "9f44496067acfd1909f7f6ea36fd4979834d3441c5a697b697bd00fdae8de90b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U04.md",
+      "bytes": 1924,
+      "sha256": "badfb23de83fbabaa76265fc294c9e8b4854cd95424d083c6ee909ac6395f8d7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U05.html",
+      "bytes": 5975,
+      "sha256": "8bfa49f01a2f6c960006ab702e8628c749dd9d7076fd23b1b703f82e3c632947"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U05.md",
+      "bytes": 1914,
+      "sha256": "4b3a57e0621246682e2b2bfd42ddea37d4959593d14635d87ff6c7388d90ddd1"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U06.html",
+      "bytes": 6056,
+      "sha256": "6921803097ea2891358577e1959ecb3a0281d98e5a077a514c6b775b1afd7a79"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U06.md",
+      "bytes": 1983,
+      "sha256": "b51f2c5ec51471ae8879c8cad39be28242fba4a3deca7db650aa8bd482f1401a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U07.html",
+      "bytes": 6073,
+      "sha256": "723fca31285b4f2a7103d2eb3ff6f5b3f5229997a3e9d7277d1a52f62050e974"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U07.md",
+      "bytes": 1918,
+      "sha256": "e7364ae03964847d7bc53dbc8b5d2896ea56ce0bde2b800693f776f48bb1a7f0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U08.html",
+      "bytes": 6625,
+      "sha256": "ebe8a101c9e6565f6edac9a8ef045871d507bffd49e2a7b73b91a40b35696bb0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U08.md",
+      "bytes": 2587,
+      "sha256": "35c14e0d536d6ed30fc42a720beca18f13b7200dcedf523f5dfd64e0971a7cb7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U09.html",
+      "bytes": 6558,
+      "sha256": "cb92a3a7f7ea90184e4ddf931c2086eb9285fb5a8fc2ee1ff2966f321db9d7c5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P12-U09.md",
+      "bytes": 2540,
+      "sha256": "63c1f952933e5f7d14aeba8d79c749f309da3ab24c8a5a422e1b6302874c7f2d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U01.html",
+      "bytes": 6836,
+      "sha256": "2da3827e55ddf9326965642bafe01e38de23c6b48177cbc984512183637b52cf"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U01.md",
+      "bytes": 2882,
+      "sha256": "69ee00434b5851a6b52106362a1395859eb8ed6ec5122d5d9e2d39f94ee55e71"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U02.html",
+      "bytes": 6810,
+      "sha256": "ff56467e4c6f4370534ccac91d35f658150f14b9b769beb03955ce5021708da5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U02.md",
+      "bytes": 2880,
+      "sha256": "14e27ad3f3501d789381a5981b6f35ccc0725242ffb2ff39549876a56436a455"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U03.html",
+      "bytes": 6143,
+      "sha256": "e6075219e2117c1d4bd0a9fcaf739f92f42acfec8cdc533ea0d6d6a599515114"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U03.md",
+      "bytes": 2038,
+      "sha256": "6a18ceefae1352cc0f407d4d3a0c8e3fd9cb4d2732247b4c0a0c89578d9b0e15"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U04.html",
+      "bytes": 6093,
+      "sha256": "6cdcc2a5c7d26c656fa1f7c4027fc2ea04d5bd9dba57afb4d46c09038f07a484"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U04.md",
+      "bytes": 2015,
+      "sha256": "7794968e0cbcdec95319aeeede8f2d21ae7ffe1c0f2dad5e069828c9d9055102"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U05.html",
+      "bytes": 6079,
+      "sha256": "6a046bca6ed49962cf22de5379c743a99682bcdd09a403334d8b020d96b83cb5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U05.md",
+      "bytes": 2033,
+      "sha256": "d4232dc579486afd1e5e6f84bc7c5853f55c0086440ed2244389e9d3bc699843"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U06.html",
+      "bytes": 6045,
+      "sha256": "075285861089960e4798af3db3f4f221dae721fada5bb7b512d2238ef4677815"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U06.md",
+      "bytes": 1948,
+      "sha256": "c50ee9b3ce53cb10b0655ce6e61ffe1c61c8fc207ef87fe30892124670c1a7f4"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U07.html",
+      "bytes": 6186,
+      "sha256": "1a401140fbe32bf0e7df79903401fcbe1abeeea74f9e0ae3e14bf4364f5c637e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U07.md",
+      "bytes": 2135,
+      "sha256": "d89e9f7d81eea51983546191fcc43b054e043ea3bb2d8d44ab959b69e0569537"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U08.html",
+      "bytes": 6037,
+      "sha256": "406e5fb6c5e5868170c3b0561be3978daf4947b976c075d0df5f77d9d996c755"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U08.md",
+      "bytes": 1896,
+      "sha256": "6aeb913d52d0c377bd342941fdbecc3e9f2a47cc5b1c998abe562f6f97d3591d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U09.html",
+      "bytes": 6764,
+      "sha256": "e84feb5c59727999826dde22e5ed0bbd59c6d3722b00b8c62d25879d7de5315b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U09.md",
+      "bytes": 2834,
+      "sha256": "a16ceeb62c3edafcd034b86426930941ace7468e8a42b448a379458b421b9577"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U10.html",
+      "bytes": 6687,
+      "sha256": "f8136250a6b3594b28e1dc4e8c60c62d7463279fc34a3ea7d9cbf89c05aa7247"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P13-U10.md",
+      "bytes": 2777,
+      "sha256": "955d5da4ad7d3204514962b8bad6e9ddf9900dcd4660dc5f02739bf757bc3d54"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U01.html",
+      "bytes": 6808,
+      "sha256": "417418829305bc374c5f92e955d0aec381d7cd8b73e70020a649df69b9eb013f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U01.md",
+      "bytes": 2952,
+      "sha256": "34384603007c6dfd6f5f5656f9b6b835a01046ecc5b4161f1b528979818f1115"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U02.html",
+      "bytes": 6771,
+      "sha256": "59f1d64e4d45d5ffb17596bf3d6c9d7fb7efcd18f3687f5c9e944fdcf1ccd660"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U02.md",
+      "bytes": 2939,
+      "sha256": "28155d5da145063adca097f5f6bce5310e2076b29b9598b9c01c550af0eff26f"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U03.html",
+      "bytes": 6122,
+      "sha256": "7e8f7896383ceda269577042734e9d86ca0d24f2f0dfb17bda485ce356c83673"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U03.md",
+      "bytes": 2057,
+      "sha256": "a80156bf9278f99ccc0c74c5d786b6048d350b8d5780863a9a5ce1906a41a8e8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U04.html",
+      "bytes": 6117,
+      "sha256": "a1d3eca5972cc88e1cd889776db3fe57df1ed4edd1a0fb19b3d218a385e6bf49"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U04.md",
+      "bytes": 2071,
+      "sha256": "0d7b5ae80f23bf38db90600d46635a34bba1c85289e20a90d7c8d6f459aae079"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U05.html",
+      "bytes": 6112,
+      "sha256": "72bb183bf059b343579bc4d2494ea993e5928e7a0a983d6903e630d190390b01"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U05.md",
+      "bytes": 2009,
+      "sha256": "5ce30e9e65a61d2cef263b93edb0beb9a3234cc6bea01585586caa94542fdd67"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U06.html",
+      "bytes": 6103,
+      "sha256": "6900f12a34d0ed5d4a729a2e74ec503058e25c3da834569e7abdbaba962a191a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U06.md",
+      "bytes": 2108,
+      "sha256": "45128b29cb5a559b41b94727704ad47e6fb02caec3a5b3f293e23f0005c34579"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U07.html",
+      "bytes": 6182,
+      "sha256": "a61e7609053f36c7cd671501869d9acbaa9bf2806c30dde2d92b6436bd117ed5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U07.md",
+      "bytes": 2140,
+      "sha256": "6b670bbcc109f20e6d0429170705ff9c22cab4f1b97c448bf0368c171934ef28"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U08.html",
+      "bytes": 6017,
+      "sha256": "34a1dedda0865585eec72ca2baafccda85d66d12120793782c9ca05ea36c949b"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U08.md",
+      "bytes": 1940,
+      "sha256": "af14df7335b16e959a9695395e40e46acbc68f6dc31f64f7493dae6f5bb2e045"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U09.html",
+      "bytes": 6742,
+      "sha256": "8a43aaac57395c36f5d51fca0997dc16624a5f2c74d4c4b66530f1af87e214f0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U09.md",
+      "bytes": 2910,
+      "sha256": "dd69d8e4c8327485c43f28fefbd6715155e1a8d557a0d174bd00eb301d72c3c8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U10.html",
+      "bytes": 6665,
+      "sha256": "ca038fb242201cff67139f5093cc2b9d417d1ca9676ab7eaece1b7262c27b0d5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P14-U10.md",
+      "bytes": 2853,
+      "sha256": "76e180755a12285b526a3c04fc11ae8a18320aa903dac49378f39a255f8c5788"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U01.html",
+      "bytes": 6783,
+      "sha256": "1f3ec0f7d7d0a3c80eb4b073a4d1dee55af6895fafd38b59aa7d946744dc79cb"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U01.md",
+      "bytes": 2854,
+      "sha256": "5b377c8148d1cdf5c1988e4cb3a3234679f9651f1c264c8e7b3205b0c5ca7cde"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U02.html",
+      "bytes": 6760,
+      "sha256": "837123f19e45b5eb3f80c7b04b9ce0486b50d747937a5c6b772ff43a182e073e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U02.md",
+      "bytes": 2855,
+      "sha256": "4ca2aea379949a134a64efbeceeed035c3d4cce0e0f987d6ef198d21a3416a8a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U03.html",
+      "bytes": 6161,
+      "sha256": "dc44c6b0f49e547bbe40142a58f14665df638e9d7d2ab353f962258edaa78e0c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U03.md",
+      "bytes": 1955,
+      "sha256": "a4006f2d12492842c339a4ce63ea042a8a1227ea0adad018c4fe703780ff383a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U04.html",
+      "bytes": 6137,
+      "sha256": "b7d040183948e9dd52cc4162184bfff65b0a38bb802a9329910c5233dbf33f4e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U04.md",
+      "bytes": 2076,
+      "sha256": "3721f0e1a03c52464e21e457eb77ef417d7daba6abef4b89abcfc43583fd749c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U05.html",
+      "bytes": 6153,
+      "sha256": "8afa8e21728521c897b18cf46965e0cb75cf5673f80957692ecf05f5908948ea"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U05.md",
+      "bytes": 2088,
+      "sha256": "979fbfc1d7470d15db0aa28f4cbf5fd53924e18d766b24b3c341db04cc5d9cfd"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U06.html",
+      "bytes": 6204,
+      "sha256": "f64af70c54a318617e32400aa081299693d23a1a4b843de10d54c63d6a82cc26"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U06.md",
+      "bytes": 2232,
+      "sha256": "efd2f2c2b9dfad57fce6d0f690b3dff5c41c85bc0a0816e7ea5a6233ae7f16ff"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U07.html",
+      "bytes": 6058,
+      "sha256": "1fabefb9d86e3ef573d911170da23e9e5806b938bc35b1c8636b8480fffef9c7"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U07.md",
+      "bytes": 2001,
+      "sha256": "1299d4452e2c8d09779d983b22de2a81abfff3038d582635c0e1e6b8b9850304"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U08.html",
+      "bytes": 6799,
+      "sha256": "bfb7b8f4b2e8345356ce0f8592c1b869e2b9748bc435ae24f7c42f953379a471"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U08.md",
+      "bytes": 2894,
+      "sha256": "97e4377d510195cfeb65a357feb610ee3e9877d12213b425d3a8f5bf96628ec0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U09.html",
+      "bytes": 6756,
+      "sha256": "e6f4c6ba610000277ad007e99452d42989dfee4f01af5f9d167b05d850fdd631"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P15-U09.md",
+      "bytes": 2855,
+      "sha256": "6276238b98099c6b1ae123ab347f09e421976a029045a82a3c3cb306bb728f57"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U01.html",
+      "bytes": 6769,
+      "sha256": "55bb2e03635124995a548f404edc4885beaf1cf391f5583a44bcb481577076b5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U01.md",
+      "bytes": 2818,
+      "sha256": "f19b2c20c797153e01b4a96d45adcba126cb1cc07dd2631cf044143739bfaf7e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U02.html",
+      "bytes": 6742,
+      "sha256": "10b9f500e071e22fb74c0f5b2ae28968fa0495e553d6da5678c8b04cca25003a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U02.md",
+      "bytes": 2815,
+      "sha256": "985277b43300823f372b8b9fa3f7f6d40e1ae44e95424310eb1faf97fd0fca51"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U03.html",
+      "bytes": 6100,
+      "sha256": "25af3626e63881ae37854da086e2f1a9f8f6e56b124c47b493babcb09f60aca0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U03.md",
+      "bytes": 2044,
+      "sha256": "64a3047efe122b49e0f5086a6d10bb2b51520eeb9302a02695825cc15a07577c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U04.html",
+      "bytes": 6080,
+      "sha256": "801dd23e948aa91def7507576201013bbd89a1088478cff521bac4cee9af5669"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U04.md",
+      "bytes": 1971,
+      "sha256": "ef1efefb1f0d9d63e49ff467c45f02edb155fc07a7a08c465f43b4af69e45aa2"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U05.html",
+      "bytes": 6014,
+      "sha256": "f5d82eabfab10434c9ef384d930a91b940ef3c4f13319be6042856b412db8d1c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U05.md",
+      "bytes": 1929,
+      "sha256": "3a742c2dffcbb3cea643277c2a7ffddd1d7fe5bb28d7ba37dc08647da353efa9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U06.html",
+      "bytes": 6084,
+      "sha256": "598fede778d3d02ba09170c85147932b3fa795977d7931c986bd2149bab155d4"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U06.md",
+      "bytes": 2050,
+      "sha256": "96a289b672c0144cb9b6a4acebf15c21298ee3a7dfc0d344614bc33b358e7389"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U07.html",
+      "bytes": 6062,
+      "sha256": "1e30ef4549cdb7cb38d2162a2f747b8670dddcef94dc3b12455c48c154d41d78"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U07.md",
+      "bytes": 1921,
+      "sha256": "d663cbf679be99e9f16d3f0613152da32efc2f57eba4246632f595c8c2a256ae"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U08.html",
+      "bytes": 6702,
+      "sha256": "5e394de297e5f0d512f0ba59eed0e7974fddc443fe96afb35dab5fe8f8c4d476"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U08.md",
+      "bytes": 2775,
+      "sha256": "f173b9bcb9c71b74f8f4698ac66a702cf9c4a845ea8e7d1f4ca3881c3ed81f1a"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U09.html",
+      "bytes": 6629,
+      "sha256": "c3d52e8506a4544c2c126b364df45ddf0d8946981064e6224235371c5c246fef"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P16-U09.md",
+      "bytes": 2726,
+      "sha256": "ae5f23c2fa8dd52d33b484a2abdf2dcd71bad882d90b3a49a55e5a7c5332aca1"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks.json",
+      "bytes": 234014,
+      "sha256": "445d75d540612c07147860f894a2740b439370a11612fee46630e6e74a5761fb"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/AGENTS.fragment.html",
+      "bytes": 4571,
+      "sha256": "413d24bef1f1833a0e288bc9678858d6bbb0418b7b60d4585769129cfec217f4"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/AGENTS.fragment.md",
+      "bytes": 746,
+      "sha256": "5d8b3ae5eeb64754d9f2e793888da7606dcced0776596abfe0a5d315776fbc87"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/adr.html",
+      "bytes": 3947,
+      "sha256": "419829b95bce99ce961f2501b92ea5101e31c45430cfc1369fc16be6210f03c1"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/adr.md",
+      "bytes": 312,
+      "sha256": "1f806f61f80635e6d74eb1be303549ebce193cde9cff022d8a30f56ac8d361fb"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/change-request.html",
+      "bytes": 3970,
+      "sha256": "39ac134bfc1e92336c28ced7c3668c87715f0bf30bdb1b90925a145ac779ac1e"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/change-request.md",
+      "bytes": 307,
+      "sha256": "6d4ea2ff16965cb98c1dd7c697987c2b7240df6f99bf70929e56a7553190ee74"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/handoff.html",
+      "bytes": 4498,
+      "sha256": "11f5a898b4b0204e1b8aeadbf1ade8390ced0a3e792b078b902e2bf4f4989148"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/handoff.md",
+      "bytes": 568,
+      "sha256": "fb3dbc70617f4ddbad04764772c176d0834b0637ff9fc4f4ba9a4fb125e81e74"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/porting-record.html",
+      "bytes": 4420,
+      "sha256": "90bf747c586e27f8f64a964f5c9c744bbf721a200a01f546ae7a76ffe9eb6fc9"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/porting-record.md",
+      "bytes": 442,
+      "sha256": "e98b876143a3483e0e7e89373306197b7208b2ca1cf491d8091f76dcf5a20401"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/project-note.html",
+      "bytes": 4521,
+      "sha256": "a7bb0688931e362cd1c7ce0d56316bfc3474d4304af7b78c483b8849ca09009d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/project-note.md",
+      "bytes": 502,
+      "sha256": "b06a720e58ef635ce9929e58339fbbb6f40a90985e938c131cbfb648269b1ae5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/reuse-decision.html",
+      "bytes": 4804,
+      "sha256": "3416684bb116739b0dcde524cde42c852b81450066f56b6cf91915505995c286"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/reuse-decision.md",
+      "bytes": 757,
+      "sha256": "1d22cc2eb53c864f624b40dbbf2395b610555b07cd816f94eedde3b067783795"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/unit-result.html",
+      "bytes": 4908,
+      "sha256": "83d3e5bf4ad934039f83718927b298eddb1dd86287b6d18f053825d470992f1d"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/unit-result.md",
+      "bytes": 735,
+      "sha256": "9c9dc9642771ddea6a60892c3a53fd6237ad7fba538bea43c84237290c72e477"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tools/validate_plan.py",
+      "bytes": 2431,
+      "sha256": "7dec7fe67934a221638a39e6385686d3fb46b64f660d7d6d1b3e69ded4f347ae"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/versions.json",
+      "bytes": 14915,
+      "sha256": "3ed412016b4a938c063bc7af0dd216f808922f16427a06407c53bb8aa9a1f6b9"
+    }
+  ],
+  "plan_mismatches": [],
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P02-U11.md",
+    "bytes": 2719,
+    "sha256": "d6d925953dc34c01f31dcc1d3a4a9af441c22f424c99e4da3b8a5942a24a2624"
+  },
+  "historical_g01": {
+    "path": "evidence/P01-U11/20261002-01/acceptance.json",
+    "bytes": 1650,
+    "sha256": "f7b8f9e31439093f0442298ea544bf390ec142fdd508ce4e107ceb241540a63f"
+  },
+  "boundary": "Canonical archived acceptance/review and plan bytes only; does not manufacture gate or prove unrun product behavior."
+}

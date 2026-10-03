@@ -1,6 +1,6 @@
 {
   "name": "xiadie",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.33.2",
@@ -15,7 +15,7 @@
     "test:contract": "node tools/run-tests.mjs contract",
     "test:integration": "pnpm run build && node tools/run-tests.mjs integration",
     "test:eval": "pnpm run build && node tools/run-stage-tests.mjs eval",
-    "test:e2e": "pnpm run build && node tools/run-stage-tests.mjs e2e",
+    "test:e2e": "pnpm run build && python -X utf8 tests/integration/P02/desktop.py",
     "build": "tsc --project tsconfig.json"
   },
   "devDependencies": {
