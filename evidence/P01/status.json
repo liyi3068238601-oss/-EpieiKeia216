@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-02",
+  "date": "2026-10-03",
   "goal": "完成 P01 并在 G01 验收冻结后停止",
   "project_root": "E:\\Xiadie\\Xiadie",
   "baseline_commit": "7ab0e81f63e9559a1b182f43b9e242e8a8e703fa",
@@ -479,7 +479,20 @@
         63105
       ]
     ],
-    "product_launcher_enforcement": "required in dependent implementation; product not yet started"
+    "product_launcher_enforcement": "Verified for the owned Desktop candidate: numeric loopback OS-allocated ports, fixed 9229 disabled, installed ZCode preserved.",
+    "latest_validation": {
+      "full": {
+        "path": "evidence/P01-U11/20261002-01/runs/final-01/full/summary.json",
+        "bytes": 63611,
+        "sha256": "fa42cf053f3cd4c299c801f6e04aeee2ec446ab35f2801dc4497fdc7e1a8d479"
+      },
+      "degradation": {
+        "path": "evidence/P01-U11/20261002-01/runs/final-02/degradation/summary.json",
+        "bytes": 40777,
+        "sha256": "41d3dfbb5445dba0c688e1dcc1af63e0872129191cc37a98bafdec47bc394709"
+      },
+      "historical_verified_launches_and_ports": "Earlier U02 launches retained above; these are not cumulative P01 counts."
+    }
   },
   "transport_inventory": {
     "path": "evidence/P01-U02/20261001-01/transport-inventory.json",
@@ -557,6 +570,18 @@
       "bytes": 1650,
       "sha256": "f7b8f9e31439093f0442298ea544bf390ec142fdd508ce4e107ceb241540a63f"
     },
-    "scope": "Local development candidate; limitations and exact artifact hashes in docs/releases/0.1.0/"
+    "scope": "Local development candidate; limitations and exact artifact hashes in docs/releases/0.1.0/",
+    "accepted": true,
+    "gate": "G01",
+    "author_snapshot": {
+      "path": "docs/releases/0.1.0/freeze.json",
+      "bytes": 7938,
+      "sha256": "bf30d2ea3425fea221883c1369b83d260c76b147c0d8f3f9ef226cf867e51ae7"
+    },
+    "input_inventory": {
+      "path": "evidence/P01-U11/20261002-01/coordinator/freeze-inputs.json",
+      "bytes": 10447,
+      "sha256": "3f968f4005cb0cd9bacdde3d1b2e7584a07e3c6e1b91828c68cfa727e22875df"
+    }
   }
 }

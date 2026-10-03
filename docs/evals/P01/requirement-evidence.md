@@ -1,31 +1,31 @@
 # P01 需求证据映射
 
-本文按冻结的 [P01 阶段计划](../../../planning/Xiadie_V2_v1.1/01_项目计划书.md#p01--010最小骨架与遐蝶角色)、[需求定义](../../requirements.md)及 [U10 任务卡](../../../planning/Xiadie_V2_v1.1/tasks/P01-U10.md) 与 [U11 任务卡](../../../planning/Xiadie_V2_v1.1/tasks/P01-U11.md)映射当前证据。需求范围保持原样：P01 对应 R01、R02、R03、R05、R06、R13；它们仍是 1.0.0 Must，P01 的阶段证据不等于全项目 Must 已完成。
+权威范围来自冻结的 [P01 阶段计划](../../../planning/Xiadie_V2_v1.1/01_项目计划书.md#p01--010最小骨架与遐蝶角色)和 [需求定义](../../requirements.md)。P01 对应 R01、R02、R03、R05、R06、R13；本阶段证据不等于这些 1.0.0 Must 已全部完成。
 
-当前状态和接受索引以 [`evidence/P01/status.json`](../../../evidence/P01/status.json) 为准：U01–U09 均 accepted，U10 running，U11 not_started，下一阶段尚未启动。索引列出每单元精确 acceptance/review 路径、摘要哈希和接受提交；表中链接对应单元结果。早期 result.md 中的 `ready_for_review` 是作者提交时快照，不覆盖当前接受索引。计划定义 G01 为“身份资产可验证，主交互可运行，失败不报成功，禁用扩展不破坏原生 Runtime”。G01 仍 pending；下表是接受单元支持范围和缺口，不是 G01 判定。
+U01–U11 均已 accepted，G01 已 pass，0.1.0 本地开发候选已冻结。精确 author、review、acceptance 和集成提交见 [状态索引](../../../evidence/P01/status.json)；版本范围和哈希见 [冻结记录](../../releases/0.1.0/README.md)、[freeze.json](../../releases/0.1.0/freeze.json)。早期结果中的 ready_for_review/pending/running 为历史快照，以当前接受索引为准。P02 尚未开始。
 
-| Must | 已接受的 P01 证据 | 证据边界与待验证项 |
+| Must | 已接受的 P01 证据 | 保留边界 |
 | --- | --- | --- |
-| **R01 固定原创身份与表达连续性** | U01 记录角色来源及保留背景的决定；U04 接受版本化 persona 资产、manifest 和只读加载器；U05 只从获批角色生成 `ContextPacket`；U06 在实际 ZCode Loop 中执行身份/packet 前置门禁；U09 以实际 ZCode、固定资产哈希和两条官方模型 ID 完成 5 场景评测。见 [U01](../../../evidence/P01-U01/20261001-01/result.md)、[U04](../../../evidence/P01-U04/20261001-01/result.md)、[U05](../../../evidence/P01-U05/20261001-01/result.md)、[U06](../../../evidence/P01-U06/20261002-01/result.md)、[U09](../../../evidence/P01-U09/20261002-01/result.md)。 | Flash 是当前唯一合格候选；V4 Pro 已测但 disagreement 中反转了承诺主体，不能称为人格合格。U09 `human_review.status` 为 `not_reviewed`，runner 结果不替代人工角色审阅。保留的游戏背景不构成“角色原创”或公开发行权证明。U10 的 Desktop 集成仍待接受。 |
-| **R02 ZCode 主工作与 Core/DSH 边界** | U02 比较并验证复用原生 ZCode 的路线；U06 使用固定版本原生 app、Hook、工具和单一 Loop，并验证扩展禁用；U07 把原生 `sendInput`/TurnResult 与工具终态回执投影关联；U09 验证普通回复、Read 成功及失败均来自实际 ZCode 路径。见 [U02](../../../evidence/P01-U02/20261001-01/result.md)、[U06](../../../evidence/P01-U06/20261002-01/result.md)、[U07](../../../evidence/P01-U07/20261002-01/result.md)、[U09](../../../evidence/P01-U09/20261002-01/result.md)。 | P01 未集成 DSH；U03 也明确尚无产品 Core 可供边界扫描。因此当前证据支持“测试路径复用 ZCode 主 Loop”，不能证明最终 Core/DSH 边界和所有普通请求的产品路由。U10 还需完成独立集成回归。 |
-| **R03 先查现成、再试、后最小实现** | U01 调查成熟路线与来源；U02 保存隔离成功、失败、恢复及采纳理由；U03–U09 各自的 `result.md`、接受记录和独立审查保留实现取舍、失败修正与运行证据。全阶段索引见 [P01 状态/接受记录](../../../evidence/P01/status.json)，具体来源决定见 [U01 调查](../../../docs/research/P01/native-reuse.md) 与 [复用 ADR](../../../docs/adr/P01-reuse.md)。 | R03 适用于 P00–P16。这里只能证明 P01 已完成部分有调查和证据链，不能替其他阶段作证；U10/U11 自身的集成与 gate 审查仍未完成。 |
-| **R05 多会话、消息操作与流式恢复** | U07 针对原生 admission ACK、`turnId`、completion 和成功/失败/partial/cancelled 回执建立投影并通过 native integration；U08 在隔离 profile 中两次启动实际 Desktop，验证 Settings 与预置的 ZCode 原生历史可读。见 [U07](../../../evidence/P01-U07/20261002-01/result.md)、[U08](../../../evidence/P01-U08/20261002-01/result.md)。 | 尚无 P01 证据覆盖 UI 中完整的查看、编辑、重发、停止、并发隔离及重启恢复矩阵。U08 验证的是隔离 profile 中的原生历史读取，不是 P02 应用持久层；U07 投影本身不持久化。U10 final-04 的 candidate-06 full suite 6/6 通过，覆盖普通发送、读工具成败和取消恢复；仍待独立接受，且未覆盖完整的多会话编辑/并发/重启矩阵。 |
-| **R06 模型配置、能力矩阵和降级** | U02 对 `deepseek-flash`、`deepseek-v4-pro` 两个官方 model ID 做过原生路线验证；U09 保存两个 ID 的实测场景、工具回执和模型能力矩阵。见 [U02](../../../evidence/P01-U02/20261001-01/result.md)、[U09](../../../evidence/P01-U09/20261002-01/result.md) 及 [model-capabilities.json](../../../evidence/P01-U09/20261002-01/model-capabilities.json)。 | “两条路线都测过”不等于两模型都合格，也不证明后端独立性。当前只允许把 Flash 列为 P01 合格候选；Pro 的 persona qualification 未通过。U10 final-04 的 Pro 选项不可选且零模型请求，disabled_native auxiliary-title 也已按 pinned SDK 实际缺省字段通过；该场景使用 synthetic loopback provider，不证明真实凭据或付费链路。U10 尚未独立 accepted。 |
-| **R13 单轮来源分层与 token 预算** | U05 定义并验证来源分区、角色版本、序列化和 UTF-8 字节上限；U06 在实际 Hook/model delegate 路径核验 canonical packet；U07 保留 turn 级原生事件关联；U09 的 14 个真实模型请求均与对应 canonical packet hash 相符。见 [U05](../../../evidence/P01-U05/20261001-01/result.md)、[U06](../../../evidence/P01-U06/20261002-01/result.md)、[U07](../../../evidence/P01-U07/20261002-01/result.md)、[U09](../../../evidence/P01-U09/20261002-01/result.md)。 | U05 上限是 packet JSON 的 UTF-8 字节上限，不是 tokenizer 实测 token 预算；超限拒绝整包，不验证最终需求所述的确定性裁剪和保留当前请求。原生 system/project 规则也不在该 packet 预算中。R13 的完整 Must 留待后续阶段。 |
+| **R01 固定原创身份与表达连续性** | [U04](../../../evidence/P01-U04/20261001-01/result.md) 的版本化 persona/manifest 和只读加载器；[U05](../../../evidence/P01-U05/20261001-01/result.md) 的 ContextPacket；[U06](../../../evidence/P01-U06/20261002-01/result.md) 原生 Loop 身份门禁；[U09](../../../evidence/P01-U09/20261002-01/result.md) 两个官方模型 ID、5 场景实测；[U10](../../../evidence/P01-U10/20261002-01/result.md) 与 [U11](../../../evidence/P01-U11/20261002-01/result.md) Desktop 集成。 | 用户审核 v3 精简角色且保留所有版本；保留游戏背景是明确的范围偏差，不能声称角色原创或公开发行权。Flash 仅在已测 v3/5 场景中合格；Pro 的承诺主体反转问题未解决。U09 人工评测仍 not_reviewed。 |
+| **R02 ZCode 主工作与 Core/DSH 边界** | [U02](../../../evidence/P01-U02/20261001-01/result.md) 复用试验；U06 原生 app/Hook/单一 Loop；[U07](../../../evidence/P01-U07/20261002-01/result.md) sendInput/turn/tool 回执投影；U10/U11 实际 Desktop 的启用、禁用及无 DSH 路线。 | P01 未集成 DSH、未建立最终 Core；check 的 BOUNDARY_SCAN_NOT_RUN 保留。已验路径不能替最终 Core/DSH 全边界作证。网络保护为进程级仪器化，非 OS sandbox。 |
+| **R03 先查现成、再试、后最小实现** | [U01 来源调查](../../research/P01/native-reuse.md)、[复用 ADR](../../adr/P01-reuse.md)，以及 [接受索引](../../../evidence/P01/status.json) 内 U01–U11 的调查、隔离试验、失败、修正与独立审查链。 | 只覆盖 P01；其他阶段需要各自的研究、实验和验收。 |
+| **R05 多会话、消息操作与流式恢复** | U07 的 admission ACK/turnId/completion 与成功/失败/partial/cancelled 投影；[U08](../../../evidence/P01-U08/20261002-01/result.md) 的隔离原生历史；U10/U11 六项 full 流程，包括普通发送、读工具成败和取消后新轮恢复。U11 离线前后原生历史 marker 保持可读。 | 完整编辑/重发/并发/重启矩阵未验。原生预置历史不等于 P02 应用持久层；U07 投影不持久化。sidecar 不是 renderer 的证据面板。 |
+| **R06 模型配置、能力矩阵和降级** | U09 [模型矩阵](../../../evidence/P01-U09/20261002-01/model-capabilities.json)；U10 的 Pro 不可选且零请求；U11 无 Key 的空配置/禁用发送/零请求、无 DSH 的回复、503 离线失败和 Settings/历史可用。 | 两个 ID 不证明两个后端独立，也不证明两模型均合格。真实官方评测与 Desktop loopback 分开。无 Key 不证明完整的凭据状态 UI；offline 是受控上游 503，不是系统断网。原生重试策略未被改为零，零重试只用于受控故障测试。 |
+| **R13 单轮来源分层与 token 预算** | U05 的来源分区、角色版本、canonical 序列化和 UTF-8 字节上限；U06 的 Hook/model delegate 核验；U07 原生事件关联；U09 14 个官方请求的 canonical packet hash 匹配。 | 字节上限不是 tokenizer 实测预算。超限拒绝整包；最终要求的确定性裁剪、保留当前请求和原生 system/project 规则总预算仍属后续工作。 |
 
-## 当前产品边界
+## G01 验收
 
-- 用户在 Desktop 中看到的是 ZCode 原生回复。U07 的 turn/tool receipt 投影供宿主侧核验；U10 另有 sidecar 证据输出，不构成 renderer 中的回复证据面板，也没有增加另一层呈现 UI。
-- U09 对两个模型都做了评测，但只把 Flash 定为合格候选；Pro 保留为已测、未合格。U09 人工审阅仍为 `not_reviewed`。
-- U08/U10 的组装物是隔离本机验证用的 Desktop assembly/candidate，不是安装器、可移植发行包或已发布软件；安装、升级、卸载与发行资产验证未完成。
-- P02 尚未开始，尚无 P02 应用级持久化。U08 的已验历史是隔离 profile 内 ZCode 原生预置记录；它不证明 Xiadie 事实存储、跨会话恢复或长期证据保存。
+| Gate 条件 | 实际证据 |
+| --- | --- |
+| 身份资产可验证 | U04–U06 的获批版本、manifest/hash、只读加载和模型前门禁；冻结索引绑定代码、prompt/schema、资源和锁文件。 |
+| 主交互可运行 | 同一 candidate-06 的 U11 final-01 full 6/6，普通发送、Read 成功/失败、取消恢复、禁用路线、Pro 拒绝。 |
+| 失败不报成功 | 原生 Read 失败回执和诚实 UI 回复；U11 final-02 offline 的真实 Desktop 错误及本地 relay 503。 |
+| 禁用扩展不破坏原生 Runtime | disabled_native 的原生回复和辅助标题成功；no_dsh 场景不依赖 DSH。 |
 
-## Gate 状态
+[U11 独立审查](../../../evidence/P01-U11/20261002-01/review-final.json) 和 [G01 接受记录](../../../evidence/P01-U11/20261002-01/acceptance.json) 绑定精确作者提交。U11 final-01 首次降级导出因重复历史快照文件名 EEXIST 失败；只修正测试快照标签后，final-02 degradation 3/3、exit 0。旧失败完整保留；产品和 full 六条流程不变，其复用依据见 U11 coordinator/snapshot-fix.json。
 
-`status.json` 当前记录 U10 为 `running`、U11 为 `not_started`，且 `next_stage_started=false`。U10 candidate/UI 仍在真实集成与修复中；U11 负责根据最终精确产物和独立审查作 gate 决定。本文不更改状态，也不把构建、部分 UI 运行或已接受的前置单元写成 G01 pass。
+最终接受证据包括 U10 check exit 0、79 unit 通过，U11 full 6/6 与 degradation 3/3。稳定源码测试按明确差异绑定复用，未宣称全部测试在最后一个文档提交上重跑。P01 官方调用总数仍为 18（U02 4、U09 14），本次 gate 没有新增付费模型请求。
 
-## U10 final-04 当前证据状态
+## 交接边界
 
-final-04 使用 candidate-06（源码提交 `82298c735dfbc4f278b5e920d79be7a83f979b55`，descriptor SHA-256 `25f92e7604b41479fdcdd9dcc089afe0ce6441db4586a7f7e7614805632a8907`）。check exit 0、79 项 unit 通过、full runner 6/6 且 exit 0；final-03 的 SDK auxiliary-title 字段误判已按真实 wire capture 修复。详见 [U10 result](../../../evidence/P01-U10/20261002-01/result.md)、[final-04 summary](../../../evidence/P01-U10/20261002-01/validation/final-04/ui-full/summary.json)、[wire capture](../../../evidence/P01-U10/20261002-01/validation/title-sdk-capture/stdout.jsonl) 与 [保留失败记录](../../../evidence/P01-U10/20261002-01/failures.md)。
-
-作者状态为 `ready_for_review`，不是 accepted 状态：U11 `not_started`，`next_stage_started=false`，G01 pending。final-04 用 synthetic loopback 配置，外部请求 0；U09 已用完批准的 18 次真实模型请求预算。U08 的 no-key UI 证据只证明隔离 Settings 可打开和预置原生历史 marker 可读，不证明完整无凭据 UI 状态；专门 no-key gate 尚需验证 owned config 为空、relay 0 请求、真实历史 marker 及 Settings。视觉验收 `NOT_RUN`、人工审阅 `not_reviewed`；sidecar 不是 renderer 证据面板，本地 assembly 不是安装器，`BOUNDARY_SCAN_NOT_RUN`，P02 持久化未开始。
+冻结的是本机依赖固定源码/目录的开发 assembly，非安装器或可移植发行包；人工视觉验收 NOT_RUN。P02 应用持久化未开始，后续先执行 P02-U01 的 Runtime transcript/event 和 SQLite 迁移/备份方案调查，再做 P02-U02 故障试验。本轮没有启动下一阶段或进行公开发布。
