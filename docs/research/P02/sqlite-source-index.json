@@ -1,0 +1,177 @@
+{
+  "checked_at": "2026-10-03",
+  "timezone": "Asia/Shanghai",
+  "queries": [
+    {
+      "query": "site:nodejs.org/docs/v24.14.0/api/sqlite.html DatabaseSync backup",
+      "purpose": "Pinned Node documentation: availability, stability, DatabaseSync options, backup API",
+      "source_urls": [
+        "https://nodejs.org/download/release/v24.14.0/docs/api/sqlite.html"
+      ]
+    },
+    {
+      "query": "site:sqlite.org backup API WAL transactions official documentation",
+      "purpose": "SQLite online backup, WAL persistence, single-writer and transaction-lock semantics",
+      "source_urls": [
+        "https://www.sqlite.org/backup.html",
+        "https://www.sqlite.org/wal.html",
+        "https://www.sqlite.org/lang_transaction.html"
+      ]
+    },
+    {
+      "query": "site:github.com/WiseLibs/better-sqlite3 README API backup package.json",
+      "purpose": "better-sqlite3 release/package metadata/API/build requirements",
+      "source_urls": [
+        "https://github.com/WiseLibs/better-sqlite3/releases/tag/v13.0.3",
+        "https://github.com/WiseLibs/better-sqlite3/blob/v13.0.3/package.json",
+        "https://github.com/WiseLibs/better-sqlite3/blob/v13.0.3/docs/api.md",
+        "https://github.com/WiseLibs/better-sqlite3/blob/v13.0.3/docs/compilation.md",
+        "https://github.com/WiseLibs/better-sqlite3/blob/v13.0.3/binding.gyp"
+      ]
+    },
+    {
+      "query": "site:nodejs.org/en/blog/release/v26.10.0 Node.js release SQLite",
+      "purpose": "Separate current release facts from pinned v24.14.0 behavior",
+      "source_urls": [
+        "https://nodejs.org/en/blog/release/v26.10.0",
+        "https://nodejs.org/download/release/latest-v24.x/docs/api/sqlite.html",
+        "https://nodejs.org/download/release/v26.8.1/docs/api/sqlite.html"
+      ]
+    },
+    {
+      "query": "better-sqlite3 Node 24 Windows node-gyp issue",
+      "purpose": "Check native Windows install/build report; treated as a risk report, not a compatibility proof",
+      "source_urls": [
+        "https://github.com/WiseLibs/better-sqlite3/issues/1516"
+      ]
+    }
+  ],
+  "official_sources": [
+    {
+      "id": "node-sqlite-v24.14.0",
+      "version": "Node.js v24.14.0 release (2026-02-24); SQLite-related commit c0ceb9b065",
+      "url": "https://nodejs.org/download/release/v24.14.0/docs/api/sqlite.html",
+      "status_as_of_check": "SQLite Stability 1.1 Active development; fixed runtime emits ExperimentalWarning",
+      "scope": "Pinned runtime docs; DatabaseSync and backup API",
+      "license": "Node.js MIT distribution; bundled SQLite public-domain notice"
+    },
+    {
+      "id": "node-release-v24.14.0",
+      "version": "v24.14.0",
+      "url": "https://nodejs.org/en/blog/release/v24.14.0",
+      "scope": "Pinned runtime release date 2026-02-24; SQLite defensive-default patch commit c0ceb9b065"
+    },
+    {
+      "id": "node-sqlite-latest-v24",
+      "version": "latest-v24.x documentation observed at v24.21.0",
+      "url": "https://nodejs.org/download/release/latest-v24.x/docs/api/sqlite.html",
+      "scope": "Current v24 line is a separate comparison; not substituted for v24.14 behavior"
+    },
+    {
+      "id": "node-sqlite-v26.8.1",
+      "version": "v26.8.1",
+      "url": "https://nodejs.org/download/release/v26.8.1/docs/api/sqlite.html",
+      "scope": "RC stability since Node v25.7 context; not the pinned binary"
+    },
+    {
+      "id": "node-release-v26.10.0",
+      "version": "v26.10.0",
+      "url": "https://nodejs.org/en/blog/release/v26.10.0",
+      "scope": "Current latest-release comparison on check date; direct v26.10 SQLite doc was inaccessible"
+    },
+    {
+      "id": "sqlite-backup",
+      "version": "SQLite online backup API documentation, accessed 2026-10-03",
+      "url": "https://www.sqlite.org/backup.html",
+      "scope": "Consistent online snapshot behavior and backup restart under external writes"
+    },
+    {
+      "id": "sqlite-wal",
+      "version": "SQLite WAL documentation, accessed 2026-10-03",
+      "url": "https://www.sqlite.org/wal.html",
+      "scope": "WAL sidecar persistence, checkpoint/readers, single writer"
+    },
+    {
+      "id": "sqlite-transactions",
+      "version": "SQLite transaction documentation, accessed 2026-10-03",
+      "url": "https://www.sqlite.org/lang_transaction.html",
+      "scope": "BEGIN IMMEDIATE and SQLITE_BUSY behavior"
+    },
+    {
+      "id": "sqlite-license",
+      "version": "SQLite copyright/public-domain notice, accessed 2026-10-03",
+      "url": "https://www.sqlite.org/copyright.html",
+      "scope": "SQLite license status"
+    },
+    {
+      "id": "better-sqlite3-v13.0.3",
+      "version": "v13.0.3; release/tag date 2026-08-05; commit dbc2ea1",
+      "url": "https://github.com/WiseLibs/better-sqlite3/releases/tag/v13.0.3",
+      "scope": "Comparison only; package declares MIT, node-addon-api ^8.0.0, N-API 10, Windows prebuild exports",
+      "package_facts": "MIT; engines >=22; dependency node-addon-api ^8.0.0; N-API 10; win32 x64/arm64 prebuild export paths with native-build fallback"
+    },
+    {
+      "id": "better-sqlite3-api-v13.0.3",
+      "version": "v13.0.3",
+      "url": "https://github.com/WiseLibs/better-sqlite3/blob/v13.0.3/docs/api.md",
+      "scope": "Synchronous transaction API and async backup API"
+    },
+    {
+      "id": "better-sqlite3-build-v13.0.3",
+      "version": "v13.0.3",
+      "url": "https://github.com/WiseLibs/better-sqlite3/blob/v13.0.3/docs/compilation.md",
+      "scope": "Native fallback build requirements"
+    },
+    {
+      "id": "better-sqlite3-windows-issue-1516",
+      "version": "Issue opened 2026-08-20; accessed 2026-10-03",
+      "url": "https://github.com/WiseLibs/better-sqlite3/issues/1516",
+      "scope": "Windows npm/node-gyp risk report only; not verified for pnpm or pinned Node v24.14"
+    },
+    {
+      "id": "zcode-pinned",
+      "version": "commit 29628c9acdb81b703bbd4080c207a0e7ce5e276e; 2026-09-24; Apache-2.0",
+      "url": "https://github.com/zai-org/ZCode/tree/29628c9acdb81b703bbd4080c207a0e7ce5e276e/apps/zcode-cli/packages/adapters/src/storage/session-store",
+      "scope": "Locally pinned SQLite store/migration/repositories; source details and local SHA-256 list accompany this file"
+    },
+    {
+      "id": "better-sqlite3-commit-v13.0.3",
+      "version": "commit dbc2ea1",
+      "url": "https://github.com/WiseLibs/better-sqlite3/commit/dbc2ea1",
+      "scope": "Tag/release commit evidence"
+    },
+    {
+      "id": "node-sqlite-defensive-commit",
+      "version": "commit c0ceb9b065",
+      "url": "https://github.com/nodejs/node/commit/c0ceb9b065",
+      "scope": "Pinned Node v24.14 SQLite defensive mode default change"
+    }
+  ],
+  "local_probe": {
+    "runtime": "E:/Xiadie/Xiadie/.runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe",
+    "command_scope": "--version plus require('node:sqlite') and process.versions; no DatabaseSync instance or DB file",
+    "exit_codes": {
+      "version": 0,
+      "capability_probe": 0
+    },
+    "observed": {
+      "node": "v24.14.0",
+      "sqlite_exports": [
+        "DatabaseSync",
+        "StatementSync",
+        "Session",
+        "constants",
+        "backup"
+      ],
+      "sqlite_version": "3.51.2",
+      "node_module_abi": "137",
+      "napi": "10",
+      "warning": "SQLite is experimental"
+    }
+  },
+  "limitations": [
+    "The v26.10.0 release page was reachable but a direct v26.10.0 SQLite API page was not; v26.8.1 SQLite docs and v26.10.0 release notes are kept distinct.",
+    "No third-party dependency was installed or executed; better-sqlite3 Windows build behavior is not verified in this project.",
+    "No SQLite DB was created, so backup, transaction, migration, future-schema rejection, permission, and crash-recovery behavior remain U02 NOT_RUN."
+  ]
+}

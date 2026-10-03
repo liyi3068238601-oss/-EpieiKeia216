@@ -1,0 +1,20 @@
+Pre-manifest staged scope snapshot; self and final manifest omitted from this initial stat. Complete changed-path coverage is verified by manifest.json and coordinator-author verification.
+ docs/research/P02/README.md                        |  47 ++
+ .../P02/coordinator-local-source-index.json        |  85 +++
+ docs/research/P02/runtime-inputs.sha256.csv        |  58 ++
+ docs/research/P02/runtime-reuse.md                 |  44 ++
+ docs/research/P02/runtime-source-index.json        | 584 +++++++++++++++++++++
+ docs/research/P02/sqlite-local-sha256.txt          |  21 +
+ docs/research/P02/sqlite-reuse.md                  |  45 ++
+ docs/research/P02/sqlite-source-index.json         | 177 +++++++
+ docs/research/P02/verify-research.py               |  48 ++
+ evidence/P02-U01/20261003-01/baseline.json         |  36 ++
+ evidence/P02-U01/20261003-01/commands.json         |  38 ++
+ .../P02-U01/20261003-01/node-probe-command.json    |  13 +
+ evidence/P02-U01/20261003-01/node-probe.stderr.txt |   2 +
+ .../P02-U01/20261003-01/node-probe.stdout.json     |   1 +
+ evidence/P02-U01/20261003-01/queries.json          |  35 ++
+ evidence/P02-U01/20261003-01/result.md             |  13 +
+ evidence/P02-U01/20261003-01/source-decision.json  |  24 +
+ .../P02-U01/20261003-01/source-verification.json   |  10 +
+ 18 files changed, 1281 insertions(+)
