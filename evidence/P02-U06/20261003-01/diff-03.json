@@ -1,0 +1,64 @@
+{
+  "task": "P02-U06",
+  "baseline": "a1b611dadafdcf2337d80d62b9d68da485a0a3a2",
+  "scope": [
+    "packages/application/evidence",
+    "tools/run-tests.mjs",
+    "evidence/P02-U06/20261003-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "a1b611dadafdcf2337d80d62b9d68da485a0a3a2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06",
+      "exit_code": 0,
+      "stdout": " evidence/P02-U06/20261003-01/baseline.json         |  36 ++\n evidence/P02-U06/20261003-01/command-index.json    |  97 +++\n .../20261003-01/commands/00-baseline-build.json    |  17 +\n .../20261003-01/commands/01-initial-build.json     |  17 +\n .../20261003-01/commands/02-source-build.json      |  17 +\n .../20261003-01/commands/03-source-build.json      |  17 +\n .../20261003-01/commands/04-reader-build.json      |  17 +\n .../P02-U06/20261003-01/commands/05-typecheck.json |  17 +\n .../P02-U06/20261003-01/commands/06-build.json     |  16 +\n .../P02-U06/20261003-01/commands/08-u06-tests.json |  16 +\n .../P02-U06/20261003-01/commands/09-typecheck.json |  17 +\n .../P02-U06/20261003-01/commands/10-build.json     |  16 +\n .../P02-U06/20261003-01/commands/11-u06-tests.json |  16 +\n .../20261003-01/commands/12-final-build.json       |  16 +\n .../P02-U06/20261003-01/commands/13-bind-pre.json  |  18 +\n .../20261003-01/commands/14-final-u06-tests.json   |  16 +\n .../P02-U06/20261003-01/commands/15-bind-post.json |  20 +\n .../20261003-01/commands/16-diff-unit-refresh.json |  20 +\n .../P02-U06/20261003-01/commands/17-diff-unit.json |  20 +\n .../20261003-01/commands/18-diff-unit-final.json   |  22 +\n evidence/P02-U06/20261003-01/diff-02.json          |  64 ++\n evidence/P02-U06/20261003-01/diff.json             |  64 ++\n .../P02-U06/20261003-01/inputs-final-post.json     | 573 +++++++++++++++++\n evidence/P02-U06/20261003-01/inputs-final-pre.json | 571 +++++++++++++++++\n evidence/P02-U06/20261003-01/result.md             |  39 ++\n evidence/P02-U06/20261003-01/source-decision.md    |  21 +\n packages/application/evidence/src/index.ts         | 687 +++++++++++++++++++++\n .../application/evidence/test/evidence.test.mjs    | 408 ++++++++++++\n tools/run-tests.mjs                                |   3 +-\n 29 files changed, 2877 insertions(+), 1 deletion(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "a1b611dadafdcf2337d80d62b9d68da485a0a3a2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06",
+      "exit_code": 0,
+      "stdout": "36\t0\tevidence/P02-U06/20261003-01/baseline.json\n97\t0\tevidence/P02-U06/20261003-01/command-index.json\n17\t0\tevidence/P02-U06/20261003-01/commands/00-baseline-build.json\n17\t0\tevidence/P02-U06/20261003-01/commands/01-initial-build.json\n17\t0\tevidence/P02-U06/20261003-01/commands/02-source-build.json\n17\t0\tevidence/P02-U06/20261003-01/commands/03-source-build.json\n17\t0\tevidence/P02-U06/20261003-01/commands/04-reader-build.json\n17\t0\tevidence/P02-U06/20261003-01/commands/05-typecheck.json\n16\t0\tevidence/P02-U06/20261003-01/commands/06-build.json\n16\t0\tevidence/P02-U06/20261003-01/commands/08-u06-tests.json\n17\t0\tevidence/P02-U06/20261003-01/commands/09-typecheck.json\n16\t0\tevidence/P02-U06/20261003-01/commands/10-build.json\n16\t0\tevidence/P02-U06/20261003-01/commands/11-u06-tests.json\n16\t0\tevidence/P02-U06/20261003-01/commands/12-final-build.json\n18\t0\tevidence/P02-U06/20261003-01/commands/13-bind-pre.json\n16\t0\tevidence/P02-U06/20261003-01/commands/14-final-u06-tests.json\n20\t0\tevidence/P02-U06/20261003-01/commands/15-bind-post.json\n20\t0\tevidence/P02-U06/20261003-01/commands/16-diff-unit-refresh.json\n20\t0\tevidence/P02-U06/20261003-01/commands/17-diff-unit.json\n22\t0\tevidence/P02-U06/20261003-01/commands/18-diff-unit-final.json\n64\t0\tevidence/P02-U06/20261003-01/diff-02.json\n64\t0\tevidence/P02-U06/20261003-01/diff.json\n573\t0\tevidence/P02-U06/20261003-01/inputs-final-post.json\n571\t0\tevidence/P02-U06/20261003-01/inputs-final-pre.json\n39\t0\tevidence/P02-U06/20261003-01/result.md\n21\t0\tevidence/P02-U06/20261003-01/source-decision.md\n687\t0\tpackages/application/evidence/src/index.ts\n408\t0\tpackages/application/evidence/test/evidence.test.mjs\n2\t1\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "a1b611dadafdcf2337d80d62b9d68da485a0a3a2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P02-U06/20261003-01/baseline.json\nA\tevidence/P02-U06/20261003-01/command-index.json\nA\tevidence/P02-U06/20261003-01/commands/00-baseline-build.json\nA\tevidence/P02-U06/20261003-01/commands/01-initial-build.json\nA\tevidence/P02-U06/20261003-01/commands/02-source-build.json\nA\tevidence/P02-U06/20261003-01/commands/03-source-build.json\nA\tevidence/P02-U06/20261003-01/commands/04-reader-build.json\nA\tevidence/P02-U06/20261003-01/commands/05-typecheck.json\nA\tevidence/P02-U06/20261003-01/commands/06-build.json\nA\tevidence/P02-U06/20261003-01/commands/08-u06-tests.json\nA\tevidence/P02-U06/20261003-01/commands/09-typecheck.json\nA\tevidence/P02-U06/20261003-01/commands/10-build.json\nA\tevidence/P02-U06/20261003-01/commands/11-u06-tests.json\nA\tevidence/P02-U06/20261003-01/commands/12-final-build.json\nA\tevidence/P02-U06/20261003-01/commands/13-bind-pre.json\nA\tevidence/P02-U06/20261003-01/commands/14-final-u06-tests.json\nA\tevidence/P02-U06/20261003-01/commands/15-bind-post.json\nA\tevidence/P02-U06/20261003-01/commands/16-diff-unit-refresh.json\nA\tevidence/P02-U06/20261003-01/commands/17-diff-unit.json\nA\tevidence/P02-U06/20261003-01/commands/18-diff-unit-final.json\nA\tevidence/P02-U06/20261003-01/diff-02.json\nA\tevidence/P02-U06/20261003-01/diff.json\nA\tevidence/P02-U06/20261003-01/inputs-final-post.json\nA\tevidence/P02-U06/20261003-01/inputs-final-pre.json\nA\tevidence/P02-U06/20261003-01/result.md\nA\tevidence/P02-U06/20261003-01/source-decision.md\nA\tpackages/application/evidence/src/index.ts\nA\tpackages/application/evidence/test/evidence.test.mjs\nM\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "a1b611dadafdcf2337d80d62b9d68da485a0a3a2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

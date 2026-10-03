@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "python",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\diff-unit.py",
+    "P02-U06",
+    "a1b611dadafdcf2337d80d62b9d68da485a0a3a2",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06",
+    "packages/application/evidence",
+    "tools/run-tests.mjs",
+    "evidence/P02-U06/20261003-01"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06",
+  "started_at": "2026-10-03T09:12:21.315424+00:00",
+  "completed_at": "2026-10-03T09:12:21.400421+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 180,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\diff-unit.py\", line 12, in <module>\r\n    subprocess.run(['git', 'add', '--', *a.scopes], cwd=tree, check=True)\r\n  File \"C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\subprocess.py\", line 548, in run\r\n    with Popen(*popenargs, **kwargs) as process:\r\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\subprocess.py\", line 1026, in __init__\r\n    self._execute_child(args, executable, preexec_fn, close_fds,\r\n  File \"C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\subprocess.py\", line 1538, in _execute_child\r\n    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,\r\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nNotADirectoryError: [WinError 267] Ŀ¼������Ч��\r\n"
+}

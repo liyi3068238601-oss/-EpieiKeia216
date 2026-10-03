@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "tools/run-tests.mjs",
+    "unit",
+    "P02-U06"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06",
+  "started_at": "2026-10-03T09:02:16.269470+00:00",
+  "completed_at": "2026-10-03T09:02:24.654004+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 180,
+  "environment_overrides": {},
+  "stdout": "(node:43072) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n✔ real Node run, SQLite operation receipt, owned artifact and exact Git revision pass without log injection (731.0214ms)\n✔ DONE prose, unowned idle state and caller-supplied pass claims cannot satisfy the profile (669.8269ms)\nP02-U06 failed fixture preserved at E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06\\.runtime\\P02\\experiments\\u06\\queued-PqxmwR\n✖ queued admission is not evidence until SQLite readback has committed the operation receipt (568.339ms)\n✔ exit zero with a real artifact but no committed tool receipt is execution-only success (550.8311ms)\n✔ missing artifact and changed artifact bytes reject a receipt's claimed integrity (1086.8173ms)\n✔ tool receipt must match exact scope, attempt, tool call and coordinator-fixed source (2234.0838ms)\n✔ frozen expected commit, current clean revision and originating repository all have to match (2361.7108ms)\nℹ tests 7\nℹ suites 0\nℹ pass 6\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 8276.208\n\n✖ failing tests:\n\ntest at packages\\application\\evidence\\test\\evidence.test.mjs:74:1\n✖ queued admission is not evidence until SQLite readback has committed the operation receipt (568.339ms)\n  AssertionError [ERR_ASSERTION]: Expected \"actual\" to be strictly unequal to:\n  \n  'passed'\n      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/u06/packages/application/evidence/test/evidence.test.mjs:84:12)\n      at async Test.run (node:internal/test_runner/test:1125:7)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: 'passed',\n    expected: 'passed',\n    operator: 'notStrictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": ""
+}

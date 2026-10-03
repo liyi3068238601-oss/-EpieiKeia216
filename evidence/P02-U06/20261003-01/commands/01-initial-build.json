@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--project",
+    "tsconfig.json",
+    "--noEmit"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\u06",
+  "started_at": "2026-10-03T08:50:28.979101+00:00",
+  "completed_at": "2026-10-03T08:50:29.741072+00:00",
+  "exit_code": 2,
+  "timeout_seconds": 180,
+  "environment_overrides": {},
+  "stdout": "packages/application/evidence/src/index.ts(11,27): error TS2459: Module '\"../../../storage/events/src/index.js\"' declares 'WriterOrderedEvent' locally, but it is not exported.\r\npackages/application/evidence/src/index.ts(356,47): error TS2339: Property 'status' does not exist on type 'ReceiptData'.\r\npackages/application/evidence/src/index.ts(397,48): error TS2345: Argument of type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }' is not assignable to parameter of type 'Record<string, unknown>'.\r\n  Type 'readonly JsonValue[]' is not assignable to type 'Record<string, unknown>'.\r\n    Index signature for type 'string' is missing in type 'readonly JsonValue[]'.\r\npackages/application/evidence/src/index.ts(398,22): error TS2339: Property 'operationId' does not exist on type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }'.\r\n  Property 'operationId' does not exist on type 'readonly JsonValue[]'.\r\npackages/application/evidence/src/index.ts(398,65): error TS2339: Property 'status' does not exist on type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }'.\r\n  Property 'status' does not exist on type 'readonly JsonValue[]'.\r\npackages/application/evidence/src/index.ts(399,22): error TS2339: Property 'observedAt' does not exist on type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }'.\r\n  Property 'observedAt' does not exist on type 'readonly JsonValue[]'.\r\npackages/application/evidence/src/index.ts(399,67): error TS2339: Property 'result' does not exist on type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }'.\r\n  Property 'result' does not exist on type 'readonly JsonValue[]'.\r\npackages/application/evidence/src/index.ts(400,26): error TS2339: Property 'result' does not exist on type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }'.\r\n  Property 'result' does not exist on type 'readonly JsonValue[]'.\r\npackages/application/evidence/src/index.ts(414,21): error TS2339: Property 'status' does not exist on type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }'.\r\n  Property 'status' does not exist on type 'readonly JsonValue[]'.\r\npackages/application/evidence/src/index.ts(415,26): error TS2339: Property 'operationId' does not exist on type 'readonly JsonValue[] | { readonly [key: string]: JsonValue; }'.\r\n  Property 'operationId' does not exist on type 'readonly JsonValue[]'.\r\n",
+  "stderr": ""
+}
