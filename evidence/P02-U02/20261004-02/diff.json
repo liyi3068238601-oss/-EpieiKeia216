@@ -1,0 +1,64 @@
+{
+  "task": "P02-U02",
+  "baseline": "4163f5c5d1df93878bbfd2ecd85ab98cf9e919e2",
+  "scope": [
+    "spikes/P02/mature-sqlite",
+    "docs/adr/P02-reuse.md",
+    "evidence/P02-U02/20261004-02"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "4163f5c5d1df93878bbfd2ecd85ab98cf9e919e2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-spike",
+      "exit_code": 0,
+      "stdout": " docs/adr/P02-reuse.md                              |  16 +\n evidence/P02-U02/20261004-02/baseline.json         |  36 ++\n .../P02-U02/20261004-02/restore-probe-sidecars.py  |  58 ++\n evidence/P02-U02/20261004-02/result.md             |  53 ++\n evidence/P02-U02/20261004-02/sidecar-cleanup.json  |  39 ++\n .../P02-U02/20261004-02/spike-result-final.json    | 364 ++++++++++++\n .../P02-U02/20261004-02/spike-result-run-03.json   | 364 ++++++++++++\n .../20261004-02/spike-result-run-05-final.json     | 366 +++++++++++++\n evidence/P02-U02/20261004-02/spike-result.json     | 293 ++++++++++\n spikes/P02/mature-sqlite/mature-sqlite-spike.mjs   | 608 +++++++++++++++++++++\n 10 files changed, 2197 insertions(+)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "4163f5c5d1df93878bbfd2ecd85ab98cf9e919e2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-spike",
+      "exit_code": 0,
+      "stdout": "16\t0\tdocs/adr/P02-reuse.md\n36\t0\tevidence/P02-U02/20261004-02/baseline.json\n58\t0\tevidence/P02-U02/20261004-02/restore-probe-sidecars.py\n53\t0\tevidence/P02-U02/20261004-02/result.md\n39\t0\tevidence/P02-U02/20261004-02/sidecar-cleanup.json\n364\t0\tevidence/P02-U02/20261004-02/spike-result-final.json\n364\t0\tevidence/P02-U02/20261004-02/spike-result-run-03.json\n366\t0\tevidence/P02-U02/20261004-02/spike-result-run-05-final.json\n293\t0\tevidence/P02-U02/20261004-02/spike-result.json\n608\t0\tspikes/P02/mature-sqlite/mature-sqlite-spike.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "4163f5c5d1df93878bbfd2ecd85ab98cf9e919e2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-spike",
+      "exit_code": 0,
+      "stdout": "M\tdocs/adr/P02-reuse.md\nA\tevidence/P02-U02/20261004-02/baseline.json\nA\tevidence/P02-U02/20261004-02/restore-probe-sidecars.py\nA\tevidence/P02-U02/20261004-02/result.md\nA\tevidence/P02-U02/20261004-02/sidecar-cleanup.json\nA\tevidence/P02-U02/20261004-02/spike-result-final.json\nA\tevidence/P02-U02/20261004-02/spike-result-run-03.json\nA\tevidence/P02-U02/20261004-02/spike-result-run-05-final.json\nA\tevidence/P02-U02/20261004-02/spike-result.json\nA\tspikes/P02/mature-sqlite/mature-sqlite-spike.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "4163f5c5d1df93878bbfd2ecd85ab98cf9e919e2"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-spike",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
