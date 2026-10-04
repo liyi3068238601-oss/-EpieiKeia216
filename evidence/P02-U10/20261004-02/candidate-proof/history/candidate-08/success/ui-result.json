@@ -1,0 +1,28 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "success",
+  "status": "failed",
+  "gate_mode": "enabled",
+  "flow": "reply",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password"
+  ],
+  "user_visible_reply": null,
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": null,
+  "passed": false,
+  "failure_code": "ui_assertion_failed",
+  "failure_details": {
+    "name": "TimeoutError",
+    "code": "unknown",
+    "operator": null,
+    "message": "locator.click: Timeout 30000ms exceeded.",
+    "stack": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('login-use-api-key-button')\u001b[22m\n\n    at readyWorkspace (E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\desktop-ui.mjs:139:24)\n    at async file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/mature-integration/tests/integration/P02/desktop-ui.mjs:293:3",
+    "windows": 1
+  }
+}

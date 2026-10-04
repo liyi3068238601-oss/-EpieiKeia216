@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "tests/integration/P02/sqlite-runtime-probe.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+  "started_at": "2026-10-04T10:14:52.212713+00:00",
+  "completed_at": "2026-10-04T10:14:52.522632+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "✖ runtime probe permits only byte-identical repeats for the same observed addon binding (55.6522ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 238.1345\n\n✖ failing tests:\n\ntest at tests\\integration\\P02\\sqlite-runtime-probe.test.mjs:50:1\n✖ runtime probe permits only byte-identical repeats for the same observed addon binding (55.6522ms)\n  Error: EPERM: operation not permitted, symlink 'C:\\Users\\liyi\\AppData\\Local\\Temp\\p02-sqlite-probe-5crnSj\\outside-target.bin' -> 'C:\\Users\\liyi\\AppData\\Local\\Temp\\p02-sqlite-probe-5crnSj\\sqlite-runtime-probes\\56384.json'\n      at symlinkSync (node:fs:1868:11)\n      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/mature-integration/tests/integration/P02/sqlite-runtime-probe.test.mjs:76:5)\n      at Test.runInAsyncScope (node:async_hooks:228:14)\n      at Test.run (node:internal/test_runner/test:1118:25)\n      at Test.start (node:internal/test_runner/test:1015:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {\n    errno: -4048,\n    code: 'EPERM',\n    syscall: 'symlink',\n    path: 'C:\\\\Users\\\\liyi\\\\AppData\\\\Local\\\\Temp\\\\p02-sqlite-probe-5crnSj\\\\outside-target.bin',\n    dest: 'C:\\\\Users\\\\liyi\\\\AppData\\\\Local\\\\Temp\\\\p02-sqlite-probe-5crnSj\\\\sqlite-runtime-probes\\\\56384.json'\n  }\n",
+  "stderr": ""
+}

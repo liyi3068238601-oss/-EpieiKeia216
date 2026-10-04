@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "tests/integration/P02/registry-write-guard.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+  "started_at": "2026-10-04T09:08:18.191836+00:00",
+  "completed_at": "2026-10-04T09:08:18.619870+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "✔ blocks every reg.exe spawn, records its exact argv, and leaves other executables alone (29.2764ms)\n✔ fails closed if the owned guard log path is absent or relative (0.5833ms)\n✔ pins the actual Electron main PID, cwd, executable, and argv for protocol argument validation (14.7363ms)\n✔ blocks Electron protocol changes and recent-document clearing without calling the native APIs (20.4773ms)\n✔ the Electron preload's ESM spawn binding sees the typed block before OS process creation (104.7917ms)\nℹ tests 5\nℹ suites 0\nℹ pass 5\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 315.4953\n",
+  "stderr": ""
+}

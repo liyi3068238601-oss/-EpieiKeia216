@@ -1,0 +1,78 @@
+{
+  "qualification": "functional repair to verified installed ZCode; original values unknown",
+  "executableSha256": "2cd9f0672841f9a09d00aced4223114c3c7c37cfa8a308e7e79641d617497b0f",
+  "includesProtocol": true,
+  "mutations": [
+    {
+      "subkey": "Software\\Classes\\Directory\\shell\\ZCode.OpenInZCode",
+      "name": "Icon",
+      "before": {
+        "name": "Icon",
+        "value": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe",
+        "type": 1
+      },
+      "after": {
+        "name": "Icon",
+        "value": "D:\\Zcode\\ZCode.exe",
+        "type": 1
+      }
+    },
+    {
+      "subkey": "Software\\Classes\\Directory\\shell\\ZCode.OpenInZCode\\command",
+      "name": "",
+      "before": {
+        "name": "",
+        "value": "\"E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe\" \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-03\\scenarios\\pro_denied\\profile\\process-working-directory\\--inspect=0\" --open-workspace \"%1\"",
+        "type": 1
+      },
+      "after": {
+        "name": "",
+        "value": "\"D:\\Zcode\\ZCode.exe\" --open-workspace \"%1\"",
+        "type": 1
+      }
+    },
+    {
+      "subkey": "Software\\Classes\\Drive\\shell\\ZCode.OpenInZCode",
+      "name": "Icon",
+      "before": {
+        "name": "Icon",
+        "value": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe",
+        "type": 1
+      },
+      "after": {
+        "name": "Icon",
+        "value": "D:\\Zcode\\ZCode.exe",
+        "type": 1
+      }
+    },
+    {
+      "subkey": "Software\\Classes\\Drive\\shell\\ZCode.OpenInZCode\\command",
+      "name": "",
+      "before": {
+        "name": "",
+        "value": "\"E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe\" \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-03\\scenarios\\pro_denied\\profile\\process-working-directory\\--inspect=0\" --open-workspace \"%1\"",
+        "type": 1
+      },
+      "after": {
+        "name": "",
+        "value": "\"D:\\Zcode\\ZCode.exe\" --open-workspace \"%1\"",
+        "type": 1
+      }
+    },
+    {
+      "subkey": "Software\\Classes\\zcode\\shell\\open\\command",
+      "name": "",
+      "before": {
+        "name": "",
+        "value": "\"E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe\" \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-03\\scenarios\\pro_denied\\profile\\process-working-directory\\--inspect=0\" \"%1\"",
+        "type": 1
+      },
+      "after": {
+        "name": "",
+        "value": "\"D:\\Zcode\\ZCode.exe\" \"%1\"",
+        "type": 1
+      }
+    }
+  ],
+  "applied": false
+}

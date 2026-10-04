@@ -1,0 +1,64 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "disabled_native",
+  "status": "completed",
+  "gate_mode": "disabled",
+  "flow": "reply",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send"
+  ],
+  "user_visible_reply": "原生模型路径已通过本地测试。",
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 47036,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\disabled_native\\profile\\process-working-directory",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\disabled_native\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\disabled_native\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\disabled_native\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 16976,
+        "parent_pid": 47036,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 32900,
+        "parent_pid": 47036,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 56668,
+        "parent_pid": 47036,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 55032,
+        "parent_pid": 47036,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 21228,
+        "parent_pid": 47036,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 13416,
+        "parent_pid": 55032,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": true
+}

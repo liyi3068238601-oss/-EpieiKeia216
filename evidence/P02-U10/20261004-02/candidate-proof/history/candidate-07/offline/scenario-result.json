@@ -1,0 +1,205 @@
+{
+  "scenario_id": "offline",
+  "passed": false,
+  "exit_code": 1,
+  "model_requests": 0,
+  "expected_model_requests": 1,
+  "relay_records": [],
+  "sidecar_correlation": {
+    "status": "NOT_EXPOSED",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\u10-turn-projections.jsonl",
+    "verified": false
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "offline",
+    "status": "failed",
+    "gate_mode": "enabled",
+    "flow": "offline",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password"
+    ],
+    "user_visible_reply": null,
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 29120,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\process-working-directory",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 53844,
+          "parent_pid": 29120,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 55828,
+          "parent_pid": 29120,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 31212,
+          "parent_pid": 29120,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 25476,
+          "parent_pid": 29120,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 42560,
+          "parent_pid": 25476,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": false,
+    "failure_code": "ui_assertion_failed",
+    "failure_details": {
+      "name": "TimeoutError",
+      "code": "unknown",
+      "operator": null,
+      "message": "locator.waitFor: Timeout 25000ms exceeded.",
+      "stack": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('P01 U10 persisted assistant 2bdc3240', { exact: true }) to be visible\u001b[22m\n\n    at inspectHistory (E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\desktop-ui.mjs:238:66)\n    at async file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/mature-integration/tests/integration/P02/desktop-ui.mjs:350:7",
+      "windows": 1
+    }
+  },
+  "network_guard_records": 325,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 29120,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      25476
+    ],
+    "cli_required": true,
+    "cli_spawned_pids": [
+      42560
+    ],
+    "cli_guarded_pids": [
+      42560
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 29120,
+    "descendants": [
+      {
+        "pid": 53844,
+        "parent_pid": 29120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 55828,
+        "parent_pid": 29120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 31212,
+        "parent_pid": 29120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 25476,
+        "parent_pid": 29120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 42560,
+        "parent_pid": 25476,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ],
+  "ledger_verification": {
+    "passed": false,
+    "failure_code": "ledger_verification_failed",
+    "command_record": {
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\verify-ledger.mjs",
+        "--profile-root",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile",
+        "--scenario",
+        "offline",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\ledger-verification.json"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "stdout_bytes": 84,
+      "stdout_sha256": "1c8752a486c8ce7bcc95156e1311b28462cd5a1dac2af6e466bd2b271983d46c",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\ledger-verification.json"
+  },
+  "sqlite_cli_runtime_alias": {
+    "passed": true,
+    "mechanism": "owned-profile-home-directory-junction",
+    "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+    "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-07\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+    "entry_sha256": "0167e69ddbe08223a0c4c253d60da6e24afe73d0169c4793468ae47fadaf0bb7",
+    "realpath_matches_candidate": true,
+    "p01_guard_expected_entry_matches_alias": true
+  },
+  "registry_write_guard": {
+    "passed": true,
+    "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+    "os_sandbox": false,
+    "request_count": 18,
+    "blocked_menu_request_count": 16,
+    "menu_install_group_count": 2,
+    "blocked_protocol_registration_count": 1,
+    "blocked_protocol_removal_count": 0,
+    "blocked_recent_document_clear_count": 1,
+    "main_pid": 29120,
+    "launcher_pid": 56716,
+    "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\main-process-runtime.json",
+    "main_process_snapshot_sha256": "f82e4867f645aacf63f88d8032f1984a9aec1081529dd35c1a8bb92d2ca64a8e",
+    "blocked_requests_sha256": "12ecec48200a2e14c6ce8c15fe23d3db091f7ae70c7550607658dfec80893154",
+    "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\registry-write-guard.jsonl"
+  },
+  "candidate_artifact_closure": {
+    "before_scenario": {
+      "passed": true,
+      "owned_files_verified": 6717,
+      "descriptor_sha256": "fdfb9404d14a8ef2445b5404e74bb4f1d7a0303fc0644fbebdc1fb32cfc95498"
+    },
+    "after_scenario": {
+      "passed": true,
+      "owned_files_verified": 6717,
+      "descriptor_sha256": "fdfb9404d14a8ef2445b5404e74bb4f1d7a0303fc0644fbebdc1fb32cfc95498"
+    }
+  }
+}

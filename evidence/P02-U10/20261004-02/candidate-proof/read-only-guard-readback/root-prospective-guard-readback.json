@@ -1,0 +1,28 @@
+{
+  "qualification": "read-only prospective verifier constant correction; original diagnostic remains failed; no UI rerun",
+  "source_sha256": "8b67ada4e6ef1ebc26c7c6b21f1e45073d0d701bb1beb792c7b6f0a461331115",
+  "corrected_expected_subkeys": [
+    "Software\\Classes\\zcode",
+    "Software\\Classes\\zcode\\DefaultIcon",
+    "Software\\Classes\\zcode\\shell",
+    "Software\\Classes\\zcode\\shell\\open",
+    "Software\\Classes\\zcode\\shell\\open\\command"
+  ],
+  "guard_verification": {
+    "passed": true,
+    "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+    "os_sandbox": false,
+    "request_count": 18,
+    "blocked_menu_request_count": 16,
+    "menu_install_group_count": 2,
+    "blocked_protocol_registration_count": 1,
+    "blocked_protocol_removal_count": 0,
+    "blocked_recent_document_clear_count": 1,
+    "main_pid": 56124,
+    "launcher_pid": 20768,
+    "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-success-diagnostic-02\\scenarios\\success\\profile\\main-process-runtime.json",
+    "main_process_snapshot_sha256": "5724737f5bbd50bc5660c34cf5ecd77f1b7896a5549341a47e46fc68814fdcbd",
+    "blocked_requests_sha256": "55bc27b2c80cd29bcf86e488c2e60911cdd5049604c8d0b4d7ce23f2d54ce63c",
+    "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-success-diagnostic-02\\scenarios\\success\\profile\\registry-write-guard.jsonl"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "tests/integration/P02/sqlite-runtime-probe.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+  "started_at": "2026-10-04T10:14:00.243976+00:00",
+  "completed_at": "2026-10-04T10:14:00.740156+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "✖ runtime probe permits only byte-identical repeats for the same observed addon binding (5.8192ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 384.6231\n\n✖ failing tests:\n\ntest at tests\\integration\\P02\\sqlite-runtime-probe.test.mjs:47:1\n✖ runtime probe permits only byte-identical repeats for the same observed addon binding (5.8192ms)\n  AssertionError [ERR_ASSERTION]: the test must observe the actual better-sqlite3 addon load\n  \n  0 !== 1\n  \n      at TestContext.<anonymous> (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/mature-integration/tests/integration/P02/sqlite-runtime-probe.test.mjs:57:12)\n      at Test.runInAsyncScope (node:async_hooks:228:14)\n      at Test.run (node:internal/test_runner/test:1118:25)\n      at Test.start (node:internal/test_runner/test:1015:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: 0,\n    expected: 1,\n    operator: 'strictEqual',\n    diff: 'simple'\n  }\n",
+  "stderr": ""
+}

@@ -1,0 +1,291 @@
+{
+  "scenario_id": "success",
+  "passed": true,
+  "exit_code": 0,
+  "model_requests": 1,
+  "expected_model_requests": 1,
+  "relay_records": [
+    {
+      "request_index": 1,
+      "accepted": true,
+      "request_sha256": "73f08751bfb02d19ea362c09183534c2d65bb06927af08fd31672f1b68ab1535",
+      "request_bytes": 14668,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "stream",
+          "stream_options",
+          "thinking",
+          "tool_choice",
+          "tools"
+        ],
+        "stream_present": true,
+        "stream": "true",
+        "tools": "nonempty",
+        "tool_choice": "auto"
+      },
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 4,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 200
+    }
+  ],
+  "sidecar_correlation": {
+    "status": "verified",
+    "verified": true,
+    "turn_count": 1,
+    "completed_reply_turns": 1,
+    "visible_reply_matches": true,
+    "expected_reply_sha256": "0769a1974cb8021d8250b52c0e4c0524bae98147698f0403606d8f2bd61baff2",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\profile\\u10-turn-projections.jsonl"
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "success",
+    "status": "completed",
+    "gate_mode": "enabled",
+    "flow": "reply",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send"
+    ],
+    "user_visible_reply": "你好，我是遐蝶。我们可以慢慢聊。",
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 53604,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\profile\\process-working-directory",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 37900,
+          "parent_pid": 53604,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 51376,
+          "parent_pid": 53604,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 33292,
+          "parent_pid": 53604,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 55216,
+          "parent_pid": 53604,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 36052,
+          "parent_pid": 53604,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 55412,
+          "parent_pid": 55216,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "network_guard_records": 328,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 53604,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      55216
+    ],
+    "cli_required": true,
+    "cli_spawned_pids": [
+      55412
+    ],
+    "cli_guarded_pids": [
+      55412
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 53604,
+    "descendants": [
+      {
+        "pid": 37900,
+        "parent_pid": 53604,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 51376,
+        "parent_pid": 53604,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 33292,
+        "parent_pid": 53604,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 55216,
+        "parent_pid": 53604,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 36052,
+        "parent_pid": 53604,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 55412,
+        "parent_pid": 55216,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ],
+  "ledger_verification": {
+    "passed": true,
+    "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\ledger-verification.json",
+    "admission": "admitted",
+    "admitted_turns": 1,
+    "backup_restore": {
+      "passed": true,
+      "mode": "snapshot-v1-only",
+      "backupPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\ledger-maintenance\\backups\\events-2026-10-04T10-35-36.800Z.sqlite",
+      "backupSha256": "0cf5bd69c878f29ad1e59d5b7aded877d82c931865604d3178f14477f1d1fc7a",
+      "restoredDatabasePath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\ledger-maintenance\\restored-root\\events.sqlite",
+      "restoredDatabaseSha256": "0cf5bd69c878f29ad1e59d5b7aded877d82c931865604d3178f14477f1d1fc7a",
+      "verification": {
+        "userVersion": 1,
+        "schemaVersion": 1,
+        "integrityCheck": "ok",
+        "foreignKeyCheck": "ok",
+        "facts": {
+          "count": 5,
+          "sha256": "89a3dfff0e9d382a0703d26bd4481a13192bccef7d903de6b58c0b71bdd8674e"
+        },
+        "observations": {
+          "count": 5,
+          "sha256": "816163142f4662e9cbc673638c78b2daac22f990705b9614c3306ed7e4df9654"
+        },
+        "origins": {
+          "count": 5,
+          "sha256": "a96453e63423804a59eb901c1119c8a5662f95ad5d3354bc9c2f3e11610ede95"
+        },
+        "receipts": {
+          "count": 5,
+          "sha256": "2873b283ed4726bbc51462268acb2e38f3a5f96a5220eaafaa964f3ad8fe774a"
+        },
+        "captures": {
+          "count": 1,
+          "sha256": "c9179433475ece28e0df55b89a6b5cebb7f53cc1135425462ac0171de0e708fd"
+        },
+        "materials": {
+          "count": 1,
+          "sha256": "c00591ee87c99e0e16cca00f2a1295b30e3eaa69dcd762668248d1b94062201d"
+        }
+      }
+    }
+  },
+  "sqlite_runtime_binding": {
+    "passed": true,
+    "status": "verified_actual_cli_load",
+    "probes": [
+      {
+        "pid": 55412,
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\profile\\sqlite-runtime-probes\\55412.json",
+        "bytes": 657,
+        "sha256": "6bbc121781c52962893628350b11eaf132975925dfce96577241198874a89c47",
+        "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+        "package_version": "13.0.3",
+        "sqlite_version": "3.53.4"
+      }
+    ],
+    "cli_guarded_pids": [
+      55412
+    ],
+    "boundary": "Observed CLI load only; no-load routes do not qualify an addon load. Ledger readback is a separate process."
+  },
+  "sqlite_cli_runtime_alias": {
+    "passed": true,
+    "mechanism": "owned-profile-home-directory-junction",
+    "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+    "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+    "entry_sha256": "c1ef45479de62ffdc37c2e72b7d014fdb1de61d56341b216077199aaa34af1ea",
+    "realpath_matches_candidate": true,
+    "p01_guard_expected_entry_matches_alias": true
+  },
+  "registry_write_guard": {
+    "passed": true,
+    "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+    "os_sandbox": false,
+    "request_count": 18,
+    "blocked_menu_request_count": 16,
+    "menu_install_group_count": 2,
+    "blocked_protocol_registration_count": 1,
+    "blocked_protocol_removal_count": 0,
+    "blocked_recent_document_clear_count": 1,
+    "main_pid": 53604,
+    "launcher_pid": 9440,
+    "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\profile\\main-process-runtime.json",
+    "main_process_snapshot_sha256": "0e7f2609966ba2a4c045cb7a4a8987462747c2fc3eacafd81adb17d3a96d8d10",
+    "blocked_requests_sha256": "29937b5dc988168b199ceea666c308c69f43ac36b9c45bdb6ef8bef2851fd137",
+    "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate09\\scenarios\\success\\profile\\registry-write-guard.jsonl"
+  },
+  "candidate_artifact_closure": {
+    "before_scenario": {
+      "passed": true,
+      "owned_files_verified": 6717,
+      "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+    },
+    "after_scenario": {
+      "passed": true,
+      "owned_files_verified": 6717,
+      "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+    }
+  }
+}

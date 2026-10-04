@@ -1,0 +1,63 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "offline",
+  "status": "failed",
+  "gate_mode": "enabled",
+  "flow": "offline",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password"
+  ],
+  "user_visible_reply": null,
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 29120,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\process-working-directory",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate07\\scenarios\\offline\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 53844,
+        "parent_pid": 29120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 55828,
+        "parent_pid": 29120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 31212,
+        "parent_pid": 29120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 25476,
+        "parent_pid": 29120,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 42560,
+        "parent_pid": 25476,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": false,
+  "failure_code": "ui_assertion_failed",
+  "failure_details": {
+    "name": "TimeoutError",
+    "code": "unknown",
+    "operator": null,
+    "message": "locator.waitFor: Timeout 25000ms exceeded.",
+    "stack": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('P01 U10 persisted assistant 2bdc3240', { exact: true }) to be visible\u001b[22m\n\n    at inspectHistory (E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\desktop-ui.mjs:238:66)\n    at async file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/mature-integration/tests/integration/P02/desktop-ui.mjs:350:7",
+    "windows": 1
+  }
+}
