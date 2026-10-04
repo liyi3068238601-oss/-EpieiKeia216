@@ -54,7 +54,8 @@ function validateSpec(spec) {
 const specPath = process.argv[2];
 if (process.argv.length !== 3 || !path.isAbsolute(specPath)) throw new Error("usage");
 const spec = validateSpec(JSON.parse(await readFile(specPath, "utf8")));
-const { _electron } = createRequire(driverPath)(spec.playwright);
+const playwright = createRequire(driverPath)(spec.playwright);
+const { _electron } = playwright;
 let app;
 const result = {
   schema: resultSchema,
@@ -136,7 +137,19 @@ async function readyWorkspace(first) {
 
     const apiKeyPage = first.getByTestId("login-use-api-key-button");
     if (await apiKeyPage.isVisible().catch(() => false)) {
-      await apiKeyPage.click();
+      try {
+        await apiKeyPage.click();
+      } catch (error) {
+        if (!(error instanceof playwright.errors.TimeoutError)) throw error;
+        const onboarding = first.getByTestId("onboarding-page");
+        const apiKeyButtonVisible = await apiKeyPage.isVisible().catch(() => false);
+        const onboardingVisible = await onboarding.isVisible().catch(() => false);
+        const composerVisible = await composer.isVisible().catch(() => false);
+        const emptyPasswordSkipObserved = result.ui_actions.includes("skipped-key-onboarding-with-empty-password");
+        if (!emptyPasswordSkipObserved || apiKeyButtonVisible || (!onboardingVisible && !composerVisible)) throw error;
+        result.ui_actions.push("observed-api-key-onboarding-transition");
+        continue;
+      }
       const password = first.locator("input[type='password']");
       assert.equal(await password.inputValue(), "", "fresh owned profile unexpectedly contains a saved API key");
       await first.getByRole("button", { name: /暂时跳过|Skip for now|Skip/i }).click();
