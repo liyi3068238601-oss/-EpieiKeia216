@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import subprocess
 import sys
 import tempfile
 
@@ -205,6 +206,9 @@ class DesktopSideEffectGuardTests:
         cli_dir.mkdir(parents=True)
         home.mkdir(parents=True)
         cli_entry.write_text("// P02 isolated candidate alias fixture\n", encoding="utf-8")
+        seeded_database = home / ".zcode/cli/db/db.sqlite"
+        seeded_database.parent.mkdir(parents=True)
+        seeded_database.write_bytes(b"seeded native history database")
         candidate = {"resolved_paths": {"assemblyRoot": str(root / "candidate"), "cliEntry": str(cli_entry)}}
         system_env = os.environ.copy()
         if not system_env.get("SYSTEMROOT"):
@@ -219,12 +223,45 @@ class DesktopSideEffectGuardTests:
             assert verified.get("passed") is True, verified
             assert alias_dir.is_junction()
             assert alias_dir.resolve(strict=True) == cli_dir.resolve(strict=True)
+            assert seeded_database.read_bytes() == b"seeded native history database"
+            try:
+                desktop["create_candidate_cli_runtime_alias"](
+                    profile, home, candidate, system_env, LinkVerifier)
+            except RuntimeError as error:
+                assert str(error) == "p02_cli_alias_path_preexists", str(error)
+            else:
+                raise AssertionError("an occupied glm alias must never be replaced")
             forged_receipt = dict(receipt)
             forged_receipt["alias_entry"] = str(cli_entry)
             (profile / "sqlite-cli-runtime-alias.json").write_text(
                 json.dumps(forged_receipt), encoding="utf-8")
             rejected = desktop["verify_candidate_cli_alias"](profile, candidate, LinkVerifier)
             assert rejected.get("passed") is not True and rejected.get("failure_code") == "candidate_cli_alias_binding_mismatch", rejected
+
+            linked_root = root / "linked-parent"
+            linked_profile = linked_root / "profile"
+            linked_home = linked_profile / "home"
+            linked_target = linked_root / "unowned-target"
+            linked_home.mkdir(parents=True)
+            linked_target.mkdir()
+            linked_dot_zcode = linked_home / ".zcode"
+            powershell = Path(system_env["SYSTEMROOT"]) / "System32/WindowsPowerShell/v1.0/powershell.exe"
+            link_result = subprocess.run(
+                [str(powershell), "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File",
+                 str(desktop["OWNED_JUNCTION_SCRIPT"]), "-Link", str(linked_dot_zcode), "-Target", str(linked_target)],
+                capture_output=True, timeout=20, check=False, shell=False)
+            assert link_result.returncode == 0, link_result.stderr.decode("utf-8", errors="replace")
+            try:
+                try:
+                    desktop["create_candidate_cli_runtime_alias"](
+                        linked_profile, linked_home, candidate, system_env, LinkVerifier)
+                except RuntimeError as error:
+                    assert str(error) == "p02_cli_alias_parent_preexists", str(error)
+                else:
+                    raise AssertionError("a linked alias parent must never be followed")
+            finally:
+                if linked_dot_zcode.is_junction():
+                    os.rmdir(linked_dot_zcode)
         finally:
             if alias_dir.is_junction():
                 os.rmdir(alias_dir)

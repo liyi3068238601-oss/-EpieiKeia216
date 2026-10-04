@@ -121,9 +121,15 @@ def create_candidate_cli_runtime_alias(profile: Path, home: Path, candidate: dic
     alias_parent = home_root
     for component in (".zcode", "server", "agents"):
         alias_parent = alias_parent / component
-        if alias_parent.exists() or verifier.linked(alias_parent):
+        if verifier.linked(alias_parent):
             raise RuntimeError("p02_cli_alias_parent_preexists")
-        alias_parent.mkdir()
+        if alias_parent.exists():
+            if not alias_parent.is_dir():
+                raise RuntimeError("p02_cli_alias_parent_preexists")
+        else:
+            alias_parent.mkdir()
+        if verifier.linked(alias_parent) or not alias_parent.resolve(strict=True).is_relative_to(home_root):
+            raise RuntimeError("p02_cli_alias_parent_preexists")
     alias_dir = alias_parent / "glm"
     alias_entry = alias_dir / cli_entry.name
     if alias_dir.exists() or verifier.linked(alias_dir):
@@ -659,7 +665,7 @@ def main() -> int:
             "nativeCliRuntimeAliasPolicy": "P02 creates a per-scenario junction under the owned profile home that resolves to the verified candidate CLI dist directory; the P01 CLI guard uses the alias path while verifying the same candidate entry hash.",
             "registryGuardPolicy": "P02 Electron main instrumentation blocks reg.exe child_process.spawn, app protocol registration/removal, and recent-document clearing calls, recording original requests before native side effects. It is not an operating-system sandbox; four ZCode.OpenInZCode context-menu keys and five zcode protocol keys are hashed read-only immediately before and after each suite.",
             "registrySideEffectState": registry_proof,
-            "qualificationBoundary": "Actual qualification uses the Electron UI with the pinned fixed Node CLI. The durable host and SQLite ledger run in the wrapped CLI protocol process, not Electron main.",
+            "qualificationBoundary": "Actual qualification uses the Electron UI and its pinned Electron 41.0.3 executable in ELECTRON_RUN_AS_NODE=1 app-server mode; that process is observed loading the owned Better SQLite addon. Fixed Node 24.14 runs the candidate builder, P01 UI driver/profile-history helpers, and ledger verifier; the P02 Desktop orchestrator runs under Python 3.12. The durable host and SQLite ledger run in the wrapped Electron Node-mode CLI process, not Electron main.",
             "processPidRolePolicy": "desktop-main.pid records the Playwright Electron launcher PID; main-process-runtime.json and blocked side-effect records bind to the app.evaluate main PID, cross-checked against P01 process and network evidence.",
             "mainProcessSnapshotCapturePolicy": "The main-process snapshot is written once at the first guarded setAsDefaultProtocolClient call, sampling process argv/defaultApp directly at the API boundary before the call is blocked.",
             "sidecarBoundary": "P01 turn sidecar remains UI correlation evidence; durable claims come only from the read-only SQLite and diagnostics checks recorded per scenario.",
