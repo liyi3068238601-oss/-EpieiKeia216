@@ -6,11 +6,11 @@
   "project_root": "E:\\Xiadie\\Xiadie",
   "baseline_commit": "9a39bde69545ac0ad28f484c5318425c2e5d4bf9",
   "goal": "Complete the original P02 maturity remediation and fresh G02 before the explicitly authorized P03 goal.",
-  "stage_status": "running",
+  "stage_status": "completed",
   "G01": "pass",
-  "G02": "pending_revalidation",
-  "current_task": "P02-U11",
-  "next_task": "P02-U11",
+  "G02": "pass",
+  "current_task": null,
+  "next_task": "P03-U01",
   "next_stage_started": false,
   "tasks": [
     {
@@ -395,7 +395,7 @@
       "dependencies": [
         "P02-U10"
       ],
-      "status": "running",
+      "status": "accepted",
       "card_sha256": "d6d925953dc34c01f31dcc1d3a4a9af441c22f424c99e4da3b8a5942a24a2624",
       "historical_acceptances": [
         {
@@ -418,7 +418,24 @@
             }
           }
         }
-      ]
+      ],
+      "author_commit": "e11e7343e8f3dd15f7420ceb14bdf7c6e3dec241",
+      "integration_commit": "560b88e2125e9cf2a180e183fc30904aba3129d2",
+      "acceptance": {
+        "path": "evidence/P02-U11/20261004-02/acceptance.json",
+        "bytes": 5963,
+        "sha256": "50e2df900bdecf891a2ddbe94934409a4e5491769144e52c188e2e3545550fd5"
+      },
+      "review": {
+        "status": "pass",
+        "reviewer": "/root/mature_event_store",
+        "reviewed_commit": "e11e7343e8f3dd15f7420ceb14bdf7c6e3dec241",
+        "evidence": {
+          "path": "evidence/P02-U11/20261004-02/review-final.json",
+          "bytes": 24062,
+          "sha256": "a9c6d25ed25f8173f5fa3065e46342b0010c6b038dcc76c346c9c94695638ae3"
+        }
+      }
     }
   ],
   "previous_stage_acceptance": {
@@ -487,5 +504,16 @@
       "bytes": 917,
       "sha256": "e8e4fca6c01a96d734355629133f59f4b29eed579813f9762173101cf4a0e473"
     }
+  },
+  "freeze": {
+    "product_version": "0.2.0",
+    "author_commit": "e11e7343e8f3dd15f7420ceb14bdf7c6e3dec241",
+    "integration_commit": "560b88e2125e9cf2a180e183fc30904aba3129d2",
+    "acceptance": {
+      "path": "evidence/P02-U11/20261004-02/acceptance.json",
+      "bytes": 5963,
+      "sha256": "50e2df900bdecf891a2ddbe94934409a4e5491769144e52c188e2e3545550fd5"
+    },
+    "scope": "Local development candidate; limitations and exact artifact hashes in docs/releases/0.2.0/"
   }
 }

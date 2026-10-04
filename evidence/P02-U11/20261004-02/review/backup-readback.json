@@ -1,0 +1,83 @@
+{
+  "schema": "p02-u11-backup-readback/v1",
+  "created_at_utc": "2026-10-04T12:56:18.837980+00:00",
+  "author_commit": "e11e7343e8f3dd15f7420ceb14bdf7c6e3dec241",
+  "candidate_descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74",
+  "source_archived_report": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\evidence\\P02-U11\\20261004-02\\candidate-proof\\runs\\full\\scenarios\\success\\ledger-verification.json",
+  "source_original": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\ledger-verification.json",
+  "report_sha256": "af98f43a30a2ed6ffb7ca8ea65530008cbac0ccb8ad6435264f6a09f950bbbeb",
+  "decision": "pass",
+  "checks": [
+    {
+      "id": "success-ledger-report-provenance",
+      "status": "pass",
+      "detail": "proof index match count=1 source bytes identical=True"
+    },
+    {
+      "id": "backup-restore-root-and-ledger-integrity",
+      "status": "pass",
+      "detail": "ledger passed=True backup passed=True backup/restored SHA equal=True versions=1/1 integrity=ok foreign_keys=ok counts={'facts': 5, 'observations': 5, 'origins': 5, 'receipts': 5, 'captures': 1, 'materials': 1}"
+    },
+    {
+      "id": "backup-paths-owned-run",
+      "status": "pass",
+      "detail": "backup and restored root paths remain in this fresh owned success run"
+    }
+  ],
+  "backup_restore": {
+    "passed": true,
+    "mode": "snapshot-v1-only",
+    "backupPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\ledger-maintenance\\backups\\events-2026-10-04T11-58-03.516Z.sqlite",
+    "backupSha256": "511fc9597f58ccb1be8cfb8ac04aa37b6148305bad1749e7a2bf3ae9c61c9db5",
+    "restoredDatabasePath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\ledger-maintenance\\restored-root\\events.sqlite",
+    "restoredDatabaseSha256": "511fc9597f58ccb1be8cfb8ac04aa37b6148305bad1749e7a2bf3ae9c61c9db5",
+    "verification": {
+      "userVersion": 1,
+      "schemaVersion": 1,
+      "integrityCheck": "ok",
+      "foreignKeyCheck": "ok",
+      "facts": {
+        "count": 5,
+        "sha256": "f13aae064e56f4a134ecf4793e61aa3c482c363f4d7287a8362cf19d1ec9fc12"
+      },
+      "observations": {
+        "count": 5,
+        "sha256": "2d2c610363f694b8f64267d71b4486d5dec1c9d6890ad9954640dc6a776b3df8"
+      },
+      "origins": {
+        "count": 5,
+        "sha256": "77793d8872f8bd14c6e36ba2a9b0224093b872790fd2e6013c760736c471a76f"
+      },
+      "receipts": {
+        "count": 5,
+        "sha256": "28c44dea8c5c22a04d7dd94de785b02ca5ebafd114ed1b05a7997a5d8902c0f9"
+      },
+      "captures": {
+        "count": 1,
+        "sha256": "a3b272547b6e38b6d133a3508cf8e37dfa1ef2dfdf8615413dcbf1f105d0d2a9"
+      },
+      "materials": {
+        "count": 1,
+        "sha256": "7f47b5c39a4722af412942ff6356c419ce707f768652fb3b888f4cebef75a550"
+      }
+    }
+  },
+  "verification_summary": {
+    "counts": {
+      "facts": 5,
+      "observations": 5,
+      "origins": 5,
+      "receipts": 5,
+      "captures": 1,
+      "materials": 1
+    },
+    "table_sha256": {
+      "facts": "f13aae064e56f4a134ecf4793e61aa3c482c363f4d7287a8362cf19d1ec9fc12",
+      "observations": "2d2c610363f694b8f64267d71b4486d5dec1c9d6890ad9954640dc6a776b3df8",
+      "origins": "77793d8872f8bd14c6e36ba2a9b0224093b872790fd2e6013c760736c471a76f",
+      "receipts": "28c44dea8c5c22a04d7dd94de785b02ca5ebafd114ed1b05a7997a5d8902c0f9",
+      "captures": "a3b272547b6e38b6d133a3508cf8e37dfa1ef2dfdf8615413dcbf1f105d0d2a9",
+      "materials": "7f47b5c39a4722af412942ff6356c419ce707f768652fb3b888f4cebef75a550"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "p02-u11-review-command/v1",
+  "argv": [
+    "python",
+    "-X",
+    "utf8",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-freeze-u11\\final-e11e734-20261004\\backup-readback.py"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "exit_code": 0,
+  "stdout": "{\"decision\": \"pass\", \"checks\": [{\"id\": \"success-ledger-report-provenance\", \"status\": \"pass\", \"detail\": \"proof index match count=1 source bytes identical=True\"}, {\"id\": \"backup-restore-root-and-ledger-integrity\", \"status\": \"pass\", \"detail\": \"ledger passed=True backup passed=True backup/restored SHA equal=True versions=1/1 integrity=ok foreign_keys=ok counts={'facts': 5, 'observations': 5, 'origins': 5, 'receipts': 5, 'captures': 1, 'materials': 1}\"}, {\"id\": \"backup-paths-owned-run\", \"status\": \"pass\", \"detail\": \"backup and restored root paths remain in this fresh owned success run\"}], \"report_sha256\": \"af98f43a30a2ed6ffb7ca8ea65530008cbac0ccb8ad6435264f6a09f950bbbeb\", \"output\": \"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\reviews\\\\mature-freeze-u11\\\\final-e11e734-20261004\\\\backup-readback.json\"}\r\n",
+  "stderr": "",
+  "reviewer_report": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-freeze-u11\\final-e11e734-20261004\\backup-readback.json",
+  "reviewer_script_sha256": "ada81ab565ddecc3379813aa78fdf2e39374f44ae2e921d3da04905f3d12a627",
+  "interpretation": "authoritative read-only backup/restore and canonical table integrity readback; all checks passed"
+}

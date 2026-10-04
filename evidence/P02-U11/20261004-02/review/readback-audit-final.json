@@ -1,0 +1,243 @@
+{
+  "schema": "p02-u11-independent-readback/v1",
+  "created_at_utc": "2026-10-04T12:54:58.001726+00:00",
+  "task": "P02-U11",
+  "attempt": "20261004-02",
+  "author_commit": "e11e7343e8f3dd15f7420ceb14bdf7c6e3dec241",
+  "baseline_commit": "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+  "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+  "manifest_sha256": "eaefb0ef6d844a6674959a4ae6db9e5befd4ccd9bc479fabe21dca915dceba3a",
+  "manifest_files": 220,
+  "changed_paths": 221,
+  "decision": "pass",
+  "checks": [
+    {
+      "id": "exact-target-and-clean-worktrees",
+      "status": "pass",
+      "detail": "root=b95cfd2be02959dd8c390e2b141d24d1093daf81 clean=True; author=e11e7343e8f3dd15f7420ceb14bdf7c6e3dec241 clean=True"
+    },
+    {
+      "id": "manifest-scope-and-author-verifier",
+      "status": "pass",
+      "detail": "manifest=eaefb0ef6d844a6674959a4ae6db9e5befd4ccd9bc479fabe21dca915dceba3a files=220 changed_paths=221 allowed_scope=True; verify-author files=220 mismatches=[]"
+    },
+    {
+      "id": "canonical-ten-prerequisites-and-plan",
+      "status": "pass",
+      "detail": "canonical_U01-U10=10/10; acceptance_review_bytes=20/20; plan_files=423/423; plan_mismatches=0; status_binding=True"
+    },
+    {
+      "id": "accepted-U10-material-103",
+      "status": "pass",
+      "detail": "inputs=103/103 baseline/material Git blobs + descriptor matches; mismatches=0; descriptor=6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74; reused 6,717 closure from accepted U10, no full rehash"
+    },
+    {
+      "id": "better-addon-and-license-binding",
+      "status": "pass",
+      "detail": "targeted addon/license/package and upstream notice hashes checked; package=13.0.3 SQLite=3.53.4 addon=e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a; closed package files=26, no full closure rehash"
+    },
+    {
+      "id": "historical-release-byte-preservation",
+      "status": "pass",
+      "detail": "old 20261003-01 README/freeze compared byte-for-byte with ead4b6bff78250ae9a538819062fd7cb00bd4113; mismatches=0"
+    },
+    {
+      "id": "proof-archive-139-and-runtime-sidecars-42",
+      "status": "pass",
+      "detail": "candidate reports 139/139 and runtime originals 42/42 are byte-identical; categories={'registry_root': 6, 'main_snapshot': 9, 'effect_log': 9, 'cli_alias': 9, 'sqlite_probe': 9}; mismatches=0"
+    },
+    {
+      "id": "fresh-nine-scenarios-PID-addon-alias-guard-and-registry",
+      "status": "pass",
+      "detail": "scenarios=9/9; PID/main/launcher/CLI addon/alias checks passed; probe PIDs=9; nine-key pre/post unchanged; legacy reader wording explicitly disqualified; onboarding fallback observed=False"
+    },
+    {
+      "id": "command-records-and-preserved-failures",
+      "status": "pass",
+      "detail": "indexed commands=17; failures retained=5; self-reference-excluded outer generator record is manifest-bound; mismatches=0"
+    },
+    {
+      "id": "release-docs-and-support-limits",
+      "status": "pass",
+      "detail": "README/freeze/result/source-decision/rollback/requirement evidence are valid UTF-8 and bind 103 distinct inputs (groups overlap), pending G02, Electron/Node distinction, Better license/notices and limits; distinct group paths=103"
+    },
+    {
+      "id": "P03-not-started-and-no-reviewer-reruns",
+      "status": "pass",
+      "detail": "No unit161/Native8 rerun is recorded for this attempt; new full6/degradation3 were the required candidate suites."
+    }
+  ],
+  "runtime_scenarios": [
+    {
+      "suite": "full",
+      "scenario": "cancel_recovery",
+      "main_pid": 14116,
+      "launcher_pid": 42756,
+      "cli_guarded_pids": [
+        44440
+      ],
+      "probe_pids": [
+        44440
+      ],
+      "binding": "verified_actual_cli_load",
+      "passed": true
+    },
+    {
+      "suite": "full",
+      "scenario": "disabled_native",
+      "main_pid": 52080,
+      "launcher_pid": 48152,
+      "cli_guarded_pids": [
+        14460
+      ],
+      "probe_pids": [],
+      "binding": "not_instantiated",
+      "passed": true
+    },
+    {
+      "suite": "full",
+      "scenario": "pro_denied",
+      "main_pid": 43540,
+      "launcher_pid": 16960,
+      "cli_guarded_pids": [
+        53772
+      ],
+      "probe_pids": [
+        53772
+      ],
+      "binding": "verified_actual_cli_load",
+      "passed": true
+    },
+    {
+      "suite": "full",
+      "scenario": "read_failure",
+      "main_pid": 31444,
+      "launcher_pid": 36424,
+      "cli_guarded_pids": [
+        51456
+      ],
+      "probe_pids": [
+        51456
+      ],
+      "binding": "verified_actual_cli_load",
+      "passed": true
+    },
+    {
+      "suite": "full",
+      "scenario": "read_success",
+      "main_pid": 43440,
+      "launcher_pid": 51776,
+      "cli_guarded_pids": [
+        50740
+      ],
+      "probe_pids": [
+        50740
+      ],
+      "binding": "verified_actual_cli_load",
+      "passed": true
+    },
+    {
+      "suite": "full",
+      "scenario": "success",
+      "main_pid": 51060,
+      "launcher_pid": 49464,
+      "cli_guarded_pids": [
+        56168
+      ],
+      "probe_pids": [
+        56168
+      ],
+      "binding": "verified_actual_cli_load",
+      "passed": true
+    },
+    {
+      "suite": "degradation",
+      "scenario": "no_dsh",
+      "main_pid": 52732,
+      "launcher_pid": 53304,
+      "cli_guarded_pids": [
+        49444
+      ],
+      "probe_pids": [
+        49444
+      ],
+      "binding": "verified_actual_cli_load",
+      "passed": true
+    },
+    {
+      "suite": "degradation",
+      "scenario": "no_key",
+      "main_pid": 12824,
+      "launcher_pid": 54508,
+      "cli_guarded_pids": [
+        25556
+      ],
+      "probe_pids": [
+        25556
+      ],
+      "binding": "verified_actual_cli_load",
+      "passed": true
+    },
+    {
+      "suite": "degradation",
+      "scenario": "offline",
+      "main_pid": 15456,
+      "launcher_pid": 56348,
+      "cli_guarded_pids": [
+        5624,
+        41872
+      ],
+      "probe_pids": [
+        5624,
+        41872
+      ],
+      "binding": "verified_actual_cli_load",
+      "passed": true
+    }
+  ],
+  "candidate_proof_archive": {
+    "files": 139,
+    "byte_mismatches": []
+  },
+  "runtime_raw_sidecars": {
+    "files": 42,
+    "categories": {
+      "registry_root": 6,
+      "main_snapshot": 9,
+      "effect_log": 9,
+      "cli_alias": 9,
+      "sqlite_probe": 9
+    },
+    "byte_mismatches": []
+  },
+  "command_failures_preserved": [
+    {
+      "path": "commands/08-archive-candidate09-command.json",
+      "exit_code": 2
+    },
+    {
+      "path": "commands/09-archive-runtime-sidecars-command.json",
+      "exit_code": 1
+    },
+    {
+      "path": "commands/10-archive-runtime-sidecars-retry-command.json",
+      "exit_code": 1
+    },
+    {
+      "path": "commands/13-write-release-proof-initial-command.json",
+      "exit_code": 1
+    },
+    {
+      "path": "commands/15-diff-unit-command.json",
+      "exit_code": 2
+    }
+  ],
+  "limitations": [
+    "Main-process effect guard is instrumentation, not an OS sandbox.",
+    "disabled_native means the P02 durable wrapper is not instantiated; its two loopback requests are Native fallback, not P02 ledger facts.",
+    "The independent ledger reader retains its legacy fixed-Node-CLI wording, explicitly excluded from actual CLI identity evidence.",
+    "Candidate-09 onboarding timeout fallback was not observed in this attempt.",
+    "No unit161, Native8, extra UI, model, DSH, registry mutation, or source modification was performed by this reviewer."
+  ],
+  "mismatches": []
+}
