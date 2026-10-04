@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import os
 from pathlib import Path
 import shutil
 import sys
@@ -73,6 +74,21 @@ class CandidateVerifierTests(unittest.TestCase):
         (probe_root / "123.json").write_text(json.dumps(probe), encoding="utf8")
         with self.assertRaisesRegex(ValueError, "sqlite_runtime_probe_binding_mismatch"):
             verifier.verify_runtime_probes(profile, "success", result, candidate, {"ledgerCount": 1})
+
+    def test_relative_addon_path_rejected_even_if_it_resolves_to_candidate_file(self):
+        profile, probe_root, result, candidate, probe = self.probe_context()
+        addon = Path(probe["addonPath"])
+        probe["addonPath"] = os.path.relpath(addon, self.root)
+        self.assertFalse(Path(probe["addonPath"]).is_absolute())
+        original_cwd = Path.cwd()
+        try:
+            os.chdir(self.root)
+            self.assertEqual(Path(probe["addonPath"]).resolve(strict=True), addon.resolve(strict=True))
+            (probe_root / "123.json").write_text(json.dumps(probe), encoding="utf8")
+            with self.assertRaisesRegex(ValueError, "sqlite_runtime_probe_addon_path_invalid"):
+                verifier.verify_runtime_probes(profile, "success", result, candidate, {"ledgerCount": 1})
+        finally:
+            os.chdir(original_cwd)
 
     def test_bound_synthetic_probe_positive_control(self):
         profile, probe_root, result, candidate, probe = self.probe_context()

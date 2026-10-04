@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "python",
+    "tests/integration/P02/candidate-verifier.test.py",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\root-verifier-unit-03"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+  "started_at": "2026-10-04T07:48:18.290480+00:00",
+  "completed_at": "2026-10-04T07:48:18.491346+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "{\"schema\": \"p02-synthetic-candidate-validator-tests/v1\", \"tests\": 9, \"passed\": false, \"fixtures\": \"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\mature-integration\\\\root-verifier-unit-03\", \"boundary\": \"Synthetic validation records, not observed CLI/SQLite execution.\"}\r\n",
+  "stderr": "....E....\r\n======================================================================\r\nERROR: test_relative_addon_path_rejected_even_if_it_resolves_to_candidate_file (__main__.CandidateVerifierTests.test_relative_addon_path_rejected_even_if_it_resolves_to_candidate_file)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\candidate-verifier.test.py\", line 83, in test_relative_addon_path_rejected_even_if_it_resolves_to_candidate_file\r\n    self.assertEqual(Path(probe[\"addonPath\"]).resolve(strict=True), addon.resolve(strict=True))\r\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1240, in resolve\r\n    s = self._flavour.realpath(self, strict=strict)\r\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"<frozen ntpath>\", line 727, in realpath\r\nFileNotFoundError: [WinError 3] ϵͳ�Ҳ���ָ����·����: 'E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\worktrees\\\\mature-integration\\\\..\\\\..\\\\experiments\\\\mature-integration\\\\root-verifier-unit-03\\\\test_relative_addon_path_rejected_even_if_it_resolves_to_candidate_file\\\\candidate\\\\apps\\\\zcode-cli\\\\packages\\\\cli\\\\dist\\\\node_modules\\\\better-sqlite3\\\\prebuilds\\\\win32-x64.node'\r\n\r\n----------------------------------------------------------------------\r\nRan 9 tests in 0.097s\r\n\r\nFAILED (errors=1)\r\n"
+}

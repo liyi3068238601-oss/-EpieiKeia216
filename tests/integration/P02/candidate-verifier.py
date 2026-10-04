@@ -155,8 +155,11 @@ def verify_runtime_probes(profile: Path, scenario_id: str, result: dict, candida
         pid = probe["pid"]
         if type(pid) is not int or pid <= 0 or file.stem != str(pid) or pid not in guard_pids:
             raise ValueError("sqlite_runtime_probe_pid_unbound")
+        addon_path = probe["addonPath"]
+        if not isinstance(addon_path, str) or not Path(addon_path).is_absolute():
+            raise ValueError("sqlite_runtime_probe_addon_path_invalid")
         if (probe["packageVersion"] != "13.0.3" or probe["sqliteVersion"] != "3.53.4" or
-                probe["addonSha256"] != ADDON_SHA256 or Path(probe["addonPath"]).resolve(strict=True) != expected_addon):
+                probe["addonSha256"] != ADDON_SHA256 or Path(addon_path).resolve(strict=True) != expected_addon):
             raise ValueError("sqlite_runtime_probe_binding_mismatch")
         loads = probe["processDlopenLoads"]
         if not isinstance(loads, list) or not loads or len(loads) > 64:
