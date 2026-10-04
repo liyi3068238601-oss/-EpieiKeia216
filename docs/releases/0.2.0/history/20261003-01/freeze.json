@@ -5,28 +5,27 @@
   "author_status": "ready_for_review",
   "accepted": false,
   "G02": "pending_independent_acceptance",
-  "author_snapshot_boundary": "Canonical current acceptance is evidence/P02/status.json and U11 acceptance.json written by the coordinator after independent review.",
-  "attempt": "20261004-02",
-  "baseline_commit": "b95cfd2be02959dd8c390e2b141d24d1093daf81",
-  "build_repository_commit": "cd03ddc3a3f6f7ca67b4313e309db20db4755343",
+  "author_snapshot_boundary": "Canonical current acceptance is evidence/P02/status.json and U11 acceptance.json written by coordinator after independent review.",
+  "baseline_commit": "8620d00eecec67d0884efa8d211242acb21eb1c8",
+  "build_repository_commit": "e3d15af210ee6df3871bc6c10b99a093817db819",
   "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
-  "candidate_root": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09",
+  "candidate_root": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01",
   "descriptor": {
-    "path": "evidence/P02-U11/20261004-02/candidate-proof/candidate-descriptor.json",
-    "bytes": 1341570,
-    "sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+    "path": "evidence/P02-U11/20261003-01/candidate-proof/candidate-descriptor.json",
+    "bytes": 1327392,
+    "sha256": "e1b7b4fed3a910b709c89d2d9f5f861027b0394eb5236a3eeeac69b67e642d47"
   },
   "cli": {
-    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
-    "bytes": 16905123,
-    "sha256": "c1ef45479de62ffdc37c2e72b7d014fdb1de61d56341b216077199aaa34af1ea"
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\u11\\candidate-01\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+    "bytes": 16895919,
+    "sha256": "3ae3a5dc8514fb0e2a9c4527706f58284afced0499419654ebf677d2098446e4"
   },
-  "artifact_count": 6717,
-  "repository_input_count": 103,
+  "artifact_count": 6689,
+  "repository_input_count": 94,
   "input_groups": {
     "code": {
-      "count": 61,
-      "bindings_sha256": "07a27828998fade975c81da0ffd69adcdf6544dac089ff3ab1d9869e247b5554",
+      "count": 60,
+      "bindings_sha256": "4faa39863b949315caec7b8f65f1e69b40e55c7dba88e40b8610ee701ba68059",
       "files": [
         {
           "path": "packages/adapters/zcode/src/host.ts",
@@ -75,13 +74,13 @@
         },
         {
           "path": "packages/application/evidence/src/index.ts",
-          "bytes": 32579,
-          "sha256": "c8588f5b2fa76949219739b00cd299d8b75fee70ebf389cebaedbbdbe278c067"
+          "bytes": 30855,
+          "sha256": "05e44e804035f487aedbcfe4881d6f28c7cb40477ed231fc7615e705de06d247"
         },
         {
           "path": "packages/application/evidence/test/evidence.test.mjs",
-          "bytes": 19477,
-          "sha256": "eabe998190f0fccf8b5b13b779da5598f7fddb642ef03bc03ac70c1159cbc20c"
+          "bytes": 18325,
+          "sha256": "f3b93d0e422344240920a100fcb075ee75572cfe05005ab828d212ff6ffa9e66"
         },
         {
           "path": "packages/application/recovery/src/index.ts",
@@ -95,8 +94,8 @@
         },
         {
           "path": "packages/application/recovery/test/recovery.test.mjs",
-          "bytes": 28578,
-          "sha256": "3b2884dd27741e85c74a69388a8d4485e18151bf317cf67585cfd397d08dc82f"
+          "bytes": 28591,
+          "sha256": "3f9ad79c8d321506d7743eedbf08a48800f6a91c32d13e5bfe75ad9b6086ce6b"
         },
         {
           "path": "packages/application/test/native-projection.integration.test.mjs",
@@ -275,13 +274,13 @@
         },
         {
           "path": "packages/diagnostics/src/index.ts",
-          "bytes": 50696,
-          "sha256": "cf26f480a4115f573321eac8af94d0745404584a3da0e5480727fe3bbe9e5c23"
+          "bytes": 41664,
+          "sha256": "e91e73753c37cf236720dc14abe38a2253c24b02c2b55cfeb2ff2b4f313a0f99"
         },
         {
           "path": "packages/diagnostics/test/diagnostics.test.mjs",
-          "bytes": 31841,
-          "sha256": "963bff3a7bb1efa531e819ed3d8c6e578ee4d713f572636b898b8b185605f572"
+          "bytes": 26048,
+          "sha256": "95436d50bb4a37e7e354ffdb8eac358fcf976dae93ba09542ed3978c0b641cf5"
         },
         {
           "path": "packages/secrets/src/index.ts",
@@ -295,43 +294,38 @@
         },
         {
           "path": "packages/storage/backup/src/index.ts",
-          "bytes": 42118,
-          "sha256": "ba9a71fa789e23e28b8d6798235bde0b244e1f5036067afa13b3f8130c38c74f"
+          "bytes": 41646,
+          "sha256": "bcda0776bc2c75ba4a3f39ebc2818b418fd13a9d0bc3f6983c35e64f6491d9c0"
         },
         {
           "path": "packages/storage/backup/test/backup-worker.mjs",
-          "bytes": 4649,
-          "sha256": "65606e45643a9ac58cbbfac5897b24cb5af6be2fdfe2306835eef01eae9f284c"
+          "bytes": 4648,
+          "sha256": "3cba2cabe94a609243f6243ac467fdd3fc6b4bf32b2b257d00e738ec4a67efb3"
         },
         {
           "path": "packages/storage/backup/test/backup.test.mjs",
-          "bytes": 37862,
-          "sha256": "5e9cc7b1ec78fbef211b42c7e785bbbc641f6802307b679971a978a0d71d076d"
+          "bytes": 33248,
+          "sha256": "5403b502fcce5d990d5bf0475bc51d47a0e8e61996e3ac8aac289bca80aa2711"
         },
         {
           "path": "packages/storage/events/src/index.ts",
-          "bytes": 58340,
-          "sha256": "473480a88ebac6490094647e4f4dcb7e72d4ef34b210432f5b8fc21ddd69dec0"
-        },
-        {
-          "path": "packages/storage/events/src/sqlite.ts",
-          "bytes": 2717,
-          "sha256": "c1cbb368c1feb4f3a5d87b0b5526ea7a761ba0a2de394ecf679767b817cc1e47"
+          "bytes": 58109,
+          "sha256": "04f4ecc5f54122dbfa14eff2de982cb3f81967f6d41b205d1694d24127eb9545"
         },
         {
           "path": "packages/storage/events/test/events.test.mjs",
-          "bytes": 32554,
-          "sha256": "6a5b64757a6ca803419904dc4ebbd8145b027086c72ef798e3a3da983345555a"
+          "bytes": 28414,
+          "sha256": "5b215c75525bec91e65c7d83cf2740256887102ce5b30ea5c9471bae7209f303"
         },
         {
           "path": "packages/storage/events/test/sqlite-worker.mjs",
-          "bytes": 1536,
-          "sha256": "3aa08f6b43e73b76a619706009fde63326653ed98da5214f1ae73edf0f0b7dda"
+          "bytes": 1545,
+          "sha256": "2a323493a263d2149a806dd56095ff1ff81bf163ea8ef8cef8f809783b6ab282"
         },
         {
           "path": "tests/integration/P02/durable-host.mjs",
-          "bytes": 22742,
-          "sha256": "4f921d666b31d3623202ac37d3d5993ee201387807599bc92989c16413b0f638"
+          "bytes": 19477,
+          "sha256": "faf5d2c1102d9ab6d2dafb7b1ff2c8fd299543380602ee73789302eeebd67e54"
         }
       ]
     },
@@ -415,17 +409,17 @@
     },
     "tools_and_configuration": {
       "count": 7,
-      "bindings_sha256": "b1d5441f7c5c9d45d7749bedef6f65eb433cb181baccad8a9e6ff29cd9d18d79",
+      "bindings_sha256": "d1621705cffee023f9c05a3fe8682c179c237efa84e83c3b940f06c2f99bfbe8",
       "files": [
         {
           "path": "package.json",
-          "bytes": 953,
-          "sha256": "4e9421b064a4fbb083b2785992331f2570cd0178f534bbe2c6ed1cdeb935b3f1"
+          "bytes": 859,
+          "sha256": "8e86bbecd704386665b0bb081e18df60f31595183f351c2d981043d2730d78e4"
         },
         {
           "path": "pnpm-lock.yaml",
-          "bytes": 1789,
-          "sha256": "76a677e207dc5f9c770dddce790d3274b52409386d262bcd70495c498a877ee4"
+          "bytes": 910,
+          "sha256": "73a7f0c772915e255001e331c960d547153efc460d4f19bc57709bff183b3f64"
         },
         {
           "path": "tools/check-import-boundaries.mjs",
@@ -455,8 +449,8 @@
       ]
     },
     "qualification_tests": {
-      "count": 28,
-      "bindings_sha256": "b96e482b196268b6453a7ff4e2dafabfae416561ce9cfc661ea7ef6dfa51201f",
+      "count": 20,
+      "bindings_sha256": "ebc7fc21beb675e7da7839a811e0479ef75834fd4ae469b5d8a45fccbc7e9b90",
       "files": [
         {
           "path": "tests/integration/P01/.gitattributes",
@@ -520,48 +514,23 @@
         },
         {
           "path": "tests/integration/P02/build-candidate.mjs",
-          "bytes": 19478,
-          "sha256": "9451be46a7fddad91d4db0842ad395dbfeab883016fc012f7c31419cd4d96082"
-        },
-        {
-          "path": "tests/integration/P02/candidate-verifier.py",
-          "bytes": 10826,
-          "sha256": "abb640b30e1d444f8d4928bfaf2d22efa097d2042fea4b4181f01abc2ed01c42"
-        },
-        {
-          "path": "tests/integration/P02/candidate-verifier.test.py",
-          "bytes": 8275,
-          "sha256": "4f7a52c254a93387890a27daaab95cf37afd9e1310325cd74c7517a2d8b1fa06"
-        },
-        {
-          "path": "tests/integration/P02/create-owned-junction.ps1",
-          "bytes": 439,
-          "sha256": "f63309e87833e68635a491ffb0cffda778d57f40bc2104aadaea1e63dc8231c9"
-        },
-        {
-          "path": "tests/integration/P02/desktop-main-guard.cjs",
-          "bytes": 805,
-          "sha256": "ca63f3606e99ca3835afd79db4711887b2205f3072bc42d8d8a0e8fc8c2c6764"
-        },
-        {
-          "path": "tests/integration/P02/desktop-side-effect-guard.test.py",
-          "bytes": 14905,
-          "sha256": "c7d6b84c57c2740e3f094b05675e002229d4f1a1bc3c4a45a5de5a15634597dd"
+          "bytes": 12737,
+          "sha256": "41ebd9e49221f84aba9ebf74384852ad693df2818597b2cdf7ce3e30fec80a3e"
         },
         {
           "path": "tests/integration/P02/desktop-ui.mjs",
-          "bytes": 19338,
-          "sha256": "e8cea18d0df86205c06df3ced678b85a92fe1c31adefe4cddf671bdf4c497f03"
+          "bytes": 18150,
+          "sha256": "cc3d97f4048d8a8ddcbb894a1a13e7ec60f2213b4583a250503c80e125d3882b"
         },
         {
           "path": "tests/integration/P02/desktop.py",
-          "bytes": 40302,
-          "sha256": "ac098078bde59a92148298126ace6276320849adc332947db7a3367153996807"
+          "bytes": 6260,
+          "sha256": "4cc73f06643565b59004136b85f78f0d208da927d242f82efcbe4cd40c617e45"
         },
         {
           "path": "tests/integration/P02/durable-host.mjs",
-          "bytes": 22742,
-          "sha256": "4f921d666b31d3623202ac37d3d5993ee201387807599bc92989c16413b0f638"
+          "bytes": 19477,
+          "sha256": "faf5d2c1102d9ab6d2dafb7b1ff2c8fd299543380602ee73789302eeebd67e54"
         },
         {
           "path": "tests/integration/P02/factory-entry.mjs",
@@ -575,35 +544,20 @@
         },
         {
           "path": "tests/integration/P02/native.worker.mjs",
-          "bytes": 33234,
-          "sha256": "f2e68591bfc786e011fd617d2d73849e8ae65bbc4cbe9e762d69b143a548c16f"
-        },
-        {
-          "path": "tests/integration/P02/registry-write-guard.cjs",
-          "bytes": 8075,
-          "sha256": "1f32270994add0d5ae69d00ff5033eb67d036b0c8c456823977f4d6b8aceb517"
-        },
-        {
-          "path": "tests/integration/P02/registry-write-guard.test.mjs",
-          "bytes": 10647,
-          "sha256": "da5273b34b64817774efb7154ee74099f819363a9e884b01e2f695da675cdca4"
-        },
-        {
-          "path": "tests/integration/P02/sqlite-runtime-probe.test.mjs",
-          "bytes": 4285,
-          "sha256": "25329453f730bb0ade8451d2823c0bf4ca94ffbd2481cfe6e9a8e280a771988c"
+          "bytes": 31323,
+          "sha256": "a814b1ddba9b36ccd8cdce73fafedfca449327d89f5dadf55cae7b057589bbe7"
         },
         {
           "path": "tests/integration/P02/verify-ledger.mjs",
-          "bytes": 19138,
-          "sha256": "86154683a72a2ed6d027d8251a29e3878e1ae1783bdb4767c871a854df65f345"
+          "bytes": 17529,
+          "sha256": "a83eb5e227e0c8c6e724b7a8e1b7a0e02f29e7bf00acb3c0119794bc32ed8942"
         }
       ]
     }
   },
-  "group_boundary": "Groups overlap by design; descriptor.repositoryInputs is the full 103-file material-input index.",
+  "group_boundary": "Theme groups may overlap. The descriptor repositoryInputs array is the complete declared material-input index.",
   "schema_version": 1,
-  "component_version_boundary": "Xiadie root metadata is 0.2.0; unchanged identity plugin and pinned upstream keep independent versions.",
+  "component_version_boundary": "Xiadie root metadata is 0.2.0; unchanged identity plugin is independently versioned 0.1.0; pinned upstream keeps its own version.",
   "source_lock": {
     "path": "docs/sources.lock.json",
     "bytes": 18354,
@@ -619,226 +573,63 @@
     "bytes": 1978939,
     "sha256": "874bf7c10bdcadd0df0b50fc782f39f077669c6e41bbdbccd868409cd714dec3"
   },
-  "sqlite_runtime_package": {
-    "package": "better-sqlite3",
-    "package_version": "13.0.3",
-    "sqlite_version": "3.53.4",
-    "package_root": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3",
-    "closed_runtime_file_count": 26,
-    "addon_path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/prebuilds/win32-x64.node",
-    "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
-    "license_path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/LICENSE",
-    "license_sha256": "09856b52897c91ab67e7456ef43067019f31dfd3b87fda72e655736b1ebdee55",
-    "runtime": "Electron 41.0.3 executable with ELECTRON_RUN_AS_NODE=1 hosts the actual CLI process; fixed Node 24.14.0 runs build/helpers/independent ledger reader only."
-  },
-  "native_storage_boundary": "Native itself remains on node:sqlite; this candidate verifies the P02 event-store and backup wrapper using Better SQLite. Native's storage implementation was not replaced.",
   "prerequisite_audit": {
-    "path": "evidence/P02-U11/20261004-02/prerequisite-audit.json",
-    "bytes": 81583,
-    "sha256": "e55117bf74a7f3b5144bbc0a8de76cd1846ba5da7f64fab1c44bbf5c91709d56"
-  },
-  "candidate_material_audit": {
-    "path": "evidence/P02-U11/20261004-02/candidate-material-audit.json",
-    "bytes": 25694,
-    "sha256": "204853aa6975b31e8f1df6d565a778ab4e631734c1f79bb789428eb2b67988bf"
+    "path": "evidence/P02-U11/20261003-01/prerequisite-audit.json",
+    "bytes": 81570,
+    "sha256": "be70b9e69c62aa15852252e03ef44817b80309abf1f1a4231ba8eb37031f8a75"
   },
   "proof_archive_index": {
-    "path": "evidence/P02-U11/20261004-02/candidate-proof-index.json",
-    "bytes": 49454,
-    "sha256": "857133660839f6cc850b0a8075007173699976a6646bc607a968f7091cb9c2b5"
-  },
-  "runtime_raw_sidecar_index": {
-    "path": "evidence/P02-U11/20261004-02/runtime-raw-candidate09/index.json",
-    "bytes": 20792,
-    "sha256": "8c3e8a453c4556e19960f1d7fdd313a2f3db8a7e0c1a9230dbae7fbd021c1c80"
-  },
-  "runtime_input_protection": {
-    "path": "evidence/P02-U11/20261004-02/runtime-input-protection.json",
-    "bytes": 19177,
-    "sha256": "76f029ed97ca09726c5cdb7b11947b16a40635748b897df41b77e49de9215517"
+    "path": "evidence/P02-U11/20261003-01/candidate-proof-index.json",
+    "bytes": 46646,
+    "sha256": "98645cbbdd7c13eb3bce68ad8f4f12b62d579fb3133e38232fb880338ec81e59"
   },
   "command_index": {
-    "path": "evidence/P02-U11/20261004-02/command-index.json",
-    "bytes": 11972,
-    "sha256": "56f7e6526ae2aa2958b47cda6626b42b5a8c94fac8d575c31fd323d510ead818"
-  },
-  "historical_release_copy": {
-    "path": "evidence/P02-U11/20261004-02/historical-release-copy.json",
-    "bytes": 1007,
-    "sha256": "91f86c8f0e6ad9c266de2987539006bf63532d9aeca6d51d101760a93387ca55"
+    "path": "evidence/P02-U11/20261003-01/command-index.json",
+    "bytes": 1103,
+    "sha256": "a36be54f8889f40830c7033851eea4522e223be2920fcc3f3777b3602c1ca216"
   },
   "test_results": {
     "full": {
       "passed": 6,
       "total": 6,
-      "synthetic_local_model_requests": 9,
       "external_model_requests": 0
     },
     "degradation": {
       "passed": 3,
       "total": 3,
-      "synthetic_local_model_requests": 2,
       "external_model_requests": 0
-    },
-    "combined_synthetic_local_model_requests": 11
-  },
-  "scenario_results": {
-    "full/success": {
-      "passed": true,
-      "model_requests": 1,
-      "sqlite_binding": "verified_actual_cli_load",
-      "ledger_admission": "admitted",
-      "ledger_admitted_turns": 1,
-      "ui_actions": [
-        "skipped-key-onboarding-with-empty-password",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "filled-v4-composer-input",
-        "clicked-v4-composer-send"
-      ]
-    },
-    "full/read_success": {
-      "passed": true,
-      "model_requests": 2,
-      "sqlite_binding": "verified_actual_cli_load",
-      "ledger_admission": "admitted",
-      "ledger_admitted_turns": 1,
-      "ui_actions": [
-        "skipped-key-onboarding-with-empty-password",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "filled-v4-composer-input",
-        "clicked-v4-composer-send"
-      ]
-    },
-    "full/read_failure": {
-      "passed": true,
-      "model_requests": 2,
-      "sqlite_binding": "verified_actual_cli_load",
-      "ledger_admission": "admitted",
-      "ledger_admitted_turns": 1,
-      "ui_actions": [
-        "skipped-key-onboarding-with-empty-password",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "filled-v4-composer-input",
-        "clicked-v4-composer-send"
-      ]
-    },
-    "full/cancel_recovery": {
-      "passed": true,
-      "model_requests": 2,
-      "sqlite_binding": "verified_actual_cli_load",
-      "ledger_admission": "admitted",
-      "ledger_admitted_turns": 2,
-      "ui_actions": [
-        "skipped-key-onboarding-with-empty-password",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "filled-v4-composer-input",
-        "clicked-v4-composer-send",
-        "observed-streaming-partial-in-renderer",
-        "clicked-native-stop-button",
-        "filled-v4-composer-input",
-        "clicked-v4-composer-send"
-      ]
-    },
-    "full/disabled_native": {
-      "passed": true,
-      "model_requests": 2,
-      "sqlite_binding": "not_instantiated",
-      "ledger_admission": "ledger_absent_not_admitted_allowed",
-      "ledger_admitted_turns": 0,
-      "ui_actions": [
-        "skipped-key-onboarding-with-empty-password",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "filled-v4-composer-input",
-        "clicked-v4-composer-send"
-      ]
-    },
-    "full/pro_denied": {
-      "passed": true,
-      "model_requests": 0,
-      "sqlite_binding": "verified_actual_cli_load",
-      "ledger_admission": "not_admitted",
-      "ledger_admitted_turns": 0,
-      "ui_actions": [
-        "skipped-key-onboarding-with-empty-password",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step"
-      ]
-    },
-    "degradation/no_key": {
-      "passed": true,
-      "model_requests": 0,
-      "sqlite_binding": "verified_actual_cli_load",
-      "ledger_admission": "not_admitted",
-      "ledger_admitted_turns": 0,
-      "ui_actions": [
-        "skipped-key-onboarding-with-empty-password",
-        "opened-native-synthetic-history-in-renderer",
-        "clicked-new-conversation-task",
-        "filled-v4-composer-input",
-        "pressed-enter-with-send-disabled",
-        "opened-native-settings-page",
-        "verified-return-to-native-workspace"
-      ]
-    },
-    "degradation/no_dsh": {
-      "passed": true,
-      "model_requests": 1,
-      "sqlite_binding": "verified_actual_cli_load",
-      "ledger_admission": "admitted",
-      "ledger_admitted_turns": 1,
-      "ui_actions": [
-        "skipped-key-onboarding-with-empty-password",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "skipped-local-onboarding-step",
-        "filled-v4-composer-input",
-        "clicked-v4-composer-send"
-      ]
-    },
-    "degradation/offline": {
-      "passed": true,
-      "model_requests": 1,
-      "sqlite_binding": "verified_actual_cli_load",
-      "ledger_admission": "admitted",
-      "ledger_admitted_turns": 1,
-      "ui_actions": [
-        "skipped-key-onboarding-with-empty-password",
-        "opened-native-synthetic-history-in-renderer",
-        "clicked-new-conversation-task",
-        "filled-v4-composer-input",
-        "clicked-v4-composer-send",
-        "opened-native-settings-page",
-        "verified-return-to-native-workspace",
-        "opened-native-synthetic-history-in-renderer"
-      ]
     }
   },
   "execution_inputs": {
-    "before_after_record": {
-      "path": "evidence/P02-U11/20261004-02/runtime-input-protection.json",
-      "bytes": 19177,
-      "sha256": "76f029ed97ca09726c5cdb7b11947b16a40635748b897df41b77e49de9215517"
+    "before": {
+      "path": "evidence/P02-U11/20261003-01/commands/tests-01-inputs-before.json",
+      "bytes": 31362,
+      "sha256": "fcf34afe106dddd4432de08d4e2a788bd8f4d0609edd755d85bf922dfe982e20"
     },
-    "full_unchanged": true,
-    "degradation_unchanged": true,
-    "digest": "4a61a9ada9ce7dfa4778ab96e63d851b077fa611435e94236c3f3c66eaf1a809"
+    "after": {
+      "path": "evidence/P02-U11/20261003-01/commands/tests-02-inputs-after.json",
+      "bytes": 31470,
+      "sha256": "e246800c045cf782b3ab14c0cd1349cd71403f75bb69572b50ba765d6d6cc1ff"
+    },
+    "digest": "206b4aec3679a3825fc08983c45f320dd94d99555c32cf2f0c459fbd0dd3b5a2"
   },
   "generation_script": {
-    "path": "evidence/P02-U11/20261004-02/write-release-proof-u11.py",
-    "bytes": 31598,
-    "sha256": "98d357fec69732a68631817edc8007e4a6e57e94626126477eea87ce2986ee51"
+    "path": "evidence/P02-U11/20261003-01/coordinator/write-release-proof.py",
+    "bytes": 13503,
+    "sha256": "d9aab784d2f29533b0f3ab4ac0a9af7fd8d8f1c5a0a4798fa95968a69b610b37"
   },
+  "summaries": [
+    {
+      "path": "evidence/P02-U11/20261003-01/candidate-proof/runs/full/summary.json",
+      "bytes": 73052,
+      "sha256": "9455d8915343e0c678c01fef51185e16ff2fa07bc9810b3141dca5fce55142bc"
+    },
+    {
+      "path": "evidence/P02-U11/20261003-01/candidate-proof/runs/degradation/summary.json",
+      "bytes": 47885,
+      "sha256": "86ad5233cac197acd4410cf960bd516fb0da3f0a9ebc86892c6c3878bd3c7173"
+    }
+  ],
   "toolchain": {
     "node_version": "v24.14.0",
     "node": {
@@ -852,36 +643,10 @@
       "sha256": "bb6ee7e709ae60426e30b8d393df4d939ee61407794b4f053ce6338d6eaa8c63"
     },
     "source_pin": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
-    "boundary": "Node and compiler file identities are bound; this is not the full upstream dependency closure."
-  },
-  "known_qualification_text_limitations": [
-    {
-      "path": "candidate-proof/runs/full/scenarios/success/ledger-verification.json",
-      "field": "qualificationBoundary",
-      "note": "Preserved raw reader report contains legacy wording that calls the CLI a fixed Node CLI. That independent Node reader proves ledger readback only and is not used to identify the actual CLI runtime; the accurate Desktop runner qualification and PID-bound process.dlopen probes are the runtime evidence."
-    }
-  ],
-  "diff": {
-    "path": "evidence/P02-U11/20261004-02/diff.json",
-    "bytes": 59456,
-    "sha256": "7d49a698291df324382e59fb3624cedc4e307fc683355bbec5610c4fee64bf57"
-  },
-  "requirement_mapping": {
-    "R03": "Accepted U03/U04/U05/U09/U10 evidence plus the candidate-bound source/input hashes; raw original prompt material remains NOT_VERIFIED.",
-    "R04": "Accepted event identity/provenance and actual Native/Desktop readback; the fresh success suite includes Better-backed SQLite backup/restore content hashes.",
-    "R05": "Accepted recovery/unknown-effect constraints and fresh Desktop cancel-then-new-turn path; no complete message-edit/concurrent-session guarantee.",
-    "R24": "Accepted U08 backup/new-root restore plus fresh candidate backup/restore; no physical power-loss/disk-failure qualification."
+    "boundary": "Declared executable/compiler entries only; not the entire dependency closure."
   },
   "stop_after": "P02-U11/G02",
   "next_node": "P03-U01",
   "next_stage_started": false,
-  "qualification": "Fresh actual Desktop candidate full6/degradation3. P02 durable wrapper uses Better SQLite 13.0.3 / SQLite 3.53.4 in the Electron41.0.3 executable running with ELECTRON_RUN_AS_NODE=1; fixed Node24.14.0 is helper/reader only. Local synthetic loopback, owned profiles and a development assembly; not paid model use, installer/portable/public release or full OS isolation.",
-  "limitations": [
-    "The selected nine registry keys were unchanged across these suites. Main-process registry/API guards are instrumentation, not an OS sandbox.",
-    "disabled_native leaves the P02 durable wrapper/probe uninstantiated; its two requests are Native fallback loopback model requests, not P02 ledger facts.",
-    "The new onboarding-timeout fallback branch was not observed in candidate09 ui_actions.",
-    "Paid Desktop model routing, real user credentials, DSH use, installer/portable behavior, human visual approval, unguarded Native startup, physical power loss and full OS sandboxing were not tested.",
-    "Native's own node:sqlite storage remains. Earlier unit161 and Native8 results are historical accepted evidence and were not rerun in this U11 attempt.",
-    "The independent ledger reader runs under fixed Node24.14 and is readback evidence only; its stale qualificationBoundary wording is preserved and explicitly excluded as CLI identity evidence."
-  ]
+  "qualification": "Actual Electron UI with fixed Node CLI SQLite and synthetic loopback backend. Local development assembly with borrowed pinned dependencies; not installer/portable/public release or full dependency closure."
 }

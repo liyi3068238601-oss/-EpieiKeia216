@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "suite": "full",
+  "candidate": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09",
+  "output": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09",
+  "runner": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\desktop.py",
+    "sha256": "ac098078bde59a92148298126ace6276320849adc332947db7a3367153996807"
+  },
+  "ledgerVerifier": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\verify-ledger.mjs",
+    "sha256": "86154683a72a2ed6d027d8251a29e3878e1ae1783bdb4767c871a854df65f345"
+  },
+  "candidateVerifier": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\candidate-verifier.py",
+    "sha256": "abb640b30e1d444f8d4928bfaf2d22efa097d2042fea4b4181f01abc2ed01c42"
+  },
+  "uiDriver": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\desktop-ui.mjs",
+    "sha256": "e8cea18d0df86205c06df3ced678b85a92fe1c31adefe4cddf671bdf4c497f03"
+  },
+  "fixedNode": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+  },
+  "harness": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\desktop.py",
+    "sha256": "c4ed49c9940f0b83f06f04a71234e8907fcd5ff82c21a58d2dc9cc2e80002dbe"
+  },
+  "desktopMainGuard": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\desktop-main-guard.cjs",
+    "sha256": "ca63f3606e99ca3835afd79db4711887b2205f3072bc42d8d8a0e8fc8c2c6764"
+  },
+  "registryWriteGuard": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\registry-write-guard.cjs",
+    "sha256": "1f32270994add0d5ae69d00ff5033eb67d036b0c8c456823977f4d6b8aceb517"
+  },
+  "ownedJunctionScript": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\create-owned-junction.ps1",
+    "sha256": "f63309e87833e68635a491ffb0cffda778d57f40bc2104aadaea1e63dc8231c9"
+  },
+  "p01NetworkGuard": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\electron-network-guard.cjs",
+    "sha256": "8a1212d760377ec29f1df079686b9502ad00ff4ee45ad5ce880084f10737901b"
+  },
+  "candidateAssemblyRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09",
+  "candidateArtifactClosureAfterSuite": {
+    "passed": true,
+    "owned_files_verified": 6717,
+    "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+  },
+  "pinnedCandidateDescriptorSha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74",
+  "processWorkingDirectoryPolicy": "P02 assigns a physical per-scenario profile directory to the reused UI driver process cwd, keeping process-relative Windows caches outside the immutable candidate assembly. The candidate assembly root and descriptor remain separately verified.",
+  "nativeCliRuntimeAliasPolicy": "P02 creates a per-scenario junction under the owned profile home that resolves to the verified candidate CLI dist directory; the P01 CLI guard uses the alias path while verifying the same candidate entry hash.",
+  "registryGuardPolicy": "P02 Electron main instrumentation blocks reg.exe child_process.spawn, app protocol registration/removal, and recent-document clearing calls, recording original requests before native side effects. It is not an operating-system sandbox; four ZCode.OpenInZCode context-menu keys and five zcode protocol keys are hashed read-only immediately before and after each suite.",
+  "registrySideEffectState": {
+    "schemaVersion": 1,
+    "scope": "four ZCode.OpenInZCode context-menu keys and five HKCU\\Software\\Classes\\zcode protocol keys",
+    "keyCount": 9,
+    "readOnly": true,
+    "preSnapshotSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+    "postSnapshotSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+    "unchangedDuringThisSuite": true,
+    "baselineBoundary": "The pre-state was captured immediately before this suite; it does not reconstruct a state from before earlier runs."
+  },
+  "qualificationBoundary": "Actual qualification uses the Electron UI and its pinned Electron 41.0.3 executable in ELECTRON_RUN_AS_NODE=1 app-server mode; that process is observed loading the owned Better SQLite addon. Fixed Node 24.14 runs the candidate builder, P01 UI driver/profile-history helpers, and ledger verifier; the P02 Desktop orchestrator runs under Python 3.12. The durable host and SQLite ledger run in the wrapped Electron Node-mode CLI process, not Electron main.",
+  "processPidRolePolicy": "desktop-main.pid records the Playwright Electron launcher PID; main-process-runtime.json and blocked side-effect records bind to the app.evaluate main PID, cross-checked against P01 process and network evidence.",
+  "mainProcessSnapshotCapturePolicy": "The main-process snapshot is written once at the first guarded setAsDefaultProtocolClient call, sampling process argv/defaultApp directly at the API boundary before the call is blocked.",
+  "sidecarBoundary": "P01 turn sidecar remains UI correlation evidence; durable claims come only from the read-only SQLite and diagnostics checks recorded per scenario.",
+  "exitCode": 0
+}

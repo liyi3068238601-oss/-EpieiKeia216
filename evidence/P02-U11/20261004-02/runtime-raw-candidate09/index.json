@@ -1,0 +1,393 @@
+{
+  "schema": "p02-u11-runtime-raw-sidecars/v1",
+  "createdAtUtc": "2026-10-04T12:08:51.971339+00:00",
+  "attempt": "20261004-02",
+  "candidateDescriptorSha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74",
+  "addonSha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+  "addon": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\node_modules\\better-sqlite3\\prebuilds\\win32-x64.node",
+  "binding": {
+    "betterSqlite3": "13.0.3",
+    "sqlite": "3.53.4",
+    "loadProof": "Electron 41.0.3 executable with ELECTRON_RUN_AS_NODE=1; each direct process.dlopen probe is PID-bound"
+  },
+  "suites": [
+    {
+      "suite": "full",
+      "summaryPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\summary.json",
+      "summaryBytes": 101783,
+      "summarySha256": "0f758012fb7f256e6268514ad8cd4193fa51cd9b80a0b2f7463b563fe5772ee5",
+      "scenarioCount": 6,
+      "externalModelRequests": 0,
+      "registryKeyCount": 9,
+      "registryPreSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+      "registryPostSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+      "executionUnchanged": true,
+      "productionUnchanged": true
+    },
+    {
+      "suite": "degradation",
+      "summaryPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\summary.json",
+      "summaryBytes": 68232,
+      "summarySha256": "8e226ce64ec8b580334e69d7aaea27db474bc81016ef282ab2fce5d359b321e7",
+      "scenarioCount": 3,
+      "externalModelRequests": 0,
+      "registryKeyCount": 9,
+      "registryPreSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+      "registryPostSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+      "executionUnchanged": true,
+      "productionUnchanged": true
+    }
+  ],
+  "scenarioUiActions": {
+    "full": {
+      "cancel_recovery": [
+        "skipped-key-onboarding-with-empty-password",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "filled-v4-composer-input",
+        "clicked-v4-composer-send",
+        "observed-streaming-partial-in-renderer",
+        "clicked-native-stop-button",
+        "filled-v4-composer-input",
+        "clicked-v4-composer-send"
+      ],
+      "disabled_native": [
+        "skipped-key-onboarding-with-empty-password",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "filled-v4-composer-input",
+        "clicked-v4-composer-send"
+      ],
+      "pro_denied": [
+        "skipped-key-onboarding-with-empty-password",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step"
+      ],
+      "read_failure": [
+        "skipped-key-onboarding-with-empty-password",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "filled-v4-composer-input",
+        "clicked-v4-composer-send"
+      ],
+      "read_success": [
+        "skipped-key-onboarding-with-empty-password",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "filled-v4-composer-input",
+        "clicked-v4-composer-send"
+      ],
+      "success": [
+        "skipped-key-onboarding-with-empty-password",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "filled-v4-composer-input",
+        "clicked-v4-composer-send"
+      ]
+    },
+    "degradation": {
+      "no_dsh": [
+        "skipped-key-onboarding-with-empty-password",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "skipped-local-onboarding-step",
+        "filled-v4-composer-input",
+        "clicked-v4-composer-send"
+      ],
+      "no_key": [
+        "skipped-key-onboarding-with-empty-password",
+        "opened-native-synthetic-history-in-renderer",
+        "clicked-new-conversation-task",
+        "filled-v4-composer-input",
+        "pressed-enter-with-send-disabled",
+        "opened-native-settings-page",
+        "verified-return-to-native-workspace"
+      ],
+      "offline": [
+        "skipped-key-onboarding-with-empty-password",
+        "opened-native-synthetic-history-in-renderer",
+        "clicked-new-conversation-task",
+        "filled-v4-composer-input",
+        "clicked-v4-composer-send",
+        "opened-native-settings-page",
+        "verified-return-to-native-workspace",
+        "opened-native-synthetic-history-in-renderer"
+      ]
+    }
+  },
+  "onboardingTimeoutFallbackObserved": false,
+  "onboardingTimeoutFallbackMarker": "observed-api-key-onboarding-transition",
+  "files": [
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\registry-side-effects-pre.json",
+      "path": "full/registry-side-effects-pre.json",
+      "bytes": 3990,
+      "sha256": "144a7184d34e4bff62933426d9b822d385e3765f3eba376dde55737dc4f08f60"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\registry-side-effects-post.json",
+      "path": "full/registry-side-effects-post.json",
+      "bytes": 3990,
+      "sha256": "144a7184d34e4bff62933426d9b822d385e3765f3eba376dde55737dc4f08f60"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\registry-side-effects-verification.json",
+      "path": "full/registry-side-effects-verification.json",
+      "bytes": 531,
+      "sha256": "1ce7c10f3120a63f849b771bb3e71774bcd5e8a40010325a81f1309907dead42"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\main-process-runtime.json",
+      "path": "full/scenarios/cancel_recovery/profile/main-process-runtime.json",
+      "bytes": 1255,
+      "sha256": "02923fdf580bacc67412fdd1b295773381b4f338ded0b95a14199769fe165dfa"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\registry-write-guard.jsonl",
+      "path": "full/scenarios/cancel_recovery/profile/registry-write-guard.jsonl",
+      "bytes": 10131,
+      "sha256": "ec7e1b175d42eba070e40d2839b8317a3f15b7318157a333c4b02096860e4515"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\sqlite-cli-runtime-alias.json",
+      "path": "full/scenarios/cancel_recovery/profile/sqlite-cli-runtime-alias.json",
+      "bytes": 2059,
+      "sha256": "f9636a72fc21aec60e2c2f562d6d3d28320b07834661096f5433da314e357e74"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\sqlite-runtime-probes\\44440.json",
+      "path": "full/scenarios/cancel_recovery/profile/sqlite-runtime-probes/44440.json",
+      "bytes": 657,
+      "sha256": "6e86fea8bac296c7c8550bdc6c68de2a24d346bc602329a14026af7804b3124b"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\profile\\main-process-runtime.json",
+      "path": "full/scenarios/disabled_native/profile/main-process-runtime.json",
+      "bytes": 1255,
+      "sha256": "3147276602b57469304ce6ee045c11ff75ba288371fc9e887dc942b4f444db87"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\profile\\registry-write-guard.jsonl",
+      "path": "full/scenarios/disabled_native/profile/registry-write-guard.jsonl",
+      "bytes": 10131,
+      "sha256": "4675d5ba16c1c3cf4b0806908dd73439ba6f5b689e38c2f96985a5abf00b01c4"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\profile\\sqlite-cli-runtime-alias.json",
+      "path": "full/scenarios/disabled_native/profile/sqlite-cli-runtime-alias.json",
+      "bytes": 2059,
+      "sha256": "3b326c4f13f504bddc3bfd2d6c33ba453374b65e3bb71e4498462c6a4fe8f809"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\main-process-runtime.json",
+      "path": "full/scenarios/pro_denied/profile/main-process-runtime.json",
+      "bytes": 1240,
+      "sha256": "57a6bec81b8acfceeb88a7a6a51032eb231c3614d44e24db6f5ffe1ca4ef76c5"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\registry-write-guard.jsonl",
+      "path": "full/scenarios/pro_denied/profile/registry-write-guard.jsonl",
+      "bytes": 10016,
+      "sha256": "6ce0eaa7ef2712193a697d4f90a70043c22933d791934ac6aea7e1ae8890db71"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\sqlite-cli-runtime-alias.json",
+      "path": "full/scenarios/pro_denied/profile/sqlite-cli-runtime-alias.json",
+      "bytes": 2044,
+      "sha256": "475932948e65b39f8bc0b6a8acd218b7b604834aa192536ef3110dff850bb680"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\sqlite-runtime-probes\\53772.json",
+      "path": "full/scenarios/pro_denied/profile/sqlite-runtime-probes/53772.json",
+      "bytes": 657,
+      "sha256": "490a913ee963d18943f27eb3e3167cf856566d3114b254bc66adb1e6cc04b5af"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\main-process-runtime.json",
+      "path": "full/scenarios/read_failure/profile/main-process-runtime.json",
+      "bytes": 1246,
+      "sha256": "f0df508570dda99f95924318a1c16c1b6cc227b9559e790cbd8565d574094392"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\registry-write-guard.jsonl",
+      "path": "full/scenarios/read_failure/profile/registry-write-guard.jsonl",
+      "bytes": 10062,
+      "sha256": "adab89479b795d24f45d22c64f013d42738d856cc49d046eb159bb8f921d3deb"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\sqlite-cli-runtime-alias.json",
+      "path": "full/scenarios/read_failure/profile/sqlite-cli-runtime-alias.json",
+      "bytes": 2050,
+      "sha256": "abff7e9112c03a7162fbeeed3d7066a707822b126da135a0e0622fe6ae219338"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\sqlite-runtime-probes\\51456.json",
+      "path": "full/scenarios/read_failure/profile/sqlite-runtime-probes/51456.json",
+      "bytes": 657,
+      "sha256": "8497d63cdb517ceff2a339fa052d7aa4fe34510892fdb83c9d5a958c393d2d1f"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\main-process-runtime.json",
+      "path": "full/scenarios/read_success/profile/main-process-runtime.json",
+      "bytes": 1246,
+      "sha256": "7d5871513400926b9a0db4abfe3b31f614e84a792039dc9721d46e47d6c1315a"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\registry-write-guard.jsonl",
+      "path": "full/scenarios/read_success/profile/registry-write-guard.jsonl",
+      "bytes": 10062,
+      "sha256": "916c4fcaafbb5856de30e9d5ddb41b5d647d28429b08c120c184532f3ba1456a"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\sqlite-cli-runtime-alias.json",
+      "path": "full/scenarios/read_success/profile/sqlite-cli-runtime-alias.json",
+      "bytes": 2050,
+      "sha256": "7a1c16a384bb6c857748eade3d8a6dd52c1a7eb5529b352c76e0a4cf3d493bed"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\sqlite-runtime-probes\\50740.json",
+      "path": "full/scenarios/read_success/profile/sqlite-runtime-probes/50740.json",
+      "bytes": 657,
+      "sha256": "2d5b8d44808def09e64e026851e2551caaaa089c276163f8dd053f1ec9a82ef4"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\main-process-runtime.json",
+      "path": "full/scenarios/success/profile/main-process-runtime.json",
+      "bytes": 1231,
+      "sha256": "926493e592c60cd533a25991502d98e23717776896f4df6fc92aaf1286726d83"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\registry-write-guard.jsonl",
+      "path": "full/scenarios/success/profile/registry-write-guard.jsonl",
+      "bytes": 9947,
+      "sha256": "95a33a993d55b420d33c1e0093bfacfda7e060b2d33e9adb50b5dbfcf3e2f40b"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\sqlite-cli-runtime-alias.json",
+      "path": "full/scenarios/success/profile/sqlite-cli-runtime-alias.json",
+      "bytes": 2035,
+      "sha256": "46f61ae088a1028f37b4e14e3f93e5f052886dc737f088522ad5e52eb9b6a7a9"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\sqlite-runtime-probes\\56168.json",
+      "path": "full/scenarios/success/profile/sqlite-runtime-probes/56168.json",
+      "bytes": 657,
+      "sha256": "56801b4477b02ec7eb0b89f080b186cc23f7677e3a28bf550df841513f808d90"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\registry-side-effects-pre.json",
+      "path": "degradation/registry-side-effects-pre.json",
+      "bytes": 3990,
+      "sha256": "144a7184d34e4bff62933426d9b822d385e3765f3eba376dde55737dc4f08f60"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\registry-side-effects-post.json",
+      "path": "degradation/registry-side-effects-post.json",
+      "bytes": 3990,
+      "sha256": "144a7184d34e4bff62933426d9b822d385e3765f3eba376dde55737dc4f08f60"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\registry-side-effects-verification.json",
+      "path": "degradation/registry-side-effects-verification.json",
+      "bytes": 531,
+      "sha256": "1ce7c10f3120a63f849b771bb3e71774bcd5e8a40010325a81f1309907dead42"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\no_dsh\\profile\\main-process-runtime.json",
+      "path": "degradation/scenarios/no_dsh/profile/main-process-runtime.json",
+      "bytes": 1249,
+      "sha256": "dffad9e623a153926b7d87c29d6943b8386bda8907b20946e571d8b91c3fc47b"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\no_dsh\\profile\\registry-write-guard.jsonl",
+      "path": "degradation/scenarios/no_dsh/profile/registry-write-guard.jsonl",
+      "bytes": 10085,
+      "sha256": "246aaee23dca0c7c2c6aa43d788fd362e19e6fe481025876d4593fcaee376458"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\no_dsh\\profile\\sqlite-cli-runtime-alias.json",
+      "path": "degradation/scenarios/no_dsh/profile/sqlite-cli-runtime-alias.json",
+      "bytes": 2053,
+      "sha256": "c81b049c0deb65d7b25c424f67c5f0795df3f4594f465987e28616ebcd9fc80a"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\no_dsh\\profile\\sqlite-runtime-probes\\49444.json",
+      "path": "degradation/scenarios/no_dsh/profile/sqlite-runtime-probes/49444.json",
+      "bytes": 657,
+      "sha256": "89ec20b3416256a9cdd92bd7f3ac31688b3dd978a4a7d90b695022ad2bc61221"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\no_key\\profile\\main-process-runtime.json",
+      "path": "degradation/scenarios/no_key/profile/main-process-runtime.json",
+      "bytes": 1249,
+      "sha256": "fe4af48312c30e25d4e82217197ed91d3fb94f21b1155029c9a656aa69856d4b"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\no_key\\profile\\registry-write-guard.jsonl",
+      "path": "degradation/scenarios/no_key/profile/registry-write-guard.jsonl",
+      "bytes": 10085,
+      "sha256": "50e37fc2239ebf7be228a2ea7af4012c09ab9a5f47555769653398194e3301a9"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\no_key\\profile\\sqlite-cli-runtime-alias.json",
+      "path": "degradation/scenarios/no_key/profile/sqlite-cli-runtime-alias.json",
+      "bytes": 2053,
+      "sha256": "8995d775392d6356b67b0667915aff714f267f56f86802038f5035b69ba16fa2"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\no_key\\profile\\sqlite-runtime-probes\\25556.json",
+      "path": "degradation/scenarios/no_key/profile/sqlite-runtime-probes/25556.json",
+      "bytes": 657,
+      "sha256": "ee4ba48f08f11ce843fd017b1f21f9b35c38f5e15a2b7a2f91493f4fee41f6bd"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\offline\\profile\\main-process-runtime.json",
+      "path": "degradation/scenarios/offline/profile/main-process-runtime.json",
+      "bytes": 1252,
+      "sha256": "15197e28db9c743a658d0a52764092ff7b5b819d79b4711426b993541f4cbb13"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\offline\\profile\\registry-write-guard.jsonl",
+      "path": "degradation/scenarios/offline/profile/registry-write-guard.jsonl",
+      "bytes": 10108,
+      "sha256": "a21d169e1460c8a423e962041bf45155b8da396473e73d32d20ea8b69860ec2a"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\offline\\profile\\sqlite-cli-runtime-alias.json",
+      "path": "degradation/scenarios/offline/profile/sqlite-cli-runtime-alias.json",
+      "bytes": 2056,
+      "sha256": "ddf270e5c048004d8f34a2ba73171a34db70c77a1693da5a231162b32f412ee8"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\offline\\profile\\sqlite-runtime-probes\\41872.json",
+      "path": "degradation/scenarios/offline/profile/sqlite-runtime-probes/41872.json",
+      "bytes": 657,
+      "sha256": "e49d51b24cdda8045c92ceb3b3da5e7d54257c950795b6daa982fc9a9d29590a"
+    },
+    {
+      "source": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\scenarios\\offline\\profile\\sqlite-runtime-probes\\5624.json",
+      "path": "degradation/scenarios/offline/profile/sqlite-runtime-probes/5624.json",
+      "bytes": 655,
+      "sha256": "ab7ab0b411e24e213a8641c979baf64e04c0885b7783ea03e853be131f4373dc"
+    }
+  ],
+  "fileCount": 42,
+  "rawBytesVerified": true,
+  "command": {
+    "argv": [
+      "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\evidence\\P02-U11\\20261004-02\\archive-runtime-sidecars.py"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+    "exitCode": 0
+  },
+  "scriptSha256": "0a9a00b250f1c52c5ed023ed7b88fad7de2e98bc89addafb91f60285842b2676",
+  "readerBoundary": "Fixed Node 24.14.0 independent ledger-reader output is not used as CLI-load proof; the actual Electron CLI PID and addon sidecars are.",
+  "guardBoundary": "Main-process write guard is instrumentation, not an OS sandbox. Selected nine-key registry snapshots were unchanged across these suites. Full logs, profiles, databases, credentials and key material are excluded."
+}

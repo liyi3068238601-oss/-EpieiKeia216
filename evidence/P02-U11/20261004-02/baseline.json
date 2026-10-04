@@ -1,0 +1,35 @@
+{
+  "schema": "p02-unit-baseline/v1",
+  "task": "P02-U11",
+  "baseline_commit": "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+  "branch": "p02-mature-freeze",
+  "coordinator_branch": "p02-stage",
+  "prerequisites": [
+    {
+      "task": "P02-U10",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U10/20261004-02/acceptance.json",
+        "bytes": 12539,
+        "sha256": "62464f5cda5ab75e42aca9cd9cd1a4b45d5155ed0ef2aba08140fee01fcfe68d"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P02-U11.md",
+    "bytes": 2719,
+    "sha256": "d6d925953dc34c01f31dcc1d3a4a9af441c22f424c99e4da3b8a5942a24a2624"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "docs/releases/0.2.0",
+    "evidence/P02-U11"
+  ],
+  "test_mapping": "Fresh actual Electron41 RUN_AS_NODE candidate09 full6 and degradation3; record real addon load and ledger results, no paid model or DSH calls.",
+  "author_status": "ready_for_review",
+  "checked_at_utc": "2026-10-04T11:48:53.484117+00:00"
+}

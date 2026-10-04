@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "scenario": "disabled_native",
+  "profileRoot": "owned-profile-redacted",
+  "ledgerCount": 0,
+  "admission": "ledger_absent_not_admitted_allowed",
+  "databases": [],
+  "admitted_turns": 0,
+  "backup_restore": null,
+  "passed": true,
+  "qualificationBoundary": "Electron UI uses the pinned fixed Node CLI; the durable host and SQLite ledger are in the wrapped CLI protocol process, while this ledger readback runs in a separate fixed-Node verifier process. The P02 wrapper binds actual CLI Better SQLite load sidecars to guarded CLI PIDs. P01 sidecar remains UI correlation evidence."
+}

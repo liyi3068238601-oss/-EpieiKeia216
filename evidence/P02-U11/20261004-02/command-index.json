@@ -1,0 +1,321 @@
+{
+  "schema": "p02-u11-command-index/v1",
+  "attempt": "20261004-02",
+  "commands": [
+    {
+      "path": "commands/01-baseline-unit.json",
+      "bytes": 870,
+      "sha256": "5df16ce0d29e95c187fc254fd2eadba797d2f34c971e2d00fb2c58bf12e73b1e",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        ".runtime/P02/coord/baseline-unit.py",
+        "P02-U11",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+        "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+        "--scope",
+        "docs/releases/0.2.0",
+        "--scope",
+        "evidence/P02-U11",
+        "--test-mapping",
+        "Fresh actual Electron41 RUN_AS_NODE candidate09 full6 and degradation3; record real addon load and ledger results, no paid model or DSH calls.",
+        "--attempt",
+        "20261004-02"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/02-prerequisite-audit-command.json",
+      "bytes": 787,
+      "sha256": "2092abeb099a5df71be73c376fa0060b0db61d6f3b4e67dbce7727184000e5b0",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        ".runtime/P02/coord/audit-stage-inputs.py",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\evidence\\P02-U11\\20261004-02\\prerequisite-audit.json",
+        "--current",
+        "P02-U11"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/03-candidate-material-audit-command.json",
+      "bytes": 1069,
+      "sha256": "11c88cd208f3fa4035437fa20c75eafa7b233567abdc7a3fec5fd325a15fce18",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\evidence\\P02-U11\\20261004-02\\candidate-material-audit.py",
+        "--worktree",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+        "--descriptor",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\candidate-descriptor.json",
+        "--baseline",
+        "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\evidence\\P02-U11\\20261004-02\\candidate-material-audit.json"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/04-preserve-history-command.json",
+      "bytes": 871,
+      "sha256": "bfe2450772df1d73fef626da17f6cdf348c85bb15f8802bcdb980e56eedb310f",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\evidence\\P02-U11\\20261004-02\\preserve-release-history.py",
+        "--worktree",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\evidence\\P02-U11\\20261004-02\\historical-release-copy.json"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/05-typescript-build-command.json",
+      "bytes": 615,
+      "sha256": "bdeb678e6764f2b011105e32ea0136653f5a9ea09af7a48ab47ea876e186b802",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\node_modules\\typescript\\bin\\tsc",
+        "--project",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tsconfig.json"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/06-desktop-full-candidate09.json",
+      "bytes": 1265,
+      "sha256": "acae3465dffcc5a6405f9016591964186ca70a027b99b1626a0a0d94e39bde86",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\desktop.py",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09",
+        "--suite",
+        "full",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/07-desktop-degradation-candidate09.json",
+      "bytes": 1070,
+      "sha256": "61966fa061f25721de991ef11ecd47ac9d4c4363f98cdfa806ea7271f54ae457",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\desktop.py",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09",
+        "--suite",
+        "degradation",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/08-archive-candidate09-command.json",
+      "bytes": 1289,
+      "sha256": "42f381e4b80d31ff836ed4d9f7291f55b815c2345ab632604eaa7e6d7b8f8d0c",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\archive-candidate.py",
+        "u11",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09",
+        "--worktree",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+        "--attempt",
+        "20261004-02",
+        "--command-root",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\commands\\mature-freeze",
+        "--run",
+        "full=E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09",
+        "--run",
+        "degradation=E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09",
+        "--compact"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 2
+    },
+    {
+      "path": "commands/08-archive-candidate09-retry-command.json",
+      "bytes": 1099,
+      "sha256": "e5afe7923166fcd2054eb938034c3fce75a1b5a61cbd1e9dff2e47a4c4fbbfe7",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\archive-candidate.py",
+        "u11",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09",
+        "--worktree",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+        "--attempt",
+        "20261004-02",
+        "--command-root",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\commands\\mature-freeze",
+        "--run",
+        "full=E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09",
+        "--run",
+        "degradation=E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/09-archive-runtime-sidecars-command.json",
+      "bytes": 794,
+      "sha256": "80a693c82e37e11d628ca97fe2224447809ed6f0994dae5fd53fc828c4eb8785",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "evidence\\P02-U11\\20261004-02\\archive-runtime-sidecars.py"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 1
+    },
+    {
+      "path": "commands/10-archive-runtime-sidecars-retry-command.json",
+      "bytes": 721,
+      "sha256": "0fad8e81eef5dc6e14d379a3085f05f311ef50cff6065add081aba75c22a33ba",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "evidence\\P02-U11\\20261004-02\\archive-runtime-sidecars.py"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 1
+    },
+    {
+      "path": "commands/11-archive-runtime-sidecars-final-command.json",
+      "bytes": 910,
+      "sha256": "3bfe8ad6f148c7e876c65f8039edb869a1df1afd17537425a74f846a52ba82ad",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "evidence\\P02-U11\\20261004-02\\archive-runtime-sidecars.py"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/12-build-runtime-input-protection-command.json",
+      "bytes": 696,
+      "sha256": "15acb8e6a8eb3193fb9dafe9d55748f525d888999935b81fd82d4fd2aed02802",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "evidence\\P02-U11\\20261004-02\\build-runtime-input-record.py"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/13-write-release-proof-initial-command.json",
+      "bytes": 1302,
+      "sha256": "3d80664ada306457c48a63e9fafb1dcb89cf3c2a0b9f3d931e8d7a800ac7be37",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "evidence\\P02-U11\\20261004-02\\write-release-proof-u11.py",
+        "--self-command",
+        "13-write-release-proof-initial-command.json"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 1
+    },
+    {
+      "path": "commands/14-write-release-proof-final-command.json",
+      "bytes": 809,
+      "sha256": "2bab923e921b01433e6ce16bae92b7af9a1c34ff686a91044939dcfe9a7ec65c",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "evidence\\P02-U11\\20261004-02\\write-release-proof-u11.py",
+        "--self-command",
+        "14-write-release-proof-final-command.json"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/15-diff-unit-command.json",
+      "bytes": 825,
+      "sha256": "679d6f74dadc8f899c64a02b5ca5af7c5cf7b28e8d1a2776834d0bb246066ca6",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        ".runtime/P02/coord/diff-unit.py",
+        "P02-U11",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+        "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+        "docs/releases/0.2.0",
+        "evidence/P02-U11/20261004-02",
+        "--filename",
+        "diff.json",
+        "--attempt",
+        "20261004-02"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 2
+    },
+    {
+      "path": "commands/16-diff-unit-command.json",
+      "bytes": 719,
+      "sha256": "ac000200d18de647ac87ad9175170e14b6f3a398ded06b63ff52dc2ddcd5888a",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\diff-unit.py",
+        "P02-U11",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+        "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+        "docs/releases/0.2.0",
+        "evidence/P02-U11/20261004-02",
+        "--filename",
+        "diff.json",
+        "--attempt",
+        "20261004-02"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+      "exit_code": 0
+    }
+  ],
+  "selfReferenceExclusion": {
+    "path": "commands/17-write-release-proof-final-command.json",
+    "rootRuntimePath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\commands\\mature-freeze\\17-write-release-proof-final-command.json",
+    "reason": "The run-command wrapper writes this outer record after the generator exits; the exact copied record is included in the author manifest after completion."
+  },
+  "boundary": "Exact argv, cwd, exit code, stdout and stderr for completed run-command invocations are in the byte-identical command records."
+}

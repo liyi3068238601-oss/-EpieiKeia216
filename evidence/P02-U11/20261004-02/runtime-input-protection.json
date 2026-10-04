@@ -1,0 +1,421 @@
+{
+  "schema": "p02-u11-runtime-input-protection/v1",
+  "attempt": "20261004-02",
+  "candidateDescriptorSha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74",
+  "binding": {
+    "betterSqlite3": "13.0.3",
+    "sqlite": "3.53.4",
+    "windowsAddonSha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a"
+  },
+  "suiteComparisons": {
+    "full": {
+      "summary": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\summary.json",
+        "bytes": 101783,
+        "sha256": "0f758012fb7f256e6268514ad8cd4193fa51cd9b80a0b2f7463b563fe5772ee5"
+      },
+      "runner": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\p02-desktop-runner.json",
+        "bytes": 5563,
+        "sha256": "cac785e77b22d74a131087bf73889feac9e4f62bb1e9f9a33da3acc1d2aeda54"
+      },
+      "nativeSource": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+        "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "clean": true
+      },
+      "executionBindings": {
+        "before": {
+          "repository": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+          "commit": "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+          "files": [
+            {
+              "label": "desktop_runner",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\desktop.py",
+              "bytes": 73299,
+              "sha256": "c4ed49c9940f0b83f06f04a71234e8907fcd5ff82c21a58d2dc9cc2e80002dbe"
+            },
+            {
+              "label": "desktop_ui",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\desktop-ui.mjs",
+              "bytes": 19338,
+              "sha256": "e8cea18d0df86205c06df3ced678b85a92fe1c31adefe4cddf671bdf4c497f03"
+            },
+            {
+              "label": "electron_network_guard",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\electron-network-guard.cjs",
+              "bytes": 15465,
+              "sha256": "8a1212d760377ec29f1df079686b9502ad00ff4ee45ad5ce880084f10737901b"
+            },
+            {
+              "label": "profile_bridge",
+              "path": "E:\\Xiadie\\Xiadie\\tests\\evals\\persona\\profile-bridge.mjs",
+              "bytes": 4174,
+              "sha256": "2d0317c916467bb4ed35b9a57ff268e867845e8c7e7440346a9e1925adc8b47f"
+            },
+            {
+              "label": "seed_history",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\packages\\config\\test\\seed-history.mjs",
+              "bytes": 2574,
+              "sha256": "abf3cbfa757eb76b6421a1493fc9011406116113433b79ea8c3d1b1387254772"
+            }
+          ]
+        },
+        "after": {
+          "repository": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+          "commit": "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+          "files": [
+            {
+              "label": "desktop_runner",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\desktop.py",
+              "bytes": 73299,
+              "sha256": "c4ed49c9940f0b83f06f04a71234e8907fcd5ff82c21a58d2dc9cc2e80002dbe"
+            },
+            {
+              "label": "desktop_ui",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\desktop-ui.mjs",
+              "bytes": 19338,
+              "sha256": "e8cea18d0df86205c06df3ced678b85a92fe1c31adefe4cddf671bdf4c497f03"
+            },
+            {
+              "label": "electron_network_guard",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\electron-network-guard.cjs",
+              "bytes": 15465,
+              "sha256": "8a1212d760377ec29f1df079686b9502ad00ff4ee45ad5ce880084f10737901b"
+            },
+            {
+              "label": "profile_bridge",
+              "path": "E:\\Xiadie\\Xiadie\\tests\\evals\\persona\\profile-bridge.mjs",
+              "bytes": 4174,
+              "sha256": "2d0317c916467bb4ed35b9a57ff268e867845e8c7e7440346a9e1925adc8b47f"
+            },
+            {
+              "label": "seed_history",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\packages\\config\\test\\seed-history.mjs",
+              "bytes": 2574,
+              "sha256": "abf3cbfa757eb76b6421a1493fc9011406116113433b79ea8c3d1b1387254772"
+            }
+          ]
+        },
+        "unchanged": true
+      },
+      "production": {
+        "before": {
+          "global_file_hashes": [
+            {
+              "label": "production-0",
+              "exists": true,
+              "sha256": "f5cd8f9a1417af9309b6c24ce5a2547a7452560fc941b5863704c38a4ea8f597"
+            },
+            {
+              "label": "production-1",
+              "exists": true,
+              "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+            },
+            {
+              "label": "production-2",
+              "exists": true,
+              "sha256": "9b6fdc5e5165e99d4eb4dc0bada9b1515da380bf4e190faff31993d69c3c76c1"
+            },
+            {
+              "label": "production-3",
+              "exists": true,
+              "sha256": "03963f81db35bcec8b5b0403ff7563a6e09b869bfddb416f9d2d6c7f2c466cb3"
+            },
+            {
+              "label": "production-4",
+              "exists": true,
+              "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+            }
+          ],
+          "official_provider_config": {
+            "path": "C:\\Users\\liyi\\.zcode\\v2\\provider_config.json",
+            "exists": true,
+            "bytes": 3667,
+            "sha256": "c6e9b3fee17989d971d5fde2d38704153a7cedfb310844f5d4d30c341f7e967a"
+          },
+          "model_call_ledger": {
+            "path": "E:\\Xiadie\\Xiadie\\evidence\\P01\\model-calls.jsonl",
+            "exists": true,
+            "bytes": 4603,
+            "sha256": "64363c24a57f63e334a180e571bd44b5a87bae1f8c25129b7233a98ad205380b",
+            "line_count": 18
+          }
+        },
+        "after": {
+          "global_file_hashes": [
+            {
+              "label": "production-0",
+              "exists": true,
+              "sha256": "f5cd8f9a1417af9309b6c24ce5a2547a7452560fc941b5863704c38a4ea8f597"
+            },
+            {
+              "label": "production-1",
+              "exists": true,
+              "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+            },
+            {
+              "label": "production-2",
+              "exists": true,
+              "sha256": "9b6fdc5e5165e99d4eb4dc0bada9b1515da380bf4e190faff31993d69c3c76c1"
+            },
+            {
+              "label": "production-3",
+              "exists": true,
+              "sha256": "03963f81db35bcec8b5b0403ff7563a6e09b869bfddb416f9d2d6c7f2c466cb3"
+            },
+            {
+              "label": "production-4",
+              "exists": true,
+              "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+            }
+          ],
+          "official_provider_config": {
+            "path": "C:\\Users\\liyi\\.zcode\\v2\\provider_config.json",
+            "exists": true,
+            "bytes": 3667,
+            "sha256": "c6e9b3fee17989d971d5fde2d38704153a7cedfb310844f5d4d30c341f7e967a"
+          },
+          "model_call_ledger": {
+            "path": "E:\\Xiadie\\Xiadie\\evidence\\P01\\model-calls.jsonl",
+            "exists": true,
+            "bytes": 4603,
+            "sha256": "64363c24a57f63e334a180e571bd44b5a87bae1f8c25129b7233a98ad205380b",
+            "line_count": 18
+          }
+        },
+        "unchanged": true
+      },
+      "selectedRegistryKeys": {
+        "schemaVersion": 1,
+        "scope": "four ZCode.OpenInZCode context-menu keys and five HKCU\\Software\\Classes\\zcode protocol keys",
+        "keyCount": 9,
+        "readOnly": true,
+        "preSnapshotSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+        "postSnapshotSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+        "unchangedDuringThisSuite": true,
+        "baselineBoundary": "The pre-state was captured immediately before this suite; it does not reconstruct a state from before earlier runs."
+      },
+      "candidateArtifactClosureAfterSuite": {
+        "passed": true,
+        "owned_files_verified": 6717,
+        "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+      },
+      "sqliteRuntimeBoundary": "Actual qualification uses the Electron UI and its pinned Electron 41.0.3 executable in ELECTRON_RUN_AS_NODE=1 app-server mode; that process is observed loading the owned Better SQLite addon. Fixed Node 24.14 runs the candidate builder, P01 UI driver/profile-history helpers, and ledger verifier; the P02 Desktop orchestrator runs under Python 3.12. The durable host and SQLite ledger run in the wrapped Electron Node-mode CLI process, not Electron main.",
+      "fixedNodeHelper": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+      },
+      "scenarioCount": 6,
+      "modelRequestCount": 9,
+      "DSHStarted": false,
+      "realModelRequests": 0,
+      "realCredentialsUsed": false
+    },
+    "degradation": {
+      "summary": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\summary.json",
+        "bytes": 68232,
+        "sha256": "8e226ce64ec8b580334e69d7aaea27db474bc81016ef282ab2fce5d359b321e7"
+      },
+      "runner": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\degradation-candidate09\\p02-desktop-runner.json",
+        "bytes": 5577,
+        "sha256": "90298da674149b1a0062d7162b90af58d96a21017b7d993071e5abb782db1304"
+      },
+      "nativeSource": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+        "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+        "clean": true
+      },
+      "executionBindings": {
+        "before": {
+          "repository": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+          "commit": "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+          "files": [
+            {
+              "label": "desktop_runner",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\desktop.py",
+              "bytes": 73299,
+              "sha256": "c4ed49c9940f0b83f06f04a71234e8907fcd5ff82c21a58d2dc9cc2e80002dbe"
+            },
+            {
+              "label": "desktop_ui",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\desktop-ui.mjs",
+              "bytes": 19338,
+              "sha256": "e8cea18d0df86205c06df3ced678b85a92fe1c31adefe4cddf671bdf4c497f03"
+            },
+            {
+              "label": "electron_network_guard",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\electron-network-guard.cjs",
+              "bytes": 15465,
+              "sha256": "8a1212d760377ec29f1df079686b9502ad00ff4ee45ad5ce880084f10737901b"
+            },
+            {
+              "label": "profile_bridge",
+              "path": "E:\\Xiadie\\Xiadie\\tests\\evals\\persona\\profile-bridge.mjs",
+              "bytes": 4174,
+              "sha256": "2d0317c916467bb4ed35b9a57ff268e867845e8c7e7440346a9e1925adc8b47f"
+            },
+            {
+              "label": "seed_history",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\packages\\config\\test\\seed-history.mjs",
+              "bytes": 2574,
+              "sha256": "abf3cbfa757eb76b6421a1493fc9011406116113433b79ea8c3d1b1387254772"
+            }
+          ]
+        },
+        "after": {
+          "repository": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+          "commit": "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+          "files": [
+            {
+              "label": "desktop_runner",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\desktop.py",
+              "bytes": 73299,
+              "sha256": "c4ed49c9940f0b83f06f04a71234e8907fcd5ff82c21a58d2dc9cc2e80002dbe"
+            },
+            {
+              "label": "desktop_ui",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\desktop-ui.mjs",
+              "bytes": 19338,
+              "sha256": "e8cea18d0df86205c06df3ced678b85a92fe1c31adefe4cddf671bdf4c497f03"
+            },
+            {
+              "label": "electron_network_guard",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\electron-network-guard.cjs",
+              "bytes": 15465,
+              "sha256": "8a1212d760377ec29f1df079686b9502ad00ff4ee45ad5ce880084f10737901b"
+            },
+            {
+              "label": "profile_bridge",
+              "path": "E:\\Xiadie\\Xiadie\\tests\\evals\\persona\\profile-bridge.mjs",
+              "bytes": 4174,
+              "sha256": "2d0317c916467bb4ed35b9a57ff268e867845e8c7e7440346a9e1925adc8b47f"
+            },
+            {
+              "label": "seed_history",
+              "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\packages\\config\\test\\seed-history.mjs",
+              "bytes": 2574,
+              "sha256": "abf3cbfa757eb76b6421a1493fc9011406116113433b79ea8c3d1b1387254772"
+            }
+          ]
+        },
+        "unchanged": true
+      },
+      "production": {
+        "before": {
+          "global_file_hashes": [
+            {
+              "label": "production-0",
+              "exists": true,
+              "sha256": "f5cd8f9a1417af9309b6c24ce5a2547a7452560fc941b5863704c38a4ea8f597"
+            },
+            {
+              "label": "production-1",
+              "exists": true,
+              "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+            },
+            {
+              "label": "production-2",
+              "exists": true,
+              "sha256": "9b6fdc5e5165e99d4eb4dc0bada9b1515da380bf4e190faff31993d69c3c76c1"
+            },
+            {
+              "label": "production-3",
+              "exists": true,
+              "sha256": "03963f81db35bcec8b5b0403ff7563a6e09b869bfddb416f9d2d6c7f2c466cb3"
+            },
+            {
+              "label": "production-4",
+              "exists": true,
+              "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+            }
+          ],
+          "official_provider_config": {
+            "path": "C:\\Users\\liyi\\.zcode\\v2\\provider_config.json",
+            "exists": true,
+            "bytes": 3667,
+            "sha256": "c6e9b3fee17989d971d5fde2d38704153a7cedfb310844f5d4d30c341f7e967a"
+          },
+          "model_call_ledger": {
+            "path": "E:\\Xiadie\\Xiadie\\evidence\\P01\\model-calls.jsonl",
+            "exists": true,
+            "bytes": 4603,
+            "sha256": "64363c24a57f63e334a180e571bd44b5a87bae1f8c25129b7233a98ad205380b",
+            "line_count": 18
+          }
+        },
+        "after": {
+          "global_file_hashes": [
+            {
+              "label": "production-0",
+              "exists": true,
+              "sha256": "f5cd8f9a1417af9309b6c24ce5a2547a7452560fc941b5863704c38a4ea8f597"
+            },
+            {
+              "label": "production-1",
+              "exists": true,
+              "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+            },
+            {
+              "label": "production-2",
+              "exists": true,
+              "sha256": "9b6fdc5e5165e99d4eb4dc0bada9b1515da380bf4e190faff31993d69c3c76c1"
+            },
+            {
+              "label": "production-3",
+              "exists": true,
+              "sha256": "03963f81db35bcec8b5b0403ff7563a6e09b869bfddb416f9d2d6c7f2c466cb3"
+            },
+            {
+              "label": "production-4",
+              "exists": true,
+              "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+            }
+          ],
+          "official_provider_config": {
+            "path": "C:\\Users\\liyi\\.zcode\\v2\\provider_config.json",
+            "exists": true,
+            "bytes": 3667,
+            "sha256": "c6e9b3fee17989d971d5fde2d38704153a7cedfb310844f5d4d30c341f7e967a"
+          },
+          "model_call_ledger": {
+            "path": "E:\\Xiadie\\Xiadie\\evidence\\P01\\model-calls.jsonl",
+            "exists": true,
+            "bytes": 4603,
+            "sha256": "64363c24a57f63e334a180e571bd44b5a87bae1f8c25129b7233a98ad205380b",
+            "line_count": 18
+          }
+        },
+        "unchanged": true
+      },
+      "selectedRegistryKeys": {
+        "schemaVersion": 1,
+        "scope": "four ZCode.OpenInZCode context-menu keys and five HKCU\\Software\\Classes\\zcode protocol keys",
+        "keyCount": 9,
+        "readOnly": true,
+        "preSnapshotSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+        "postSnapshotSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+        "unchangedDuringThisSuite": true,
+        "baselineBoundary": "The pre-state was captured immediately before this suite; it does not reconstruct a state from before earlier runs."
+      },
+      "candidateArtifactClosureAfterSuite": {
+        "passed": true,
+        "owned_files_verified": 6717,
+        "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+      },
+      "sqliteRuntimeBoundary": "Actual qualification uses the Electron UI and its pinned Electron 41.0.3 executable in ELECTRON_RUN_AS_NODE=1 app-server mode; that process is observed loading the owned Better SQLite addon. Fixed Node 24.14 runs the candidate builder, P01 UI driver/profile-history helpers, and ledger verifier; the P02 Desktop orchestrator runs under Python 3.12. The durable host and SQLite ledger run in the wrapped Electron Node-mode CLI process, not Electron main.",
+      "fixedNodeHelper": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+      },
+      "scenarioCount": 3,
+      "modelRequestCount": 2,
+      "DSHStarted": false,
+      "realModelRequests": 0,
+      "realCredentialsUsed": false
+    }
+  },
+  "boundary": "Hashes and metadata only. No configuration/key contents copied. Candidate closure, Desktop runner qualification string, Electron CLI PID and process.dlopen addon probes are separate evidence sources; the independent Node ledger reader is readback only."
+}

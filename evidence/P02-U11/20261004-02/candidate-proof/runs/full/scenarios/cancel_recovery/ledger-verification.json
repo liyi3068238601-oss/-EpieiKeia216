@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "scenario": "cancel_recovery",
+  "profileRoot": "owned-profile-redacted",
+  "ledgerCount": 1,
+  "admission": "admitted",
+  "databases": [
+    {
+      "passed": true,
+      "databaseRelativePath": "plugin-storage/data/xiadie@xiadie-local/event-ledger.sqlite",
+      "databaseBytes": 139264,
+      "databaseSha256": "1d20b81fe22df4b4faa145b007bb0cd75955206e56ac064af135d722d3be51bb",
+      "admission": "admitted",
+      "admittedTurns": [
+        {
+          "scopeRefs": {
+            "session": "9cd8e731b0a27c0161e0dabfac950227f6c65d6c166781f8d71d69e2a82e9db3",
+            "turn": "47f00d370d4427babb597d4c730dc2a35e4a7baf777b8c7038a88cb74a84cfde",
+            "run": "f9b171e88c26c0e0f900e134f3ba2dcd834dada887005d1b9459534169b066f9",
+            "task": "359ff55a9ba233bd60f8e13cff676921d1aad56345cbc2c3e502c773333f44c8"
+          },
+          "attemptRef": "0e14e4357e48e775142ee0dfe89374c33734ee54786f84eb4c4927d8b4f443d3",
+          "lifecycle": "cancel",
+          "nativeEventCount": 4,
+          "transcriptEventCount": 1,
+          "captureCount": 1,
+          "nativeReceiptsVerified": true,
+          "transcriptReceiptsVerified": true,
+          "terminalReceiptVerified": true,
+          "diagnostics": {
+            "schemaVersion": 1,
+            "redactionPolicy": "turn-diagnostics-allowlist/v2",
+            "scopeRefs": {
+              "session": "9cd8e731b0a27c0161e0dabfac950227f6c65d6c166781f8d71d69e2a82e9db3",
+              "turn": "47f00d370d4427babb597d4c730dc2a35e4a7baf777b8c7038a88cb74a84cfde",
+              "run": "f9b171e88c26c0e0f900e134f3ba2dcd834dada887005d1b9459534169b066f9",
+              "task": "359ff55a9ba233bd60f8e13cff676921d1aad56345cbc2c3e502c773333f44c8"
+            },
+            "attemptRef": "0e14e4357e48e775142ee0dfe89374c33734ee54786f84eb4c4927d8b4f443d3",
+            "sourceVersion": {
+              "acceptedNative40Pin": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+              "adapter": "unknown",
+              "otherSourcePins": []
+            },
+            "evidenceReports": [],
+            "facts": [
+              {
+                "eventRef": "7763ba4088d1934181e24a8761df617619a36074b79ea9a90867822cf7a25b31",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 1,
+                "category": "runtime",
+                "nativeType": "turn_started",
+                "tool": null
+              },
+              {
+                "eventRef": "a745679ec8e9dd9aa4913b742c6bcd5edc01d94cdf6387daa3ee664629fc23e1",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 2,
+                "category": "runtime",
+                "nativeType": "hook_run_started",
+                "tool": null
+              },
+              {
+                "eventRef": "40027ea9084cca2a4c6a74d4b3080aeb9b3153c04342123c73490ea9bba7822f",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 3,
+                "category": "message",
+                "nativeType": null,
+                "tool": null
+              },
+              {
+                "eventRef": "b806cbb908822e22af2620fd62e820ed1380b2aeb4c35e1d82e78c1ec2aa81e0",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 4,
+                "category": "runtime",
+                "nativeType": "hook_run_completed",
+                "tool": null
+              },
+              {
+                "eventRef": "42c458457c51cf8b807a6b345e22caa9c6505ba6f6fa7f21356a2d716c8f2db8",
+                "operationRef": null,
+                "kind": "cancel",
+                "commitSequence": 5,
+                "category": "runtime",
+                "nativeType": "turn_complete",
+                "tool": null
+              }
+            ],
+            "observations": [
+              {
+                "eventRef": "7763ba4088d1934181e24a8761df617619a36074b79ea9a90867822cf7a25b31",
+                "observationRef": "f4fbac24b9cb015db4bbf0b88a5761542b9d095ed3cb02f254ea84bcf6e594d4",
+                "disposition": "accepted",
+                "commitSequence": 1,
+                "candidateHashRef": "0ae46d0efb20c1dcb98ae91ff9c1896dc81fcada71a029b29a153e301d6bd7bb"
+              },
+              {
+                "eventRef": "a745679ec8e9dd9aa4913b742c6bcd5edc01d94cdf6387daa3ee664629fc23e1",
+                "observationRef": "2031a855736bc776c840f2336274cf8eaacc2b0a654d71291bb1d564ef8a41cd",
+                "disposition": "accepted",
+                "commitSequence": 2,
+                "candidateHashRef": "6f4dea21cfd086d25048549893dcf70ad44991e360e0dcce1dca82d8216408bb"
+              },
+              {
+                "eventRef": "40027ea9084cca2a4c6a74d4b3080aeb9b3153c04342123c73490ea9bba7822f",
+                "observationRef": "4fc053164db3aae54faa9fe1c084db5c7825057f1bbcaa40c0ccf8d756072d16",
+                "disposition": "accepted",
+                "commitSequence": 3,
+                "candidateHashRef": "382f920e59d137ab39334e28c89cca61cc44ec2ed8b2c363269b0090b976a346"
+              },
+              {
+                "eventRef": "b806cbb908822e22af2620fd62e820ed1380b2aeb4c35e1d82e78c1ec2aa81e0",
+                "observationRef": "315a0b7e22a73c31745d036f8283bf7f477f04a8582d6b214fb6ced1ddf30fb9",
+                "disposition": "accepted",
+                "commitSequence": 4,
+                "candidateHashRef": "8f1e4082ee28d8c0fbc16aecf7389d46a74d6f41ba0e1158416c997b3cc3f9ba"
+              },
+              {
+                "eventRef": "42c458457c51cf8b807a6b345e22caa9c6505ba6f6fa7f21356a2d716c8f2db8",
+                "observationRef": "efb52da83bb1334092ab1992f52b8c44517058c7a26058c000311d428d5efb44",
+                "disposition": "accepted",
+                "commitSequence": 5,
+                "candidateHashRef": "a987cc23304bcb8e56fad9c7112835d0275c127edadb954b6d7d7c941448b078"
+              }
+            ],
+            "captures": [
+              {
+                "eventRef": "40027ea9084cca2a4c6a74d4b3080aeb9b3153c04342123c73490ea9bba7822f",
+                "observationRef": "4fc053164db3aae54faa9fe1c084db5c7825057f1bbcaa40c0ccf8d756072d16",
+                "hookEventName": "UserPromptSubmit",
+                "messageCount": 1,
+                "byteCounts": [
+                  75
+                ],
+                "snapshotSha256Ref": "d2769a2db13a61dec4cd9de793b3ca8719e86296c7cac4c3e75504b188a14977",
+                "rawSource": {
+                  "historicalSha256Ref": "2dc14744096c9a4972fe46c75c6eb15017d52f069c6e5020457bbc549c02c18b",
+                  "bytes": 141,
+                  "currentValidation": "NOT_VERIFIED"
+                }
+              }
+            ],
+            "memoryCandidates": [
+              {
+                "candidateRef": "3160c91d9542758b140392156ad48f8c027ae185696abbba1fffefb42ac62db9",
+                "kind": "reference-annotation",
+                "sourceStatus": "matched",
+                "sources": [
+                  {
+                    "eventRef": "40027ea9084cca2a4c6a74d4b3080aeb9b3153c04342123c73490ea9bba7822f",
+                    "status": "matched"
+                  }
+                ]
+              }
+            ],
+            "lifecycle": "cancel",
+            "terminalEventRef": "42c458457c51cf8b807a6b345e22caa9c6505ba6f6fa7f21356a2d716c8f2db8",
+            "codes": [],
+            "pageScan": {
+              "facts": "complete",
+              "observations": "complete"
+            },
+            "turnSeal": "unavailable"
+          }
+        },
+        {
+          "scopeRefs": {
+            "session": "42b1187c9b198fc18e38b23104f85a5766bc68652001f1730b16ed51b9d4d0a7",
+            "turn": "4f9cb792c397122cd89fd0b1415ca07d4cc14d579a3b361507d92d5d65fd07ae",
+            "run": "49a66571c4a5eab6eddef562e5a199139987279545bb6466bb626d239fca624e",
+            "task": "b04d513048d979894744c54e3f6f2eec73a14655a7d339e362d6d853275ef442"
+          },
+          "attemptRef": "36dbb3a8ae7ff51367e03afa35fdb5ab24d25efcf669c08b474abf7b64d44e5d",
+          "lifecycle": "success",
+          "nativeEventCount": 4,
+          "transcriptEventCount": 1,
+          "captureCount": 1,
+          "nativeReceiptsVerified": true,
+          "transcriptReceiptsVerified": true,
+          "terminalReceiptVerified": true,
+          "diagnostics": {
+            "schemaVersion": 1,
+            "redactionPolicy": "turn-diagnostics-allowlist/v2",
+            "scopeRefs": {
+              "session": "42b1187c9b198fc18e38b23104f85a5766bc68652001f1730b16ed51b9d4d0a7",
+              "turn": "4f9cb792c397122cd89fd0b1415ca07d4cc14d579a3b361507d92d5d65fd07ae",
+              "run": "49a66571c4a5eab6eddef562e5a199139987279545bb6466bb626d239fca624e",
+              "task": "b04d513048d979894744c54e3f6f2eec73a14655a7d339e362d6d853275ef442"
+            },
+            "attemptRef": "36dbb3a8ae7ff51367e03afa35fdb5ab24d25efcf669c08b474abf7b64d44e5d",
+            "sourceVersion": {
+              "acceptedNative40Pin": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+              "adapter": "unknown",
+              "otherSourcePins": []
+            },
+            "evidenceReports": [],
+            "facts": [
+              {
+                "eventRef": "19aa1c63f75136a413103fda277e0c87a16f502f6e0aa94bab95245e20943a95",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 6,
+                "category": "runtime",
+                "nativeType": "turn_started",
+                "tool": null
+              },
+              {
+                "eventRef": "111b16506fbac865234055c7075ed7849c2bdbd84adaec3b2c5a8f693f8dfb7b",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 7,
+                "category": "runtime",
+                "nativeType": "hook_run_started",
+                "tool": null
+              },
+              {
+                "eventRef": "02430a5176d262adb283cddc385878b8c69d98122c66d6e4ec0ad7542106848f",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 8,
+                "category": "message",
+                "nativeType": null,
+                "tool": null
+              },
+              {
+                "eventRef": "a8aac7e275ada914be3d689893b0cdd879c10696c98852329033f531dd94673b",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 9,
+                "category": "runtime",
+                "nativeType": "hook_run_completed",
+                "tool": null
+              },
+              {
+                "eventRef": "0e04036e56e524210da54d81af781486463fd0620df33ea9c86cca9fd417346d",
+                "operationRef": null,
+                "kind": "success",
+                "commitSequence": 10,
+                "category": "message",
+                "nativeType": "turn_complete",
+                "tool": null
+              }
+            ],
+            "observations": [
+              {
+                "eventRef": "19aa1c63f75136a413103fda277e0c87a16f502f6e0aa94bab95245e20943a95",
+                "observationRef": "a79d135078f6e5fb683f079d57d4911056eba72fbdf665d8d46282cd387ced70",
+                "disposition": "accepted",
+                "commitSequence": 6,
+                "candidateHashRef": "002204b459025acfea60905b84db7754e08648a33a00ce9366391c9422b60886"
+              },
+              {
+                "eventRef": "111b16506fbac865234055c7075ed7849c2bdbd84adaec3b2c5a8f693f8dfb7b",
+                "observationRef": "ba4280fcd2e2ab0e9e52fe58852f4305900a6187ce843d97f8637d1aa9af635d",
+                "disposition": "accepted",
+                "commitSequence": 7,
+                "candidateHashRef": "e29af7c94f3fb59138955e782fd2bccd67b51dee405173acb0014c9b634d1b8b"
+              },
+              {
+                "eventRef": "02430a5176d262adb283cddc385878b8c69d98122c66d6e4ec0ad7542106848f",
+                "observationRef": "8a51de801ce79f6788b2128767842203f9a6b2f5570a0fba900d791db6304812",
+                "disposition": "accepted",
+                "commitSequence": 8,
+                "candidateHashRef": "8e3a65d0c032b1ca53e037d830971710a6b64e1f90a97fb17302418906df2a3c"
+              },
+              {
+                "eventRef": "a8aac7e275ada914be3d689893b0cdd879c10696c98852329033f531dd94673b",
+                "observationRef": "1bb93fb6fe54821ee054537a08409c9f7926d8bfdeefc455d65fd3f9bb5f5f6c",
+                "disposition": "accepted",
+                "commitSequence": 9,
+                "candidateHashRef": "bac4aba4a6e1317680dad1eb6cccf1b0975380a6c8229587c026d6e1af2a8af5"
+              },
+              {
+                "eventRef": "0e04036e56e524210da54d81af781486463fd0620df33ea9c86cca9fd417346d",
+                "observationRef": "3f755cab84206051d2fcc5ea95963ae38a3455bce5d1149236b2ca5b74ff407a",
+                "disposition": "accepted",
+                "commitSequence": 10,
+                "candidateHashRef": "d0d2295d34db1b08ddd13dbfc02b5958d3ce7c01da5c2e0439bed090b0e683a3"
+              }
+            ],
+            "captures": [
+              {
+                "eventRef": "02430a5176d262adb283cddc385878b8c69d98122c66d6e4ec0ad7542106848f",
+                "observationRef": "8a51de801ce79f6788b2128767842203f9a6b2f5570a0fba900d791db6304812",
+                "hookEventName": "UserPromptSubmit",
+                "messageCount": 1,
+                "byteCounts": [
+                  60
+                ],
+                "snapshotSha256Ref": "4c853e6ccd9c986f3a358b1f0a079aa6968d90f2ee063333beea780185707159",
+                "rawSource": {
+                  "historicalSha256Ref": "883750c26631604ae304717e0b9d3cd2ca39ee195fc29fa2b04f1740c6ae53c1",
+                  "bytes": 126,
+                  "currentValidation": "NOT_VERIFIED"
+                }
+              }
+            ],
+            "memoryCandidates": [
+              {
+                "candidateRef": "59416a9843f52b772e12b5450387a31e6d850e65ce847f6602abd3ce5058a5db",
+                "kind": "reference-annotation",
+                "sourceStatus": "matched",
+                "sources": [
+                  {
+                    "eventRef": "02430a5176d262adb283cddc385878b8c69d98122c66d6e4ec0ad7542106848f",
+                    "status": "matched"
+                  }
+                ]
+              }
+            ],
+            "lifecycle": "success",
+            "terminalEventRef": "0e04036e56e524210da54d81af781486463fd0620df33ea9c86cca9fd417346d",
+            "codes": [],
+            "pageScan": {
+              "facts": "complete",
+              "observations": "complete"
+            },
+            "turnSeal": "unavailable"
+          }
+        }
+      ],
+      "nativeEventCount": 8,
+      "transcriptEventCount": 2,
+      "factCount": 10,
+      "observationCount": 10,
+      "backupRestore": null,
+      "temporarySourceBoundary": "Locator is historical provenance only; U09 currentValidation remains NOT_VERIFIED and no temporary source path was read."
+    }
+  ],
+  "admitted_turns": 2,
+  "backup_restore": null,
+  "passed": true,
+  "qualificationBoundary": "Electron UI uses the pinned fixed Node CLI; the durable host and SQLite ledger are in the wrapped CLI protocol process, while this ledger readback runs in a separate fixed-Node verifier process. The P02 wrapper binds actual CLI Better SQLite load sidecars to guarded CLI PIDs. P01 sidecar remains UI correlation evidence."
+}
