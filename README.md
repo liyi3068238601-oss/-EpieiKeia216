@@ -1,12 +1,12 @@
 # Xiadie V2
 
-P01/G01 已独立验收并冻结为历史 **0.1.0 开发候选**。P02 当前正在补齐原计划的成熟 SQLite 绑定要求，G02 等待重新验收，产品元数据仍为 **0.2.0**。本次成熟绑定试验已经独立验收，后续将替换事件存储和备份绑定，再重新执行集成与冻结验证。当前进度以 [P02 状态](evidence/P02/status.json)为准；[0.2.0 说明](docs/releases/0.2.0/README.md)和[此前 G02 接受记录](evidence/P02-U11/20261003-01/acceptance.json)保留为历史快照。[P01 状态](evidence/P01/status.json)与[0.1.0 冻结说明](docs/releases/0.1.0/README.md)保持不变。
+P01/G01 已独立验收并冻结为历史 **0.1.0 开发候选**。P02 已完成成熟 SQLite 绑定整改、独立集成审查及 G02 重新验收，冻结为 **0.2.0 开发候选**。当前进度以 [P02 状态](evidence/P02/status.json)为准，产物和边界见[0.2.0 说明](docs/releases/0.2.0/README.md)。此前接受记录和失败尝试原样保留；[P01 状态](evidence/P01/status.json)与[0.1.0 冻结说明](docs/releases/0.1.0/README.md)保持不变。P03 尚未开始。
 
 项目根为 `E:/Xiadie/Xiadie`。权威计划是原始 v1.1 ZIP 内的 `planning/Xiadie_V2_v1.1/`，保留原文件并核验 SHA-256；执行状态独立记录。
 
 P01 复用固定版本 ZCode 的原生 Desktop/UI、Runtime/Loop 和 Hook，增加版本化遐蝶人设、分层 ContextPacket、身份门禁及原生 turn/tool 证据投影。已验证普通发送、Read 成功与失败、取消后恢复、禁用扩展的原生路线，以及无 Key、无 DSH、受控离线降级。宿主侧 sidecar 证据尚未成为 renderer 内的证据面板。
 
-P02 将实际 Native 事件和全遮蔽的当前消息材料提交至固定 Node CLI 中的 SQLite 账本，使用真实回执区分已提交、失败、未知与不可用。重开只恢复已提交事实，未知效果阻止自动重放；一致性备份在新根恢复后复核内容。诊断导出脱敏且核对来源/回执，原始临时来源的当前验证保留 NOT_VERIFIED。它不恢复原文或完整对话，也不代表任意外部业务效果已验证。阶段证据见[需求映射](docs/evals/P02/requirement-evidence.md)。
+P02 将实际 Native 事件和全遮蔽的当前消息材料提交至 Electron 41.0.3 的 Node 模式 CLI 中的 Better SQLite 账本，使用真实回执区分已提交、失败、未知与不可用。重开只恢复已提交事实，未知效果阻止自动重放；一致性备份在新根恢复后复核内容。诊断导出脱敏且核对来源/回执，原始临时来源的当前验证保留 NOT_VERIFIED。它不恢复原文或完整对话，也不代表任意外部业务效果已验证。阶段证据见[需求映射](docs/evals/P02/requirement-evidence.md)。
 
 默认模型路线是 DeepSeek 官方 `deepseek-flash`。U09 的真实模型小样本评测只将 Flash 列为本阶段合格候选；`deepseek-v4-pro` 已测但未通过人格基线，不能作为已合格选项。桌面集成验证使用本地模拟服务；它和 U09 的官方模型实测分别记录。用户审核的精简角色为当前 v3，所有历史版本保留；保留游戏背景的选择不构成原创身份或公开发行权证明。
 
@@ -15,7 +15,7 @@ P02 将实际 Native 事件和全遮蔽的当前消息材料提交至固定 Node
 - [需求证据映射](docs/evals/P01/requirement-evidence.md)
 - [真实模型能力矩阵](evidence/P01-U09/20261002-01/model-capabilities.json)
 - [G01 接受记录](evidence/P01-U11/20261002-01/acceptance.json)
-- [下一阶段 P03-U01](planning/Xiadie_V2_v1.1/tasks/P03-U01.md)：本轮已获用户授权完成 P03 并普通推送远端备份；先完成 P02 重新验收，再调查原生 MEMORY 路径、索引、迁移和子代理 scope，比较 ADR/交接模板。P03/G03 完成后停止，不自动进入 P04。
+- [下一阶段 P03-U01](planning/Xiadie_V2_v1.1/tasks/P03-U01.md)：本轮已获用户授权完成 P03 并普通推送远端备份；G02 已重新验收，下一步调查原生 MEMORY 路径、索引、迁移和子代理 scope，比较 ADR/交接模板。P03/G03 完成后停止，不自动进入 P04。
 - P00 历史基线：`evidence/P00/status.json`；研究记录：`docs/research/`；单元证据：`evidence/<task-id>/<attempt-id>/`。
 
 计划结构验证命令：`python planning/Xiadie_V2_v1.1/tools/validate_plan.py`。该命令只验证计划结构。
