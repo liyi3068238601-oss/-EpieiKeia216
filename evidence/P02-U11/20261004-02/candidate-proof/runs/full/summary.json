@@ -1,0 +1,2637 @@
+{
+  "schema": "p01-u10-desktop-run/v1",
+  "suite": "full",
+  "run_id": "full-candidate09",
+  "output": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09",
+  "candidate": {
+    "descriptor_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\candidate-descriptor.json",
+    "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74",
+    "descriptor": {
+      "assemblyRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09",
+      "candidateModel": "deepseek-flash",
+      "cli": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "bytes": 16905123,
+        "sha256": "c1ef45479de62ffdc37c2e72b7d014fdb1de61d56341b216077199aaa34af1ea"
+      },
+      "cliEntry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09",
+      "deniedModel": "deepseek-v4-pro",
+      "desktopPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\packages\\desktop",
+      "electronPath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe",
+      "factory": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\factory-entry.mjs",
+        "bytes": 1750,
+        "sha256": "60330aa9e25d017c74679319ebebb4d0f1ffd0c4f61d6e1552deca89b787bf4d"
+      },
+      "factoryEntry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\factory-entry.mjs",
+      "gateDefault": "enabled",
+      "gateEnv": "P01_U10_GATE_MODE",
+      "invocationContext": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\contracts\\dist\\model\\invocation-context.js",
+        "bytes": 1227,
+        "sha256": "adf401be3fcfcaac63ca2318d67e0bc426f0bed4ea4d6bc4067d9db9dff8a9ef"
+      },
+      "invocationContextModuleCount": 1,
+      "nodePath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "nodeVersion": "v24.14.0",
+      "playwrightPath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\playwright-core\\index.js",
+      "protocolPatch": {
+        "file": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\bootstrap\\dist\\zcode-protocol-entrypoint.js",
+        "originalSha256": "065f08151c8b7de4ac31c9fe28894a208d23a1278c7820d3acba1bafbf5d3729",
+        "patchedSha256": "16c9353d7015b8ef02cf898600e698e83ed7ae9da2b46c6903e25b6a191cd817"
+      },
+      "providerConfig": {
+        "source": {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\config\\provider\\zcode-builtin.json",
+          "bytes": 180680,
+          "sha256": "0b3d735e0c2334353eecadfa8c0756a1a19fc4f7938fc62882048d6630c5f424"
+        },
+        "recipe": {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\scripts\\builtin-provider-config.mjs",
+          "bytes": 3133,
+          "sha256": "f9f8900d3081dfb70ebc44f92f6c789928a73663d57d2be3ee257c7ab74fbbf2"
+        },
+        "environment": "production"
+      },
+      "recipe": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\build-candidate.mjs",
+        "bytes": 19478,
+        "sha256": "9451be46a7fddad91d4db0842ad395dbfeab883016fc012f7c31419cd4d96082"
+      },
+      "repositoryCommit": "cd03ddc3a3f6f7ca67b4313e309db20db4755343",
+      "repositoryInputs": [
+        {
+          "path": "assets/character/xiadie/v3/manifest.json",
+          "bytes": 534,
+          "sha256": "3bedae784adae2182f3396cccbc3c91663fe96a58d18373481fbb7155d888f62"
+        },
+        {
+          "path": "assets/character/xiadie/v3/persona.json",
+          "bytes": 5580,
+          "sha256": "a688c669c4f556495131ac69cdc868a5b2ee93614eff814fc0793b1690c99bb4"
+        },
+        {
+          "path": "assets/manifest.json",
+          "bytes": 4304,
+          "sha256": "fe4cc9764663e707325a71a16866bd678993fde334f4b2a6744be4daac82342a"
+        },
+        {
+          "path": "migrations/001-event-store.ts",
+          "bytes": 4362,
+          "sha256": "dd63a073f14172808cc75564e41681045cdadca89db2f2933ae12337bbcaa7e1"
+        },
+        {
+          "path": "package.json",
+          "bytes": 953,
+          "sha256": "4e9421b064a4fbb083b2785992331f2570cd0178f534bbe2c6ed1cdeb935b3f1"
+        },
+        {
+          "path": "packages/adapters/zcode/src/host.ts",
+          "bytes": 41642,
+          "sha256": "71bfd252831db5216983bdea8361bd68e0a54296de5f9444cf1e15b908f0725b"
+        },
+        {
+          "path": "packages/adapters/zcode/src/index.ts",
+          "bytes": 687,
+          "sha256": "afb9a0529925d832b96c757ce2a765c4b86483c74a2d276d29e29a074e98c20c"
+        },
+        {
+          "path": "packages/adapters/zcode/src/transcript.ts",
+          "bytes": 24870,
+          "sha256": "73fcaf64d5932fc15ea7c24d47f103891807ca96015c2ff81fc79ada8f4f3174"
+        },
+        {
+          "path": "packages/adapters/zcode/test/contract.test.mjs",
+          "bytes": 3003,
+          "sha256": "4a502df5e212ab328f2b0e3e98c10bc4aa9dc1d496db8dd388fb022d77e06240"
+        },
+        {
+          "path": "packages/adapters/zcode/test/fixtures/hook-process-fault.mjs",
+          "bytes": 420,
+          "sha256": "7aabbc6093e51c422729208bb9e1f95879b0e891309f55e0153236fa2a34b832"
+        },
+        {
+          "path": "packages/adapters/zcode/test/host.test.mjs",
+          "bytes": 11039,
+          "sha256": "3d8d1dda066de99180d792fdf2afe7cf0d277051c83a906d41af944bd6c4d1c9"
+        },
+        {
+          "path": "packages/adapters/zcode/test/native.integration.test.mjs",
+          "bytes": 34314,
+          "sha256": "83530e286072830eafeb67eede29c6266c7b17d5dede41a2b8d302442f3f8fd4"
+        },
+        {
+          "path": "packages/adapters/zcode/test/transcript-host.test.mjs",
+          "bytes": 7559,
+          "sha256": "133322b502f0b2d274452f02663a0f89636f94403cc57f060d57d6852fb5499c"
+        },
+        {
+          "path": "packages/adapters/zcode/test/transcript.test.mjs",
+          "bytes": 16506,
+          "sha256": "8357c801719b1f887d5609df2afe5ec67645437c4736f72fdb962106326aff94"
+        },
+        {
+          "path": "packages/application/evidence/src/index.ts",
+          "bytes": 32579,
+          "sha256": "c8588f5b2fa76949219739b00cd299d8b75fee70ebf389cebaedbbdbe278c067"
+        },
+        {
+          "path": "packages/application/evidence/test/evidence.test.mjs",
+          "bytes": 19477,
+          "sha256": "eabe998190f0fccf8b5b13b779da5598f7fddb642ef03bc03ac70c1159cbc20c"
+        },
+        {
+          "path": "packages/application/recovery/src/index.ts",
+          "bytes": 15896,
+          "sha256": "fdfefa068a5a29ce33ad0c890df6f2c25367fba88b8513dc4733e545bb32c6b7"
+        },
+        {
+          "path": "packages/application/recovery/test/effect-worker.mjs",
+          "bytes": 1319,
+          "sha256": "363fcd3ea0e4566cf2dc737943ac68977496cccfa9cf489950d83fc24e61ab95"
+        },
+        {
+          "path": "packages/application/recovery/test/recovery.test.mjs",
+          "bytes": 28578,
+          "sha256": "3b2884dd27741e85c74a69388a8d4485e18151bf317cf67585cfd397d08dc82f"
+        },
+        {
+          "path": "packages/application/test/native-projection.integration.test.mjs",
+          "bytes": 12796,
+          "sha256": "d6886de8026243a18d3421ef3255ab0ce70f5c89b61d0faa3271804ff56d4446"
+        },
+        {
+          "path": "packages/application/test/turn-projection.test.mjs",
+          "bytes": 10840,
+          "sha256": "75770fff9256c78b5a30312ae3985a42ab2ae7c840b68cdb51288ac457e35db4"
+        },
+        {
+          "path": "packages/application/turn-projection.ts",
+          "bytes": 16936,
+          "sha256": "2fc3f675856588b2ae8e6e3eb668f913b43bc9acb892a066b7e59a9e4e375292"
+        },
+        {
+          "path": "packages/character/src/index.ts",
+          "bytes": 305,
+          "sha256": "29530de7d311d5cb8894ce943c90146edd6b890a74fb144f113ec4f9679d11d5"
+        },
+        {
+          "path": "packages/character/src/loader.ts",
+          "bytes": 5333,
+          "sha256": "a8505ecbcc7d179d66ccb7e31c4cea873faa103d1366fa0681adf182d97acc0f"
+        },
+        {
+          "path": "packages/character/src/schema.ts",
+          "bytes": 4311,
+          "sha256": "b3405d98a976a19436d1e4191cac3a79153156c67d827208a930ab2024a956ed"
+        },
+        {
+          "path": "packages/character/test/contract.test.mjs",
+          "bytes": 927,
+          "sha256": "ec53f86e0417ee757ca83440cbef107c23429d647513ae3eedab61ad00c542a9"
+        },
+        {
+          "path": "packages/character/test/loader.test.mjs",
+          "bytes": 4729,
+          "sha256": "d94dc4c8b9c7ba2c0b75017b606c292587242556f887aa3cad2e785321d532c2"
+        },
+        {
+          "path": "packages/character/test/readonly.type-fixture.ts",
+          "bytes": 589,
+          "sha256": "73a2d07ea1d992480f1a1f286b081cfa11f7a063bfdf42105c9e74615accf750"
+        },
+        {
+          "path": "packages/character/test/schema.test.mjs",
+          "bytes": 2633,
+          "sha256": "d5cfdfa7bcfc3eb5fe474af60509763006af9884011138ee5bc7ed0d24241f00"
+        },
+        {
+          "path": "packages/config/desktop-build.mjs",
+          "bytes": 8328,
+          "sha256": "1b72f8b3660ffb0093e9ef1e272c26ac3b2e6d6439a065fbcc97f47cae6b6c0d"
+        },
+        {
+          "path": "packages/config/src/index.ts",
+          "bytes": 10039,
+          "sha256": "73fc5f901b17f4575e19977d655aff701db422b6e513277c30e3a33dbcf08dbf"
+        },
+        {
+          "path": "packages/config/test/desktop-build-paths.test.mjs",
+          "bytes": 2856,
+          "sha256": "817d151eb18169d84deae423ca7951bb016fc7e72aa28581a0ee61d8cce4c925"
+        },
+        {
+          "path": "packages/config/test/desktop-no-key.mjs",
+          "bytes": 5367,
+          "sha256": "78addb297be6f85e4bbd8f68f182a5584f627628bea64ca2be337c32ec754998"
+        },
+        {
+          "path": "packages/config/test/profile-spec.mjs",
+          "bytes": 972,
+          "sha256": "b60dba882a0c72c86e196fa2bafa79af20be23dde8e7301ee375a0cc47f28b5b"
+        },
+        {
+          "path": "packages/config/test/profile.test.mjs",
+          "bytes": 6591,
+          "sha256": "29fb1be4971f673f3404796d0d4e99c61c3670d30927632e16e54bf0a18f5be7"
+        },
+        {
+          "path": "packages/config/test/run-desktop-no-key.py",
+          "bytes": 9419,
+          "sha256": "a42451929c56f4d83361aae9ca4af4b1e583782e72b950b17b27b860c25af65a"
+        },
+        {
+          "path": "packages/config/test/seed-history.mjs",
+          "bytes": 2574,
+          "sha256": "abf3cbfa757eb76b6421a1493fc9011406116113433b79ea8c3d1b1387254772"
+        },
+        {
+          "path": "packages/config/test/warmup.test.mjs",
+          "bytes": 5788,
+          "sha256": "c63b5f1e1c00fea8291049463e5f42b41ace2b935c02bf54a6f923964a43ec67"
+        },
+        {
+          "path": "packages/context/src/index.ts",
+          "bytes": 11781,
+          "sha256": "6fcc5b6ca892a0106a1063f15587db24633d799603846b55ddcab8fe77b50fd7"
+        },
+        {
+          "path": "packages/context/test/context.test.mjs",
+          "bytes": 8934,
+          "sha256": "c64c2939d27dcaf16b988df740046d04c64133edfd099a1eab368e2c213dcf18"
+        },
+        {
+          "path": "packages/context/test/contract.test.mjs",
+          "bytes": 937,
+          "sha256": "b09d590cc42617df21ca111796d5a317573895f57864f2904edd760cc8f78207"
+        },
+        {
+          "path": "packages/context/test/integration.test.mjs",
+          "bytes": 1840,
+          "sha256": "d6f7a9f3d34b86eba2296a0721d9a975791225fce3558a8e0130bc45d8976745"
+        },
+        {
+          "path": "packages/context/test/readonly.type-fixture.ts",
+          "bytes": 608,
+          "sha256": "9b1f935ec0de08c774ac9ecc4024aa22e9291602f6faf3983aefc5a11990db0c"
+        },
+        {
+          "path": "packages/contracts/src/context.ts",
+          "bytes": 1801,
+          "sha256": "ffc855d2d496d97b25508fdbcad540d6c01ba755fe7d56837a5873c3f367d071"
+        },
+        {
+          "path": "packages/contracts/src/events.ts",
+          "bytes": 17373,
+          "sha256": "c2a7d013164b1c3e5e6c27748a3b06ef1856cf22346acd11e356c191718500ee"
+        },
+        {
+          "path": "packages/contracts/src/index.ts",
+          "bytes": 904,
+          "sha256": "08d6c0826c13f48b5fb0ce877c1efdd3e8a5da7dbcfe78fb07f9a97e5fd9cfe9"
+        },
+        {
+          "path": "packages/contracts/src/json-value.ts",
+          "bytes": 2660,
+          "sha256": "10ef265e18f7a074c5ef4ea8a936fc3b958ed69cf62ded9b9cb3775ceeaf92f8"
+        },
+        {
+          "path": "packages/contracts/test/contracts.test.mjs",
+          "bytes": 1422,
+          "sha256": "7bd481d8fcfd57e812fda179dda9fef871a94c8fbce84aa4ac71743ddad616cb"
+        },
+        {
+          "path": "packages/contracts/test/events.test.mjs",
+          "bytes": 9873,
+          "sha256": "b06a0a3cbc64247c6bff3caf9c3cd59b4c56d3e4f8aad9cadebfb1e6527153d1"
+        },
+        {
+          "path": "packages/contracts/test/events.type-fixture.ts",
+          "bytes": 1737,
+          "sha256": "cf98b5d229dc7c8579fbf3bc9702627a069aed15e7d1569b654559b09d52e8fc"
+        },
+        {
+          "path": "packages/contracts/test/import-boundaries.test.mjs",
+          "bytes": 14793,
+          "sha256": "4dc9ef4be91f184c97f782c4a6cde47e275f1842fe36c83cdd3298cc554b318f"
+        },
+        {
+          "path": "packages/contracts/test/json-value.test.mjs",
+          "bytes": 1624,
+          "sha256": "dafb2b586cf1f6ec2b4ab2e224bb56d3e91452935cf00f0afc8579e7cb7b0f49"
+        },
+        {
+          "path": "packages/contracts/test/json-value.type-fixture.ts",
+          "bytes": 418,
+          "sha256": "12ef9b4289afdc349e1e020dce496180059958904a5c9140d132d07c54048785"
+        },
+        {
+          "path": "packages/contracts/test/tsconfig.json",
+          "bytes": 267,
+          "sha256": "0edf39c026a0f088c7fb582d3172af14579383301c48e575537593a88d09711e"
+        },
+        {
+          "path": "packages/diagnostics/src/index.ts",
+          "bytes": 50696,
+          "sha256": "cf26f480a4115f573321eac8af94d0745404584a3da0e5480727fe3bbe9e5c23"
+        },
+        {
+          "path": "packages/diagnostics/test/diagnostics.test.mjs",
+          "bytes": 31841,
+          "sha256": "963bff3a7bb1efa531e819ed3d8c6e578ee4d713f572636b898b8b185605f572"
+        },
+        {
+          "path": "packages/secrets/src/index.ts",
+          "bytes": 4227,
+          "sha256": "aea3b31c87187726683b6fe36b1fabea88d9554f646cb0784bd1f9dfe40ead09"
+        },
+        {
+          "path": "packages/secrets/test/credential.test.mjs",
+          "bytes": 5566,
+          "sha256": "cee8f64b9e50c08aa43caca82c4fdd4bf06731290456bcb20a23daec0a9b63c8"
+        },
+        {
+          "path": "packages/storage/backup/src/index.ts",
+          "bytes": 42118,
+          "sha256": "ba9a71fa789e23e28b8d6798235bde0b244e1f5036067afa13b3f8130c38c74f"
+        },
+        {
+          "path": "packages/storage/backup/test/backup-worker.mjs",
+          "bytes": 4649,
+          "sha256": "65606e45643a9ac58cbbfac5897b24cb5af6be2fdfe2306835eef01eae9f284c"
+        },
+        {
+          "path": "packages/storage/backup/test/backup.test.mjs",
+          "bytes": 37862,
+          "sha256": "5e9cc7b1ec78fbef211b42c7e785bbbc641f6802307b679971a978a0d71d076d"
+        },
+        {
+          "path": "packages/storage/events/src/index.ts",
+          "bytes": 58340,
+          "sha256": "473480a88ebac6490094647e4f4dcb7e72d4ef34b210432f5b8fc21ddd69dec0"
+        },
+        {
+          "path": "packages/storage/events/src/sqlite.ts",
+          "bytes": 2717,
+          "sha256": "c1cbb368c1feb4f3a5d87b0b5526ea7a761ba0a2de394ecf679767b817cc1e47"
+        },
+        {
+          "path": "packages/storage/events/test/events.test.mjs",
+          "bytes": 32554,
+          "sha256": "6a5b64757a6ca803419904dc4ebbd8145b027086c72ef798e3a3da983345555a"
+        },
+        {
+          "path": "packages/storage/events/test/sqlite-worker.mjs",
+          "bytes": 1536,
+          "sha256": "3aa08f6b43e73b76a619706009fde63326653ed98da5214f1ae73edf0f0b7dda"
+        },
+        {
+          "path": "plugins/xiadie/.zcode-plugin/plugin.json",
+          "bytes": 130,
+          "sha256": "79c2465cae65293220d5e08e91beead1c8a4bf247bb7d47f5d2afb15d1eaba90"
+        },
+        {
+          "path": "plugins/xiadie/hooks/context.mjs",
+          "bytes": 4597,
+          "sha256": "f8d6bd19ab406bc296b6edc3193945f08c687cafd61ca871279042c14e5d966f"
+        },
+        {
+          "path": "plugins/xiadie/hooks/hooks.json",
+          "bytes": 351,
+          "sha256": "729c69089429928ed50e507a22e2556df81233d04066bf358cd03bfd1fc1491b"
+        },
+        {
+          "path": "plugins/xiadie/marketplace.json",
+          "bytes": 214,
+          "sha256": "665dddf5c68c68fc6daa74ecdf7d8a213b281172b626545752253e171d0d6302"
+        },
+        {
+          "path": "pnpm-lock.yaml",
+          "bytes": 1789,
+          "sha256": "76a677e207dc5f9c770dddce790d3274b52409386d262bcd70495c498a877ee4"
+        },
+        {
+          "path": "tests/integration/P01/.gitattributes",
+          "bytes": 72,
+          "sha256": "308a40fa1d89ae5ea4390b4c9b46a0108b09f171f07898f25d451fa0c69c4e9f"
+        },
+        {
+          "path": "tests/integration/P01/build-candidate.mjs",
+          "bytes": 12694,
+          "sha256": "046a5d0145e86ca8d0f4f8ba180ce5231ea6ad2d096afd3c0a5e0af148576bc6"
+        },
+        {
+          "path": "tests/integration/P01/desktop-ui.mjs",
+          "bytes": 17187,
+          "sha256": "5a24c9844114b9dda02f94ee2a36a69ea843db37ba85c04a4dabcebf9be12d27"
+        },
+        {
+          "path": "tests/integration/P01/desktop.py",
+          "bytes": 73299,
+          "sha256": "c4ed49c9940f0b83f06f04a71234e8907fcd5ff82c21a58d2dc9cc2e80002dbe"
+        },
+        {
+          "path": "tests/integration/P01/electron-network-guard.cjs",
+          "bytes": 15465,
+          "sha256": "8a1212d760377ec29f1df079686b9502ad00ff4ee45ad5ce880084f10737901b"
+        },
+        {
+          "path": "tests/integration/P01/electron-network-guard.test.mjs",
+          "bytes": 11205,
+          "sha256": "c82deb3fba51d3aa6f33b62972de529b503f3dfb62020509681ac3ab206fff54"
+        },
+        {
+          "path": "tests/integration/P01/factory-entry.mjs",
+          "bytes": 1728,
+          "sha256": "3dc95c93059149c7c4ab30e4dccd1586e14a2d81bc0fa75ba4f6f01c42ac5d74"
+        },
+        {
+          "path": "tests/integration/P01/factory-policy.mjs",
+          "bytes": 3275,
+          "sha256": "160863a8acec66ea3bfa10f7359b35e701852fcbfb27a8297ff3a563fdd10764"
+        },
+        {
+          "path": "tests/integration/P01/factory.mjs",
+          "bytes": 19082,
+          "sha256": "c0758c684c7d43e8f6eafa146770214f5a00d7306294f8dadbdb81c7a4bbfc0e"
+        },
+        {
+          "path": "tests/integration/P01/factory.test.mjs",
+          "bytes": 21018,
+          "sha256": "0cc5866ed2fac07bde3dcf13242ca3e9ea11dda033ba3ad8447170e702402a0a"
+        },
+        {
+          "path": "tests/integration/P01/read-only-workspace.mjs",
+          "bytes": 2246,
+          "sha256": "5d190d9a1976573942144876e97b4d6b547375ef953f4f6bb0c178e80c0aa9e7"
+        },
+        {
+          "path": "tests/integration/P01/read-only-workspace.test.mjs",
+          "bytes": 4409,
+          "sha256": "9a286509fc6a6c3a4b9db3157746465bd0f909bed1ee52c876847c5406466a1e"
+        },
+        {
+          "path": "tests/integration/P02/build-candidate.mjs",
+          "bytes": 19478,
+          "sha256": "9451be46a7fddad91d4db0842ad395dbfeab883016fc012f7c31419cd4d96082"
+        },
+        {
+          "path": "tests/integration/P02/candidate-verifier.py",
+          "bytes": 10826,
+          "sha256": "abb640b30e1d444f8d4928bfaf2d22efa097d2042fea4b4181f01abc2ed01c42"
+        },
+        {
+          "path": "tests/integration/P02/candidate-verifier.test.py",
+          "bytes": 8275,
+          "sha256": "4f7a52c254a93387890a27daaab95cf37afd9e1310325cd74c7517a2d8b1fa06"
+        },
+        {
+          "path": "tests/integration/P02/create-owned-junction.ps1",
+          "bytes": 439,
+          "sha256": "f63309e87833e68635a491ffb0cffda778d57f40bc2104aadaea1e63dc8231c9"
+        },
+        {
+          "path": "tests/integration/P02/desktop-main-guard.cjs",
+          "bytes": 805,
+          "sha256": "ca63f3606e99ca3835afd79db4711887b2205f3072bc42d8d8a0e8fc8c2c6764"
+        },
+        {
+          "path": "tests/integration/P02/desktop-side-effect-guard.test.py",
+          "bytes": 14905,
+          "sha256": "c7d6b84c57c2740e3f094b05675e002229d4f1a1bc3c4a45a5de5a15634597dd"
+        },
+        {
+          "path": "tests/integration/P02/desktop-ui.mjs",
+          "bytes": 19338,
+          "sha256": "e8cea18d0df86205c06df3ced678b85a92fe1c31adefe4cddf671bdf4c497f03"
+        },
+        {
+          "path": "tests/integration/P02/desktop.py",
+          "bytes": 40302,
+          "sha256": "ac098078bde59a92148298126ace6276320849adc332947db7a3367153996807"
+        },
+        {
+          "path": "tests/integration/P02/durable-host.mjs",
+          "bytes": 22742,
+          "sha256": "4f921d666b31d3623202ac37d3d5993ee201387807599bc92989c16413b0f638"
+        },
+        {
+          "path": "tests/integration/P02/factory-entry.mjs",
+          "bytes": 1750,
+          "sha256": "60330aa9e25d017c74679319ebebb4d0f1ffd0c4f61d6e1552deca89b787bf4d"
+        },
+        {
+          "path": "tests/integration/P02/native.integration.test.mjs",
+          "bytes": 3612,
+          "sha256": "33014fdc2194c4f3ca8d82aa99b7441b157811ea7de2fd39a4e44e9a53edbae6"
+        },
+        {
+          "path": "tests/integration/P02/native.worker.mjs",
+          "bytes": 33234,
+          "sha256": "f2e68591bfc786e011fd617d2d73849e8ae65bbc4cbe9e762d69b143a548c16f"
+        },
+        {
+          "path": "tests/integration/P02/registry-write-guard.cjs",
+          "bytes": 8075,
+          "sha256": "1f32270994add0d5ae69d00ff5033eb67d036b0c8c456823977f4d6b8aceb517"
+        },
+        {
+          "path": "tests/integration/P02/registry-write-guard.test.mjs",
+          "bytes": 10647,
+          "sha256": "da5273b34b64817774efb7154ee74099f819363a9e884b01e2f695da675cdca4"
+        },
+        {
+          "path": "tests/integration/P02/sqlite-runtime-probe.test.mjs",
+          "bytes": 4285,
+          "sha256": "25329453f730bb0ade8451d2823c0bf4ca94ffbd2481cfe6e9a8e280a771988c"
+        },
+        {
+          "path": "tests/integration/P02/verify-ledger.mjs",
+          "bytes": 19138,
+          "sha256": "86154683a72a2ed6d027d8251a29e3878e1ae1783bdb4767c871a854df65f345"
+        },
+        {
+          "path": "tools/check-import-boundaries.mjs",
+          "bytes": 19535,
+          "sha256": "2ebec7a4e27b9ca7f32c7d3f9ad9a784f63fdd88e3e1d7b4bf439c3895ff479f"
+        },
+        {
+          "path": "tools/not-implemented.mjs",
+          "bytes": 324,
+          "sha256": "586ff4e526feb7fc0dc103bd8b2896364963553904e34566d80067424d091462"
+        },
+        {
+          "path": "tools/run-stage-tests.mjs",
+          "bytes": 1332,
+          "sha256": "0e80e18741628ff24cb93a8d3170577573c1947d64e1ee64121369d8bb22a772"
+        },
+        {
+          "path": "tools/run-tests.mjs",
+          "bytes": 5872,
+          "sha256": "7d9f105fc6478cf076105cf083a94ca374264116706a049490b51ad046b1d2c6"
+        },
+        {
+          "path": "tsconfig.json",
+          "bytes": 820,
+          "sha256": "fb1355b9ffcd007e8460c222047649c53562faa6fbc600381ccb401e348f5563"
+        }
+      ],
+      "resourcesRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\xiadie",
+      "schemaVersion": 1,
+      "scope": "Local development candidate with one borrowed pinned Native dependency junction and an owned better-sqlite3 runtime package. The final descriptor binds every candidate file except itself and the exact borrowed root junction; not a portable installer.",
+      "sourceCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "sourceRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+      "sqliteRuntime": {
+        "packageRoot": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3",
+        "packageVersion": "13.0.3",
+        "sqliteVersion": "3.53.4",
+        "addonPath": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/prebuilds/win32-x64.node",
+        "addonSha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+        "licensePath": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/LICENSE",
+        "licenseSha256": "09856b52897c91ab67e7456ef43067019f31dfd3b87fda72e655736b1ebdee55",
+        "closedFiles": [
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/binding.js",
+            "bytes": 2123,
+            "sha256": "4fe0f892facc02af7db0a1770150565d2e944e7da3c6493116d8e2a01a0f9b19"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/darwin-arm64.js",
+            "bytes": 166,
+            "sha256": "830ec2bbc0d402f8be13e93d5549c7a9030a2d5eed40f527e4b4aee9f962ec3b"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/darwin-x64.js",
+            "bytes": 164,
+            "sha256": "2d7671f3e5d0f19e78eb88d6cd2547ec7554acd3844942fa5a8fff61fd8f9c93"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/database.js",
+            "bytes": 4729,
+            "sha256": "539315c97591561394d2a0f257632305c3af1e32915a123aa8cc9032056d8ae2"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/index.js",
+            "bytes": 149,
+            "sha256": "0d56e190de8623278641b613433e89c4af2e5c90092c9c6e425f873d7fbc7ccf"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/linux-arm64.js",
+            "bytes": 165,
+            "sha256": "e2ff6a1e844f0f95794ebe50cea071f235bd57182ac04985819b86498541797c"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/linux-x64.js",
+            "bytes": 163,
+            "sha256": "96f9bbd76ab65da4f98a4833eb512746db6a99a2728db20feae2d70db0c2e273"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/linuxmusl-arm64.js",
+            "bytes": 190,
+            "sha256": "2edb0f14e62d3efa76c8089e58207895abb46642d1e988755a5eef5059605de9"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/linuxmusl-x64.js",
+            "bytes": 188,
+            "sha256": "d28b85927738844f589601e78e241d501c30231e9b9890f8f3605fca6d238f3d"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/methods/aggregate.js",
+            "bytes": 1932,
+            "sha256": "e9f74eb919ec93fe089c95ddf25a98f1f631c80418fa34fb2346ca1bc29f1b82"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/methods/backup.js",
+            "bytes": 2380,
+            "sha256": "ea29d34992bb02e006d0fdeda9675ac5d2bb227aaf57468decd997e9fc9c7dbf"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/methods/explain.js",
+            "bytes": 292,
+            "sha256": "0bd8cc80ccc7338f1d93058beea0cde924d4e7e652da9f51267e7c0757361be7"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/methods/function.js",
+            "bytes": 1396,
+            "sha256": "f431d49303b8bbdc044b1f1b455bdad21fc9b74b007de0acb22f08f25b4febd3"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/methods/inspect.js",
+            "bytes": 174,
+            "sha256": "4975a78daee850adee62ba98719d0f223819a0ec135a07c0e302994bd8dbff61"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/methods/pragma.js",
+            "bytes": 543,
+            "sha256": "d399bf1dbc85ef8a51f946c5a9505f2c37d0b1bed3f68863b1bf202d53d6524e"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/methods/serialize.js",
+            "bytes": 625,
+            "sha256": "7a10ee5c2735384b7f0c361811bc6d017db29f62b203fd3c68a35f667e2c2605"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/methods/table.js",
+            "bytes": 7243,
+            "sha256": "2356885ca1ef37d20f2daeed2b82b9dd6e61481e851194174a16d32efa3ae2f0"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/methods/transaction.js",
+            "bytes": 2855,
+            "sha256": "40b71d6113f328f96cec8f6f888ffddd98b5926d38fb1e2746939c7daba93e2e"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/methods/wrappers.js",
+            "bytes": 1152,
+            "sha256": "b289d339ff56b19ab40d109050080e1c844f2a5d01e62d8cb37a0152b0479a47"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/sqlite-error.js",
+            "bytes": 512,
+            "sha256": "903c140bb3d9d4f6256124889f5a820a491299907885d5b9d5ff2c4eaa268a06"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/util.js",
+            "bytes": 331,
+            "sha256": "92b2e39e2151b43a2252e10b6d6de876ecaf0008336a4fa1dfe1317b20f1916f"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/win32-arm64.js",
+            "bytes": 165,
+            "sha256": "00c1d5355a4e47e485e0ea8408a28423a18204d6d7ea5c57e599ebe64a1aa309"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/lib/win32-x64.js",
+            "bytes": 163,
+            "sha256": "c25867a2e904a367743498377e6e156a653bd10bcc5f9be7cbdf8a28359012ef"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/LICENSE",
+            "bytes": 1078,
+            "sha256": "09856b52897c91ab67e7456ef43067019f31dfd3b87fda72e655736b1ebdee55"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/package.json",
+            "bytes": 1838,
+            "sha256": "6c9ea355190dfce3646ad4d2a31c9506de36d884a6461b3655a2a0c4ba3d1695"
+          },
+          {
+            "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/prebuilds/win32-x64.node",
+            "bytes": 1989632,
+            "sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a"
+          }
+        ]
+      }
+    },
+    "resolved_paths": {
+      "assemblyRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09",
+      "desktopPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\packages\\desktop",
+      "cliEntry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09",
+      "electronPath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe",
+      "playwrightPath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\playwright-core\\index.js",
+      "sourceRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+      "nodePath": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe"
+    },
+    "repository_root": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+    "verified_artifacts": 6717,
+    "verified_repository_inputs": 103,
+    "external_source_metadata": {
+      "factory_matches_current_file": true,
+      "recipe_matches_current_file": true,
+      "cli_matches_current_file": true,
+      "invocationContext_matches_current_file": true,
+      "build_repository_commit": "cd03ddc3a3f6f7ca67b4313e309db20db4755343",
+      "verification_repository_commit": "d0952673ed6961cacfc38edf9c39256228c7dfc8"
+    },
+    "p02_owned_file_verification": {
+      "passed": true,
+      "owned_files_verified": 6717,
+      "package_files_verified": 26,
+      "package_version": "13.0.3",
+      "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+      "boundary": "Owned Better SQLite runtime package only; Native root dependencies remain borrowed."
+    }
+  },
+  "native_source": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+    "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "clean": true
+  },
+  "execution_bindings_before": {
+    "repository": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+    "commit": "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+    "files": [
+      {
+        "label": "desktop_runner",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\desktop.py",
+        "bytes": 73299,
+        "sha256": "c4ed49c9940f0b83f06f04a71234e8907fcd5ff82c21a58d2dc9cc2e80002dbe"
+      },
+      {
+        "label": "desktop_ui",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\desktop-ui.mjs",
+        "bytes": 19338,
+        "sha256": "e8cea18d0df86205c06df3ced678b85a92fe1c31adefe4cddf671bdf4c497f03"
+      },
+      {
+        "label": "electron_network_guard",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\electron-network-guard.cjs",
+        "bytes": 15465,
+        "sha256": "8a1212d760377ec29f1df079686b9502ad00ff4ee45ad5ce880084f10737901b"
+      },
+      {
+        "label": "profile_bridge",
+        "path": "E:\\Xiadie\\Xiadie\\tests\\evals\\persona\\profile-bridge.mjs",
+        "bytes": 4174,
+        "sha256": "2d0317c916467bb4ed35b9a57ff268e867845e8c7e7440346a9e1925adc8b47f"
+      },
+      {
+        "label": "seed_history",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\packages\\config\\test\\seed-history.mjs",
+        "bytes": 2574,
+        "sha256": "abf3cbfa757eb76b6421a1493fc9011406116113433b79ea8c3d1b1387254772"
+      }
+    ]
+  },
+  "production_before": {
+    "global_file_hashes": [
+      {
+        "label": "production-0",
+        "exists": true,
+        "sha256": "f5cd8f9a1417af9309b6c24ce5a2547a7452560fc941b5863704c38a4ea8f597"
+      },
+      {
+        "label": "production-1",
+        "exists": true,
+        "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+      },
+      {
+        "label": "production-2",
+        "exists": true,
+        "sha256": "9b6fdc5e5165e99d4eb4dc0bada9b1515da380bf4e190faff31993d69c3c76c1"
+      },
+      {
+        "label": "production-3",
+        "exists": true,
+        "sha256": "03963f81db35bcec8b5b0403ff7563a6e09b869bfddb416f9d2d6c7f2c466cb3"
+      },
+      {
+        "label": "production-4",
+        "exists": true,
+        "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+      }
+    ],
+    "official_provider_config": {
+      "path": "C:\\Users\\liyi\\.zcode\\v2\\provider_config.json",
+      "exists": true,
+      "bytes": 3667,
+      "sha256": "c6e9b3fee17989d971d5fde2d38704153a7cedfb310844f5d4d30c341f7e967a"
+    },
+    "model_call_ledger": {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01\\model-calls.jsonl",
+      "exists": true,
+      "bytes": 4603,
+      "sha256": "64363c24a57f63e334a180e571bd44b5a87bae1f8c25129b7233a98ad205380b",
+      "line_count": 18
+    }
+  },
+  "real_credentials_used": false,
+  "real_model_requests": 0,
+  "DSH_started": false,
+  "visual_acceptance": "NOT_RUN",
+  "network_boundary": "instrumented Node/Electron paths plus a parent-owned dynamic loopback relay; not an OS sandbox",
+  "scenario_status": "passed",
+  "passed": true,
+  "execution_bindings_after": {
+    "repository": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+    "commit": "b95cfd2be02959dd8c390e2b141d24d1093daf81",
+    "files": [
+      {
+        "label": "desktop_runner",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\desktop.py",
+        "bytes": 73299,
+        "sha256": "c4ed49c9940f0b83f06f04a71234e8907fcd5ff82c21a58d2dc9cc2e80002dbe"
+      },
+      {
+        "label": "desktop_ui",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P02\\desktop-ui.mjs",
+        "bytes": 19338,
+        "sha256": "e8cea18d0df86205c06df3ced678b85a92fe1c31adefe4cddf671bdf4c497f03"
+      },
+      {
+        "label": "electron_network_guard",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\tests\\integration\\P01\\electron-network-guard.cjs",
+        "bytes": 15465,
+        "sha256": "8a1212d760377ec29f1df079686b9502ad00ff4ee45ad5ce880084f10737901b"
+      },
+      {
+        "label": "profile_bridge",
+        "path": "E:\\Xiadie\\Xiadie\\tests\\evals\\persona\\profile-bridge.mjs",
+        "bytes": 4174,
+        "sha256": "2d0317c916467bb4ed35b9a57ff268e867845e8c7e7440346a9e1925adc8b47f"
+      },
+      {
+        "label": "seed_history",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\packages\\config\\test\\seed-history.mjs",
+        "bytes": 2574,
+        "sha256": "abf3cbfa757eb76b6421a1493fc9011406116113433b79ea8c3d1b1387254772"
+      }
+    ]
+  },
+  "execution_unchanged": true,
+  "production_after": {
+    "global_file_hashes": [
+      {
+        "label": "production-0",
+        "exists": true,
+        "sha256": "f5cd8f9a1417af9309b6c24ce5a2547a7452560fc941b5863704c38a4ea8f597"
+      },
+      {
+        "label": "production-1",
+        "exists": true,
+        "sha256": "b83d18b5c50fec0cdd2a223d4c74c006c4069b9e2f85c1a5fca79c02f3ee6538"
+      },
+      {
+        "label": "production-2",
+        "exists": true,
+        "sha256": "9b6fdc5e5165e99d4eb4dc0bada9b1515da380bf4e190faff31993d69c3c76c1"
+      },
+      {
+        "label": "production-3",
+        "exists": true,
+        "sha256": "03963f81db35bcec8b5b0403ff7563a6e09b869bfddb416f9d2d6c7f2c466cb3"
+      },
+      {
+        "label": "production-4",
+        "exists": true,
+        "sha256": "300a28b08627f7c61f332055578e0e77b0c61402f752f06445589f3bfe946978"
+      }
+    ],
+    "official_provider_config": {
+      "path": "C:\\Users\\liyi\\.zcode\\v2\\provider_config.json",
+      "exists": true,
+      "bytes": 3667,
+      "sha256": "c6e9b3fee17989d971d5fde2d38704153a7cedfb310844f5d4d30c341f7e967a"
+    },
+    "model_call_ledger": {
+      "path": "E:\\Xiadie\\Xiadie\\evidence\\P01\\model-calls.jsonl",
+      "exists": true,
+      "bytes": 4603,
+      "sha256": "64363c24a57f63e334a180e571bd44b5a87bae1f8c25129b7233a98ad205380b",
+      "line_count": 18
+    }
+  },
+  "production_unchanged": true,
+  "scenarios": [
+    {
+      "scenario_id": "success",
+      "passed": true,
+      "exit_code": 0,
+      "model_requests": 1,
+      "expected_model_requests": 1,
+      "relay_records": [
+        {
+          "request_index": 1,
+          "accepted": true,
+          "request_sha256": "130db4ce73114213cbf1a5fc365c80216468f4876ccd5da123accdb02e64bf2a",
+          "request_bytes": 14642,
+          "request_shape": {
+            "body_keys": [
+              "max_tokens",
+              "messages",
+              "model",
+              "stream",
+              "stream_options",
+              "thinking",
+              "tool_choice",
+              "tools"
+            ],
+            "stream_present": true,
+            "stream": "true",
+            "tools": "nonempty",
+            "tool_choice": "auto"
+          },
+          "model": "deepseek-flash",
+          "stream": true,
+          "auth_present": true,
+          "synthetic_auth_only": true,
+          "messages_count": 4,
+          "tool_names": [
+            "Read"
+          ],
+          "assistant_tool_call_ids": [],
+          "tool_result_ids": [],
+          "upstream_attempted": false,
+          "auxiliary_title": false,
+          "request_kind": "conversation",
+          "status": 200
+        }
+      ],
+      "sidecar_correlation": {
+        "status": "verified",
+        "verified": true,
+        "turn_count": 1,
+        "completed_reply_turns": 1,
+        "visible_reply_matches": true,
+        "expected_reply_sha256": "0769a1974cb8021d8250b52c0e4c0524bae98147698f0403606d8f2bd61baff2",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\u10-turn-projections.jsonl"
+      },
+      "actual_ui": {
+        "schema": "p01-u10-desktop-ui/v1",
+        "scenario_id": "success",
+        "status": "completed",
+        "gate_mode": "enabled",
+        "flow": "reply",
+        "ui_actions": [
+          "skipped-key-onboarding-with-empty-password",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step",
+          "filled-v4-composer-input",
+          "clicked-v4-composer-send"
+        ],
+        "user_visible_reply": "你好，我是遐蝶。我们可以慢慢聊。",
+        "error_banner": null,
+        "model_selection": {
+          "expected": "deepseek-flash",
+          "pro_item_available": null,
+          "selected": null
+        },
+        "desktop": {
+          "main_pid": 51060,
+          "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\process-working-directory",
+          "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\home",
+          "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\userData",
+          "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\sessionData",
+          "visible": false,
+          "remote_debugging_port": "0",
+          "descendant_processes": [
+            {
+              "pid": 48452,
+              "parent_pid": 51060,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 44204,
+              "parent_pid": 51060,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 49324,
+              "parent_pid": 51060,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 34568,
+              "parent_pid": 51060,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 16992,
+              "parent_pid": 51060,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 56168,
+              "parent_pid": 34568,
+              "name": "electron.exe"
+            }
+          ]
+        },
+        "passed": true
+      },
+      "network_guard_records": 328,
+      "network_guard": {
+        "status": "verified",
+        "verified": true,
+        "main": {
+          "pid": 51060,
+          "guard_loaded": true,
+          "egress_canary_denied": true
+        },
+        "utility_guarded_pids": [
+          34568
+        ],
+        "cli_required": true,
+        "cli_spawned_pids": [
+          56168
+        ],
+        "cli_guarded_pids": [
+          56168
+        ],
+        "cli_descendants_verified": true
+      },
+      "process_evidence": {
+        "status": "verified",
+        "root_pid": 51060,
+        "descendants": [
+          {
+            "pid": 48452,
+            "parent_pid": 51060,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 44204,
+            "parent_pid": 51060,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 49324,
+            "parent_pid": 51060,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 34568,
+            "parent_pid": 51060,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 16992,
+            "parent_pid": 51060,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 56168,
+            "parent_pid": 34568,
+            "name": "electron.exe"
+          }
+        ],
+        "dsh_like_descendants": []
+      },
+      "profile": {
+        "portable_profile_decision": "no-key",
+        "native_provider_config": "synthetic-loopback-only",
+        "api_key_real": false,
+        "model_backend": "parent-owned-loopback",
+        "adapter_retry_test_override": {
+          "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+          "value": "0"
+        }
+      },
+      "limitations": [
+        "network guard is process instrumentation, not an OS sandbox",
+        "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+      ],
+      "ledger_verification": {
+        "passed": true,
+        "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\ledger-verification.json",
+        "admission": "admitted",
+        "admitted_turns": 1,
+        "backup_restore": {
+          "passed": true,
+          "mode": "snapshot-v1-only",
+          "backupPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\ledger-maintenance\\backups\\events-2026-10-04T11-58-03.516Z.sqlite",
+          "backupSha256": "511fc9597f58ccb1be8cfb8ac04aa37b6148305bad1749e7a2bf3ae9c61c9db5",
+          "restoredDatabasePath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\ledger-maintenance\\restored-root\\events.sqlite",
+          "restoredDatabaseSha256": "511fc9597f58ccb1be8cfb8ac04aa37b6148305bad1749e7a2bf3ae9c61c9db5",
+          "verification": {
+            "userVersion": 1,
+            "schemaVersion": 1,
+            "integrityCheck": "ok",
+            "foreignKeyCheck": "ok",
+            "facts": {
+              "count": 5,
+              "sha256": "f13aae064e56f4a134ecf4793e61aa3c482c363f4d7287a8362cf19d1ec9fc12"
+            },
+            "observations": {
+              "count": 5,
+              "sha256": "2d2c610363f694b8f64267d71b4486d5dec1c9d6890ad9954640dc6a776b3df8"
+            },
+            "origins": {
+              "count": 5,
+              "sha256": "77793d8872f8bd14c6e36ba2a9b0224093b872790fd2e6013c760736c471a76f"
+            },
+            "receipts": {
+              "count": 5,
+              "sha256": "28c44dea8c5c22a04d7dd94de785b02ca5ebafd114ed1b05a7997a5d8902c0f9"
+            },
+            "captures": {
+              "count": 1,
+              "sha256": "a3b272547b6e38b6d133a3508cf8e37dfa1ef2dfdf8615413dcbf1f105d0d2a9"
+            },
+            "materials": {
+              "count": 1,
+              "sha256": "7f47b5c39a4722af412942ff6356c419ce707f768652fb3b888f4cebef75a550"
+            }
+          }
+        }
+      },
+      "sqlite_runtime_binding": {
+        "passed": true,
+        "status": "verified_actual_cli_load",
+        "probes": [
+          {
+            "pid": 56168,
+            "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\sqlite-runtime-probes\\56168.json",
+            "bytes": 657,
+            "sha256": "56801b4477b02ec7eb0b89f080b186cc23f7677e3a28bf550df841513f808d90",
+            "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+            "package_version": "13.0.3",
+            "sqlite_version": "3.53.4"
+          }
+        ],
+        "cli_guarded_pids": [
+          56168
+        ],
+        "boundary": "Observed CLI load only; no-load routes do not qualify an addon load. Ledger readback is a separate process."
+      },
+      "sqlite_cli_runtime_alias": {
+        "passed": true,
+        "mechanism": "owned-profile-home-directory-junction",
+        "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+        "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "entry_sha256": "c1ef45479de62ffdc37c2e72b7d014fdb1de61d56341b216077199aaa34af1ea",
+        "realpath_matches_candidate": true,
+        "p01_guard_expected_entry_matches_alias": true
+      },
+      "registry_write_guard": {
+        "passed": true,
+        "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+        "os_sandbox": false,
+        "request_count": 18,
+        "blocked_menu_request_count": 16,
+        "menu_install_group_count": 2,
+        "blocked_protocol_registration_count": 1,
+        "blocked_protocol_removal_count": 0,
+        "blocked_recent_document_clear_count": 1,
+        "main_pid": 51060,
+        "launcher_pid": 49464,
+        "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\main-process-runtime.json",
+        "main_process_snapshot_sha256": "926493e592c60cd533a25991502d98e23717776896f4df6fc92aaf1286726d83",
+        "blocked_requests_sha256": "95a33a993d55b420d33c1e0093bfacfda7e060b2d33e9adb50b5dbfcf3e2f40b",
+        "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\success\\profile\\registry-write-guard.jsonl"
+      },
+      "candidate_artifact_closure": {
+        "before_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        },
+        "after_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        }
+      }
+    },
+    {
+      "scenario_id": "read_success",
+      "passed": true,
+      "exit_code": 0,
+      "model_requests": 2,
+      "expected_model_requests": 2,
+      "relay_records": [
+        {
+          "request_index": 1,
+          "accepted": true,
+          "request_sha256": "af2cce0f1a1621360149df44a3cb63fcab90eb106a4d82537bd45373c5ef86e5",
+          "request_bytes": 14690,
+          "request_shape": {
+            "body_keys": [
+              "max_tokens",
+              "messages",
+              "model",
+              "stream",
+              "stream_options",
+              "thinking",
+              "tool_choice",
+              "tools"
+            ],
+            "stream_present": true,
+            "stream": "true",
+            "tools": "nonempty",
+            "tool_choice": "auto"
+          },
+          "model": "deepseek-flash",
+          "stream": true,
+          "auth_present": true,
+          "synthetic_auth_only": true,
+          "messages_count": 4,
+          "tool_names": [
+            "Read"
+          ],
+          "assistant_tool_call_ids": [],
+          "tool_result_ids": [],
+          "upstream_attempted": false,
+          "auxiliary_title": false,
+          "request_kind": "conversation",
+          "status": 200,
+          "tool_call_id": "p01-u10-read_success-read",
+          "tool_target": "readme.txt"
+        },
+        {
+          "request_index": 2,
+          "accepted": true,
+          "request_sha256": "f13606f29589319f35038d21fbbb505002e6685db4fa79cf7fde2a6d5cbfc077",
+          "request_bytes": 15125,
+          "request_shape": {
+            "body_keys": [
+              "max_tokens",
+              "messages",
+              "model",
+              "stream",
+              "stream_options",
+              "thinking",
+              "tool_choice",
+              "tools"
+            ],
+            "stream_present": true,
+            "stream": "true",
+            "tools": "nonempty",
+            "tool_choice": "auto"
+          },
+          "model": "deepseek-flash",
+          "stream": true,
+          "auth_present": true,
+          "synthetic_auth_only": true,
+          "messages_count": 6,
+          "tool_names": [
+            "Read"
+          ],
+          "assistant_tool_call_ids": [
+            "p01-u10-read_success-read"
+          ],
+          "tool_result_ids": [
+            "p01-u10-read_success-read"
+          ],
+          "upstream_attempted": false,
+          "auxiliary_title": false,
+          "request_kind": "conversation",
+          "correlated_tool_call_id": "p01-u10-read_success-read",
+          "tool_result_sha256": "630735300d9fc4d4a91178c739b26ef936e372e10270986df791a1287ab824f4",
+          "tool_result_success_shape": true,
+          "status": 200
+        }
+      ],
+      "sidecar_correlation": {
+        "status": "verified",
+        "verified": true,
+        "session_id": "sess_3632c870-a09f-4978-9d74-e3950e4cf510",
+        "turn_id": "turn_9431fe8d-ebde-42ad-8f62-ae42e58f0aa3",
+        "tool_call_id": "p01-u10-read_success-read",
+        "tool_status": "succeeded",
+        "lifecycle": "completed",
+        "evidence_status": "verified",
+        "projection_status": "projected",
+        "reply_sha256": "6cd96fb17e90f4ccf733a176c1df08c66fc4bf0950b7d6f5166abf41ad1ab485"
+      },
+      "actual_ui": {
+        "schema": "p01-u10-desktop-ui/v1",
+        "scenario_id": "read_success",
+        "status": "completed",
+        "gate_mode": "enabled",
+        "flow": "reply",
+        "ui_actions": [
+          "skipped-key-onboarding-with-empty-password",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step",
+          "filled-v4-composer-input",
+          "clicked-v4-composer-send"
+        ],
+        "user_visible_reply": "读到的标记是 orchid-42。",
+        "error_banner": null,
+        "model_selection": {
+          "expected": "deepseek-flash",
+          "pro_item_available": null,
+          "selected": null
+        },
+        "desktop": {
+          "main_pid": 43440,
+          "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\process-working-directory",
+          "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\home",
+          "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\userData",
+          "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\sessionData",
+          "visible": false,
+          "remote_debugging_port": "0",
+          "descendant_processes": [
+            {
+              "pid": 39984,
+              "parent_pid": 43440,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 39180,
+              "parent_pid": 43440,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 31508,
+              "parent_pid": 43440,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 53276,
+              "parent_pid": 43440,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 12736,
+              "parent_pid": 43440,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 50740,
+              "parent_pid": 53276,
+              "name": "electron.exe"
+            }
+          ]
+        },
+        "passed": true
+      },
+      "network_guard_records": 331,
+      "network_guard": {
+        "status": "verified",
+        "verified": true,
+        "main": {
+          "pid": 43440,
+          "guard_loaded": true,
+          "egress_canary_denied": true
+        },
+        "utility_guarded_pids": [
+          53276
+        ],
+        "cli_required": true,
+        "cli_spawned_pids": [
+          50740
+        ],
+        "cli_guarded_pids": [
+          50740
+        ],
+        "cli_descendants_verified": true
+      },
+      "process_evidence": {
+        "status": "verified",
+        "root_pid": 43440,
+        "descendants": [
+          {
+            "pid": 39984,
+            "parent_pid": 43440,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 39180,
+            "parent_pid": 43440,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 31508,
+            "parent_pid": 43440,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 53276,
+            "parent_pid": 43440,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 12736,
+            "parent_pid": 43440,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 50740,
+            "parent_pid": 53276,
+            "name": "electron.exe"
+          }
+        ],
+        "dsh_like_descendants": []
+      },
+      "profile": {
+        "portable_profile_decision": "no-key",
+        "native_provider_config": "synthetic-loopback-only",
+        "api_key_real": false,
+        "model_backend": "parent-owned-loopback",
+        "adapter_retry_test_override": {
+          "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+          "value": "0"
+        }
+      },
+      "limitations": [
+        "network guard is process instrumentation, not an OS sandbox",
+        "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+      ],
+      "ledger_verification": {
+        "passed": true,
+        "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\ledger-verification.json",
+        "admission": "admitted",
+        "admitted_turns": 1,
+        "backup_restore": null
+      },
+      "sqlite_runtime_binding": {
+        "passed": true,
+        "status": "verified_actual_cli_load",
+        "probes": [
+          {
+            "pid": 50740,
+            "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\sqlite-runtime-probes\\50740.json",
+            "bytes": 657,
+            "sha256": "2d5b8d44808def09e64e026851e2551caaaa089c276163f8dd053f1ec9a82ef4",
+            "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+            "package_version": "13.0.3",
+            "sqlite_version": "3.53.4"
+          }
+        ],
+        "cli_guarded_pids": [
+          50740
+        ],
+        "boundary": "Observed CLI load only; no-load routes do not qualify an addon load. Ledger readback is a separate process."
+      },
+      "sqlite_cli_runtime_alias": {
+        "passed": true,
+        "mechanism": "owned-profile-home-directory-junction",
+        "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+        "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "entry_sha256": "c1ef45479de62ffdc37c2e72b7d014fdb1de61d56341b216077199aaa34af1ea",
+        "realpath_matches_candidate": true,
+        "p01_guard_expected_entry_matches_alias": true
+      },
+      "registry_write_guard": {
+        "passed": true,
+        "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+        "os_sandbox": false,
+        "request_count": 18,
+        "blocked_menu_request_count": 16,
+        "menu_install_group_count": 2,
+        "blocked_protocol_registration_count": 1,
+        "blocked_protocol_removal_count": 0,
+        "blocked_recent_document_clear_count": 1,
+        "main_pid": 43440,
+        "launcher_pid": 51776,
+        "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\main-process-runtime.json",
+        "main_process_snapshot_sha256": "7d5871513400926b9a0db4abfe3b31f614e84a792039dc9721d46e47d6c1315a",
+        "blocked_requests_sha256": "916c4fcaafbb5856de30e9d5ddb41b5d647d28429b08c120c184532f3ba1456a",
+        "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_success\\profile\\registry-write-guard.jsonl"
+      },
+      "candidate_artifact_closure": {
+        "before_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        },
+        "after_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        }
+      }
+    },
+    {
+      "scenario_id": "read_failure",
+      "passed": true,
+      "exit_code": 0,
+      "model_requests": 2,
+      "expected_model_requests": 2,
+      "relay_records": [
+        {
+          "request_index": 1,
+          "accepted": true,
+          "request_sha256": "89b0e0e9b17f157309b6be74e68b335318e5abe49529cec3dc4e6db34b3b285e",
+          "request_bytes": 14700,
+          "request_shape": {
+            "body_keys": [
+              "max_tokens",
+              "messages",
+              "model",
+              "stream",
+              "stream_options",
+              "thinking",
+              "tool_choice",
+              "tools"
+            ],
+            "stream_present": true,
+            "stream": "true",
+            "tools": "nonempty",
+            "tool_choice": "auto"
+          },
+          "model": "deepseek-flash",
+          "stream": true,
+          "auth_present": true,
+          "synthetic_auth_only": true,
+          "messages_count": 4,
+          "tool_names": [
+            "Read"
+          ],
+          "assistant_tool_call_ids": [],
+          "tool_result_ids": [],
+          "upstream_attempted": false,
+          "auxiliary_title": false,
+          "request_kind": "conversation",
+          "status": 200,
+          "tool_call_id": "p01-u10-read_failure-read",
+          "tool_target": "missing.txt"
+        },
+        {
+          "request_index": 2,
+          "accepted": true,
+          "request_sha256": "fad165d217414456e36b41334a25f071dc602337a6479c21b0ccb8d78ce0c76b",
+          "request_bytes": 15285,
+          "request_shape": {
+            "body_keys": [
+              "max_tokens",
+              "messages",
+              "model",
+              "stream",
+              "stream_options",
+              "thinking",
+              "tool_choice",
+              "tools"
+            ],
+            "stream_present": true,
+            "stream": "true",
+            "tools": "nonempty",
+            "tool_choice": "auto"
+          },
+          "model": "deepseek-flash",
+          "stream": true,
+          "auth_present": true,
+          "synthetic_auth_only": true,
+          "messages_count": 6,
+          "tool_names": [
+            "Read"
+          ],
+          "assistant_tool_call_ids": [
+            "p01-u10-read_failure-read"
+          ],
+          "tool_result_ids": [
+            "p01-u10-read_failure-read"
+          ],
+          "upstream_attempted": false,
+          "auxiliary_title": false,
+          "request_kind": "conversation",
+          "correlated_tool_call_id": "p01-u10-read_failure-read",
+          "tool_result_sha256": "22f00faf529f479c5535c0eba6b5494303a4ec8197056b1b04efdb94a60a7198",
+          "tool_result_success_shape": true,
+          "status": 200
+        }
+      ],
+      "sidecar_correlation": {
+        "status": "verified",
+        "verified": true,
+        "session_id": "sess_9bbe11a7-005b-413e-babb-fae24bec3605",
+        "turn_id": "turn_8f1323d9-81e4-4aeb-8689-fdc89d5edfb4",
+        "tool_call_id": "p01-u10-read_failure-read",
+        "tool_status": "failed",
+        "lifecycle": "completed",
+        "evidence_status": "failed",
+        "projection_status": "projected",
+        "reply_sha256": "cc1290a42570f0317432f3b01062aed411316ff78dce85538facb3567e1c793c"
+      },
+      "actual_ui": {
+        "schema": "p01-u10-desktop-ui/v1",
+        "scenario_id": "read_failure",
+        "status": "completed",
+        "gate_mode": "enabled",
+        "flow": "reply",
+        "ui_actions": [
+          "skipped-key-onboarding-with-empty-password",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step",
+          "filled-v4-composer-input",
+          "clicked-v4-composer-send"
+        ],
+        "user_visible_reply": "missing.txt 不存在，这一步未完成，我没有读到文件内容。",
+        "error_banner": null,
+        "model_selection": {
+          "expected": "deepseek-flash",
+          "pro_item_available": null,
+          "selected": null
+        },
+        "desktop": {
+          "main_pid": 31444,
+          "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\process-working-directory",
+          "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\home",
+          "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\userData",
+          "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\sessionData",
+          "visible": false,
+          "remote_debugging_port": "0",
+          "descendant_processes": [
+            {
+              "pid": 46844,
+              "parent_pid": 31444,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 32192,
+              "parent_pid": 31444,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 36260,
+              "parent_pid": 31444,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 57260,
+              "parent_pid": 31444,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 55580,
+              "parent_pid": 31444,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 51456,
+              "parent_pid": 57260,
+              "name": "electron.exe"
+            }
+          ]
+        },
+        "passed": true
+      },
+      "network_guard_records": 331,
+      "network_guard": {
+        "status": "verified",
+        "verified": true,
+        "main": {
+          "pid": 31444,
+          "guard_loaded": true,
+          "egress_canary_denied": true
+        },
+        "utility_guarded_pids": [
+          57260
+        ],
+        "cli_required": true,
+        "cli_spawned_pids": [
+          51456
+        ],
+        "cli_guarded_pids": [
+          51456
+        ],
+        "cli_descendants_verified": true
+      },
+      "process_evidence": {
+        "status": "verified",
+        "root_pid": 31444,
+        "descendants": [
+          {
+            "pid": 46844,
+            "parent_pid": 31444,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 32192,
+            "parent_pid": 31444,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 36260,
+            "parent_pid": 31444,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 57260,
+            "parent_pid": 31444,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 55580,
+            "parent_pid": 31444,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 51456,
+            "parent_pid": 57260,
+            "name": "electron.exe"
+          }
+        ],
+        "dsh_like_descendants": []
+      },
+      "profile": {
+        "portable_profile_decision": "no-key",
+        "native_provider_config": "synthetic-loopback-only",
+        "api_key_real": false,
+        "model_backend": "parent-owned-loopback",
+        "adapter_retry_test_override": {
+          "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+          "value": "0"
+        }
+      },
+      "limitations": [
+        "network guard is process instrumentation, not an OS sandbox",
+        "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+      ],
+      "ledger_verification": {
+        "passed": true,
+        "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\ledger-verification.json",
+        "admission": "admitted",
+        "admitted_turns": 1,
+        "backup_restore": null
+      },
+      "sqlite_runtime_binding": {
+        "passed": true,
+        "status": "verified_actual_cli_load",
+        "probes": [
+          {
+            "pid": 51456,
+            "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\sqlite-runtime-probes\\51456.json",
+            "bytes": 657,
+            "sha256": "8497d63cdb517ceff2a339fa052d7aa4fe34510892fdb83c9d5a958c393d2d1f",
+            "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+            "package_version": "13.0.3",
+            "sqlite_version": "3.53.4"
+          }
+        ],
+        "cli_guarded_pids": [
+          51456
+        ],
+        "boundary": "Observed CLI load only; no-load routes do not qualify an addon load. Ledger readback is a separate process."
+      },
+      "sqlite_cli_runtime_alias": {
+        "passed": true,
+        "mechanism": "owned-profile-home-directory-junction",
+        "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+        "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "entry_sha256": "c1ef45479de62ffdc37c2e72b7d014fdb1de61d56341b216077199aaa34af1ea",
+        "realpath_matches_candidate": true,
+        "p01_guard_expected_entry_matches_alias": true
+      },
+      "registry_write_guard": {
+        "passed": true,
+        "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+        "os_sandbox": false,
+        "request_count": 18,
+        "blocked_menu_request_count": 16,
+        "menu_install_group_count": 2,
+        "blocked_protocol_registration_count": 1,
+        "blocked_protocol_removal_count": 0,
+        "blocked_recent_document_clear_count": 1,
+        "main_pid": 31444,
+        "launcher_pid": 36424,
+        "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\main-process-runtime.json",
+        "main_process_snapshot_sha256": "f0df508570dda99f95924318a1c16c1b6cc227b9559e790cbd8565d574094392",
+        "blocked_requests_sha256": "adab89479b795d24f45d22c64f013d42738d856cc49d046eb159bb8f921d3deb",
+        "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\read_failure\\profile\\registry-write-guard.jsonl"
+      },
+      "candidate_artifact_closure": {
+        "before_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        },
+        "after_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        }
+      }
+    },
+    {
+      "scenario_id": "cancel_recovery",
+      "passed": true,
+      "exit_code": 0,
+      "model_requests": 2,
+      "expected_model_requests": 2,
+      "relay_records": [
+        {
+          "request_index": 1,
+          "accepted": true,
+          "request_sha256": "1cdb761c4ab67adec095b7e5e46fee6f36101bb26a1267c882d7e8b17667238b",
+          "request_bytes": 14694,
+          "request_shape": {
+            "body_keys": [
+              "max_tokens",
+              "messages",
+              "model",
+              "stream",
+              "stream_options",
+              "thinking",
+              "tool_choice",
+              "tools"
+            ],
+            "stream_present": true,
+            "stream": "true",
+            "tools": "nonempty",
+            "tool_choice": "auto"
+          },
+          "model": "deepseek-flash",
+          "stream": true,
+          "auth_present": true,
+          "synthetic_auth_only": true,
+          "messages_count": 4,
+          "tool_names": [
+            "Read"
+          ],
+          "assistant_tool_call_ids": [],
+          "tool_result_ids": [],
+          "upstream_attempted": false,
+          "auxiliary_title": false,
+          "request_kind": "conversation",
+          "status": 200,
+          "partial_stream_sent": true,
+          "client_cancelled": true,
+          "cancel_confirmation": {
+            "source": "native-stop-ui-action",
+            "exception_type": "ConnectionAbortedError",
+            "exception_code": 10053
+          }
+        },
+        {
+          "request_index": 2,
+          "accepted": true,
+          "request_sha256": "d88546c7c39a6ab6a8eb29360565b5aa5768869d8fa87153a4dd1b20defd8bfd",
+          "request_bytes": 19949,
+          "request_shape": {
+            "body_keys": [
+              "max_tokens",
+              "messages",
+              "model",
+              "stream",
+              "stream_options",
+              "thinking",
+              "tool_choice",
+              "tools"
+            ],
+            "stream_present": true,
+            "stream": "true",
+            "tools": "nonempty",
+            "tool_choice": "auto"
+          },
+          "model": "deepseek-flash",
+          "stream": true,
+          "auth_present": true,
+          "synthetic_auth_only": true,
+          "messages_count": 7,
+          "tool_names": [
+            "Read"
+          ],
+          "assistant_tool_call_ids": [],
+          "tool_result_ids": [],
+          "upstream_attempted": false,
+          "auxiliary_title": false,
+          "request_kind": "conversation",
+          "status": 200
+        }
+      ],
+      "sidecar_correlation": {
+        "status": "verified",
+        "verified": true,
+        "cancelled_turns": 1,
+        "completed_turns": 1,
+        "visible_reply_matches": true,
+        "expected_reply_sha256": "d84106ccb884e202a9ca6137bbbac6038ec97529fbc40fb302b93cabaf35f153",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\u10-turn-projections.jsonl"
+      },
+      "actual_ui": {
+        "schema": "p01-u10-desktop-ui/v1",
+        "scenario_id": "cancel_recovery",
+        "status": "completed",
+        "gate_mode": "enabled",
+        "flow": "cancel_recovery",
+        "ui_actions": [
+          "skipped-key-onboarding-with-empty-password",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step",
+          "filled-v4-composer-input",
+          "clicked-v4-composer-send",
+          "observed-streaming-partial-in-renderer",
+          "clicked-native-stop-button",
+          "filled-v4-composer-input",
+          "clicked-v4-composer-send"
+        ],
+        "user_visible_reply": "已恢复。",
+        "error_banner": null,
+        "model_selection": {
+          "expected": "deepseek-flash",
+          "pro_item_available": null,
+          "selected": null
+        },
+        "desktop": {
+          "main_pid": 14116,
+          "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\process-working-directory",
+          "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\home",
+          "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\userData",
+          "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\sessionData",
+          "visible": false,
+          "remote_debugging_port": "0",
+          "descendant_processes": [
+            {
+              "pid": 52792,
+              "parent_pid": 14116,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 13572,
+              "parent_pid": 14116,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 29748,
+              "parent_pid": 14116,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 57292,
+              "parent_pid": 14116,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 49340,
+              "parent_pid": 14116,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 44440,
+              "parent_pid": 57292,
+              "name": "electron.exe"
+            }
+          ]
+        },
+        "passed": true
+      },
+      "network_guard_records": 331,
+      "network_guard": {
+        "status": "verified",
+        "verified": true,
+        "main": {
+          "pid": 14116,
+          "guard_loaded": true,
+          "egress_canary_denied": true
+        },
+        "utility_guarded_pids": [
+          57292
+        ],
+        "cli_required": true,
+        "cli_spawned_pids": [
+          44440
+        ],
+        "cli_guarded_pids": [
+          44440
+        ],
+        "cli_descendants_verified": true
+      },
+      "process_evidence": {
+        "status": "verified",
+        "root_pid": 14116,
+        "descendants": [
+          {
+            "pid": 52792,
+            "parent_pid": 14116,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 13572,
+            "parent_pid": 14116,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 29748,
+            "parent_pid": 14116,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 57292,
+            "parent_pid": 14116,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 49340,
+            "parent_pid": 14116,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 44440,
+            "parent_pid": 57292,
+            "name": "electron.exe"
+          }
+        ],
+        "dsh_like_descendants": []
+      },
+      "profile": {
+        "portable_profile_decision": "no-key",
+        "native_provider_config": "synthetic-loopback-only",
+        "api_key_real": false,
+        "model_backend": "parent-owned-loopback",
+        "adapter_retry_test_override": {
+          "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+          "value": "0"
+        }
+      },
+      "limitations": [
+        "network guard is process instrumentation, not an OS sandbox",
+        "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+      ],
+      "ledger_verification": {
+        "passed": true,
+        "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\ledger-verification.json",
+        "admission": "admitted",
+        "admitted_turns": 2,
+        "backup_restore": null
+      },
+      "sqlite_runtime_binding": {
+        "passed": true,
+        "status": "verified_actual_cli_load",
+        "probes": [
+          {
+            "pid": 44440,
+            "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\sqlite-runtime-probes\\44440.json",
+            "bytes": 657,
+            "sha256": "6e86fea8bac296c7c8550bdc6c68de2a24d346bc602329a14026af7804b3124b",
+            "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+            "package_version": "13.0.3",
+            "sqlite_version": "3.53.4"
+          }
+        ],
+        "cli_guarded_pids": [
+          44440
+        ],
+        "boundary": "Observed CLI load only; no-load routes do not qualify an addon load. Ledger readback is a separate process."
+      },
+      "sqlite_cli_runtime_alias": {
+        "passed": true,
+        "mechanism": "owned-profile-home-directory-junction",
+        "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+        "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "entry_sha256": "c1ef45479de62ffdc37c2e72b7d014fdb1de61d56341b216077199aaa34af1ea",
+        "realpath_matches_candidate": true,
+        "p01_guard_expected_entry_matches_alias": true
+      },
+      "registry_write_guard": {
+        "passed": true,
+        "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+        "os_sandbox": false,
+        "request_count": 18,
+        "blocked_menu_request_count": 16,
+        "menu_install_group_count": 2,
+        "blocked_protocol_registration_count": 1,
+        "blocked_protocol_removal_count": 0,
+        "blocked_recent_document_clear_count": 1,
+        "main_pid": 14116,
+        "launcher_pid": 42756,
+        "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\main-process-runtime.json",
+        "main_process_snapshot_sha256": "02923fdf580bacc67412fdd1b295773381b4f338ded0b95a14199769fe165dfa",
+        "blocked_requests_sha256": "ec7e1b175d42eba070e40d2839b8317a3f15b7318157a333c4b02096860e4515",
+        "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\registry-write-guard.jsonl"
+      },
+      "candidate_artifact_closure": {
+        "before_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        },
+        "after_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        }
+      }
+    },
+    {
+      "scenario_id": "disabled_native",
+      "passed": true,
+      "exit_code": 0,
+      "model_requests": 2,
+      "expected_model_requests": 2,
+      "relay_records": [
+        {
+          "request_index": 1,
+          "accepted": true,
+          "request_sha256": "7fc6e62a6b959285ba21c15075df95cd5aef676a149dd50e54f406fc902af294",
+          "request_bytes": 51845,
+          "request_shape": {
+            "body_keys": [
+              "max_tokens",
+              "messages",
+              "model",
+              "stream",
+              "stream_options",
+              "thinking",
+              "tool_choice",
+              "tools"
+            ],
+            "stream_present": true,
+            "stream": "true",
+            "tools": "nonempty",
+            "tool_choice": "auto"
+          },
+          "model": "deepseek-flash",
+          "stream": true,
+          "auth_present": true,
+          "synthetic_auth_only": true,
+          "messages_count": 3,
+          "tool_names": [
+            "Agent",
+            "AskUserQuestion",
+            "Bash",
+            "CronCreate",
+            "CronDelete",
+            "CronList",
+            "CronUpdate",
+            "Edit",
+            "EnterPlanMode",
+            "ExitPlanMode",
+            "OffPeakCreate",
+            "OffPeakList",
+            "Read",
+            "ReadSessionContext",
+            "SendMessage",
+            "Skill",
+            "TaskOutput",
+            "TaskStop",
+            "TodoRead",
+            "TodoWrite",
+            "WebFetch",
+            "Write"
+          ],
+          "assistant_tool_call_ids": [],
+          "tool_result_ids": [],
+          "upstream_attempted": false,
+          "auxiliary_title": false,
+          "request_kind": "conversation",
+          "status": 200
+        },
+        {
+          "request_index": 2,
+          "accepted": true,
+          "request_sha256": "6281f72d444f80bca140a891a816c609580ef168be747b2339c5c43a46df1c32",
+          "request_bytes": 1216,
+          "request_shape": {
+            "body_keys": [
+              "max_tokens",
+              "messages",
+              "model",
+              "thinking"
+            ],
+            "stream_present": false,
+            "stream": "absent",
+            "tools": "absent",
+            "tool_choice": "absent"
+          },
+          "model": "deepseek-flash",
+          "stream": false,
+          "auth_present": true,
+          "synthetic_auth_only": true,
+          "messages_count": 2,
+          "tool_names": [],
+          "assistant_tool_call_ids": [],
+          "tool_result_ids": [],
+          "upstream_attempted": false,
+          "auxiliary_title": true,
+          "request_kind": "auxiliary_title",
+          "status": 200
+        }
+      ],
+      "sidecar_correlation": {
+        "status": "NOT_APPLICABLE",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\profile\\u10-turn-projections.jsonl",
+        "verified": true
+      },
+      "actual_ui": {
+        "schema": "p01-u10-desktop-ui/v1",
+        "scenario_id": "disabled_native",
+        "status": "completed",
+        "gate_mode": "disabled",
+        "flow": "reply",
+        "ui_actions": [
+          "skipped-key-onboarding-with-empty-password",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step",
+          "filled-v4-composer-input",
+          "clicked-v4-composer-send"
+        ],
+        "user_visible_reply": "原生模型路径已通过本地测试。",
+        "error_banner": null,
+        "model_selection": {
+          "expected": "deepseek-flash",
+          "pro_item_available": null,
+          "selected": null
+        },
+        "desktop": {
+          "main_pid": 52080,
+          "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\profile\\process-working-directory",
+          "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\profile\\home",
+          "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\profile\\userData",
+          "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\profile\\sessionData",
+          "visible": false,
+          "remote_debugging_port": "0",
+          "descendant_processes": [
+            {
+              "pid": 48160,
+              "parent_pid": 52080,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 25128,
+              "parent_pid": 52080,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 50432,
+              "parent_pid": 52080,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 48820,
+              "parent_pid": 52080,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 35684,
+              "parent_pid": 52080,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 14460,
+              "parent_pid": 48820,
+              "name": "electron.exe"
+            }
+          ]
+        },
+        "passed": true
+      },
+      "network_guard_records": 330,
+      "network_guard": {
+        "status": "verified",
+        "verified": true,
+        "main": {
+          "pid": 52080,
+          "guard_loaded": true,
+          "egress_canary_denied": true
+        },
+        "utility_guarded_pids": [
+          48820
+        ],
+        "cli_required": true,
+        "cli_spawned_pids": [
+          14460
+        ],
+        "cli_guarded_pids": [
+          14460
+        ],
+        "cli_descendants_verified": true
+      },
+      "process_evidence": {
+        "status": "verified",
+        "root_pid": 52080,
+        "descendants": [
+          {
+            "pid": 48160,
+            "parent_pid": 52080,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 25128,
+            "parent_pid": 52080,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 50432,
+            "parent_pid": 52080,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 48820,
+            "parent_pid": 52080,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 35684,
+            "parent_pid": 52080,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 14460,
+            "parent_pid": 48820,
+            "name": "electron.exe"
+          }
+        ],
+        "dsh_like_descendants": []
+      },
+      "profile": {
+        "portable_profile_decision": "no-key",
+        "native_provider_config": "synthetic-loopback-only",
+        "api_key_real": false,
+        "model_backend": "parent-owned-loopback",
+        "adapter_retry_test_override": {
+          "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+          "value": "0"
+        }
+      },
+      "limitations": [
+        "network guard is process instrumentation, not an OS sandbox",
+        "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+      ],
+      "ledger_verification": {
+        "passed": true,
+        "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\ledger-verification.json",
+        "admission": "ledger_absent_not_admitted_allowed",
+        "admitted_turns": 0,
+        "backup_restore": null
+      },
+      "sqlite_runtime_binding": {
+        "passed": true,
+        "status": "not_instantiated",
+        "probes": [],
+        "cli_guarded_pids": [
+          14460
+        ],
+        "boundary": "Observed CLI load only; no-load routes do not qualify an addon load. Ledger readback is a separate process."
+      },
+      "sqlite_cli_runtime_alias": {
+        "passed": true,
+        "mechanism": "owned-profile-home-directory-junction",
+        "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+        "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "entry_sha256": "c1ef45479de62ffdc37c2e72b7d014fdb1de61d56341b216077199aaa34af1ea",
+        "realpath_matches_candidate": true,
+        "p01_guard_expected_entry_matches_alias": true
+      },
+      "registry_write_guard": {
+        "passed": true,
+        "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+        "os_sandbox": false,
+        "request_count": 18,
+        "blocked_menu_request_count": 16,
+        "menu_install_group_count": 2,
+        "blocked_protocol_registration_count": 1,
+        "blocked_protocol_removal_count": 0,
+        "blocked_recent_document_clear_count": 1,
+        "main_pid": 52080,
+        "launcher_pid": 48152,
+        "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\profile\\main-process-runtime.json",
+        "main_process_snapshot_sha256": "3147276602b57469304ce6ee045c11ff75ba288371fc9e887dc942b4f444db87",
+        "blocked_requests_sha256": "4675d5ba16c1c3cf4b0806908dd73439ba6f5b689e38c2f96985a5abf00b01c4",
+        "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\disabled_native\\profile\\registry-write-guard.jsonl"
+      },
+      "candidate_artifact_closure": {
+        "before_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        },
+        "after_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        }
+      }
+    },
+    {
+      "scenario_id": "pro_denied",
+      "passed": true,
+      "exit_code": 0,
+      "model_requests": 0,
+      "expected_model_requests": 0,
+      "relay_records": [],
+      "sidecar_correlation": {
+        "status": "NOT_EXPOSED",
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\u10-turn-projections.jsonl",
+        "verified": false
+      },
+      "actual_ui": {
+        "schema": "p01-u10-desktop-ui/v1",
+        "scenario_id": "pro_denied",
+        "status": "completed",
+        "gate_mode": "enabled",
+        "flow": "pro_denied",
+        "ui_actions": [
+          "skipped-key-onboarding-with-empty-password",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step",
+          "skipped-local-onboarding-step"
+        ],
+        "user_visible_reply": null,
+        "error_banner": null,
+        "model_selection": {
+          "expected": "deepseek-v4-pro",
+          "pro_item_available": false,
+          "selected": null,
+          "pro_selected": false
+        },
+        "desktop": {
+          "main_pid": 43540,
+          "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\process-working-directory",
+          "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\home",
+          "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\userData",
+          "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\sessionData",
+          "visible": false,
+          "remote_debugging_port": "0",
+          "descendant_processes": [
+            {
+              "pid": 46808,
+              "parent_pid": 43540,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 47744,
+              "parent_pid": 43540,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 14412,
+              "parent_pid": 43540,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 52640,
+              "parent_pid": 43540,
+              "name": "electron.exe"
+            },
+            {
+              "pid": 53772,
+              "parent_pid": 52640,
+              "name": "electron.exe"
+            }
+          ]
+        },
+        "passed": true
+      },
+      "network_guard_records": 327,
+      "network_guard": {
+        "status": "verified",
+        "verified": true,
+        "main": {
+          "pid": 43540,
+          "guard_loaded": true,
+          "egress_canary_denied": true
+        },
+        "utility_guarded_pids": [
+          52640
+        ],
+        "cli_required": false,
+        "cli_spawned_pids": [
+          53772
+        ],
+        "cli_guarded_pids": [
+          53772
+        ],
+        "cli_descendants_verified": true
+      },
+      "process_evidence": {
+        "status": "verified",
+        "root_pid": 43540,
+        "descendants": [
+          {
+            "pid": 46808,
+            "parent_pid": 43540,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 47744,
+            "parent_pid": 43540,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 14412,
+            "parent_pid": 43540,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 52640,
+            "parent_pid": 43540,
+            "name": "electron.exe"
+          },
+          {
+            "pid": 53772,
+            "parent_pid": 52640,
+            "name": "electron.exe"
+          }
+        ],
+        "dsh_like_descendants": []
+      },
+      "profile": {
+        "portable_profile_decision": "no-key",
+        "native_provider_config": "synthetic-loopback-only",
+        "api_key_real": false,
+        "model_backend": "parent-owned-loopback",
+        "adapter_retry_test_override": {
+          "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+          "value": "0"
+        }
+      },
+      "limitations": [
+        "network guard is process instrumentation, not an OS sandbox",
+        "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+      ],
+      "ledger_verification": {
+        "passed": true,
+        "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\ledger-verification.json",
+        "admission": "not_admitted",
+        "admitted_turns": 0,
+        "backup_restore": null
+      },
+      "sqlite_runtime_binding": {
+        "passed": true,
+        "status": "verified_actual_cli_load",
+        "probes": [
+          {
+            "pid": 53772,
+            "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\sqlite-runtime-probes\\53772.json",
+            "bytes": 657,
+            "sha256": "490a913ee963d18943f27eb3e3167cf856566d3114b254bc66adb1e6cc04b5af",
+            "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+            "package_version": "13.0.3",
+            "sqlite_version": "3.53.4"
+          }
+        ],
+        "cli_guarded_pids": [
+          53772
+        ],
+        "boundary": "Observed CLI load only; no-load routes do not qualify an addon load. Ledger readback is a separate process."
+      },
+      "sqlite_cli_runtime_alias": {
+        "passed": true,
+        "mechanism": "owned-profile-home-directory-junction",
+        "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+        "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+        "entry_sha256": "c1ef45479de62ffdc37c2e72b7d014fdb1de61d56341b216077199aaa34af1ea",
+        "realpath_matches_candidate": true,
+        "p01_guard_expected_entry_matches_alias": true
+      },
+      "registry_write_guard": {
+        "passed": true,
+        "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+        "os_sandbox": false,
+        "request_count": 18,
+        "blocked_menu_request_count": 16,
+        "menu_install_group_count": 2,
+        "blocked_protocol_registration_count": 1,
+        "blocked_protocol_removal_count": 0,
+        "blocked_recent_document_clear_count": 1,
+        "main_pid": 43540,
+        "launcher_pid": 16960,
+        "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\main-process-runtime.json",
+        "main_process_snapshot_sha256": "57a6bec81b8acfceeb88a7a6a51032eb231c3614d44e24db6f5ffe1ca4ef76c5",
+        "blocked_requests_sha256": "6ce0eaa7ef2712193a697d4f90a70043c22933d791934ac6aea7e1ae8890db71",
+        "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\pro_denied\\profile\\registry-write-guard.jsonl"
+      },
+      "candidate_artifact_closure": {
+        "before_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        },
+        "after_scenario": {
+          "passed": true,
+          "owned_files_verified": 6717,
+          "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+        }
+      }
+    }
+  ],
+  "model_requests": 9,
+  "external_model_requests": 0,
+  "DSH_process_tree_verified": true,
+  "human_visual_review": "NOT_RUN",
+  "candidate_artifact_closure_after_suite": {
+    "passed": true,
+    "owned_files_verified": 6717,
+    "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+  },
+  "registry_side_effect_state": {
+    "schemaVersion": 1,
+    "scope": "four ZCode.OpenInZCode context-menu keys and five HKCU\\Software\\Classes\\zcode protocol keys",
+    "keyCount": 9,
+    "readOnly": true,
+    "preSnapshotSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+    "postSnapshotSha256": "f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1",
+    "unchangedDuringThisSuite": true,
+    "baselineBoundary": "The pre-state was captured immediately before this suite; it does not reconstruct a state from before earlier runs."
+  }
+}

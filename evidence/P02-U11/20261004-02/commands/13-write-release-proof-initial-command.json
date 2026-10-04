@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "python",
+    "-X",
+    "utf8",
+    "evidence\\P02-U11\\20261004-02\\write-release-proof-u11.py",
+    "--self-command",
+    "13-write-release-proof-initial-command.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze",
+  "started_at": "2026-10-04T12:20:41.019144+00:00",
+  "completed_at": "2026-10-04T12:20:41.206586+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 900,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-freeze\\evidence\\P02-U11\\20261004-02\\write-release-proof-u11.py\", line 308, in <module>\r\n    运行输出全部使用 `.runtime/P02/experiments/mature-freeze/{full,degradation}-candidate09/` 的 owned 测试 profiles；没有执行安装或产品数据迁移。candidate09 和原始 U10 attempt 继续在其原路径保留。不要把 Better 数据库直接交给仍使用 Native `node:sqlite` 的旧组件，也不要因 author review 失败就盲目降级/删除账本。任何未来数据迁移/回退都必须先单独验证 U08 备份并对新根恢复验真，再按批准的产品变更处理。\r\n                                                              ^^^^\r\nNameError: name 'full' is not defined\r\n"
+}

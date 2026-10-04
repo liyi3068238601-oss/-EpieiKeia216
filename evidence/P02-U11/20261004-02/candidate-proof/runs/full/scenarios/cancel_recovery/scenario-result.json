@@ -1,0 +1,301 @@
+{
+  "scenario_id": "cancel_recovery",
+  "passed": true,
+  "exit_code": 0,
+  "model_requests": 2,
+  "expected_model_requests": 2,
+  "relay_records": [
+    {
+      "request_index": 1,
+      "accepted": true,
+      "request_sha256": "1cdb761c4ab67adec095b7e5e46fee6f36101bb26a1267c882d7e8b17667238b",
+      "request_bytes": 14694,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "stream",
+          "stream_options",
+          "thinking",
+          "tool_choice",
+          "tools"
+        ],
+        "stream_present": true,
+        "stream": "true",
+        "tools": "nonempty",
+        "tool_choice": "auto"
+      },
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 4,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 200,
+      "partial_stream_sent": true,
+      "client_cancelled": true,
+      "cancel_confirmation": {
+        "source": "native-stop-ui-action",
+        "exception_type": "ConnectionAbortedError",
+        "exception_code": 10053
+      }
+    },
+    {
+      "request_index": 2,
+      "accepted": true,
+      "request_sha256": "d88546c7c39a6ab6a8eb29360565b5aa5768869d8fa87153a4dd1b20defd8bfd",
+      "request_bytes": 19949,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "stream",
+          "stream_options",
+          "thinking",
+          "tool_choice",
+          "tools"
+        ],
+        "stream_present": true,
+        "stream": "true",
+        "tools": "nonempty",
+        "tool_choice": "auto"
+      },
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 7,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 200
+    }
+  ],
+  "sidecar_correlation": {
+    "status": "verified",
+    "verified": true,
+    "cancelled_turns": 1,
+    "completed_turns": 1,
+    "visible_reply_matches": true,
+    "expected_reply_sha256": "d84106ccb884e202a9ca6137bbbac6038ec97529fbc40fb302b93cabaf35f153",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\u10-turn-projections.jsonl"
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "cancel_recovery",
+    "status": "completed",
+    "gate_mode": "enabled",
+    "flow": "cancel_recovery",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send",
+      "observed-streaming-partial-in-renderer",
+      "clicked-native-stop-button",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send"
+    ],
+    "user_visible_reply": "已恢复。",
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 14116,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\process-working-directory",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 52792,
+          "parent_pid": 14116,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 13572,
+          "parent_pid": 14116,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 29748,
+          "parent_pid": 14116,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 57292,
+          "parent_pid": 14116,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 49340,
+          "parent_pid": 14116,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 44440,
+          "parent_pid": 57292,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "network_guard_records": 331,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 14116,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      57292
+    ],
+    "cli_required": true,
+    "cli_spawned_pids": [
+      44440
+    ],
+    "cli_guarded_pids": [
+      44440
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 14116,
+    "descendants": [
+      {
+        "pid": 52792,
+        "parent_pid": 14116,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 13572,
+        "parent_pid": 14116,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 29748,
+        "parent_pid": 14116,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 57292,
+        "parent_pid": 14116,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 49340,
+        "parent_pid": 14116,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 44440,
+        "parent_pid": 57292,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ],
+  "ledger_verification": {
+    "passed": true,
+    "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\ledger-verification.json",
+    "admission": "admitted",
+    "admitted_turns": 2,
+    "backup_restore": null
+  },
+  "sqlite_runtime_binding": {
+    "passed": true,
+    "status": "verified_actual_cli_load",
+    "probes": [
+      {
+        "pid": 44440,
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\sqlite-runtime-probes\\44440.json",
+        "bytes": 657,
+        "sha256": "6e86fea8bac296c7c8550bdc6c68de2a24d346bc602329a14026af7804b3124b",
+        "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+        "package_version": "13.0.3",
+        "sqlite_version": "3.53.4"
+      }
+    ],
+    "cli_guarded_pids": [
+      44440
+    ],
+    "boundary": "Observed CLI load only; no-load routes do not qualify an addon load. Ledger readback is a separate process."
+  },
+  "sqlite_cli_runtime_alias": {
+    "passed": true,
+    "mechanism": "owned-profile-home-directory-junction",
+    "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+    "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+    "entry_sha256": "c1ef45479de62ffdc37c2e72b7d014fdb1de61d56341b216077199aaa34af1ea",
+    "realpath_matches_candidate": true,
+    "p01_guard_expected_entry_matches_alias": true
+  },
+  "registry_write_guard": {
+    "passed": true,
+    "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+    "os_sandbox": false,
+    "request_count": 18,
+    "blocked_menu_request_count": 16,
+    "menu_install_group_count": 2,
+    "blocked_protocol_registration_count": 1,
+    "blocked_protocol_removal_count": 0,
+    "blocked_recent_document_clear_count": 1,
+    "main_pid": 14116,
+    "launcher_pid": 42756,
+    "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\main-process-runtime.json",
+    "main_process_snapshot_sha256": "02923fdf580bacc67412fdd1b295773381b4f338ded0b95a14199769fe165dfa",
+    "blocked_requests_sha256": "ec7e1b175d42eba070e40d2839b8317a3f15b7318157a333c4b02096860e4515",
+    "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-freeze\\full-candidate09\\scenarios\\cancel_recovery\\profile\\registry-write-guard.jsonl"
+  },
+  "candidate_artifact_closure": {
+    "before_scenario": {
+      "passed": true,
+      "owned_files_verified": 6717,
+      "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+    },
+    "after_scenario": {
+      "passed": true,
+      "owned_files_verified": 6717,
+      "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+    }
+  }
+}
