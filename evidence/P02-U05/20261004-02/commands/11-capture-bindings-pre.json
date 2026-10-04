@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\capture-bindings.mjs",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\dependencies-pre.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store",
+  "started_at": "2026-10-04T05:49:09.745317+00:00",
+  "completed_at": "2026-10-04T05:49:09.799267+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "node:fs:2733\r\n    const out = binding.lstat(base, false, undefined, true /* throwIfNoEntry */);\r\n                        ^\r\n\r\nError: EISDIR: illegal operation on a directory, lstat 'E:'\r\n    at realpathSync (node:fs:2733:25)\r\n    at process.traceBetterSqliteAddon [as dlopen] (file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/mature-sqlite-store/evidence/P02-U05/20261004-02/capture-bindings.mjs:20:22)\r\n    at Object..node (node:internal/modules/cjs/loader:1970:18)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.require (node:internal/modules/cjs/loader:1556:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at getBinding (E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\node_modules\\.pnpm\\better-sqlite3@13.0.3\\node_modules\\better-sqlite3\\lib\\binding.js:30:26)\r\n    at new Database (E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\node_modules\\.pnpm\\better-sqlite3@13.0.3\\node_modules\\better-sqlite3\\lib\\database.js:46:17) {\r\n  errno: -4068,\r\n  code: 'EISDIR',\r\n  syscall: 'lstat',\r\n  path: 'E:'\r\n}\r\n\r\nNode.js v24.14.0\r\n"
+}

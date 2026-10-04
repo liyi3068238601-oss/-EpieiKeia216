@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "packages/application/recovery/test/recovery.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store",
+  "started_at": "2026-10-04T05:43:54.395476+00:00",
+  "completed_at": "2026-10-04T05:43:55.422141+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 900,
+  "environment_overrides": {},
+  "stdout": "✔ same operation concurrent/repeated calls dispatch once and freeze the committed descriptor (41.6758ms)\n✔ changed descriptor and foreign owner are conflicts and never dispatch (16.8932ms)\n✔ same source/event identity cannot be relabelled to another operation or owner (16.968ms)\n✔ intent COMMIT followed by lost ACK remains unknown and a retry does not dispatch (10.5173ms)\n✔ receipt COMMIT lost ACK is reconciled from SQLite and reopen prevents redispatch (21.7453ms)\n✔ hard-kill after fsynced external effect but before receipt never automatically repeats effect (126.808ms)\n✔ known success and failure receipts survive close/reopen and block replay (30.1205ms)\n✔ unknown can be reconciled by a verified receipt; contradictory verified outcomes become conflict (20.6008ms)\n✔ verified receipt without an owned intent is absent and writes no history (14.6331ms)\n✔ attempt projection keeps the first terminal by writer order and audits later terminal and receipt (30.2733ms)\n✔ restart closes an open attempt once; absent attempt stays absent (15.5373ms)\n✔ operation inspection paginates complete history and incomplete pages never become absent (540.6883ms)\nℹ tests 12\nℹ suites 0\nℹ pass 12\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 973.4078\n",
+  "stderr": ""
+}

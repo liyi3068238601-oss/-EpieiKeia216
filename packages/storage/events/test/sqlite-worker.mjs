@@ -1,5 +1,5 @@
 import { writeFileSync } from "node:fs";
-import { DatabaseSync } from "node:sqlite";
+import Database from "better-sqlite3";
 import { openEventStore } from "../../../../dist/packages/storage/events/src/index.js";
 
 const [, , databasePath, phase, markerPath, encodedInput] = process.argv;
@@ -8,7 +8,7 @@ if (!databasePath || !["before-commit", "after-commit", "after-duplicate-commit"
 }
 
 const store = openEventStore({ path: databasePath });
-const prototype = DatabaseSync.prototype;
+const prototype = Database.prototype;
 const originalExec = prototype.exec;
 prototype.exec = function patchedExec(sql) {
   if (String(sql).trim().toUpperCase() === "COMMIT") {

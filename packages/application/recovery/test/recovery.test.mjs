@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { spawn } from "node:child_process";
-import { DatabaseSync } from "node:sqlite";
+import Database from "better-sqlite3";
 import { mkdir, mkdtemp, readFile, realpath, rm, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -134,7 +134,7 @@ test("intent COMMIT followed by lost ACK remains unknown and a retry does not di
   const store = openEventStore({ path: fixture.databasePath });
   fixture.own(() => store.close());
   const execution = makeExecution("op-intent-ack");
-  const prototype = DatabaseSync.prototype;
+  const prototype = Database.prototype;
   const originalExec = prototype.exec;
   let armed = true;
   prototype.exec = function commitThenLoseIntentAck(sql) {
@@ -178,7 +178,7 @@ test("receipt COMMIT lost ACK is reconciled from SQLite and reopen prevents redi
   const store = openEventStore({ path: fixture.databasePath });
   fixture.own(() => store.close());
   const execution = makeExecution("op-receipt-ack");
-  const prototype = DatabaseSync.prototype;
+  const prototype = Database.prototype;
   const originalExec = prototype.exec;
   let commits = 0;
   prototype.exec = function commitThenLoseReceiptAck(sql) {

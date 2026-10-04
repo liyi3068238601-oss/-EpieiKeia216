@@ -18,7 +18,11 @@
     "test:e2e": "pnpm run build && python -X utf8 tests/integration/P02/desktop.py",
     "build": "tsc --project tsconfig.json"
   },
+  "dependencies": {
+    "better-sqlite3": "13.0.3"
+  },
   "devDependencies": {
+    "@types/better-sqlite3": "9.6.0",
     "@types/node": "24.12.2",
     "typescript": "6.0.2"
   }
