@@ -5,7 +5,7 @@
   "plan_version": "1.1",
   "project_root": "E:\\Xiadie\\Xiadie",
   "baseline_commit": "9a39bde69545ac0ad28f484c5318425c2e5d4bf9",
-  "goal": "进入 P02，按依赖完成至 U11/G02 并停止，不自动进入 P03",
+  "goal": "Complete the original P02 maturity remediation and fresh G02 before the explicitly authorized P03 goal.",
   "stage_status": "running",
   "G01": "pass",
   "G02": "pending_revalidation",
@@ -228,25 +228,30 @@
       "dependencies": [
         "P02-U07"
       ],
-      "status": "accepted",
       "card_sha256": "b087b678b25159ba1bec3805e685c7efa4f280d7e5277d707d2df51b86b05a6c",
-      "author_commit": "066125b86ad01ed811ed88c1da4fb3d91aa884e3",
-      "integration_commit": "28c3fffa102e7e2d20c563ea60452684fe89b7ad",
-      "acceptance": {
-        "path": "evidence/P02-U08/20261003-01/acceptance.json",
-        "bytes": 3772,
-        "sha256": "4b3b92d21c8dc81cb9592cbb54be6177731b49598fdf1876cb560aa15cb97629"
-      },
-      "review": {
-        "status": "pass",
-        "reviewer": "p02_u04_review",
-        "reviewed_commit": "066125b86ad01ed811ed88c1da4fb3d91aa884e3",
-        "evidence": {
-          "path": "evidence/P02-U08/20261003-01/review-final.json",
-          "bytes": 20709,
-          "sha256": "e65b17b14f3d17bc393546e17342b739e0d741e8b1c36f5cb4f1a056a5f17661"
+      "historical_acceptances": [
+        {
+          "status": "accepted",
+          "author_commit": "066125b86ad01ed811ed88c1da4fb3d91aa884e3",
+          "integration_commit": "28c3fffa102e7e2d20c563ea60452684fe89b7ad",
+          "acceptance": {
+            "path": "evidence/P02-U08/20261003-01/acceptance.json",
+            "bytes": 3772,
+            "sha256": "4b3b92d21c8dc81cb9592cbb54be6177731b49598fdf1876cb560aa15cb97629"
+          },
+          "review": {
+            "status": "pass",
+            "reviewer": "p02_u04_review",
+            "reviewed_commit": "066125b86ad01ed811ed88c1da4fb3d91aa884e3",
+            "evidence": {
+              "path": "evidence/P02-U08/20261003-01/review-final.json",
+              "bytes": 20709,
+              "sha256": "e65b17b14f3d17bc393546e17342b739e0d741e8b1c36f5cb4f1a056a5f17661"
+            }
+          }
         }
-      }
+      ],
+      "status": "revalidation_required"
     },
     {
       "id": "P02-U09",
@@ -374,7 +379,8 @@
     "user_objective": "进入P02",
     "scope": "Local project research, isolated fixtures, implementation and verification through G02; preserve production projects, profiles and credentials.",
     "real_model_calls": "not authorized for P02; no new calls planned for deterministic event/storage work",
-    "production_raw_transcript_export": "not authorized; use synthetic owned fixtures only"
+    "production_raw_transcript_export": "not authorized; use synthetic owned fixtures only",
+    "following_stage": "User active goal authorizes completing P03 and ordinary remote backup after fresh G02; no automatic P04 or public release."
   },
   "startup_port_policy": {
     "user_reply": "启动时占用端口不要和本机zcode一样",
