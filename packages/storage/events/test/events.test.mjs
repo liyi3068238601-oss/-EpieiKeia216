@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { spawn } from "node:child_process";
+import Database from "better-sqlite3";
 import { DatabaseSync } from "node:sqlite";
 import { mkdir, mkdtemp, readFile, realpath, rm, stat } from "node:fs/promises";
 import path from "node:path";
@@ -12,8 +13,10 @@ const repositoryRoot = path.resolve(testDirectory, "../../../..");
 const experimentParent = path.resolve(repositoryRoot, ".runtime", "P02", "experiments", "u05", "sqlite");
 await mkdir(experimentParent, { recursive: true });
 const eventStoreModule = await import(new URL("../../../../dist/packages/storage/events/src/index.js", import.meta.url).href);
+const sqliteAdapterModule = await import(new URL("../../../../dist/packages/storage/events/src/sqlite.js", import.meta.url).href);
 const contractsModule = await import(new URL("../../../../dist/packages/contracts/src/events.js", import.meta.url).href);
 const { openEventStore, EventStoreError } = eventStoreModule;
+const { openSQLiteConnection, SQLiteIntegerRangeError } = sqliteAdapterModule;
 const { canonicalizeJson } = contractsModule;
 
 test("atomic first fact, origin, capture material and receipt; retry, resequence and conflict remain auditable", async (t) => {
@@ -88,6 +91,91 @@ test("atomic first fact, origin, capture material and receipt; retry, resequence
   assert.equal(repeatedConflict.status, "conflict");
   assert.equal(repeatedConflict.commitSequence, conflictResult.commitSequence);
   assert.equal(store.readObservations().items.length, 3);
+});
+
+test("Node's SQLite binding reads and writes the Better SQLite v1 ledger", async (t) => {
+  const fixture = await makeFixture(t, "cross-binding");
+  const store = openEventStore({ path: fixture.databasePath });
+  fixture.own(() => store.close());
+  const input = makeInput({ eventId: "cross-binding-node-1" });
+  assert.equal((await append(store, input)).status, "committed");
+  await store.close();
+
+  const nodeDatabase = new DatabaseSync(fixture.databasePath);
+  fixture.own(() => closeDatabase(nodeDatabase));
+  const before = nodeDatabase.prepare(
+    "SELECT committed_at FROM event_receipts WHERE source = ? AND event_id = ?",
+  ).get(input.event.source, input.event.eventId);
+  assert.equal(typeof before.committed_at, "string");
+  const nodeWrite = nodeDatabase.prepare(
+    "UPDATE event_receipts SET committed_at = ? WHERE source = ? AND event_id = ?",
+  ).run("2026-10-04T12:00:00.000Z", input.event.source, input.event.eventId);
+  assert.equal(nodeWrite.changes, 1);
+  nodeDatabase.close();
+
+  const reopened = openEventStore({ path: fixture.databasePath, readOnly: true });
+  fixture.own(() => reopened.close());
+  const receipt = reopened.queryReceipt(identity(input.event));
+  assert.equal(receipt.status, "found");
+  assert.equal(receipt.firstReceipt.committedAt, "2026-10-04T12:00:00.000Z");
+  assert.equal(reopened.read().items.length, 1);
+});
+
+test("private SQLite adapter preserves the safe integer boundary and rejects overflow in get and all", () => {
+  const database = openSQLiteConnection(":memory:", { readonly: false, timeout: 180 });
+  try {
+    const maximum = database.prepare("SELECT 9007199254740991 AS value").get();
+    assert.equal(maximum.value, Number.MAX_SAFE_INTEGER);
+    const minimum = database.prepare("SELECT -9007199254740991 AS value").get();
+    assert.equal(minimum.value, Number.MIN_SAFE_INTEGER);
+    assert.throws(
+      () => database.prepare("SELECT 9007199254740993 AS value").get(),
+      SQLiteIntegerRangeError,
+    );
+    assert.throws(
+      () => database.prepare("SELECT 9007199254740993 AS value").all(),
+      SQLiteIntegerRangeError,
+    );
+    assert.throws(
+      () => database.prepare("SELECT -9007199254740993 AS value").all(),
+      SQLiteIntegerRangeError,
+    );
+  } finally {
+    database.close();
+  }
+});
+
+test("unsafe stored writer counter fails without committing a fact or receipt", async (t) => {
+  const fixture = await makeFixture(t, "unsafe-counter");
+  const initial = openEventStore({ path: fixture.databasePath });
+  fixture.own(() => initial.close());
+  await initial.close();
+
+  const tamper = new Database(fixture.databasePath);
+  tamper.defaultSafeIntegers(true);
+  tamper.pragma("ignore_check_constraints = ON");
+  tamper.prepare("UPDATE writer_state SET last_commit_sequence = ? WHERE singleton = 1")
+    .run(9007199254740993n);
+  assert.equal(
+    tamper.prepare("SELECT last_commit_sequence FROM writer_state WHERE singleton = 1").get().last_commit_sequence,
+    9007199254740993n,
+  );
+  tamper.close();
+
+  const store = openEventStore({ path: fixture.databasePath });
+  fixture.own(() => store.close());
+  const input = makeInput({ eventId: "unsafe-counter-1" });
+  const result = await append(store, input);
+  assert.deepEqual(result, { status: "failed", observationKey: result.observationKey, code: "CORRUPT_STORE" });
+  assert.equal(store.read().items.length, 0);
+  assert.equal(store.readObservations().items.length, 0);
+  assert.equal(store.queryReceipt(identity(input.event)).status, "not_found");
+
+  const audit = new Database(fixture.databasePath, { readonly: true, fileMustExist: true });
+  audit.defaultSafeIntegers(true);
+  fixture.own(() => closeDatabase(audit));
+  assert.equal(audit.prepare("SELECT count(*) AS count FROM events").get().count, 0n);
+  assert.equal(audit.prepare("SELECT count(*) AS count FROM event_receipts").get().count, 0n);
 });
 
 test("scope and operation queries page complete facts and observations explicitly", async (t) => {
@@ -185,7 +273,7 @@ test("readback recomputes facts and rejects tampered mirror columns as CORRUPT_S
   await append(store, makeInput({ eventId: "corrupt-1" }));
   await store.close();
 
-  const tamper = new DatabaseSync(fixture.databasePath);
+  const tamper = new Database(fixture.databasePath);
   tamper.prepare("UPDATE events SET session_id = 'forged-session' WHERE event_id = 'corrupt-1'").run();
   tamper.close();
 
@@ -237,7 +325,7 @@ test("failed COMMIT with capture rolls back fact, observation, origin, material,
   const fixture = await makeFixture(t, "capture-rollback");
   const store = openEventStore({ path: fixture.databasePath });
   fixture.own(() => store.close());
-  const prototype = DatabaseSync.prototype;
+  const prototype = Database.prototype;
   const originalExec = prototype.exec;
   prototype.exec = function failCommitBeforeSqlite(sql) {
     if (String(sql).trim().toUpperCase() === "COMMIT") throw new Error("injected COMMIT failure before SQLite commit");
@@ -253,7 +341,7 @@ test("failed COMMIT with capture rolls back fact, observation, origin, material,
   assert.equal(store.read().items.length, 0);
   assert.equal(store.readObservations().items.length, 0);
   assert.equal(store.queryReceipt({ source: "zcode-hook", eventId: "capture-rollback-1" }).status, "not_found");
-  const inspect = new DatabaseSync(fixture.databasePath, { readOnly: true });
+  const inspect = new Database(fixture.databasePath, { readonly: true, fileMustExist: true });
   fixture.own(() => closeDatabase(inspect));
   for (const table of ["events", "event_observations", "event_origins", "transcript_materials", "event_receipts"]) {
     assert.equal(inspect.prepare(`SELECT count(*) AS count FROM ${table}`).get().count, 0, `${table} must roll back`);
@@ -265,7 +353,7 @@ test("failed rollback quarantines the writer, settles queued successors unknown,
   const fixture = await makeFixture(t, "rollback-failure");
   const store = openEventStore({ path: fixture.databasePath, maxPending: 4 });
   fixture.own(() => store.close());
-  const prototype = DatabaseSync.prototype;
+  const prototype = Database.prototype;
   const originalExec = prototype.exec;
   let beginCount = 0;
   prototype.exec = function failCommitAndRollback(sql) {
@@ -303,7 +391,7 @@ test("failed rollback quarantines the writer, settles queued successors unknown,
 test("close reports a SQLite close failure after settling accepted work", async (t) => {
   const fixture = await makeFixture(t, "close-failure");
   const store = openEventStore({ path: fixture.databasePath });
-  const prototype = DatabaseSync.prototype;
+  const prototype = Database.prototype;
   const originalClose = prototype.close;
   let armed = true;
   prototype.close = function closeThenReportFailure() {
@@ -335,7 +423,7 @@ test("actual SQLite BUSY, controlled SQLITE_FULL, readonly refusal and future-sc
   const busyFixture = await makeFixture(t, "busy");
   const busyStore = openEventStore({ path: busyFixture.databasePath });
   busyFixture.own(() => busyStore.close());
-  const lock = new DatabaseSync(busyFixture.databasePath, { timeout: 0 });
+  const lock = new Database(busyFixture.databasePath, { timeout: 0 });
   busyFixture.own(() => closeDatabase(lock));
   lock.exec("BEGIN IMMEDIATE");
   const startedAt = performance.now();
@@ -354,7 +442,7 @@ test("actual SQLite BUSY, controlled SQLITE_FULL, readonly refusal and future-sc
   assert.equal(readonlyStore.getDiagnostics().readOnly, true);
   assert.deepEqual(readonlyStore.append(makeInput({ eventId: "readonly-1" })), { status: "readonly" });
   await readonlyStore.close();
-  const rawReadonly = new DatabaseSync(busyFixture.databasePath, { readOnly: true });
+  const rawReadonly = new Database(busyFixture.databasePath, { readonly: true, fileMustExist: true });
   busyFixture.own(() => closeDatabase(rawReadonly));
   assert.throws(
     () => rawReadonly.exec("UPDATE writer_state SET last_commit_sequence = last_commit_sequence + 1"),
@@ -364,7 +452,7 @@ test("actual SQLite BUSY, controlled SQLITE_FULL, readonly refusal and future-sc
   const fullFixture = await makeFixture(t, "full");
   const fullStore = openEventStore({ path: fullFixture.databasePath });
   fullFixture.own(() => fullStore.close());
-  const prototype = DatabaseSync.prototype;
+  const prototype = Database.prototype;
   const originalExec = prototype.exec;
   let pageCapSet = false;
   let pageCapReset = false;
@@ -413,28 +501,28 @@ test("actual SQLite BUSY, controlled SQLITE_FULL, readonly refusal and future-sc
   await fullStore.close();
 
   const futureFixture = await makeFixture(t, "future");
-  const futureDb = new DatabaseSync(futureFixture.databasePath);
+  const futureDb = new Database(futureFixture.databasePath);
   futureDb.exec("PRAGMA user_version = 99");
   futureDb.close();
   assert.throws(
     () => openEventStore({ path: futureFixture.databasePath }),
     (error) => error instanceof EventStoreError && error.code === "UNSUPPORTED_FUTURE_SCHEMA",
   );
-  const verifyFuture = new DatabaseSync(futureFixture.databasePath, { readOnly: true });
+  const verifyFuture = new Database(futureFixture.databasePath, { readonly: true, fileMustExist: true });
   assert.equal(verifyFuture.prepare("PRAGMA user_version").get().user_version, 99);
   assert.equal(verifyFuture.prepare("PRAGMA journal_mode").get().journal_mode, "delete");
   assert.equal(verifyFuture.prepare("SELECT count(*) AS count FROM sqlite_master WHERE type = 'table'").get().count, 0);
   verifyFuture.close();
 
   const legacyFixture = await makeFixture(t, "legacy-v0");
-  const legacy = new DatabaseSync(legacyFixture.databasePath);
+  const legacy = new Database(legacyFixture.databasePath);
   legacy.exec("CREATE TABLE unrelated_legacy_data (value TEXT)");
   legacy.close();
   assert.throws(
     () => openEventStore({ path: legacyFixture.databasePath }),
     (error) => error instanceof EventStoreError && error.code === "UNSUPPORTED_SCHEMA",
   );
-  const verifyLegacy = new DatabaseSync(legacyFixture.databasePath, { readOnly: true });
+  const verifyLegacy = new Database(legacyFixture.databasePath, { readonly: true, fileMustExist: true });
   assert.equal(verifyLegacy.prepare("PRAGMA user_version").get().user_version, 0);
   assert.equal(verifyLegacy.prepare("PRAGMA journal_mode").get().journal_mode, "delete");
   assert.equal(verifyLegacy.prepare("SELECT count(*) AS count FROM sqlite_master WHERE name = 'unrelated_legacy_data'").get().count, 1);
@@ -493,7 +581,7 @@ async function append(store, input) {
 }
 
 async function loseNextCommitAck(store, input) {
-  const prototype = DatabaseSync.prototype;
+  const prototype = Database.prototype;
   const originalExec = prototype.exec;
   let armed = true;
   prototype.exec = function commitThenLoseAck(sql) {

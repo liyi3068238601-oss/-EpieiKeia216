@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
-import { DatabaseSync } from "node:sqlite";
 import path from "node:path";
+import { openSQLiteConnection, SQLiteIntegerRangeError, type SQLiteConnection } from "./sqlite.js";
 import {
   canonicalizeEventFacts,
   canonicalizeJson,
@@ -234,11 +234,10 @@ export function openEventStore(options: OpenEventStoreOptions): EventStore {
     throw new EventStoreError("UNSUPPORTED_SCHEMA", "read-only event store does not exist");
   }
 
-  let database: DatabaseSync;
+  let database: SQLiteConnection;
   try {
-    database = new DatabaseSync(databasePath, {
-      readOnly: normalizedOptions.readOnly,
-      enableForeignKeyConstraints: true,
+    database = openSQLiteConnection(databasePath, {
+      readonly: normalizedOptions.readOnly,
       timeout: BUSY_TIMEOUT_MS,
     });
   } catch (error) {
@@ -284,7 +283,7 @@ export function openEventStore(options: OpenEventStoreOptions): EventStore {
   }
 }
 
-function createStore(database: DatabaseSync, maxPending: number, readOnly: boolean): EventStore {
+function createStore(database: SQLiteConnection, maxPending: number, readOnly: boolean): EventStore {
   const queue: PendingJob[] = [];
   const pending = new Map<number, PendingJob>();
   let nextJobId = 1;
@@ -504,11 +503,10 @@ function normalizeOpenOptions(value: OpenEventStoreOptions): Required<OpenEventS
 
 function readUserVersionReadOnly(databasePath: string): number {
   if (!existsSync(databasePath)) return 0;
-  let database: DatabaseSync | undefined;
+  let database: SQLiteConnection | undefined;
   try {
-    database = new DatabaseSync(databasePath, {
-      readOnly: true,
-      enableForeignKeyConstraints: true,
+    database = openSQLiteConnection(databasePath, {
+      readonly: true,
       timeout: BUSY_TIMEOUT_MS,
     });
     const version = pragmaNumber(database, "user_version");
@@ -524,7 +522,7 @@ function readUserVersionReadOnly(databasePath: string): number {
   }
 }
 
-function applyInitialMigration(database: DatabaseSync): void {
+function applyInitialMigration(database: SQLiteConnection): void {
   let inTransaction = false;
   try {
     database.exec("BEGIN IMMEDIATE");
@@ -553,7 +551,7 @@ function applyInitialMigration(database: DatabaseSync): void {
   }
 }
 
-function userTableCount(database: DatabaseSync): number {
+function userTableCount(database: SQLiteConnection): number {
   const row = database.prepare(`
     SELECT count(*) AS count FROM sqlite_master
     WHERE type = 'table' AND name NOT LIKE 'sqlite_%'
@@ -706,7 +704,7 @@ function normalizeTranscriptOrigin(value: unknown): TranscriptCapture["origin"] 
   });
 }
 
-function appendTransaction(database: DatabaseSync, bundle: NormalizedBundle): AppendProcessingOutcome {
+function appendTransaction(database: SQLiteConnection, bundle: NormalizedBundle): AppendProcessingOutcome {
   let commitAttempted = false;
   try {
     database.exec("BEGIN IMMEDIATE");
@@ -813,7 +811,7 @@ function appendTransaction(database: DatabaseSync, bundle: NormalizedBundle): Ap
   }
 }
 
-function nextCommitSequence(database: DatabaseSync): number {
+function nextCommitSequence(database: SQLiteConnection): number {
   const row = database.prepare("SELECT last_commit_sequence FROM writer_state WHERE singleton = 1").get();
   if (row === undefined) throw new EventStoreError("CORRUPT_STORE", "writer state is missing");
   const prior = numberColumn(row as Record<string, unknown>, "last_commit_sequence");
@@ -829,7 +827,7 @@ function nextCommitSequence(database: DatabaseSync): number {
   return next;
 }
 
-function insertFact(database: DatabaseSync, bundle: NormalizedBundle, sequence: number): void {
+function insertFact(database: SQLiteConnection, bundle: NormalizedBundle, sequence: number): void {
   const event = bundle.event;
   database.prepare(`
     INSERT INTO events (
@@ -844,7 +842,7 @@ function insertFact(database: DatabaseSync, bundle: NormalizedBundle, sequence: 
 }
 
 function insertObservation(
-  database: DatabaseSync,
+  database: SQLiteConnection,
   bundle: NormalizedBundle,
   sequence: number,
   disposition: EventObservation["disposition"],
@@ -866,7 +864,7 @@ function insertObservation(
   );
 }
 
-function insertTranscriptMaterial(database: DatabaseSync, bundle: NormalizedBundle): void {
+function insertTranscriptMaterial(database: SQLiteConnection, bundle: NormalizedBundle): void {
   const capture = bundle.capture!;
   const snapshotJson = bundle.captureSnapshotJson!;
   if (Buffer.byteLength(snapshotJson, "utf8") > MAX_CAPTURE_BYTES) {
@@ -883,7 +881,7 @@ function insertTranscriptMaterial(database: DatabaseSync, bundle: NormalizedBund
   );
 }
 
-function loadFactRecord(database: DatabaseSync, source: string, eventId: string): FactRecord {
+function loadFactRecord(database: SQLiteConnection, source: string, eventId: string): FactRecord {
   const row = database.prepare("SELECT * FROM events WHERE source = ? AND event_id = ?").get(source, eventId) as
     Record<string, unknown> | undefined;
   if (row === undefined) throw new EventStoreError("CORRUPT_STORE", "event fact is missing");
@@ -935,7 +933,7 @@ function loadFactRecord(database: DatabaseSync, source: string, eventId: string)
   });
 }
 
-function decodeObservation(database: DatabaseSync, row: Record<string, unknown>): EventObservation {
+function decodeObservation(database: SQLiteConnection, row: Record<string, unknown>): EventObservation {
   const observationKey = normalizeHash(row.observation_key, "stored observation_key");
   const source = textColumn(row, "source");
   const eventId = textColumn(row, "event_id");
@@ -1211,7 +1209,7 @@ function makePage<T>(items: readonly T[], hasMore: boolean): ReadPage<T> {
   });
 }
 
-function selectObservationRow(database: DatabaseSync, observationKey: string): Record<string, unknown> | undefined {
+function selectObservationRow(database: SQLiteConnection, observationKey: string): Record<string, unknown> | undefined {
   return database.prepare("SELECT * FROM event_observations WHERE observation_key = ?")
     .get(observationKey) as Record<string, unknown> | undefined;
 }
@@ -1263,7 +1261,7 @@ function observationDisposition(value: unknown): EventObservation["disposition"]
   throw new EventStoreError("CORRUPT_STORE", "stored observation disposition is unsupported");
 }
 
-function pragmaNumber(database: DatabaseSync, name: "user_version" | "synchronous" | "foreign_keys" | "busy_timeout"): number {
+function pragmaNumber(database: SQLiteConnection, name: "user_version" | "synchronous" | "foreign_keys" | "busy_timeout"): number {
   const row = database.prepare(`PRAGMA ${name}`).get() as Record<string, unknown> | undefined;
   if (row === undefined) throw new EventStoreError("SQLITE_ERROR", `PRAGMA ${name} returned no row`);
   const value = name === "busy_timeout" ? row.timeout : row[name];
@@ -1307,6 +1305,9 @@ function mapOpenError(error: unknown): EventStoreError {
 }
 
 function mapSqliteError(error: unknown): EventStoreError {
+  if (error instanceof SQLiteIntegerRangeError) {
+    return new EventStoreError("CORRUPT_STORE", "SQLite returned an integer outside the JavaScript safe integer range", { cause: error });
+  }
   const record = error !== null && typeof error === "object" ? error as Record<string, unknown> : {};
   const message = error instanceof Error ? error.message : String(error);
   const diagnostic = `${String(record.code ?? "")} ${String(record.errcode ?? "")} ${message}`.toUpperCase();
