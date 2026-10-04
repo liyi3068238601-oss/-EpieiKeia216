@@ -1,0 +1,10 @@
+{
+  "schema": "p02-original-requirement-remediation/v1",
+  "opened_at_utc": "2026-10-04T04:23:19.183905+00:00",
+  "baseline_commit": "3087e8d4c095e43434ed3a686e61bbed6c7c63da",
+  "requirement": "P02-U05 concrete action 1: select a mature SQLite binding",
+  "finding": "Pinned Node24.14.0 node:sqlite is Stability1.1 Active development; original U02 conditions plus behavioral tests did not prove binding maturity.",
+  "official_source": "https://nodejs.org/download/release/v24.14.0/docs/api/sqlite.html",
+  "next_action": "Isolated better-sqlite3 pinned binding experiment, independent acceptance, then narrowly replace normalized event storage if qualified; revalidate final integration and gate.",
+  "preservation": "Existing U10 source worktree/commit16f4f27 and Native8/8/unit84/84/Desktop6+3 passing outputs retained. No backend, plan, accepted historical evidence or production data changed here."
+}

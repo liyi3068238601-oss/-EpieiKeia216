@@ -9,8 +9,8 @@
   "stage_status": "running",
   "G01": "pass",
   "G02": "pending_revalidation",
-  "current_task": "P02-U10",
-  "next_task": "P02-U10",
+  "current_task": "P02-U02",
+  "next_task": "P02-U02",
   "next_stage_started": false,
   "tasks": [
     {
@@ -45,25 +45,30 @@
       "dependencies": [
         "P02-U01"
       ],
-      "status": "accepted",
+      "status": "running",
       "card_sha256": "6bdf8ad7f6d7ed5d6d1aa56e3b400f6120ab2d64d06fc1a8e13705aefe4e53d0",
-      "author_commit": "4c40e367d963ea626572514603d496c5a762d2b4",
-      "integration_commit": "f62aa9b79aff9128d732b9bf402c0904f36ff426",
-      "acceptance": {
-        "path": "evidence/P02-U02/20261003-01/acceptance.json",
-        "bytes": 1252,
-        "sha256": "715724b9c83abc17fb8536b7a5c02dd72653bf794a199deb531a036d5867caa8"
-      },
-      "review": {
-        "status": "pass",
-        "reviewer": "p02_u01_review",
-        "reviewed_commit": "4c40e367d963ea626572514603d496c5a762d2b4",
-        "evidence": {
-          "path": "evidence/P02-U02/20261003-01/review-final.json",
-          "bytes": 24557,
-          "sha256": "ff9451d2bdb10c65c7ee484e779d752f2183781b4f97c3a22c7f17100a202fe2"
+      "historical_acceptances": [
+        {
+          "status": "accepted",
+          "author_commit": "4c40e367d963ea626572514603d496c5a762d2b4",
+          "integration_commit": "f62aa9b79aff9128d732b9bf402c0904f36ff426",
+          "acceptance": {
+            "path": "evidence/P02-U02/20261003-01/acceptance.json",
+            "bytes": 1252,
+            "sha256": "715724b9c83abc17fb8536b7a5c02dd72653bf794a199deb531a036d5867caa8"
+          },
+          "review": {
+            "status": "pass",
+            "reviewer": "p02_u01_review",
+            "reviewed_commit": "4c40e367d963ea626572514603d496c5a762d2b4",
+            "evidence": {
+              "path": "evidence/P02-U02/20261003-01/review-final.json",
+              "bytes": 24557,
+              "sha256": "ff9451d2bdb10c65c7ee484e779d752f2183781b4f97c3a22c7f17100a202fe2"
+            }
+          }
         }
-      }
+      ]
     },
     {
       "id": "P02-U03",
@@ -123,25 +128,30 @@
       "dependencies": [
         "P02-U04"
       ],
-      "status": "accepted",
+      "status": "revalidation_required",
       "card_sha256": "1e43db642edc3d6d2229f199789c4c8b494fe50ad95d3c73215b708835c02b99",
-      "author_commit": "339d8cc7417e430faa21483bbc10b29baed46cac",
-      "integration_commit": "ddc63922e974a63be75db302b8637ab53ca26d19",
-      "acceptance": {
-        "path": "evidence/P02-U05/20261003-01/acceptance.json",
-        "bytes": 6903,
-        "sha256": "8f1f28f4a0b71768cec6300d4e0e554f0a51c26b08c8031cf01d72eca89bc357"
-      },
-      "review": {
-        "status": "pass",
-        "reviewer": "p02_u04_review",
-        "reviewed_commit": "339d8cc7417e430faa21483bbc10b29baed46cac",
-        "evidence": {
-          "path": "evidence/P02-U05/20261003-01/review-final.json",
-          "bytes": 10176,
-          "sha256": "7a47ea40df0863a9c5d7f9c9f1e1a19066fd2a3cef900cc644760e99afee56a4"
+      "historical_acceptances": [
+        {
+          "status": "accepted",
+          "author_commit": "339d8cc7417e430faa21483bbc10b29baed46cac",
+          "integration_commit": "ddc63922e974a63be75db302b8637ab53ca26d19",
+          "acceptance": {
+            "path": "evidence/P02-U05/20261003-01/acceptance.json",
+            "bytes": 6903,
+            "sha256": "8f1f28f4a0b71768cec6300d4e0e554f0a51c26b08c8031cf01d72eca89bc357"
+          },
+          "review": {
+            "status": "pass",
+            "reviewer": "p02_u04_review",
+            "reviewed_commit": "339d8cc7417e430faa21483bbc10b29baed46cac",
+            "evidence": {
+              "path": "evidence/P02-U05/20261003-01/review-final.json",
+              "bytes": 10176,
+              "sha256": "7a47ea40df0863a9c5d7f9c9f1e1a19066fd2a3cef900cc644760e99afee56a4"
+            }
+          }
         }
-      }
+      ]
     },
     {
       "id": "P02-U06",
@@ -281,7 +291,7 @@
         "P02-U08",
         "P02-U09"
       ],
-      "status": "running",
+      "status": "revalidation_required",
       "card_sha256": "ade1d9901aee017b61f87b338b26c0ede6b6d0e9d0e175441b9b9dc4fa51fa18",
       "historical_acceptances": [
         {
@@ -397,6 +407,11 @@
       "path": "evidence/P02-completion/20261004-01/entry.json",
       "bytes": 1028,
       "sha256": "70cb22a6b00e318a6691ddfe0bd0f5d5bc684e39d3ab81c8b0ab0d418279e317"
+    },
+    "additional_maturity_remediation": {
+      "path": "evidence/P02-completion/20261004-02/entry.json",
+      "bytes": 917,
+      "sha256": "e8e4fca6c01a96d734355629133f59f4b29eed579813f9762173101cf4a0e473"
     }
   }
 }
