@@ -21,7 +21,7 @@ function requireAbsolute(value, name) {
 
 function validateSpec(spec) {
   const keys = new Set([
-    "candidate", "desktop", "electron", "playwright", "guard", "workspace", "out", "env",
+    "candidate", "desktop", "electron", "playwright", "guard", "workspace", "out", "env", "process_working_directory",
     "scenario_id", "flow", "prompt", "expected_reply", "partial_reply", "model", "target_model",
     "profile_paths", "gate_mode", "relay_origin", "occupied_ports_before", "history_markers",
     "cancel_file", "cancel_observed_file",
@@ -29,8 +29,13 @@ function validateSpec(spec) {
   if (!spec || typeof spec !== "object" || Array.isArray(spec) || Object.keys(spec).some((key) => !keys.has(key))) {
     throw new Error("invalid_spec");
   }
-  for (const key of ["candidate", "desktop", "electron", "playwright", "guard", "workspace", "out"]) {
+  for (const key of ["candidate", "desktop", "electron", "playwright", "guard", "workspace", "out", "process_working_directory"]) {
     requireAbsolute(spec[key], key);
+  }
+  if (path.resolve(spec.process_working_directory).toLowerCase() !==
+      path.resolve(spec.out, "profile", "process-working-directory").toLowerCase() ||
+      !existsSync(spec.process_working_directory)) {
+    throw new Error("invalid_process_working_directory");
   }
   requireAbsolute(spec.cancel_file, "cancel_file");
   requireAbsolute(spec.cancel_observed_file, "cancel_observed_file");
@@ -49,7 +54,8 @@ function validateSpec(spec) {
 const specPath = process.argv[2];
 if (process.argv.length !== 3 || !path.isAbsolute(specPath)) throw new Error("usage");
 const spec = validateSpec(JSON.parse(await readFile(specPath, "utf8")));
-const { _electron } = createRequire(driverPath)(spec.playwright);
+const playwright = createRequire(driverPath)(spec.playwright);
+const { _electron } = playwright;
 let app;
 const result = {
   schema: resultSchema,
@@ -78,7 +84,7 @@ async function descendantProcesses(rootPid) {
   const powershell = path.join(spec.env.SYSTEMROOT, "System32/WindowsPowerShell/v1.0/powershell.exe");
   const command = "Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,Name | ConvertTo-Json -Compress";
   const { stdout } = await execFileAsync(powershell, ["-NoProfile", "-Command", command], {
-    cwd: spec.candidate,
+    cwd: spec.process_working_directory,
     env: spec.env,
     windowsHide: true,
     timeout: 15_000,
@@ -131,7 +137,19 @@ async function readyWorkspace(first) {
 
     const apiKeyPage = first.getByTestId("login-use-api-key-button");
     if (await apiKeyPage.isVisible().catch(() => false)) {
-      await apiKeyPage.click();
+      try {
+        await apiKeyPage.click();
+      } catch (error) {
+        if (!(error instanceof playwright.errors.TimeoutError)) throw error;
+        const onboarding = first.getByTestId("onboarding-page");
+        const apiKeyButtonVisible = await apiKeyPage.isVisible().catch(() => false);
+        const onboardingVisible = await onboarding.isVisible().catch(() => false);
+        const composerVisible = await composer.isVisible().catch(() => false);
+        const emptyPasswordSkipObserved = result.ui_actions.includes("skipped-key-onboarding-with-empty-password");
+        if (!emptyPasswordSkipObserved || apiKeyButtonVisible || (!onboardingVisible && !composerVisible)) throw error;
+        result.ui_actions.push("observed-api-key-onboarding-transition");
+        continue;
+      }
       const password = first.locator("input[type='password']");
       assert.equal(await password.inputValue(), "", "fresh owned profile unexpectedly contains a saved API key");
       await first.getByRole("button", { name: /暂时跳过|Skip for now|Skip/i }).click();
@@ -266,7 +284,7 @@ async function inspectSettings(page) {
 try {
   app = await _electron.launch({
     executablePath: spec.electron,
-    cwd: spec.candidate,
+    cwd: spec.process_working_directory,
     args: ["-r", spec.guard, spec.desktop, "--disable-background-networking", "--open-workspace", spec.workspace],
     env: spec.env,
     timeout: 45_000,
@@ -296,7 +314,7 @@ try {
     visible: BrowserWindow.getAllWindows().some((window) => window.isVisible()),
     remote_debugging_port: nativeApp.commandLine.getSwitchValue("remote-debugging-port"),
   }));
-  assert.equal(desktop.cwd, spec.candidate, "Electron did not inherit candidateRoot cwd");
+  assert.equal(desktop.cwd, spec.process_working_directory, "Electron did not inherit the owned profile working directory");
   assert.equal(desktop.visible, false, "the test Electron window became visible");
   assert.equal(desktop.remote_debugging_port, "0", "Desktop fixed inspector port was not disabled");
   assert.equal(desktop.home, spec.profile_paths.home);

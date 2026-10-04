@@ -1,0 +1,79 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "offline",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "offline",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "opened-native-synthetic-history-in-renderer",
+    "clicked-new-conversation-task",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send",
+    "opened-native-settings-page",
+    "verified-return-to-native-workspace",
+    "opened-native-synthetic-history-in-renderer"
+  ],
+  "user_visible_reply": null,
+  "error_banner": {
+    "visible": true,
+    "error_code": "model_request_failed"
+  },
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 12820,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\offline\\profile\\process-working-directory",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\offline\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\offline\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\offline\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 27196,
+        "parent_pid": 12820,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 42688,
+        "parent_pid": 12820,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 4524,
+        "parent_pid": 12820,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 37472,
+        "parent_pid": 12820,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 24592,
+        "parent_pid": 12820,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 24452,
+        "parent_pid": 37472,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 36020,
+        "parent_pid": 37472,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "settings_navigation": {
+    "back_click": "completed",
+    "settings_closed": true,
+    "workspace_visible": true
+  },
+  "passed": true
+}

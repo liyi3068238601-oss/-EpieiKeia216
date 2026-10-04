@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-c",
+    "import ast,pathlib; p=pathlib.Path(\"tests/integration/P02/desktop.py\"); ast.parse(p.read_text(encoding=\"utf-8\")); p=pathlib.Path(\"tests/integration/P02/desktop-side-effect-guard.test.py\"); ast.parse(p.read_text(encoding=\"utf-8\")); print(\"python_ast_ok\")"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+  "started_at": "2026-10-04T09:08:18.404142+00:00",
+  "completed_at": "2026-10-04T09:08:18.540101+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "python_ast_ok\r\n",
+  "stderr": ""
+}

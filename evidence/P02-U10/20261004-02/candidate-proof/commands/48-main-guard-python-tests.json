@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tests/integration/P02/desktop-side-effect-guard.test.py"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+  "started_at": "2026-10-04T09:32:20.698241+00:00",
+  "completed_at": "2026-10-04T09:32:20.844066+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\desktop-side-effect-guard.test.py\", line 261, in <module>\r\n    raise SystemExit(main())\r\n                     ^^^^^^\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\desktop-side-effect-guard.test.py\", line 242, in main\r\n    DesktopSideEffectGuardTests().run()\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\desktop-side-effect-guard.test.py\", line 234, in run\r\n    self.run_evidence_validator_tests()\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\desktop-side-effect-guard.test.py\", line 166, in run_evidence_validator_tests\r\n    assert rejected.get(\"passed\") is not True and rejected.get(\"failure_code\") == \"main_process_runtime_snapshot_invalid\", rejected\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nAssertionError: {'passed': False, 'failure_code': 'registry_write_guard_log_unavailable'}\r\n"
+}

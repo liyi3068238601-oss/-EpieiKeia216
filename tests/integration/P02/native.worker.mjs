@@ -8,11 +8,12 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import test from "node:test";
+import Database from "better-sqlite3";
 
 const testDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(testDirectory, "../../..");
 const hostRoot = "E:\\Xiadie\\Xiadie";
-const profilesRoot = path.join(hostRoot, ".runtime/P02/experiments/u10/native");
+const profilesRoot = path.join(hostRoot, ".runtime/P02/experiments/mature-integration/native");
 await mkdir(profilesRoot, { recursive: true });
 const workerProfile = await mkdtemp(path.join(profilesRoot, "native-"));
 const workerTemp = path.join(workerProfile, "temp");
@@ -42,7 +43,6 @@ const { createDurableHost: createXiadieZCodeApp } = await import(hostModuleUrl);
 const { openEventStore } = await import(pathToFileURL(path.join(repositoryRoot, "dist/packages/storage/events/src/index.js")).href);
 const { backupAndMigrateEventStore, restoreEventStoreBackup } = await import(pathToFileURL(path.join(repositoryRoot, "dist/packages/storage/backup/src/index.js")).href);
 const { executeOperationOnce } = await import(pathToFileURL(path.join(repositoryRoot, "dist/packages/application/recovery/src/index.js")).href);
-const { DatabaseSync } = await import("node:sqlite");
 
 test("actual Native scenario uses scoped durable SQLite and masked source evidence", async (t) => {
   const scenario = process.env.P02_U10_SCENARIO ?? "success-backup-restore";
@@ -50,10 +50,11 @@ test("actual Native scenario uses scoped durable SQLite and masked source eviden
   const events = [];
   fixture.host.app.runtime.subscribeEvents({ onSessionEvent: (event) => events.push(event) });
   let blocker;
+  let diagnosticAssociations = null;
   const diagnosticCanary = "P02_PRIVATE_PROMPT_CANARY";
   const prompt = `Read allowed.txt and report its marker. ${diagnosticCanary}`;
   if (scenario === "writer-busy") {
-    blocker = new DatabaseSync(fixture.host.databasePath);
+    blocker = new Database(fixture.host.databasePath);
     blocker.exec("BEGIN IMMEDIATE");
     t.after(() => { try { blocker?.exec("ROLLBACK"); } finally { blocker?.close(); } });
   }
@@ -89,20 +90,42 @@ test("actual Native scenario uses scoped durable SQLite and masked source eviden
       assert.equal(record.status, "saved", JSON.stringify(record));
       assert.equal(record.lifecycle, scenario === "native-failure" ? "failure" : "success");
       if (scenario === "tool-failure") assert.ok(events.some((event) => event.type === "tool_call_error"));
-      const diagnostics = await fixture.host.exportDiagnostics(record);
-      assert.equal(diagnostics.status, "built");
-      assert.ok(diagnostics.report.captures.length > 0);
-      assert.equal(diagnostics.report.captures[0].rawSource.currentValidation, "NOT_VERIFIED");
-      assert.equal(JSON.stringify(diagnostics).includes(diagnosticCanary), false);
-      assert.equal(JSON.stringify(diagnostics).includes(fixture.profile), false);
-      assert.equal(JSON.stringify(diagnostics).includes(record.scope.sessionId), false);
       const reader = openEventStore({ path: fixture.host.databasePath, readOnly: true });
       try {
+        const facts = reader.read({ scope: record.scope, limit: 256 }).items.filter((row) => row.event.attemptId === record.attemptId);
         const observations = reader.readObservations({ scope: record.scope, limit: 256 }).items;
         const capture = observations.find((row) => row.capture)?.capture;
         assert.ok(capture);
         await assert.rejects(readFile(path.join(fixture.temp, capture.origin.temporaryLocator)), { code: "ENOENT" });
         assert.equal(capture.snapshot.messages[0].text, "[REDACTED]");
+        const tools = facts.filter((row) => ["tool_call_started", "tool_call_result", "tool_call_error"].includes(row.event.payload?.nativeType));
+        const message = facts.find((row) => row.event.source === "xiadie.transcript/v1");
+        assert.ok(message);
+        const sourceFacts = [message, ...(tools.length ? [tools.at(-1)] : [])];
+        const candidate = { candidateId: "P02_NATIVE_REFERENCE_ANNOTATION_CANARY", scope: record.scope,
+          attemptId: record.attemptId, sources: sourceFacts.map(({ event }) => ({ source: event.source, eventId: event.eventId })) };
+        const diagnostics = await fixture.host.exportDiagnostics({ ...record, memoryCandidates: [candidate] });
+        assert.equal(diagnostics.status, "built");
+        const report = diagnostics.report;
+        assert.equal(report.redactionPolicy, "turn-diagnostics-allowlist/v2");
+        assert.ok(report.captures.length > 0);
+        assert.equal(report.captures[0].rawSource.currentValidation, "NOT_VERIFIED");
+        assert.equal(report.facts.find((row) => row.commitSequence === message.commitSequence)?.category, "message");
+        for (const tool of tools) {
+          const exported = report.facts.find((row) => row.commitSequence === tool.commitSequence);
+          assert.equal(exported?.category, "tool");
+          assert.equal(exported.nativeType, tool.event.payload.nativeType);
+          assert.equal(exported.tool.status, tool.event.payload.toolStatus);
+        }
+        assert.equal(report.memoryCandidates[0].kind, "reference-annotation");
+        assert.equal(report.memoryCandidates[0].sourceStatus, "matched");
+        sourceFacts.forEach((source, index) => assert.equal(report.memoryCandidates[0].sources[index].eventRef,
+          report.facts.find((row) => row.commitSequence === source.commitSequence)?.eventRef));
+        for (const canary of [diagnosticCanary, fixture.profile, record.scope.sessionId, candidate.candidateId]) {
+          assert.equal(JSON.stringify(diagnostics).includes(canary), false);
+        }
+        diagnosticAssociations = { messageFacts: 1, toolFacts: tools.length, candidateSources: sourceFacts.length,
+          candidateKind: "reference-annotation", sourceStatus: "matched", privacyVerified: true };
       } finally { await reader.close(); }
     }
   }
@@ -149,7 +172,7 @@ test("actual Native scenario uses scoped durable SQLite and masked source eviden
     runtimeInputs.push({ path: file, bytes: bytes.length, sha256: hash(bytes) });
   }
   process.stdout.write(`P02_NATIVE_RESULT ${JSON.stringify({ scenario, profile: fixture.profile, databasePath, records,
-    eventTypes: [...new Set(events.map((event) => event.type))], mockRequests: fixture.mock.requests.length,
+    eventTypes: [...new Set(events.map((event) => event.type))], mockRequests: fixture.mock.requests.length, diagnosticAssociations,
     ports: fixture.mock.ports, sourcePin: "29628c9acdb81b703bbd4080c207a0e7ce5e276e", runtimeInputs, processTempVerified: true,
     ...(backup ? { backupSha256: backup.backupSha256, content: backup.sourceVerification } : {}) })}\n`);
 });

@@ -1,0 +1,254 @@
+{
+  "scenario_id": "no_dsh",
+  "passed": true,
+  "exit_code": 0,
+  "model_requests": 1,
+  "expected_model_requests": 1,
+  "relay_records": [
+    {
+      "request_index": 1,
+      "accepted": true,
+      "request_sha256": "89c570130ca403efe3f96c2414796a0d67f225703cae99f60291163f92870e17",
+      "request_bytes": 14680,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "stream",
+          "stream_options",
+          "thinking",
+          "tool_choice",
+          "tools"
+        ],
+        "stream_present": true,
+        "stream": "true",
+        "tools": "nonempty",
+        "tool_choice": "auto"
+      },
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 4,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 200
+    }
+  ],
+  "sidecar_correlation": {
+    "status": "verified",
+    "verified": true,
+    "turn_count": 1,
+    "completed_reply_turns": 1,
+    "visible_reply_matches": true,
+    "expected_reply_sha256": "649d77db577e56ffecfeacef9b350c2a45a3621212db715765e7b1c4fd20b63c",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\no_dsh\\profile\\u10-turn-projections.jsonl"
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "no_dsh",
+    "status": "completed",
+    "gate_mode": "enabled",
+    "flow": "reply",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send"
+    ],
+    "user_visible_reply": "本地运行正常，没有启动 DSH。",
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 14804,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\no_dsh\\profile\\process-working-directory",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\no_dsh\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\no_dsh\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\no_dsh\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 40640,
+          "parent_pid": 14804,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 44800,
+          "parent_pid": 14804,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 13944,
+          "parent_pid": 14804,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 45900,
+          "parent_pid": 14804,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 5340,
+          "parent_pid": 14804,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 48004,
+          "parent_pid": 45900,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "network_guard_records": 328,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 14804,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      45900
+    ],
+    "cli_required": true,
+    "cli_spawned_pids": [
+      48004
+    ],
+    "cli_guarded_pids": [
+      48004
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 14804,
+    "descendants": [
+      {
+        "pid": 40640,
+        "parent_pid": 14804,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 44800,
+        "parent_pid": 14804,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 13944,
+        "parent_pid": 14804,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 45900,
+        "parent_pid": 14804,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 5340,
+        "parent_pid": 14804,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 48004,
+        "parent_pid": 45900,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ],
+  "ledger_verification": {
+    "passed": true,
+    "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\no_dsh\\ledger-verification.json",
+    "admission": "admitted",
+    "admitted_turns": 1,
+    "backup_restore": null
+  },
+  "sqlite_runtime_binding": {
+    "passed": true,
+    "status": "verified_actual_cli_load",
+    "probes": [
+      {
+        "pid": 48004,
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\no_dsh\\profile\\sqlite-runtime-probes\\48004.json",
+        "bytes": 657,
+        "sha256": "b06ace78f03db9ad67ae985f2f5f092996b64efb69d2dca9015be81b0ff65e2d",
+        "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+        "package_version": "13.0.3",
+        "sqlite_version": "3.53.4"
+      }
+    ],
+    "cli_guarded_pids": [
+      48004
+    ],
+    "boundary": "Observed CLI load only; no-load routes do not qualify an addon load. Ledger readback is a separate process."
+  },
+  "sqlite_cli_runtime_alias": {
+    "passed": true,
+    "mechanism": "owned-profile-home-directory-junction",
+    "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\no_dsh\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+    "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-09\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+    "entry_sha256": "c1ef45479de62ffdc37c2e72b7d014fdb1de61d56341b216077199aaa34af1ea",
+    "realpath_matches_candidate": true,
+    "p01_guard_expected_entry_matches_alias": true
+  },
+  "registry_write_guard": {
+    "passed": true,
+    "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+    "os_sandbox": false,
+    "request_count": 18,
+    "blocked_menu_request_count": 16,
+    "menu_install_group_count": 2,
+    "blocked_protocol_registration_count": 1,
+    "blocked_protocol_removal_count": 0,
+    "blocked_recent_document_clear_count": 1,
+    "main_pid": 14804,
+    "launcher_pid": 46904,
+    "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\no_dsh\\profile\\main-process-runtime.json",
+    "main_process_snapshot_sha256": "fc71cf1406524415de0faea7c245758baba901c183b49f92498c5aee72e9ba2e",
+    "blocked_requests_sha256": "3c8f856a3272d3db2a5960d30549e7b3f83ad18fcdd15e37483e6f3f17037fe5",
+    "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-degradation-candidate09\\scenarios\\no_dsh\\profile\\registry-write-guard.jsonl"
+  },
+  "candidate_artifact_closure": {
+    "before_scenario": {
+      "passed": true,
+      "owned_files_verified": 6717,
+      "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+    },
+    "after_scenario": {
+      "passed": true,
+      "owned_files_verified": 6717,
+      "descriptor_sha256": "6d66ef503b90e9e188159dc6a0e112ac81c54066f07336f9671b6aafd4d12f74"
+    }
+  }
+}

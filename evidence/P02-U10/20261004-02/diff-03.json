@@ -1,0 +1,64 @@
+{
+  "task": "P02-U10",
+  "baseline": "178379a8ad9c0c27f833a412ff06f7b0095bab79",
+  "scope": [
+    "tests/integration/P02",
+    "docs/evals/P02",
+    "evidence/P02-U10/20261004-02"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "178379a8ad9c0c27f833a412ff06f7b0095bab79"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+      "exit_code": 0,
+      "stdout": " docs/evals/P02/integration.md                      |   12 +-\n docs/evals/P02/requirement-evidence.md             |    8 +-\n evidence/P02-U10/20261004-01/baseline.json         |   90 +\n .../P02-U10/20261004-01/prerequisite-audit.json    | 2279 +++++++++++++++++++\n evidence/P02-U10/20261004-02/04-tsc-noemit.json    |   17 +\n .../P02-U10/20261004-02/05-import-boundaries.json  |   14 +\n evidence/P02-U10/20261004-02/06-tsc-build.json     |   16 +\n .../20261004-02/10-syntax-build-candidate.mjs.json |   15 +\n .../20261004-02/11-syntax-durable-host.mjs.json    |   15 +\n .../20261004-02/12-syntax-native.worker.mjs.json   |   15 +\n .../20261004-02/13-syntax-verify-ledger.mjs.json   |   15 +\n evidence/P02-U10/20261004-02/baseline.json         |   88 +\n .../20261004-02/candidate-02-file-set-audit.json   |   14 +\n .../candidate-verifier-pycompile-final.json        |   17 +\n .../candidate-verifier-tests-final.json            |   15 +\n .../candidate-verifier-tests-pinned-closure.json   |   15 +\n .../desktop-ui-syntax-check-fixed-cwd.json         |   15 +\n .../desktop-ui-syntax-check-pinned-closure.json    |   15 +\n .../20261004-02/desktop-ui-syntax-check.json       |   15 +\n .../desktop-wrapper-pycompile-fixed-cwd.json       |   16 +\n .../20261004-02/desktop-wrapper-pycompile.json     |   16 +\n evidence/P02-U10/20261004-02/diff-02.json          |   64 +\n evidence/P02-U10/20261004-02/diff.json             |   64 +\n .../P02-U10/20261004-02/fixed-node-native-8.json   |   16 +\n .../P02-U10/20261004-02/fixed-node-unit-161.json   |   15 +\n evidence/P02-U10/20261004-02/prerequisites.json    | 2279 +++++++++++++++++++\n .../20261004-02/python-static-pinned-closure.json  |   17 +\n .../root-candidate-verifier-tests-final.json       |   17 +\n .../20261004-02/root-cim-cwd-repro-boundary.json   |   30 +\n .../superseded-bind-pre-helper-failure.json        |  168 ++\n .../20261004-02/superseded-candidate-01-build.json |   16 +\n .../20261004-02/superseded-candidate-01-full.json  |   20 +\n .../superseded-candidate-01-licenses.json          |   15 +\n .../20261004-02/superseded-candidate-02-build.json |   16 +\n ...candidate-02-degradation-preflight-failure.json |   20 +\n ...ate-02-file-set-diagnostic-command-failure.json |   15 +\n .../superseded-candidate-02-full-command.json      |   20 +\n .../superseded-candidate-02-full-summary.json      | 2364 ++++++++++++++++++++\n .../superseded-candidate-02-license-check.json     |   15 +\n .../superseded-diff-03-pre-cwd-fix.json            |   64 +\n .../superseded-execution-pre-candidate02.json      |  168 ++\n .../superseded-synthetic-test-failure-01.json      |   15 +\n .../superseded-synthetic-test-failure-02.json      |   15 +\n tests/integration/P02/build-candidate.mjs          |  123 +-\n tests/integration/P02/candidate-verifier.py        |  190 ++\n tests/integration/P02/candidate-verifier.test.py   |  155 ++\n tests/integration/P02/desktop-ui.mjs               |   15 +-\n tests/integration/P02/desktop.py                   |  118 +-\n tests/integration/P02/durable-host.mjs             |   61 +-\n tests/integration/P02/native.worker.mjs            |   45 +-\n tests/integration/P02/verify-ledger.mjs            |   18 +-\n 51 files changed, 8847 insertions(+), 33 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "178379a8ad9c0c27f833a412ff06f7b0095bab79"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+      "exit_code": 0,
+      "stdout": "9\t3\tdocs/evals/P02/integration.md\n6\t2\tdocs/evals/P02/requirement-evidence.md\n90\t0\tevidence/P02-U10/20261004-01/baseline.json\n2279\t0\tevidence/P02-U10/20261004-01/prerequisite-audit.json\n17\t0\tevidence/P02-U10/20261004-02/04-tsc-noemit.json\n14\t0\tevidence/P02-U10/20261004-02/05-import-boundaries.json\n16\t0\tevidence/P02-U10/20261004-02/06-tsc-build.json\n15\t0\tevidence/P02-U10/20261004-02/10-syntax-build-candidate.mjs.json\n15\t0\tevidence/P02-U10/20261004-02/11-syntax-durable-host.mjs.json\n15\t0\tevidence/P02-U10/20261004-02/12-syntax-native.worker.mjs.json\n15\t0\tevidence/P02-U10/20261004-02/13-syntax-verify-ledger.mjs.json\n88\t0\tevidence/P02-U10/20261004-02/baseline.json\n14\t0\tevidence/P02-U10/20261004-02/candidate-02-file-set-audit.json\n17\t0\tevidence/P02-U10/20261004-02/candidate-verifier-pycompile-final.json\n15\t0\tevidence/P02-U10/20261004-02/candidate-verifier-tests-final.json\n15\t0\tevidence/P02-U10/20261004-02/candidate-verifier-tests-pinned-closure.json\n15\t0\tevidence/P02-U10/20261004-02/desktop-ui-syntax-check-fixed-cwd.json\n15\t0\tevidence/P02-U10/20261004-02/desktop-ui-syntax-check-pinned-closure.json\n15\t0\tevidence/P02-U10/20261004-02/desktop-ui-syntax-check.json\n16\t0\tevidence/P02-U10/20261004-02/desktop-wrapper-pycompile-fixed-cwd.json\n16\t0\tevidence/P02-U10/20261004-02/desktop-wrapper-pycompile.json\n64\t0\tevidence/P02-U10/20261004-02/diff-02.json\n64\t0\tevidence/P02-U10/20261004-02/diff.json\n16\t0\tevidence/P02-U10/20261004-02/fixed-node-native-8.json\n15\t0\tevidence/P02-U10/20261004-02/fixed-node-unit-161.json\n2279\t0\tevidence/P02-U10/20261004-02/prerequisites.json\n17\t0\tevidence/P02-U10/20261004-02/python-static-pinned-closure.json\n17\t0\tevidence/P02-U10/20261004-02/root-candidate-verifier-tests-final.json\n30\t0\tevidence/P02-U10/20261004-02/root-cim-cwd-repro-boundary.json\n168\t0\tevidence/P02-U10/20261004-02/superseded-bind-pre-helper-failure.json\n16\t0\tevidence/P02-U10/20261004-02/superseded-candidate-01-build.json\n20\t0\tevidence/P02-U10/20261004-02/superseded-candidate-01-full.json\n15\t0\tevidence/P02-U10/20261004-02/superseded-candidate-01-licenses.json\n16\t0\tevidence/P02-U10/20261004-02/superseded-candidate-02-build.json\n20\t0\tevidence/P02-U10/20261004-02/superseded-candidate-02-degradation-preflight-failure.json\n15\t0\tevidence/P02-U10/20261004-02/superseded-candidate-02-file-set-diagnostic-command-failure.json\n20\t0\tevidence/P02-U10/20261004-02/superseded-candidate-02-full-command.json\n2364\t0\tevidence/P02-U10/20261004-02/superseded-candidate-02-full-summary.json\n15\t0\tevidence/P02-U10/20261004-02/superseded-candidate-02-license-check.json\n64\t0\tevidence/P02-U10/20261004-02/superseded-diff-03-pre-cwd-fix.json\n168\t0\tevidence/P02-U10/20261004-02/superseded-execution-pre-candidate02.json\n15\t0\tevidence/P02-U10/20261004-02/superseded-synthetic-test-failure-01.json\n15\t0\tevidence/P02-U10/20261004-02/superseded-synthetic-test-failure-02.json\n117\t6\ttests/integration/P02/build-candidate.mjs\n190\t0\ttests/integration/P02/candidate-verifier.py\n155\t0\ttests/integration/P02/candidate-verifier.test.py\n10\t5\ttests/integration/P02/desktop-ui.mjs\n116\t2\ttests/integration/P02/desktop.py\n59\t2\ttests/integration/P02/durable-host.mjs\n34\t11\ttests/integration/P02/native.worker.mjs\n16\t2\ttests/integration/P02/verify-ledger.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "178379a8ad9c0c27f833a412ff06f7b0095bab79"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+      "exit_code": 0,
+      "stdout": "M\tdocs/evals/P02/integration.md\nM\tdocs/evals/P02/requirement-evidence.md\nA\tevidence/P02-U10/20261004-01/baseline.json\nA\tevidence/P02-U10/20261004-01/prerequisite-audit.json\nA\tevidence/P02-U10/20261004-02/04-tsc-noemit.json\nA\tevidence/P02-U10/20261004-02/05-import-boundaries.json\nA\tevidence/P02-U10/20261004-02/06-tsc-build.json\nA\tevidence/P02-U10/20261004-02/10-syntax-build-candidate.mjs.json\nA\tevidence/P02-U10/20261004-02/11-syntax-durable-host.mjs.json\nA\tevidence/P02-U10/20261004-02/12-syntax-native.worker.mjs.json\nA\tevidence/P02-U10/20261004-02/13-syntax-verify-ledger.mjs.json\nA\tevidence/P02-U10/20261004-02/baseline.json\nA\tevidence/P02-U10/20261004-02/candidate-02-file-set-audit.json\nA\tevidence/P02-U10/20261004-02/candidate-verifier-pycompile-final.json\nA\tevidence/P02-U10/20261004-02/candidate-verifier-tests-final.json\nA\tevidence/P02-U10/20261004-02/candidate-verifier-tests-pinned-closure.json\nA\tevidence/P02-U10/20261004-02/desktop-ui-syntax-check-fixed-cwd.json\nA\tevidence/P02-U10/20261004-02/desktop-ui-syntax-check-pinned-closure.json\nA\tevidence/P02-U10/20261004-02/desktop-ui-syntax-check.json\nA\tevidence/P02-U10/20261004-02/desktop-wrapper-pycompile-fixed-cwd.json\nA\tevidence/P02-U10/20261004-02/desktop-wrapper-pycompile.json\nA\tevidence/P02-U10/20261004-02/diff-02.json\nA\tevidence/P02-U10/20261004-02/diff.json\nA\tevidence/P02-U10/20261004-02/fixed-node-native-8.json\nA\tevidence/P02-U10/20261004-02/fixed-node-unit-161.json\nA\tevidence/P02-U10/20261004-02/prerequisites.json\nA\tevidence/P02-U10/20261004-02/python-static-pinned-closure.json\nA\tevidence/P02-U10/20261004-02/root-candidate-verifier-tests-final.json\nA\tevidence/P02-U10/20261004-02/root-cim-cwd-repro-boundary.json\nA\tevidence/P02-U10/20261004-02/superseded-bind-pre-helper-failure.json\nA\tevidence/P02-U10/20261004-02/superseded-candidate-01-build.json\nA\tevidence/P02-U10/20261004-02/superseded-candidate-01-full.json\nA\tevidence/P02-U10/20261004-02/superseded-candidate-01-licenses.json\nA\tevidence/P02-U10/20261004-02/superseded-candidate-02-build.json\nA\tevidence/P02-U10/20261004-02/superseded-candidate-02-degradation-preflight-failure.json\nA\tevidence/P02-U10/20261004-02/superseded-candidate-02-file-set-diagnostic-command-failure.json\nA\tevidence/P02-U10/20261004-02/superseded-candidate-02-full-command.json\nA\tevidence/P02-U10/20261004-02/superseded-candidate-02-full-summary.json\nA\tevidence/P02-U10/20261004-02/superseded-candidate-02-license-check.json\nA\tevidence/P02-U10/20261004-02/superseded-diff-03-pre-cwd-fix.json\nA\tevidence/P02-U10/20261004-02/superseded-execution-pre-candidate02.json\nA\tevidence/P02-U10/20261004-02/superseded-synthetic-test-failure-01.json\nA\tevidence/P02-U10/20261004-02/superseded-synthetic-test-failure-02.json\nM\ttests/integration/P02/build-candidate.mjs\nA\ttests/integration/P02/candidate-verifier.py\nA\ttests/integration/P02/candidate-verifier.test.py\nM\ttests/integration/P02/desktop-ui.mjs\nM\ttests/integration/P02/desktop.py\nM\ttests/integration/P02/durable-host.mjs\nM\ttests/integration/P02/native.worker.mjs\nM\ttests/integration/P02/verify-ledger.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "178379a8ad9c0c27f833a412ff06f7b0095bab79"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

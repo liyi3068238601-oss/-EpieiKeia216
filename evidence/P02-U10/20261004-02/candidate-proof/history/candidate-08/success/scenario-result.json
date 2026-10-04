@@ -1,0 +1,124 @@
+{
+  "scenario_id": "success",
+  "passed": false,
+  "exit_code": 1,
+  "model_requests": 0,
+  "expected_model_requests": 1,
+  "relay_records": [],
+  "sidecar_correlation": {
+    "status": "NOT_EXPOSED",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate08\\scenarios\\success\\profile\\u10-turn-projections.jsonl",
+    "verified": false
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "success",
+    "status": "failed",
+    "gate_mode": "enabled",
+    "flow": "reply",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password"
+    ],
+    "user_visible_reply": null,
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": null,
+    "passed": false,
+    "failure_code": "ui_assertion_failed",
+    "failure_details": {
+      "name": "TimeoutError",
+      "code": "unknown",
+      "operator": null,
+      "message": "locator.click: Timeout 30000ms exceeded.",
+      "stack": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('login-use-api-key-button')\u001b[22m\n\n    at readyWorkspace (E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\desktop-ui.mjs:139:24)\n    at async file:///E:/Xiadie/Xiadie/.runtime/P02/worktrees/mature-integration/tests/integration/P02/desktop-ui.mjs:293:3",
+      "windows": 1
+    }
+  },
+  "network_guard_records": 321,
+  "network_guard": {
+    "status": "failed",
+    "verified": false,
+    "main": {
+      "pid": null,
+      "guard_loaded": false,
+      "egress_canary_denied": false
+    },
+    "utility_guarded_pids": [],
+    "cli_required": true,
+    "cli_spawned_pids": [],
+    "cli_guarded_pids": [],
+    "cli_descendants_verified": false
+  },
+  "process_evidence": {
+    "status": "unverified",
+    "reason": "live_process_tree_missing"
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ],
+  "ledger_verification": {
+    "passed": false,
+    "failure_code": "ledger_verification_failed",
+    "command_record": {
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration\\tests\\integration\\P02\\verify-ledger.mjs",
+        "--profile-root",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate08\\scenarios\\success\\profile",
+        "--scenario",
+        "success",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate08\\scenarios\\success\\ledger-verification.json",
+        "--backup-restore"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "stdout_bytes": 84,
+      "stdout_sha256": "1c8752a486c8ce7bcc95156e1311b28462cd5a1dac2af6e466bd2b271983d46c",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate08\\scenarios\\success\\ledger-verification.json"
+  },
+  "sqlite_cli_runtime_alias": {
+    "passed": true,
+    "mechanism": "owned-profile-home-directory-junction",
+    "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-candidate08\\scenarios\\success\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+    "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\candidate-08\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+    "entry_sha256": "4813769b631d7aa5cbf97eb86d6faa0df9b41c6b2ae80a7d676b1508c2f7cf26",
+    "realpath_matches_candidate": true,
+    "p01_guard_expected_entry_matches_alias": true
+  },
+  "registry_write_guard": {
+    "passed": false,
+    "failure_code": "main_process_runtime_snapshot_invalid"
+  },
+  "candidate_artifact_closure": {
+    "before_scenario": {
+      "passed": true,
+      "owned_files_verified": 6717,
+      "descriptor_sha256": "be173894caf82d105e0f01cc1aaefab84fdedb8be0d54a81016c57ad82983761"
+    },
+    "after_scenario": {
+      "passed": true,
+      "owned_files_verified": 6717,
+      "descriptor_sha256": "be173894caf82d105e0f01cc1aaefab84fdedb8be0d54a81016c57ad82983761"
+    }
+  }
+}
