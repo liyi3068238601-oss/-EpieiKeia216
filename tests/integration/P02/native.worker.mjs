@@ -8,11 +8,12 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import test from "node:test";
+import Database from "better-sqlite3";
 
 const testDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(testDirectory, "../../..");
 const hostRoot = "E:\\Xiadie\\Xiadie";
-const profilesRoot = path.join(hostRoot, ".runtime/P02/experiments/completion-u10/native");
+const profilesRoot = path.join(hostRoot, ".runtime/P02/experiments/mature-integration/native");
 await mkdir(profilesRoot, { recursive: true });
 const workerProfile = await mkdtemp(path.join(profilesRoot, "native-"));
 const workerTemp = path.join(workerProfile, "temp");
@@ -42,7 +43,6 @@ const { createDurableHost: createXiadieZCodeApp } = await import(hostModuleUrl);
 const { openEventStore } = await import(pathToFileURL(path.join(repositoryRoot, "dist/packages/storage/events/src/index.js")).href);
 const { backupAndMigrateEventStore, restoreEventStoreBackup } = await import(pathToFileURL(path.join(repositoryRoot, "dist/packages/storage/backup/src/index.js")).href);
 const { executeOperationOnce } = await import(pathToFileURL(path.join(repositoryRoot, "dist/packages/application/recovery/src/index.js")).href);
-const { DatabaseSync } = await import("node:sqlite");
 
 test("actual Native scenario uses scoped durable SQLite and masked source evidence", async (t) => {
   const scenario = process.env.P02_U10_SCENARIO ?? "success-backup-restore";
@@ -54,7 +54,7 @@ test("actual Native scenario uses scoped durable SQLite and masked source eviden
   const diagnosticCanary = "P02_PRIVATE_PROMPT_CANARY";
   const prompt = `Read allowed.txt and report its marker. ${diagnosticCanary}`;
   if (scenario === "writer-busy") {
-    blocker = new DatabaseSync(fixture.host.databasePath);
+    blocker = new Database(fixture.host.databasePath);
     blocker.exec("BEGIN IMMEDIATE");
     t.after(() => { try { blocker?.exec("ROLLBACK"); } finally { blocker?.close(); } });
   }

@@ -336,7 +336,7 @@ export async function verifyScenario({ profileRoot: profileRootInput, scenario, 
     backup_restore: databaseResults.find((item) => item.backupRestore)?.backupRestore ?? null,
     passed,
     ...(failureCode ? { failure_code: failureCode } : {}),
-    qualificationBoundary: "Electron UI with pinned fixed Node CLI; durable host and SQLite ledger are in the wrapped CLI protocol process, not Electron main. P01 sidecar remains UI correlation evidence.",
+    qualificationBoundary: "Electron UI uses the pinned fixed Node CLI; the durable host and SQLite ledger are in the wrapped CLI protocol process, while this ledger readback runs in a separate fixed-Node verifier process. The P02 wrapper binds actual CLI Better SQLite load sidecars to guarded CLI PIDs. P01 sidecar remains UI correlation evidence.",
   };
   await writeFile(outputPath, `${JSON.stringify(report, null, 2)}\n`, { encoding: "utf8", flag: "wx" });
   return report;

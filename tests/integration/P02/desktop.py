@@ -15,6 +15,7 @@ REPO = Path(__file__).resolve().parents[3]
 P01_RUNNER = REPO / "tests/integration/P01/desktop.py"
 VERIFY_LEDGER = Path(__file__).with_name("verify-ledger.mjs")
 UI_DRIVER = Path(__file__).with_name("desktop-ui.mjs")
+CANDIDATE_VERIFIER = Path(__file__).with_name("candidate-verifier.py")
 ROOT = Path(r"E:\Xiadie\Xiadie")
 NODE = ROOT / ".runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe"
 
@@ -45,7 +46,16 @@ def load_p01_runner():
     return module
 
 
-def attach_ledger_verification(harness, scenario_id: str, scenario_output: Path, result: dict) -> dict:
+def load_candidate_verifier():
+    spec = importlib.util.spec_from_file_location("p02_candidate_verifier", CANDIDATE_VERIFIER)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("p02_candidate_verifier_unloadable")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def attach_ledger_verification(harness, verifier, candidate: dict, scenario_id: str, scenario_output: Path, result: dict) -> dict:
     profile = scenario_output / "profile"
     report_path = scenario_output / "ledger-verification.json"
     argv = [
@@ -91,6 +101,11 @@ def attach_ledger_verification(harness, scenario_id: str, scenario_output: Path,
             "admitted_turns": report.get("admitted_turns"),
             "backup_restore": report.get("backup_restore"),
         }
+        try:
+            result["sqlite_runtime_binding"] = verifier.verify_runtime_probes(profile, scenario_id, result, candidate, report)
+        except (ValueError, OSError, TypeError, KeyError):
+            result["passed"] = False
+            result["sqlite_runtime_binding"] = {"passed": False, "failure_code": "sqlite_runtime_binding_verification_failed"}
     result_path = scenario_output / "scenario-result.json"
     result_path.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     return result
@@ -115,12 +130,26 @@ def main() -> int:
         raise RuntimeError("fixed_node_or_ledger_verifier_missing")
 
     harness = load_p01_runner()
+    verifier = load_candidate_verifier()
     harness.UI_DRIVER = UI_DRIVER
+    original_verify_candidate = harness.verify_candidate
+    harness.verify_candidate = lambda value: verifier.verify_candidate(harness, value, original_verify_candidate)
+    original_create_profile = harness.create_profile_and_spec
+
+    def create_profile_and_spec(*positional, **keywords):
+        spec_path, spec, markers = original_create_profile(*positional, **keywords)
+        probe_root = positional[1] / "profile/sqlite-runtime-probes"
+        probe_root.mkdir()
+        spec["env"]["P02_SQLITE_RUNTIME_PROBE_DIR"] = str(probe_root.resolve())
+        spec_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+        return spec_path, spec, markers
+
+    harness.create_profile_and_spec = create_profile_and_spec
     original_run_scenario = harness.run_scenario
 
     def run_scenario(scenario_id: str, run_output: Path, verified_candidate: dict, system_env: dict[str, str]) -> dict:
         result = original_run_scenario(scenario_id, run_output, verified_candidate, system_env)
-        return attach_ledger_verification(harness, scenario_id, run_output / "scenarios" / scenario_id, result)
+        return attach_ledger_verification(harness, verifier, verified_candidate, scenario_id, run_output / "scenarios" / scenario_id, result)
 
     harness.run_scenario = run_scenario
     original_argv = sys.argv
@@ -138,6 +167,7 @@ def main() -> int:
             "output": str(output.resolve(strict=False)),
             "runner": {"path": str(Path(__file__).resolve()), "sha256": sha256(Path(__file__).resolve())},
             "ledgerVerifier": {"path": str(VERIFY_LEDGER.resolve()), "sha256": sha256(VERIFY_LEDGER)},
+            "candidateVerifier": {"path": str(CANDIDATE_VERIFIER.resolve()), "sha256": sha256(CANDIDATE_VERIFIER)},
             "uiDriver": {"path": str(UI_DRIVER.resolve()), "sha256": sha256(UI_DRIVER)},
             "fixedNode": {"path": str(NODE.resolve()), "sha256": sha256(NODE)},
             "harness": {"path": str(P01_RUNNER.resolve()), "sha256": sha256(P01_RUNNER)},

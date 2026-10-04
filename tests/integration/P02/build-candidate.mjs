@@ -46,15 +46,85 @@ async function bindTree(root) {
   async function visit(directory) {
     const entries = (await readdir(directory, { withFileTypes: true })).sort((a, b) => a.name.localeCompare(b.name));
     for (const entry of entries) {
-      if (entry.name === "node_modules") continue;
-      if (entry.isSymbolicLink()) throw new Error("Unexpected candidate resource link");
       const file = path.join(directory, entry.name);
+      const relative = path.relative(root, file).replaceAll("\\", "/");
+      if (relative === "node_modules" && entry.isSymbolicLink()) {
+        assert.equal(await realpath(file), await realpath(path.join(DEFAULT_SOURCE, "node_modules")),
+          "Only the exact pinned Native dependency junction may be borrowed");
+        continue;
+      }
+      if (entry.isSymbolicLink()) throw new Error(`Unexpected candidate resource link: ${relative}`);
       if (entry.isDirectory()) await visit(file);
-      else result.push({ ...(await binding(file)), path: path.relative(root, file).replaceAll("\\", "/") });
+      else if (entry.isFile()) result.push({ ...(await binding(file)), path: relative });
+      else throw new Error(`Unexpected non-file candidate resource: ${relative}`);
     }
   }
   await visit(root);
   return result;
+}
+
+async function bindPackageTree(packageRoot, assemblyRoot) {
+  const result = [];
+  async function visit(directory) {
+    const entries = (await readdir(directory, { withFileTypes: true })).sort((a, b) => a.name.localeCompare(b.name));
+    for (const entry of entries) {
+      const file = path.join(directory, entry.name);
+      if (entry.isSymbolicLink()) throw new Error(`Unexpected SQLite package link: ${file}`);
+      if (entry.isDirectory()) await visit(file);
+      else if (entry.isFile()) {
+        result.push({ ...(await binding(file)), path: path.relative(assemblyRoot, file).replaceAll("\\", "/") });
+      } else throw new Error(`Unexpected SQLite package resource: ${file}`);
+    }
+  }
+  await visit(packageRoot);
+  return result.sort((a, b) => a.path.localeCompare(b.path));
+}
+
+async function stageBetterSqlitePackage(sourceRoot, assemblyRoot) {
+  const sourcePackageRoot = path.resolve(sourceRoot, "node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3");
+  const packageJsonPath = path.join(sourcePackageRoot, "package.json");
+  const packageJson = JSON.parse(await readFile(packageJsonPath, "utf8"));
+  assert.equal(packageJson.name, "better-sqlite3");
+  assert.equal(packageJson.version, "13.0.3");
+  assert.equal(packageJson.license, "MIT");
+  assert.equal(process.platform, "win32", "The candidate runtime currently targets Windows");
+  assert.equal(process.arch, "x64", "The candidate runtime currently targets Windows x64");
+
+  const targetPackageRoot = path.join(assemblyRoot, "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3");
+  await mkdir(targetPackageRoot, { recursive: true });
+  await cp(path.join(sourcePackageRoot, "package.json"), path.join(targetPackageRoot, "package.json"));
+  await cp(path.join(sourcePackageRoot, "LICENSE"), path.join(targetPackageRoot, "LICENSE"));
+  await cp(path.join(sourcePackageRoot, "lib"), path.join(targetPackageRoot, "lib"), { recursive: true });
+
+  const addonName = "win32-x64.node";
+  const addonSource = path.join(sourcePackageRoot, "prebuilds", addonName);
+  const addonTarget = path.join(targetPackageRoot, "prebuilds", addonName);
+  await mkdir(path.dirname(addonTarget), { recursive: true });
+  await cp(addonSource, addonTarget);
+  const addon = await binding(addonTarget);
+  assert.equal(addon.sha256, "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+    "The candidate must carry the accepted U02/U05 Windows x64 prebuild");
+  const closedFiles = await bindPackageTree(targetPackageRoot, assemblyRoot);
+  const packagePrefix = path.relative(assemblyRoot, targetPackageRoot).replaceAll("\\", "/");
+  const sourceLibFiles = await bindPackageTree(path.join(sourcePackageRoot, "lib"), path.join(sourcePackageRoot, "lib"));
+  const candidateLibFiles = await bindPackageTree(path.join(targetPackageRoot, "lib"), path.join(targetPackageRoot, "lib"));
+  assert.deepEqual(candidateLibFiles, sourceLibFiles, "The complete official Better SQLite lib tree must be staged unchanged");
+  const expectedPackageFiles = [
+    `${packagePrefix}/LICENSE`,
+    ...candidateLibFiles.map(({ path: file }) => `${packagePrefix}/lib/${file}`),
+    `${packagePrefix}/package.json`,
+    `${packagePrefix}/prebuilds/win32-x64.node`,
+  ].sort((a, b) => a.localeCompare(b));
+  assert.deepEqual(closedFiles.map(({ path: file }) => file), expectedPackageFiles,
+    "The candidate owns exactly package metadata, license, complete lib tree and target prebuild");
+  return {
+    packageRoot: targetPackageRoot,
+    packageVersion: packageJson.version,
+    licensePath: path.join(targetPackageRoot, "LICENSE"),
+    license: await readFile(path.join(targetPackageRoot, "LICENSE"), "utf8"),
+    addon,
+    closedFiles,
+  };
 }
 
 export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
@@ -76,6 +146,7 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
   for (const name of ["dist", "assets", "plugins"]) {
     await cp(path.join(REPO, name), path.join(resources, name), { recursive: true, errorOnExist: true });
   }
+  const betterSqlite = await stageBetterSqlitePackage(REPO, assemblyRoot);
 
   const cliDirectory = path.join(physicalSource, "apps/zcode-cli/packages/cli");
   const cliRoot = path.join(physicalSource, "apps/zcode-cli");
@@ -111,6 +182,21 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
   let patchBinding;
   const noticesFile = path.join(assemblyRoot, "apps/zcode-cli/packages/cli/dist/THIRD-PARTY-NOTICES.md");
   const notices = await readFile(noticesFile, "utf8");
+  const betterSqliteNotices = `${notices.trimEnd()}\n\n## better-sqlite3 ${betterSqlite.packageVersion}\n\n${betterSqlite.license.trim()}\n`;
+  const addonObserver = `;(() => {
+  const key = Symbol.for("xiadie.p02.better-sqlite3-loads");
+  Object.defineProperty(globalThis, key, { configurable: false, enumerable: false, writable: false, value: [] });
+  const original = process.dlopen;
+  if (typeof original !== "function") throw new Error("P02_SQLITE_DLOPEN_UNAVAILABLE");
+  const realpath = require("node:fs").realpathSync.native;
+  process.dlopen = function p02ObserveDlopen(module, filename, ...flags) {
+    const result = Reflect.apply(original, process, [module, filename, ...flags]);
+    if (typeof filename === "string" && /[\\\\/]better-sqlite3[\\\\/]prebuilds[\\\\/]win32-x64\\.node$/i.test(filename)) {
+      globalThis[key].push({ path: realpath(filename), pid: process.pid });
+    }
+    return result;
+  };
+})();`;
   const result = await build({
     absWorkingDir: physicalSource,
     entryPoints: [path.join(cliDirectory, "src/main.ts")],
@@ -125,7 +211,7 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
     metafile: true,
     legalComments: "none",
     logLevel: "info",
-    external: nativeBuild.resolveBuildExternal(),
+    external: [...nativeBuild.resolveBuildExternal(), "better-sqlite3"],
     alias: aliases,
     define: {
       __CLI_VERSION__: JSON.stringify(cliVersion),
@@ -133,7 +219,7 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
       __P01_NODE_EXECUTABLE__: JSON.stringify(NODE),
       __P01_ELECTRON_EXECUTABLE__: JSON.stringify(electronPath),
     },
-    banner: { js: `#!/usr/bin/env node\n"use strict";\nif (process.argv.length === 3 && process.argv[2] === "--licenses") { const sea = require("node:sea"); const nodeNotice = sea.isSea() ? "\\n\\n## Bundled Node.js runtime\\n\\n" + sea.getAsset("zcode-node-license", "utf8") : ""; process.stdout.write(${JSON.stringify(notices)} + nodeNotice, () => process.exit(0)); } else {` },
+    banner: { js: `#!/usr/bin/env node\n"use strict";\n${addonObserver}\nif (process.argv.length === 3 && process.argv[2] === "--licenses") { const sea = require("node:sea"); const nodeNotice = sea.isSea() ? "\\n\\n## Bundled Node.js runtime\\n\\n" + sea.getAsset("zcode-node-license", "utf8") : ""; process.stdout.write(${JSON.stringify(betterSqliteNotices)} + nodeNotice, () => process.exit(0)); } else {` },
     footer: { js: "}" },
     plugins: [
       { name: "xiadie-p02-protocol-factory", setup(builder) {
@@ -151,6 +237,15 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
       nativeBuild.createZodDedupePlugin({ expectedV4Version: expectedZod }),
     ],
   });
+  const sqliteRuntime = createRequire(cliEntry)("better-sqlite3");
+  const sqliteVersionDatabase = new sqliteRuntime(":memory:");
+  let sqliteVersion;
+  try {
+    sqliteVersion = sqliteVersionDatabase.prepare("SELECT sqlite_version() AS version").get().version;
+  } finally {
+    sqliteVersionDatabase.close();
+  }
+  assert.equal(sqliteVersion, "3.53.4", "The owned addon must report the accepted SQLite runtime version");
   assert.equal(patches, 1, "CLI must contain exactly one protocol factory overlay");
   const invocationInputs = Object.keys(result.metafile.inputs).filter((file) => /[/\\]model[/\\]invocation-context\.[cm]?[jt]s$/.test(file));
   assert.equal(invocationInputs.length, 1, "Native invocation AsyncLocalStorage must have one module instance");
@@ -180,6 +275,12 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
   assert.deepEqual(await bindRepositoryInputs(repositoryCommit), repositoryInputs,
     "Repository inputs changed while building the candidate");
   const artifacts = await bindTree(assemblyRoot);
+  const artifactByPath = new Map(artifacts.map((artifact) => [artifact.path, artifact]));
+  for (const file of betterSqlite.closedFiles) assert.deepEqual(artifactByPath.get(file.path), file,
+    `Owned SQLite package file must be present in the full artifact closure: ${file.path}`);
+  const betterSqlitePackagePrefix = path.relative(assemblyRoot, betterSqlite.packageRoot).replaceAll("\\", "/");
+  assert.equal(artifacts.filter(({ path: file }) => file.startsWith(`${betterSqlitePackagePrefix}/`)).length,
+    betterSqlite.closedFiles.length, "The entire owned SQLite runtime package must be bound exactly once");
   const descriptor = {
     schemaVersion: 1,
     sourceCommit: SOURCE_PIN,
@@ -206,9 +307,19 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
     providerConfig: { source: await binding(providerSource), recipe: await binding(providerStagingFile), environment: provider.environment },
     invocationContext: await binding(targetInvocation),
     invocationContextModuleCount: invocationInputs.length,
+    sqliteRuntime: {
+      packageRoot: betterSqlitePackagePrefix,
+      packageVersion: betterSqlite.packageVersion,
+      sqliteVersion,
+      addonPath: path.relative(assemblyRoot, betterSqlite.addon.path).replaceAll("\\", "/"),
+      addonSha256: betterSqlite.addon.sha256,
+      licensePath: path.relative(assemblyRoot, betterSqlite.licensePath).replaceAll("\\", "/"),
+      licenseSha256: (await binding(betterSqlite.licensePath)).sha256,
+      closedFiles: betterSqlite.closedFiles,
+    },
     nodeVersion,
     artifacts,
-    scope: "Local development candidate with borrowed pinned dependencies; not a portable installer. U08 base manifest precedes the CLI overlay; this descriptor binds final files and excludes itself.",
+    scope: "Local development candidate with one borrowed pinned Native dependency junction and an owned better-sqlite3 runtime package. The final descriptor binds every candidate file except itself and the exact borrowed root junction; not a portable installer.",
   };
   await save(path.join(assemblyRoot, "candidate-descriptor.json"), descriptor);
   return descriptor;

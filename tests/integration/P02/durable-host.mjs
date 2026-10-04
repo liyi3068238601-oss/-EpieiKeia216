@@ -1,8 +1,9 @@
 // Composition only: keep the accepted identity gate, Native Loop and read-only tools.
 import { createHash, randomUUID } from "node:crypto";
-import { lstatSync, mkdirSync, realpathSync, existsSync } from "node:fs";
+import { existsSync, lstatSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import Database from "better-sqlite3";
 import { createXiadieZCodeApp } from "../../../dist/packages/adapters/zcode/src/index.js";
 import { normalizeRuntimeEvent, canonicalizeEventFacts, projectAttempt } from "../../../dist/packages/contracts/src/events.js";
 import { openEventStore } from "../../../dist/packages/storage/events/src/index.js";
@@ -13,6 +14,7 @@ const PIN = "29628c9acdb81b703bbd4080c207a0e7ce5e276e";
 const NATIVE = "zcode.native/v1";
 const TRANSCRIPT = "xiadie.transcript/v1";
 const MAX_EVENTS = 2048;
+const SQLITE_LOADS_KEY = Symbol.for("xiadie.p02.better-sqlite3-loads");
 const sha = (value) => createHash("sha256").update(value).digest("hex");
 const normalizedPath = (value) => path.resolve(value).toLowerCase();
 function inside(root, child) {
@@ -47,6 +49,54 @@ function cloneFacade(base, overrides) {
   return result;
 }
 
+function writeSqliteRuntimeProbe(profileRoot) {
+  const probeDirectory = process.env.P02_SQLITE_RUNTIME_PROBE_DIR;
+  if (probeDirectory === undefined) return;
+  if (!path.isAbsolute(probeDirectory)) throw new Error("SQLITE_RUNTIME_PROBE_PATH_INVALID");
+  const expectedDirectory = path.join(profileRoot, "sqlite-runtime-probes");
+  const physicalDirectory = path.resolve(probeDirectory);
+  if (normalizedPath(physicalDirectory) !== normalizedPath(expectedDirectory) || !existsSync(physicalDirectory)) {
+    throw new Error("SQLITE_RUNTIME_PROBE_PATH_INVALID");
+  }
+  const directoryStat = lstatSync(physicalDirectory);
+  if (!directoryStat.isDirectory() || directoryStat.isSymbolicLink() ||
+      normalizedPath(realpathSync(physicalDirectory)) !== normalizedPath(expectedDirectory)) {
+    throw new Error("SQLITE_RUNTIME_PROBE_PATH_INVALID");
+  }
+  const loads = globalThis[SQLITE_LOADS_KEY];
+  if (!Array.isArray(loads) || loads.length !== 1 || loads[0]?.pid !== process.pid || typeof loads[0]?.path !== "string") {
+    throw new Error("SQLITE_RUNTIME_LOAD_UNOBSERVED");
+  }
+  const addonPath = realpathSync(loads[0].path);
+  if (path.basename(addonPath) !== "win32-x64.node" || path.basename(path.dirname(addonPath)) !== "prebuilds") {
+    throw new Error("SQLITE_RUNTIME_ADDON_PATH_INVALID");
+  }
+  const packageRoot = realpathSync(path.dirname(path.dirname(addonPath)));
+  const packageJson = JSON.parse(readFileSync(path.join(packageRoot, "package.json"), "utf8"));
+  if (packageJson.name !== "better-sqlite3" || packageJson.version !== "13.0.3") {
+    throw new Error("SQLITE_RUNTIME_PACKAGE_INVALID");
+  }
+  const runtimeDatabase = new Database(":memory:");
+  let sqliteVersion;
+  try {
+    sqliteVersion = runtimeDatabase.prepare("SELECT sqlite_version() AS version").get().version;
+  } finally {
+    runtimeDatabase.close();
+  }
+  if (sqliteVersion !== "3.53.4") throw new Error("SQLITE_RUNTIME_VERSION_INVALID");
+  const probe = {
+    schema: "p02-sqlite-runtime-binding/v1",
+    pid: process.pid,
+    processDlopenLoads: loads.map(({ pid, path: filename }) => ({ pid, path: realpathSync(filename) })),
+    addonPath,
+    addonSha256: sha(readFileSync(addonPath)),
+    packageVersion: packageJson.version,
+    sqliteVersion,
+  };
+  writeFileSync(path.join(physicalDirectory, `${process.pid}.json`), `${JSON.stringify(probe, null, 2)}\n`,
+    { encoding: "utf8", flag: "wx" });
+}
+
 export async function createDurableHost(input) {
   if (!input.enabled) return createXiadieZCodeApp(input);
   const profileRoot = realpathSync(input.ownedProfileRoot);
@@ -61,6 +111,12 @@ export async function createDurableHost(input) {
   const databasePath = path.join(dataRoot, "event-ledger.sqlite");
   if (existsSync(databasePath) && (!lstatSync(databasePath).isFile() || lstatSync(databasePath).isSymbolicLink())) throw new Error("LEDGER_LINKED_PATH");
   const store = openEventStore({ path: databasePath });
+  try {
+    writeSqliteRuntimeProbe(profileRoot);
+  } catch (error) {
+    await store.close();
+    throw error;
+  }
   const records = [];
   const bindings = new Map();
   const captures = new Map();
