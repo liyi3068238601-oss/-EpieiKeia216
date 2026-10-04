@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { openSync, closeSync, fsyncSync, lstatSync, writeFileSync } from "node:fs";
 import { realpath } from "node:fs/promises";
-import { DatabaseSync } from "node:sqlite";
+import BetterSQLite3 from "better-sqlite3";
 import path from "node:path";
 
 const { backupAndMigrateEventStore } = await import(
@@ -67,7 +67,7 @@ function pauseForParent() {
 
 async function main() {
   const spec = await validateSpec();
-  const prototype = DatabaseSync.prototype;
+  const prototype = BetterSQLite3.prototype;
   const originalExec = prototype.exec;
   let intercepted = false;
   prototype.exec = function pauseAtMigrationCommit(sql, ...args) {
