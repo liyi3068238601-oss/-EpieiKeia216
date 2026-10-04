@@ -133,6 +133,63 @@ test("synthetic ordinary attempt exports only exact-scope U05 rows and masked ca
   fixture.success();
 });
 
+test("message, Native tool failure and memory candidate references join only committed same-attempt sources", async (t) => {
+  const fixture = await makeFixture(t, "typed-facts-candidates");
+  const capture = await makeCapture(fixture, SCOPE, ACCEPTED_NATIVE_PIN);
+  const message = await appendEvent(fixture, { source: "xiadie.transcript/v1", eventId: "U09_MESSAGE_CANARY",
+    capture: capture.value, payload: { privateText: LEAK_CANARIES[3] } });
+  await rm(capture.rawPath);
+  const callId = "U09_TOOL_CALL_CANARY_TYPED";
+  const started = await appendEvent(fixture, { source: "zcode.native/v1", eventId: "U09_STARTED_CANARY",
+    payload: { nativeType: "tool_call_started", toolName: "Read", toolCallId: callId, toolStatus: LEAK_CANARIES[0] } });
+  const error = await appendEvent(fixture, { source: "zcode.native/v1", eventId: "U09_ERROR_CANARY",
+    payload: { nativeType: "tool_call_error", toolName: "Read", toolCallId: callId, errorMessage: LEAK_CANARIES[7] } });
+  const forged = await appendEvent(fixture, { source: "untrusted-native-canary", eventId: "U09_FORGED_TYPE_CANARY",
+    payload: { nativeType: "tool_call_error", toolName: LEAK_CANARIES[0] } });
+  const old = await appendEvent(fixture, { eventId: "U09_OLD_SOURCE_CANARY", attemptId: "older-attempt" });
+  const candidate = { candidateId: "U09_MEMORY_CANDIDATE_CANARY", scope: SCOPE, attemptId: ATTEMPT_ID,
+    sources: [message.event, error.event].map(({ source, eventId }) => ({ source, eventId })) };
+  const input = { scope: SCOPE, attemptId: ATTEMPT_ID, store: fixture.store, memoryCandidates: [candidate] };
+  const result = await buildTurnDiagnostics(input);
+  assert.equal(result.status, "built");
+  const report = result.report;
+  assert.equal(report.redactionPolicy, "turn-diagnostics-allowlist/v2");
+  assert.equal(report.facts.filter((fact) => fact.category === "message").length, 1);
+  const tools = report.facts.filter((fact) => fact.category === "tool");
+  assert.deepEqual(tools.map((fact) => fact.tool.status), ["started", "error"]);
+  assert.deepEqual(tools.map((fact) => fact.nativeType), ["tool_call_started", "tool_call_error"]);
+  assert.equal(tools[0].tool.toolCallRef, tools[1].tool.toolCallRef);
+  assert.equal(report.facts.find((fact) => fact.commitSequence === forged.completion.commitSequence).nativeType, null);
+  assert.equal(report.memoryCandidates[0].kind, "reference-annotation");
+  assert.equal(report.memoryCandidates[0].sourceStatus, "matched");
+  assert.equal(report.memoryCandidates[0].sources[0].eventRef, report.captures[0].eventRef);
+  assert.equal(report.memoryCandidates[0].sources[1].eventRef, tools[1].eventRef);
+  const withSource = async (source, eventId) => (await buildTurnDiagnostics({ ...input,
+    memoryCandidates: [{ ...candidate, sources: [{ source, eventId }] }] })).report.memoryCandidates[0];
+  assert.equal((await withSource(old.event.source, old.event.eventId)).sourceStatus, "outside_attempt");
+  assert.equal((await withSource("missing-source", "missing-event")).sourceStatus, "missing");
+  const partial = await buildTurnDiagnostics({ ...input, store: stallCursor(fixture.store) });
+  assert.equal(partial.report.memoryCandidates[0].sourceStatus, "unavailable");
+  for (const field of ["sessionId", "turnId", "runId", "taskId"]) {
+    assert.deepEqual(await buildTurnDiagnostics({ ...input, memoryCandidates: [{ ...candidate, scope: { ...SCOPE, [field]: "foreign" } }] }),
+      { status: "rejected", code: "CANDIDATE_SCOPE_MISMATCH" });
+  }
+  assert.deepEqual(await buildTurnDiagnostics({ ...input, memoryCandidates: [{ ...candidate, attemptId: "foreign" }] }),
+    { status: "rejected", code: "CANDIDATE_SCOPE_MISMATCH" });
+  await assert.rejects(buildTurnDiagnostics({ ...input, memoryCandidates: [{ ...candidate, text: LEAK_CANARIES[2] }] }), TypeError);
+  await assert.rejects(buildTurnDiagnostics({ ...input, memoryCandidates: Array(33).fill(candidate) }), TypeError);
+  await assert.rejects(buildTurnDiagnostics({ ...input, memoryCandidates: Array(1) }), TypeError);
+  await assert.rejects(buildTurnDiagnostics({ ...input, memoryCandidates: [{ ...candidate, sources: Array(1) }] }), TypeError);
+  const sparseSources = Array(2);
+  sparseSources[0] = candidate.sources[0];
+  await assert.rejects(buildTurnDiagnostics({ ...input, memoryCandidates: [{ ...candidate, sources: sparseSources }] }), TypeError);
+  const misleadingIterator = Array(1);
+  misleadingIterator[Symbol.iterator] = function* () {};
+  await assert.rejects(buildTurnDiagnostics({ ...input, memoryCandidates: [{ ...candidate, sources: misleadingIterator }] }), TypeError);
+  assertSafeAllowlist(report, [...LEAK_CANARIES, callId, candidate.candidateId, message.event.eventId, started.event.eventId, error.event.eventId]);
+  fixture.success();
+});
+
 test("real U05 default pagination crosses 256 rows with complete facts and observation references", async (t) => {
   const fixture = await makeFixture(t, "default-pagination");
   for (let index = 0; index < 257; index += 1) {
@@ -195,6 +252,11 @@ test("an actual owned Node/Git U06 report joins its committed SQLite writer rece
   assertShaRef(evidence.artifact.sha256Ref);
   assert.deepEqual(Object.keys(evidence.execution.stdout).sort(), ["bytes", "sha256Ref"]);
   assert.deepEqual(Object.keys(evidence.execution.stderr).sort(), ["bytes", "sha256Ref"]);
+  assert.equal(evidence.execution.command.status, "verified");
+  assert.equal(evidence.execution.command.kind, "node-script");
+  assert.equal(evidence.execution.command.argumentCount, 1);
+  assert.match(evidence.execution.command.nodeVersion, /^v\d+\.\d+\.\d+$/);
+  assertShaRef(evidence.execution.command.scriptRef);
   const receiptFact = report.facts.find(({ kind }) => kind === "operation_receipt");
   assert.ok(receiptFact);
   assert.equal(receiptFact.eventRef, evidence.toolReceipt.eventRef);
@@ -217,6 +279,15 @@ test("an actual owned Node/Git U06 report joins its committed SQLite writer rece
   }
 
   const next = (await buildTurnDiagnostics(input)).report;
+  assert.notEqual(next.evidenceReports[0].execution.command.scriptRef, evidence.execution.command.scriptRef);
+  for (const field of ["scriptSha256", "nodeVersion", "argumentCount"]) {
+    const forged = structuredClone(evidenceReport);
+    forged.execution.command[field] = field === "argumentCount" ? 999 : field === "nodeVersion" ? "v99.0.0" : "a".repeat(64);
+    const failed = (await buildTurnDiagnostics({ ...input, evidenceReports: [forged] })).report;
+    assert.equal(failed.evidenceReports[0].execution.command.status, "unverified");
+    assert.equal(failed.evidenceReports[0].execution.command.scriptRef, null);
+    assert.ok(failed.codes.includes("COMMAND_NOT_VERIFIED"));
+  }
   assert.notEqual(next.evidenceReports[0].toolReceipt.eventRef, evidence.toolReceipt.eventRef,
     "the same receipt identity must not correlate across independent report salts");
   fixture.success();
@@ -512,6 +583,7 @@ async function makeOwnedEvidenceReport(fixture, { receiptPrecedingFacts = 0 } = 
         processId: run.processId,
         toolCallId,
         sourceCommitAtLaunch: run.sourceCommitAtLaunch,
+        command: run.command,
         artifact: {
           locator: artifactLocator,
           bytes: artifactContent.byteLength,

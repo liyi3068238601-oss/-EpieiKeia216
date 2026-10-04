@@ -1,0 +1,37 @@
+{
+  "schema": "p02-unit-baseline/v1",
+  "task": "P02-U09",
+  "baseline_commit": "ab560b37d22adfcd261425f20ce74b7f5a5328ca",
+  "branch": "p02-completion-u09",
+  "coordinator_branch": "p02-stage",
+  "prerequisites": [
+    {
+      "task": "P02-U08",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U08/20261003-01/acceptance.json",
+        "bytes": 3772,
+        "sha256": "4b3b92d21c8dc81cb9592cbb54be6177731b49598fdf1876cb560aa15cb97629"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P02-U09.md",
+    "bytes": 1939,
+    "sha256": "acb786a8dd962910b409b6d309e35081549c3016dc7dc76759922834aa69c42e"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "packages/application/evidence",
+    "packages/diagnostics",
+    "tests/integration/P02/verify-ledger.mjs",
+    "evidence/P02-U09/20261004-01"
+  ],
+  "test_mapping": "Real owned Node/SQLite command identity; typed Native facts and candidate reference/privacy negatives; P02 regression",
+  "author_status": "ready_for_review",
+  "checked_at_utc": "2026-10-04T03:36:26.246034+00:00"
+}

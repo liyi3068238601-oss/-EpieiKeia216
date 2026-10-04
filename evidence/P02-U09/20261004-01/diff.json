@@ -1,0 +1,65 @@
+{
+  "task": "P02-U09",
+  "baseline": "ab560b37d22adfcd261425f20ce74b7f5a5328ca",
+  "scope": [
+    "packages/application/evidence",
+    "packages/diagnostics",
+    "tests/integration/P02/verify-ledger.mjs",
+    "evidence/P02-U09/20261004-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "ab560b37d22adfcd261425f20ce74b7f5a5328ca"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\completion-u09",
+      "exit_code": 0,
+      "stdout": " evidence/P02-U09/20261004-01/baseline.json         |  37 ++\n evidence/P02-U09/20261004-01/command-index.json    |  89 +++\n .../P02-U09/20261004-01/commands/01-build.json     |  16 +\n .../20261004-01/commands/02-targeted-tests.json    |  17 +\n .../20261004-01/commands/03-targeted-tests.json    |  16 +\n .../P02-U09/20261004-01/commands/04-typecheck.json |  17 +\n .../20261004-01/commands/05-p02-regression.json    |  22 +\n .../20261004-01/commands/06-boundaries.json        |  14 +\n .../20261004-01/commands/07-final-build.json       |  16 +\n .../commands/08-final-p02-regression.json          |  22 +\n .../commands/09-source-index-build.json            |  16 +\n .../commands/10-source-index-regression.json       |  22 +\n .../20261004-01/commands/inputs-final-pre.json     | 676 ++++++++++++++++++++\n .../P02-U09/20261004-01/commands/inputs-post.json  | 678 +++++++++++++++++++++\n .../P02-U09/20261004-01/commands/inputs-pre.json   | 676 ++++++++++++++++++++\n .../commands/inputs-source-index-post.json         | 678 +++++++++++++++++++++\n .../commands/inputs-source-index-pre.json          | 676 ++++++++++++++++++++\n evidence/P02-U09/20261004-01/result.md             |  30 +\n evidence/P02-U09/20261004-01/rollback.md           |   5 +\n evidence/P02-U09/20261004-01/source-decision.md    |   9 +\n packages/application/evidence/src/index.ts         |  38 +-\n .../application/evidence/test/evidence.test.mjs    |  20 +\n packages/diagnostics/src/index.ts                  | 137 ++++-\n packages/diagnostics/test/diagnostics.test.mjs     |  72 +++\n tests/integration/P02/verify-ledger.mjs            |   2 +-\n 25 files changed, 3991 insertions(+), 10 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "ab560b37d22adfcd261425f20ce74b7f5a5328ca"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\completion-u09",
+      "exit_code": 0,
+      "stdout": "37\t0\tevidence/P02-U09/20261004-01/baseline.json\n89\t0\tevidence/P02-U09/20261004-01/command-index.json\n16\t0\tevidence/P02-U09/20261004-01/commands/01-build.json\n17\t0\tevidence/P02-U09/20261004-01/commands/02-targeted-tests.json\n16\t0\tevidence/P02-U09/20261004-01/commands/03-targeted-tests.json\n17\t0\tevidence/P02-U09/20261004-01/commands/04-typecheck.json\n22\t0\tevidence/P02-U09/20261004-01/commands/05-p02-regression.json\n14\t0\tevidence/P02-U09/20261004-01/commands/06-boundaries.json\n16\t0\tevidence/P02-U09/20261004-01/commands/07-final-build.json\n22\t0\tevidence/P02-U09/20261004-01/commands/08-final-p02-regression.json\n16\t0\tevidence/P02-U09/20261004-01/commands/09-source-index-build.json\n22\t0\tevidence/P02-U09/20261004-01/commands/10-source-index-regression.json\n676\t0\tevidence/P02-U09/20261004-01/commands/inputs-final-pre.json\n678\t0\tevidence/P02-U09/20261004-01/commands/inputs-post.json\n676\t0\tevidence/P02-U09/20261004-01/commands/inputs-pre.json\n678\t0\tevidence/P02-U09/20261004-01/commands/inputs-source-index-post.json\n676\t0\tevidence/P02-U09/20261004-01/commands/inputs-source-index-pre.json\n30\t0\tevidence/P02-U09/20261004-01/result.md\n5\t0\tevidence/P02-U09/20261004-01/rollback.md\n9\t0\tevidence/P02-U09/20261004-01/source-decision.md\n34\t4\tpackages/application/evidence/src/index.ts\n20\t0\tpackages/application/evidence/test/evidence.test.mjs\n132\t5\tpackages/diagnostics/src/index.ts\n72\t0\tpackages/diagnostics/test/diagnostics.test.mjs\n1\t1\ttests/integration/P02/verify-ledger.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "ab560b37d22adfcd261425f20ce74b7f5a5328ca"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\completion-u09",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P02-U09/20261004-01/baseline.json\nA\tevidence/P02-U09/20261004-01/command-index.json\nA\tevidence/P02-U09/20261004-01/commands/01-build.json\nA\tevidence/P02-U09/20261004-01/commands/02-targeted-tests.json\nA\tevidence/P02-U09/20261004-01/commands/03-targeted-tests.json\nA\tevidence/P02-U09/20261004-01/commands/04-typecheck.json\nA\tevidence/P02-U09/20261004-01/commands/05-p02-regression.json\nA\tevidence/P02-U09/20261004-01/commands/06-boundaries.json\nA\tevidence/P02-U09/20261004-01/commands/07-final-build.json\nA\tevidence/P02-U09/20261004-01/commands/08-final-p02-regression.json\nA\tevidence/P02-U09/20261004-01/commands/09-source-index-build.json\nA\tevidence/P02-U09/20261004-01/commands/10-source-index-regression.json\nA\tevidence/P02-U09/20261004-01/commands/inputs-final-pre.json\nA\tevidence/P02-U09/20261004-01/commands/inputs-post.json\nA\tevidence/P02-U09/20261004-01/commands/inputs-pre.json\nA\tevidence/P02-U09/20261004-01/commands/inputs-source-index-post.json\nA\tevidence/P02-U09/20261004-01/commands/inputs-source-index-pre.json\nA\tevidence/P02-U09/20261004-01/result.md\nA\tevidence/P02-U09/20261004-01/rollback.md\nA\tevidence/P02-U09/20261004-01/source-decision.md\nM\tpackages/application/evidence/src/index.ts\nM\tpackages/application/evidence/test/evidence.test.mjs\nM\tpackages/diagnostics/src/index.ts\nM\tpackages/diagnostics/test/diagnostics.test.mjs\nM\ttests/integration/P02/verify-ledger.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "ab560b37d22adfcd261425f20ce74b7f5a5328ca"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\completion-u09",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
