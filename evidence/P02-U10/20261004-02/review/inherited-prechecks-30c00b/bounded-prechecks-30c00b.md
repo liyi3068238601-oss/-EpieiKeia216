@@ -1,0 +1,12 @@
+# U10 bounded prechecks — preparation only
+
+本记录不是正式 review decision，也不能替代 author FINAL 后对 exact commit、manifest 与归档证据的独立复核。所有检查固定在 author 中间提交 `30c00b13b067a45a9dfb305df801e08db9cb0dc5`；执行前后 author worktree clean，root HEAD 为 `178379a8ad9c0c27f833a412ff06f7b0095bab79` 且 clean。source/tool/addon pre/post 摘要在同目录 `source-pre.json`、`source-post.json`：10 个审查输入源码和 4 个运行时文件全部逐字节同 SHA。
+
+- 固定 Node 24.14.0 `node --test tests/integration/P02/registry-write-guard.test.mjs`：5/5 通过；命令、输出与 hash 在 `node-registry-guard.command.json`。
+- 固定 Python 3.12.10、最小 Windows 系统环境下的只读启动/tempfile 探针通过；`desktop-side-effect-guard.test.py` 合成检查 2/2 通过。检查只对当前四个菜单键和五个 protocol 键做 HKCU 只读前后快照，pre/post SHA 均为 `f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1`。这只能证明本次边界未变，不代表恢复或证明更早的历史注册表值。环境只传入 `SYSTEMROOT/WINDIR/COMSPEC/PATHEXT/PATH/TEMP/TMP/SystemDrive`。见 `python-minenv-probe.command.json`、`python-desktop-side-effect-minenv.command.json`。
+- `candidate-verifier.test.py` 在短自有 fixture 路径下 10/10 通过，包括借用 addon 路径、错 PID、相对路径、descriptor/file-set 变更与 ledger 缺失证据等反例。它验证合成 verifier 行为，不是实际 CLI/SQLite load 证据。第一次 fixture 路径过长产生 WinError 206（9 项通过、1 项 harness error），保留在 `python-candidate-validator.command.json`；缩短路径后的唯一重跑见 `python-candidate-validator-short.command.json`。此前一个 `os.execve` 受限环境包装器以 0xC0000005 退出且无输出；后续标准 fixed-Python 最小环境探针及测试均通过。这些属于运行器/路径准备错误，不能算产品失败，也未被覆盖或改写。
+- candidate-07 只读闭包核验通过：descriptor 1,341,384 bytes、SHA `fdfb9404d14a8ef2445b5404e74bb4f1d7a0303fc0644fbebdc1fb32cfc95498`；实际 6,717 个 owned files 与 descriptor 完全相符，Better SQLite 13.0.3 package 闭包 26 files，SQLite 3.53.4，addon SHA `e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a`。candidate 根 `node_modules` junction 的实际目标是 pinned P01 `desktop-source\node_modules`。descriptor 核验前后 SHA 相同。复现脚本/命令见 `candidate-07-closure.py`、`candidate-07-closure-rerun.command.json`；首次同样闭包检查另有 `candidate-07-closure.command.json`。
+
+两次 Python validator 测试留下自有合成 fixture：`.runtime/P02/experiments/mature-integration/q1`（18 files，11,940,511 bytes）和 `.runtime/P02/experiments/mature-integration/reviewer-u10-precheck-30c00b-20261004-0958`（16 files，9,950,426 bytes）。两者均已解析确认位于 experiments 根内，root 和递归内容均无 reparse point。执行递归清理时工具在命令执行前拒绝了删除调用，因此没有绕过该拦截。这两个目录是本次测试产生的 fixture，正式归档时应由有权限的 review cleanup 清掉或明确收纳；它们不是产品数据。
+
+本准备未启动 Desktop/UI、真实模型或实际 reg.exe，也未写注册表或 Native 安装配置；没有据此声称 main PID / protocol call 的实际运行绑定已验收。candidate-07 闭包结果只表示磁盘树与其 descriptor 一致；正式 review 仍需绑定 author FINAL 的精确提交与 manifest，并按主控指定验证归档 UI 证据及实际进程运行记录。

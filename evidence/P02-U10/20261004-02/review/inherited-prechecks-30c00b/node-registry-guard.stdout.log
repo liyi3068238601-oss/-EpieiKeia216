@@ -1,0 +1,13 @@
+✔ blocks every reg.exe spawn, records its exact argv, and leaves other executables alone (31.1355ms)
+✔ fails closed if the owned guard log path is absent or relative (0.2264ms)
+✔ pins the actual Electron main PID, cwd, executable, and argv for protocol argument validation (15.4759ms)
+✔ captures live defaultApp at protocol call time and blocks protocol/recent side effects (23.0714ms)
+✔ the Electron preload's ESM spawn binding sees the typed block before OS process creation (104.6245ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 288.5549

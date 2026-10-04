@@ -1,0 +1,31 @@
+{
+  "schema": "p02-u10-precheck-command/v1",
+  "name": "python-minenv-faulthandler-utf8-startup-tempfile-probe",
+  "startedUtc": "2026-10-04T10:02:45.2106738Z",
+  "finishedUtc": "2026-10-04T10:02:45.3738692Z",
+  "executable": "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "argv": [
+    "-X",
+    "faulthandler",
+    "-X",
+    "utf8",
+    "-c",
+    "import sys,tempfile; print(sys.version); print(tempfile.gettempdir())"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+  "includedEnvironmentKeys": [
+    "SYSTEMROOT",
+    "WINDIR",
+    "COMSPEC",
+    "PATHEXT",
+    "PATH",
+    "TEMP",
+    "TMP",
+    "SystemDrive"
+  ],
+  "exitCode": 0,
+  "stdoutPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-integration-u10\\preparation\\precheck-30c00b-20261004-0958\\python-minenv-probe.stdout.log",
+  "stdoutSha256": "520c208b18a801e441235e103fe08cbcb4342e1c5ce4694c28e5fe61a3d3acaf",
+  "stderrPath": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-integration-u10\\preparation\\precheck-30c00b-20261004-0958\\python-minenv-probe.stderr.log",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

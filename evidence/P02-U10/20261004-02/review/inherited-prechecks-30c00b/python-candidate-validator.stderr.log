@@ -1,0 +1,27 @@
+.....E....
+======================================================================
+ERROR: test_relative_addon_path_rejected_even_if_it_resolves_to_candidate_file (__main__.CandidateVerifierTests.test_relative_addon_path_rejected_even_if_it_resolves_to_candidate_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1311, in mkdir
+    os.mkdir(self, mode)
+FileNotFoundError: [WinError 206] 文件名或扩展名太长。: 'E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\reviewer-u10-precheck-30c00b-20261004-0958\\test_relative_addon_path_rejected_even_if_it_resolves_to_candidate_file\\candidate\\apps\\zcode-cli\\packages\\cli\\dist\\node_modules\\better-sqlite3\\prebuilds'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Xiadie\Xiadie\.runtime\P02\worktrees\mature-integration\tests\integration\P02\candidate-verifier.test.py", line 110, in test_relative_addon_path_rejected_even_if_it_resolves_to_candidate_file
+    profile, probe_root, result, candidate, probe = self.probe_context()
+                                                    ^^^^^^^^^^^^^^^^^^^^
+  File "E:\Xiadie\Xiadie\.runtime\P02\worktrees\mature-integration\tests\integration\P02\candidate-verifier.test.py", line 87, in probe_context
+    addon.parent.mkdir(parents=True)
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1316, in mkdir
+    self.mkdir(mode, parents=False, exist_ok=exist_ok)
+  File "C:\Users\liyi\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1311, in mkdir
+    os.mkdir(self, mode)
+FileNotFoundError: [WinError 206] 文件名或扩展名太长。: 'E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\reviewer-u10-precheck-30c00b-20261004-0958\\test_relative_addon_path_rejected_even_if_it_resolves_to_candidate_file\\candidate\\apps\\zcode-cli\\packages\\cli\\dist\\node_modules\\better-sqlite3\\prebuilds'
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.288s
+
+FAILED (errors=1)
