@@ -1,0 +1,428 @@
+{
+  "schema": "p02-u05-command-archive/v1",
+  "attempt": "20261004-02",
+  "records": [
+    {
+      "file": "01-install.json",
+      "archived_path": "commands/01-install.json",
+      "bytes": 840,
+      "sha256": "9a9aef6861921728a0866db08b94cd903413fec85e30cdb681ee801bb2d21d26",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "C:\\Program Files\\nodejs\\node_modules\\corepack\\dist\\pnpm.js",
+        "install",
+        "--ignore-scripts"
+      ],
+      "note": "dependency setup via pnpm; final runtime and dependency closure verified by records 25 and 28"
+    },
+    {
+      "file": "02-binding-probe.json",
+      "archived_path": "commands/02-binding-probe.json",
+      "bytes": 1341,
+      "sha256": "1b59a21912447217c83fc63283a1d1b853e59807cbf3a7a57afd33b319182e4f",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "-e",
+        "const Database = require(\"better-sqlite3\"); const db = new Database(\":memory:\"); db.defaultSafeIntegers(true); const row = db.prepare(\"SELECT sqlite_version() AS version, 9007199254740993 AS n\").get(); const all = db.prepare(\"SELECT 9007199254740993 AS n\").all(); console.log(JSON.stringify({node:process.version, sqlite:row.version, getType:typeof row.n, getValue:String(row.n), allType:typeof all[0].n, allValue:String(all[0].n), transaction:db.inTransaction, addon:require.resolve(\"better-sqlite3\")})); db.close();"
+      ],
+      "note": ""
+    },
+    {
+      "file": "03-typecheck-prototype.json",
+      "archived_path": "commands/03-typecheck-prototype.json",
+      "bytes": 655,
+      "sha256": "e5d9e48cf5c954cc4bc10639844401d8cbbc2ea88b0c1ea9b6f1a9640b89342d",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "C:\\Program Files\\nodejs\\node_modules\\corepack\\dist\\pnpm.js",
+        "run",
+        "typecheck"
+      ],
+      "note": ""
+    },
+    {
+      "file": "04-build-first.json",
+      "archived_path": "commands/04-build-first.json",
+      "bytes": 638,
+      "sha256": "b4cae542e2a58822ea8e73387bffc2a2ac344994eb6a0133286d4041f0ef4ea1",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "C:\\Program Files\\nodejs\\node_modules\\corepack\\dist\\pnpm.js",
+        "run",
+        "build"
+      ],
+      "note": ""
+    },
+    {
+      "file": "05-events-focused.json",
+      "archived_path": "commands/05-events-focused.json",
+      "bytes": 2249,
+      "sha256": "aed82337f2817f1f71e494d56f524d553abc776523c9a2b32e8d06575f40ae2c",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "--test",
+        "packages/storage/events/test/events.test.mjs"
+      ],
+      "note": ""
+    },
+    {
+      "file": "06-recovery-focused.json",
+      "archived_path": "commands/06-recovery-focused.json",
+      "bytes": 1810,
+      "sha256": "019d81c01266da6aecd48152a94c1d4362035e19fb27781e4b63dee15b0d7a20",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "--test",
+        "packages/application/recovery/test/recovery.test.mjs"
+      ],
+      "note": ""
+    },
+    {
+      "file": "07-check-fresh.json",
+      "archived_path": "commands/07-check-fresh.json",
+      "bytes": 1260,
+      "sha256": "d170a9f0d98cb56eba5e70f790ef0da3bb475c07e0f029b3415ace865cba0370",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "C:\\Program Files\\nodejs\\node_modules\\corepack\\dist\\pnpm.js",
+        "run",
+        "check"
+      ],
+      "note": "pnpm child used Node v24.16.0; superseded by fixed-Node records 21-23 and 26"
+    },
+    {
+      "file": "08-build-fresh.json",
+      "archived_path": "commands/08-build-fresh.json",
+      "bytes": 638,
+      "sha256": "097c45bc2e25fe007d38be2673ca53ae4f88e3d49f823421141a60c4926a31e3",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "C:\\Program Files\\nodejs\\node_modules\\corepack\\dist\\pnpm.js",
+        "run",
+        "build"
+      ],
+      "note": "pnpm child used Node v24.16.0; superseded by fixed-Node records 21-23 and 26"
+    },
+    {
+      "file": "09-bind-pre-exec.json",
+      "archived_path": "commands/09-bind-pre-exec.json",
+      "bytes": 981,
+      "sha256": "379078f696172942c90d6a9683a89b36e17f8d5ac066233dbaa010b3a6a32265",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "python",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\bind-execution.py",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\inputs-pre.json",
+        "--extra",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\migrations\\001-event-store.ts"
+      ],
+      "note": ""
+    },
+    {
+      "file": "10-capture-bindings-pre.json",
+      "archived_path": "commands/10-capture-bindings-pre.json",
+      "bytes": 1437,
+      "sha256": "c78bc8a3acba80bbc397c63c9b19ff23db4ad3270ffd36b2c2cbe88ce4b3fa61",
+      "exit_code": 1,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\capture-bindings.mjs",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\dependencies-pre.json"
+      ],
+      "note": "diagnostic collector attempts failed; successful record 13 retained"
+    },
+    {
+      "file": "11-capture-bindings-pre.json",
+      "archived_path": "commands/11-capture-bindings-pre.json",
+      "bytes": 1965,
+      "sha256": "0051718b64057f6d61c73b987c69407bf8242186e7e4f2bc72f144e579ef914c",
+      "exit_code": 1,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\capture-bindings.mjs",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\dependencies-pre.json"
+      ],
+      "note": "diagnostic collector attempts failed; successful record 13 retained"
+    },
+    {
+      "file": "12-dlopen-args.json",
+      "archived_path": "commands/12-dlopen-args.json",
+      "bytes": 958,
+      "sha256": "201a6ec7dca1e76bfd58cb757467ecae4be91fd65bfbcb182c93b8847573b9d3",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "-e",
+        "const original=process.dlopen; process.dlopen=function(...args){process.stderr.write(JSON.stringify(args.map((x)=>typeof x===\"string\"?x: x && x.constructor?.name))+\"\\n\"); return Reflect.apply(original,this,args)}; const Database=require(\"better-sqlite3\"); new Database(\":memory:\").close();"
+      ],
+      "note": ""
+    },
+    {
+      "file": "13-capture-bindings-pre.json",
+      "archived_path": "commands/13-capture-bindings-pre.json",
+      "bytes": 2746,
+      "sha256": "8d6518482ff8c8ae8611374e4b5dfecd4f8b02ac585576f1a91c23f96e44b8f8",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\capture-bindings.mjs",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\dependencies-pre.json"
+      ],
+      "note": ""
+    },
+    {
+      "file": "14-unit-full.json",
+      "archived_path": "commands/14-unit-full.json",
+      "bytes": 17520,
+      "sha256": "701f6698a71c29607dc1bf15208bba6e5553f82db185c40f848ae18d2f574234",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "C:\\Program Files\\nodejs\\node_modules\\corepack\\dist\\pnpm.js",
+        "run",
+        "test:unit"
+      ],
+      "note": "pnpm child used Node v24.16.0; superseded by fixed-Node records 21-23 and 26"
+    },
+    {
+      "file": "15-bind-post-exec.json",
+      "archived_path": "commands/15-bind-post-exec.json",
+      "bytes": 1122,
+      "sha256": "50e86028ac0ef5738eb669b45eb6b224d31d3d6f9baf23b1cfaf64efe8031647",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "python",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\bind-execution.py",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\inputs-post.json",
+        "--compare",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\inputs-pre.json",
+        "--extra",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\migrations\\001-event-store.ts"
+      ],
+      "note": ""
+    },
+    {
+      "file": "16-capture-bindings-post.json",
+      "archived_path": "commands/16-capture-bindings-post.json",
+      "bytes": 2748,
+      "sha256": "9ef22f175e5b534bbe29b47df0c237bea07595febb2a204b4519c0dd68fcdb8d",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\capture-bindings.mjs",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\dependencies-post.json"
+      ],
+      "note": ""
+    },
+    {
+      "file": "17-stage-code.json",
+      "archived_path": "commands/17-stage-code.json",
+      "bytes": 456,
+      "sha256": "319c75018a5817fd284f7c639f7a81eb5df2f054c06712407e502ab19e4f50d1",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "git",
+        "add",
+        "--",
+        "package.json",
+        "pnpm-lock.yaml",
+        "packages/storage/events",
+        "packages/application/recovery/test"
+      ],
+      "note": ""
+    },
+    {
+      "file": "18-cached-diff-check.json",
+      "archived_path": "commands/18-cached-diff-check.json",
+      "bytes": 363,
+      "sha256": "b7302bd085e272527ebdba7fb9bab39004d0ba6b969882fe547d6a1a76444836",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "note": ""
+    },
+    {
+      "file": "19-code-commit.json",
+      "archived_path": "commands/19-code-commit.json",
+      "bytes": 608,
+      "sha256": "808d4cb02809b03b8daa0cf7117b1f97ed01ff0b6ab53d4991c59bb286759db0",
+      "exit_code": 0,
+      "category": "historical-setup-or-focused-run",
+      "argv": [
+        "git",
+        "commit",
+        "-m",
+        "feat(storage): adopt mature SQLite binding for events"
+      ],
+      "note": ""
+    },
+    {
+      "file": "20-fixed-runtime-version.json",
+      "archived_path": "commands/20-fixed-runtime-version.json",
+      "bytes": 773,
+      "sha256": "17b5db37593a3fa002dcf173a0e4b2b96f60fe9ef4b2604696809f0908713491",
+      "exit_code": 0,
+      "category": "fixed-node-authoritative",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "-p",
+        "JSON.stringify({version:process.version,execPath:process.execPath,modules:process.versions.modules,sqlite:process.versions.sqlite})"
+      ],
+      "note": ""
+    },
+    {
+      "file": "21-fixed-typecheck-noemit.json",
+      "archived_path": "commands/21-fixed-typecheck-noemit.json",
+      "bytes": 582,
+      "sha256": "a637604530ec3b739ad9b981a017fe797d1bafb5003a0656f7099ce2cf696a05",
+      "exit_code": 0,
+      "category": "fixed-node-authoritative",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\node_modules\\typescript\\bin\\tsc",
+        "--project",
+        "tsconfig.json",
+        "--noEmit"
+      ],
+      "note": ""
+    },
+    {
+      "file": "22-fixed-boundary-check.json",
+      "archived_path": "commands/22-fixed-boundary-check.json",
+      "bytes": 547,
+      "sha256": "aa4935f0106ea5111597f1f9cb8fa46a0d6d842874eca9b061c553d79e145f62",
+      "exit_code": 0,
+      "category": "fixed-node-authoritative",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tools/check-import-boundaries.mjs"
+      ],
+      "note": "exit 0, but output says BOUNDARY_SCAN_NOT_RUN because packages/core is absent"
+    },
+    {
+      "file": "23-fixed-build.json",
+      "archived_path": "commands/23-fixed-build.json",
+      "bytes": 566,
+      "sha256": "6bf361823047cbb5a9a37cc01c197bb91666fcb78e1403c375aaa72bb4fc1eaa",
+      "exit_code": 0,
+      "category": "fixed-node-authoritative",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\node_modules\\typescript\\bin\\tsc",
+        "--project",
+        "tsconfig.json"
+      ],
+      "note": ""
+    },
+    {
+      "file": "24-fixed-inputs-pre.json",
+      "archived_path": "commands/24-fixed-inputs-pre.json",
+      "bytes": 993,
+      "sha256": "ea92c5baef501576e8cbeff77f5f2a70ccd29c16a3e44e14233a3c0ab0d4b1ee",
+      "exit_code": 0,
+      "category": "fixed-node-authoritative",
+      "argv": [
+        "python",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\bind-execution.py",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\inputs-fixed-pre.json",
+        "--extra",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\migrations\\001-event-store.ts"
+      ],
+      "note": ""
+    },
+    {
+      "file": "25-fixed-dependencies-pre.json",
+      "archived_path": "commands/25-fixed-dependencies-pre.json",
+      "bytes": 2758,
+      "sha256": "75658add161a6cb36740eddce4c774161a85aafa12f414b1d8e83e86c1721b01",
+      "exit_code": 0,
+      "category": "fixed-node-authoritative",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\capture-bindings.mjs",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\dependencies-fixed-pre.json"
+      ],
+      "note": ""
+    },
+    {
+      "file": "26-fixed-unit-full.json",
+      "archived_path": "commands/26-fixed-unit-full.json",
+      "bytes": 17075,
+      "sha256": "283b88053873e218195dcc978c10a6be7ff21850feee8f4045bbbb0a9fb4cd56",
+      "exit_code": 0,
+      "category": "fixed-node-authoritative",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tools/run-tests.mjs",
+        "unit"
+      ],
+      "note": ""
+    },
+    {
+      "file": "27-fixed-inputs-post.json",
+      "archived_path": "commands/27-fixed-inputs-post.json",
+      "bytes": 1140,
+      "sha256": "73512c0a54c17a6a07e9632fe7df13c56c02ac7f4a0275b8c54199bc3ab2d3c9",
+      "exit_code": 0,
+      "category": "fixed-node-authoritative",
+      "argv": [
+        "python",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\bind-execution.py",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\inputs-fixed-post.json",
+        "--compare",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\inputs-fixed-pre.json",
+        "--extra",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\migrations\\001-event-store.ts"
+      ],
+      "note": ""
+    },
+    {
+      "file": "28-fixed-dependencies-post-probe.json",
+      "archived_path": "commands/28-fixed-dependencies-post-probe.json",
+      "bytes": 2760,
+      "sha256": "3061094d8e83bcc41fef84819946ffc6d0440ee9e34121f19a40b925578eb8fb",
+      "exit_code": 0,
+      "category": "fixed-node-authoritative",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\capture-bindings.mjs",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store\\evidence\\P02-U05\\20261004-02\\dependencies-fixed-post.json"
+      ],
+      "note": ""
+    }
+  ]
+}

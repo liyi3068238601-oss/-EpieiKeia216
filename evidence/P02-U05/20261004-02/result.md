@@ -1,0 +1,17 @@
+# P02-U05 author result
+
+Attempt 20261004-02 was implemented in branch p02-mature-sqlite-store from baseline b694bed232fa914a1c6b27329fa072c2e8a30a13. The implementation commit is 7dc77dd051fd46c0407a548307191bd6e00d27f0.
+
+The event store now uses better-sqlite3 13.0.3 with @types/better-sqlite3 9.6.0 through a private sqlite.ts adapter. The adapter enables safe-integer reads and converts only values within JavaScript's exact integer range; an out-of-range stored integer fails as CORRUPT_STORE. The v1 schema, write transactions, WAL/FULL/FK settings, 180 ms busy timeout, receipt behavior, queue behavior, and recovery production API remain unchanged. Recovery and sqlite-worker fault injections now patch the actual Better SQLite driver. The explicitly named cross-binding test still uses Node's built-in SQLite to read and write the v1 ledger.
+
+The fixed runtime is Node v24.14.0 at the pinned P01 executable. Authoritative final commands are archived under commands/: 21-fixed-typecheck-noemit.json (pass), 22-fixed-boundary-check.json (exit 0 but NOT RUN because packages/core is absent), 23-fixed-build.json (pass), 26-fixed-unit-full.json (159 tests, 159 pass, 0 fail), with 24/25 and 27/28 binding snapshots around the full suite. Events storage has 14/14 focused tests and recovery has 12/12 focused tests in records 05 and 06, run before the final full suite using the pinned Node executable. The full 159-test run includes both areas.
+
+The test fixture verifies both sides of the safe-integer boundary and negative/positive overflow through the private adapter's get and all methods. An invalid writer counter of 9007199254740993 is injected in a fixture; appending fails as corrupt and commits no fact, observation, or receipt. The existing transaction, lost-commit-ack, rollback, busy, full-disk, close-failure, and owned-worker-kill cases remain covered.
+
+Runtime evidence records SELECT sqlite_version() = 3.53.4 from the loaded Better SQLite addon. The actual loaded file is node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/prebuilds/win32-x64.node, SHA-256 e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a. This is separate from the fixed Node runtime's built-in SQLite 3.51.2. Pre/post snapshots bind full package trees for Better SQLite, its types, and node-addon-api, plus package/lock/installation metadata; all match. Bound source inputs also match before and after (8c978b90fb44c7c31baca087c56829d9b915a7f76b850abbce55396606198502). See dependencies-fixed-pre.json, dependencies-fixed-post.json, inputs-fixed-pre.json, and inputs-fixed-post.json.
+
+Records 07-check-fresh.json, 08-build-fresh.json, and 14-unit-full.json are retained as preliminary runs, not fixed-runtime evidence: pnpm's child processes reported Node v24.16.0. They are superseded by the direct fixed-Node commands above. The earlier collector failures are retained with their original records and the successful retry.
+
+Limits: the process-kill tests exercise controlled worker termination, not physical power loss. This task does not validate an Electron packaged cold start. Backup production behavior was not changed; U08 remains separate. No data migration is introduced.
+
+Rollback is a clean revert of implementation commit 7dc77dd051fd46c0407a548307191bd6e00d27f0 together with this task's evidence commit; no existing product database is rewritten by the change.

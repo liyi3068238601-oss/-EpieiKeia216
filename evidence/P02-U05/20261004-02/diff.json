@@ -1,0 +1,66 @@
+{
+  "task": "P02-U05",
+  "baseline": "b694bed232fa914a1c6b27329fa072c2e8a30a13",
+  "scope": [
+    "packages/storage/events",
+    "package.json",
+    "pnpm-lock.yaml",
+    "packages/application/recovery/test",
+    "evidence/P02-U05/20261004-02"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "b694bed232fa914a1c6b27329fa072c2e8a30a13"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store",
+      "exit_code": 0,
+      "stdout": " evidence/P02-U05/20261004-02/baseline.json         |  38 ++\n evidence/P02-U05/20261004-02/capture-bindings.mjs  | 137 ++++\n evidence/P02-U05/20261004-02/command-index.json    | 428 +++++++++++++\n .../P02-U05/20261004-02/commands/01-install.json   |  16 +\n .../20261004-02/commands/02-binding-probe.json     |  15 +\n .../commands/03-typecheck-prototype.json           |  16 +\n .../20261004-02/commands/04-build-first.json       |  16 +\n .../20261004-02/commands/05-events-focused.json    |  15 +\n .../20261004-02/commands/06-recovery-focused.json  |  15 +\n .../20261004-02/commands/07-check-fresh.json       |  16 +\n .../20261004-02/commands/08-build-fresh.json       |  16 +\n .../20261004-02/commands/09-bind-pre-exec.json     |  18 +\n .../commands/10-capture-bindings-pre.json          |  15 +\n .../commands/11-capture-bindings-pre.json          |  15 +\n .../20261004-02/commands/12-dlopen-args.json       |  15 +\n .../commands/13-capture-bindings-pre.json          |  15 +\n .../P02-U05/20261004-02/commands/14-unit-full.json |  16 +\n .../20261004-02/commands/15-bind-post-exec.json    |  20 +\n .../commands/16-capture-bindings-post.json         |  15 +\n .../20261004-02/commands/17-stage-code.json        |  19 +\n .../20261004-02/commands/18-cached-diff-check.json |  16 +\n .../20261004-02/commands/19-code-commit.json       |  16 +\n .../commands/20-fixed-runtime-version.json         |  15 +\n .../commands/21-fixed-typecheck-noemit.json        |  17 +\n .../commands/22-fixed-boundary-check.json          |  14 +\n .../20261004-02/commands/23-fixed-build.json       |  16 +\n .../20261004-02/commands/24-fixed-inputs-pre.json  |  18 +\n .../commands/25-fixed-dependencies-pre.json        |  15 +\n .../20261004-02/commands/26-fixed-unit-full.json   |  15 +\n .../20261004-02/commands/27-fixed-inputs-post.json |  20 +\n .../commands/28-fixed-dependencies-post-probe.json |  15 +\n .../20261004-02/dependencies-fixed-post.json       | 612 ++++++++++++++++++\n .../20261004-02/dependencies-fixed-pre.json        | 612 ++++++++++++++++++\n .../P02-U05/20261004-02/dependencies-post.json     | 612 ++++++++++++++++++\n evidence/P02-U05/20261004-02/dependencies-pre.json | 612 ++++++++++++++++++\n .../P02-U05/20261004-02/inputs-fixed-post.json     | 693 +++++++++++++++++++++\n evidence/P02-U05/20261004-02/inputs-fixed-pre.json | 691 ++++++++++++++++++++\n evidence/P02-U05/20261004-02/inputs-post.json      | 693 +++++++++++++++++++++\n evidence/P02-U05/20261004-02/inputs-pre.json       | 691 ++++++++++++++++++++\n evidence/P02-U05/20261004-02/result.md             |  17 +\n package.json                                       |   4 +\n .../application/recovery/test/recovery.test.mjs    |   6 +-\n packages/storage/events/src/index.ts               |  43 +-\n packages/storage/events/src/sqlite.ts              |  85 +++\n packages/storage/events/test/events.test.mjs       | 114 +++-\n packages/storage/events/test/sqlite-worker.mjs     |   4 +-\n pnpm-lock.yaml                                     |  28 +\n 47 files changed, 6531 insertions(+), 39 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "b694bed232fa914a1c6b27329fa072c2e8a30a13"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store",
+      "exit_code": 0,
+      "stdout": "38\t0\tevidence/P02-U05/20261004-02/baseline.json\n137\t0\tevidence/P02-U05/20261004-02/capture-bindings.mjs\n428\t0\tevidence/P02-U05/20261004-02/command-index.json\n16\t0\tevidence/P02-U05/20261004-02/commands/01-install.json\n15\t0\tevidence/P02-U05/20261004-02/commands/02-binding-probe.json\n16\t0\tevidence/P02-U05/20261004-02/commands/03-typecheck-prototype.json\n16\t0\tevidence/P02-U05/20261004-02/commands/04-build-first.json\n15\t0\tevidence/P02-U05/20261004-02/commands/05-events-focused.json\n15\t0\tevidence/P02-U05/20261004-02/commands/06-recovery-focused.json\n16\t0\tevidence/P02-U05/20261004-02/commands/07-check-fresh.json\n16\t0\tevidence/P02-U05/20261004-02/commands/08-build-fresh.json\n18\t0\tevidence/P02-U05/20261004-02/commands/09-bind-pre-exec.json\n15\t0\tevidence/P02-U05/20261004-02/commands/10-capture-bindings-pre.json\n15\t0\tevidence/P02-U05/20261004-02/commands/11-capture-bindings-pre.json\n15\t0\tevidence/P02-U05/20261004-02/commands/12-dlopen-args.json\n15\t0\tevidence/P02-U05/20261004-02/commands/13-capture-bindings-pre.json\n16\t0\tevidence/P02-U05/20261004-02/commands/14-unit-full.json\n20\t0\tevidence/P02-U05/20261004-02/commands/15-bind-post-exec.json\n15\t0\tevidence/P02-U05/20261004-02/commands/16-capture-bindings-post.json\n19\t0\tevidence/P02-U05/20261004-02/commands/17-stage-code.json\n16\t0\tevidence/P02-U05/20261004-02/commands/18-cached-diff-check.json\n16\t0\tevidence/P02-U05/20261004-02/commands/19-code-commit.json\n15\t0\tevidence/P02-U05/20261004-02/commands/20-fixed-runtime-version.json\n17\t0\tevidence/P02-U05/20261004-02/commands/21-fixed-typecheck-noemit.json\n14\t0\tevidence/P02-U05/20261004-02/commands/22-fixed-boundary-check.json\n16\t0\tevidence/P02-U05/20261004-02/commands/23-fixed-build.json\n18\t0\tevidence/P02-U05/20261004-02/commands/24-fixed-inputs-pre.json\n15\t0\tevidence/P02-U05/20261004-02/commands/25-fixed-dependencies-pre.json\n15\t0\tevidence/P02-U05/20261004-02/commands/26-fixed-unit-full.json\n20\t0\tevidence/P02-U05/20261004-02/commands/27-fixed-inputs-post.json\n15\t0\tevidence/P02-U05/20261004-02/commands/28-fixed-dependencies-post-probe.json\n612\t0\tevidence/P02-U05/20261004-02/dependencies-fixed-post.json\n612\t0\tevidence/P02-U05/20261004-02/dependencies-fixed-pre.json\n612\t0\tevidence/P02-U05/20261004-02/dependencies-post.json\n612\t0\tevidence/P02-U05/20261004-02/dependencies-pre.json\n693\t0\tevidence/P02-U05/20261004-02/inputs-fixed-post.json\n691\t0\tevidence/P02-U05/20261004-02/inputs-fixed-pre.json\n693\t0\tevidence/P02-U05/20261004-02/inputs-post.json\n691\t0\tevidence/P02-U05/20261004-02/inputs-pre.json\n17\t0\tevidence/P02-U05/20261004-02/result.md\n4\t0\tpackage.json\n3\t3\tpackages/application/recovery/test/recovery.test.mjs\n22\t21\tpackages/storage/events/src/index.ts\n85\t0\tpackages/storage/events/src/sqlite.ts\n101\t13\tpackages/storage/events/test/events.test.mjs\n2\t2\tpackages/storage/events/test/sqlite-worker.mjs\n28\t0\tpnpm-lock.yaml\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "b694bed232fa914a1c6b27329fa072c2e8a30a13"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P02-U05/20261004-02/baseline.json\nA\tevidence/P02-U05/20261004-02/capture-bindings.mjs\nA\tevidence/P02-U05/20261004-02/command-index.json\nA\tevidence/P02-U05/20261004-02/commands/01-install.json\nA\tevidence/P02-U05/20261004-02/commands/02-binding-probe.json\nA\tevidence/P02-U05/20261004-02/commands/03-typecheck-prototype.json\nA\tevidence/P02-U05/20261004-02/commands/04-build-first.json\nA\tevidence/P02-U05/20261004-02/commands/05-events-focused.json\nA\tevidence/P02-U05/20261004-02/commands/06-recovery-focused.json\nA\tevidence/P02-U05/20261004-02/commands/07-check-fresh.json\nA\tevidence/P02-U05/20261004-02/commands/08-build-fresh.json\nA\tevidence/P02-U05/20261004-02/commands/09-bind-pre-exec.json\nA\tevidence/P02-U05/20261004-02/commands/10-capture-bindings-pre.json\nA\tevidence/P02-U05/20261004-02/commands/11-capture-bindings-pre.json\nA\tevidence/P02-U05/20261004-02/commands/12-dlopen-args.json\nA\tevidence/P02-U05/20261004-02/commands/13-capture-bindings-pre.json\nA\tevidence/P02-U05/20261004-02/commands/14-unit-full.json\nA\tevidence/P02-U05/20261004-02/commands/15-bind-post-exec.json\nA\tevidence/P02-U05/20261004-02/commands/16-capture-bindings-post.json\nA\tevidence/P02-U05/20261004-02/commands/17-stage-code.json\nA\tevidence/P02-U05/20261004-02/commands/18-cached-diff-check.json\nA\tevidence/P02-U05/20261004-02/commands/19-code-commit.json\nA\tevidence/P02-U05/20261004-02/commands/20-fixed-runtime-version.json\nA\tevidence/P02-U05/20261004-02/commands/21-fixed-typecheck-noemit.json\nA\tevidence/P02-U05/20261004-02/commands/22-fixed-boundary-check.json\nA\tevidence/P02-U05/20261004-02/commands/23-fixed-build.json\nA\tevidence/P02-U05/20261004-02/commands/24-fixed-inputs-pre.json\nA\tevidence/P02-U05/20261004-02/commands/25-fixed-dependencies-pre.json\nA\tevidence/P02-U05/20261004-02/commands/26-fixed-unit-full.json\nA\tevidence/P02-U05/20261004-02/commands/27-fixed-inputs-post.json\nA\tevidence/P02-U05/20261004-02/commands/28-fixed-dependencies-post-probe.json\nA\tevidence/P02-U05/20261004-02/dependencies-fixed-post.json\nA\tevidence/P02-U05/20261004-02/dependencies-fixed-pre.json\nA\tevidence/P02-U05/20261004-02/dependencies-post.json\nA\tevidence/P02-U05/20261004-02/dependencies-pre.json\nA\tevidence/P02-U05/20261004-02/inputs-fixed-post.json\nA\tevidence/P02-U05/20261004-02/inputs-fixed-pre.json\nA\tevidence/P02-U05/20261004-02/inputs-post.json\nA\tevidence/P02-U05/20261004-02/inputs-pre.json\nA\tevidence/P02-U05/20261004-02/result.md\nM\tpackage.json\nM\tpackages/application/recovery/test/recovery.test.mjs\nM\tpackages/storage/events/src/index.ts\nA\tpackages/storage/events/src/sqlite.ts\nM\tpackages/storage/events/test/events.test.mjs\nM\tpackages/storage/events/test/sqlite-worker.mjs\nM\tpnpm-lock.yaml\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "b694bed232fa914a1c6b27329fa072c2e8a30a13"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-store",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
