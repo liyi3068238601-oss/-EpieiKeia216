@@ -11,6 +11,7 @@ export interface SQLiteStatement {
 export interface SQLiteConnection {
   exec(sql: string): void;
   prepare(sql: string): SQLiteStatement;
+  backup(destinationFile: string, options?: Database.BackupOptions): Promise<Database.BackupMetadata>;
   close(): void;
   readonly isTransaction: boolean;
 }
@@ -46,6 +47,10 @@ class BetterSQLiteConnection implements SQLiteConnection {
 
   exec(sql: string): void {
     this.database.exec(sql);
+  }
+
+  backup(destinationFile: string, options?: Database.BackupOptions): Promise<Database.BackupMetadata> {
+    return this.database.backup(destinationFile, options);
   }
 
   prepare(sql: string): SQLiteStatement {

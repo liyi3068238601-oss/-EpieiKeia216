@@ -1,0 +1,64 @@
+{
+  "task": "P02-U08",
+  "baseline": "325707b4725f13c10ea0695f825c913c2043ee99",
+  "scope": [
+    "packages/storage/backup",
+    "packages/storage/events/src/sqlite.ts",
+    "evidence/P02-U08/20261004-02"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "325707b4725f13c10ea0695f825c913c2043ee99"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "exit_code": 0,
+      "stdout": " evidence/P02-U08/20261004-02/baseline.json         |  36 ++\n evidence/P02-U08/20261004-02/capture-bindings.mjs  | 137 ++++\n evidence/P02-U08/20261004-02/command-index.json    | 166 +++++\n .../20261004-02/commands/01-typecheck-noemit.json  |  17 +\n .../P02-U08/20261004-02/commands/02-build.json     |  16 +\n .../20261004-02/commands/03-backup-focused.json    |  15 +\n .../20261004-02/commands/04-boundary-check.json    |  14 +\n .../P02-U08/20261004-02/commands/05-bind-pre.json  |  18 +\n .../20261004-02/commands/06-binding-pre.json       |  15 +\n .../commands/07-backup-focused-final.json          |  15 +\n .../20261004-02/commands/08-unit-full-final.json   |  15 +\n .../P02-U08/20261004-02/commands/09-bind-post.json |  20 +\n .../20261004-02/commands/10-binding-post.json      |  15 +\n .../P02-U08/20261004-02/dependencies-post.json     | 612 ++++++++++++++++++\n evidence/P02-U08/20261004-02/dependencies-pre.json | 612 ++++++++++++++++++\n evidence/P02-U08/20261004-02/inputs-post.json      | 693 +++++++++++++++++++++\n evidence/P02-U08/20261004-02/inputs-pre.json       | 691 ++++++++++++++++++++\n evidence/P02-U08/20261004-02/result.md             |  17 +\n packages/storage/backup/src/index.ts               |  57 +-\n packages/storage/backup/test/backup-worker.mjs     |   4 +-\n packages/storage/backup/test/backup.test.mjs       | 108 +++-\n packages/storage/events/src/sqlite.ts              |   5 +\n 22 files changed, 3266 insertions(+), 32 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "325707b4725f13c10ea0695f825c913c2043ee99"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "exit_code": 0,
+      "stdout": "36\t0\tevidence/P02-U08/20261004-02/baseline.json\n137\t0\tevidence/P02-U08/20261004-02/capture-bindings.mjs\n166\t0\tevidence/P02-U08/20261004-02/command-index.json\n17\t0\tevidence/P02-U08/20261004-02/commands/01-typecheck-noemit.json\n16\t0\tevidence/P02-U08/20261004-02/commands/02-build.json\n15\t0\tevidence/P02-U08/20261004-02/commands/03-backup-focused.json\n14\t0\tevidence/P02-U08/20261004-02/commands/04-boundary-check.json\n18\t0\tevidence/P02-U08/20261004-02/commands/05-bind-pre.json\n15\t0\tevidence/P02-U08/20261004-02/commands/06-binding-pre.json\n15\t0\tevidence/P02-U08/20261004-02/commands/07-backup-focused-final.json\n15\t0\tevidence/P02-U08/20261004-02/commands/08-unit-full-final.json\n20\t0\tevidence/P02-U08/20261004-02/commands/09-bind-post.json\n15\t0\tevidence/P02-U08/20261004-02/commands/10-binding-post.json\n612\t0\tevidence/P02-U08/20261004-02/dependencies-post.json\n612\t0\tevidence/P02-U08/20261004-02/dependencies-pre.json\n693\t0\tevidence/P02-U08/20261004-02/inputs-post.json\n691\t0\tevidence/P02-U08/20261004-02/inputs-pre.json\n17\t0\tevidence/P02-U08/20261004-02/result.md\n30\t27\tpackages/storage/backup/src/index.ts\n2\t2\tpackages/storage/backup/test/backup-worker.mjs\n105\t3\tpackages/storage/backup/test/backup.test.mjs\n5\t0\tpackages/storage/events/src/sqlite.ts\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "325707b4725f13c10ea0695f825c913c2043ee99"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P02-U08/20261004-02/baseline.json\nA\tevidence/P02-U08/20261004-02/capture-bindings.mjs\nA\tevidence/P02-U08/20261004-02/command-index.json\nA\tevidence/P02-U08/20261004-02/commands/01-typecheck-noemit.json\nA\tevidence/P02-U08/20261004-02/commands/02-build.json\nA\tevidence/P02-U08/20261004-02/commands/03-backup-focused.json\nA\tevidence/P02-U08/20261004-02/commands/04-boundary-check.json\nA\tevidence/P02-U08/20261004-02/commands/05-bind-pre.json\nA\tevidence/P02-U08/20261004-02/commands/06-binding-pre.json\nA\tevidence/P02-U08/20261004-02/commands/07-backup-focused-final.json\nA\tevidence/P02-U08/20261004-02/commands/08-unit-full-final.json\nA\tevidence/P02-U08/20261004-02/commands/09-bind-post.json\nA\tevidence/P02-U08/20261004-02/commands/10-binding-post.json\nA\tevidence/P02-U08/20261004-02/dependencies-post.json\nA\tevidence/P02-U08/20261004-02/dependencies-pre.json\nA\tevidence/P02-U08/20261004-02/inputs-post.json\nA\tevidence/P02-U08/20261004-02/inputs-pre.json\nA\tevidence/P02-U08/20261004-02/result.md\nM\tpackages/storage/backup/src/index.ts\nM\tpackages/storage/backup/test/backup-worker.mjs\nM\tpackages/storage/backup/test/backup.test.mjs\nM\tpackages/storage/events/src/sqlite.ts\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "325707b4725f13c10ea0695f825c913c2043ee99"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

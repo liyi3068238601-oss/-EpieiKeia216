@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { spawn } from "node:child_process";
 import { copyFile, lstat, mkdir, mkdtemp, readFile, readdir, realpath, rm, stat } from "node:fs/promises";
+import BetterSQLite3 from "better-sqlite3";
+// Keep Node SQLite only for explicit fixture creation and inspection; fault injection targets the product binding.
 import { DatabaseSync } from "node:sqlite";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -292,17 +294,79 @@ test("a controlled deadline aborts the real SQLite backup progress callback befo
   assert.deepEqual(source.userObjects, [], "backup failure must prevent migration DDL");
 });
 
+test("backup checks the deadline after the real Better transfer resolves without a final progress callback", async (t) => {
+  const fixture = await makeFixture(t, "backup-deadline-after-transfer");
+  await createEmptyV0(fixture.databasePath);
+  await mkdir(fixture.backupDirectory);
+  const delay = delayCompletedBackupPastDeadline((destination) =>
+    path.basename(destination) === "snapshot.sqlite" && path.basename(path.dirname(destination)).startsWith(".p02-snapshot-"));
+  try {
+    await assert.rejects(
+      backupAndMigrateEventStore({
+        databasePath: fixture.databasePath,
+        backupDirectory: fixture.backupDirectory,
+        backupName: "late-snapshot.sqlite",
+        deadlineMs: 250,
+      }),
+      (error) => isMaintenanceError(error, "backup", "BACKUP_DEADLINE"),
+    );
+  } finally {
+    delay.restore();
+  }
+  assert.equal(delay.metrics.calls, 1, "the product must call the real Better SQLite backup API");
+  assert.equal(delay.metrics.completed, 1, "the real transfer must complete before its Promise is delayed");
+  assert.equal(delay.metrics.finalProgressCalls, 0, "Better SQLite resolves the final transfer before reporting progress");
+  assert.ok(!((await readdir(fixture.backupDirectory)).includes("late-snapshot.sqlite")),
+    "a transfer that resolves after its deadline must not publish a backup");
+  const source = inspectRawDatabase(fixture.databasePath);
+  assert.equal(source.userVersion, 0, "an expired backup must prevent v0 migration");
+  assert.deepEqual(source.userObjects, []);
+});
+
+test("restore checks the deadline after the real Better transfer and does not publish a new root database", async (t) => {
+  const fixture = await makeFixture(t, "restore-deadline-after-transfer");
+  await createEmptyV0(fixture.databasePath);
+  await mkdir(fixture.backupDirectory);
+  const created = await backupAndMigrateEventStore({
+    databasePath: fixture.databasePath,
+    backupDirectory: fixture.backupDirectory,
+    backupName: "restore-source.sqlite",
+  });
+  const destinationDirectory = path.join(fixture.directory, "late-restored-root");
+  const finalDatabasePath = path.join(destinationDirectory, "events.sqlite");
+  const delay = delayCompletedBackupPastDeadline((destination) =>
+    path.basename(destination) === "restored.sqlite" && path.basename(path.dirname(destination)) === ".p02-restore-stage");
+  try {
+    await assert.rejects(
+      restoreEventStoreBackup({
+        backupPath: created.backupPath,
+        destinationDirectory,
+        deadlineMs: 250,
+      }),
+      (error) => isMaintenanceError(error, "restore-backup", "BACKUP_DEADLINE"),
+    );
+  } finally {
+    delay.restore();
+  }
+  assert.equal(delay.metrics.calls, 1, "restore must call the real Better SQLite backup API");
+  assert.equal(delay.metrics.completed, 1, "the real restore transfer must finish before its Promise is delayed");
+  assert.equal(delay.metrics.finalProgressCalls, 0, "the final transfer has no progress callback");
+  await assert.rejects(stat(finalDatabasePath), { code: "ENOENT" }, "an expired restore must not publish events.sqlite");
+  const stagedPath = path.join(destinationDirectory, ".p02-restore-stage", "restored.sqlite");
+  assert.equal(inspectRawDatabase(stagedPath).integrityCheck, "ok", "the completed transfer remains private in staging");
+});
+
 test("real SQLite SQLITE_FULL during migration preserves v0 and the already published backup", async (t) => {
   const fixture = await makeFixture(t, "migration-full");
   await createEmptyV0(fixture.databasePath);
   await mkdir(fixture.backupDirectory);
-  const prototype = DatabaseSync.prototype;
+  const prototype = BetterSQLite3.prototype;
   const originalExec = prototype.exec;
   let pageLimitSet = false;
   prototype.exec = function constrainMaintenancePages(sql, ...args) {
     const result = originalExec.call(this, sql, ...args);
     if (String(sql).trim().toUpperCase() === "BEGIN IMMEDIATE" && !pageLimitSet) {
-      const pages = this.prepare("PRAGMA page_count").get().page_count;
+      const pages = Number(this.prepare("PRAGMA page_count").get().page_count);
       originalExec.call(this, `PRAGMA max_page_count = ${Math.max(1, pages)}`);
       pageLimitSet = true;
     }
@@ -360,6 +424,44 @@ test("an owned worker killed immediately before or after COMMIT reopens as valid
     });
   }
 });
+
+function delayCompletedBackupPastDeadline(matchesDestination) {
+  const prototype = BetterSQLite3.prototype;
+  const originalBackup = prototype.backup;
+  let calls = 0;
+  let completed = 0;
+  let finalProgressCalls = 0;
+  prototype.backup = function delayActualBackupResolution(destinationFile, options) {
+    const matches = matchesDestination(path.resolve(destinationFile));
+    let actualOptions = options;
+    if (matches && typeof options?.progress === "function") {
+      actualOptions = {
+        ...options,
+        progress(info) {
+          if (info.remainingPages === 0) finalProgressCalls += 1;
+          return options.progress(info);
+        },
+      };
+    }
+    const transfer = originalBackup.call(this, destinationFile, actualOptions);
+    if (!matches) return transfer;
+    calls += 1;
+    return transfer.then(async (metadata) => {
+      completed += 1;
+      await new Promise((resolve) => setTimeout(resolve, 300));
+      return metadata;
+    });
+  };
+
+  return {
+    get metrics() {
+      return { calls, completed, finalProgressCalls };
+    },
+    restore() {
+      prototype.backup = originalBackup;
+    },
+  };
+}
 
 async function makeFixture(t, prefix) {
   const parentInfo = await lstat(experimentParent);
@@ -475,7 +577,7 @@ async function runLostCommitAckFixture(t, prefix, failReadback) {
   await createEmptyV0(fixture.databasePath);
   await mkdir(fixture.backupDirectory);
 
-  const prototype = DatabaseSync.prototype;
+  const prototype = BetterSQLite3.prototype;
   const originalExec = prototype.exec;
   const originalPrepare = prototype.prepare;
   let commitAckThrown = false;

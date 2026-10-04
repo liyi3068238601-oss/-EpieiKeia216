@@ -1,0 +1,166 @@
+{
+  "schema": "p02-u08-command-archive/v1",
+  "attempt": "20261004-02",
+  "records": [
+    {
+      "file": "01-typecheck-noemit.json",
+      "archived_path": "commands/01-typecheck-noemit.json",
+      "bytes": 584,
+      "sha256": "1b27c7d2efe535b5f687b7aab44f03ab079936b92136d09a8a486f14004a8110",
+      "exit_code": 0,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup\\node_modules\\typescript\\bin\\tsc",
+        "--project",
+        "tsconfig.json",
+        "--noEmit"
+      ],
+      "category": "fixed-node-run",
+      "note": ""
+    },
+    {
+      "file": "02-build.json",
+      "archived_path": "commands/02-build.json",
+      "bytes": 568,
+      "sha256": "11dccd19b40bee28f898ab2cca602fb42727581843b4d48bde88302293afdabc",
+      "exit_code": 0,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup\\node_modules\\typescript\\bin\\tsc",
+        "--project",
+        "tsconfig.json"
+      ],
+      "category": "fixed-node-run",
+      "note": ""
+    },
+    {
+      "file": "03-backup-focused.json",
+      "archived_path": "commands/03-backup-focused.json",
+      "bytes": 2605,
+      "sha256": "5801f792bb22b878fb0796230001784c7ba61962680cc802d3a37d6500e9f14e",
+      "exit_code": 0,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "--test",
+        "packages/storage/backup/test/backup.test.mjs"
+      ],
+      "category": "historical-superseded",
+      "note": "Passed with a test helper that globally replaced performance.now; superseded by final 07 using real setTimeout delay and no clock override."
+    },
+    {
+      "file": "04-boundary-check.json",
+      "archived_path": "commands/04-boundary-check.json",
+      "bytes": 548,
+      "sha256": "03196101d7d810b790588d8d86fd02428a1d59d6e51a3b0005efeeec0fbf0c14",
+      "exit_code": 0,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tools/check-import-boundaries.mjs"
+      ],
+      "category": "fixed-node-boundary-not-run",
+      "note": "Exit 0, stdout explicitly says BOUNDARY_SCAN_NOT_RUN because packages/core is absent."
+    },
+    {
+      "file": "05-bind-pre.json",
+      "archived_path": "commands/05-bind-pre.json",
+      "bytes": 986,
+      "sha256": "ac61ace46121a59cb376a9a279700327fe36dafd084dbfaefa3603a909ae50e2",
+      "exit_code": 0,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "argv": [
+        "python",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\bind-execution.py",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup\\evidence\\P02-U08\\20261004-02\\inputs-pre.json",
+        "--extra",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup\\migrations\\001-event-store.ts"
+      ],
+      "category": "binding-evidence",
+      "note": ""
+    },
+    {
+      "file": "06-binding-pre.json",
+      "archived_path": "commands/06-binding-pre.json",
+      "bytes": 2644,
+      "sha256": "dcc849e341cbfadc97c172affc7fa479cca71b1066f83f9ad3abc6200bda66bd",
+      "exit_code": 0,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup\\evidence\\P02-U08\\20261004-02\\capture-bindings.mjs",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup\\evidence\\P02-U08\\20261004-02\\dependencies-pre.json"
+      ],
+      "category": "binding-evidence",
+      "note": ""
+    },
+    {
+      "file": "07-backup-focused-final.json",
+      "archived_path": "commands/07-backup-focused-final.json",
+      "bytes": 2608,
+      "sha256": "9ce20ac5b0a71c58452d98a2f5af419a063bf29d4c9ab1f395b9db708616eae5",
+      "exit_code": 0,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "--test",
+        "packages/storage/backup/test/backup.test.mjs"
+      ],
+      "category": "fixed-node-run",
+      "note": ""
+    },
+    {
+      "file": "08-unit-full-final.json",
+      "archived_path": "commands/08-unit-full-final.json",
+      "bytes": 17315,
+      "sha256": "c17f234a1b78f5da6b92907eb9c57d58e92b28a7d8da11bc28193bac82a7b841",
+      "exit_code": 0,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tools/run-tests.mjs",
+        "unit"
+      ],
+      "category": "fixed-node-run",
+      "note": ""
+    },
+    {
+      "file": "09-bind-post.json",
+      "archived_path": "commands/09-bind-post.json",
+      "bytes": 1128,
+      "sha256": "e6cbdf03f967e45c36710c42486145737fa87697abcc602cc4dc68255c26ab8e",
+      "exit_code": 0,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "argv": [
+        "python",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\coord\\bind-execution.py",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup\\evidence\\P02-U08\\20261004-02\\inputs-post.json",
+        "--compare",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup\\evidence\\P02-U08\\20261004-02\\inputs-pre.json",
+        "--extra",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup\\migrations\\001-event-store.ts"
+      ],
+      "category": "binding-evidence",
+      "note": ""
+    },
+    {
+      "file": "10-binding-post.json",
+      "archived_path": "commands/10-binding-post.json",
+      "bytes": 2646,
+      "sha256": "a9e84db043140b0e43fa03c4ae26675c4e301b199eef91027c50e9ff39ebd7f6",
+      "exit_code": 0,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup\\evidence\\P02-U08\\20261004-02\\capture-bindings.mjs",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup\\evidence\\P02-U08\\20261004-02\\dependencies-post.json"
+      ],
+      "category": "binding-evidence",
+      "note": ""
+    }
+  ]
+}

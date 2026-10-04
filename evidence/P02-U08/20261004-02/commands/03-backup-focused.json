@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "packages/storage/backup/test/backup.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup",
+  "started_at": "2026-10-04T06:38:26.530588+00:00",
+  "completed_at": "2026-10-04T06:38:28.905557+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 600,
+  "environment_overrides": {},
+  "stdout": "(node:34884) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n✔ empty v0 is backed up as empty v0 before the source initializes to v1 (56.3157ms)\n✔ active-WAL v1 snapshot restores committed facts, observations, writer receipts and capture hashes (194.3915ms)\n✔ backup publication never replaces a pre-existing name (62.8881ms)\n▶ a real COMMIT followed by a lost acknowledgement is read back or reported unresolved without replay\n  ✔ verified readback resolves the committed migration as success (22.5564ms)\n  ✔ unavailable readback reports unresolved and preserves the verified snapshot (18.4967ms)\n✔ a real COMMIT followed by a lost acknowledgement is read back or reported unresolved without replay (41.6047ms)\n▶ future schema and non-empty v0 user objects are refused without changing source main or WAL bytes\n  ✔ future schema (26.2063ms)\n  ✔ non-empty v0 table and view (22.926ms)\n✔ future schema and non-empty v0 user objects are refused without changing source main or WAL bytes (49.5287ms)\n✔ a second SQLite BEGIN IMMEDIATE makes maintenance return bounded BUSY before backup or DDL (292.3884ms)\n✔ a controlled deadline aborts the real SQLite backup progress callback before v0 DDL (1031.503ms)\n✔ backup checks the deadline after the real Better transfer resolves without a final progress callback (13.0093ms)\n✔ restore checks the deadline after the real Better transfer and does not publish a new root database (26.6106ms)\n✔ real SQLite SQLITE_FULL during migration preserves v0 and the already published backup (16.0253ms)\n▶ an owned worker killed immediately before or after COMMIT reopens as valid v0 or v1 with a usable v0 backup\n  ✔ before COMMIT (124.1054ms)\n  ✔ after COMMIT (114.364ms)\n✔ an owned worker killed immediately before or after COMMIT reopens as valid v0 or v1 with a usable v0 backup (238.9223ms)\nℹ tests 17\nℹ suites 0\nℹ pass 17\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2306.8522\n",
+  "stderr": ""
+}

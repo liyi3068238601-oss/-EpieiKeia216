@@ -1,8 +1,8 @@
 import { createHash } from "node:crypto";
 import { constants as fsConstants, createReadStream } from "node:fs";
 import { access, link, lstat, mkdir, mkdtemp, realpath, rm, stat } from "node:fs/promises";
-import { backup, DatabaseSync } from "node:sqlite";
 import path from "node:path";
+import { openSQLiteConnection, type SQLiteConnection } from "../../events/src/sqlite.js";
 import {
   canonicalizeEventFacts,
   canonicalizeJson,
@@ -180,14 +180,19 @@ export async function backupAndMigrateEventStore(input: BackupAndMigrateOptions)
     let deadlineExceeded = false;
     const startedAt = performance.now();
     try {
-      await backup(backupSource, stagedBackupPath, {
+      await backupSource.backup(stagedBackupPath, {
         progress: () => {
           if (performance.now() - startedAt >= options.deadline.value) {
             deadlineExceeded = true;
             throw new Error("cooperative SQLite backup deadline reached");
           }
+          return 100;
         },
       });
+      if (performance.now() - startedAt >= options.deadline.value) {
+        deadlineExceeded = true;
+        throw new Error("SQLite backup completed after its deadline");
+      }
     } catch (error) {
       backupFailure = error;
     }
@@ -347,14 +352,19 @@ export async function restoreEventStoreBackup(input: RestoreBackupOptions): Prom
     let deadlineExceeded = false;
     const startedAt = performance.now();
     try {
-      await backup(source, stagedPath, {
+      await source.backup(stagedPath, {
         progress: () => {
           if (performance.now() - startedAt >= options.deadline.value) {
             deadlineExceeded = true;
             throw new Error("cooperative SQLite restore deadline reached");
           }
+          return 100;
         },
       });
+      if (performance.now() - startedAt >= options.deadline.value) {
+        deadlineExceeded = true;
+        throw new Error("SQLite restore completed after its deadline");
+      }
     } catch (error) {
       failure = error;
     }
@@ -494,7 +504,7 @@ async function verifyDatabase(databasePath: string, stage: BackupMaintenanceStag
   }
 }
 
-function verifyEmptyV0(database: DatabaseSync, stage: BackupMaintenanceStage): InternalVerification {
+function verifyEmptyV0(database: SQLiteConnection, stage: BackupMaintenanceStage): InternalVerification {
   const objects = listUserObjects(database);
   if (objects.length !== 0) throw maintenanceError("UNSUPPORTED_SCHEMA", stage, "schema version 0 database is not empty");
   const integrityCheck = readIntegrityCheck(database, stage);
@@ -515,7 +525,7 @@ function verifyEmptyV0(database: DatabaseSync, stage: BackupMaintenanceStage): I
   });
 }
 
-async function verifyV1(databasePath: string, database: DatabaseSync, stage: BackupMaintenanceStage): Promise<InternalVerification> {
+async function verifyV1(databasePath: string, database: SQLiteConnection, stage: BackupMaintenanceStage): Promise<InternalVerification> {
   const integrityCheck = readIntegrityCheck(database, stage);
   if (database.prepare("PRAGMA foreign_key_check").all().length !== 0) {
     throw maintenanceError("CORRUPT_DATABASE", stage, "event store has foreign key violations");
@@ -616,7 +626,7 @@ async function verifyV1(databasePath: string, database: DatabaseSync, stage: Bac
   }
 }
 
-function verifyOrigins(database: DatabaseSync, stage: BackupMaintenanceStage, expectedCount: number): ContentDigest {
+function verifyOrigins(database: SQLiteConnection, stage: BackupMaintenanceStage, expectedCount: number): ContentDigest {
   const digest = createDigestBuilder();
   const rows = database.prepare(`
     SELECT eo.source, eo.event_id, eo.first_observation_key,
@@ -643,7 +653,7 @@ function verifyOrigins(database: DatabaseSync, stage: BackupMaintenanceStage, ex
   return digest.finish();
 }
 
-function verifyMaterials(database: DatabaseSync, stage: BackupMaintenanceStage, expectedCount: number): ContentDigest {
+function verifyMaterials(database: SQLiteConnection, stage: BackupMaintenanceStage, expectedCount: number): ContentDigest {
   const digest = createDigestBuilder();
   const rows = database.prepare(`
     SELECT observation_key, schema_version, session_id, turn_id, hook_event_name,
@@ -676,7 +686,7 @@ function verifyMaterials(database: DatabaseSync, stage: BackupMaintenanceStage, 
   return digest.finish();
 }
 
-function validateWriterState(database: DatabaseSync, observationCount: number, stage: BackupMaintenanceStage): void {
+function validateWriterState(database: SQLiteConnection, observationCount: number, stage: BackupMaintenanceStage): void {
   const row = database.prepare("SELECT singleton, last_commit_sequence FROM writer_state WHERE singleton = 1").get() as
     Record<string, unknown> | undefined;
   const maxRow = database.prepare("SELECT COALESCE(MAX(commit_sequence), 0) AS maximum FROM event_observations").get() as
@@ -689,11 +699,11 @@ function validateWriterState(database: DatabaseSync, observationCount: number, s
 }
 
 function assertSchemaV1(
-  database: DatabaseSync,
+  database: SQLiteConnection,
   actualObjects: readonly Record<string, unknown>[],
   stage: BackupMaintenanceStage,
 ): void {
-  const expected = new DatabaseSync(":memory:");
+  const expected = openSQLiteConnection(":memory:", { readonly: false, timeout: SQLITE_BUSY_TIMEOUT_MS });
   try {
     expected.exec(EVENT_STORE_SCHEMA_V1);
     const expectedObjects = listUserObjects(expected);
@@ -716,20 +726,17 @@ function schemaSignature(objects: readonly Record<string, unknown>[]): string {
   })).sort((left, right) => `${left.type}/${left.name}`.localeCompare(`${right.type}/${right.name}`)) as unknown as JsonValue);
 }
 
-function listUserObjects(database: DatabaseSync): Record<string, unknown>[] {
+function listUserObjects(database: SQLiteConnection): Record<string, unknown>[] {
   return database.prepare(`
     SELECT type, name, tbl_name, sql FROM sqlite_schema
     WHERE substr(name, 1, 7) <> 'sqlite_' ORDER BY type, name
   `).all() as unknown as Record<string, unknown>[];
 }
 
-function openCoordinator(databasePath: string, stage: BackupMaintenanceStage): DatabaseSync {
-  let database: DatabaseSync | undefined;
+function openCoordinator(databasePath: string, stage: BackupMaintenanceStage): SQLiteConnection {
+  let database: SQLiteConnection | undefined;
   try {
-    database = new DatabaseSync(databasePath, {
-      enableForeignKeyConstraints: true,
-      timeout: SQLITE_BUSY_TIMEOUT_MS,
-    });
+    database = openSQLiteConnection(databasePath, { readonly: false, timeout: SQLITE_BUSY_TIMEOUT_MS });
     database.exec("PRAGMA foreign_keys = ON; PRAGMA busy_timeout = 180; PRAGMA synchronous = FULL;");
     return database;
   } catch (error) {
@@ -738,14 +745,10 @@ function openCoordinator(databasePath: string, stage: BackupMaintenanceStage): D
   }
 }
 
-function openReadOnly(databasePath: string, stage: BackupMaintenanceStage): DatabaseSync {
-  let database: DatabaseSync | undefined;
+function openReadOnly(databasePath: string, stage: BackupMaintenanceStage): SQLiteConnection {
+  let database: SQLiteConnection | undefined;
   try {
-    database = new DatabaseSync(databasePath, {
-      readOnly: true,
-      enableForeignKeyConstraints: true,
-      timeout: SQLITE_BUSY_TIMEOUT_MS,
-    });
+    database = openSQLiteConnection(databasePath, { readonly: true, timeout: SQLITE_BUSY_TIMEOUT_MS });
     database.exec("PRAGMA foreign_keys = ON; PRAGMA busy_timeout = 180;");
     return database;
   } catch (error) {
@@ -754,7 +757,7 @@ function openReadOnly(databasePath: string, stage: BackupMaintenanceStage): Data
   }
 }
 
-function readIntegrityCheck(database: DatabaseSync, stage: BackupMaintenanceStage): "ok" {
+function readIntegrityCheck(database: SQLiteConnection, stage: BackupMaintenanceStage): "ok" {
   const rows = database.prepare("PRAGMA integrity_check").all() as unknown as Record<string, unknown>[];
   if (rows.length !== 1 || rows[0]?.integrity_check !== "ok") {
     throw maintenanceError("CORRUPT_DATABASE", stage, "SQLite integrity_check did not return exactly ok");
@@ -762,14 +765,14 @@ function readIntegrityCheck(database: DatabaseSync, stage: BackupMaintenanceStag
   return "ok";
 }
 
-function pragmaCount(database: DatabaseSync, table: string, stage: BackupMaintenanceStage): number {
+function pragmaCount(database: SQLiteConnection, table: string, stage: BackupMaintenanceStage): number {
   const allowed = new Set(["events", "event_observations", "event_origins", "event_receipts", "transcript_materials"]);
   if (!allowed.has(table)) throw maintenanceError("CORRUPT_DATABASE", stage, "internal table count request is invalid");
   const row = database.prepare(`SELECT COUNT(*) AS count FROM ${table}`).get() as Record<string, unknown> | undefined;
   return requireInteger(row?.count, `${table}.count`, stage);
 }
 
-function pragmaInteger(database: DatabaseSync, pragma: "user_version", stage: BackupMaintenanceStage): number {
+function pragmaInteger(database: SQLiteConnection, pragma: "user_version", stage: BackupMaintenanceStage): number {
   const row = database.prepare(`PRAGMA ${pragma}`).get() as Record<string, unknown> | undefined;
   return requireInteger(row?.[pragma], `PRAGMA ${pragma}`, stage);
 }
