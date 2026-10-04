@@ -49,7 +49,7 @@ function cloneFacade(base, overrides) {
   return result;
 }
 
-function writeSqliteRuntimeProbe(profileRoot) {
+export function writeSqliteRuntimeProbe(profileRoot) {
   const probeDirectory = process.env.P02_SQLITE_RUNTIME_PROBE_DIR;
   if (probeDirectory === undefined) return;
   if (!path.isAbsolute(probeDirectory)) throw new Error("SQLITE_RUNTIME_PROBE_PATH_INVALID");
@@ -93,8 +93,20 @@ function writeSqliteRuntimeProbe(profileRoot) {
     packageVersion: packageJson.version,
     sqliteVersion,
   };
-  writeFileSync(path.join(physicalDirectory, `${process.pid}.json`), `${JSON.stringify(probe, null, 2)}\n`,
-    { encoding: "utf8", flag: "wx" });
+  const probePath = path.join(physicalDirectory, `${process.pid}.json`);
+  const probeText = `${JSON.stringify(probe, null, 2)}\n`;
+  try {
+    writeFileSync(probePath, probeText, { encoding: "utf8", flag: "wx" });
+  } catch (error) {
+    if (error?.code !== "EEXIST") throw error;
+    const existing = lstatSync(probePath);
+    const resolvedProbePath = realpathSync(probePath);
+    if (!existing.isFile() || existing.isSymbolicLink() ||
+        normalizedPath(resolvedProbePath) !== normalizedPath(probePath) ||
+        !readFileSync(probePath).equals(Buffer.from(probeText, "utf8"))) {
+      throw new Error("SQLITE_RUNTIME_PROBE_CONFLICT");
+    }
+  }
 }
 
 export async function createDurableHost(input) {
