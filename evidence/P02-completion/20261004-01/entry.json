@@ -1,0 +1,27 @@
+{
+  "schema": "p02-completion-remediation/v1",
+  "baseline_commit": "a6695d3dd51b6972bcd256cb4ac6fbc5826042c8",
+  "at_utc": "2026-10-04T03:14:35.912983+00:00",
+  "objective": "Complete P02 against the original plan, preserving historical evidence.",
+  "findings": [
+    {
+      "task": "P02-U09",
+      "requirement": "Safely export command metadata as well as version and error.",
+      "gap": "OwnedNodeRun script identity is discarded before EvidenceReport and diagnostics."
+    },
+    {
+      "task": "P02-U09",
+      "requirement": "Join messages, tools and memory candidates within the turn.",
+      "gap": "Diagnostics flatten Native tool facts into generic fact; no candidate-reference seam."
+    }
+  ],
+  "scope": [
+    "packages/application/evidence",
+    "packages/diagnostics",
+    "tests/integration/P02",
+    "docs/evals/P02",
+    "docs/releases/0.2.0",
+    "new attempt evidence and current status"
+  ],
+  "boundary": "No P03, paid calls, production data, original-plan edits or historical-record replacement."
+}
