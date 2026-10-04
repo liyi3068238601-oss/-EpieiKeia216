@@ -13,7 +13,7 @@
 - 固定 Node 类型检查与构建：no-emit、build 均 exit 0，命令原件为 `04-tsc-noemit.json` 和 `06-tsc-build.json`。边界扫描命令退出 0，但输出 `BOUNDARY_SCAN_NOT_RUN: packages/core is absent`，因此不计为边界检查通过。
 - 同一固定 Node 的前序回归检查：unit 全量 `161/161`、Native 集成 `8/8` 通过，原件为 `fixed-node-unit-161.json` 与 `fixed-node-native-8.json`。这些检查早于最终 harness-only 修复；最终 Desktop 测试以 Candidate-09 为准。
 - Candidate-09 完整 Desktop：6/6（`success`、`read_success`、`read_failure`、`cancel_recovery`、`disabled_native`、`pro_denied`），loopback 模型请求 9 次，外部请求 0 次。degradation：3/3（`no_key`、`no_dsh`、`offline`），loopback 请求 2 次，外部请求 0 次。两套件始终验证同一 descriptor 与 6,717 文件闭包。命令记录为归档中的 `73-candidate-09-build.json`、`74-candidate-09-desktop-full.json`、`75-candidate-09-desktop-degradation.json`；原始摘要与逐场景 sidecar 见相邻索引。
-- 两套最终运行各自选取的 9 个注册表键的完整键快照，在 suite 开始与结束时 SHA-256 相同：`f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1`。关闭 Native 的场景没有事件 ledger 和 SQLite probe，按 `not_instantiated` 记录，不作为 addon 加载证明。
+- 两套最终运行各自选取的 9 个注册表键的完整键快照，在 suite 开始与结束时 SHA-256 相同：`f7271757a866ad841238ecad6b467c0c663c0e32c1a966976179b24e539cb9c1`。`disabled_native` 场景设置 `P01_U10_GATE_MODE=disabled` 并绕过 P02 durable wrapper；Native fallback 仍运行并完成两次 loopback 请求。`not instantiated` 仅指没有实例化 P02 ledger 和 binding probe，不表示 Native 未运行，也不作为 addon 加载证明。
 
 Candidate-07 offline 历史失败原件保留：同一 PID 重入触发运行时 probe 的 `EEXIST`，阻止了恢复，因此该次不构成 offline degradation 结论。Candidate-08 完整套件的 success 场景在 API-key 页面已切换到 Native onboarding 后发生 locator 超时；此失败不覆盖 Candidate-09。Candidate-09 正常通过，但没有观察到新超时转换分支被触发。对应 command、场景原件、descriptor 和 source-only 调查均已归档。
 
