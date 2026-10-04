@@ -1,0 +1,99 @@
+{
+  "schema": "p02-u02-review-negative-cases/v1",
+  "status": "pass",
+  "runtime": {
+    "executable": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "node": "v24.14.0",
+    "napi": "10",
+    "platform": "win32",
+    "arch": "x64",
+    "binding": "better-sqlite3@13.0.3"
+  },
+  "cases": [
+    {
+      "name": "read-only open of a missing database creates no files",
+      "status": "pass",
+      "details": {
+        "errorCode": "SQLITE_CANTOPEN",
+        "databaseAndSidecarsRemainAbsent": true
+      }
+    },
+    {
+      "name": "new WAL database creates its file; main-file-only copy misses committed WAL row",
+      "status": "pass",
+      "details": {
+        "writableOpenCreatedFile": true,
+        "liveWalBytes": 4152,
+        "mainOnlyCopyRows": 0,
+        "onlineBackupRows": 1,
+        "backupRemainingPages": 0,
+        "rule": "offline-copy the complete DB/WAL/SHM set or use SQLite online backup"
+      }
+    },
+    {
+      "name": "safe integer rejection covers get and all for unsafe default and exact BigInt reads",
+      "status": "pass",
+      "details": {
+        "defaultGet": 9007199254740992,
+        "defaultAll": 9007199254740992,
+        "safeIntegersGet": "9007199254740993",
+        "safeIntegersAll": "9007199254740993",
+        "unsafeGetAndAllRejected": true,
+        "maximumSafeAccepted": 9007199254740991
+      }
+    },
+    {
+      "name": "commit followed by lost application acknowledgement reconciles without replay",
+      "status": "pass",
+      "details": {
+        "childExit": {
+          "code": 79,
+          "signal": null
+        },
+        "stdout": "",
+        "stderr": "",
+        "readback": {
+          "facts": 1,
+          "origins": 1,
+          "receipts": 1
+        },
+        "identicalRetry": "duplicate",
+        "changedPayload": "conflict",
+        "rowsAfterReconciliation": {
+          "facts": 1,
+          "origins": 1,
+          "receipts": 1
+        },
+        "limit": "controlled process exit after COMMIT before acknowledgement; not physical power loss"
+      }
+    },
+    {
+      "name": "backup to an existing destination replaces prior content",
+      "status": "pass",
+      "details": {
+        "error": null,
+        "destinationBefore": {
+          "bytes": 8192,
+          "sha256": "5975717694c915c1738d85eabe658d920ada510ad680a492f274c7b40b7d8309"
+        },
+        "destinationAfter": {
+          "bytes": 8192,
+          "sha256": "b832089b3108753f653edcd22eb71b63bac97598c6ff25ad3295f592cbe24185"
+        },
+        "sourceTablePresent": true,
+        "oldMarkerPresent": false,
+        "implication": "use a unique staged file and an explicit no-clobber publish step"
+      }
+    }
+  ],
+  "counts": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "limits": [
+    "All database files and the child process were confined to this review directory.",
+    "The range-checked helper mirrors the spike rule; no product driver is implemented in this spike.",
+    "The lost-ack worker is a controlled process exit after COMMIT, not hardware power loss."
+  ]
+}

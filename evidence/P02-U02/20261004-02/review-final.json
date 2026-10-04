@@ -1,0 +1,752 @@
+{
+  "schema": "p02-independent-review/v1",
+  "decision": "pass",
+  "review_target": {
+    "author_commit": "41395427182ecfdd5480da7ccaac4fccd4186249",
+    "baseline_commit": "4163f5c5d1df93878bbfd2ecd85ab98cf9e919e2",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-spike"
+  },
+  "attempt": "20261004-02",
+  "author_manifest_sha256": "6cc875a086a1474fbbcc1c4a9465b7e27339aaa1ec06ec72af18ff02781e5054",
+  "artifacts": [
+    {
+      "path": "docs/adr/P02-reuse.md",
+      "root": "author_worktree",
+      "bytes": 9701,
+      "sha256": "96e0d83b02f4c827c1c8bb040aa895edb1cff039c6b48f828d56e3e796b46261"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/baseline.json",
+      "root": "author_worktree",
+      "bytes": 1153,
+      "sha256": "2d2b775a85afc4031efe6d753fa651662062c86e44ef51181656ea6581124fe8"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/diff.json",
+      "root": "author_worktree",
+      "bytes": 3356,
+      "sha256": "184b670cbd761b08467354deae6a2576246fadf811c31390b15b6a8885c7791d"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/manifest.json",
+      "root": "author_worktree",
+      "bytes": 2879,
+      "sha256": "6cc875a086a1474fbbcc1c4a9465b7e27339aaa1ec06ec72af18ff02781e5054"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/restore-probe-sidecars.py",
+      "root": "author_worktree",
+      "bytes": 3079,
+      "sha256": "06d4bc6cb48b3e58407fac6df186f07598d7edc42bd062dffa2079b048eb1913"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/result.md",
+      "root": "author_worktree",
+      "bytes": 8250,
+      "sha256": "31d0dd9f5641c863cbfd061af4a29288fefe6c31b88c4bbb2b2b4a2801aa8c6c"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/sidecar-cleanup.json",
+      "root": "author_worktree",
+      "bytes": 2215,
+      "sha256": "37ab8f14482ef0cb02d8024fcedc55797dab8edd46fc7ae11b1e0cbb96266977"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/spike-result-final.json",
+      "root": "author_worktree",
+      "bytes": 15437,
+      "sha256": "3aee0d90950ce0788a89c7ccbf57bbcfe13b32b732d72d7fbb5b6c39353691bf"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/spike-result-run-03.json",
+      "root": "author_worktree",
+      "bytes": 15437,
+      "sha256": "b0805d7afc89bce554f44af7a1778e412e24d3d10a0b384a582e56f8af84a73f"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/spike-result-run-05-final.json",
+      "root": "author_worktree",
+      "bytes": 15514,
+      "sha256": "1ab3ecdbcdefca6de2bbffaa52e8a69bda10a95062feca761fd9039c8f393469"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/spike-result.json",
+      "root": "author_worktree",
+      "bytes": 12448,
+      "sha256": "d3a807d92cfff80253f536c4f9948ad5976c03c533da42a5fc446e1eba83e40d"
+    },
+    {
+      "path": "spikes/P02/mature-sqlite/mature-sqlite-spike.mjs",
+      "root": "author_worktree",
+      "bytes": 36101,
+      "sha256": "be22c1710914bae744a3674d7413efb3e89ceb86d1fcbd66f167cdf1e8660777"
+    },
+    {
+      "path": "author-records/commands/mature-sqlite/20261004-02-check-01.json",
+      "root": "review_directory",
+      "bytes": 559,
+      "sha256": "6189e55b30011e8c05b975dbe4ffbe761d4888f1048789bf8b10390a211353df"
+    },
+    {
+      "path": "author-records/commands/mature-sqlite/20261004-02-cleanup-sidecars.json",
+      "root": "review_directory",
+      "bytes": 2688,
+      "sha256": "986f7e5a69d0e8846349ecc6e12f3439a972704c3467e3be0d17bdc88c681aad"
+    },
+    {
+      "path": "author-records/commands/mature-sqlite/20261004-02-run-01.json",
+      "root": "review_directory",
+      "bytes": 2986,
+      "sha256": "65c6b0201cd050388a64aac457497912ba240a1ef673c3bf2fb374d6c7a766a1"
+    },
+    {
+      "path": "author-records/commands/mature-sqlite/20261004-02-run-02.json",
+      "root": "review_directory",
+      "bytes": 12081,
+      "sha256": "72c5290b6a9a1cc126609e63c332b0e05b9742f65156b39b3e870a8dd2940aca"
+    },
+    {
+      "path": "author-records/commands/mature-sqlite/20261004-02-run-03.json",
+      "root": "review_directory",
+      "bytes": 14718,
+      "sha256": "1ffd3a6a46ac850155b95e7c575268159498c9ab3160c1207a3b1c82f3f05400"
+    },
+    {
+      "path": "author-records/commands/mature-sqlite/20261004-02-run-04-final.json",
+      "root": "review_directory",
+      "bytes": 14717,
+      "sha256": "c6681cce1bd9387607cbeb5a70524c9c7f118df75cd1b33b7ef3ed77e7277354"
+    },
+    {
+      "path": "author-records/commands/mature-sqlite/20261004-02-run-05-final.json",
+      "root": "review_directory",
+      "bytes": 14793,
+      "sha256": "42c5583ddd0b66a4e0195a7e1957405d9625addbf6895f35afaf60e5b67af1fd"
+    },
+    {
+      "path": "author-records/copy-manifest.json",
+      "root": "review_directory",
+      "bytes": 6860,
+      "sha256": "a65409edf4c6b577c1bd8c35a5b9f86cb3e24d1e2cc7ad71616642c2adf7a9fb"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/01-install.json",
+      "root": "review_directory",
+      "bytes": 1383,
+      "sha256": "8655ec58e0d8231061c62583e467fd68eeed54738270bc3be8e3a4b0579b08e5"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/install/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/database.js",
+      "root": "review_directory",
+      "bytes": 4729,
+      "sha256": "539315c97591561394d2a0f257632305c3af1e32915a123aa8cc9032056d8ae2"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/install/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/backup.js",
+      "root": "review_directory",
+      "bytes": 2380,
+      "sha256": "ea29d34992bb02e006d0fdeda9675ac5d2bb227aaf57468decd997e9fc9c7dbf"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/install/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/transaction.js",
+      "root": "review_directory",
+      "bytes": 2855,
+      "sha256": "40b71d6113f328f96cec8f6f888ffddd98b5926d38fb1e2746939c7daba93e2e"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/install/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/package.json",
+      "root": "review_directory",
+      "bytes": 1838,
+      "sha256": "6c9ea355190dfce3646ad4d2a31c9506de36d884a6461b3655a2a0c4ba3d1695"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/install/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/prebuilds/win32-x64.node",
+      "root": "review_directory",
+      "bytes": 1989632,
+      "sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/install/package.json",
+      "root": "review_directory",
+      "bytes": 129,
+      "sha256": "86bc982360397ee3dcfc073d554d2692307a362a5f6e5c1375dbb083b800f45d"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/install/pnpm-lock.yaml",
+      "root": "review_directory",
+      "bytes": 694,
+      "sha256": "d9e9f415450feddb03d0b57988d98702a32ed0574dc466342a50a53750555851"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/research/api.txt",
+      "root": "review_directory",
+      "bytes": 37019,
+      "sha256": "431af144849de4a332e3719406f2787764923546203ec871acaef1609bf6f39f"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/research/backup.txt",
+      "root": "review_directory",
+      "bytes": 2380,
+      "sha256": "ea29d34992bb02e006d0fdeda9675ac5d2bb227aaf57468decd997e9fc9c7dbf"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/research/database.txt",
+      "root": "review_directory",
+      "bytes": 4729,
+      "sha256": "539315c97591561394d2a0f257632305c3af1e32915a123aa8cc9032056d8ae2"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/research/index.json",
+      "root": "review_directory",
+      "bytes": 1163,
+      "sha256": "a81141ee0f9fcd81d68bf7797126a54e260ec23021df2b251e2759c26847d99b"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/research/license.txt",
+      "root": "review_directory",
+      "bytes": 1078,
+      "sha256": "09856b52897c91ab67e7456ef43067019f31dfd3b87fda72e655736b1ebdee55"
+    },
+    {
+      "path": "author-records/experiments/mature-sqlite-spike/research/package.json",
+      "root": "review_directory",
+      "bytes": 1838,
+      "sha256": "6c9ea355190dfce3646ad4d2a31c9506de36d884a6461b3655a2a0c4ba3d1695"
+    },
+    {
+      "path": "author-records/upstream-tests/10.database.open.js",
+      "root": "review_directory",
+      "bytes": 8750,
+      "sha256": "184cff7188db45c4e4e8fabb7318be5e715f9132e440e27bef102c8a7798b000"
+    },
+    {
+      "path": "author-records/upstream-tests/30.database.transaction.js",
+      "root": "review_directory",
+      "bytes": 7717,
+      "sha256": "7b5d7bec2423e6642183b2c6293843a51d8e4b67c3d307e0a17ae8f2d2fe37c7"
+    },
+    {
+      "path": "author-records/upstream-tests/36.database.backup.js",
+      "root": "review_directory",
+      "bytes": 10197,
+      "sha256": "d9ad67b47aacf68895bd0faff55a78d6ec8c688c967e360debf46a8b09ea8e80"
+    },
+    {
+      "path": "author-records/upstream-tests/40.bigints.js",
+      "root": "review_directory",
+      "bytes": 7568,
+      "sha256": "c47020ff78effea1f67003e4a97c441dd6815323948745e1dde5e31e987fbcee"
+    },
+    {
+      "path": "author-records/upstream-tests/index.json",
+      "root": "review_directory",
+      "bytes": 1164,
+      "sha256": "29e0324ae1bc68372786c98fe2226e5d729fab815984065c21614afb9215b125"
+    },
+    {
+      "path": "author-verification.json",
+      "root": "review_directory",
+      "bytes": 568,
+      "sha256": "cb14e3343aac5184b1121188c5c8a5bfa7d55dadee90b7d7239415f9eed83f6d"
+    },
+    {
+      "path": "build-review-final.py",
+      "root": "review_directory",
+      "bytes": 11604,
+      "sha256": "a06c78e624b4dcd56de5e130027f49cd3a14072ae491a3d802e5e0cbffb2bc41"
+    },
+    {
+      "path": "independent-01/command.json",
+      "root": "review_directory",
+      "bytes": 15055,
+      "sha256": "b9b1e61de1d7b46adee9e2e8dfa4710a32e5e81ff4186643329f942f6f7e824c"
+    },
+    {
+      "path": "independent-01/data/busy.sqlite",
+      "root": "review_directory",
+      "bytes": 8192,
+      "sha256": "74fd5ab6f7794234528f796aa3ba1bce0a898e12f16739e908cf434604d4dfa0"
+    },
+    {
+      "path": "independent-01/data/identity.sqlite",
+      "root": "review_directory",
+      "bytes": 8192,
+      "sha256": "91c756274be2b86fb00e76ed885af4d4218d930ff3dd292e10c31237a1556d53"
+    },
+    {
+      "path": "independent-01/data/integer-precision.sqlite",
+      "root": "review_directory",
+      "bytes": 8192,
+      "sha256": "ff68f64b0cc993b02bad3e56146841fdbdced6ec6c4aadc3415f4b2fab15c123"
+    },
+    {
+      "path": "independent-01/data/kill-after.sqlite",
+      "root": "review_directory",
+      "bytes": 28672,
+      "sha256": "146a6383e15f08e7ac35a9c2d9aa574cdfd9eda7daba1e396cfe908c92f5d7f9"
+    },
+    {
+      "path": "independent-01/data/kill-before.sqlite",
+      "root": "review_directory",
+      "bytes": 28672,
+      "sha256": "9cf003ff07d281e789b217287b38f571f044775b2fd94687bf28b8e9b23123b4"
+    },
+    {
+      "path": "independent-01/data/node-backup-of-binding.sqlite",
+      "root": "review_directory",
+      "bytes": 106496,
+      "sha256": "2ff3463f361dcad8096f8874d5c6d8c12a6d29e0c379bda67fed12576e2964fb"
+    },
+    {
+      "path": "independent-01/data/node-backup-of-binding.sqlite-shm",
+      "root": "review_directory",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "independent-01/data/node-backup-of-binding.sqlite-wal",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "independent-01/data/node-v1-copy.sqlite",
+      "root": "review_directory",
+      "bytes": 114688,
+      "sha256": "1cdd24b71853bbabdb7effce0bdf5cdbc528dcbf12e44978bb83092e53123f3b"
+    },
+    {
+      "path": "independent-01/data/node-v1-copy.sqlite-shm",
+      "root": "review_directory",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "independent-01/data/node-v1-copy.sqlite-wal",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "independent-01/data/node-v1-source.sqlite",
+      "root": "review_directory",
+      "bytes": 98304,
+      "sha256": "7b5960a4ba289203b36694368f675a642d5c28062b969f2a9ce4a7b9190aa8c2"
+    },
+    {
+      "path": "independent-01/data/node-v1-source.sqlite-shm",
+      "root": "review_directory",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "independent-01/data/node-v1-source.sqlite-wal",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "independent-01/data/readonly.sqlite",
+      "root": "review_directory",
+      "bytes": 8192,
+      "sha256": "12e91ccaeb950eca039dddade22af37256352627d5449d13e50e9cc2f25e87ca"
+    },
+    {
+      "path": "independent-01/data/wal-live.sqlite",
+      "root": "review_directory",
+      "bytes": 819200,
+      "sha256": "0c9073a80b057156f917caf5ad32ebec05781e9712836d60c0105cea997b31ab"
+    },
+    {
+      "path": "independent-01/data/wal-restored.sqlite",
+      "root": "review_directory",
+      "bytes": 819200,
+      "sha256": "e8514a7b19a74ce2bc29b6f2a7dfa097f63416d03d862c9a29626c71a433f335"
+    },
+    {
+      "path": "independent-01/data/wal-restored.sqlite-shm",
+      "root": "review_directory",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "independent-01/data/wal-restored.sqlite-wal",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "independent-01/data/wal-snapshot.sqlite",
+      "root": "review_directory",
+      "bytes": 819200,
+      "sha256": "e8514a7b19a74ce2bc29b6f2a7dfa097f63416d03d862c9a29626c71a433f335"
+    },
+    {
+      "path": "independent-01/data/wal-snapshot.sqlite-shm",
+      "root": "review_directory",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "independent-01/data/wal-snapshot.sqlite-wal",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "independent-01/spike-result.json",
+      "root": "review_directory",
+      "bytes": 15462,
+      "sha256": "5ba52edeffb1b57cee876d173a02433d865a81594f5ed014d9346c3526878f2f"
+    },
+    {
+      "path": "independent-01/stderr.txt",
+      "root": "review_directory",
+      "bytes": 171,
+      "sha256": "08fd19a5b580f49f36e10840040b9d2e668f38166984e303af958131507a246f"
+    },
+    {
+      "path": "independent-01/stdout.jsonl",
+      "root": "review_directory",
+      "bytes": 12133,
+      "sha256": "8a41067b04007d5e7dc1606b39ca5a2d3979ef54d90b70f0151019f2fdadfaea"
+    },
+    {
+      "path": "negative-command.json",
+      "root": "review_directory",
+      "bytes": 1098,
+      "sha256": "1b0bfd160282a6e5b0a2ec2de758f715d782b8d607a7b980d97e5183b05843e2"
+    },
+    {
+      "path": "negative-data/backup-existing-target.sqlite",
+      "root": "review_directory",
+      "bytes": 8192,
+      "sha256": "b832089b3108753f653edcd22eb71b63bac97598c6ff25ad3295f592cbe24185"
+    },
+    {
+      "path": "negative-data/backup-source.sqlite",
+      "root": "review_directory",
+      "bytes": 8192,
+      "sha256": "ad2abdfd1b9732ab5f51512fe0bda1f102d2aabb3e2b2fca9e8025ee68a0ccec"
+    },
+    {
+      "path": "negative-data/bigint-get-all.sqlite",
+      "root": "review_directory",
+      "bytes": 8192,
+      "sha256": "1afad0cea6b03c85dd13eaa93c72c084e9c22d0cd95aba65270b40499dd64582"
+    },
+    {
+      "path": "negative-data/lost-ack.sqlite",
+      "root": "review_directory",
+      "bytes": 16384,
+      "sha256": "947c0595e4c65e54ae8acf4e20c68c37fdc3d218bd91579b69878f0a18ecbcfa"
+    },
+    {
+      "path": "negative-data/main-only-copy.sqlite",
+      "root": "review_directory",
+      "bytes": 8192,
+      "sha256": "605adf800e552d29614de6e48e775d7e04f4fe0486f6604016fda090c708a4cd"
+    },
+    {
+      "path": "negative-data/new-wal.sqlite",
+      "root": "review_directory",
+      "bytes": 8192,
+      "sha256": "14d293907e9ba57aa21986d6cc5dcc24dbbe0f950cbbadd0f9bd21c0d55162d0"
+    },
+    {
+      "path": "negative-data/online-backup.sqlite",
+      "root": "review_directory",
+      "bytes": 8192,
+      "sha256": "a257c4dbf7df7faedb2b4f2fb115671f86f495c609a3a04028f88347bbc78eca"
+    },
+    {
+      "path": "negative-data/online-backup.sqlite-shm",
+      "root": "review_directory",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "negative-data/online-backup.sqlite-wal",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "negative-result.json",
+      "root": "review_directory",
+      "bytes": 3111,
+      "sha256": "f91ae2f84c43d2aab3fc6fb3bed359e2352f579d101f8736bf4056b1736ce068"
+    },
+    {
+      "path": "negative-stderr.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "negative-stdout.jsonl",
+      "root": "review_directory",
+      "bytes": 2331,
+      "sha256": "4476e1fdcf940cad5f66cb9b5277d49b6dd2c6d11c7091bf4c4aca3729670c0f"
+    },
+    {
+      "path": "post-run-inputs.json",
+      "root": "review_directory",
+      "bytes": 2856,
+      "sha256": "07556252ed802dae84381d721e5eabeadbbb9ae5b09f98f94a52f71f361eedf0"
+    },
+    {
+      "path": "reviewer-negative-cases.mjs",
+      "root": "review_directory",
+      "bytes": 13249,
+      "sha256": "7ccd659f446128100d6e3012dbbafa9b6281a0562e72b26cb744f52e70d1bd0a"
+    },
+    {
+      "path": "run-independent-01.ps1",
+      "root": "review_directory",
+      "bytes": 2271,
+      "sha256": "e4ddcc62fd00d905384c02506e2226b704c2576036b50a915a177447d001f575"
+    },
+    {
+      "path": "run-negative-cases.ps1",
+      "root": "review_directory",
+      "bytes": 1644,
+      "sha256": "9a42a52efb628fee08525b22adbf2daa584515b1dc9ba1cbb309cad0c144e5f8"
+    },
+    {
+      "path": "source-state-after.json",
+      "root": "review_directory",
+      "bytes": 1045,
+      "sha256": "99a1a38ef481e9a04c238a1757a8e06c3b443eef5c11753fb71a5164f390f59a"
+    },
+    {
+      "path": "source-state-before.json",
+      "root": "review_directory",
+      "bytes": 1045,
+      "sha256": "d41c67302e5453ee45ad54d7f22e961c729b0b3d9737b0a0f9cf99289c1960d0"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U02.md",
+      "root": "baseline_repository",
+      "bytes": 2825,
+      "sha256": "6bdf8ad7f6d7ed5d6d1aa56e3b400f6120ab2d64d06fc1a8e13705aefe4e53d0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U05.md",
+      "root": "baseline_repository",
+      "bytes": 1936,
+      "sha256": "1e43db642edc3d6d2229f199789c4c8b494fe50ad95d3c73215b708835c02b99"
+    },
+    {
+      "path": "docs/research/P02/sqlite-reuse.md",
+      "root": "baseline_repository",
+      "bytes": 8665,
+      "sha256": "82ccfcfb3f65b4edcd062a2cc04ddb1498d3458ec5d6fb11636f5a137400a4b6"
+    },
+    {
+      "path": "docs/adr/P02-reuse.md",
+      "root": "baseline_repository",
+      "bytes": 6041,
+      "sha256": "dcb2f3eb461423947652db04ff2e846e3f27fa4dfc1534953d3a27d9ff7d2541"
+    },
+    {
+      "path": "packages/storage/events/src/index.ts",
+      "root": "baseline_repository",
+      "bytes": 58109,
+      "sha256": "04f4ecc5f54122dbfa14eff2de982cb3f81967f6d41b205d1694d24127eb9545"
+    },
+    {
+      "path": "packages/storage/backup/src/index.ts",
+      "root": "baseline_repository",
+      "bytes": 41646,
+      "sha256": "bcda0776bc2c75ba4a3f39ebc2818b418fd13a9d0bc3f6983c35e64f6491d9c0"
+    },
+    {
+      "path": "evidence/P02/status.json",
+      "root": "baseline_repository",
+      "bytes": 15856,
+      "sha256": "ca9723d960a2584d1aae30fb8559f7d3a1d3807269dc617c81e9ee05e964aa92"
+    },
+    {
+      "path": ".runtime/P02/coord/verify-author.py",
+      "root": "baseline_repository",
+      "bytes": 2672,
+      "sha256": "b5ec83ee2485ac09725c9fe1dc73bfbd454ea026f52a3e0dbcd376e8ae34ab9d"
+    },
+    {
+      "path": ".runtime/P02/coord/verify-review.py",
+      "root": "baseline_repository",
+      "bytes": 1574,
+      "sha256": "569485e5ea2ca44bac5e7e1e1951a2ac643e3798059c83ce801c3217febc3361"
+    },
+    {
+      "path": ".runtime/P02/coord/accept-unit.py",
+      "root": "baseline_repository",
+      "bytes": 5808,
+      "sha256": "2f00239066e49e9d22c41db1e19fd3b630c8df534b12bb65003da8cc62d93644"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/research/index.json",
+      "root": "baseline_repository",
+      "bytes": 1163,
+      "sha256": "a81141ee0f9fcd81d68bf7797126a54e260ec23021df2b251e2759c26847d99b"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/research/package.json",
+      "root": "baseline_repository",
+      "bytes": 1838,
+      "sha256": "6c9ea355190dfce3646ad4d2a31c9506de36d884a6461b3655a2a0c4ba3d1695"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/research/database.txt",
+      "root": "baseline_repository",
+      "bytes": 4729,
+      "sha256": "539315c97591561394d2a0f257632305c3af1e32915a123aa8cc9032056d8ae2"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/research/backup.txt",
+      "root": "baseline_repository",
+      "bytes": 2380,
+      "sha256": "ea29d34992bb02e006d0fdeda9675ac5d2bb227aaf57468decd997e9fc9c7dbf"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/research/api.txt",
+      "root": "baseline_repository",
+      "bytes": 37019,
+      "sha256": "431af144849de4a332e3719406f2787764923546203ec871acaef1609bf6f39f"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/research/license.txt",
+      "root": "baseline_repository",
+      "bytes": 1078,
+      "sha256": "09856b52897c91ab67e7456ef43067019f31dfd3b87fda72e655736b1ebdee55"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/install/package.json",
+      "root": "baseline_repository",
+      "bytes": 129,
+      "sha256": "86bc982360397ee3dcfc073d554d2692307a362a5f6e5c1375dbb083b800f45d"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/install/pnpm-lock.yaml",
+      "root": "baseline_repository",
+      "bytes": 694,
+      "sha256": "d9e9f415450feddb03d0b57988d98702a32ed0574dc466342a50a53750555851"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/install/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/package.json",
+      "root": "baseline_repository",
+      "bytes": 1838,
+      "sha256": "6c9ea355190dfce3646ad4d2a31c9506de36d884a6461b3655a2a0c4ba3d1695"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/install/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/database.js",
+      "root": "baseline_repository",
+      "bytes": 4729,
+      "sha256": "539315c97591561394d2a0f257632305c3af1e32915a123aa8cc9032056d8ae2"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/install/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/backup.js",
+      "root": "baseline_repository",
+      "bytes": 2380,
+      "sha256": "ea29d34992bb02e006d0fdeda9675ac5d2bb227aaf57468decd997e9fc9c7dbf"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/install/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/transaction.js",
+      "root": "baseline_repository",
+      "bytes": 2855,
+      "sha256": "40b71d6113f328f96cec8f6f888ffddd98b5926d38fb1e2746939c7daba93e2e"
+    },
+    {
+      "path": ".runtime/P02/experiments/mature-sqlite-spike/install/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/prebuilds/win32-x64.node",
+      "root": "baseline_repository",
+      "bytes": 1989632,
+      "sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a"
+    },
+    {
+      "path": ".runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe",
+      "root": "baseline_repository",
+      "bytes": 91380224,
+      "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+    },
+    {
+      "path": ".runtime/P02/experiments/completion-u10/full-01/scenarios/success/profile/plugin-storage/data/xiadie@xiadie-local/event-ledger.sqlite",
+      "root": "baseline_repository",
+      "bytes": 98304,
+      "sha256": "7b5960a4ba289203b36694368f675a642d5c28062b969f2a9ce4a7b9190aa8c2"
+    }
+  ],
+  "external_references": [
+    {
+      "url": "https://github.com/WiseLibs/better-sqlite3/releases/tag/v13.0.3",
+      "description": "Official v13.0.3 release page; release identifies commit dbc2ea1."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/WiseLibs/better-sqlite3/dbc2ea1165fef1f599b9be12faea33fa5e9d7ffb/LICENSE",
+      "description": "Pinned upstream MIT license; copyright line dates to 2017."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/WiseLibs/better-sqlite3/dbc2ea1165fef1f599b9be12faea33fa5e9d7ffb/lib/methods/transaction.js",
+      "description": "Pinned upstream transaction implementation; synchronous callbacks are enforced."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/WiseLibs/better-sqlite3/dbc2ea1165fef1f599b9be12faea33fa5e9d7ffb/test/40.bigints.js",
+      "description": "Pinned upstream BigInt tests, retained with hashes under review author-records."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/WiseLibs/better-sqlite3/dbc2ea1165fef1f599b9be12faea33fa5e9d7ffb/test/36.database.backup.js",
+      "description": "Pinned upstream online backup tests, retained with hashes under review author-records."
+    }
+  ],
+  "checks": [
+    {
+      "id": "frozen_author_manifest_scope",
+      "status": "pass",
+      "details": "Author HEAD equals 41395427182ecfdd5480da7ccaac4fccd4186249; baseline is 4163f5c5d1df93878bbfd2ecd85ab98cf9e919e2; verify-author.py succeeded with 11 manifest content files, 12 changed paths, clean worktree, and no disk/Git mismatches. The 12 paths are within the declared spike, ADR, and attempt evidence scope."
+    },
+    {
+      "id": "library_provenance_and_windows_load",
+      "status": "pass",
+      "details": "Pinned better-sqlite3 13.0.3 source commit dbc2ea1165fef1f599b9be12faea33fa5e9d7ffb; official MIT license carries 2017 copyright; package engines require Node >=22 and declare node-addon-api ^8; the fixed Node 24.14.0 runtime reports N-API 10 and actually loaded the package addon on Windows x64 (SHA-256 e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a); better SQLite is 3.53.4, separately from Node builtin SQLite 3.51.2. `install --ignore-scripts` exited 0, package has no install script."
+    },
+    {
+      "id": "independent_spike_replay",
+      "status": "pass",
+      "details": "Frozen author script reran independently in reviewer-owned data/output paths using the pinned Node executable: 9/9 pass, including unique/replay/conflict behavior, transaction rollback/commit process termination, WAL online backup/restore, bounded SQLITE_BUSY/retry, readonly write rejection, integer precision, and native addon load."
+    },
+    {
+      "id": "actual_v1_product_ledger_cross_binding",
+      "status": "pass",
+      "details": "Cross-open used the real synthetic P01/U10 completion-u10/full-01 success ledger with v1 product schema, not the simplified early PoC DB. Before any SQLite open, the DB/WAL/SHM set was copied offline into the independent review directory and the owned copy was hash-checked. Node and better-sqlite3 both read and wrote the product schema; Node SQLite backup captured binding-written WAL, and better read the Node backup. Original source DB SHA-256 remained 7b5960a4ba289203b36694368f675a642d5c28062b969f2a9ce4a7b9190aa8c2 before and after; source WAL and SHM were absent both times."
+    },
+    {
+      "id": "safe_integer_and_open_boundaries",
+      "status": "pass",
+      "details": "Reviewer negative cases prove get() and all() round unsafe default integer 9007199254740993 to 9007199254740992; enabling safe integers preserves exact BigInt and the checked adapter rejects out-of-range values while accepting MAX_SAFE_INTEGER. Readonly open on missing DB returns SQLITE_CANTOPEN without creating DB/WAL/SHM. Writable new WAL DB creates sidecars; main-file-only copy missed the committed WAL row while SQLite backup retained it."
+    },
+    {
+      "id": "lost_ack_busy_readonly_backup_negative_cases",
+      "status": "pass",
+      "details": "Five reviewer-owned negative cases passed. A controlled child exited with code 79 after COMMIT but before acknowledgement; reconciliation read the committed fact/origin/receipt and retry produced duplicate/no-op while changed payload conflicted. This is explicitly process exit, not power loss. A backup to an existing destination replaced prior contents, so future backup publication needs a unique staged file and no-clobber step."
+    },
+    {
+      "id": "addon_and_input_integrity",
+      "status": "pass",
+      "details": "Pre/post package tree stayed 68 files / 27,302,969 bytes / SHA-256 dbd29487bbb8240a462174e84c2f90f4957aae33effcd64e6ce64a6a9569c4bd; actual win32-x64 addon remained SHA-256 e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a. The U10 source ledger and its sidecar absence also remained unchanged."
+    },
+    {
+      "id": "source_index_completeness_note",
+      "status": "pass_with_note",
+      "details": "The author result says the locked upstream transaction implementation and four upstream test files are listed in its research/index.json, but that index records only package.json, database.js, backup.js, api.md, and LICENSE. The installed package does include transaction.js; reviewer independently retrieved and SHA-bound the four exact-commit test files in review author-records/upstream-tests. These upstream tests were reference material and were not executed. This is a non-blocking provenance-index omission; it does not invalidate the locally rerun behavioral evidence."
+    }
+  ],
+  "limitations": [
+    "No upstream development test suite, product implementation tests, or Native Runtime historical 16-test suite were run in this review; the Native 16-test evidence remains historical only.",
+    "All test rows are synthetic. The killed workers and lost-ack process exit establish process-termination behavior only, not physical power loss, storage hardware failure, or production durability guarantees.",
+    "The spike establishes a mature binding candidate and interoperability evidence for the event ledger. It does not implement U05, migrate the U08 backup coordinator, or establish G02/P03 completion.",
+    "better-sqlite3 backup overwrites an existing destination in the tested successful case. Any later backup integration must stage to a unique path and publish with a separately verified no-clobber policy.",
+    "Author research/index.json omits transaction.js and the four referenced upstream test file hashes even though result.md implies they are indexed; reviewer preserved independent exact-commit copies and hashes. The full upstream suite was not run."
+  ]
+}

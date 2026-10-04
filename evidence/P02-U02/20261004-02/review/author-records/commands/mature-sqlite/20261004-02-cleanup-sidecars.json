@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-spike\\evidence\\P02-U02\\20261004-02\\restore-probe-sidecars.py"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-spike",
+  "started_at": "2026-10-04T04:55:28.057902+00:00",
+  "completed_at": "2026-10-04T04:55:28.121597+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 30,
+  "environment_overrides": {},
+  "stdout": "{\"schema\": \"p02-u02-owned-sidecar-restoration/v1\", \"reason\": \"The failed read-only probe's before snapshot showed these exact sidecars absent; its after snapshot showed the two exact files below. All probe connections and child processes had exited before this restoration.\", \"sourceDatabase\": \"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\u02\\\\sqlite\\\\run-2026-10-03T054219-873Z-a0f46f00\\\\identity-transaction-and-pragmas\\\\facts.sqlite\", \"sourceDatabaseSha256BeforeAndAfter\": \"721537f42d9843617f87dc62b1652c7f1f202f85b0ce5c4305966c70c6da4120\", \"preProbeSidecars\": [{\"path\": \"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\u02\\\\sqlite\\\\run-2026-10-03T054219-873Z-a0f46f00\\\\identity-transaction-and-pragmas\\\\facts.sqlite-wal\", \"exists\": false}, {\"path\": \"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\u02\\\\sqlite\\\\run-2026-10-03T054219-873Z-a0f46f00\\\\identity-transaction-and-pragmas\\\\facts.sqlite-shm\", \"exists\": false}], \"probeCreatedSidecarsRemoved\": [{\"path\": \"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\u02\\\\sqlite\\\\run-2026-10-03T054219-873Z-a0f46f00\\\\identity-transaction-and-pragmas\\\\facts.sqlite-wal\", \"bytes\": 0, \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}, {\"path\": \"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\u02\\\\sqlite\\\\run-2026-10-03T054219-873Z-a0f46f00\\\\identity-transaction-and-pragmas\\\\facts.sqlite-shm\", \"bytes\": 32768, \"sha256\": \"fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb\"}], \"postCleanupSidecars\": [{\"path\": \"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\u02\\\\sqlite\\\\run-2026-10-03T054219-873Z-a0f46f00\\\\identity-transaction-and-pragmas\\\\facts.sqlite-wal\", \"exists\": false}, {\"path\": \"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\u02\\\\sqlite\\\\run-2026-10-03T054219-873Z-a0f46f00\\\\identity-transaction-and-pragmas\\\\facts.sqlite-shm\", \"exists\": false}], \"cleanupScope\": \"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\u02\\\\sqlite\\\\run-2026-10-03T054219-873Z-a0f46f00\\\\identity-transaction-and-pragmas\"}\r\n",
+  "stderr": ""
+}
