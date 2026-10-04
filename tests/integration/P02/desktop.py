@@ -28,6 +28,26 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def candidate_artifact_closure(verifier, assembly_root: Path, descriptor_sha256: str | None, artifacts: object) -> dict:
+    if not isinstance(descriptor_sha256, str) or not isinstance(artifacts, list):
+        return {"passed": False, "failure_code": "candidate_descriptor_pin_unavailable"}
+    try:
+        descriptor_bytes = (assembly_root / "candidate-descriptor.json").read_bytes()
+        if hashlib.sha256(descriptor_bytes).hexdigest() != descriptor_sha256:
+            return {"passed": False, "failure_code": "candidate_descriptor_changed"}
+        descriptor = json.loads(descriptor_bytes)
+        if descriptor.get("artifacts") != artifacts:
+            return {"passed": False, "failure_code": "candidate_descriptor_artifacts_changed"}
+        bindings = verifier.verify_owned_artifacts(assembly_root, artifacts)
+        return {"passed": True, "owned_files_verified": len(bindings),
+                "descriptor_sha256": descriptor_sha256}
+    except (ValueError, OSError, TypeError, KeyError) as error:
+        failure = str(error)
+        if not failure or any(character not in "abcdefghijklmnopqrstuvwxyz0123456789_" for character in failure):
+            failure = "candidate_artifact_closure_invalid"
+        return {"passed": False, "failure_code": failure}
+
+
 def write_json(path: Path, value: object) -> None:
     with path.open("x", encoding="utf-8", newline="\n") as stream:
         json.dump(value, stream, ensure_ascii=False, indent=2)
@@ -131,25 +151,73 @@ def main() -> int:
 
     harness = load_p01_runner()
     verifier = load_candidate_verifier()
+    candidate_pin: dict = {}
     harness.UI_DRIVER = UI_DRIVER
     original_verify_candidate = harness.verify_candidate
-    harness.verify_candidate = lambda value: verifier.verify_candidate(harness, value, original_verify_candidate)
+
+    def verify_candidate(candidate_arg: str) -> dict:
+        verified = verifier.verify_candidate(harness, candidate_arg, original_verify_candidate)
+        assembly_root = Path(verified["resolved_paths"]["assemblyRoot"])
+        descriptor_path = assembly_root / "candidate-descriptor.json"
+        descriptor_bytes = descriptor_path.read_bytes()
+        descriptor_sha256 = hashlib.sha256(descriptor_bytes).hexdigest()
+        if descriptor_sha256 != verified.get("descriptor_sha256"):
+            raise harness.HarnessError("candidate_descriptor_pin_invalid")
+        descriptor = json.loads(descriptor_bytes)
+        artifacts = descriptor.get("artifacts") if isinstance(descriptor, dict) else None
+        if not isinstance(artifacts, list):
+            raise harness.HarnessError("candidate_descriptor_artifacts_invalid")
+        candidate_pin.update({"descriptor_sha256": descriptor_sha256,
+                              "artifacts": json.loads(json.dumps(artifacts))})
+        return verified
+
+    harness.verify_candidate = verify_candidate
     original_create_profile = harness.create_profile_and_spec
 
     def create_profile_and_spec(*positional, **keywords):
         spec_path, spec, markers = original_create_profile(*positional, **keywords)
-        probe_root = positional[1] / "profile/sqlite-runtime-probes"
+        profile = positional[1] / "profile"
+        probe_root = profile / "sqlite-runtime-probes"
         probe_root.mkdir()
+        process_working_directory = profile / "process-working-directory"
+        process_working_directory.mkdir()
+        profile_root = profile.resolve(strict=True)
+        process_working_directory_real = process_working_directory.resolve(strict=True)
+        if (verifier.linked(profile) or verifier.linked(process_working_directory) or
+                not process_working_directory_real.is_relative_to(profile_root)):
+            raise harness.HarnessError("p02_profile_process_cwd_invalid")
         spec["env"]["P02_SQLITE_RUNTIME_PROBE_DIR"] = str(probe_root.resolve())
+        spec["process_working_directory"] = str(process_working_directory.resolve())
         spec_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
         return spec_path, spec, markers
 
     harness.create_profile_and_spec = create_profile_and_spec
     original_run_scenario = harness.run_scenario
+    assembly_root = Path(args.candidate).resolve(strict=True)
 
     def run_scenario(scenario_id: str, run_output: Path, verified_candidate: dict, system_env: dict[str, str]) -> dict:
+        before_closure = candidate_artifact_closure(
+            verifier, assembly_root, candidate_pin.get("descriptor_sha256"), candidate_pin.get("artifacts"))
+        if not before_closure["passed"]:
+            scenario_output = run_output / "scenarios" / scenario_id
+            scenario_output.mkdir(parents=True, exist_ok=True)
+            result = {"scenario_id": scenario_id, "passed": False,
+                      "failure_code": "candidate_artifact_closure_changed_before_scenario",
+                      "candidate_artifact_closure_before": before_closure,
+                      "model_requests": 0}
+            write_json(scenario_output / "scenario-result.json", result)
+            return result
         result = original_run_scenario(scenario_id, run_output, verified_candidate, system_env)
-        return attach_ledger_verification(harness, verifier, verified_candidate, scenario_id, run_output / "scenarios" / scenario_id, result)
+        scenario_output = run_output / "scenarios" / scenario_id
+        attached = attach_ledger_verification(harness, verifier, verified_candidate, scenario_id, scenario_output, result)
+        after_closure = candidate_artifact_closure(
+            verifier, assembly_root, candidate_pin.get("descriptor_sha256"), candidate_pin.get("artifacts"))
+        attached["candidate_artifact_closure"] = {"before_scenario": before_closure, "after_scenario": after_closure}
+        if not after_closure["passed"]:
+            attached["passed"] = False
+        (scenario_output / "scenario-result.json").write_text(
+            json.dumps(attached, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+        return attached
 
     harness.run_scenario = run_scenario
     original_argv = sys.argv
@@ -160,6 +228,18 @@ def main() -> int:
         sys.argv = original_argv
 
     if output.is_dir():
+        suite_closure = candidate_artifact_closure(
+            verifier, assembly_root, candidate_pin.get("descriptor_sha256"), candidate_pin.get("artifacts"))
+        summary_path = output / "summary.json"
+        if summary_path.is_file():
+            summary = json.loads(summary_path.read_bytes())
+            summary["candidate_artifact_closure_after_suite"] = suite_closure
+            if not suite_closure["passed"]:
+                summary["passed"] = False
+                summary["scenario_status"] = "failed"
+                exit_code = 1
+            summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n",
+                                    encoding="utf-8", newline="\n")
         write_json(output / "p02-desktop-runner.json", {
             "schemaVersion": 1,
             "suite": args.suite,
@@ -171,6 +251,10 @@ def main() -> int:
             "uiDriver": {"path": str(UI_DRIVER.resolve()), "sha256": sha256(UI_DRIVER)},
             "fixedNode": {"path": str(NODE.resolve()), "sha256": sha256(NODE)},
             "harness": {"path": str(P01_RUNNER.resolve()), "sha256": sha256(P01_RUNNER)},
+            "candidateAssemblyRoot": str(assembly_root),
+            "candidateArtifactClosureAfterSuite": suite_closure,
+            "pinnedCandidateDescriptorSha256": candidate_pin.get("descriptor_sha256"),
+            "processWorkingDirectoryPolicy": "P02 assigns a physical per-scenario profile directory to the reused UI driver process cwd, keeping process-relative Windows caches outside the immutable candidate assembly. The candidate assembly root and descriptor remain separately verified.",
             "qualificationBoundary": "Actual qualification uses the Electron UI with the pinned fixed Node CLI. The durable host and SQLite ledger run in the wrapped CLI protocol process, not Electron main.",
             "sidecarBoundary": "P01 turn sidecar remains UI correlation evidence; durable claims come only from the read-only SQLite and diagnostics checks recorded per scenario.",
             "exitCode": exit_code,

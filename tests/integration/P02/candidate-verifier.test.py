@@ -15,6 +15,10 @@ SOURCE = Path(__file__).with_name("candidate-verifier.py")
 spec = importlib.util.spec_from_file_location("p02_verifier_under_test", SOURCE)
 verifier = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(verifier)
+DESKTOP_SOURCE = Path(__file__).with_name("desktop.py")
+desktop_spec = importlib.util.spec_from_file_location("p02_desktop_under_test", DESKTOP_SOURCE)
+desktop = importlib.util.module_from_spec(desktop_spec)
+desktop_spec.loader.exec_module(desktop)
 FIXTURES = Path(sys.argv[1]).resolve()
 HOST = Path(r"E:\Xiadie\Xiadie")
 assert FIXTURES.is_relative_to(HOST / ".runtime/P02/experiments/mature-integration")
@@ -49,6 +53,33 @@ class CandidateVerifierTests(unittest.TestCase):
         (self.root / "cli.js").write_bytes(b"other")
         with self.assertRaisesRegex(ValueError, "candidate_owned_file_hash_mismatch"):
             verifier.verify_owned_artifacts(self.root, [artifact])
+
+    def test_candidate_closure_rejects_rewritten_descriptor_and_artifact_set(self):
+        assembly = self.root / "assembly"
+        assembly.mkdir()
+
+        def add_artifact(name, content):
+            file = assembly / name
+            file.parent.mkdir(parents=True, exist_ok=True)
+            file.write_bytes(content)
+            return {"path": name, "bytes": len(content), "sha256": hashlib.sha256(content).hexdigest()}
+
+        first = add_artifact("cli.js", b"first committed artifact")
+        original = {"artifacts": [first]}
+        descriptor = assembly / "candidate-descriptor.json"
+        original_bytes = json.dumps(original, separators=(",", ":")).encode("utf8")
+        descriptor.write_bytes(original_bytes)
+        original_hash = hashlib.sha256(original_bytes).hexdigest()
+        self.assertTrue(desktop.candidate_artifact_closure(verifier, assembly, original_hash, [first])["passed"])
+
+        second = add_artifact("extra/cache.db", b"unapproved replacement")
+        changed = {"artifacts": [first, second]}
+        changed_bytes = json.dumps(changed, separators=(",", ":")).encode("utf8")
+        descriptor.write_bytes(changed_bytes)
+        changed_hash = hashlib.sha256(changed_bytes).hexdigest()
+        self.assertTrue(desktop.candidate_artifact_closure(verifier, assembly, changed_hash, changed["artifacts"])["passed"])
+        pinned_check = desktop.candidate_artifact_closure(verifier, assembly, original_hash, [first])
+        self.assertEqual(pinned_check["failure_code"], "candidate_descriptor_changed")
 
     def probe_context(self):
         candidate = self.root / "candidate"

@@ -1,0 +1,30 @@
+{
+  "schema": "p02-owned-windows-cwd-repro/v1",
+  "started_at_utc": "2026-10-04T08:08:37.389293+00:00",
+  "completed_at_utc": "2026-10-04T08:08:38.888833+00:00",
+  "argv": [
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,Name | ConvertTo-Json -Compress"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\root-cim-cwd-repro-01\\profile",
+  "exit_code": 0,
+  "input_spec": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\experiments\\mature-integration\\desktop-full-02\\scenarios\\success\\desktop-ui.spec.json",
+    "bytes": 5611,
+    "sha256": "34daa18b4aabff65613a3c9a27e6bf324894579cf084b62974be70e45dcbc6f5"
+  },
+  "env_source": "P01/P02 own spec with old owned-profile prefix remapped to fresh fixture; no credential/global settings inherited",
+  "systemdrive_present": false,
+  "stdout_sha256": "ea7c023f436c736039a26ab2093fdea0a55e17a63ffdc235ad82ea20c814a144",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "created_files": [
+    {
+      "path": "home\\AppData\\Local\\Microsoft\\Windows\\PowerShell\\StartupProfileData-NonInteractive",
+      "bytes": 1700,
+      "sha256": "4c37b46dcfdb0f6ae5e93918f4ee9043073db29a3c89bf9f02def35a5993cfdf"
+    }
+  ],
+  "boundary": "One actual read-only PowerShell CIM process, fresh own cwd; no Electron, model, candidate change or P03 acceptance."
+}

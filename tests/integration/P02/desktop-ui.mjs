@@ -21,7 +21,7 @@ function requireAbsolute(value, name) {
 
 function validateSpec(spec) {
   const keys = new Set([
-    "candidate", "desktop", "electron", "playwright", "guard", "workspace", "out", "env",
+    "candidate", "desktop", "electron", "playwright", "guard", "workspace", "out", "env", "process_working_directory",
     "scenario_id", "flow", "prompt", "expected_reply", "partial_reply", "model", "target_model",
     "profile_paths", "gate_mode", "relay_origin", "occupied_ports_before", "history_markers",
     "cancel_file", "cancel_observed_file",
@@ -29,8 +29,13 @@ function validateSpec(spec) {
   if (!spec || typeof spec !== "object" || Array.isArray(spec) || Object.keys(spec).some((key) => !keys.has(key))) {
     throw new Error("invalid_spec");
   }
-  for (const key of ["candidate", "desktop", "electron", "playwright", "guard", "workspace", "out"]) {
+  for (const key of ["candidate", "desktop", "electron", "playwright", "guard", "workspace", "out", "process_working_directory"]) {
     requireAbsolute(spec[key], key);
+  }
+  if (path.resolve(spec.process_working_directory).toLowerCase() !==
+      path.resolve(spec.out, "profile", "process-working-directory").toLowerCase() ||
+      !existsSync(spec.process_working_directory)) {
+    throw new Error("invalid_process_working_directory");
   }
   requireAbsolute(spec.cancel_file, "cancel_file");
   requireAbsolute(spec.cancel_observed_file, "cancel_observed_file");
@@ -78,7 +83,7 @@ async function descendantProcesses(rootPid) {
   const powershell = path.join(spec.env.SYSTEMROOT, "System32/WindowsPowerShell/v1.0/powershell.exe");
   const command = "Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,Name | ConvertTo-Json -Compress";
   const { stdout } = await execFileAsync(powershell, ["-NoProfile", "-Command", command], {
-    cwd: spec.candidate,
+    cwd: spec.process_working_directory,
     env: spec.env,
     windowsHide: true,
     timeout: 15_000,
@@ -266,7 +271,7 @@ async function inspectSettings(page) {
 try {
   app = await _electron.launch({
     executablePath: spec.electron,
-    cwd: spec.candidate,
+    cwd: spec.process_working_directory,
     args: ["-r", spec.guard, spec.desktop, "--disable-background-networking", "--open-workspace", spec.workspace],
     env: spec.env,
     timeout: 45_000,
@@ -296,7 +301,7 @@ try {
     visible: BrowserWindow.getAllWindows().some((window) => window.isVisible()),
     remote_debugging_port: nativeApp.commandLine.getSwitchValue("remote-debugging-port"),
   }));
-  assert.equal(desktop.cwd, spec.candidate, "Electron did not inherit candidateRoot cwd");
+  assert.equal(desktop.cwd, spec.process_working_directory, "Electron did not inherit the owned profile working directory");
   assert.equal(desktop.visible, false, "the test Electron window became visible");
   assert.equal(desktop.remote_debugging_port, "0", "Desktop fixed inspector port was not disabled");
   assert.equal(desktop.home, spec.profile_paths.home);

@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "python",
+    "-c",
+    "import json,os,pathlib; root=pathlib.Path(r'E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\mature-integration\\\\candidate-02'); d=json.loads((root/'candidate-descriptor.json').read_text()); expected={x['path'] for x in d['artifacts']}; actual=set();\\nfor base,dirs,files in os.walk(root):\\n p=pathlib.Path(base);\\n if p==root: dirs[:]=[x for x in dirs if x!='node_modules'];\\n for f in files:\\n  q=p/f; r=q.relative_to(root).as_posix();\\n  if r!='candidate-descriptor.json': actual.add(r);\\nprint(json.dumps({'actual':len(actual),'expected':len(expected),'extra':sorted(actual-expected),'missing':sorted(expected-actual)},indent=2))"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-integration",
+  "started_at": "2026-10-04T08:04:14.333678+00:00",
+  "completed_at": "2026-10-04T08:04:14.361776+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "  File \"<string>\", line 1\r\n    import json,os,pathlib; root=pathlib.Path(r'E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P02\\\\experiments\\\\mature-integration\\\\candidate-02'); d=json.loads((root/'candidate-descriptor.json').read_text()); expected={x['path'] for x in d['artifacts']}; actual=set();\\nfor base,dirs,files in os.walk(root):\\n p=pathlib.Path(base);\\n if p==root: dirs[:]=[x for x in dirs if x!='node_modules'];\\n for f in files:\\n  q=p/f; r=q.relative_to(root).as_posix();\\n  if r!='candidate-descriptor.json': actual.add(r);\\nprint(json.dumps({'actual':len(actual),'expected':len(expected),'extra':sorted(actual-expected),'missing':sorted(expected-actual)},indent=2))\r\n                                                                                                                                                                                                                                                              ^\r\nSyntaxError: unexpected character after line continuation character\r\n"
+}
