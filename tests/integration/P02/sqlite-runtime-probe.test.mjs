@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, symlinkSync, unlinkSync, writeFileSync } from "node:fs";
+import { existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, statSync, symlinkSync, unlinkSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -62,11 +62,13 @@ test("runtime probe permits only byte-identical repeats for the same observed ad
     writeSqliteRuntimeProbe(root);
     const firstBytes = readFileSync(probePath);
     const firstHash = createHash("sha256").update(firstBytes).digest("hex");
+    const firstMtimeNs = statSync(probePath, { bigint: true }).mtimeNs;
 
     writeSqliteRuntimeProbe(root);
     const repeatedBytes = readFileSync(probePath);
     assert.deepEqual(repeatedBytes, firstBytes);
     assert.equal(createHash("sha256").update(repeatedBytes).digest("hex"), firstHash);
+    assert.equal(statSync(probePath, { bigint: true }).mtimeNs, firstMtimeNs);
 
     const conflictingBytes = Buffer.from("{\"conflicting\":true}\n", "utf8");
     writeFileSync(probePath, conflictingBytes);
