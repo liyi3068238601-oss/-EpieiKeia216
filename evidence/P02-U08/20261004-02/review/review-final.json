@@ -1,0 +1,628 @@
+{
+  "schema": "p02-independent-review/v1",
+  "decision": "pass",
+  "review_target": {
+    "author_commit": "3d8e45d4e468dc1e932b01a2711496527600e619",
+    "baseline_commit": "325707b4725f13c10ea0695f825c913c2043ee99",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\mature-sqlite-backup"
+  },
+  "attempt": "20261004-02-independent",
+  "author_manifest_sha256": "deb937eafdb3fe49f01033d6c885e6667997b7ca22629234f8ad6462fce2105d",
+  "artifacts": [
+    {
+      "path": "author-verify-independent.json",
+      "root": "review_directory",
+      "bytes": 569,
+      "sha256": "6de9b48eab74452136b69ad2be14501f61e801c91b388e47d4ba9ae3c8c7fa92"
+    },
+    {
+      "path": "author-verify-post.json",
+      "root": "review_directory",
+      "bytes": 569,
+      "sha256": "a403c483aefcd1cbd445635e21061fe3a53c4259125e981b9c8b1cfb592a7a41"
+    },
+    {
+      "path": "capture-state.mjs",
+      "root": "review_directory",
+      "bytes": 6359,
+      "sha256": "c7ae19de0f5c2673a2c268a3114a09ed1969c5f8e89ffb77c3447d28e7a201be"
+    },
+    {
+      "path": "command-results.json",
+      "root": "review_directory",
+      "bytes": 2738,
+      "sha256": "e23adeefdcc34693356ab01c72f13710ce5026281d2e6107bdfbf40e81eb132b"
+    },
+    {
+      "path": "commands/01-typecheck-noemit.json",
+      "root": "review_directory",
+      "bytes": 943,
+      "sha256": "1fc83e7a31decf0a4abbc34ea1526b5a5fd918db327b9ba3e2aeae00a6bf0675"
+    },
+    {
+      "path": "commands/02-build.json",
+      "root": "review_directory",
+      "bytes": 894,
+      "sha256": "4de47b98682ed017152efc7137f8e2a39ad84e1ddc93044809f17ef61768b930"
+    },
+    {
+      "path": "commands/03-targeted-unit-tests.json",
+      "root": "review_directory",
+      "bytes": 860,
+      "sha256": "8f9d8af18268b9507a1fdb541852a4c813f6647dadc2feda7120b599e6fcf1bf"
+    },
+    {
+      "path": "commands/04-targeted-U08-U05.json",
+      "root": "review_directory",
+      "bytes": 808,
+      "sha256": "da9235717ef763dab3f9fb1c62d93ddedbf48e677a293c950e5576da79253021"
+    },
+    {
+      "path": "commands/05-negative-cases-initial.json",
+      "root": "review_directory",
+      "bytes": 1159,
+      "sha256": "70b8d930e3daba96a71bcb9e0015099eff77f69f9332a791bfd7ffe6045ebc00"
+    },
+    {
+      "path": "commands/06-negative-cases-rerun.json",
+      "root": "review_directory",
+      "bytes": 1153,
+      "sha256": "c042ee2fbdb473822a99c133ff2525523c7a714021ad5e926121540484e4637f"
+    },
+    {
+      "path": "data/no-clobber/backups/.p02-snapshot-nCgzdy/snapshot.sqlite",
+      "root": "review_directory",
+      "bytes": 4096,
+      "sha256": "358b59e0cb0caa9912cbbfac26c5fefb1f4454acf08ff912cc61464565d338f2"
+    },
+    {
+      "path": "data/no-clobber/backups/existing.sqlite",
+      "root": "review_directory",
+      "bytes": 33,
+      "sha256": "c9bb7aa03c2f0e24da172a478bdce915208a2edcfd16974cf8ded611e9798e27"
+    },
+    {
+      "path": "data/no-clobber/events.sqlite",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/no-clobber-retry/backups/.p02-snapshot-mZtM1l/snapshot.sqlite",
+      "root": "review_directory",
+      "bytes": 4096,
+      "sha256": "358b59e0cb0caa9912cbbfac26c5fefb1f4454acf08ff912cc61464565d338f2"
+    },
+    {
+      "path": "data/no-clobber-retry/backups/existing.sqlite",
+      "root": "review_directory",
+      "bytes": 33,
+      "sha256": "c9bb7aa03c2f0e24da172a478bdce915208a2edcfd16974cf8ded611e9798e27"
+    },
+    {
+      "path": "data/no-clobber-retry/events.sqlite",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/unsafe-staged-integer/backups/.p02-snapshot-Q6piRI/snapshot.sqlite",
+      "root": "review_directory",
+      "bytes": 73728,
+      "sha256": "405765fe4220f72ff3dc32ac19b093491e3e5d7a0b123e0a4292beb7037aa965"
+    },
+    {
+      "path": "data/unsafe-staged-integer/backups/.p02-snapshot-Q6piRI/snapshot.sqlite-shm",
+      "root": "review_directory",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "data/unsafe-staged-integer/backups/.p02-snapshot-Q6piRI/snapshot.sqlite-wal",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/unsafe-staged-integer/events.sqlite",
+      "root": "review_directory",
+      "bytes": 73728,
+      "sha256": "d34acbe6f08aea73f82482b38a473b0f363118d549c4ced49b8aec408883ae4f"
+    },
+    {
+      "path": "data/unsafe-staged-integer/events.sqlite-shm",
+      "root": "review_directory",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "data/unsafe-staged-integer/events.sqlite-wal",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/unsafe-staged-integer-retry/backups/.p02-snapshot-4sbIf6/snapshot.sqlite",
+      "root": "review_directory",
+      "bytes": 73728,
+      "sha256": "958610c8dbc3a48599b599e1fbe11fea47e2a31c53e470b2b1c8f67ab1e7bca5"
+    },
+    {
+      "path": "data/unsafe-staged-integer-retry/backups/.p02-snapshot-4sbIf6/snapshot.sqlite-shm",
+      "root": "review_directory",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "data/unsafe-staged-integer-retry/backups/.p02-snapshot-4sbIf6/snapshot.sqlite-wal",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/unsafe-staged-integer-retry/events.sqlite",
+      "root": "review_directory",
+      "bytes": 73728,
+      "sha256": "58e76f6d2f4b9aa59a07d3e8f6c256120a1837c7953ed2a7f3c7dc3edd68e482"
+    },
+    {
+      "path": "data/unsafe-staged-integer-retry/events.sqlite-shm",
+      "root": "review_directory",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "path": "data/unsafe-staged-integer-retry/events.sqlite-wal",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "finalize-review.py",
+      "root": "review_directory",
+      "bytes": 12570,
+      "sha256": "b0545410f628b415af3336f6c7803fe944dc3109c1ac84468e26abe42b6abdd4"
+    },
+    {
+      "path": "logs/01-typecheck-noemit.stderr.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/01-typecheck-noemit.stdout.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/02-build.stderr.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/02-build.stdout.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/03-targeted-unit-tests.stderr.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/03-targeted-unit-tests.stdout.txt",
+      "root": "review_directory",
+      "bytes": 3275,
+      "sha256": "97b287ae99dec997b74c23fafcf2e1c2316fc489f5d59549a92fe2d1294e1752"
+    },
+    {
+      "path": "logs/04-targeted-U08-U05.stderr.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/04-targeted-U08-U05.stdout.txt",
+      "root": "review_directory",
+      "bytes": 3724,
+      "sha256": "d41d02e66a8e58d47cd3e7c6eded368d79de46bd282231a5471e2bd04e5f0bba"
+    },
+    {
+      "path": "logs/05-negative-cases.stderr.txt",
+      "root": "review_directory",
+      "bytes": 587,
+      "sha256": "e75d860c33a567e32de8ea0707d3ee41c830353f6fb6cf544a0731aac7942b9c"
+    },
+    {
+      "path": "logs/05-negative-cases.stdout.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/06-negative-cases-rerun.stderr.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/06-negative-cases-rerun.stdout.txt",
+      "root": "review_directory",
+      "bytes": 745,
+      "sha256": "799681dd72a519a72f8514ae12e26a42710038651085bc25f6a531469f2df693"
+    },
+    {
+      "path": "negative-cases-initial.mjs",
+      "root": "review_directory",
+      "bytes": 7412,
+      "sha256": "7ea3c36460e42f0627904d7c746c344fd2b8e42459f325ae4a2ec200972e0f62"
+    },
+    {
+      "path": "negative-cases.mjs",
+      "root": "review_directory",
+      "bytes": 7430,
+      "sha256": "750e89a918f89567f8638b0ce4f8707765180ac79ab3a17dbee2c790fb404899"
+    },
+    {
+      "path": "negative-results.json",
+      "root": "review_directory",
+      "bytes": 982,
+      "sha256": "af9596e6097496475ce01a76f1b4fba32b683160064db565a4f9ba2bec6c7419"
+    },
+    {
+      "path": "review-final.md",
+      "root": "review_directory",
+      "bytes": 3401,
+      "sha256": "29cd47a6346179c2600aef858f9ec8f97017fd662d11b11f4b9ab40c8fc1a981"
+    },
+    {
+      "path": "run-checks.mjs",
+      "root": "review_directory",
+      "bytes": 3016,
+      "sha256": "0de364d0bcba22a20b04092fdc0f5075e4bd9d23fdd0be9b864fa48d19519767"
+    },
+    {
+      "path": "state-after.json",
+      "root": "review_directory",
+      "bytes": 33143,
+      "sha256": "1187e9221bf0631421c213211d9ca02596be17e702d2c454fbb040ec541aaf53"
+    },
+    {
+      "path": "state-before.json",
+      "root": "review_directory",
+      "bytes": 33143,
+      "sha256": "361568adde615e27fe7bb8f239df088207755c7f17dd8bca3e38cc4e851e8184"
+    },
+    {
+      "path": "state-comparison.json",
+      "root": "review_directory",
+      "bytes": 499,
+      "sha256": "d3ce93b7b87b2e0c58e7666fb7dd95b607c369e129b0760481536499595d90da"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "path": "AGENTS.md",
+      "root": "author_worktree",
+      "bytes": 1988,
+      "sha256": "12d415d9c1260beb4bde175cb70515e21a7099436bf8298ddd3476799f0d4320"
+    },
+    {
+      "path": "package.json",
+      "root": "author_worktree",
+      "bytes": 953,
+      "sha256": "4e9421b064a4fbb083b2785992331f2570cd0178f534bbe2c6ed1cdeb935b3f1"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "root": "author_worktree",
+      "bytes": 1789,
+      "sha256": "76a677e207dc5f9c770dddce790d3274b52409386d262bcd70495c498a877ee4"
+    },
+    {
+      "path": "tsconfig.json",
+      "root": "author_worktree",
+      "bytes": 820,
+      "sha256": "fb1355b9ffcd007e8460c222047649c53562faa6fbc600381ccb401e348f5563"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "root": "author_worktree",
+      "bytes": 5872,
+      "sha256": "7d9f105fc6478cf076105cf083a94ca374264116706a049490b51ad046b1d2c6"
+    },
+    {
+      "path": "packages/storage/backup/src/index.ts",
+      "root": "author_worktree",
+      "bytes": 42118,
+      "sha256": "ba9a71fa789e23e28b8d6798235bde0b244e1f5036067afa13b3f8130c38c74f"
+    },
+    {
+      "path": "packages/storage/backup/test/backup.test.mjs",
+      "root": "author_worktree",
+      "bytes": 37862,
+      "sha256": "5e9cc7b1ec78fbef211b42c7e785bbbc641f6802307b679971a978a0d71d076d"
+    },
+    {
+      "path": "packages/storage/backup/test/backup-worker.mjs",
+      "root": "author_worktree",
+      "bytes": 4649,
+      "sha256": "65606e45643a9ac58cbbfac5897b24cb5af6be2fdfe2306835eef01eae9f284c"
+    },
+    {
+      "path": "packages/storage/events/src/sqlite.ts",
+      "root": "author_worktree",
+      "bytes": 2717,
+      "sha256": "c1cbb368c1feb4f3a5d87b0b5526ea7a761ba0a2de394ecf679767b817cc1e47"
+    },
+    {
+      "path": "packages/storage/events/src/index.ts",
+      "root": "author_worktree",
+      "bytes": 58340,
+      "sha256": "473480a88ebac6490094647e4f4dcb7e72d4ef34b210432f5b8fc21ddd69dec0"
+    },
+    {
+      "path": "migrations/001-event-store.ts",
+      "root": "author_worktree",
+      "bytes": 4362,
+      "sha256": "dd63a073f14172808cc75564e41681045cdadca89db2f2933ae12337bbcaa7e1"
+    },
+    {
+      "path": "dist/packages/storage/backup/src/index.js",
+      "root": "author_worktree",
+      "bytes": 40253,
+      "sha256": "659c9f1c721040c999ddc07009e29dad5605936bec1209ee61c811ea6913bd13"
+    },
+    {
+      "path": "dist/packages/storage/events/src/sqlite.js",
+      "root": "author_worktree",
+      "bytes": 2029,
+      "sha256": "45202ed5410b617158f5b7cc49b58f0ab8c1df95c53f9e75265b857b559c8a3f"
+    },
+    {
+      "path": "dist/packages/storage/events/src/index.js",
+      "root": "author_worktree",
+      "bytes": 53368,
+      "sha256": "0ec96c6a49a361c11d2426eded82eabbf24dd792e4f21c3a8c603d2bb91626f3"
+    },
+    {
+      "path": "evidence/P02-U08/20261004-02/manifest.json",
+      "root": "author_worktree",
+      "bytes": 5893,
+      "sha256": "deb937eafdb3fe49f01033d6c885e6667997b7ca22629234f8ad6462fce2105d"
+    },
+    {
+      "path": "evidence/P02-U08/20261004-02/result.md",
+      "root": "author_worktree",
+      "bytes": 5207,
+      "sha256": "5a027792974d1d84ac471388f4bcf7326fd718cf3c0e080ee718002a4325c612"
+    },
+    {
+      "path": "evidence/P02-U08/20261004-02/inputs-pre.json",
+      "root": "author_worktree",
+      "bytes": 33925,
+      "sha256": "33b952d9156c911bb0eacc50100a91b21446e8925415fe01f61111e07dd7b57a"
+    },
+    {
+      "path": "evidence/P02-U08/20261004-02/inputs-post.json",
+      "root": "author_worktree",
+      "bytes": 34033,
+      "sha256": "c172eeffb7aecb6694d569dae0f53c7d8c0a41ad302cabcb464c56d32e085883"
+    },
+    {
+      "path": "evidence/P02-U08/20261004-02/dependencies-pre.json",
+      "root": "author_worktree",
+      "bytes": 20820,
+      "sha256": "e524f16de46403fc7f40c6a5bea9f24880cfa0600631f828e7534a99e324f1d5"
+    },
+    {
+      "path": "evidence/P02-U08/20261004-02/dependencies-post.json",
+      "root": "author_worktree",
+      "bytes": 20820,
+      "sha256": "e524f16de46403fc7f40c6a5bea9f24880cfa0600631f828e7534a99e324f1d5"
+    },
+    {
+      "path": "evidence/P02-U08/20261004-02/commands/07-backup-focused-final.json",
+      "root": "author_worktree",
+      "bytes": 2608,
+      "sha256": "9ce20ac5b0a71c58452d98a2f5af419a063bf29d4c9ab1f395b9db708616eae5"
+    },
+    {
+      "path": "evidence/P02-U08/20261004-02/commands/08-unit-full-final.json",
+      "root": "author_worktree",
+      "bytes": 17315,
+      "sha256": "c17f234a1b78f5da6b92907eb9c57d58e92b28a7d8da11bc28193bac82a7b841"
+    },
+    {
+      "path": "evidence/P02-U08/20261004-02/commands/06-binding-pre.json",
+      "root": "author_worktree",
+      "bytes": 2644,
+      "sha256": "dcc849e341cbfadc97c172affc7fa479cca71b1066f83f9ad3abc6200bda66bd"
+    },
+    {
+      "path": "evidence/P02-U08/20261004-02/commands/10-binding-post.json",
+      "root": "author_worktree",
+      "bytes": 2646,
+      "sha256": "a9e84db043140b0e43fa03c4ae26675c4e301b199eef91027c50e9ff39ebd7f6"
+    },
+    {
+      "path": "node_modules/.modules.yaml",
+      "root": "author_worktree",
+      "bytes": 845,
+      "sha256": "cd20026e7d0585bc4b57d771b5f5b0460fb9167fd3c1e24d93d87e5b6a66201d"
+    },
+    {
+      "path": "node_modules/.pnpm/lock.yaml",
+      "root": "author_worktree",
+      "bytes": 1789,
+      "sha256": "76a677e207dc5f9c770dddce790d3274b52409386d262bcd70495c498a877ee4"
+    },
+    {
+      "path": "node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/package.json",
+      "root": "author_worktree",
+      "bytes": 1838,
+      "sha256": "6c9ea355190dfce3646ad4d2a31c9506de36d884a6461b3655a2a0c4ba3d1695"
+    },
+    {
+      "path": "node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/backup.js",
+      "root": "author_worktree",
+      "bytes": 2380,
+      "sha256": "ea29d34992bb02e006d0fdeda9675ac5d2bb227aaf57468decd997e9fc9c7dbf"
+    },
+    {
+      "path": "node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/LICENSE",
+      "root": "author_worktree",
+      "bytes": 1078,
+      "sha256": "09856b52897c91ab67e7456ef43067019f31dfd3b87fda72e655736b1ebdee55"
+    },
+    {
+      "path": "node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/prebuilds/win32-x64.node",
+      "root": "author_worktree",
+      "bytes": 1989632,
+      "sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a"
+    },
+    {
+      "path": "node_modules/@types/better-sqlite3/index.d.ts",
+      "root": "author_worktree",
+      "bytes": 5626,
+      "sha256": "c2a6a737189ced24ffe0634e9239b087e4c26378d0490f95141b9b9b042b746c"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U02.md",
+      "root": "baseline_repository",
+      "bytes": 2825,
+      "sha256": "6bdf8ad7f6d7ed5d6d1aa56e3b400f6120ab2d64d06fc1a8e13705aefe4e53d0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U05.md",
+      "root": "baseline_repository",
+      "bytes": 1936,
+      "sha256": "1e43db642edc3d6d2229f199789c4c8b494fe50ad95d3c73215b708835c02b99"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U07.md",
+      "root": "baseline_repository",
+      "bytes": 2039,
+      "sha256": "d7c81ed71d23ba465f8a375e79c9d8921fb1e678984cb050ab5816d72ffc89c8"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U08.md",
+      "root": "baseline_repository",
+      "bytes": 1867,
+      "sha256": "b087b678b25159ba1bec3805e685c7efa4f280d7e5277d707d2df51b86b05a6c"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 15799,
+      "sha256": "d511468963e6a74bec09c5d495ae9a729b2c1d25968ff79e8ce70f4af315cdce"
+    },
+    {
+      "path": "evidence/P02-U02/20261004-02/review-final.json",
+      "root": "baseline_repository",
+      "bytes": 32705,
+      "sha256": "2fd967c9c73d4bf2b9bb390bdbcf6f5252a6361dd5f2db29c3b4ea1c524779c7"
+    },
+    {
+      "path": "evidence/P02-U05/20261004-02/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 5643,
+      "sha256": "4ef8a757bf4c0bc7c4493dac168b3fdf3bdfb7f9f532499405e362f21b46544a"
+    },
+    {
+      "path": "evidence/P02-U07/20261003-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 3962,
+      "sha256": "cf63a8fc3a869c55797df8677520462cdcbd67514b16982d6231002112135fdc"
+    },
+    {
+      "path": "evidence/P02/status.json",
+      "root": "baseline_repository",
+      "bytes": 17223,
+      "sha256": "7e6b167f66a9903cdbe913dae15e90ebf79f2343114600757feb8b34f9b14272"
+    },
+    {
+      "path": ".runtime/P02/reviews/mature-sqlite-store-u05/review-final.json",
+      "root": "baseline_repository",
+      "bytes": 57552,
+      "sha256": "d7608eb97ddb88a61eec6f63bb12c29a8b2c39203519ce104e9d072e020f639b"
+    },
+    {
+      "path": ".runtime/P02/coord/verify-author.py",
+      "root": "baseline_repository",
+      "bytes": 2672,
+      "sha256": "b5ec83ee2485ac09725c9fe1dc73bfbd454ea026f52a3e0dbcd376e8ae34ab9d"
+    },
+    {
+      "path": ".runtime/P02/coord/verify-review.py",
+      "root": "baseline_repository",
+      "bytes": 1574,
+      "sha256": "569485e5ea2ca44bac5e7e1e1951a2ac643e3798059c83ce801c3217febc3361"
+    },
+    {
+      "path": ".runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe",
+      "root": "baseline_repository",
+      "bytes": 91380224,
+      "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+    }
+  ],
+  "checks": [
+    {
+      "id": "frozen_author_manifest",
+      "status": "pass",
+      "details": "Exact author commit and manifest verified both before and after independent runs: 23 content files, 24 changed paths, clean worktree, no disk/Git mismatches."
+    },
+    {
+      "id": "fixed_node_build_and_targeted_units",
+      "status": "pass",
+      "details": "Direct pinned Node v24.14.0 TypeScript no-emit check and build exited 0; independent unit P02-U08 plus P02-U05 passed 31/31."
+    },
+    {
+      "id": "actual_better_sqlite_binding",
+      "status": "pass",
+      "details": "Loaded better-sqlite3 13.0.3 with SQLite 3.53.4 and Windows x64 addon SHA-256 e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a; package, type, addon-api, metadata and Node hashes matched pre/post."
+    },
+    {
+      "id": "post_transfer_deadline_checks",
+      "status": "pass",
+      "details": "Both source backup and restore check elapsed monotonic time after the actual Better backup promise resolves; fresh tests wrap an already completed real transfer with a 300 ms delay against a 250 ms deadline. Neither late result is published."
+    },
+    {
+      "id": "publication_and_integer_negative_cases",
+      "status": "pass",
+      "details": "Existing destination conflict preserved exact sentinel bytes; unsafe 9007199254740993 injected into the privately staged copy after real transfer was rejected at validate-backup, with no final backup publication and unchanged source."
+    },
+    {
+      "id": "sqlite_migration_and_scope",
+      "status": "pass",
+      "details": "Fresh target tests passed across backup and event-store modules. Source review confirms unchanged v1 DDL, internal-only backup delegate, FK and FULL sync setup, bounded busy timeout, and readonly fileMustExist behavior; package and lockfile are unchanged."
+    },
+    {
+      "id": "nonmutation_pre_post_binding",
+      "status": "pass",
+      "details": "Pre/post capture matched author source inputs, dist tree, package trees, install metadata, loaded addon, pinned Node, author HEAD/clean state, and baseline HEAD/clean state."
+    }
+  ],
+  "limitations": [
+    "The 300 ms/250 ms deadline is cooperative; it cannot interrupt an in-flight native transfer, but the post-await check prevents validation, publication, and migration after expiry.",
+    "Worker termination exercises process kill, not physical power loss or storage hardware failure.",
+    "The author boundary check reports BOUNDARY_SCAN_NOT_RUN because packages/core is absent; it is NOT_RUN, not a pass.",
+    "No Desktop cold start, G02 integration, production database, or real model was used. This is a P02-U08 unit review only.",
+    "The frozen author record reports 161/161 full unit tests; the independent reviewer ran 31 targeted backup and event-store tests, not the full suite.",
+    "The initial reviewer-only negative assertion used the wrong nested field path; after correcting the harness and using new owned fixtures, both negative cases passed. An initial 29-test U08/U07 selector was superseded by the requested U08/U05 31-test run."
+  ],
+  "external_references": [
+    {
+      "url": "https://github.com/WiseLibs/better-sqlite3/releases/tag/v13.0.3",
+      "description": "Official release identity for the pinned better-sqlite3 13.0.3 package."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/WiseLibs/better-sqlite3/dbc2ea1165fef1f599b9be12faea33fa5e9d7ffb/lib/methods/backup.js",
+      "description": "Pinned upstream implementation: resolves the completed transfer before calling progress for that final step; callback rate 100 preserves ordinary default copying."
+    }
+  ]
+}

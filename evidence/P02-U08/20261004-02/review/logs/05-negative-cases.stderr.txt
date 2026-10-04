@@ -1,0 +1,19 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: the source event remains safe and unchanged
+
+undefined !== 1
+
+    at unsafeIntegerInStagedSnapshotCase (file:///E:/Xiadie/Xiadie/.runtime/P02/reviews/mature-sqlite-backup-u08/negative-cases.mjs:123:12)
+    at async file:///E:/Xiadie/Xiadie/.runtime/P02/reviews/mature-sqlite-backup-u08/negative-cases.mjs:18:1 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: 1,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.14.0

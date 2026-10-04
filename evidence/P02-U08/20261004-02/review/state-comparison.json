@@ -1,0 +1,17 @@
+{
+  "schema": "p02-u08-review-state-comparison/v1",
+  "before": "state-before.json",
+  "after": "state-after.json",
+  "checks": {
+    "authorHeadUnchanged": true,
+    "authorCleanBeforeAndAfter": true,
+    "sourceInputsUnchanged": true,
+    "distTreeUnchanged": true,
+    "packageTreesUnchanged": true,
+    "installMetadataUnchanged": true,
+    "nodeRuntimeUnchanged": true,
+    "actualLoadedBindingUnchanged": true,
+    "baselineHeadAndCleanUnchanged": true
+  },
+  "allPass": true
+}

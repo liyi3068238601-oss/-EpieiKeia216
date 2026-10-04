@@ -1,0 +1,46 @@
+(node:53676) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ empty v0 is backed up as empty v0 before the source initializes to v1 (36.3655ms)
+✔ active-WAL v1 snapshot restores committed facts, observations, writer receipts and capture hashes (133.2463ms)
+✔ backup publication never replaces a pre-existing name (49.0618ms)
+▶ a real COMMIT followed by a lost acknowledgement is read back or reported unresolved without replay
+  ✔ verified readback resolves the committed migration as success (18.3231ms)
+  ✔ unavailable readback reports unresolved and preserves the verified snapshot (16.0618ms)
+✔ a real COMMIT followed by a lost acknowledgement is read back or reported unresolved without replay (34.7938ms)
+▶ future schema and non-empty v0 user objects are refused without changing source main or WAL bytes
+  ✔ future schema (19.7816ms)
+  ✔ non-empty v0 table and view (17.0951ms)
+✔ future schema and non-empty v0 user objects are refused without changing source main or WAL bytes (37.2304ms)
+✔ a second SQLite BEGIN IMMEDIATE makes maintenance return bounded BUSY before backup or DDL (292.3674ms)
+✔ a controlled deadline aborts the real SQLite backup progress callback before v0 DDL (808.8658ms)
+✔ backup checks the deadline after the real Better transfer resolves without a final progress callback (317.5024ms)
+✔ restore checks the deadline after the real Better transfer and does not publish a new root database (321.4704ms)
+✔ real SQLite SQLITE_FULL during migration preserves v0 and the already published backup (20.3968ms)
+▶ an owned worker killed immediately before or after COMMIT reopens as valid v0 or v1 with a usable v0 backup
+  ✔ before COMMIT (112.1231ms)
+  ✔ after COMMIT (104.9113ms)
+✔ an owned worker killed immediately before or after COMMIT reopens as valid v0 or v1 with a usable v0 backup (217.3865ms)
+(node:23460) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ atomic first fact, origin, capture material and receipt; retry, resequence and conflict remain auditable (49.9135ms)
+✔ Node's SQLite binding reads and writes the Better SQLite v1 ledger (17.1791ms)
+✔ private SQLite adapter preserves the safe integer boundary and rejects overflow in get and all (0.6267ms)
+✔ unsafe stored writer counter fails without committing a fact or receipt (22.4404ms)
+✔ scope and operation queries page complete facts and observations explicitly (12.7089ms)
+✔ invalid raw, over-limit event, forged mask and mismatched capture are refused before enqueue (10.7622ms)
+✔ readback recomputes facts and rejects tampered mirror columns as CORRUPT_STORE (15.8854ms)
+✔ bounded FIFO rejects overflow and close drains its accepted frontier (8.2109ms)
+✔ lost COMMIT acknowledgements are unknown for new and repeated observations, then reconciled by receipt (11.7002ms)
+✔ failed COMMIT with capture rolls back fact, observation, origin, material, receipt and writer sequence atomically (16.8849ms)
+✔ failed rollback quarantines the writer, settles queued successors unknown, and close rolls back (15.9627ms)
+✔ close reports a SQLite close failure after settling accepted work (13.0823ms)
+✔ actual SQLite BUSY, controlled SQLITE_FULL, readonly refusal and future-schema preflight (342.2448ms)
+✔ owned process hard-kill before COMMIT rolls back; after COMMIT before ACK is found by receipt without duplication (328.7619ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2359.8751

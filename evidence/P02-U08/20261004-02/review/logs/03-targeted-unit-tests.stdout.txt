@@ -1,0 +1,42 @@
+✔ same operation concurrent/repeated calls dispatch once and freeze the committed descriptor (25.5127ms)
+✔ changed descriptor and foreign owner are conflicts and never dispatch (15.7762ms)
+✔ same source/event identity cannot be relabelled to another operation or owner (17.3509ms)
+✔ intent COMMIT followed by lost ACK remains unknown and a retry does not dispatch (11.0827ms)
+✔ receipt COMMIT lost ACK is reconciled from SQLite and reopen prevents redispatch (22.2158ms)
+✔ hard-kill after fsynced external effect but before receipt never automatically repeats effect (117.6713ms)
+✔ known success and failure receipts survive close/reopen and block replay (31.5697ms)
+✔ unknown can be reconciled by a verified receipt; contradictory verified outcomes become conflict (20.7057ms)
+✔ verified receipt without an owned intent is absent and writes no history (14.888ms)
+✔ attempt projection keeps the first terminal by writer order and audits later terminal and receipt (29.0194ms)
+✔ restart closes an open attempt once; absent attempt stays absent (14.3998ms)
+✔ operation inspection paginates complete history and incomplete pages never become absent (527.1669ms)
+(node:38744) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ empty v0 is backed up as empty v0 before the source initializes to v1 (23.9579ms)
+✔ active-WAL v1 snapshot restores committed facts, observations, writer receipts and capture hashes (120.6069ms)
+✔ backup publication never replaces a pre-existing name (48.9063ms)
+▶ a real COMMIT followed by a lost acknowledgement is read back or reported unresolved without replay
+  ✔ verified readback resolves the committed migration as success (19.572ms)
+  ✔ unavailable readback reports unresolved and preserves the verified snapshot (15.4252ms)
+✔ a real COMMIT followed by a lost acknowledgement is read back or reported unresolved without replay (35.3981ms)
+▶ future schema and non-empty v0 user objects are refused without changing source main or WAL bytes
+  ✔ future schema (19.8391ms)
+  ✔ non-empty v0 table and view (20.5098ms)
+✔ future schema and non-empty v0 user objects are refused without changing source main or WAL bytes (40.7095ms)
+✔ a second SQLite BEGIN IMMEDIATE makes maintenance return bounded BUSY before backup or DDL (290.3642ms)
+✔ a controlled deadline aborts the real SQLite backup progress callback before v0 DDL (787.2631ms)
+✔ backup checks the deadline after the real Better transfer resolves without a final progress callback (313.0528ms)
+✔ restore checks the deadline after the real Better transfer and does not publish a new root database (323.9645ms)
+✔ real SQLite SQLITE_FULL during migration preserves v0 and the already published backup (23.0913ms)
+▶ an owned worker killed immediately before or after COMMIT reopens as valid v0 or v1 with a usable v0 backup
+  ✔ before COMMIT (108.3147ms)
+  ✔ after COMMIT (102.6865ms)
+✔ an owned worker killed immediately before or after COMMIT reopens as valid v0 or v1 with a usable v0 backup (211.3805ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2299.4784

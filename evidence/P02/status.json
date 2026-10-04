@@ -9,8 +9,8 @@
   "stage_status": "running",
   "G01": "pass",
   "G02": "pending_revalidation",
-  "current_task": "P02-U08",
-  "next_task": "P02-U08",
+  "current_task": "P02-U10",
+  "next_task": "P02-U10",
   "next_stage_started": false,
   "tasks": [
     {
@@ -268,7 +268,24 @@
           }
         }
       ],
-      "status": "running"
+      "status": "accepted",
+      "author_commit": "3d8e45d4e468dc1e932b01a2711496527600e619",
+      "integration_commit": "7f01556b40b24983ba1b581a64675afd0dacf3f5",
+      "acceptance": {
+        "path": "evidence/P02-U08/20261004-02/acceptance.json",
+        "bytes": 11280,
+        "sha256": "877410940010bf4ac3acd5dd50b2f19c9d1a4e82fd5d91bfc33e78160146ddb0"
+      },
+      "review": {
+        "status": "pass",
+        "reviewer": "mature_backup_preparation",
+        "reviewed_commit": "3d8e45d4e468dc1e932b01a2711496527600e619",
+        "evidence": {
+          "path": "evidence/P02-U08/20261004-02/review-final.json",
+          "bytes": 24306,
+          "sha256": "98e3a9cfdc0451aeb91503f6ae46b1d7d1ef200a98c6a2a3983fb4a82a032157"
+        }
+      }
     },
     {
       "id": "P02-U09",
@@ -330,7 +347,7 @@
         "P02-U08",
         "P02-U09"
       ],
-      "status": "revalidation_required",
+      "status": "running",
       "card_sha256": "ade1d9901aee017b61f87b338b26c0ede6b6d0e9d0e175441b9b9dc4fa51fa18",
       "historical_acceptances": [
         {
