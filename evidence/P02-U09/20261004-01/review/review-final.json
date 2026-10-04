@@ -1,0 +1,216 @@
+{
+  "schema": "p02-independent-review/v1",
+  "decision": "pass",
+  "task": "P02-U09",
+  "review_target": {
+    "author_commit": "fc0cfd040581d93590780d1c61c962cfc2e98cbd",
+    "baseline_commit": "ab560b37d22adfcd261425f20ce74b7f5a5328ca",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\worktrees\\completion-u09"
+  },
+  "reviewer": "independent",
+  "scope": "Exact-commit U09 review of the three original card requirements, scoped source/receipt correlation, privacy allowlist and final source/test bindings.",
+  "checks": [
+    {
+      "id": "exact-author-manifest",
+      "status": "pass",
+      "detail": "verify-author.py confirms exact HEAD/baseline and clean author WT: 26 files, 27 changed paths, zero disk/Git-blob mismatches; manifest SHA-256 af5cb414f932788d6c5b11b756625d7aaf2ad2bf01e853f34d38b9a52109ad92."
+    },
+    {
+      "id": "original-card-three-requirements",
+      "status": "pass",
+      "detail": "The exact P02-U09 card requires turn-scoped message/tool/memory-candidate joins, redacted version/command/error, and separate authorization for raw text with hidden reasoning excluded by default. Code/tests provide masked message facts, pinned closed-vocabulary Native tool facts, reference-only candidate annotations with exact scope/attempt/source event checks, redacted version/command/error summaries and canary allowlist assertions. The documented producer expansion to application/evidence preserves command identity discarded by U06; no production profile or schema migration is added."
+    },
+    {
+      "id": "real-owned-run-and-sqlite-command-receipt",
+      "status": "pass",
+      "detail": "Fixed Node v24.14.0 independent U06/U09 selector passed 17/17. Tests execute an owned Node/Git run and actual SQLite commit/readback; mismatched command metadata is rejected. An independent review-only missing-command probe committed a receipt to SQLite and confirmed diagnostics command=unverified with COMMAND_NOT_VERIFIED, while omitting raw path/hash. Receipt verification and command verification remain distinct fields."
+    },
+    {
+      "id": "scope-source-privacy-and-candidate-edges",
+      "status": "pass",
+      "detail": "Tests bind all scope IDs and attempt, validate facts against committed canonical writer receipts, require zcode.native/v1 plus matching nonconflicting pinned origin before Native classification, and use closed Native/tool enums. Cross-scope/old-attempt/missing-source/partial-read and four sparse/custom-iterator candidate-source negatives are covered. Allowlist canaries cover key, hidden reasoning, unrelated Life, transcript, error, stdout/stderr and path material."
+    },
+    {
+      "id": "final-build-regression-and-input-bindings",
+      "status": "pass",
+      "detail": "Author final 09 source-index build exited 0; final 10 source-index regression exited 0 with 84/84 passed, 0 failed/skipped. Independent fixed-Node pre/post binding compared 133 source/test/dist/compiler/Node/migration inputs; digest 352b2ca70be38f677fb2cf33d778b0eaccc05d0e73a14829542ea01ad4c82ffe was unchanged. Author WT and main were clean at review end."
+    }
+  ],
+  "limitations": [
+    "One independent probe setup attempt exited 1 because it initially placed artifactRoot equal to repositoryRoot; the failed command is preserved as commands/05. The corrected review-only separated artifact-root probe passed as commands/06; this was a reviewer fixture error, not an author-code failure.",
+    "An absent command field in a committed receipt does not invalidate the receipt's operation/artifact identity summary, but diagnostics explicitly marks command identity unverified and emits COMMAND_NOT_VERIFIED. Consumers must treat those as separate assertions.",
+    "The boundary script reports BOUNDARY_SCAN_NOT_RUN because packages/core is absent. Verification is local owned Node/Git plus synthetic event and real SQLite behavior; Native/Desktop GUI composition, installed host, paid/external model calls, production data, full transcript recovery and physical disk exhaustion were not run.",
+    "Diagnostic output retains only closed status/version summaries, salted references and stream digests. Raw argv, paths, transcript text, hidden reasoning and persistent Memory contents are intentionally not exposed; memory candidates are annotations only."
+  ],
+  "artifacts": [
+    {
+      "root": "author_worktree",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U09.md",
+      "bytes": 1939,
+      "sha256": "acb786a8dd962910b409b6d309e35081549c3016dc7dc76759922834aa69c42e"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U09/20261004-01/result.md",
+      "bytes": 6123,
+      "sha256": "1243cbd77fe294f3b9dc0f4f8d3becd56fdcb6f4d668c0780fbf1a0b867831f8"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U09/20261004-01/source-decision.md",
+      "bytes": 1800,
+      "sha256": "d8573e19b5eb18c5a15f6ca3e3ee6bd4bc0441f721430f26a465f94cc62dbe82"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U09/20261004-01/diff.json",
+      "bytes": 6290,
+      "sha256": "3ebf96cb8d6826976fe275e3d5513350e3cfc1aed3be2e82dca00ce2cdc38b84"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U09/20261004-01/manifest.json",
+      "bytes": 6692,
+      "sha256": "af5cb414f932788d6c5b11b756625d7aaf2ad2bf01e853f34d38b9a52109ad92"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U09/20261004-01/command-index.json",
+      "bytes": 2732,
+      "sha256": "4cbc846f67281d45ee20b1ad8cdeb0a64cf5b2aced8ab634d7113780475ee75c"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U09/20261004-01/commands/09-source-index-build.json",
+      "bytes": 490,
+      "sha256": "609b705240b26826a1614e97a2e87c19ad35a269d1e4947f49f39306a0fa6e8b"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U09/20261004-01/commands/10-source-index-regression.json",
+      "bytes": 10252,
+      "sha256": "1c009ed10f98ea924d9c5be3dc2b051f6a97cd6919255b6b78559c9db20a706c"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U09/20261004-01/commands/inputs-source-index-pre.json",
+      "bytes": 32382,
+      "sha256": "e7f26fd2f029b61685dc43b25af4f747d5787c5295c430faf523371f900c9e22"
+    },
+    {
+      "root": "author_worktree",
+      "path": "evidence/P02-U09/20261004-01/commands/inputs-source-index-post.json",
+      "bytes": 32490,
+      "sha256": "880e3fd311c1d7c0467c2fde3675758661d74f1456d69b4f51505ffcb26d6e5c"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/application/evidence/src/index.ts",
+      "bytes": 32579,
+      "sha256": "c8588f5b2fa76949219739b00cd299d8b75fee70ebf389cebaedbbdbe278c067"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/application/evidence/test/evidence.test.mjs",
+      "bytes": 19477,
+      "sha256": "eabe998190f0fccf8b5b13b779da5598f7fddb642ef03bc03ac70c1159cbc20c"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/diagnostics/src/index.ts",
+      "bytes": 50696,
+      "sha256": "cf26f480a4115f573321eac8af94d0745404584a3da0e5480727fe3bbe9e5c23"
+    },
+    {
+      "root": "author_worktree",
+      "path": "packages/diagnostics/test/diagnostics.test.mjs",
+      "bytes": 31841,
+      "sha256": "963bff3a7bb1efa531e819ed3d8c6e578ee4d713f572636b898b8b185605f572"
+    },
+    {
+      "root": "review_directory",
+      "path": "author-verification.json",
+      "bytes": 563,
+      "sha256": "09b1c729bef79817ea3b67867891d7bfbf77ca876925445f1a26ecbfbee939d9"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-pre.json",
+      "bytes": 32490,
+      "sha256": "e1013a06733ede9c1f59f9fdd8421c5b2557ba918cba38f785c0576291ebc258"
+    },
+    {
+      "root": "review_directory",
+      "path": "inputs-post.json",
+      "bytes": 32490,
+      "sha256": "d9f4e8d10e64ac9a643ef11f742349cbaf59d186406bcfd07b9db3d165ad5dcc"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/01-verify-author.json",
+      "bytes": 1310,
+      "sha256": "9d09acac38f1b244d6579533c7049d3fbf15590a807e85a5c35a89134e924ca4"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/02-inputs-pre.json",
+      "bytes": 1061,
+      "sha256": "4cd1097f828969adb94fe27fd00023fde2298a8d102f1b269e67b4ba30a6e577"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/03-independent-targeted-tests.json",
+      "bytes": 2823,
+      "sha256": "8cceeaa429f01661709c5248756c190156d485618573aa1f05e652fb67dae837"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/04-inputs-post.json",
+      "bytes": 1006,
+      "sha256": "bcf6f50d9f0bf534099bcfd56e68b8c0564191f620e51c800571847f34e92f70"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/05-missing-command-probe.json",
+      "bytes": 1449,
+      "sha256": "3b9762a23ca2943125d1fbb059763db665dcf04f70509c77adf68b0785680adc"
+    },
+    {
+      "root": "review_directory",
+      "path": "commands/06-missing-command-probe.json",
+      "bytes": 1223,
+      "sha256": "19a812569a2e5d5af2ae271b90fdac4bc0305173aac03dbe886d4bf9b5003d08"
+    },
+    {
+      "root": "review_directory",
+      "path": "probes/missing-command-receipt.mjs",
+      "bytes": 4796,
+      "sha256": "0e5bc698e0f7fc36c3b175ea725a71ef582ef790e7e5321eb27cd28e564f4f33"
+    },
+    {
+      "root": "review_directory",
+      "path": "probes/missing-command-result.json",
+      "bytes": 379,
+      "sha256": "a533144d5108e8a8c3bd87accceb2cd7b84345d1b3b6495508a4419b08537b51"
+    },
+    {
+      "root": "review_directory",
+      "path": "probes/missing-command.sqlite",
+      "bytes": 90112,
+      "sha256": "c08e1de3e515cb3f22b619022b680dbbce2c830a886cdfb3a65781b6dc708ecb"
+    },
+    {
+      "root": "review_directory",
+      "path": "probes/artifact-root/synthetic-result.txt",
+      "bytes": 30,
+      "sha256": "4a7622ecc0968121a4d33723cbc43fe117c4df37f3ae983f7e1de14a78900834"
+    },
+    {
+      "root": "baseline_repository",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P02-U09.md",
+      "bytes": 1939,
+      "sha256": "acb786a8dd962910b409b6d309e35081549c3016dc7dc76759922834aa69c42e"
+    }
+  ],
+  "immutable_inputs": []
+}
