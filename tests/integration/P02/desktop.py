@@ -42,7 +42,7 @@ EXPECTED_REGISTRY_GUARD_KEYS = {
     r"hkcu\software\classes\drive\shell\zcode.openinzcode",
     r"hkcu\software\classes\drive\shell\zcode.openinzcode\command",
 }
-EXPECTED_PROTOCOL_GUARD_SUBKEYS = [item.lower() for item in REGISTRY_PROTOCOL_KEYS]
+EXPECTED_PROTOCOL_GUARD_SUBKEYS = list(REGISTRY_PROTOCOL_KEYS)
 REGISTRY_GUARD_KEY_SEQUENCE = (
     r"hkcu\software\classes\directory\shell\zcode.openinzcode",
     r"hkcu\software\classes\directory\shell\zcode.openinzcode",
