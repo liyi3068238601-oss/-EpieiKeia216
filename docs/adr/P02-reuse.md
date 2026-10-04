@@ -1,5 +1,21 @@
 # P02 复用决定
 
+## 当前推荐（2026-10-04）
+
+作者状态：`ready_for_review`。本节是当前决定，明确取代下方 2026-10-03 历史版本中“规范化事件库默认采用 Node `node:sqlite`”的推荐；历史分析、范围、失败记录和原结论完整保留在后文，作为当时证据。
+
+继续采用固定 ZCode `29628c9acdb81b703bbd4080c207a0e7ce5e276e` 作为唯一主 Runtime/Loop。**P02-U05 规范化事件库当前推荐成熟绑定 `better-sqlite3@13.0.3`**，不把 Node 内建 SQLite 的 Runtime 稳定性状态当作绑定成熟度。固定 Node `v24.14.0` 官方文档将 `node:sqlite` 标为 Stability 1.1（实验性）；本决定使用更高层的 better-sqlite3 API 与其 Windows x64 N-API 预编译二进制。上游 tag `v13.0.3` 固定提交 `dbc2ea1165fef1f599b9be12faea33fa5e9d7ffb`，MIT，要求 Node `>=22` / N-API 10。实验在 Node `v24.14.0`、N-API 10、Windows x64 下通过 `process.dlopen` 追踪确认实际加载包内 `prebuilds/win32-x64.node`，预编译文件 SHA-256 `e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a`。通过 better binding 实际执行 `SELECT sqlite_version()` 得到其 bundled SQLite `3.53.4`；Node 内置 SQLite `3.51.2` 单独记录。安装锁为 `better-sqlite3@13.0.3`，`pnpm@10.33.2 install --ignore-scripts` exit 0，包没有 install script。
+
+固定 attempt `20261004-02` 在 isolated worktree 完成 9 项真实 SQLite spike：Windows native addon 实际加载；`(source,event_id)` 唯一、重复幂等和同 ID 异载荷冲突；事务提交前/后强杀恢复；带已提交 WAL 的在线备份和恢复；竞争写 `SQLITE_BUSY`；只读拒写；实际 Node v1 账本经 DB/WAL/SHM 集合复制、SQLite backup、两绑定双向读写与读备份；SQLite 64 位整数舍入负例和安全整数守卫。9 项全部通过。运行与 package tree/lock hash 详见 `evidence/P02-U02/20261004-02/result.md` 和权威 `spike-result-run-05-final.json`。
+
+因此 U05 实现须在事件库边界接入 better-sqlite3，并保持单写入队列与有界同步工作；应适配事务/查询/error API，而不是让当前 `DatabaseSync` prototype monkeypatch 继续冒充真实故障注入。counter 和 static metadata 读取必须先检查 SQLite 整数类型与范围；本 spike 观察到 better 默认读 `9007199254740993` 会舍入为 `9007199254740992`，而 `defaultSafeIntegers(true)` 可读成 BigInt。超出安全范围时须拒绝，不得向归一化事件库返回被舍入的“安全”number。此次未改产品源码，以上是 U05 的实现约束。
+
+本决定仅选择**规范化事件库**的绑定。backup 模块目前各自创建 Node `DatabaseSync` 连接；本次实测了它与 better 写出的 v1 schema/数据之间的 Node backup 和双向读取。是否也切换 backup binding 留待主控结合 U05 实际 prototype 与恢复测试决定，不由本 ADR 自动推导。旧 Node Native 16 项通过记录是 Runtime 路线的历史证据，不是本 attempt 的重跑结果。强杀不是物理断电；没有进行真实用户/生产数据、真实模型、Desktop 或安装包验证。
+
+上游固定来源及源码测试：better-sqlite3 `lib/database.js`、`lib/methods/backup.js`、`lib/methods/transaction.js`，以及 `test/10.database.open.js`、`test/30.database.transaction.js`、`test/36.database.backup.js`、`test/40.bigints.js`。读取上游测试用于定向试验设计，未声称运行其完整开发套件。Node API：[v24.14.0 SQLite 文档](https://nodejs.org/download/release/v24.14.0/docs/api/sqlite.html)。
+
+## 历史决定（2026-10-03；原 Node 默认建议已被上方当前推荐取代）
+
 作者状态：ready_for_review。前置 U01 已独立接受；本决定以 U02 隔离实跑为依据，待本单元独立审查接受后放行产品实现。这里不代表 G02 或 0.2.0 通过。
 
 继续采用固定 ZCode `29628c9acdb81b703bbd4080c207a0e7ce5e276e` 作为唯一主 Runtime/Loop，使用既有事件订阅、Hook、原生工具和会话日志。Xiadie 通过薄适配维护自己的规范化事实与衍生证据，原生日志仍是其原始来源。默认 SQLite 路线采用固定 Node 24.14.0 的 `node:sqlite`，复用 SQLite 的事务、WAL、在线备份与恢复；不增加 native addon 或另写数据库。所有实际 PoC 使用独立合成资料。
