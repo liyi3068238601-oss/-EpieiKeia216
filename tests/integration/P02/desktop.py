@@ -310,15 +310,30 @@ def verify_candidate_cli_alias(profile: Path, candidate: dict, verifier) -> dict
         return {"passed": False, "failure_code": "candidate_cli_alias_verification_failed"}
 
 
-def verify_registry_guard_log(profile: Path, candidate: dict) -> dict:
+def verify_registry_guard_log(profile: Path, candidate: dict, scenario_result: dict) -> dict:
     log_path = profile / "registry-write-guard.jsonl"
-    main_pid_path = profile.parent / "desktop-main.pid"
+    launcher_pid_path = profile.parent / "desktop-main.pid"
     try:
-        main_pid = int(main_pid_path.read_text(encoding="utf-8").strip())
+        launcher_pid = int(launcher_pid_path.read_text(encoding="utf-8").strip())
+    except (OSError, ValueError, TypeError):
+        return {"passed": False, "failure_code": "registry_write_guard_log_unavailable"}
+    try:
+        actual_ui = scenario_result["actual_ui"]
+        actual_main_pid = actual_ui["desktop"]["main_pid"]
+        network_main_pid = scenario_result["network_guard"]["main"]["pid"]
+        process_root_pid = scenario_result["process_evidence"]["root_pid"]
+    except (TypeError, KeyError):
+        return {"passed": False, "failure_code": "main_process_runtime_snapshot_invalid"}
+    if (type(actual_main_pid) is not int or actual_main_pid <= 0 or
+            actual_main_pid != network_main_pid or actual_main_pid != process_root_pid or
+            type(launcher_pid) is not int or launcher_pid <= 0):
+        return {"passed": False, "failure_code": "main_process_runtime_snapshot_invalid"}
+    main_pid = actual_main_pid
+    try:
         records = [json.loads(line) for line in log_path.read_text(encoding="utf-8").splitlines() if line]
         main_snapshot = json.loads((profile / "main-process-runtime.json").read_bytes())
         ui_spec = json.loads((profile.parent / "desktop-ui.spec.json").read_bytes())
-    except (OSError, ValueError, TypeError, json.JSONDecodeError):
+    except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError):
         return {"passed": False, "failure_code": "registry_write_guard_log_unavailable"}
 
     if not isinstance(main_snapshot, dict) or not isinstance(ui_spec, dict):
@@ -383,6 +398,7 @@ def verify_registry_guard_log(profile: Path, candidate: dict) -> dict:
             if (record.get("code") != expected_code or record.get("method") != expected_method or
                     record.get("blocked") is not True or
                     record.get("returnValue") is not False or record.get("returnType") != "boolean" or
+                    record.get("defaultApp") is not main_snapshot.get("defaultApp") or
                     not isinstance(raw_args, list) or raw_args[0:1] != ["zcode"] or
                     (expected_kind == "blocked_default_protocol_registration" and
                      main_snapshot.get("defaultApp") is True and len(main_argv) >= 2 and
@@ -467,6 +483,7 @@ def verify_registry_guard_log(profile: Path, candidate: dict) -> dict:
         "blocked_protocol_removal_count": 0,
         "blocked_recent_document_clear_count": len(recent_records),
         "main_pid": main_pid,
+        "launcher_pid": launcher_pid,
         "main_process_snapshot_path": str(profile / "main-process-runtime.json"),
         "main_process_snapshot_sha256": sha256(profile / "main-process-runtime.json"),
         "blocked_requests_sha256": sha256(log_path),
@@ -567,7 +584,7 @@ def main() -> int:
         scenario_output = run_output / "scenarios" / scenario_id
         profile = scenario_output / "profile"
         alias_binding = verify_candidate_cli_alias(profile, verified_candidate, verifier)
-        registry_guard = verify_registry_guard_log(profile, verified_candidate)
+        registry_guard = verify_registry_guard_log(profile, verified_candidate, result)
         attached = attach_ledger_verification(harness, verifier, verified_candidate, scenario_id, scenario_output, result)
         attached["sqlite_cli_runtime_alias"] = alias_binding
         attached["registry_write_guard"] = registry_guard
@@ -643,6 +660,8 @@ def main() -> int:
             "registryGuardPolicy": "P02 Electron main instrumentation blocks reg.exe child_process.spawn, app protocol registration/removal, and recent-document clearing calls, recording original requests before native side effects. It is not an operating-system sandbox; four ZCode.OpenInZCode context-menu keys and five zcode protocol keys are hashed read-only immediately before and after each suite.",
             "registrySideEffectState": registry_proof,
             "qualificationBoundary": "Actual qualification uses the Electron UI with the pinned fixed Node CLI. The durable host and SQLite ledger run in the wrapped CLI protocol process, not Electron main.",
+            "processPidRolePolicy": "desktop-main.pid records the Playwright Electron launcher PID; main-process-runtime.json and blocked side-effect records bind to the app.evaluate main PID, cross-checked against P01 process and network evidence.",
+            "mainProcessSnapshotCapturePolicy": "The main-process snapshot is written once at the first guarded setAsDefaultProtocolClient call, sampling process argv/defaultApp directly at the API boundary before the call is blocked.",
             "sidecarBoundary": "P01 turn sidecar remains UI correlation evidence; durable claims come only from the read-only SQLite and diagnostics checks recorded per scenario.",
             "exitCode": exit_code,
         })

@@ -37,7 +37,7 @@ class DesktopSideEffectGuardTests:
             raise RuntimeError("owned registry evidence temp root failed deletion checks")
         shutil.rmtree(self.temp_root)
 
-    def _profile_and_candidate(self, root: Path) -> tuple[Path, dict, dict]:
+    def _profile_and_candidate(self, root: Path) -> tuple[Path, dict, dict, dict]:
         run_root = root / "run"
         profile = run_root / "profile"
         cwd = profile / "process-working-directory"
@@ -50,7 +50,7 @@ class DesktopSideEffectGuardTests:
         argv = [sys.executable, "--inspect=0", str(root / "candidate" / "packages/desktop/dist/main.js")]
         snapshot = {
             "schemaVersion": 1,
-            "pid": 4126,
+            "pid": 51964,
             "processType": "browser",
             "cwd": str(cwd),
             "execPath": sys.executable,
@@ -61,7 +61,12 @@ class DesktopSideEffectGuardTests:
             "resolvedArgvEntry": str((cwd / argv[1]).resolve()),
         }
         (profile / "main-process-runtime.json").write_text(json.dumps(snapshot), encoding="utf-8")
-        return profile, {"resolved_paths": {"electronPath": sys.executable}}, snapshot
+        scenario_result = {
+            "actual_ui": {"desktop": {"main_pid": 51964}},
+            "network_guard": {"main": {"pid": 51964}},
+            "process_evidence": {"root_pid": 51964},
+        }
+        return profile, {"resolved_paths": {"electronPath": sys.executable}}, snapshot, scenario_result
 
     def _records(self, profile: Path, candidate: dict, snapshot: dict, groups: int = 3) -> list[dict]:
         cwd = snapshot["cwd"]
@@ -69,7 +74,7 @@ class DesktopSideEffectGuardTests:
         records = []
 
         def make_record(kind: str, **fields: object) -> dict:
-            return {"schemaVersion": 1, "kind": kind, "pid": 4126, "processType": "browser",
+            return {"schemaVersion": 1, "kind": kind, "pid": snapshot["pid"], "processType": "browser",
                     "cwd": cwd, **fields}
 
         for group_index in range(groups):
@@ -94,6 +99,7 @@ class DesktopSideEffectGuardTests:
             "blocked_default_protocol_registration",
             code="P02_DEFAULT_PROTOCOL_REGISTRATION_BLOCKED",
             method="app.setAsDefaultProtocolClient",
+            defaultApp=snapshot["defaultApp"],
             rawArgs=protocol_args,
             rawArgsSha256=hashlib.sha256(json.dumps(protocol_args, ensure_ascii=False, separators=(",", ":")).encode()).hexdigest(),
             expectedRegistrySubkeys=desktop["EXPECTED_PROTOCOL_GUARD_SUBKEYS"],
@@ -105,6 +111,7 @@ class DesktopSideEffectGuardTests:
             "blocked_clear_recent_documents",
             code="P02_CLEAR_RECENT_DOCUMENTS_BLOCKED",
             method="app.clearRecentDocuments",
+            defaultApp=snapshot["defaultApp"],
             rawArgs=[],
             rawArgsSha256=hashlib.sha256(b"[]").hexdigest(),
             returnValue=None,
@@ -119,11 +126,12 @@ class DesktopSideEffectGuardTests:
             encoding="utf-8")
 
     def run_evidence_validator_tests(self) -> None:
-        profile, candidate, snapshot = self._profile_and_candidate(self.temp_root / "evidence")
+        profile, candidate, snapshot, scenario_result = self._profile_and_candidate(self.temp_root / "evidence")
         records = self._records(profile, candidate, snapshot, groups=3)
         self._write_log(profile, records)
-        valid = desktop["verify_registry_guard_log"](profile, candidate)
+        valid = desktop["verify_registry_guard_log"](profile, candidate, scenario_result)
         assert valid["passed"] is True, valid
+        assert valid["main_pid"] == 51964 and valid["launcher_pid"] == 4126, valid
         assert valid["menu_install_group_count"] == 3, valid
         assert valid["blocked_menu_request_count"] == 24, valid
         assert valid["blocked_protocol_registration_count"] == 1, valid
@@ -132,7 +140,7 @@ class DesktopSideEffectGuardTests:
         incomplete = list(records)
         del incomplete[7]
         self._write_log(profile, incomplete)
-        rejected = desktop["verify_registry_guard_log"](profile, candidate)
+        rejected = desktop["verify_registry_guard_log"](profile, candidate, scenario_result)
         assert rejected.get("passed") is not True and rejected.get("failure_code") == "registry_write_guard_request_set_mismatch", rejected
 
         wrong_entry = json.loads(json.dumps(records))
@@ -142,25 +150,39 @@ class DesktopSideEffectGuardTests:
             protocol["rawArgs"], ensure_ascii=False, separators=(",", ":")
         ).encode()).hexdigest()
         self._write_log(profile, wrong_entry)
-        rejected = desktop["verify_registry_guard_log"](profile, candidate)
+        rejected = desktop["verify_registry_guard_log"](profile, candidate, scenario_result)
         assert rejected.get("passed") is not True and rejected.get("failure_code") == "default_protocol_guard_record_invalid", rejected
 
         wrong_pid = json.loads(json.dumps(records))
         wrong_pid[0]["pid"] = 9999
         self._write_log(profile, wrong_pid)
-        rejected = desktop["verify_registry_guard_log"](profile, candidate)
+        rejected = desktop["verify_registry_guard_log"](profile, candidate, scenario_result)
         assert rejected.get("passed") is not True and rejected.get("failure_code") == "registry_write_guard_record_invalid", rejected
+
+        launcher_as_main = dict(scenario_result)
+        launcher_as_main["actual_ui"] = {"desktop": {"main_pid": 4126}}
+        self._write_log(profile, records)
+        rejected = desktop["verify_registry_guard_log"](profile, candidate, launcher_as_main)
+        assert rejected.get("passed") is not True and rejected.get("failure_code") == "main_process_runtime_snapshot_invalid", rejected
+
+        early_default_app = json.loads(json.dumps(records))
+        protocol = next(item for item in early_default_app if item["kind"] == "blocked_default_protocol_registration")
+        protocol["defaultApp"] = False
+        self._write_log(profile, early_default_app)
+        rejected = desktop["verify_registry_guard_log"](profile, candidate, scenario_result)
+        assert rejected.get("passed") is not True and rejected.get("failure_code") == "default_protocol_guard_record_invalid", rejected
 
         unexpected_remove = list(records)
         removal_args = ["zcode"]
         unexpected_remove.append({
             "schemaVersion": 1,
             "kind": "blocked_default_protocol_removal",
-            "pid": 4126,
+            "pid": snapshot["pid"],
             "processType": "browser",
             "cwd": snapshot["cwd"],
             "code": "P02_DEFAULT_PROTOCOL_REMOVAL_BLOCKED",
             "method": "app.removeAsDefaultProtocolClient",
+            "defaultApp": snapshot["defaultApp"],
             "rawArgs": removal_args,
             "rawArgsSha256": hashlib.sha256(json.dumps(
                 removal_args, ensure_ascii=False, separators=(",", ":")
@@ -171,7 +193,7 @@ class DesktopSideEffectGuardTests:
             "blocked": True,
         })
         self._write_log(profile, unexpected_remove)
-        rejected = desktop["verify_registry_guard_log"](profile, candidate)
+        rejected = desktop["verify_registry_guard_log"](profile, candidate, scenario_result)
         assert rejected.get("passed") is not True and rejected.get("failure_code") == "unexpected_default_protocol_removal_request", rejected
 
     def run_candidate_alias_test(self) -> None:

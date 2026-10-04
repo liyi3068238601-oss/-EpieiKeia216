@@ -100,7 +100,7 @@ function installRegistryWriteGuard({
   };
 }
 
-function installBlockedAppMethod({ app, methodName, code, kind, env, processInfo, result, targetSubkeys }) {
+function installBlockedAppMethod({ app, methodName, code, kind, env, processInfo, result, targetSubkeys, beforeBlock }) {
   const logPath = requireGuardLogPath(env);
   if (!app || typeof app[methodName] !== "function") {
     throw new Error(`Electron app.${methodName} is unavailable`);
@@ -112,6 +112,7 @@ function installBlockedAppMethod({ app, methodName, code, kind, env, processInfo
   }
   const original = app[methodName];
   const guarded = function p02BlockedAppSideEffect(...rawArgs) {
+    if (beforeBlock) beforeBlock();
     const metadata = processMetadata(processInfo);
     const record = {
       schemaVersion: 1,
@@ -119,6 +120,7 @@ function installBlockedAppMethod({ app, methodName, code, kind, env, processInfo
       code,
       method: `app.${methodName}`,
       ...metadata,
+      defaultApp: processInfo.defaultApp === true,
       rawArgs,
       rawArgsSha256: createHash("sha256").update(JSON.stringify(rawArgs), "utf8").digest("hex"),
       ...(targetSubkeys ? { expectedRegistrySubkeys: targetSubkeys } : {}),
@@ -160,6 +162,12 @@ const PROTOCOL_REGISTRY_SUBKEYS = [
  * own failure reporting runs, and never claims that an OS operation succeeded.
  */
 function installDefaultProtocolClientGuard({ app, env = process.env, processInfo = process } = {}) {
+  let snapshotWritten = false;
+  const captureFirstProtocolRegistration = () => {
+    if (snapshotWritten) return;
+    writeMainProcessSnapshot({ env, processInfo });
+    snapshotWritten = true;
+  };
   const methods = [
     {
       methodName: "setAsDefaultProtocolClient",
@@ -167,6 +175,7 @@ function installDefaultProtocolClientGuard({ app, env = process.env, processInfo
       code: "P02_DEFAULT_PROTOCOL_REGISTRATION_BLOCKED",
       result: false,
       targetSubkeys: PROTOCOL_REGISTRY_SUBKEYS,
+      beforeBlock: captureFirstProtocolRegistration,
     },
     {
       methodName: "removeAsDefaultProtocolClient",

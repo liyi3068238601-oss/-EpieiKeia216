@@ -120,7 +120,7 @@ test("pins the actual Electron main PID, cwd, executable, and argv for protocol 
   }
 });
 
-test("blocks Electron protocol changes and recent-document clearing without calling the native APIs", () => {
+test("captures live defaultApp at protocol call time and blocks protocol/recent side effects", () => {
   const root = mkdtempSync(path.join(os.tmpdir(), "p02-registry-guard-"));
   const logPath = path.join(root, "guard.jsonl");
   const calls = [];
@@ -129,10 +129,20 @@ test("blocks Electron protocol changes and recent-document clearing without call
     removeAsDefaultProtocolClient(...args) { calls.push(["remove", ...args]); return true; },
     clearRecentDocuments(...args) { calls.push(["clear", ...args]); },
   };
-  const processInfo = { pid: 4124, type: "browser", cwd: () => root };
-  const env = { P02_REGISTRY_GUARD_LOG: logPath };
+  const processInfo = {
+    pid: 4124,
+    type: "browser",
+    cwd: () => root,
+    execPath: process.execPath,
+    defaultApp: false,
+    argv: [process.execPath, "--inspect=0"],
+  };
+  const snapshotPath = path.join(root, "main-process-runtime.json");
+  const env = { P02_REGISTRY_GUARD_LOG: logPath, P02_MAIN_PROCESS_SNAPSHOT: snapshotPath };
   const restore = installDefaultProtocolClientGuard({ app, env, processInfo });
   try {
+    assert.equal(existsSync(snapshotPath), false, "the snapshot waits for the actual protocol API boundary");
+    processInfo.defaultApp = true;
     assert.equal(app.setAsDefaultProtocolClient("zcode", "C:\\owned\\electron.exe", ["C:\\owned\\zcode.cjs"]), false);
     assert.equal(app.removeAsDefaultProtocolClient("zcode"), false);
     assert.equal(app.clearRecentDocuments(), undefined);
@@ -140,6 +150,9 @@ test("blocks Electron protocol changes and recent-document clearing without call
 
     const records = readFileSync(logPath, "utf8").trim().split("\n").map((line) => JSON.parse(line));
     assert.equal(records.length, 3);
+    const snapshot = JSON.parse(readFileSync(snapshotPath, "utf8"));
+    assert.equal(snapshot.defaultApp, true, "the sampled value reflects API time, not preload startup");
+    assert.equal(snapshot.pid, processInfo.pid);
     assert.deepEqual(records.map((record) => record.kind), [
       "blocked_default_protocol_registration",
       "blocked_default_protocol_removal",
@@ -160,6 +173,7 @@ test("blocks Electron protocol changes and recent-document clearing without call
       assert.equal(record.schemaVersion, 1);
       assert.equal(record.pid, 4124);
       assert.equal(record.processType, "browser");
+      if (index < 2) assert.equal(record.defaultApp, true);
       assert.equal(record.blocked, true);
       assert.deepEqual(record.rawArgs, expectedArgs[index]);
       assert.equal(record.rawArgsSha256,

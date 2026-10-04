@@ -7,7 +7,6 @@ const electron = require("electron");
 const {
   installDefaultProtocolClientGuard,
   installRegistryWriteGuard,
-  writeMainProcessSnapshot,
 } = require("./registry-write-guard.cjs");
 
 // These observed startup side effects run in Electron main. P02 blocks them at
@@ -16,5 +15,4 @@ const {
 installRegistryWriteGuard({ childProcess, env: process.env, processInfo: process });
 installDefaultProtocolClientGuard({ app: electron.app, env: process.env, processInfo: process });
 syncBuiltinESMExports();
-writeMainProcessSnapshot({ env: process.env, processInfo: process });
 require(path.resolve(__dirname, "../P01/electron-network-guard.cjs"));
