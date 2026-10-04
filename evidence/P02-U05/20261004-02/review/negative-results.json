@@ -1,0 +1,115 @@
+{
+  "schema": "p02-u05-review-negative-cases/v1",
+  "dataRoot": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-sqlite-store-u05\\data",
+  "runtime": {
+    "node": "v24.14.0",
+    "executable": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe"
+  },
+  "cases": {
+    "readonlyMissing": {
+      "error": {
+        "name": "EventStoreError",
+        "code": "UNSUPPORTED_SCHEMA",
+        "message": "read-only event store does not exist"
+      },
+      "filesBeforeAndAfter": [
+        {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-sqlite-store-u05\\data\\readonly-missing.sqlite",
+          "exists": false
+        },
+        {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-sqlite-store-u05\\data\\readonly-missing.sqlite-wal",
+          "exists": false
+        },
+        {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-sqlite-store-u05\\data\\readonly-missing.sqlite-shm",
+          "exists": false
+        }
+      ]
+    },
+    "unsafeStoredInteger": {
+      "seededStatus": "committed",
+      "exactPersistedInteger": "9007199254740993",
+      "readObservationsError": {
+        "name": "EventStoreError",
+        "code": "CORRUPT_STORE",
+        "message": "event store could not validate its stored rows"
+      },
+      "queryReceiptError": {
+        "name": "EventStoreError",
+        "code": "CORRUPT_STORE",
+        "message": "event store could not validate its stored rows"
+      },
+      "databaseFiles": [
+        {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-sqlite-store-u05\\data\\unsafe-stored-integer.sqlite",
+          "exists": true,
+          "bytes": 73728,
+          "sha256": "f4fa71e4769fd309a62d19c31797694a6c079012f744438c0202a326e5397d67"
+        },
+        {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-sqlite-store-u05\\data\\unsafe-stored-integer.sqlite-wal",
+          "exists": true,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-sqlite-store-u05\\data\\unsafe-stored-integer.sqlite-shm",
+          "exists": true,
+          "bytes": 32768,
+          "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+        }
+      ]
+    },
+    "duplicateAckLoss": {
+      "initial": {
+        "status": "committed",
+        "commitSequence": 1
+      },
+      "afterCommittedDuplicateAckLoss": {
+        "status": "unknown",
+        "code": "UNKNOWN_COMMIT"
+      },
+      "durableReceipt": {
+        "status": "found",
+        "commitSequence": 1
+      },
+      "retry": {
+        "status": "duplicate",
+        "commitSequence": 1
+      },
+      "countsBeforeRetry": {
+        "facts": 1,
+        "observations": 1
+      },
+      "countsAfterRetry": {
+        "facts": 1,
+        "observations": 1
+      },
+      "countsAfterReopen": {
+        "facts": 1,
+        "observations": 1
+      },
+      "databaseFiles": [
+        {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-sqlite-store-u05\\data\\duplicate-ack-loss.sqlite",
+          "exists": true,
+          "bytes": 73728,
+          "sha256": "9715b87e4e36d22cdfbc4ff8c1ab46acd07cc6c17f5e8a945e006017b47a6cec"
+        },
+        {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-sqlite-store-u05\\data\\duplicate-ack-loss.sqlite-wal",
+          "exists": true,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-sqlite-store-u05\\data\\duplicate-ack-loss.sqlite-shm",
+          "exists": true,
+          "bytes": 32768,
+          "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+        }
+      ]
+    }
+  }
+}

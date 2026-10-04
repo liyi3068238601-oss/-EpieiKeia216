@@ -1,0 +1,61 @@
+{
+  "schema": "p02-u05-review-snapshot-comparison/v1",
+  "command": {
+    "argv": [
+      "powershell",
+      "-File",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P02\\reviews\\mature-sqlite-store-u05\\compare-state.ps1"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie"
+  },
+  "started_at": "2026-10-04T06:18:01.7833105+00:00",
+  "completed_at": "2026-10-04T06:18:01.8898937+00:00",
+  "authorHeadPrePost": [
+    "008005d37a0aa543f3827880de2c85980164c499",
+    "008005d37a0aa543f3827880de2c85980164c499"
+  ],
+  "rootHeadPrePost": [
+    "b694bed232fa914a1c6b27329fa072c2e8a30a13",
+    "b694bed232fa914a1c6b27329fa072c2e8a30a13"
+  ],
+  "authorCleanPrePost": [
+    true,
+    true
+  ],
+  "rootCleanPrePost": [
+    true,
+    true
+  ],
+  "sourceAndInputMismatches": [],
+  "installedPackageTreesStable": true,
+  "loadedAddonStable": true,
+  "fixedNodeStable": true,
+  "compiledTreePreBuildToPostBuildStable": true,
+  "compiledTreePostBuildToPostTestStable": true,
+  "runtime": {
+    "betterSqliteVersion": "13.0.3",
+    "sqliteVersion": "3.53.4",
+    "node": "24.14.0",
+    "addonBytes": 1989632,
+    "fixedNodeSha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+    "addonSha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a"
+  },
+  "dist": {
+    "aftertests": {
+      "bytes": 359181,
+      "files": 42,
+      "sha256": "325bed2791b53afe252772303b026d15c5d3ed99a586acedf9f6c44e07319fdf"
+    },
+    "before": {
+      "bytes": 359181,
+      "files": 42,
+      "sha256": "325bed2791b53afe252772303b026d15c5d3ed99a586acedf9f6c44e07319fdf"
+    },
+    "postbuild": {
+      "bytes": 359181,
+      "files": 42,
+      "sha256": "325bed2791b53afe252772303b026d15c5d3ed99a586acedf9f6c44e07319fdf"
+    }
+  },
+  "result": "pass"
+}

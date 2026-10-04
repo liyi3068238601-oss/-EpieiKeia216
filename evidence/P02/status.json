@@ -9,8 +9,8 @@
   "stage_status": "running",
   "G01": "pass",
   "G02": "pending_revalidation",
-  "current_task": "P02-U05",
-  "next_task": "P02-U05",
+  "current_task": "P02-U08",
+  "next_task": "P02-U08",
   "next_stage_started": false,
   "tasks": [
     {
@@ -145,7 +145,7 @@
       "dependencies": [
         "P02-U04"
       ],
-      "status": "running",
+      "status": "accepted",
       "card_sha256": "1e43db642edc3d6d2229f199789c4c8b494fe50ad95d3c73215b708835c02b99",
       "historical_acceptances": [
         {
@@ -168,7 +168,24 @@
             }
           }
         }
-      ]
+      ],
+      "author_commit": "008005d37a0aa543f3827880de2c85980164c499",
+      "integration_commit": "3cbdba8a0981f2b3bec900132414e14da3bafb91",
+      "acceptance": {
+        "path": "evidence/P02-U05/20261004-02/acceptance.json",
+        "bytes": 5643,
+        "sha256": "4ef8a757bf4c0bc7c4493dac168b3fdf3bdfb7f9f532499405e362f21b46544a"
+      },
+      "review": {
+        "status": "pass",
+        "reviewer": "mature_backup_preparation",
+        "reviewed_commit": "008005d37a0aa543f3827880de2c85980164c499",
+        "evidence": {
+          "path": "evidence/P02-U05/20261004-02/review-final.json",
+          "bytes": 57552,
+          "sha256": "d7608eb97ddb88a61eec6f63bb12c29a8b2c39203519ce104e9d072e020f639b"
+        }
+      }
     },
     {
       "id": "P02-U06",
@@ -251,7 +268,7 @@
           }
         }
       ],
-      "status": "revalidation_required"
+      "status": "running"
     },
     {
       "id": "P02-U09",
