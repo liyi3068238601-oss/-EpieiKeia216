@@ -1,6 +1,6 @@
 # P02 integration contract
 
-Baseline: da364514f78d486564b26d3973a66b821a937503. U01-U09 are independently accepted; P01/G01 remains frozen. The authoritative v1.1 plan is unchanged. This document describes the integration under test, not a gate-pass claim.
+Current completion baseline: 3087e8d4c095e43434ed3a686e61bbed6c7c63da. Historical 20261003-01 runs remain retained. U01-U09 are independently accepted; P01/G01 remains frozen. The authoritative v1.1 plan is unchanged. This document describes the integration under test, not a gate-pass claim.
 
 Reuse the frozen P01 Desktop factory and UI harness, accepted U03 event contract/projection, U04 identity gate/current-message capture, U05 SQLite store, U06 fixed mechanical evidence profile, U07 recovery, U08 online backup/fresh-root restore and U09 allowlist diagnostics. `tests/integration/P02/durable-host.mjs` is the narrow coordinator injected through the existing factory dependency. Candidate construction selects a P02 entry and binds P02 source/migrations while retaining the pinned Native Loop, Read tools, single protocol import overlay and invocation-context module. Native source 29628c9acdb81b703bbd4080c207a0e7ce5e276e is Apache-2.0; existing third-party notices are retained. No excluded character material or third-party implementation is copied.
 
@@ -21,3 +21,5 @@ Close first stops admission, aborts its owned operation signal combined with the
 | Gate | Independent exact author commit and requirement matrix acceptance, then U11 actual 0.2.0 candidate retest/freeze |
 
 All runtime profiles, workspace files, local effects and model routes are owned synthetic fixtures. Loopback endpoints/inspectors use OS ports; fixed 9229 is disabled and installed ZCode is preserved. Paid models and production credentials/data are outside these tests. This is a local development assembly with borrowed pinned dependencies; installer, portable deployment, physical power/disk failure, full dependency closure and broad business semantics remain separate unverified claims. P03, remote tags, push and public release are not started by this integration.
+
+The 20261004-01 completion run verifies U09 allowlist v2 against actual committed Native and transcript rows: message/tool classification and source annotations join by the same exact scope, attempt and stored event identities. Memory candidates here are bounded reference annotations supplied by the owned fixture; no candidate text, persistent memory service or original transcript recovery is claimed. Closed command metadata is checked by U06/U09 real Node/Git/SQLite tests; it is unavailable when the matching committed receipt lacks it. Fresh Desktop verification inspects every admitted turn and preserves the no-admission paths.

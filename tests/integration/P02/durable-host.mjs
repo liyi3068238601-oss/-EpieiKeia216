@@ -306,7 +306,8 @@ export async function createDurableHost(input) {
   const additions = { submitPrompt, sendInput, compact: (options) => submitPrompt("/compact", options), resume, close, databasePath, readDurableRecords,
     readRecovery: () => structuredClone(recovery), drainDurability,
     exportDiagnostics: (target) => buildTurnDiagnostics({ scope: target.scope, attemptId: target.attemptId, store,
-      ...(target.evidenceReports === undefined ? {} : { evidenceReports: target.evidenceReports }) }) };
+      ...(target.evidenceReports === undefined ? {} : { evidenceReports: target.evidenceReports }),
+      ...(target.memoryCandidates === undefined ? {} : { memoryCandidates: target.memoryCandidates }) }) };
   const app = cloneFacade(host.app, additions);
   return { ...host, ...additions, app };
 }

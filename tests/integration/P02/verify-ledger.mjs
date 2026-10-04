@@ -233,12 +233,26 @@ async function verifyDatabase(databasePath, profileRoot, scenario, scenarioOutpu
       const terminalReceiptVerified = Boolean(receiptForObservation(store, terminal.event, observations));
       if (!terminalReceiptVerified) throw new Error("committed_native_terminal_receipt_missing");
 
-      const diagnostics = await buildTurnDiagnostics({ scope: target.scope, attemptId: target.attemptId, store });
+      const toolRows = targetNative.filter((row) => ["tool_call_started", "tool_call_result", "tool_call_error"].includes(row.event.payload?.nativeType));
+      const candidateSources = [targetTranscripts[0], ...(toolRows.length ? [toolRows.at(-1)] : [])];
+      const candidate = { candidateId: "P02_DESKTOP_REFERENCE_ANNOTATION_CANARY", scope: target.scope, attemptId: target.attemptId,
+        sources: candidateSources.map(({ event }) => ({ source: event.source, eventId: event.eventId })) };
+      const diagnostics = await buildTurnDiagnostics({ scope: target.scope, attemptId: target.attemptId, store, memoryCandidates: [candidate] });
       if (diagnostics.status !== "built") throw new Error("turn_diagnostics_rejected");
       const report = diagnostics.report;
       assertAllowlistedDiagnostics(report, profileRoot);
       if (report.lifecycle !== terminal.event.kind || report.captures.length < captures.length) {
         throw new Error("diagnostics_attempt_projection_mismatch");
+      }
+      const factBySequence = new Map(report.facts.map((fact) => [fact.commitSequence, fact]));
+      if (targetTranscripts.some((row) => factBySequence.get(row.commitSequence)?.category !== "message") ||
+          toolRows.some((row) => factBySequence.get(row.commitSequence)?.category !== "tool" ||
+            factBySequence.get(row.commitSequence)?.nativeType !== row.event.payload.nativeType ||
+            factBySequence.get(row.commitSequence)?.tool?.status !== row.event.payload.toolStatus) ||
+          report.memoryCandidates[0]?.kind !== "reference-annotation" || report.memoryCandidates[0]?.sourceStatus !== "matched" ||
+          candidateSources.some((row, index) => report.memoryCandidates[0]?.sources[index]?.eventRef !== factBySequence.get(row.commitSequence)?.eventRef) ||
+          JSON.stringify(report).includes(candidate.candidateId)) {
+        throw new Error("diagnostics_source_associations_mismatch");
       }
       turns.push({
         scopeRefs: report.scopeRefs,

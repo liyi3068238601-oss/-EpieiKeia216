@@ -1,0 +1,90 @@
+{
+  "schema": "p02-unit-baseline/v1",
+  "task": "P02-U10",
+  "baseline_commit": "3087e8d4c095e43434ed3a686e61bbed6c7c63da",
+  "branch": "p02-completion-u10",
+  "coordinator_branch": "p02-stage",
+  "prerequisites": [
+    {
+      "task": "P02-U03",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U03/20261003-01/acceptance.json",
+        "bytes": 1852,
+        "sha256": "049abb37c43d4a9edc1a55d230047461a50948fea590b1510a85379cb9d1abac"
+      }
+    },
+    {
+      "task": "P02-U04",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U04/20261003-01/acceptance.json",
+        "bytes": 2388,
+        "sha256": "51ea833ad4017e0f909e3dca6a4ba1b88a348162c9198672c5f0dbed892b928c"
+      }
+    },
+    {
+      "task": "P02-U05",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U05/20261003-01/acceptance.json",
+        "bytes": 6903,
+        "sha256": "8f1f28f4a0b71768cec6300d4e0e554f0a51c26b08c8031cf01d72eca89bc357"
+      }
+    },
+    {
+      "task": "P02-U06",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U06/20261003-01/acceptance.json",
+        "bytes": 5204,
+        "sha256": "da6486ebaf884e3723e45a0e1f93712f7e6d32755dd608b4336eafb65d868cb5"
+      }
+    },
+    {
+      "task": "P02-U07",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U07/20261003-01/acceptance.json",
+        "bytes": 3962,
+        "sha256": "cf63a8fc3a869c55797df8677520462cdcbd67514b16982d6231002112135fdc"
+      }
+    },
+    {
+      "task": "P02-U08",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U08/20261003-01/acceptance.json",
+        "bytes": 3772,
+        "sha256": "4b3b92d21c8dc81cb9592cbb54be6177731b49598fdf1876cb560aa15cb97629"
+      }
+    },
+    {
+      "task": "P02-U09",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P02-U09/20261004-01/acceptance.json",
+        "bytes": 3683,
+        "sha256": "6c0c53a39bbec691b1810b2742505a06d0e316cf0b8150fd1116da4183c3636a"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P02-U10.md",
+    "bytes": 2788,
+    "sha256": "ade1d9901aee017b61f87b338b26c0ede6b6d0e9d0e175441b9b9dc4fa51fa18"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "tests/integration/P02",
+    "docs/evals/P02",
+    "evidence/P02-U10/20261004-01"
+  ],
+  "test_mapping": "Actual pinned Native and SQLite typed diagnostics, reference annotations, fresh Desktop candidate full/degradation and all original stage requirements",
+  "author_status": "ready_for_review",
+  "checked_at_utc": "2026-10-04T04:01:22.319855+00:00"
+}

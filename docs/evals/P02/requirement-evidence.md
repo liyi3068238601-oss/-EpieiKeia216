@@ -14,3 +14,7 @@ This is the P02 stage mapping, not a claim that every later-stage Must is comple
 | G02 failed retry does not fabricate history | BUSY is failed/unavailable; unknown effect does not dispatch twice; accepted U05 dedupe/conflict/lost-ACK and U07 no replay | Arbitrary external effect reconciliation is not qualified |
 
 U10 Native and actual Electron UI use only owned profiles, synthetic local effects and dynamic loopback model fixtures. Paid P01 model evaluation is historical and separate. A local development assembly is not an installer, portable package or public distribution; character public distribution rights are not asserted. P03 is not started here.
+
+## Original U09 completion obligations
+
+The accepted corrective U09 attempt is `20261004-01`, author `fc0cfd040581d93590780d1c61c962cfc2e98cbd`. Actual owned Node execution preserves kind/version/script identity/argument count; committed receipt metadata must match before diagnostics calls its command verified. Missing/contradictory commands remain `COMMAND_NOT_VERIFIED`, without raw paths/argv/hash export. U09 unit tests cover sparse arrays and altered iterators, cross-scope/attempt sources, missing facts, typed Native provenance and privacy canaries. U10 uses actual Native, committed SQLite receipts and a fresh Desktop candidate to join messages/tools/reference-only candidate sources under the same turn; annotation is not durable memory content.
