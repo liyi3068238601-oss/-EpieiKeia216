@@ -1,0 +1,58 @@
+{
+  "schema": "p03-stage-entry/v1",
+  "at_utc": "2026-10-04T13:05:59.583106+00:00",
+  "baseline_commit": "9ebda9ceacf24c6de3324d7882d84accde2d46cf",
+  "accepted_G02": {
+    "path": "evidence/P02-U11/20261004-02/acceptance.json",
+    "bytes": 5963,
+    "sha256": "50e2df900bdecf891a2ddbe94934409a4e5491769144e52c188e2e3545550fd5"
+  },
+  "G02_review": {
+    "path": "evidence/P02-U11/20261004-02/review-final.json",
+    "bytes": 24062,
+    "sha256": "a9c6d25ed25f8173f5fa3065e46342b0010c6b038dcc76c346c9c94695638ae3"
+  },
+  "G02_completion_audit": {
+    "path": "evidence/P02-completion/20261004-03/entry.json",
+    "bytes": 8499,
+    "sha256": "f282f2ec107a9da4cddabc725dd0e9f379e6a58aded53111abd29a12d56c2892"
+  },
+  "P02_status_before_entry": {
+    "path": "evidence/P02/status.json",
+    "bytes": 20313,
+    "sha256": "7968e91029ea150d38a6bf893c6b36fe3701369b47dfc6e5c222412eabccce20"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "authorization": "User active goal: complete P03 and back up to the supplied GitHub repository.",
+  "boundary": "No P03 unit acceptance, no model calls, no P04 and no public release.",
+  "coordinator_commands": [
+    {
+      "path": "evidence/P03/stage-entry-command.json",
+      "bytes": 467,
+      "sha256": "0b954641bd748c73e639fdbfd85b9fe376eb4b9d946cb461bd74096406bf38c6"
+    },
+    {
+      "path": "evidence/P03/prior-backup-command.json",
+      "bytes": 418,
+      "sha256": "663f075aae7ed11477b4fd1ff3a710350617a9e675eadca8463ecedd6f8816cb"
+    },
+    {
+      "path": "evidence/P03/prior-backup-verification.json",
+      "bytes": 411,
+      "sha256": "9f4a652040d528d9f6498b27610a275d1e1502446f1fc0b11cffcacb12fd53c4"
+    }
+  ],
+  "prior_remote_backup": {
+    "branch": "p02-stage",
+    "commit": "9ebda9ceacf24c6de3324d7882d84accde2d46cf",
+    "verification": {
+      "path": "evidence/P03/prior-backup-verification.json",
+      "bytes": 411,
+      "sha256": "9f4a652040d528d9f6498b27610a275d1e1502446f1fc0b11cffcacb12fd53c4"
+    }
+  }
+}

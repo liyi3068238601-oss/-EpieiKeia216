@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-04",
+  "stage": "P03",
+  "product_version": "0.3.0",
+  "plan_version": "1.1",
+  "project_root": "E:\\Xiadie\\Xiadie",
+  "baseline_commit": "9ebda9ceacf24c6de3324d7882d84accde2d46cf",
+  "goal": "Complete all original P03 units and G03, then ordinary remote backup; no P04 or public release.",
+  "stage_status": "running",
+  "G01": "pass",
+  "G02": "pass",
+  "G03": "pending",
+  "current_task": "P03-U01",
+  "next_task": "P03-U01",
+  "next_stage_started": false,
+  "tasks": [
+    {
+      "id": "P03-U01",
+      "title": "现成方案调查与来源比较",
+      "dependencies": [
+        "P02-U11"
+      ],
+      "status": "running",
+      "card_sha256": "481ad4396712dc964ab278d85518dd6ece49201bc9fdff18c5e19332e320c682"
+    },
+    {
+      "id": "P03-U02",
+      "title": "隔离试验与复用决定",
+      "dependencies": [
+        "P03-U01"
+      ],
+      "status": "not_started",
+      "card_sha256": "47b7725dc24f9821c6f1a12b59d7ecb4a8d49a0d24396dfffedc1d1ac5c04137"
+    },
+    {
+      "id": "P03-U03",
+      "title": "稳定项目ID与路径映射",
+      "dependencies": [
+        "P03-U02"
+      ],
+      "status": "not_started",
+      "card_sha256": "e5de922f3cfbe81928a09e181c31fad6d08056b63bcabe0239cca26bc4b543d5"
+    },
+    {
+      "id": "P03-U04",
+      "title": "MEMORY索引和主题读取",
+      "dependencies": [
+        "P03-U03"
+      ],
+      "status": "not_started",
+      "card_sha256": "451bc2361bb66516eb52e9bb1ceec4a568d6b7f04814a47def8d94b830b10440"
+    },
+    {
+      "id": "P03-U05",
+      "title": "工程事实优先级",
+      "dependencies": [
+        "P03-U04"
+      ],
+      "status": "not_started",
+      "card_sha256": "e869085114fcf44b90de9b8355f47859d8232aea07f1af8bf2111a05b4413e99"
+    },
+    {
+      "id": "P03-U06",
+      "title": "项目记忆移动导出",
+      "dependencies": [
+        "P03-U05"
+      ],
+      "status": "not_started",
+      "card_sha256": "81c35ace7e2f4369d3735bc43745c3d02db9c74a22fda61fc46e3d7972ec29b3"
+    },
+    {
+      "id": "P03-U07",
+      "title": "子任务最小知识包",
+      "dependencies": [
+        "P03-U06"
+      ],
+      "status": "not_started",
+      "card_sha256": "b2d4d41a1b7ff38be32b6cc9148099510e7891aa8a8864a5e87bce55de15bd59"
+    },
+    {
+      "id": "P03-U08",
+      "title": "旧项目新鲜度与再开",
+      "dependencies": [
+        "P03-U07"
+      ],
+      "status": "not_started",
+      "card_sha256": "a07051293a1c6090b7eef010a98469cbc3c90a179167e6fb142f5725b17da507"
+    },
+    {
+      "id": "P03-U09",
+      "title": "阶段集成与独立回归",
+      "dependencies": [
+        "P03-U03",
+        "P03-U04",
+        "P03-U05",
+        "P03-U06",
+        "P03-U07",
+        "P03-U08"
+      ],
+      "status": "not_started",
+      "card_sha256": "504a0ae5b2f7b08a65a98e8a9b2b97f38ce58c44437490282ee761804ec7d365"
+    },
+    {
+      "id": "P03-U10",
+      "title": "验收并冻结 0.3.0",
+      "dependencies": [
+        "P03-U09"
+      ],
+      "status": "not_started",
+      "card_sha256": "46b4243d6f67d2965e492a0db3a2ea192208dee09baa0323d9ba92368a9cc4d7"
+    }
+  ],
+  "prior_g02": {
+    "path": "evidence/P02-U11/20261004-02/acceptance.json",
+    "bytes": 5963,
+    "sha256": "50e2df900bdecf891a2ddbe94934409a4e5491769144e52c188e2e3545550fd5"
+  }
+}

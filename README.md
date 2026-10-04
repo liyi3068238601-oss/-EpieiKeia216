@@ -1,6 +1,6 @@
 # Xiadie V2
 
-P01/G01 已独立验收并冻结为历史 **0.1.0 开发候选**。P02 已完成成熟 SQLite 绑定整改、独立集成审查及 G02 重新验收，冻结为 **0.2.0 开发候选**。当前进度以 [P02 状态](evidence/P02/status.json)为准，产物和边界见[0.2.0 说明](docs/releases/0.2.0/README.md)。此前接受记录和失败尝试原样保留；[P01 状态](evidence/P01/status.json)与[0.1.0 冻结说明](docs/releases/0.1.0/README.md)保持不变。P03 尚未开始。
+P01/G01 的历史 **0.1.0** 基线保持冻结。P02 已完成成熟 SQLite 绑定整改并重新通过 G02，[0.2.0 开发候选](docs/releases/0.2.0/README.md)的边界和历史证据保留。当前进入 **P03 / 0.3.0**：项目身份、原生 MEMORY 读取与迁移、工程事实优先级和最小交接。进度见 [P03 状态](evidence/P03/status.json)；G03 尚未验收。
 
 项目根为 `E:/Xiadie/Xiadie`。权威计划是原始 v1.1 ZIP 内的 `planning/Xiadie_V2_v1.1/`，保留原文件并核验 SHA-256；执行状态独立记录。
 
@@ -15,7 +15,7 @@ P02 将实际 Native 事件和全遮蔽的当前消息材料提交至 Electron 4
 - [需求证据映射](docs/evals/P01/requirement-evidence.md)
 - [真实模型能力矩阵](evidence/P01-U09/20261002-01/model-capabilities.json)
 - [G01 接受记录](evidence/P01-U11/20261002-01/acceptance.json)
-- [下一阶段 P03-U01](planning/Xiadie_V2_v1.1/tasks/P03-U01.md)：本轮已获用户授权完成 P03 并普通推送远端备份；G02 已重新验收，下一步调查原生 MEMORY 路径、索引、迁移和子代理 scope，比较 ADR/交接模板。P03/G03 完成后停止，不自动进入 P04。
+- [当前阶段 P03-U01](planning/Xiadie_V2_v1.1/tasks/P03-U01.md)：已获授权完成 P03 并普通推送远端备份；按任务依赖执行来源调查、隔离试验、实现和独立验收。P03/G03 完成后停止，不自动进入 P04。
 - P00 历史基线：`evidence/P00/status.json`；研究记录：`docs/research/`；单元证据：`evidence/<task-id>/<attempt-id>/`。
 
 计划结构验证命令：`python planning/Xiadie_V2_v1.1/tools/validate_plan.py`。该命令只验证计划结构。
