@@ -141,7 +141,7 @@ function receiptForObservation(store, event, observations) {
 }
 
 function assertAllowlistedDiagnostics(report, profileRoot) {
-  if (report.schemaVersion !== 1 || report.redactionPolicy !== "turn-diagnostics-allowlist/v1" ||
+  if (report.schemaVersion !== 1 || report.redactionPolicy !== "turn-diagnostics-allowlist/v2" ||
       report.pageScan?.facts !== "complete" || report.pageScan?.observations !== "complete" ||
       report.turnSeal !== "unavailable" || report.captures.length === 0 ||
       report.captures.some((capture) => capture.rawSource?.currentValidation !== "NOT_VERIFIED")) {

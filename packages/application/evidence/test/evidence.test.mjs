@@ -46,6 +46,25 @@ test("real Node run, SQLite operation receipt, owned artifact and exact Git revi
   assert.equal(JSON.stringify(report).includes("PRIVATE_REASONING_CANARY"), false);
   assert.equal(JSON.stringify(report).includes(fixture.scriptPath), false);
   assert.deepEqual(Object.keys(report.execution.stdout).sort(), ["bytes", "sha256"]);
+  assert.deepEqual(report.execution.command, run.command);
+  assert.equal(run.command.kind, "node-script");
+  assert.equal(run.command.argumentCount, 2);
+  assert.equal(run.command.scriptSha256, createHash("sha256").update(await readFile(fixture.scriptPath)).digest("hex"));
+  fixture.success();
+});
+
+test("command metadata snapshots actual arguments and mismatched committed command is rejected", async (t) => {
+  const fixture = await makeFixture(t, "command-identity");
+  const args = [fixture.artifactPath, "write-canary"];
+  const pending = runOwnedNode({ repositoryRoot: fixture.sourceRoot, expectedSourceCommit: fixture.commit, script: "writer.mjs", args });
+  args.push("COMMAND_SECRET_CANARY");
+  const run = await pending;
+  assert.equal(run.command.argumentCount, 2);
+  assert.equal(JSON.stringify(run).includes("COMMAND_SECRET_CANARY"), false);
+  await appendReceipt(fixture, run, { command: { ...run.command, argumentCount: 3 } });
+  const report = await fixture.report(run);
+  assert.equal(report.toolReceipt.status, "invalid");
+  assert.notEqual(report.profileResult.status, "passed");
   fixture.success();
 });
 
@@ -340,6 +359,7 @@ function receiptInput(fixture, run, overrides = {}) {
         processId: run.processId,
         toolCallId: payloadToolCallId,
         sourceCommitAtLaunch: run.sourceCommitAtLaunch,
+        command: overrides.command ?? run.command,
         artifact: artifactClaim(),
       },
     },

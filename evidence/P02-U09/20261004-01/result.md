@@ -1,0 +1,30 @@
+# P02-U09 completion remediation
+
+Author status: ready_for_review. Baseline: `ab560b37d22adfcd261425f20ce74b7f5a5328ca`; branch `p02-completion-u09`. U08 remains accepted. This new attempt closes omissions found by the original-task-card completion audit; it preserves the earlier attempt and acceptance without treating their narrower scope as full U09 completion.
+
+## Original requirements and implementation
+
+1. Join messages, tools and memory candidates within one turn. Diagnostic facts now distinguish masked messages, pinned Native tools, runtime events and operations. Native classification requires a matching, nonconflicting stored observation/canonical hash and accepted Native origin pin. Tool status comes from the closed event-type vocabulary, not arbitrary toolStatus text. Only `Read` or `other` is exported as a tool name; related tool calls share a salted reference. The new optional memoryCandidates input contains bounded candidate IDs, exact scope/attempt and source event identities only. It rejects content fields and cross-scope/attempt annotations. Output explicitly labels each candidate a `reference-annotation`, and distinguishes matched, missing, outside-attempt and unavailable sources. This is not a committed memory record or a P04 Life implementation.
+2. Export redacted version, command and error. A real owned Node run now snapshots its arguments before asynchronous work, and produces node-script identity, actual Node version, verified tracked-script SHA-256 and argument count. EvidenceReport retains these fields. An optional additive receipt.command must match the real run when supplied. U09 only marks command identity verified after comparing all four fields with the matching committed SQLite operation receipt; absent or contradictory metadata remains unavailable/unverified. Exports contain a per-report salted script reference, never raw script hashes, paths, arguments or shell text. Caller forgery does not export invented verified command data. Existing source/version and closed error-code summaries remain.
+3. Raw text requires separate authorization; hidden reasoning is not saved by default. No raw source is reopened or retained. Strict export construction excludes prompt/reply/tool contents, errors, paths, credentials, raw IDs and unrelated memory content. A deleted raw source still has currentValidation NOT_VERIFIED. Privacy tests cover candidate/tool/error canaries and the existing allowlist.
+
+The producer scope maps additionally to packages/application/evidence because U09 cannot recover a command identity discarded by U06. The existing integration verifier's accepted policy version changes to turn-diagnostics-allowlist/v2. No dependencies, schema migrations, production profiles, installed ZCode, historical evidence or immutable plans change. Actual Native/Desktop revalidation belongs to U10/U11 after this exact attempt is independently accepted.
+
+## Actual verification
+
+The byte-identical command records and input inventories are in commands/ and command-index.json. Fixed Node v24.14.0 and existing TypeScript 6.0.2 are used.
+
+- 01-build: exit 0. Compiled the changed product sources.
+- 02-targeted-tests: exit 1; 16/17 passed. The added test mistakenly accessed AppendResult.firstReceipt instead of its actual commitSequence field. The implementation was not changed to accommodate the mistake; the failed fixture and log are preserved.
+- 03-targeted-tests: exit 0; 17/17, no failures or skips. Actual owned Node/Git execution and SQLite receipts verify command identities, argument snapshotting, changed-receipt rejection and caller command forgery. Actual SQLite facts verify message/tool/candidate joins, malformed/untrusted source rejection, foreign attempts, absent sources, incomplete scans and privacy canaries.
+- 04-typecheck: exit 0.
+- 05-p02-regression: exit 0; 84/84, no failures or skips. Covers U03-U09, including SQLite locks/FULL, COMMIT/ACK ambiguity, worker kills, backup/restore and existing transcript/Host boundaries.
+- 06-boundaries: command exit 0, but product Core scan is explicitly NOT_RUN because packages/core is absent. It is not claimed as a successful Core graph audit.
+- Early execution inventory: 133 local source/test/compiled/compiler/Node/migration inputs; pre/post digest f8254644beb9da5ba8f3705e1ab0193567fc1e18f1d3bf7e9dc02d33f00b1a3e, unchanged true. An initial inventory invocation named a nonexistent migration path and failed before producing an inventory; subsequent invocations bind migrations/001-event-store.ts.
+- Independent early review identified sparse sources producing a vacuous matched claim. Fixed-length index iteration now validates every candidate/source slot and ignores custom iterators. New negative cases cover wholly sparse candidate/source arrays, partially sparse sources and a misleading iterator; none can become a matched annotation. 07-build/08-regression record an intermediate passing fix; 09-source-index-build is the final build (exit 0), and 10-source-index-regression verifies the final sources (84/84, exit 0, no skips/failures). Final pre/post input digest is 352b2ca70be38f677fb2cf33d778b0eaccc05d0e73a14829542ea01ad4c82ffe, unchanged true.
+
+This attempt makes zero paid requests and does not start a GUI. Native/Desktop composition remains NOT_RUN here. The trusted host, writer and diagnostics reader are the source of evidence; arbitrary external tool effects, full conversation recovery, memory persistence, physical disk exhaustion and public release are not established by these checks. Existing page/byte bounds may yield partial reports, which never turn absence into a verified failure/success claim.
+
+## Rollback and handoff
+
+Revert only this attempt's independently reviewed commit if required. Retain the old U09 attempt, all old freezes, accepted U01-U08, P00/P01 and failed fixtures. U10 must exercise new typed Native diagnostics on actual pinned Runtime/SQLite and a newly built Desktop candidate; U11 must bind the accepted candidate and original G02 requirements. The latest user objective authorizes P03 only after its P02 gate prerequisite is met.

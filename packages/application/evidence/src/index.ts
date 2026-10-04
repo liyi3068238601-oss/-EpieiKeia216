@@ -17,6 +17,14 @@ type Digest = Readonly<{ bytes: number; sha256: string }>;
 type RunStatus = "exited" | "timed_out" | "spawn_failed";
 type GitRevision = Readonly<{ commit: string; clean: boolean }>;
 
+/** Identity metadata only: never includes paths, argument contents or shell text. */
+export interface NodeCommandEvidence {
+  readonly kind: "node-script";
+  readonly nodeVersion: string;
+  readonly scriptSha256: string;
+  readonly argumentCount: number;
+}
+
 export interface OwnedNodeRun {
   readonly runId: string;
   readonly processId: number | null;
@@ -26,6 +34,7 @@ export interface OwnedNodeRun {
   readonly expectedSourceCommit: string;
   readonly sourceCommitAtLaunch: string;
   readonly scriptSha256: string;
+  readonly command: NodeCommandEvidence;
   readonly sourceCleanAtLaunch: boolean;
   readonly startedAt: string;
   readonly finishedAt: string;
@@ -85,6 +94,7 @@ export interface EvidenceReport {
     finishedAt: string | null;
     stdout: Digest | null;
     stderr: Digest | null;
+    command: NodeCommandEvidence | null;
   }>;
   readonly toolReceipt: Readonly<{
     status: "verified" | "missing" | "invalid";
@@ -124,6 +134,7 @@ interface ReceiptData {
     readonly processId: number;
     readonly toolCallId: string;
     readonly sourceCommitAtLaunch: string;
+    readonly command?: NodeCommandEvidence;
     readonly artifact: { readonly locator: string; readonly bytes: number; readonly sha256: string };
   };
 }
@@ -150,10 +161,11 @@ export async function runOwnedNode(options: RunOwnedNodeOptions): Promise<OwnedN
       !/^[a-f0-9]{40,64}$/i.test(options.expectedSourceCommit)) {
     throw new TypeError("repositoryRoot, script and a frozen expectedSourceCommit are required");
   }
-  const args = options.args ?? [];
-  if (!Array.isArray(args) || args.some((argument) => typeof argument !== "string" || argument.includes("\0"))) {
+  const argsInput = options.args ?? [];
+  if (!Array.isArray(argsInput) || argsInput.some((argument) => typeof argument !== "string" || argument.includes("\0"))) {
     throw new TypeError("args must be strings");
   }
+  const args = Object.freeze([...argsInput]);
 
   const repositoryRoot = await realpath(options.repositoryRoot);
   const rootStat = await lstat(repositoryRoot);
@@ -235,6 +247,8 @@ export async function runOwnedNode(options: RunOwnedNodeOptions): Promise<OwnedN
     expectedSourceCommit: options.expectedSourceCommit.toLowerCase(),
     sourceCommitAtLaunch: launchRevision.commit,
     scriptSha256: sha256(scriptBytes),
+    command: Object.freeze({ kind: "node-script", nodeVersion: process.version,
+      scriptSha256: sha256(scriptBytes), argumentCount: args.length }),
     sourceCleanAtLaunch: launchRevision.clean,
     startedAt,
     finishedAt: new Date().toISOString(),
@@ -310,7 +324,7 @@ export async function buildEvidenceReport(input: BuildEvidenceInput, readerValue
   const execution = run === undefined
     ? Object.freeze({
       status: "unverified" as const, processId: null, exitCode: null, signal: null,
-      startedAt: null, finishedAt: null, stdout: null, stderr: null,
+      startedAt: null, finishedAt: null, stdout: null, stderr: null, command: null,
     })
     : Object.freeze({
       status: run.status === "exited" && run.exitCode === 0 ? "passed" as const : "failed" as const,
@@ -321,6 +335,7 @@ export async function buildEvidenceReport(input: BuildEvidenceInput, readerValue
       finishedAt: run.finishedAt,
       stdout: run.stdout,
       stderr: run.stderr,
+      command: run.command,
     });
   if (run === undefined) reasons.push("RUN_NOT_OWNED");
   else {
@@ -402,6 +417,11 @@ export async function buildEvidenceReport(input: BuildEvidenceInput, readerValue
           receiptData.result.processId === run.processId &&
           receiptData.result.toolCallId === input.toolCallId &&
           receiptData.result.sourceCommitAtLaunch === run.sourceCommitAtLaunch &&
+          (receiptData.result.command === undefined ||
+            (receiptData.result.command.kind === run.command.kind &&
+             receiptData.result.command.nodeVersion === run.command.nodeVersion &&
+             receiptData.result.command.scriptSha256 === run.command.scriptSha256 &&
+             receiptData.result.command.argumentCount === run.command.argumentCount)) &&
           artifactDigest !== null &&
           receiptData.result.artifact.locator === input.artifactLocator &&
           receiptData.result.artifact.bytes === artifactDigest.bytes &&
@@ -463,7 +483,9 @@ function parseReceiptData(entry: WriterOrderedEvent, event: NormalizedEvent): Re
       typeof payloadRecord.observedAt !== "string" || payloadRecord.observedAt.trim().length === 0 ||
       !isRecord(payloadRecord.result)) return null;
   const result = payloadRecord.result as Record<string, unknown>;
-  if (!hasExactPlainKeys(result, ["profile", "runId", "processId", "toolCallId", "sourceCommitAtLaunch", "artifact"]) ||
+  if (!hasExactPlainKeys(result, ["profile", "runId", "processId", "toolCallId", "sourceCommitAtLaunch", "artifact",
+        ...(Object.hasOwn(result, "command") ? ["command"] : [])]) ||
+      (Object.hasOwn(result, "command") && !validNodeCommand(result.command)) ||
       !isRecord(result.artifact) ||
       !hasExactPlainKeys(result.artifact, ["locator", "bytes", "sha256"])) return null;
   const artifact = result.artifact as Record<string, unknown>;
@@ -480,6 +502,14 @@ function parseReceiptData(entry: WriterOrderedEvent, event: NormalizedEvent): Re
     status: payloadRecord.status,
     operationId: payloadRecord.operationId,
   };
+}
+
+function validNodeCommand(value: unknown): value is NodeCommandEvidence {
+  if (!isRecord(value) || !hasExactPlainKeys(value, ["kind", "nodeVersion", "scriptSha256", "argumentCount"])) return false;
+  return value.kind === "node-script" && typeof value.nodeVersion === "string" &&
+    /^v\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(value.nodeVersion) &&
+    typeof value.scriptSha256 === "string" && /^[a-f0-9]{64}$/.test(value.scriptSha256) &&
+    typeof value.argumentCount === "number" && Number.isSafeInteger(value.argumentCount) && value.argumentCount >= 0;
 }
 
 function readOperationFacts(store: EventStore, operationId: string): WriterOrderedEvent[] {

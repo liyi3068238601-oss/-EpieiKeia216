@@ -23,7 +23,7 @@ import type {
   ReceiptLookup,
 } from "../../storage/events/src/index.js";
 
-const REDACTION_POLICY = "turn-diagnostics-allowlist/v1" as const;
+const REDACTION_POLICY = "turn-diagnostics-allowlist/v2" as const;
 const NATIVE_PIN = "29628c9acdb81b703bbd4080c207a0e7ce5e276e";
 const RECOVERY_SOURCE = "xiadie.recovery/v1";
 const PAGE_SIZE = 256;
@@ -33,6 +33,8 @@ const MAX_IDENTIFIER_BYTES = 1024;
 const MAX_REFERENCE_BYTES = 4096;
 const MAX_SCAN_BYTES = 64 * 1024 * 1024;
 const SHA256_PATTERN = /^[a-f0-9]{64}$/i;
+const NATIVE_TYPES = ["turn_started", "turn_complete", "turn_error", "tool_call_started", "tool_call_result", "tool_call_error",
+  "hook_run_started", "hook_run_completed", "hook_run_failed", "hook_run_blocked"] as const;
 
 export type DiagnosticShaRef = string & { readonly __brand: "DiagnosticShaRef" };
 
@@ -47,6 +49,7 @@ export type DiagnosticCode =
   | "TOOL_RECEIPT_MISSING"
   | "TOOL_RECEIPT_INVALID"
   | "TOOL_RECEIPT_UNVERIFIED"
+  | "COMMAND_NOT_VERIFIED"
   | "OTHER";
 
 export type DiagnosticScanStatus = "complete" | "partial";
@@ -57,6 +60,23 @@ export interface BuildTurnDiagnosticsInput {
   readonly attemptId: string;
   readonly store: Readonly<Pick<EventStore, "read" | "readObservations" | "queryReceipt">>;
   readonly evidenceReports?: readonly EvidenceReport[];
+  /** Reference-only annotations, not committed memories or candidate content. */
+  readonly memoryCandidates?: readonly DiagnosticMemoryCandidateInput[];
+}
+
+export interface DiagnosticMemoryCandidateInput {
+  readonly candidateId: string;
+  readonly scope: BoundEventScope;
+  readonly attemptId: string;
+  readonly sources: readonly Readonly<{ source: string; eventId: string }>[];
+}
+
+export interface DiagnosticCommandSummary {
+  readonly status: "verified" | "unverified" | "unavailable";
+  readonly kind: "node-script" | null;
+  readonly nodeVersion: string | null;
+  readonly scriptRef: DiagnosticShaRef | null;
+  readonly argumentCount: number | null;
 }
 
 export interface DiagnosticEvidenceSummary {
@@ -68,6 +88,7 @@ export interface DiagnosticEvidenceSummary {
     readonly exitCode: number | null;
     readonly stdout: Readonly<{ readonly bytes: number; readonly sha256Ref: DiagnosticShaRef }> | null;
     readonly stderr: Readonly<{ readonly bytes: number; readonly sha256Ref: DiagnosticShaRef }> | null;
+    readonly command: DiagnosticCommandSummary;
   }>;
   readonly toolReceipt: Readonly<{
     readonly status: "verified" | "missing" | "invalid" | "unverified";
@@ -91,6 +112,10 @@ export interface DiagnosticFactSummary {
   readonly operationRef: DiagnosticShaRef | null;
   readonly kind: RuntimeEventKind;
   readonly commitSequence: number;
+  readonly category: "message" | "tool" | "runtime" | "operation" | "other";
+  readonly nativeType: typeof NATIVE_TYPES[number] | null;
+  readonly tool: Readonly<{ readonly name: "Read" | "other"; readonly status: "started" | "result" | "error";
+    readonly toolCallRef: DiagnosticShaRef | null }> | null;
 }
 
 export interface DiagnosticObservationSummary {
@@ -129,6 +154,9 @@ export interface TurnDiagnosticsReport {
   readonly facts: readonly DiagnosticFactSummary[];
   readonly observations: readonly DiagnosticObservationSummary[];
   readonly captures: readonly DiagnosticCaptureSummary[];
+  readonly memoryCandidates: readonly Readonly<{ candidateRef: DiagnosticShaRef; kind: "reference-annotation";
+    sourceStatus: "matched" | "missing" | "outside_attempt" | "unavailable";
+    sources: readonly Readonly<{ eventRef: DiagnosticShaRef; status: "matched" | "not_found" | "outside_attempt" | "unavailable" }>[] }>[];
   readonly lifecycle: DiagnosticLifecycle;
   readonly terminalEventRef: DiagnosticShaRef | null;
   readonly codes: readonly DiagnosticCode[];
@@ -138,13 +166,14 @@ export interface TurnDiagnosticsReport {
 
 export type BuildTurnDiagnosticsResult =
   | Readonly<{ readonly status: "built"; readonly report: TurnDiagnosticsReport }>
-  | Readonly<{ readonly status: "rejected"; readonly code: "EVIDENCE_SCOPE_MISMATCH" }>;
+  | Readonly<{ readonly status: "rejected"; readonly code: "EVIDENCE_SCOPE_MISMATCH" | "CANDIDATE_SCOPE_MISMATCH" }>;
 
 interface NormalizedInput {
   readonly scope: BoundEventScope;
   readonly attemptId: string;
   readonly store: BuildTurnDiagnosticsInput["store"];
   readonly evidenceReports: readonly EvidenceReport[];
+  readonly memoryCandidates: readonly DiagnosticMemoryCandidateInput[];
 }
 
 interface FactScan {
@@ -171,6 +200,9 @@ export async function buildTurnDiagnostics(input: BuildTurnDiagnosticsInput): Pr
   if (normalized.evidenceReports.some((report) => evidenceScopeMismatch(report, normalized.scope, normalized.attemptId))) {
     return Object.freeze({ status: "rejected", code: "EVIDENCE_SCOPE_MISMATCH" });
   }
+  if (normalized.memoryCandidates.some((candidate) => evidenceScopeMismatch(candidate, normalized.scope, normalized.attemptId))) {
+    return Object.freeze({ status: "rejected", code: "CANDIDATE_SCOPE_MISMATCH" });
+  }
 
   const salt: ReportSalt = Object.freeze({ bytes: randomBytes(32) });
   const codes = new Set<DiagnosticCode>();
@@ -192,6 +224,13 @@ export async function buildTurnDiagnostics(input: BuildTurnDiagnosticsInput): Pr
     summarizeEvidence(report, normalized.scope, normalized.attemptId, facts, normalized.store, salt, codes));
   if (evidenceSummaries.some((summary) => summary.codes.includes("EVENT_STORE_CORRUPT"))) factScanComplete = false;
 
+  const observationsByIdentity = new Map<string, EventObservation[]>();
+  for (const observation of observations.items) {
+    const key = identityKey(observation.event);
+    const items = observationsByIdentity.get(key) ?? [];
+    items.push(observation);
+    observationsByIdentity.set(key, items);
+  }
   const factSummaries = facts.entries
     .filter(({ event }) => event.attemptId === normalized.attemptId && matchesScope(event.scope, normalized.scope))
     .map(({ event, commitSequence }) => Object.freeze({
@@ -199,6 +238,7 @@ export async function buildTurnDiagnostics(input: BuildTurnDiagnosticsInput): Pr
       operationRef: event.operationId === null ? null : opaqueRef(salt, "operation", event.operationId),
       kind: event.kind,
       commitSequence,
+      ...summarizeFactType(event, observationsByIdentity.get(identityKey(event)) ?? [], salt),
     }));
 
   const targetObservations = observations.items.filter(({ event }) =>
@@ -258,6 +298,20 @@ export async function buildTurnDiagnostics(input: BuildTurnDiagnosticsInput): Pr
     facts: Object.freeze(factSummaries),
     observations: Object.freeze(observationSummaries),
     captures: Object.freeze(captures),
+    memoryCandidates: Object.freeze(normalized.memoryCandidates.map((candidate) => {
+      const sources = candidate.sources.map((source) => {
+        const found = facts.factByIdentity.get(identityKey(source));
+        const status = found !== undefined
+          ? found.event.attemptId === normalized.attemptId ? "matched" as const : "outside_attempt" as const
+          : factScanComplete ? "not_found" as const : "unavailable" as const;
+        return Object.freeze({ eventRef: eventRefFromIdentity(salt, source.source, source.eventId), status });
+      });
+      const sourceStatus = !factScanComplete ? "unavailable" as const
+        : sources.some((source) => source.status === "outside_attempt") ? "outside_attempt" as const
+        : sources.some((source) => source.status !== "matched") ? "missing" as const : "matched" as const;
+      return Object.freeze({ candidateRef: opaqueRef(salt, "memory-candidate", candidate.candidateId),
+        kind: "reference-annotation" as const, sourceStatus, sources: Object.freeze(sources) });
+    })),
     lifecycle,
     terminalEventRef,
     codes: Object.freeze([...codes]),
@@ -268,7 +322,7 @@ export async function buildTurnDiagnostics(input: BuildTurnDiagnosticsInput): Pr
 }
 
 function normalizeInput(value: BuildTurnDiagnosticsInput): NormalizedInput {
-  if (!hasExactDataFields(value, ["scope", "attemptId", "store"], ["evidenceReports"])) {
+  if (!hasExactDataFields(value, ["scope", "attemptId", "store"], ["evidenceReports", "memoryCandidates"])) {
     throw new TypeError("diagnostics input has invalid fields");
   }
   const scopeValue = ownData(value, "scope");
@@ -300,7 +354,57 @@ function normalizeInput(value: BuildTurnDiagnosticsInput): NormalizedInput {
   if (!Array.isArray(evidenceReports) || evidenceReports.length > MAX_INPUT_REPORTS) {
     throw new TypeError("diagnostics evidenceReports are invalid or exceed the fixed bound");
   }
-  return Object.freeze({ scope, attemptId, store: storeValue as NormalizedInput["store"], evidenceReports });
+  const candidates = ownData(value, "memoryCandidates") ?? [];
+  if (!Array.isArray(candidates) || candidates.length > MAX_INPUT_REPORTS) throw new TypeError("memoryCandidates exceed the fixed bound");
+  const memoryCandidates = Array.from({ length: candidates.length }, (_, index): DiagnosticMemoryCandidateInput => {
+    const candidate = candidates[index];
+    if (!hasExactDataFields(candidate, ["candidateId", "scope", "attemptId", "sources"])) throw new TypeError("invalid memory candidate annotation");
+    const candidateId = boundedIdentifier(ownData(candidate, "candidateId"));
+    const candidateAttempt = boundedIdentifier(ownData(candidate, "attemptId"));
+    const candidateScope = ownData(candidate, "scope");
+    if (candidateId === null || candidateAttempt === null ||
+        !hasExactDataFields(candidateScope, ["sessionId", "turnId", "runId", "taskId"]) ||
+        ["sessionId", "turnId", "runId", "taskId"].some((key) => boundedIdentifier(ownData(candidateScope, key)) === null)) {
+      throw new TypeError("invalid memory candidate scope");
+    }
+    const sourceValues = ownData(candidate, "sources");
+    if (!Array.isArray(sourceValues) || sourceValues.length === 0 || sourceValues.length > MAX_INPUT_REPORTS) throw new TypeError("invalid candidate sources");
+    const sources = Array.from({ length: sourceValues.length }, (_, sourceIndex) => {
+      const source = sourceValues[sourceIndex];
+      if (!hasExactDataFields(source, ["source", "eventId"])) throw new TypeError("invalid candidate source identity");
+      const namespace = boundedIdentifier(ownData(source, "source"));
+      const eventId = boundedIdentifier(ownData(source, "eventId"));
+      if (namespace === null || eventId === null) throw new TypeError("invalid candidate source identity");
+      return Object.freeze({ source: namespace, eventId });
+    });
+    return Object.freeze({ candidateId, attemptId: candidateAttempt,
+      scope: Object.freeze({ sessionId: ownData(candidateScope, "sessionId") as string, turnId: ownData(candidateScope, "turnId") as string,
+        runId: ownData(candidateScope, "runId") as string, taskId: ownData(candidateScope, "taskId") as string }), sources: Object.freeze(sources) });
+  });
+  return Object.freeze({ scope, attemptId, store: storeValue as NormalizedInput["store"], evidenceReports, memoryCandidates: Object.freeze(memoryCandidates) });
+}
+
+function summarizeFactType(event: NormalizedEvent, observations: readonly EventObservation[], salt: ReportSalt)
+  : Pick<DiagnosticFactSummary, "category" | "nativeType" | "tool"> {
+  const canonicalHash = hashCanonicalFacts(event);
+  const matching = observations.filter((observation) => observation.disposition !== "identity_conflict" && observation.candidateHash === canonicalHash);
+  const payload = safeRecord(event.payload);
+  const rawType = ownData(payload, "nativeType");
+  const nativeType = event.source === "zcode.native/v1" && matching.some((item) => item.origin.sourcePin === NATIVE_PIN) &&
+    typeof rawType === "string" && (NATIVE_TYPES as readonly string[]).includes(rawType)
+    ? rawType as typeof NATIVE_TYPES[number] : null;
+  let tool: DiagnosticFactSummary["tool"] = null;
+  if (nativeType === "tool_call_started" || nativeType === "tool_call_result" || nativeType === "tool_call_error") {
+    const callId = boundedIdentifier(ownData(payload, "toolCallId"));
+    tool = Object.freeze({ name: ownData(payload, "toolName") === "Read" ? "Read" : "other",
+      status: nativeType === "tool_call_started" ? "started" : nativeType === "tool_call_result" ? "result" : "error",
+      toolCallRef: callId === null ? null : opaqueRef(salt, "tool-call", callId) });
+  }
+  const message = matching.some((item) => item.capture !== undefined) ||
+    (nativeType === "turn_complete" && event.kind === "success");
+  const category = tool !== null ? "tool" as const : message ? "message" as const : nativeType !== null ? "runtime" as const
+    : event.operationId !== null ? "operation" as const : "other" as const;
+  return Object.freeze({ category, nativeType, tool });
 }
 
 function scanFacts(
@@ -508,6 +612,7 @@ function summarizeEvidence(
   let receiptEventRef: DiagnosticShaRef | null = null;
   let receiptSequence: number | null = null;
   let receiptHashRef: DiagnosticShaRef | null = null;
+  let matchedReceiptCommand: unknown;
   if (declaredReceiptStatus === "missing") {
     localCodes.add("TOOL_RECEIPT_MISSING");
   } else if (declaredReceiptStatus === "invalid") {
@@ -553,6 +658,7 @@ function summarizeEvidence(
       receiptEventRef = eventRef(salt, fact.event);
       receiptSequence = firstReceipt.commitSequence;
       receiptHashRef = opaqueRef(salt, "receipt-canonical-hash", firstReceipt.canonicalHash);
+      matchedReceiptCommand = ownData(receiptResult, "command");
     }
   }
 
@@ -579,6 +685,8 @@ function summarizeEvidence(
     localCodes.add("OTHER");
   }
   if (profileResult === "failed" && localCodes.size === 0) localCodes.add("OTHER");
+  const command = summarizeCommand(profile === OWNED_ARTIFACT_INTEGRITY_PROFILE ? ownData(execution, "command") : undefined,
+    matchedReceiptCommand, salt, localCodes);
   for (const code of localCodes) codes.add(code);
 
   return Object.freeze({
@@ -590,6 +698,7 @@ function summarizeEvidence(
       exitCode,
       stdout,
       stderr,
+      command,
     }),
     toolReceipt: Object.freeze({
       status: receiptStatus,
@@ -602,6 +711,24 @@ function summarizeEvidence(
     profileResult,
     codes: Object.freeze([...localCodes]),
   });
+}
+
+function summarizeCommand(value: unknown, committed: unknown, salt: ReportSalt, codes: Set<DiagnosticCode>): DiagnosticCommandSummary {
+  const unavailable = (status: "unverified" | "unavailable"): DiagnosticCommandSummary =>
+    Object.freeze({ status, kind: null, nodeVersion: null, scriptRef: null, argumentCount: null });
+  if (value === null || value === undefined) return unavailable("unavailable");
+  const valid = (item: unknown) => hasExactDataFields(item, ["kind", "nodeVersion", "scriptSha256", "argumentCount"]) &&
+    ownData(item, "kind") === "node-script" && typeof ownData(item, "nodeVersion") === "string" &&
+    /^v\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(ownData(item, "nodeVersion") as string) &&
+    normalizedSha256(ownData(item, "scriptSha256")) !== null && safeNonNegativeIntegerOrNull(ownData(item, "argumentCount")) !== null;
+  if (!valid(value) || !valid(committed) ||
+      ["kind", "nodeVersion", "scriptSha256", "argumentCount"].some((key) => ownData(value, key) !== ownData(committed, key))) {
+    codes.add("COMMAND_NOT_VERIFIED");
+    return unavailable("unverified");
+  }
+  return Object.freeze({ status: "verified", kind: "node-script", nodeVersion: ownData(value, "nodeVersion") as string,
+    scriptRef: opaqueRef(salt, "command:script", ownData(value, "scriptSha256") as string),
+    argumentCount: ownData(value, "argumentCount") as number });
 }
 
 function summarizeDigest(
@@ -801,7 +928,7 @@ function mapEvidenceReason(value: unknown): DiagnosticCode {
   }
 }
 
-function evidenceScopeMismatch(reportValue: EvidenceReport, scope: BoundEventScope, attemptId: string): boolean {
+function evidenceScopeMismatch(reportValue: Pick<EvidenceReport, "scope" | "attemptId">, scope: BoundEventScope, attemptId: string): boolean {
   const report = safeRecord(reportValue);
   const reportScope = ownData(report, "scope");
   if (!isRecord(reportScope)) return true;
