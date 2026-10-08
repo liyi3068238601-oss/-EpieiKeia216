@@ -1,0 +1,66 @@
+{
+  "task": "P03-U05",
+  "baseline": "f77adb3205c5c7a928f1624f5b6e85ad4876f53f",
+  "scope": [
+    "docs/policies/project-memory.md",
+    "templates/project-note.md",
+    "packages/projects/test/project-memory-policy.test.mjs",
+    "tools/run-tests.mjs",
+    "evidence/P03-U05/20261008-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "f77adb3205c5c7a928f1624f5b6e85ad4876f53f"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u05",
+      "exit_code": 0,
+      "stdout": " docs/policies/project-memory.md                    |  22 ++\n evidence/P03-U05/20261008-01/baseline.json         |  38 +++\n evidence/P03-U05/20261008-01/build-command.json    |  16 ++\n .../20261008-01/freeze-preflight-failure.json      |  21 ++\n evidence/P03-U05/20261008-01/result.json           | 110 ++++++++\n evidence/P03-U05/20261008-01/result.md             |  17 ++\n evidence/P03-U05/20261008-01/source-adoption.json  | 190 +++++++++++++\n evidence/P03-U05/20261008-01/unit-02-command.json  |  16 ++\n evidence/P03-U05/20261008-01/unit-command.json     |  16 ++\n .../projects/test/project-memory-policy.test.mjs   | 296 +++++++++++++++++++++\n templates/project-note.md                          |  27 ++\n tools/run-tests.mjs                                |   3 +-\n 12 files changed, 771 insertions(+), 1 deletion(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "f77adb3205c5c7a928f1624f5b6e85ad4876f53f"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u05",
+      "exit_code": 0,
+      "stdout": "22\t0\tdocs/policies/project-memory.md\n38\t0\tevidence/P03-U05/20261008-01/baseline.json\n16\t0\tevidence/P03-U05/20261008-01/build-command.json\n21\t0\tevidence/P03-U05/20261008-01/freeze-preflight-failure.json\n110\t0\tevidence/P03-U05/20261008-01/result.json\n17\t0\tevidence/P03-U05/20261008-01/result.md\n190\t0\tevidence/P03-U05/20261008-01/source-adoption.json\n16\t0\tevidence/P03-U05/20261008-01/unit-02-command.json\n16\t0\tevidence/P03-U05/20261008-01/unit-command.json\n296\t0\tpackages/projects/test/project-memory-policy.test.mjs\n27\t0\ttemplates/project-note.md\n2\t1\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "f77adb3205c5c7a928f1624f5b6e85ad4876f53f"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u05",
+      "exit_code": 0,
+      "stdout": "A\tdocs/policies/project-memory.md\nA\tevidence/P03-U05/20261008-01/baseline.json\nA\tevidence/P03-U05/20261008-01/build-command.json\nA\tevidence/P03-U05/20261008-01/freeze-preflight-failure.json\nA\tevidence/P03-U05/20261008-01/result.json\nA\tevidence/P03-U05/20261008-01/result.md\nA\tevidence/P03-U05/20261008-01/source-adoption.json\nA\tevidence/P03-U05/20261008-01/unit-02-command.json\nA\tevidence/P03-U05/20261008-01/unit-command.json\nA\tpackages/projects/test/project-memory-policy.test.mjs\nA\ttemplates/project-note.md\nM\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "f77adb3205c5c7a928f1624f5b6e85ad4876f53f"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u05",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
