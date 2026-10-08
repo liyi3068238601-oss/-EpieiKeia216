@@ -1,0 +1,65 @@
+{
+  "task": "P03-U08",
+  "baseline": "5831ba60285536aaa9b8ef40770510f380cb6edf",
+  "scope": [
+    "packages/projects/freshness.ts",
+    "packages/projects/test/freshness.test.mjs",
+    "tools/run-tests.mjs",
+    "evidence/P03-U08/20261008-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "5831ba60285536aaa9b8ef40770510f380cb6edf"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u08",
+      "exit_code": 0,
+      "stdout": " evidence/P03-U08/20261008-01/author-draft.md       |  17 +\n evidence/P03-U08/20261008-01/baseline.json         |  37 +\n evidence/P03-U08/20261008-01/build-01.json         |  16 +\n evidence/P03-U08/20261008-01/build-02.json         |  16 +\n evidence/P03-U08/20261008-01/build-03.json         |  16 +\n evidence/P03-U08/20261008-01/execution-after.json  | 878 +++++++++++++++++++++\n evidence/P03-U08/20261008-01/execution-before.json | 876 ++++++++++++++++++++\n evidence/P03-U08/20261008-01/format-inputs.json    |  23 +\n evidence/P03-U08/20261008-01/native-readback.json  |  23 +\n evidence/P03-U08/20261008-01/regression-01.json    |  17 +\n evidence/P03-U08/20261008-01/result.json           | 138 ++++\n evidence/P03-U08/20261008-01/result.md             |  11 +\n evidence/P03-U08/20261008-01/source-adoption.json  | 197 +++++\n evidence/P03-U08/20261008-01/unit-01.json          |  16 +\n packages/projects/freshness.ts                     | 868 ++++++++++++++++++++\n packages/projects/test/freshness.test.mjs          | 788 ++++++++++++++++++\n tools/run-tests.mjs                                |   3 +-\n 17 files changed, 3939 insertions(+), 1 deletion(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "5831ba60285536aaa9b8ef40770510f380cb6edf"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u08",
+      "exit_code": 0,
+      "stdout": "17\t0\tevidence/P03-U08/20261008-01/author-draft.md\n37\t0\tevidence/P03-U08/20261008-01/baseline.json\n16\t0\tevidence/P03-U08/20261008-01/build-01.json\n16\t0\tevidence/P03-U08/20261008-01/build-02.json\n16\t0\tevidence/P03-U08/20261008-01/build-03.json\n878\t0\tevidence/P03-U08/20261008-01/execution-after.json\n876\t0\tevidence/P03-U08/20261008-01/execution-before.json\n23\t0\tevidence/P03-U08/20261008-01/format-inputs.json\n23\t0\tevidence/P03-U08/20261008-01/native-readback.json\n17\t0\tevidence/P03-U08/20261008-01/regression-01.json\n138\t0\tevidence/P03-U08/20261008-01/result.json\n11\t0\tevidence/P03-U08/20261008-01/result.md\n197\t0\tevidence/P03-U08/20261008-01/source-adoption.json\n16\t0\tevidence/P03-U08/20261008-01/unit-01.json\n868\t0\tpackages/projects/freshness.ts\n788\t0\tpackages/projects/test/freshness.test.mjs\n2\t1\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "5831ba60285536aaa9b8ef40770510f380cb6edf"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u08",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P03-U08/20261008-01/author-draft.md\nA\tevidence/P03-U08/20261008-01/baseline.json\nA\tevidence/P03-U08/20261008-01/build-01.json\nA\tevidence/P03-U08/20261008-01/build-02.json\nA\tevidence/P03-U08/20261008-01/build-03.json\nA\tevidence/P03-U08/20261008-01/execution-after.json\nA\tevidence/P03-U08/20261008-01/execution-before.json\nA\tevidence/P03-U08/20261008-01/format-inputs.json\nA\tevidence/P03-U08/20261008-01/native-readback.json\nA\tevidence/P03-U08/20261008-01/regression-01.json\nA\tevidence/P03-U08/20261008-01/result.json\nA\tevidence/P03-U08/20261008-01/result.md\nA\tevidence/P03-U08/20261008-01/source-adoption.json\nA\tevidence/P03-U08/20261008-01/unit-01.json\nA\tpackages/projects/freshness.ts\nA\tpackages/projects/test/freshness.test.mjs\nM\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "5831ba60285536aaa9b8ef40770510f380cb6edf"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u08",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "schema": "p03-u08-source-adoption/v1",
+  "task": "P03-U08",
+  "attempt": "20261008-01",
+  "baseline_commit": "5831ba60285536aaa9b8ef40770510f380cb6edf",
+  "author_status": "ready_for_review",
+  "independent_review": "pending",
+  "acceptance": "pending",
+  "validation": {
+    "build": {
+      "path": "evidence/P03-U08/20261008-01/build-03.json",
+      "bytes": 533,
+      "sha256": "82cfc5778c8df79b7b4819beff511facfb687769dd3ec51e52ca99f54a6b308f"
+    },
+    "unit": {
+      "path": "evidence/P03-U08/20261008-01/unit-01.json",
+      "bytes": 2682,
+      "sha256": "e750d428fe504a062f70335356624bb6fc8ddfc5ffbc217ab4bf0bac0428fbb2"
+    },
+    "related_regression": {
+      "path": "evidence/P03-U08/20261008-01/regression-01.json",
+      "bytes": 5215,
+      "sha256": "1cf71bedf3abda86523d130ea290f0ed360e74335796c4f2a0ed2fa1c0b1e27f"
+    },
+    "desktop": "NOT_RUN",
+    "real_model": "NOT_RUN"
+  },
+  "raw_hash_method": "Python pathlib.Path.read_bytes() followed by hashlib.sha256 over the returned bytes; byte counts and LF/CRLF counts are from those same bytes.",
+  "accepted_prior_units": [
+    {
+      "task": "P03-U03",
+      "status": "accepted",
+      "acceptance_path": "evidence/P03-U03/20261008-01/acceptance.json",
+      "acceptance_bytes": 218067,
+      "acceptance_sha256_raw": "7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37",
+      "integration_commit": "0fd6d87993e17e4f2ca97a33351f9f2dfe0c54ba",
+      "reuse": "ProjectRegistry workspace-to-project mapping and reopen resolution. The current registry path includes later accepted U06 extensions; its current raw bytes are listed separately below."
+    },
+    {
+      "task": "P03-U04",
+      "status": "accepted",
+      "acceptance_path": "evidence/P03-U04/20261008-01/acceptance.json",
+      "acceptance_bytes": 2260,
+      "acceptance_sha256_raw": "ebeb89a5cf16414bded874f6e78fc2d7f9250871ce8ec045493afcc8e457b2f7",
+      "integration_commit": "36850a0717dad3cd27d9a4b5cc1ae7f9bab354b6",
+      "reuse": "Selected-topic project-memory capture/read contract and its present/absent/unreadable/corrupt states; preserve experience-lead authority."
+    },
+    {
+      "task": "P03-U06",
+      "status": "accepted",
+      "acceptance_path": "evidence/P03-U06/20261008-01/acceptance.json",
+      "acceptance_bytes": 2896,
+      "acceptance_sha256_raw": "2a0499ed079b97e0c62335eb26a1d5bc7e30395dfbbc7d7262a5664298f476b1",
+      "integration_commit": "27f4fab6ead14053f2bc8ff65415f126306566d2",
+      "reuse": "Current accepted extension of the ProjectRegistry path used by U03; the checked current tracked source is from this integrated line."
+    },
+    {
+      "task": "P03-U07",
+      "status": "accepted",
+      "acceptance_path": "evidence/P03-U07/20261008-01/acceptance.json",
+      "acceptance_bytes": 4041,
+      "acceptance_sha256_raw": "89249727bb89199e936ec8a01276ce4aa5554a37669dedab4d3b448697ad200b",
+      "integration_commit": "f3d0cfcdbeda8406c4adde9fa4486ffa4deed3f0",
+      "source_adoption_path": "evidence/P03-U07/20261008-01/source-adoption.json",
+      "source_adoption_bytes": 5387,
+      "source_adoption_sha256_raw": "3469cb6fa4a582342eba53ae7687107db18d320ce4d0c958c55d9ad8e205ed90",
+      "reuse": "Host-controlled provenance binds a selected source to raw-source SHA-256, source path/lines, project id, base commit and sample time. A hash binds bytes and does not establish the claim meaning."
+    }
+  ],
+  "decision": {
+    "adopted": [
+      "Use the accepted ProjectRegistry mapping on reopen to establish the project id; do not introduce a second project identity registry.",
+      "Reuse U04 selected-memory authority and provenance policy as the caller contract; freshness.ts does not call the U04 reader or read Native notes itself. Formal history input remains an experience lead.",
+      "Carry forward U07 safe-provenance discipline: bind observations to explicit evidence paths and raw bytes, project identity, Git base and sample time; do not treat a hash as semantic verification.",
+      "Implement only the U08 freshness gap locally: compare a prior snapshot with a newly observed Git HEAD and selected evidence raw hashes. Age alone does not decay a matching snapshot; changed evidence requires recheck; missing, unreadable, unsafe, failed or incomplete observation stays unknown. Supersession requires an explicitly verified replacement."
+    ],
+    "not_adopted": [
+      "No Native source files, Native prompt text, or Native memory implementation copied.",
+      "No time-to-live or half-life freshness rule.",
+      "No inference of owner, progress, or engineering fact from project memory."
+    ]
+  },
+  "native_source": {
+    "repository": "https://github.com/zai-org/ZCode",
+    "checkout": ".runtime/P01/desktop-source",
+    "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "working_tree": "clean",
+    "license": "Apache-2.0",
+    "license_path": ".runtime/P01/desktop-source/LICENSE",
+    "license_observation": "The checked LICENSE begins with Apache License Version 2.0.",
+    "read_only": true,
+    "source_observations": [
+      "Z03 builds a persistent Memory system-context section; it does not classify evidence freshness across reopen.",
+      "Z06 lists memory files with mtimeMs and reads through a stable-handle helper; it does not return a raw-byte SHA-256 or provide the U08 freshness decision."
+    ]
+  },
+  "refs": [
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U08.md",
+      "bytes": 2129,
+      "sha256_raw": "a07051293a1c6090b7eef010a98469cbc3c90a179167e6fb142f5725b17da507",
+      "role": "unit scope and allowed implementation path"
+    },
+    {
+      "path": "docs/policies/project-memory.md",
+      "bytes": 2752,
+      "sha256_raw": "97b2ddc420eb138a2675917d0c35e7576c07b504353f43c00726729045a53b10",
+      "role": "authority and evidence policy"
+    },
+    {
+      "path": "docs/adr/P03-reuse.md",
+      "bytes": 11481,
+      "sha256_raw": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a",
+      "role": "accepted reuse constraints and Native gap observations"
+    },
+    {
+      "path": "packages/projects/registry.ts",
+      "bytes": 40380,
+      "sha256_raw": "cd215f475f93470e3473edfc571ea639538ba3e83760f64a71b7aea8319ad8b1",
+      "role": "current ProjectRegistry source bytes; U03 mapping path with accepted U06 extensions",
+      "accepted_lineage": [
+        "P03-U03",
+        "P03-U06"
+      ]
+    },
+    {
+      "path": "packages/adapters/zcode/src/project-memory.ts",
+      "bytes": 32414,
+      "sha256_raw": "edbe2414e3209aa93aac36bd4960ae93992ec4e433104aac89cb1e1b681267ab",
+      "role": "accepted U04 selected-topic reader source bytes",
+      "accepted_lineage": [
+        "P03-U04"
+      ]
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/context/sections/memory.ts",
+      "bytes": 2725,
+      "sha256_raw": "3af27495b85c9f189ded350a030beba4442711fad4b35267a91a7f2209ae018d",
+      "lf_count": 50,
+      "crlf_count": 0,
+      "role": "pinned Native Z03 context-memory source bytes"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/packages/services/src/memory/memoryService.ts",
+      "bytes": 7972,
+      "sha256_raw": "7dcda54bcbd983331d84db6b634ec39e4c6980f29517f7872ca554aa319ecf7a",
+      "lf_count": 238,
+      "crlf_count": 0,
+      "role": "pinned Native Z06 MemoryService source bytes"
+    },
+    {
+      "path": "packages/work/handoff-context.ts",
+      "bytes": 57756,
+      "sha256_raw": "625ccc2667f3c3f22e298276e3e679b54c9b95863de3312d7a1e92e8abb2b046",
+      "role": "Accepted U07 safe-provenance and raw-source discipline, adapted for a fixed-purpose observer; no Native code copied"
+    }
+  ],
+  "scope_mapping": {
+    "implementation": {
+      "path": "packages/projects/freshness.ts",
+      "status_at_source_review": "author WIP; final binding deferred"
+    },
+    "test": {
+      "card_target": "tests/units/P03-U08.test.ts",
+      "mapped_path": "packages/projects/test/freshness.test.mjs",
+      "basis": "existing Node .mjs unit-test layout; file is author WIP"
+    },
+    "selector": {
+      "path": "tools/run-tests.mjs",
+      "mapping": "P03-U08 selects packages/projects/test/freshness.test.mjs and includes it in unit/all",
+      "status_at_source_review": "author WIP"
+    }
+  },
+  "implementation_bindings": [
+    {
+      "path": "packages/projects/freshness.ts",
+      "bytes": 40783,
+      "sha256": "255e23d6602d1311f6a222c28128dac72cb71580ef3c59fccd320444a84ded42"
+    },
+    {
+      "path": "packages/projects/test/freshness.test.mjs",
+      "bytes": 43282,
+      "sha256": "d8d031c2a81efe9eac6e4b5dd960215f66eff2a99a50a1faf00264f547f260b3"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "bytes": 6829,
+      "sha256": "1f83268d276907af97220c214390f8f0ab605fc3d605e5b45596f24f43538d18"
+    }
+  ],
+  "boundary": "Author materials only; independent acceptance pending. Trusted Host attests actual command verification; module validates bindings and has no Native memory writer, shell runner or second knowledge database.",
+  "native_accepted_readback": {
+    "path": "evidence/P03-U08/20261008-01/native-readback.json",
+    "bytes": 925,
+    "sha256": "33df7b4a9aaad801892ddefec4fc069001067eb7a64dd7daceb8d422a61443b8"
+  }
+}

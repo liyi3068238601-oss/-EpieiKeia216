@@ -1,0 +1,138 @@
+{
+  "schema": "p03-u08-result/v1",
+  "task": "P03-U08",
+  "attempt_id": "20261008-01",
+  "baseline_commit": "5831ba60285536aaa9b8ef40770510f380cb6edf",
+  "at_utc": "2026-10-08T13:19:33.787836+00:00",
+  "author_status": "ready_for_review",
+  "independent_acceptance": "pending",
+  "implementation": [
+    {
+      "path": "packages/projects/freshness.ts",
+      "bytes": 40783,
+      "sha256": "255e23d6602d1311f6a222c28128dac72cb71580ef3c59fccd320444a84ded42"
+    },
+    {
+      "path": "packages/projects/test/freshness.test.mjs",
+      "bytes": 43282,
+      "sha256": "d8d031c2a81efe9eac6e4b5dd960215f66eff2a99a50a1faf00264f547f260b3"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "bytes": 6829,
+      "sha256": "1f83268d276907af97220c214390f8f0ab605fc3d605e5b45596f24f43538d18"
+    }
+  ],
+  "verification": {
+    "build-01": {
+      "path": "evidence/P03-U08/20261008-01/build-01.json",
+      "bytes": 533,
+      "sha256": "04ed32af4952b041fdc90132a0712a92543ecae6eee5bbc3962d0f85463b5c0f"
+    },
+    "build-02": {
+      "path": "evidence/P03-U08/20261008-01/build-02.json",
+      "bytes": 637,
+      "sha256": "ad0ef067caf9552546ca6331fbf8a2ea5e4413dd315ea570d221dd7b9634cc5c"
+    },
+    "build-03": {
+      "path": "evidence/P03-U08/20261008-01/build-03.json",
+      "bytes": 533,
+      "sha256": "82cfc5778c8df79b7b4819beff511facfb687769dd3ec51e52ca99f54a6b308f"
+    },
+    "execution-after": {
+      "path": "evidence/P03-U08/20261008-01/execution-after.json",
+      "bytes": 40344,
+      "sha256": "6b2e4455b42487e540f1e64db8dcdd4d20eb66414b14e1551a3c2076ac641c99"
+    },
+    "execution-before": {
+      "path": "evidence/P03-U08/20261008-01/execution-before.json",
+      "bytes": 40236,
+      "sha256": "f4ab12db985464f46a43852a5493964a0d75f636ec7138a641e5060d95f166d2"
+    },
+    "format-inputs": {
+      "path": "evidence/P03-U08/20261008-01/format-inputs.json",
+      "bytes": 881,
+      "sha256": "6aba6b849778fb0257446487a30610051fb0e2445d1210c04e2da1a6ea22cd3b"
+    },
+    "native-readback": {
+      "path": "evidence/P03-U08/20261008-01/native-readback.json",
+      "bytes": 925,
+      "sha256": "33df7b4a9aaad801892ddefec4fc069001067eb7a64dd7daceb8d422a61443b8"
+    },
+    "regression-01": {
+      "path": "evidence/P03-U08/20261008-01/regression-01.json",
+      "bytes": 5215,
+      "sha256": "1cf71bedf3abda86523d130ea290f0ed360e74335796c4f2a0ed2fa1c0b1e27f"
+    },
+    "unit-01": {
+      "path": "evidence/P03-U08/20261008-01/unit-01.json",
+      "bytes": 2682,
+      "sha256": "e750d428fe504a062f70335356624bb6fc8ddfc5ffbc217ab4bf0bac0428fbb2"
+    }
+  },
+  "test_reporting": {
+    "unit": "9 inner cases passed, 0 failed/skipped; 1 outer file completion. Do not sum streams.",
+    "regression": "U03 registry 14 passed, 1 file-symlink privilege skip; U07 8 passed, then 2 outer file completions. Do not sum streams.",
+    "platform": "U08 real file ACL denial and exact DACL-hash restoration, hardlink and directory junction ran. U07 file symlink EPERM remained unexecuted even though its aggregate skip count is zero."
+  },
+  "contracts": [
+    "Observed snapshots bind the trusted registry project/worktree identity, actual Git HEAD, complete selected raw hashes and actual sample time.",
+    "Capture rechecks mapping/HEAD/all refs before branding. Missing, unsafe, unreadable or incomplete evidence stays unknown with explicit refs; no creation.",
+    "Three-year age does not erase knowledge. Matching project/HEAD/raw refs is current as of capture, changes are needs_recheck (stale), missing prior or unequal ref sets are unknown.",
+    "Current means byte-reference match, not semantic truth. Owner and progress are not inferred.",
+    "Trusted Host acceptance binds exact proposal, complete history-prefix digest, tip ID/content hash, project/HEAD/raw refs, command exit and stdout hash.",
+    "Freshness module checks the Host attestation, re-observes before/after its callback and before append, rejects source/mapping drift and structurally forged receipts.",
+    "Append validates every old revision, preserves all JSON content/hash/metadata with immutable independent copies, and rejects prefix drift, malformed histories, duplicate acceptance IDs and receipt replay.",
+    "Superseded is represented by an explicit receipt-bound supersedesRevisionId on the appended replacement; old revisions are retained unchanged.",
+    "No time-to-live, decay, automatic deletion, Native memory writer, new fact database, model or shell execution engine."
+  ],
+  "runtime_boundary": {
+    "actual": [
+      "Fixed Node 24.14.0/TypeScript compilation",
+      "Owned real Git, SQLite registry and raw files",
+      "Actual Windows file ACL, hardlink and directory junction",
+      "Actual registry metadata relocation",
+      "Fixed-Node verification child that observes Git/raw evidence and binds its stdout hash"
+    ],
+    "fault_injection": [
+      "Registry callback wrapper triggers real Git/file changes at final-resolution boundary; this is not an OS-scheduled concurrency claim"
+    ],
+    "related_actual": [
+      "U07 Native AgentRuntime/registry/executor/Core Read on snapshot-only ports in related regression"
+    ],
+    "not_run": [
+      "Native createZCodeApp/application composition",
+      "Provider/model invocation",
+      "Live DSH",
+      "Desktop",
+      "Persistent formal-note write"
+    ]
+  },
+  "execution_binding": {
+    "record": {
+      "path": "evidence/P03-U08/20261008-01/execution-after.json",
+      "bytes": 40344,
+      "sha256": "6b2e4455b42487e540f1e64db8dcdd4d20eb66414b14e1551a3c2076ac641c99"
+    },
+    "inputs": 173,
+    "unchanged": true,
+    "boundary": "Declared product/tests/compiled JS/compiler/locks and selected Native helpers; not a complete installed dependency closure."
+  },
+  "preserved_failure": {
+    "build-02": "TS7006: a history command callback required an explicit unknown parameter annotation; final build-03 passes. Build-01 predates final history changes."
+  },
+  "limits": {
+    "evidence_files": 64,
+    "evidence_file_bytes": 5242880,
+    "history_json_bytes": 5242880,
+    "history_json_depth": 32
+  },
+  "limitations": [
+    "Evidence paths must be approved by a trusted Host. Literal private/runtime exclusions are not a general secret-content classifier or OS sandbox.",
+    "Host must actually execute verification and verify its accepted history. A matching callback JSON does not independently prove that execution happened.",
+    "The module checks the supplied complete-history digest/tip and consumes one in-process receipt. Cross-process atomic persistence/CAS belongs to the Host; this module only returns an append proposal.",
+    "Only live module-minted observations and receipts can authorize; serialized history/prior snapshots are untrusted experience leads.",
+    "Native notes, installed profiles, user workspaces and reference files were not modified. App/Desktop composition remains U09/U10 work."
+  ],
+  "rollback": "Revert the isolated unit commit if needed. Preserve synthetic fixtures and failed command records. No data migration or production-memory write occurred."
+}
