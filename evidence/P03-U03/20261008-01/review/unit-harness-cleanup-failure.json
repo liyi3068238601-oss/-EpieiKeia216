@@ -1,0 +1,13 @@
+{
+  "schema": "p03-u03-review-harness-failure/v1",
+  "stage": "post-test C-drive fixture cleanup",
+  "command": "python -X utf8 .runtime/P03/reviews/u03-20261008/run-unit-review.py",
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "exception": "PermissionError: [WinError 5] Access is denied while shutil.rmtree removed a read-only Git object under the uniquely created review fixture root.",
+  "child_stdout_captured_by_wrapper": true,
+  "child_stdout_persisted": false,
+  "child_exit_code_persisted": false,
+  "result_interpretation": "Unassessed. The wrapper failed after subprocess.run returned but before it saved the result; no product test conclusion is taken from this attempt. The subsequent official selector run is the review test evidence.",
+  "fixture_root": "C:\\Users\\liyi\\.codex\\tmp\\P03-u03-review-d472ae9824394993a5558c4f610b3dac",
+  "fixture_cleanup": "not retried; fixture retained"
+}

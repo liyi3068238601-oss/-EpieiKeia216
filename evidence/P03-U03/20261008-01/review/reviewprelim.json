@@ -1,0 +1,193 @@
+{
+  "schema": "p03-u03-independent-review-preliminary/v1",
+  "created_at_utc": "2026-10-08T09:52:59.532010+00:00",
+  "task": "P03-U03",
+  "status": "preliminary",
+  "decision": "not_decided",
+  "review_target": {
+    "baseline_commit": "1326a8b036d4695271d194f3bcb1611382433303",
+    "author_head_snapshot": "1326a8b036d4695271d194f3bcb1611382433303",
+    "author_branch": "p03-u03",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u03",
+    "main_head": "1326a8b036d4695271d194f3bcb1611382433303",
+    "main_tree_clean": true,
+    "author_tree_clean": false
+  },
+  "scope": "Read-only early review of current U03 implementation and tests. This is not a final commit review or acceptance decision.",
+  "findings": [
+    {
+      "id": "test-entrypoint-path-mismatch",
+      "severity": "resolved during preliminary review",
+      "status": "closed-in-current-snapshot",
+      "detail": "An earlier read found the new test under registry.behavior.test.mjs while the baseline mapping and tools/run-tests.mjs named packages/projects/test/registry.test.mjs. The author renamed the file; the configured path now exists and matches the runner. The current test file is bound below. The test itself still requires an executed command result before final review.",
+      "evidence": [
+        "tools/run-tests.mjs",
+        "evidence/P03-U03/20261008-01/baseline.json",
+        "packages/projects/test/registry.test.mjs"
+      ]
+    },
+    {
+      "id": "drive-move-coverage-not-yet-present",
+      "severity": "medium; resolve in final test evidence",
+      "status": "coverage-gap-at-snapshot",
+      "detail": "The behavior suite tests same-volume rename of a registered main repository and expects RELOCATION_REQUIRED while retaining the old mapping. It does not yet exercise the task's drive-change branch or a registered linked worktree moved to another volume and repaired with git worktree repair. The intended safe split is: known physical worktree identity yields RELOCATION_REQUIRED; an unlinked standalone copy with new Git metadata remains a separate UUID/fork and requires explicit U06 migration to carry identity.",
+      "evidence": [
+        "packages/projects/test/registry.test.mjs"
+      ]
+    },
+    {
+      "id": "legacy-root-ownership-boundary",
+      "severity": "review-note; not a blocker under current U03/U06 split",
+      "status": "design-consistent-with-open-followup",
+      "detail": "The implementation requires explicit adoptLegacy for a pre-existing path-key root on first registration, stores the prior Native path-memory key per workspace, and returns MEMORY_CONFLICT for a sibling worktree whose distinct legacy root differs from the canonical mapping, even when adoption is requested. That matches the coordinator's stated rule: do not silently choose or merge sibling stores; resolve ownership/export in U06. The registry stores pointers only and does not create, move, or copy Native memory bytes. A useful final regression is to confirm the prior pointer and memory tree remain unchanged on this conflict path.",
+      "evidence": [
+        "packages/projects/registry.ts",
+        "packages/projects/test/registry.test.mjs"
+      ]
+    },
+    {
+      "id": "sqlite-atomicity-and-mapping-only-scope",
+      "severity": "reviewed",
+      "status": "no-blocking-defect-seen-in-static-read",
+      "detail": "Project and workspace rows are written under BEGIN IMMEDIATE in one try/rollback/commit boundary. The registry reuses the accepted P02 SQLite wrapper in a separate application-owned DB, checks application_id/user_version and integrity, and its mutation paths contain no writes to Native memory roots. The existing tests cover persisted mapping, unknown database preservation, pointer-only registration, and no partial mapping after a canonical-key conflict. Concurrent first-open initialization is not covered; if multiple application instances can initialize one directory concurrently, verify that case before treating schema creation as concurrency-safe.",
+      "evidence": [
+        "packages/projects/registry.ts",
+        "packages/storage/events/src/sqlite.ts",
+        "packages/projects/test/registry.test.mjs"
+      ]
+    },
+    {
+      "id": "native-key-resolvers-and-project-identity",
+      "severity": "reviewed",
+      "status": "no-blocking-defect-seen-in-static-read",
+      "detail": "The test harness injects the pinned Native resolveProjectMemoryRoot and projectIdFromDirectory helpers. The registry calls the memory-root helper once without workspaceIdentity to record the legacy/path key and with the generated UUID for a new canonical key; the runtime path key is kept in a separate field. Tests include a real Native runtime-key collision while ensuring distinct Git common directories receive separate Xiadie UUIDs.",
+      "evidence": [
+        "packages/projects/registry.ts",
+        "packages/projects/test/registry.test.mjs",
+        ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/memory/project-root.ts",
+        ".runtime/P01/desktop-source/apps/zcode-cli/packages/bootstrap/src/app/paths.ts"
+      ]
+    },
+    {
+      "id": "git-identity-and-worktree-boundaries",
+      "severity": "reviewed",
+      "status": "no-blocking-defect-seen-in-static-read",
+      "detail": "The registry uses actual Git common/private directories, filesystem identities and the Git worktree registry back-reference. Linked worktrees of one common repository share one project mapping; independent clones/forks and complete copied repositories have distinct common-directory identities; an unregistered copy of a linked worktree is rejected. A replaced path conflicts with its prior identity. Same-volume relocation is surfaced without rewriting the old row.",
+      "evidence": [
+        "packages/projects/registry.ts",
+        "packages/projects/test/registry.test.mjs"
+      ]
+    }
+  ],
+  "current_validation": {
+    "typescript_build_01_exit_code": 0,
+    "typescript_build_02_exit_code": 0,
+    "configured_test_target_exists": true,
+    "test_file_present": true,
+    "tests_executed_by_reviewer": false
+  },
+  "open_before_final_review": [
+    "Capture and review the actual test command and output against the now-matching test mapping.",
+    "Add or document the required drive-change/repair case and its expected identity behavior.",
+    "Freeze an exact author commit and clean tree, then bind the final source, test, evidence, baseline, and manifest before a pass/fail review decision."
+  ],
+  "artifacts": [
+    {
+      "path": "AGENTS.md",
+      "root": "baseline_repository",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U03.md",
+      "root": "baseline_repository",
+      "bytes": 1977,
+      "sha256": "e5de922f3cfbe81928a09e181c31fad6d08056b63bcabe0239cca26bc4b543d5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/02_计划执行书.md",
+      "root": "baseline_repository",
+      "bytes": 366530,
+      "sha256": "5f8fe397e4622c208e866827d7b528e3efacfd7912e74c602182c8465aa6d5b4"
+    },
+    {
+      "path": "evidence/P03/status.json",
+      "root": "baseline_repository",
+      "bytes": 4730,
+      "sha256": "47f4c42a5f7fe8b12b2ecc01732c59070bd508cc70804d60a4468efc6523237c"
+    },
+    {
+      "path": "docs/adr/P03-reuse.md",
+      "root": "author_worktree",
+      "bytes": 11481,
+      "sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a"
+    },
+    {
+      "path": "packages/projects/registry.ts",
+      "root": "author_worktree",
+      "bytes": 20819,
+      "sha256": "9b26f7241b27eb1ef8abbc725490a8fd244120fca54778b174fef62cfc31bab4"
+    },
+    {
+      "path": "packages/projects/test/registry.test.mjs",
+      "root": "author_worktree",
+      "bytes": 17343,
+      "sha256": "7eea9f8591d47965d10a87ce676fe22e299c9b596010e78cd1120498fd9e13a8"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "root": "author_worktree",
+      "bytes": 5979,
+      "sha256": "a770e07a626c77946b5fa3d8dfd01032694e22d1befa822b893fbb0ca5f3a4ac"
+    },
+    {
+      "path": "tsconfig.json",
+      "root": "author_worktree",
+      "bytes": 849,
+      "sha256": "8c583b06b578e43dc0d26f839b8dabe7c799944e6d46c979b38615f2299839fe"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/baseline.json",
+      "root": "author_worktree",
+      "bytes": 1139,
+      "sha256": "e36e91e7d4d4e4c788d64d9c755cb3fd8ecbc380c9cea4f4bca8534983fa540e"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/command-baseline.json",
+      "root": "author_worktree",
+      "bytes": 934,
+      "sha256": "151b8e7c03926079d772b0464cbd9f9570aa076ce50170c4940efeba2f46f918"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/build-01-command.json",
+      "root": "author_worktree",
+      "bytes": 479,
+      "sha256": "d373e174351f9fe73e6640e2fd0c71859a25cc5f7924c8db747416390c42b9f4"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/build-02-command.json",
+      "root": "author_worktree",
+      "bytes": 479,
+      "sha256": "112babd61614ce9891ed19777a42390a0a19f4373ad91f4dc0e36f70c606d905"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/memory/project-root.ts",
+      "root": "baseline_repository",
+      "bytes": 1106,
+      "sha256": "69ea16dc573f1e60e5579be494d02dc7735ab24821208071f304e5699c2d7f55"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/bootstrap/src/app/paths.ts",
+      "root": "baseline_repository",
+      "bytes": 1096,
+      "sha256": "b9ed5f5aa6ce158766bf6113a46465b385c989403e6f5829c4d9bef02237a919"
+    },
+    {
+      "path": "packages/storage/events/src/sqlite.ts",
+      "root": "author_worktree",
+      "bytes": 2717,
+      "sha256": "c1cbb368c1feb4f3a5d87b0b5526ea7a761ba0a2de394ecf679767b817cc1e47"
+    }
+  ],
+  "snapshot_status_porcelain": "M tools/run-tests.mjs\n M tsconfig.json\n?? evidence/P03-U03/\n?? packages/projects/"
+}

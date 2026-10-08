@@ -1,0 +1,29 @@
+{
+  "schema": "p03-review-verification-command/v1",
+  "executable": "python",
+  "argv": [
+    "python",
+    "-X",
+    "utf8",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\coord\\verify-review.py",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u03-20261008\\unit-review-final.json",
+    "2530a944f9c4f403675378e843c44a11c9880681"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "started_at_utc": "2026-10-08T10:09:33.711398+00:00",
+  "completed_at_utc": "2026-10-08T10:09:33.931398+00:00",
+  "elapsed_seconds": 0.219,
+  "exit_code": 0,
+  "stdout": "{\"decision\": \"pass\", \"author_commit\": \"2530a944f9c4f403675378e843c44a11c9880681\", \"artifact_count\": 50, \"mismatches\": [], \"report_sha256\": \"03ae6e259f0021f9cc19373ddb34634c82e596afc1d5c5e4a069443a4f33f93c\"}\n",
+  "stderr": "",
+  "report": {
+    "path": ".runtime/P03/reviews/u03-20261008/unit-review-final.json",
+    "bytes": 18309,
+    "sha256": "03ae6e259f0021f9cc19373ddb34634c82e596afc1d5c5e4a069443a4f33f93c"
+  },
+  "verifier": {
+    "path": ".runtime/P03/coord/verify-review.py",
+    "bytes": 1574,
+    "sha256": "2948cff4a3b39c3ea567bc451e904bf2080af768827a3137260a57d9453b633f"
+  }
+}

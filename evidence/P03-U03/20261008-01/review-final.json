@@ -1,0 +1,407 @@
+{
+  "schema": "p03-independent-review/v1",
+  "created_at_utc": "2026-10-08T10:09:21.299972+00:00",
+  "task": "P03-U03",
+  "decision": "pass",
+  "unit_acceptance": "not_decided",
+  "review_target": {
+    "author_commit": "2530a944f9c4f403675378e843c44a11c9880681",
+    "baseline_commit": "1326a8b036d4695271d194f3bcb1611382433303",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u03",
+    "attempt": "20261008-01; final evidence-correction commit and fresh official selector rerun",
+    "changed_paths": 18
+  },
+  "reviewer": "Codex independent readback",
+  "scope": "Independent review of the complete P03-U03 mapping implementation and evidence at the exact clean author commit. This is a review pass only; unit acceptance remains a coordinator decision.",
+  "checks": [
+    {
+      "id": "exact-commit-baseline-manifest-and-scope",
+      "status": "pass",
+      "detail": "Final author commit 2530a944f9c4f403675378e843c44a11c9880681 descends from baseline 1326a8b036d4695271d194f3bcb1611382433303; root remains clean at baseline and author worktree is clean at the final commit. All 18 paths are within U03 source, tests, runner/configuration and its evidence directory. Independent verify-author readback verified 17 manifest-bound files against Git blobs and checked-out bytes with zero mismatches; manifest SHA-256 is 5f7d800b9d7c4bffdf3e4a924188666ec7b9012fa4f2a2698ab82efe039ee20e. The later commit changed only result.md/result.json/diff-02/manifest relative to the reviewed code commit 1608f51; implementation and test surfaces are unchanged."
+    },
+    {
+      "id": "native-key-resolvers-and-accepted-provenance",
+      "status": "pass",
+      "detail": "The registry dynamically uses the pinned Native root/runtime-key helpers. Independent SHA/source readback confirms pinned Native commit 29628c9acdb81b703bbd4080c207a0e7ce5e276e, a clean Native tree, source hashes matching Git blobs, actual loaded helper dist hashes matching accepted U02 source-to-dist evidence, and accepted SQLite wrapper/U02 provenance hashes. The implementation does not copy Native key algorithms."
+    },
+    {
+      "id": "project-identity-worktree-and-relocation",
+      "status": "pass",
+      "detail": "Code groups main/linked worktrees using physical Git common/private directory identities and Git worktree-list backreferences. The fresh official selector covers same-name repos, identical-head/remote forks, directory copies, linked worktrees, replaced paths, same-volume move, standalone E-to-C copy, and E-to-C linked-worktree copy plus real git worktree repair. Copies/forks receive distinct UUIDs; a repaired known linked worktree returns RELOCATION_REQUIRED and retains the old project UUID, path binding and canonical Native-memory pointer."
+    },
+    {
+      "id": "legacy-memory-and-sqlite-atomicity",
+      "status": "pass",
+      "detail": "The separate application-owned mapping database stores pointers and identity metadata only. Explicit adoption keeps the existing Native root and file hashes intact; a different canonical key conflict rolls back without a partial project/workspace mapping. Registration writes use BEGIN IMMEDIATE with commit/rollback; unknown SQLite databases are preserved. Source review also confirms per-call checks for the DB/WAL/SHM/journal being physical single-link files, a 10,000-project cap, and no memory-byte copy/migration path. Sibling legacy-root ownership conflict is rejected in code with MEMORY_CONFLICT; explicit transfer is assigned to U06."
+    },
+    {
+      "id": "independent-type-build-and-official-unit-selector",
+      "status": "pass",
+      "detail": "Fresh TypeScript 6.0.2 build ran from the exact author worktree with output redirected to the review directory; all 44 generated files match the author dist byte-for-byte. The committed unit/P03-U03 selector exited 0 with 14 behavior tests passing, zero failures and one skipped Windows symbolic-link creation subtest; junction tests passed."
+    },
+    {
+      "id": "boundary-check-scope",
+      "status": "not_run",
+      "detail": "The committed boundary command exited 0 but printed BOUNDARY_SCAN_NOT_RUN because packages/core is absent; it checked no product Core import graph. The corrected author result marks this not_run. TypeScript compilation is reported separately and is not treated as an architecture scan."
+    },
+    {
+      "id": "scope-and-not-run-boundaries",
+      "status": "pass",
+      "detail": "The change adds the registry, mapped behavior tests, compiler include, existing test selector and U03 evidence; it does not change the event-ledger schema, dependency set, plan baseline, Native source, global settings, user memory or installed ZCode profile. Native app/model/Desktop/DSH execution and explicit ownership/export migration remain NOT_RUN and belong outside this mapping-only unit (U06 for confirmed transfer)."
+    }
+  ],
+  "reviewer_readback": {
+    "author_manifest": {
+      "record": "author-manifest-readback-final.json",
+      "bound_files": 17,
+      "changed_paths": 18,
+      "mismatches": 0,
+      "manifest_sha256": "5f7d800b9d7c4bffdf3e4a924188666ec7b9012fa4f2a2698ab82efe039ee20e"
+    },
+    "native_source": {
+      "record": "native-source-readback.json",
+      "native_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "clean": true,
+      "native_input_hashes_match": true,
+      "ignored_dist_helpers_bound_by_accepted_u02_compile": 2
+    },
+    "fresh_typescript_build": {
+      "command_record": "build-review-01-command.json",
+      "node": "v24.14.0",
+      "typescript": "6.0.2",
+      "exit_code": 0,
+      "output_files": 44,
+      "author_dist_byte_matches": 44,
+      "tree_sha256": "74dce05f36f49859b91d8e80ae164953f144e95a438a32d4d4ea5398839b47c4"
+    },
+    "official_selector": {
+      "command_record": "unit-rerun-command.json",
+      "exit_code": 0,
+      "passed": 14,
+      "failed": 0,
+      "skipped": 1,
+      "skip_reason": "Windows refused synthetic symbolic directory-link creation; junction checks passed"
+    },
+    "first_reviewer_harness_attempt": {
+      "record": "unit-harness-cleanup-failure.json",
+      "status": "unassessed",
+      "reason": "wrapper failed while removing its own read-only Git fixture after the test subprocess; its stdout was not persisted. The direct official selector rerun is the review test result."
+    },
+    "boundary_command": {
+      "author_record": "evidence/P03-U03/20261008-01/boundary-command.json",
+      "exit_code": 0,
+      "scan_status": "NOT_RUN: packages/core absent"
+    }
+  },
+  "limitations": [
+    "The official unit test uses synthetic E- and C-drive Git repositories and retains those fixtures as recorded by the author evidence; no production data was migrated.",
+    "The first isolated reviewer wrapper attempt had an unassessed post-test cleanup exception and no saved child stdout; it is retained as a harness failure and superseded by the fresh direct official selector run.",
+    "The import-boundary command did not scan a Core graph because packages/core is absent. No whole-repository architecture claim is made.",
+    "No Native desktop session, real model, Desktop/DSH, or U06 confirmed export/relocation was run; these are outside U03 mapping acceptance.",
+    "The database/WAL/SHM/journal non-link assertions and 10,000 cap were source-reviewed; the behavior suite has no dedicated adversarial sidecar-replacement or scale-to-cap case."
+  ],
+  "artifacts": [
+    {
+      "path": "docs/adr/P03-reuse.md",
+      "root": "author_worktree",
+      "bytes": 11481,
+      "sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a"
+    },
+    {
+      "path": "packages/projects/registry.ts",
+      "root": "author_worktree",
+      "bytes": 20906,
+      "sha256": "e77c8ecd0c2e2ea08abca01f750e1c0839b937de5aa9a5a14b0358949d90304a"
+    },
+    {
+      "path": "packages/projects/test/registry.test.mjs",
+      "root": "author_worktree",
+      "bytes": 22876,
+      "sha256": "3f35fa47e161eaaacddc5c65a7d5970f84d5d85e27f9ef3831ceb1daa83ffd9a"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "root": "author_worktree",
+      "bytes": 5979,
+      "sha256": "a770e07a626c77946b5fa3d8dfd01032694e22d1befa822b893fbb0ca5f3a4ac"
+    },
+    {
+      "path": "tsconfig.json",
+      "root": "author_worktree",
+      "bytes": 849,
+      "sha256": "8c583b06b578e43dc0d26f839b8dabe7c799944e6d46c979b38615f2299839fe"
+    },
+    {
+      "path": "packages/storage/events/src/sqlite.ts",
+      "root": "author_worktree",
+      "bytes": 2717,
+      "sha256": "c1cbb368c1feb4f3a5d87b0b5526ea7a761ba0a2de394ecf679767b817cc1e47"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/baseline.json",
+      "root": "author_worktree",
+      "bytes": 1139,
+      "sha256": "e36e91e7d4d4e4c788d64d9c755cb3fd8ecbc380c9cea4f4bca8534983fa540e"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/manifest.json",
+      "root": "author_worktree",
+      "bytes": 4236,
+      "sha256": "5f7d800b9d7c4bffdf3e4a924188666ec7b9012fa4f2a2698ab82efe039ee20e"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/diff-02.json",
+      "root": "author_worktree",
+      "bytes": 4348,
+      "sha256": "9dfb7cb6a82946ea723d35c040ead73f7d84e1a7a9432619806301db63694ef0"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/result.json",
+      "root": "author_worktree",
+      "bytes": 1529,
+      "sha256": "3b94e6a427aad02c8ac336e6bb8b61b456d2bfc485864145657babbc7caab21c"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/result.md",
+      "root": "author_worktree",
+      "bytes": 3172,
+      "sha256": "5c17ce5373db8a39802d6560ca80a2ad52617a64d0915510423878971d03d7a2"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/source-adoption.json",
+      "root": "author_worktree",
+      "bytes": 3385,
+      "sha256": "4060675122927d27f9c6b2dfb6059fd45a4b1ac6e8e9ce66125cfdee7416ec95"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/source-binding-command.json",
+      "root": "author_worktree",
+      "bytes": 697,
+      "sha256": "ae7448eae48ac92f72d4489ca286f3e5cc85e839f98ffbf0ebb8ff477988382e"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/boundary-command.json",
+      "root": "author_worktree",
+      "bytes": 523,
+      "sha256": "88e98fec7db88301ef80ca596e311c322b2f11836bde7685f87baaef38119ebb"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/build-03-command.json",
+      "root": "author_worktree",
+      "bytes": 489,
+      "sha256": "dc3c7d52783915fcd4a8d926fcc0e9013bc3062ab8dd46cc247bd2cb1979f813"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/unit-command.json",
+      "root": "author_worktree",
+      "bytes": 2262,
+      "sha256": "99bc36994110a45651f7437134506c60877caf02e22bd73f9552197590b8190e"
+    },
+    {
+      "path": "AGENTS.md",
+      "root": "baseline_repository",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U03.md",
+      "root": "baseline_repository",
+      "bytes": 1977,
+      "sha256": "e5de922f3cfbe81928a09e181c31fad6d08056b63bcabe0239cca26bc4b543d5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/02_计划执行书.md",
+      "root": "baseline_repository",
+      "bytes": 366530,
+      "sha256": "5f8fe397e4622c208e866827d7b528e3efacfd7912e74c602182c8465aa6d5b4"
+    },
+    {
+      "path": "evidence/P03/status.json",
+      "root": "baseline_repository",
+      "bytes": 4730,
+      "sha256": "47f4c42a5f7fe8b12b2ecc01732c59070bd508cc70804d60a4468efc6523237c"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 10143,
+      "sha256": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/native-dist-source-bindings-02.json",
+      "root": "baseline_repository",
+      "bytes": 344084,
+      "sha256": "7c5ffc487cfe510c930490e12d38ef69b41abb4154b44f4b2a0426c16e92e2d0"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/native-dist-compile-result.json",
+      "root": "baseline_repository",
+      "bytes": 1139312,
+      "sha256": "9f6dea5d0203e40ce50830d39678a925dc28e945210d0b33c50997c1d15e6e15"
+    },
+    {
+      "path": "docs/adr/P03-reuse.md",
+      "root": "baseline_repository",
+      "bytes": 11481,
+      "sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/LICENSE",
+      "root": "baseline_repository",
+      "bytes": 11344,
+      "sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/memory/project-root.ts",
+      "root": "baseline_repository",
+      "bytes": 1106,
+      "sha256": "69ea16dc573f1e60e5579be494d02dc7735ab24821208071f304e5699c2d7f55"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/dist/memory/project-root.js",
+      "root": "baseline_repository",
+      "bytes": 988,
+      "sha256": "3d5bdb8239c073705d4eb0a6371b7462f329607b695ec5dca9f243b58c543d15"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/bootstrap/src/app/paths.ts",
+      "root": "baseline_repository",
+      "bytes": 1096,
+      "sha256": "b9ed5f5aa6ce158766bf6113a46465b385c989403e6f5829c4d9bef02237a919"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/bootstrap/dist/app/paths.js",
+      "root": "baseline_repository",
+      "bytes": 980,
+      "sha256": "b5ca2355a7975f781ada2d750c9a3789157bb027ae3395bd830b8647630265c9"
+    },
+    {
+      "path": ".runtime/P03/coord/verify-author.py",
+      "root": "baseline_repository",
+      "bytes": 2672,
+      "sha256": "e82d66bdf461824dce0251e88ca6817669cb986a0277abe73cb1a4f3aabcfe6a"
+    },
+    {
+      "path": ".runtime/P03/coord/verify-review.py",
+      "root": "baseline_repository",
+      "bytes": 1574,
+      "sha256": "2948cff4a3b39c3ea567bc451e904bf2080af768827a3137260a57d9453b633f"
+    },
+    {
+      "path": "author-manifest-readback-final.json",
+      "root": "review_directory",
+      "bytes": 552,
+      "sha256": "5eb30603bc093a32c01b5fea89e8160b3976ad2c5afc079906bd22a64bf7b323"
+    },
+    {
+      "path": "build-review-01-command.json",
+      "root": "review_directory",
+      "bytes": 930,
+      "sha256": "72108d0f65b191aa79e3d7a9277066ce62f8a98bd08e097de40bddd5a0dabd52"
+    },
+    {
+      "path": "build-output-readback.json",
+      "root": "review_directory",
+      "bytes": 649,
+      "sha256": "98dc405be0f002e118b9309ff14f47f5884fc52c04b528a990fb3602bd18b3c6"
+    },
+    {
+      "path": "build-toolchain-readback.json",
+      "root": "review_directory",
+      "bytes": 846,
+      "sha256": "8325e6686a7c03e51b8cd739b3a1a7f5b65922c3b15c78290563c8642cacfcec"
+    },
+    {
+      "path": "unit-rerun-command.json",
+      "root": "review_directory",
+      "bytes": 2245,
+      "sha256": "bebc1c294034d20a0049b3703ec1e38b14ae125ec06fc7a8abaed42224e8b35a"
+    },
+    {
+      "path": "native-source-readback.json",
+      "root": "review_directory",
+      "bytes": 6682,
+      "sha256": "b6ab4f4ea64eb0ebbe371d3b19becb39b8862814fc97660f53548f10ad079372"
+    },
+    {
+      "path": "unit-harness-cleanup-failure.json",
+      "root": "review_directory",
+      "bytes": 906,
+      "sha256": "5d831debe0f8e94adbe1a798dc6cf74059e292dbc057ebb4300a401e57ff891e"
+    },
+    {
+      "path": "reviewprelim.json",
+      "root": "review_directory",
+      "bytes": 10172,
+      "sha256": "f85f6a59fb1afacac6baab425843677a5d70aabaaccd33de6017991cc0b68e61"
+    },
+    {
+      "path": "run-build-review.py",
+      "root": "review_directory",
+      "bytes": 1597,
+      "sha256": "d322194539bf5a61d74933497710d49ad36767b8f0885c00c28e391b09e6d1b7"
+    },
+    {
+      "path": "recompare-build-output.py",
+      "root": "review_directory",
+      "bytes": 1927,
+      "sha256": "b7828b54aa0dace7ac6cd669eec4e6cd1b29bd3a1ce3b74c41825596ba0299dc"
+    },
+    {
+      "path": "readback-source-inputs-v2.py",
+      "root": "review_directory",
+      "bytes": 4027,
+      "sha256": "5b9153edfccdb6e0f26415c5865641aca68433c2e46a6713f817527e87d3bedc"
+    },
+    {
+      "path": "readback-build-toolchain.py",
+      "root": "review_directory",
+      "bytes": 992,
+      "sha256": "d1586d2184d866b165c9ec4f6eb890433c90d2c1ce1b16ef3f80e4eb9b4fc9d0"
+    },
+    {
+      "path": "run-unit-review.py",
+      "root": "review_directory",
+      "bytes": 5021,
+      "sha256": "5f4a319b46952df555a92884fe0cc9d6206e28318872e9db06267fa5b959ccbe"
+    },
+    {
+      "path": "unit-review-01/harness/registry.test.mjs",
+      "root": "review_directory",
+      "bytes": 23013,
+      "sha256": "ba77dae9cda1b84e4d3ad1205d7840b418820bfdabbba42dee3979469d229057"
+    },
+    {
+      "path": "unit-review-01/harness/run-unit-review.mjs",
+      "root": "review_directory",
+      "bytes": 852,
+      "sha256": "82d1fb3e6b674312e5905be6fbfdc62609c517a2229256b1a1c1912d889de527"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "path": "AGENTS.md",
+      "root": "baseline_repository",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U03.md",
+      "root": "baseline_repository",
+      "bytes": 1977,
+      "sha256": "e5de922f3cfbe81928a09e181c31fad6d08056b63bcabe0239cca26bc4b543d5"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/02_计划执行书.md",
+      "root": "baseline_repository",
+      "bytes": 366530,
+      "sha256": "5f8fe397e4622c208e866827d7b528e3efacfd7912e74c602182c8465aa6d5b4"
+    },
+    {
+      "path": "evidence/P03/status.json",
+      "root": "baseline_repository",
+      "bytes": 4730,
+      "sha256": "47f4c42a5f7fe8b12b2ecc01732c59070bd508cc70804d60a4468efc6523237c"
+    }
+  ]
+}

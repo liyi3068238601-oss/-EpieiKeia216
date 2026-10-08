@@ -1,0 +1,16 @@
+{
+  "argv": [
+    ".runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe",
+    "tools/run-tests.mjs",
+    "unit",
+    "P03-U03"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u03",
+  "started_at": "2026-10-08T10:05:08.206596+00:00",
+  "completed_at": "2026-10-08T10:05:20.036183+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 180,
+  "environment_overrides": {},
+  "stdout": "✔ actual main and linked Git worktrees resolve to one project with a parent reference (829.6221ms)\n✔ same-basename repositories, an actual directory copy, and same-remote forks keep separate UUIDs (1733.8946ms)\n✔ UUID mappings persist when the SQLite registry is reopened (467.198ms)\n✔ legacy memory adoption is explicit and preserves the canonical root and every file hash (515.4877ms)\n✔ a replaced registered path raises an identity conflict and retains the prior project (710.9525ms)\n✔ copying a linked worktree without Git registration is rejected (638.5192ms)\n✔ a moved repository requires explicit relocation and keeps its old mapping (660.1163ms)\n✔ a standalone repository copied from E to C receives a new UUID and preserves the E mapping (971.2185ms)\n✔ a repaired cross-drive linked-worktree copy requires relocation and preserves its UUID and canonical pointer (993.9072ms)\n✔ real Native runtime short-key collisions do not merge distinct Git projects (710.1093ms)\n✔ a canonical Native memory-key collision errors without leaving a partial mapping (818.4995ms)\n✔ an unknown existing SQLite database is preserved byte for byte (6.3997ms)\n▶ junction and symbolic directory roots are rejected\n  ﹣ symbolic directory link (0.4199ms) # the Windows host does not allow this synthetic directory symlink\n✔ junction and symbolic directory roots are rejected (1.8803ms)\n✔ a missing UUID memory location remains a pointer and is never created (315.147ms)\nℹ tests 15\nℹ suites 0\nℹ pass 14\nℹ fail 0\nℹ cancelled 0\nℹ skipped 1\nℹ todo 0\nℹ duration_ms 9378.1938\n✔ packages\\projects\\test\\registry.test.mjs (11741.8203ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 11747.5337\n",
+  "stderr": ""
+}

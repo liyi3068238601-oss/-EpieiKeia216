@@ -1,0 +1,157 @@
+{
+  "schema": "p03-u03-review-source-readback/v2",
+  "status": "pass",
+  "native_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "native_worktree_clean": true,
+  "native_inputs": [
+    {
+      "path": "LICENSE",
+      "bytes": 11344,
+      "sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b",
+      "expected_sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b",
+      "size_matches": true,
+      "sha256_matches": true,
+      "git_blob_match": true,
+      "git_blob_note": null
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/memory/project-root.ts",
+      "bytes": 1106,
+      "sha256": "69ea16dc573f1e60e5579be494d02dc7735ab24821208071f304e5699c2d7f55",
+      "expected_sha256": "69ea16dc573f1e60e5579be494d02dc7735ab24821208071f304e5699c2d7f55",
+      "size_matches": true,
+      "sha256_matches": true,
+      "git_blob_match": true,
+      "git_blob_note": null
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/dist/memory/project-root.js",
+      "bytes": 988,
+      "sha256": "3d5bdb8239c073705d4eb0a6371b7462f329607b695ec5dca9f243b58c543d15",
+      "expected_sha256": "3d5bdb8239c073705d4eb0a6371b7462f329607b695ec5dca9f243b58c543d15",
+      "size_matches": true,
+      "sha256_matches": true,
+      "git_blob_match": null,
+      "git_blob_note": "ignored generated dist; provenance checked against accepted U02 compile record"
+    },
+    {
+      "path": "apps/zcode-cli/packages/bootstrap/src/app/paths.ts",
+      "bytes": 1096,
+      "sha256": "b9ed5f5aa6ce158766bf6113a46465b385c989403e6f5829c4d9bef02237a919",
+      "expected_sha256": "b9ed5f5aa6ce158766bf6113a46465b385c989403e6f5829c4d9bef02237a919",
+      "size_matches": true,
+      "sha256_matches": true,
+      "git_blob_match": true,
+      "git_blob_note": null
+    },
+    {
+      "path": "apps/zcode-cli/packages/bootstrap/dist/app/paths.js",
+      "bytes": 980,
+      "sha256": "b5ca2355a7975f781ada2d750c9a3789157bb027ae3395bd830b8647630265c9",
+      "expected_sha256": "b5ca2355a7975f781ada2d750c9a3789157bb027ae3395bd830b8647630265c9",
+      "size_matches": true,
+      "sha256_matches": true,
+      "git_blob_match": null,
+      "git_blob_note": "ignored generated dist; provenance checked against accepted U02 compile record"
+    }
+  ],
+  "accepted_provenance_inputs": [
+    {
+      "path": "docs/adr/P03-reuse.md",
+      "bytes": 11481,
+      "sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a",
+      "expected_sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a",
+      "size_matches": true,
+      "sha256_matches": true,
+      "git_blob_match": true,
+      "git_blob_note": null
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/acceptance.json",
+      "bytes": 10143,
+      "sha256": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd",
+      "expected_sha256": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd",
+      "size_matches": true,
+      "sha256_matches": true,
+      "git_blob_match": true,
+      "git_blob_note": null
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/native-dist-source-bindings-02.json",
+      "bytes": 344084,
+      "sha256": "7c5ffc487cfe510c930490e12d38ef69b41abb4154b44f4b2a0426c16e92e2d0",
+      "expected_sha256": "7c5ffc487cfe510c930490e12d38ef69b41abb4154b44f4b2a0426c16e92e2d0",
+      "size_matches": true,
+      "sha256_matches": true,
+      "git_blob_match": true,
+      "git_blob_note": null
+    },
+    {
+      "path": "packages/storage/events/src/sqlite.ts",
+      "bytes": 2717,
+      "sha256": "c1cbb368c1feb4f3a5d87b0b5526ea7a761ba0a2de394ecf679767b817cc1e47",
+      "expected_sha256": "c1cbb368c1feb4f3a5d87b0b5526ea7a761ba0a2de394ecf679767b817cc1e47",
+      "size_matches": true,
+      "sha256_matches": true,
+      "git_blob_match": true,
+      "git_blob_note": null
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 1789,
+      "sha256": "76a677e207dc5f9c770dddce790d3274b52409386d262bcd70495c498a877ee4",
+      "expected_sha256": "76a677e207dc5f9c770dddce790d3274b52409386d262bcd70495c498a877ee4",
+      "size_matches": true,
+      "sha256_matches": true,
+      "git_blob_match": true,
+      "git_blob_note": null
+    }
+  ],
+  "accepted_sqlite_wrapper": {
+    "path": "packages/storage/events/src/sqlite.ts",
+    "bytes": 2717,
+    "sha256": "c1cbb368c1feb4f3a5d87b0b5526ea7a761ba0a2de394ecf679767b817cc1e47",
+    "expected_sha256": "c1cbb368c1feb4f3a5d87b0b5526ea7a761ba0a2de394ecf679767b817cc1e47",
+    "size_matches": true,
+    "sha256_matches": true,
+    "git_blob_match": true,
+    "git_blob_note": null
+  },
+  "native_dist_source_to_output": {
+    "compile_result_sha256": "9f6dea5d0203e40ce50830d39678a925dc28e945210d0b33c50997c1d15e6e15",
+    "helper_outputs": [
+      {
+        "relative": "memory\\project-root.js",
+        "generated": {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-native-dist-20261008-01\\core\\memory\\project-root.js",
+          "bytes": 988,
+          "sha256": "3d5bdb8239c073705d4eb0a6371b7462f329607b695ec5dca9f243b58c543d15"
+        },
+        "existing": {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\dist\\memory\\project-root.js",
+          "bytes": 988,
+          "sha256": "3d5bdb8239c073705d4eb0a6371b7462f329607b695ec5dca9f243b58c543d15"
+        },
+        "match": true,
+        "provenance_match": true
+      },
+      {
+        "relative": "app\\paths.js",
+        "generated": {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-native-dist-20261008-01\\bootstrap\\app\\paths.js",
+          "bytes": 980,
+          "sha256": "b5ca2355a7975f781ada2d750c9a3789157bb027ae3395bd830b8647630265c9"
+        },
+        "existing": {
+          "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\bootstrap\\dist\\app\\paths.js",
+          "bytes": 980,
+          "sha256": "b5ca2355a7975f781ada2d750c9a3789157bb027ae3395bd830b8647630265c9"
+        },
+        "match": true,
+        "provenance_match": true
+      }
+    ],
+    "scope": "accepted U02 isolated compile comparison; this reviewer did not repeat the Native multi-package compile"
+  },
+  "interpretation": "The checked Native input bytes and actual loaded dist helper hashes match the author source-adoption record. Source files match the pinned Native Git blobs; ignored generated dist files are separately matched by accepted U02 source-to-dist evidence."
+}
