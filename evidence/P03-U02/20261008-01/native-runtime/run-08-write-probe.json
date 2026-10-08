@@ -1,0 +1,60 @@
+{
+  "turnId": "turn_7d3f7cdd-a660-40cb-a162-d362dacbc12c",
+  "toolCallId": "p03-read-19",
+  "mockToolCall": {
+    "turnLabel": "P03_TURN_WRITE_DENIED",
+    "toolCallId": "p03-read-19",
+    "toolName": "Write",
+    "arguments": {
+      "file_path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\20261008-01\\native-runtime\\run-08\\profiles\\native-runtime-profile\\workspace\\src\\current-contract.txt",
+      "content": "P03_WRITE_MUST_BE_REJECTED\n"
+    }
+  },
+  "nativeToolEvents": [
+    {
+      "type": "tool_call_error",
+      "turnId": "turn_7d3f7cdd-a660-40cb-a162-d362dacbc12c",
+      "toolCallId": "p03-read-19",
+      "errorCode": "TOOL_NOT_FOUND",
+      "errorMessage": "Tool not found: Write",
+      "errorType": "tool_not_found"
+    }
+  ],
+  "nativeToolError": {
+    "type": "tool_call_error",
+    "turnId": "turn_7d3f7cdd-a660-40cb-a162-d362dacbc12c",
+    "toolCallId": "p03-read-19",
+    "errorCode": "TOOL_NOT_FOUND",
+    "errorMessage": "Tool not found: Write",
+    "errorType": "tool_not_found"
+  },
+  "requestToolNames": [
+    "Read"
+  ],
+  "toolResultTexts": [
+    "1\t// Synthetic current source fixture; it intentionally contradicts the old memory note.\n2\texport function currentFetch(url) { return `CURRENT_SOURCE_V1:${url}`; }\n3\t// CURRENT_SOURCE_AUTHORITY: currentFetch is the actual fixture API.\n4\t",
+    "1\t---\n2\trecorded_at: 2023-10-08\n3\tkind: experience-lead\n4\tstatus: verify-against-current-source\n5\t---\n6\tP03_OLD_MEMORY_V1: A three-year-old note says the project API is legacyFetch(path).\n7\tKeep this as historical experience; it does not override current source or tests.",
+    "1\t---\n2\trecorded_at: 2026-10-08\n3\tkind: experience-lead\n4\tstatus: verify-against-current-source\n5\t---\n6\tP03_MEMORY_V2: changed synthetic topic; use currentFetch(url), not legacyFetch(path).\n7\tThis newer fixture stays an experience lead and does not become a verified source fact.",
+    "P03 Native Read fixture is restricted to one selected memory topic and its synthetic workspace",
+    "P03 bounded raw-byte memory reader failed: P03_MEMORY_SOURCE_CHANGED",
+    "1\t---\n2\trecorded_at: 2026-10-08\n3\tkind: experience-lead\n4\tstatus: recovered-after-source-change\n5\t---\n6\tP03_MEMORY_RECOVERED: next-turn sample and Read agree on this raw source hash.",
+    "1\t---\n2\trecorded_at: 2026-10-08\n3\tkind: experience-lead\n4\tstatus: recovered-after-source-change\n5\t---\n6\tP03_MEMORY_RECOVERED: next-turn sample and Read agree on this raw source hash.",
+    "Wasted call — file unchanged since your last Read. Refer to that earlier tool_result instead.",
+    "Wasted call — file unchanged since your last Read. Refer to that earlier tool_result instead.",
+    "1\t// Synthetic current source fixture; it intentionally contradicts the old memory note.\n2\texport function currentFetch(url) { return `CURRENT_SOURCE_V1:${url}`; }\n3\t// CURRENT_SOURCE_AUTHORITY: currentFetch is the actual fixture API.\n4\t",
+    "1\t---\n2\trecorded_at: 2023-10-08\n3\tkind: experience-lead\n4\tstatus: verify-against-current-source\n5\t---\n6\tP03_OLD_MEMORY_V1: A three-year-old note says the project API is legacyFetch(path).\n7\tKeep this as historical experience; it does not override current source or tests.",
+    "1\t---\n2\trecorded_at: 2026-10-08\n3\tkind: experience-lead\n4\tstatus: verify-against-current-source\n5\t---\n6\tP03_MEMORY_V2: changed synthetic topic; use currentFetch(url), not legacyFetch(path).\n7\tThis newer fixture stays an experience lead and does not become a verified source fact.",
+    "P03 Native Read fixture is restricted to one selected memory topic and its synthetic workspace",
+    "P03 bounded raw-byte memory reader failed: P03_MEMORY_SOURCE_CHANGED",
+    "1\t---\n2\trecorded_at: 2026-10-08\n3\tkind: experience-lead\n4\tstatus: recovered-after-source-change\n5\t---\n6\tP03_MEMORY_RECOVERED: next-turn sample and Read agree on this raw source hash.",
+    "1\t---\n2\trecorded_at: 2026-10-08\n3\tkind: experience-lead\n4\tstatus: recovered-after-source-change\n5\t---\n6\tP03_MEMORY_RECOVERED: next-turn sample and Read agree on this raw source hash.",
+    "Wasted call — file unchanged since your last Read. Refer to that earlier tool_result instead.",
+    "Wasted call — file unchanged since your last Read. Refer to that earlier tool_result instead.",
+    "Tool not found: Write"
+  ],
+  "sourceSha256Before": "359bcf095fdc55f870ed917fd15d8eefb43c18782a3d566694a643dcd44691f6",
+  "sourceSha256After": "359bcf095fdc55f870ed917fd15d8eefb43c18782a3d566694a643dcd44691f6",
+  "memorySha256Before": "5d26ca95f8015a6771d588e2bf039937c4753e833b4b9024f6e8203476fa8b86",
+  "memorySha256After": "5d26ca95f8015a6771d588e2bf039937c4753e833b4b9024f6e8203476fa8b86",
+  "filesystemWriteSandbox": "NOT_RUN; this probe validates Native tool registration/executor rejection only"
+}

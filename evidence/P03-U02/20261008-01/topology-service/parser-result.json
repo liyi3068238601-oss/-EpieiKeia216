@@ -1,0 +1,117 @@
+{
+  "schema": "p03-u02-parser-contract/v1",
+  "status": "pass",
+  "node": "v24.14.0",
+  "scriptSha256": "705557ea677662fe62a0e0efb5c4e5ef2f35883bc210c8528161cbd0b209ebe2",
+  "sourceManifest": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\source-manifest.json",
+    "sha256": "684d3046dcda8792a5fac944367f78871d4388fced7a7eed8ef8c36889a189f8"
+  },
+  "packages": [
+    {
+      "name": "marked",
+      "filesVerified": 12,
+      "packageInventorySha256": "11935475e9e7615463ea30e9e025ba0385aa936d94e630f0aeb8f43b0bb29ce1"
+    },
+    {
+      "name": "yaml",
+      "filesVerified": 233,
+      "packageInventorySha256": "034fabb530d3f07c13911e835f177f177202793d64f95f88ff810ec09534fee4"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Markdown uses token boundaries for comments, code, direct and reference links",
+      "status": "pass",
+      "detail": {
+        "links": [
+          "selected.md",
+          "visible.md"
+        ],
+        "htmlTokens": 2,
+        "codePreserved": true,
+        "limitation": "Lexer does not authorize href paths"
+      }
+    },
+    {
+      "name": "YAML preserves an untouched raw frontmatter sample and parses YAML 1.2 data",
+      "status": "pass",
+      "detail": {
+        "originalSha256": "77c6e7546c12c26f213d38b4301b9730533ba0925d2e7f617f41c5f94c1dbc5b",
+        "rawBytesUnchanged": true
+      }
+    },
+    {
+      "name": "YAML reports truncated flow rather than an empty-success object",
+      "status": "pass",
+      "detail": {
+        "errors": [
+          "BAD_INDENT"
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "name": "YAML reports duplicate keys rather than an empty-success object",
+      "status": "pass",
+      "detail": {
+        "errors": [
+          "DUPLICATE_KEY"
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "name": "YAML reports multiple documents rather than an empty-success object",
+      "status": "pass",
+      "detail": {
+        "errors": [
+          "MULTIPLE_DOCS"
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "name": "YAML reports unknown tag rather than an empty-success object",
+      "status": "pass",
+      "detail": {
+        "errors": [],
+        "warnings": [
+          "TAG_RESOLVE_FAILED"
+        ]
+      }
+    },
+    {
+      "name": "YAML alias expansion can be explicitly forbidden",
+      "status": "pass",
+      "detail": {
+        "aliases": 1,
+        "conversionRejected": true
+      }
+    },
+    {
+      "name": "Fatal UTF-8 belongs before the parsers",
+      "status": "pass",
+      "detail": {
+        "invalidBytesRejected": true,
+        "limitation": "Parsers accept strings; caller must bound bytes, topics and nesting"
+      }
+    }
+  ],
+  "xiadieDependencyAvailability": {
+    "marked": {
+      "available": false,
+      "code": "MODULE_NOT_FOUND"
+    },
+    "yaml": {
+      "available": false,
+      "code": "MODULE_NOT_FOUND"
+    }
+  },
+  "conclusion": "Reuse Marked 16.4.2 and yaml 2.9.0 via explicit direct dependencies in U04; never import production parsers from an absolute reference checkout. Add package/lock/licenses as documented scope mapping. No handwritten Markdown/YAML parser.",
+  "limitations": [
+    "U02 parser API probe only, not the U04 reader or host integration",
+    "No install or source/global configuration mutation",
+    "Path authorization, index budgets, frontmatter boundary extraction and four-state adapter belong to U04"
+  ]
+}

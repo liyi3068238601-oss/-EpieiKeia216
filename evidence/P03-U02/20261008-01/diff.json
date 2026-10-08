@@ -1,0 +1,64 @@
+{
+  "task": "P03-U02",
+  "baseline": "c691a5b7a975ac4420f880c8233c7b0bb7893958",
+  "scope": [
+    "spikes/P03/",
+    "docs/adr/P03-reuse.md",
+    "evidence/P03-U02/20261008-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "c691a5b7a975ac4420f880c8233c7b0bb7893958"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02",
+      "exit_code": 0,
+      "stdout": " docs/adr/P03-reuse.md                              |    65 +\n evidence/P03-U02/20261008-01/baseline.json         |    36 +\n .../P03-U02/20261008-01/command-baseline-unit.json |    29 +\n .../native-runtime/build-run-01-command.json       |    16 +\n .../20261008-01/native-runtime/run-01-command.json |    15 +\n .../20261008-01/native-runtime/run-02-command.json |    15 +\n .../20261008-01/native-runtime/run-03-command.json |    15 +\n .../20261008-01/native-runtime/run-04-command.json |    15 +\n .../native-runtime/run-04-write-probe.json         |    58 +\n .../20261008-01/native-runtime/run-05-command.json |    15 +\n .../run-05-host-variant-manifest.json              |   268 +\n .../native-runtime/run-05-runtime-result.json      |  2682 +++\n .../native-runtime/run-05-write-probe.json         |    58 +\n .../20261008-01/native-runtime/run-06-command.json |    15 +\n .../native-runtime/run-07-acl-commands.json        |    34 +\n .../20261008-01/native-runtime/run-07-command.json |    15 +\n .../run-07-host-variant-manifest.json              |   268 +\n .../native-runtime/run-07-runtime-result.json      |  3198 +++\n .../native-runtime/run-07-tsc-build-command.json   |    16 +\n .../native-runtime/run-07-write-probe.json         |    60 +\n .../native-runtime/run-08-acl-commands.json        |    34 +\n .../20261008-01/native-runtime/run-08-command.json |    15 +\n .../run-08-host-variant-manifest.json              |   268 +\n .../native-runtime/run-08-runtime-result.json      |  3198 +++\n .../native-runtime/run-08-tsc-build-command.json   |    16 +\n .../native-runtime/run-08-write-probe.json         |    60 +\n evidence/P03-U02/20261008-01/result.md             |    65 +\n .../host-helper-build-command.json                 |    16 +\n .../host-helper-check-01-command.json              |    15 +\n .../topology-service/host-helper-check-driver.mjs  |     9 +\n .../host-helper-variant-manifest.json              |   268 +\n .../native-dist-bind-01-command.json               |    16 +\n .../native-dist-bind-02-command.json               |    16 +\n .../native-dist-compile-01-command.json            |    15 +\n .../native-dist-compile-result.json                | 22491 +++++++++++++++++++\n .../native-dist-source-bindings-02.json            |  7410 ++++++\n .../native-dist-source-bindings.json               |  7106 ++++++\n .../topology-service/parser-result.json            |   117 +\n .../topology-service/parser-run-01-command.json    |    15 +\n .../P03-U02/20261008-01/topology-service/result.md |    15 +\n .../topology-service/run-01-command.json           |    16 +\n .../topology-service/run-02-command.json           |    16 +\n .../topology-service/run-02/acl-commands.json      |    34 +\n .../topology-service/run-02/commands.json          |   813 +\n .../topology-service/run-02/esbuild-metafile.json  |  5297 +++++\n .../topology-service/run-02/fixtures.json          |    17 +\n .../topology-service/run-02/service-results.json   |   111 +\n .../topology-service/run-02/summary.json           |  1565 ++\n spikes/P03/bind-native-dist-source.mjs             |    69 +\n spikes/P03/make-host-variant.mjs                   |    72 +\n spikes/P03/native-memory-reader.mjs                |   194 +\n spikes/P03/native-memory-runtime.mjs               |   979 +\n spikes/P03/parser-contract.mjs                     |   100 +\n spikes/P03/topology-service.mjs                    |   224 +\n spikes/P03/verify-native-dist.mjs                  |    77 +\n 55 files changed, 57642 insertions(+)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "c691a5b7a975ac4420f880c8233c7b0bb7893958"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02",
+      "exit_code": 0,
+      "stdout": "65\t0\tdocs/adr/P03-reuse.md\n36\t0\tevidence/P03-U02/20261008-01/baseline.json\n29\t0\tevidence/P03-U02/20261008-01/command-baseline-unit.json\n16\t0\tevidence/P03-U02/20261008-01/native-runtime/build-run-01-command.json\n15\t0\tevidence/P03-U02/20261008-01/native-runtime/run-01-command.json\n15\t0\tevidence/P03-U02/20261008-01/native-runtime/run-02-command.json\n15\t0\tevidence/P03-U02/20261008-01/native-runtime/run-03-command.json\n15\t0\tevidence/P03-U02/20261008-01/native-runtime/run-04-command.json\n58\t0\tevidence/P03-U02/20261008-01/native-runtime/run-04-write-probe.json\n15\t0\tevidence/P03-U02/20261008-01/native-runtime/run-05-command.json\n268\t0\tevidence/P03-U02/20261008-01/native-runtime/run-05-host-variant-manifest.json\n2682\t0\tevidence/P03-U02/20261008-01/native-runtime/run-05-runtime-result.json\n58\t0\tevidence/P03-U02/20261008-01/native-runtime/run-05-write-probe.json\n15\t0\tevidence/P03-U02/20261008-01/native-runtime/run-06-command.json\n34\t0\tevidence/P03-U02/20261008-01/native-runtime/run-07-acl-commands.json\n15\t0\tevidence/P03-U02/20261008-01/native-runtime/run-07-command.json\n268\t0\tevidence/P03-U02/20261008-01/native-runtime/run-07-host-variant-manifest.json\n3198\t0\tevidence/P03-U02/20261008-01/native-runtime/run-07-runtime-result.json\n16\t0\tevidence/P03-U02/20261008-01/native-runtime/run-07-tsc-build-command.json\n60\t0\tevidence/P03-U02/20261008-01/native-runtime/run-07-write-probe.json\n34\t0\tevidence/P03-U02/20261008-01/native-runtime/run-08-acl-commands.json\n15\t0\tevidence/P03-U02/20261008-01/native-runtime/run-08-command.json\n268\t0\tevidence/P03-U02/20261008-01/native-runtime/run-08-host-variant-manifest.json\n3198\t0\tevidence/P03-U02/20261008-01/native-runtime/run-08-runtime-result.json\n16\t0\tevidence/P03-U02/20261008-01/native-runtime/run-08-tsc-build-command.json\n60\t0\tevidence/P03-U02/20261008-01/native-runtime/run-08-write-probe.json\n65\t0\tevidence/P03-U02/20261008-01/result.md\n16\t0\tevidence/P03-U02/20261008-01/topology-service/host-helper-build-command.json\n15\t0\tevidence/P03-U02/20261008-01/topology-service/host-helper-check-01-command.json\n9\t0\tevidence/P03-U02/20261008-01/topology-service/host-helper-check-driver.mjs\n268\t0\tevidence/P03-U02/20261008-01/topology-service/host-helper-variant-manifest.json\n16\t0\tevidence/P03-U02/20261008-01/topology-service/native-dist-bind-01-command.json\n16\t0\tevidence/P03-U02/20261008-01/topology-service/native-dist-bind-02-command.json\n15\t0\tevidence/P03-U02/20261008-01/topology-service/native-dist-compile-01-command.json\n22491\t0\tevidence/P03-U02/20261008-01/topology-service/native-dist-compile-result.json\n7410\t0\tevidence/P03-U02/20261008-01/topology-service/native-dist-source-bindings-02.json\n7106\t0\tevidence/P03-U02/20261008-01/topology-service/native-dist-source-bindings.json\n117\t0\tevidence/P03-U02/20261008-01/topology-service/parser-result.json\n15\t0\tevidence/P03-U02/20261008-01/topology-service/parser-run-01-command.json\n15\t0\tevidence/P03-U02/20261008-01/topology-service/result.md\n16\t0\tevidence/P03-U02/20261008-01/topology-service/run-01-command.json\n16\t0\tevidence/P03-U02/20261008-01/topology-service/run-02-command.json\n34\t0\tevidence/P03-U02/20261008-01/topology-service/run-02/acl-commands.json\n813\t0\tevidence/P03-U02/20261008-01/topology-service/run-02/commands.json\n5297\t0\tevidence/P03-U02/20261008-01/topology-service/run-02/esbuild-metafile.json\n17\t0\tevidence/P03-U02/20261008-01/topology-service/run-02/fixtures.json\n111\t0\tevidence/P03-U02/20261008-01/topology-service/run-02/service-results.json\n1565\t0\tevidence/P03-U02/20261008-01/topology-service/run-02/summary.json\n69\t0\tspikes/P03/bind-native-dist-source.mjs\n72\t0\tspikes/P03/make-host-variant.mjs\n194\t0\tspikes/P03/native-memory-reader.mjs\n979\t0\tspikes/P03/native-memory-runtime.mjs\n100\t0\tspikes/P03/parser-contract.mjs\n224\t0\tspikes/P03/topology-service.mjs\n77\t0\tspikes/P03/verify-native-dist.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "c691a5b7a975ac4420f880c8233c7b0bb7893958"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02",
+      "exit_code": 0,
+      "stdout": "A\tdocs/adr/P03-reuse.md\nA\tevidence/P03-U02/20261008-01/baseline.json\nA\tevidence/P03-U02/20261008-01/command-baseline-unit.json\nA\tevidence/P03-U02/20261008-01/native-runtime/build-run-01-command.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-01-command.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-02-command.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-03-command.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-04-command.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-04-write-probe.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-05-command.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-05-host-variant-manifest.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-05-runtime-result.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-05-write-probe.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-06-command.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-07-acl-commands.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-07-command.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-07-host-variant-manifest.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-07-runtime-result.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-07-tsc-build-command.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-07-write-probe.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-08-acl-commands.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-08-command.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-08-host-variant-manifest.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-08-runtime-result.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-08-tsc-build-command.json\nA\tevidence/P03-U02/20261008-01/native-runtime/run-08-write-probe.json\nA\tevidence/P03-U02/20261008-01/result.md\nA\tevidence/P03-U02/20261008-01/topology-service/host-helper-build-command.json\nA\tevidence/P03-U02/20261008-01/topology-service/host-helper-check-01-command.json\nA\tevidence/P03-U02/20261008-01/topology-service/host-helper-check-driver.mjs\nA\tevidence/P03-U02/20261008-01/topology-service/host-helper-variant-manifest.json\nA\tevidence/P03-U02/20261008-01/topology-service/native-dist-bind-01-command.json\nA\tevidence/P03-U02/20261008-01/topology-service/native-dist-bind-02-command.json\nA\tevidence/P03-U02/20261008-01/topology-service/native-dist-compile-01-command.json\nA\tevidence/P03-U02/20261008-01/topology-service/native-dist-compile-result.json\nA\tevidence/P03-U02/20261008-01/topology-service/native-dist-source-bindings-02.json\nA\tevidence/P03-U02/20261008-01/topology-service/native-dist-source-bindings.json\nA\tevidence/P03-U02/20261008-01/topology-service/parser-result.json\nA\tevidence/P03-U02/20261008-01/topology-service/parser-run-01-command.json\nA\tevidence/P03-U02/20261008-01/topology-service/result.md\nA\tevidence/P03-U02/20261008-01/topology-service/run-01-command.json\nA\tevidence/P03-U02/20261008-01/topology-service/run-02-command.json\nA\tevidence/P03-U02/20261008-01/topology-service/run-02/acl-commands.json\nA\tevidence/P03-U02/20261008-01/topology-service/run-02/commands.json\nA\tevidence/P03-U02/20261008-01/topology-service/run-02/esbuild-metafile.json\nA\tevidence/P03-U02/20261008-01/topology-service/run-02/fixtures.json\nA\tevidence/P03-U02/20261008-01/topology-service/run-02/service-results.json\nA\tevidence/P03-U02/20261008-01/topology-service/run-02/summary.json\nA\tspikes/P03/bind-native-dist-source.mjs\nA\tspikes/P03/make-host-variant.mjs\nA\tspikes/P03/native-memory-reader.mjs\nA\tspikes/P03/native-memory-runtime.mjs\nA\tspikes/P03/parser-contract.mjs\nA\tspikes/P03/topology-service.mjs\nA\tspikes/P03/verify-native-dist.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "c691a5b7a975ac4420f880c8233c7b0bb7893958"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

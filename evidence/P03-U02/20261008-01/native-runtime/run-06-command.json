@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02\\spikes\\P03\\native-memory-runtime.mjs",
+    "run-06"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02",
+  "started_at": "2026-10-08T09:21:27.820374+00:00",
+  "completed_at": "2026-10-08T09:21:33.633796+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "(node:27320) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nnode:internal/fs/promises:637\r\n  return new FileHandle(await PromisePrototypeThen(\r\n                        ^\r\n\r\nError: ENOENT: no such file or directory, open 'E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02\\dist\\packages\\adapters\\zcode\\src\\p03-host-seam-experiment.js'\r\n    at async open (node:internal/fs/promises:637:25)\r\n    at async readFile (node:internal/fs/promises:1269:14)\r\n    at async file:///E:/Xiadie/Xiadie/.runtime/P03/worktrees/u02/spikes/P03/native-memory-runtime.mjs:218:17 {\r\n  errno: -4058,\r\n  code: 'ENOENT',\r\n  syscall: 'open',\r\n  path: 'E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P03\\\\worktrees\\\\u02\\\\dist\\\\packages\\\\adapters\\\\zcode\\\\src\\\\p03-host-seam-experiment.js'\r\n}\r\n\r\nNode.js v24.14.0\r\n"
+}

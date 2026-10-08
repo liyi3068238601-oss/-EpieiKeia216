@@ -1,0 +1,36 @@
+{
+  "schema": "p03-unit-baseline/v1",
+  "task": "P03-U02",
+  "baseline_commit": "c691a5b7a975ac4420f880c8233c7b0bb7893958",
+  "branch": "p03-u02",
+  "coordinator_branch": "p03-stage",
+  "prerequisites": [
+    {
+      "task": "P03-U01",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U01/20261004-01/acceptance.json",
+        "bytes": 1671,
+        "sha256": "a1cce4b4623089e9395200b41a6402849d5553007435b094f553fb440a20c716"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P03-U02.md",
+    "bytes": 3099,
+    "sha256": "47b7725dc24f9821c6f1a12b59d7ecb4a8d49a0d24396dfffedc1d1ac5c04137"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "spikes/P03/",
+    "docs/adr/P03-reuse.md",
+    "evidence/P03-U02/20261008-01"
+  ],
+  "test_mapping": "spikes/P03/native-memory-runtime.mjs (custom U02 Native integration spike using P02 fixture patterns)",
+  "author_status": "running",
+  "checked_at_utc": "2026-10-08T08:46:07.295531+00:00"
+}
