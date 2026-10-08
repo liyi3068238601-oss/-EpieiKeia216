@@ -1,0 +1,38 @@
+{
+  "schema": "p03-unit-baseline/v1",
+  "task": "P03-U03",
+  "baseline_commit": "1326a8b036d4695271d194f3bcb1611382433303",
+  "branch": "p03-u03",
+  "coordinator_branch": "p03-stage",
+  "prerequisites": [
+    {
+      "task": "P03-U02",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U02/20261008-01/acceptance.json",
+        "bytes": 10143,
+        "sha256": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P03-U03.md",
+    "bytes": 1977,
+    "sha256": "e5de922f3cfbe81928a09e181c31fad6d08056b63bcabe0239cca26bc4b543d5"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "packages/projects/registry.ts",
+    "packages/projects/test",
+    "tsconfig.json",
+    "tools/run-tests.mjs",
+    "evidence/P03-U03/20261008-01"
+  ],
+  "test_mapping": "packages/projects/test/registry.test.mjs",
+  "author_status": "running",
+  "checked_at_utc": "2026-10-08T09:44:53.210828+00:00"
+}

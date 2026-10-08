@@ -1,0 +1,76 @@
+{
+  "schema": "p03-source-adoption/v1",
+  "task": "P03-U03",
+  "checked_at_utc": "2026-10-08T09:58:32.864196+00:00",
+  "native_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "native_worktree_clean": true,
+  "license": "Apache-2.0; dynamically invoke pinned Native helpers, no copied key algorithm",
+  "native_inputs": [
+    {
+      "path": "LICENSE",
+      "bytes": 11344,
+      "sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b"
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/src/memory/project-root.ts",
+      "bytes": 1106,
+      "sha256": "69ea16dc573f1e60e5579be494d02dc7735ab24821208071f304e5699c2d7f55"
+    },
+    {
+      "path": "apps/zcode-cli/packages/core/dist/memory/project-root.js",
+      "bytes": 988,
+      "sha256": "3d5bdb8239c073705d4eb0a6371b7462f329607b695ec5dca9f243b58c543d15"
+    },
+    {
+      "path": "apps/zcode-cli/packages/bootstrap/src/app/paths.ts",
+      "bytes": 1096,
+      "sha256": "b9ed5f5aa6ce158766bf6113a46465b385c989403e6f5829c4d9bef02237a919"
+    },
+    {
+      "path": "apps/zcode-cli/packages/bootstrap/dist/app/paths.js",
+      "bytes": 980,
+      "sha256": "b5ca2355a7975f781ada2d750c9a3789157bb027ae3395bd830b8647630265c9"
+    }
+  ],
+  "accepted_inputs": [
+    {
+      "path": "docs/adr/P03-reuse.md",
+      "bytes": 11481,
+      "sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/acceptance.json",
+      "bytes": 10143,
+      "sha256": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/native-dist-source-bindings-02.json",
+      "bytes": 344084,
+      "sha256": "7c5ffc487cfe510c930490e12d38ef69b41abb4154b44f4b2a0426c16e92e2d0"
+    },
+    {
+      "path": "packages/storage/events/src/sqlite.ts",
+      "bytes": 2717,
+      "sha256": "c1cbb368c1feb4f3a5d87b0b5526ea7a761ba0a2de394ecf679767b817cc1e47"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 1789,
+      "sha256": "76a677e207dc5f9c770dddce790d3274b52409386d262bcd70495c498a877ee4"
+    }
+  ],
+  "git": {
+    "version": "git version 2.54.0.windows.1",
+    "official_reference": "https://git-scm.com/docs/git-worktree",
+    "consulted_on": "2026-10-08",
+    "adopted": "common/private Git dirs and registered worktree backlinks; real copy/repair tests. HEAD and remote URL are not project ownership proof."
+  },
+  "decisions": [
+    "Use app-owned UUID v4; persist only mappings in a separate SQLite database via accepted better-sqlite3 wrapper.",
+    "Use actual Native root/key helpers by dependency injection; preserve old roots through explicit adoption and keep one canonical pointer.",
+    "Lossy runtime aliases never determine project identity. Matching physical common-dir identity joins linked worktrees; independent copies/forks do not join.",
+    "Moved physical identities require explicit relocation; U06 implements authorized transfer. Unknown cross-volume standalone copies start distinct IDs.",
+    "Returned mapping objects are immutable and process-branded for the later reader; session text cannot forge a trusted mapping."
+  ],
+  "scope_remap": "Add registry.ts plus packages/projects/test/registry.test.mjs, compiler include and test selector. No dependency/schema/event-ledger change; no user knowledge files created or read."
+}

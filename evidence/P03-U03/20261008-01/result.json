@@ -1,0 +1,47 @@
+{
+  "task": "P03-U03",
+  "author_status": "ready_for_review",
+  "baseline_commit": "1326a8b036d4695271d194f3bcb1611382433303",
+  "checks": {
+    "typescript": "pass",
+    "import_boundaries": "pass",
+    "behavior_tests": {
+      "passed": 14,
+      "failed": 0,
+      "skipped": 1,
+      "skip_reason": "Windows EPERM creating symbolic directory link; real junction tests pass"
+    }
+  },
+  "commands": [
+    {
+      "path": "boundary-command.json",
+      "bytes": 523,
+      "sha256": "88e98fec7db88301ef80ca596e311c322b2f11836bde7685f87baaef38119ebb"
+    },
+    {
+      "path": "build-01-command.json",
+      "bytes": 479,
+      "sha256": "d373e174351f9fe73e6640e2fd0c71859a25cc5f7924c8db747416390c42b9f4"
+    },
+    {
+      "path": "build-02-command.json",
+      "bytes": 479,
+      "sha256": "112babd61614ce9891ed19777a42390a0a19f4373ad91f4dc0e36f70c606d905"
+    },
+    {
+      "path": "build-03-command.json",
+      "bytes": 489,
+      "sha256": "dc3c7d52783915fcd4a8d926fcc0e9013bc3062ab8dd46cc247bd2cb1979f813"
+    },
+    {
+      "path": "unit-command.json",
+      "bytes": 2262,
+      "sha256": "99bc36994110a45651f7437134506c60877caf02e22bd73f9552197590b8190e"
+    }
+  ],
+  "limitations": [
+    "No model, Native app session, Desktop or DSH execution in this mapping-only unit.",
+    "Confirmed relocation/export belongs to U06. No registry migration or production data adoption executed.",
+    "Synthetic fixtures retained on E and C; no deletion."
+  ]
+}
