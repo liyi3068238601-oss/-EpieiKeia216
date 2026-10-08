@@ -1,14 +1,14 @@
-import { closeSync, constants, fstatSync, lstatSync, openSync, realpathSync, writeSync, fsyncSync } from "node:fs";
+import { closeSync, lstatSync, realpathSync, writeSync, fsyncSync } from "node:fs";
 import path from "node:path";
 import { createFileSystemError } from "@p01/native-filesystem-contracts";
 import { resolveProjectMemoryRoot } from "@p03/native-project-root";
 import { getCliStorageRoot, projectIdFromDirectory } from "@p03/native-paths";
+import { openProjectMemoryAudit } from "./project-memory-audit.mjs";
 import { openProjectRegistry, isTrustedProjectMapping } from "../../../dist/packages/projects/registry.js";
 import { createProjectMemoryReader } from "../../../dist/packages/adapters/zcode/src/project-memory.js";
 import { createDurableHost } from "../P02/durable-host.mjs";
 
 export const P03_SELECTED_TOPIC = "p03-topic.md";
-const AUDIT_FILENAME = "p03-memory-audit.jsonl";
 
 function key(value) {
   const resolved = path.resolve(value);
@@ -138,13 +138,7 @@ export async function createP03DurableHost(input) {
       workspacePath: owned.workspacePath,
       selectedTopics: () => [P03_SELECTED_TOPIC],
     });
-    const auditLogPath = path.join(owned.profileRoot, AUDIT_FILENAME);
-    resources.auditDescriptor = openSync(auditLogPath,
-      constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_APPEND | (constants.O_NOFOLLOW ?? 0), 0o600);
-    const auditInfo = fstatSync(resources.auditDescriptor);
-    if (!auditInfo.isFile() || key(realpathSync(auditLogPath)) !== key(auditLogPath) || !inside(owned.profileRoot, realpathSync(auditLogPath))) {
-      throw new Error("P03_MEMORY_AUDIT_PATH_INVALID");
-    }
+    resources.auditDescriptor = openProjectMemoryAudit(owned.profileRoot);
 
     const auditedReader = Object.freeze({
       capture() {
