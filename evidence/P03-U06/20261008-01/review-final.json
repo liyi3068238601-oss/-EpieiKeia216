@@ -1,0 +1,418 @@
+{
+  "schema": "p03-independent-review/v1",
+  "created_at_utc": "2026-10-08T11:58:25.465037+00:00",
+  "task": "P03-U06",
+  "decision": "pass",
+  "unit_acceptance": "not_decided",
+  "reviewer": "Codex independent reviewer (/root/p03_review_resume)",
+  "scope": "Independent exact-commit review of U06 explicit project-memory export, confirmed import, relocation, mapping-only SQLite migration, conflict handling, and failure recovery. The review does not imply stage acceptance.",
+  "review_target": {
+    "author_commit": "5ff89f14b79370d63553ac10cec6adb57143964e",
+    "baseline_commit": "e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u06",
+    "attempt": "20261008-01; final manifest-bound commit",
+    "changed_paths": 21
+  },
+  "checks": [
+    {
+      "id": "exact-commit-baseline-manifest-and-cleanliness",
+      "status": "pass",
+      "detail": "The main checkout remained clean at baseline e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5. The author worktree is clean at exact commit 5ff89f14b79370d63553ac10cec6adb57143964e. Independent verify-author readbacks before and after build/tests found 20 manifest-bound files, covered all 21 changed paths, and reported zero disk/index/blob mismatches; the manifest SHA-256 is 5a12a5f11819766350b61e91889db1bd2321e842c379091dcc85b306abdfecd7."
+    },
+    {
+      "id": "complete-export-confirmed-import-and-identity",
+      "status": "pass",
+      "detail": "Static review and the formal selector cover a complete bounded raw-file tree with SHA-256 inventory, empty directories, invalid metadata bytes, explicit absent-source handling, and a mapping snapshot separate from memory bytes. Ordinary copies receive a new UUID. Only owner-confirmed import retains the UUID after observing and validating the target Git identities. Source paths remain provenance; the source and existing targets are retained, and conflicts return a diff without overwriting."
+    },
+    {
+      "id": "relocation-transaction-history-and-failure-recovery",
+      "status": "pass",
+      "detail": "Main-workspace rename preserves the mapping and Native pointer only after identity validation. Linked-worktree relocation refuses unrepaired backlinks; after repair it preserves identity. The implementation checks source, target and import bundle snapshots again at verification/metadata boundaries, updates the active mapping and relocation history in one SQLite transaction, and keeps partial targets inactive on failure. Fault cases exercise races, stale CAS, post-copy verification and non-throwing source/target/bundle edits. No filesystem-wide or cross-machine transaction is claimed."
+    },
+    {
+      "id": "schema-migration-and-database-boundary",
+      "status": "pass",
+      "detail": "Schema-1 to schema-2 migration validates the accepted U03 table definitions and known object/index inventory, checks integrity and foreign keys, revalidates within the immediate transaction, and preserves all mapping fields. Raw knowledge bytes remain outside SQLite. The selector rejects same-column but weaker constraints, an unexpected explicit index and an FK orphan without mutating the database."
+    },
+    {
+      "id": "filesystem-safety-bounds-and-conflict-races",
+      "status": "pass",
+      "detail": "The selected implementation rejects junctions, hard-link aliases, Unicode path aliases and unsafe paths; validates the captured inventory before writes; handles concurrent existing destinations as conflicts; and enforces 1024-file, 4096-directory, depth-16, 5 MiB/file and 64 MiB/tree limits. The Windows host executed real junction and hard-link negatives; symbolic directory-link creation was unavailable and remains a recorded platform limitation."
+    },
+    {
+      "id": "independent-fresh-build-selector-and-diff-check",
+      "status": "pass",
+      "detail": "On the exact clean author worktree, a fresh TypeScript build with fixed Node v24.14.0 exited 0. The official unit P03-U06 selector exited 0: 24 inner cases passed, zero failed/skipped, and one outer test-file completion; nested and outer counts are not summed. git diff --check from baseline to exact commit exited 0. Independent author manifest readback remained clean after execution."
+    },
+    {
+      "id": "prior-unit-regression-and-product-runtime-boundary",
+      "status": "pass",
+      "detail": "The exact-commit-bound regression-01.json records the root-run U03/U04/U05 selector passing 23 top-level completions; nested reports separately record U04 reader 43/43, U03 registry 14 pass plus one Windows directory-symlink privilege skip, and U05 policy 1/1. U06 registry implementation SHA matches that regression record. Native Core Read, app/provider composition, Desktop and model behavior are explicitly NOT_RUN and remain U09/U10 evidence; no U06 runtime claim is made."
+    },
+    {
+      "id": "preserved-failed-evidence-and-freeze-repair",
+      "status": "pass",
+      "detail": "The manifest preserves build-01 failure evidence. freeze-preflight-repair.json records the final whitespace-only EOF correction after a preflight rejected one redundant terminal LF: compiled JavaScript and declarations for registry/export/relocate retained identical hashes before and after. The reviewed commit is the corrected, clean, manifest-bound head."
+    }
+  ],
+  "reviewer_readback": {
+    "author_manifest_before": {
+      "command_record": "author-manifest-readback-command.json",
+      "output_record": "author-manifest-readback-rerun.json",
+      "bound_files": 20,
+      "changed_paths": 21,
+      "mismatches": 0,
+      "manifest_sha256": "5a12a5f11819766350b61e91889db1bd2321e842c379091dcc85b306abdfecd7"
+    },
+    "fresh_build": {
+      "command_record": "build-review-command.json",
+      "exit_code": 0,
+      "node": "v24.14.0",
+      "argv": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe E:\\Xiadie\\Xiadie\\node_modules\\typescript\\bin\\tsc --project tsconfig.json"
+    },
+    "official_selector": {
+      "command_record": "unit-rerun-command.json",
+      "selector": "unit P03-U06",
+      "exit_code": 0,
+      "reported_inner_tests": 24,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "outer_file_completions": 1
+    },
+    "diff_check": {
+      "command_record": "diff-check-command.json",
+      "exit_code": 0,
+      "argv": "git diff --check e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5 HEAD"
+    },
+    "author_manifest_after": {
+      "command_record": "author-manifest-readback-after-command.json",
+      "output_record": "author-manifest-readback-after-rerun.json",
+      "bound_files": 20,
+      "changed_paths": 21,
+      "mismatches": 0,
+      "manifest_sha256": "5a12a5f11819766350b61e91889db1bd2321e842c379091dcc85b306abdfecd7"
+    },
+    "main_checkout": {
+      "command_record": "main-state-command.json",
+      "head": "e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5",
+      "clean": true
+    },
+    "pinned_native_sources": {
+      "command_record": "native-source-readback-command.json",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "clean": true,
+      "files": 4,
+      "note": "Four pinned Native project-root, runtime-path and stable-read/memory service source files matched the author source-adoption byte/hash bindings."
+    },
+    "bound_regression": {
+      "author_worktree_record": "evidence/P03-U06/20261008-01/regression-01.json",
+      "origin": "root-run evidence included in exact author manifest; not represented as an independent reviewer rerun."
+    }
+  },
+  "limitations": [
+    "No Native Core Read invocation, Native app/provider or Desktop composition, real model behavior, or U09/U10 handoff/freshness scenario was run.",
+    "The verification uses owned real Git/SQLite/filesystem fixtures and pinned Native pure path helpers; it does not establish distributed locking or an atomic filesystem transaction. Partial owned copies may remain inactive after failure.",
+    "Windows symbolic directory-link creation was unavailable on this host; junction and hard-link rejection were exercised.",
+    "Independent pass does not set P03 coordinator acceptance; unit_acceptance remains not_decided."
+  ],
+  "artifacts": [
+    {
+      "path": "evidence/P03-U06/20261008-01/baseline.json",
+      "root": "author_worktree",
+      "bytes": 1239,
+      "sha256": "b662b1b09071bf8748419f34759037f20cfa2255285c3bd69d2593ac5b218122"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/build-01.json",
+      "root": "author_worktree",
+      "bytes": 1000,
+      "sha256": "5fd242d1618190a53fb05dffdbb37717b65d3750f6ca6247d371cfdd656b5452"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/build-02.json",
+      "root": "author_worktree",
+      "bytes": 503,
+      "sha256": "38154169158413597e0e78b2bf8047a2a5cb3b88603ec05db529c2aacc9217ba"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/build-03.json",
+      "root": "author_worktree",
+      "bytes": 503,
+      "sha256": "5592661e3ba0a91cc346cf830ecffb3b5593a8f70782da34e3aca58445170f5f"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/build-04.json",
+      "root": "author_worktree",
+      "bytes": 503,
+      "sha256": "70e0d425a2909e412461670d38b0cd40deaeeaf1f637c421073cdfb0c918e19b"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/diff.json",
+      "root": "author_worktree",
+      "bytes": 4792,
+      "sha256": "57f7d2e6ba070e165ff23004f6f5e6ac720041bfe57c6ba56210d6111c0f61aa"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/execution-after.json",
+      "root": "author_worktree",
+      "bytes": 38045,
+      "sha256": "15f7ce9fb0f025cd478e61a2b6f8695ff28f4f20c23c5e4823db8275af8a2fa8"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/execution-during.json",
+      "root": "author_worktree",
+      "bytes": 37937,
+      "sha256": "8d87aad40e52af471c3ab80d46f302aada5fb7514937e736a35bfe341cb71fb3"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/freeze-preflight-repair.json",
+      "root": "author_worktree",
+      "bytes": 2259,
+      "sha256": "a9abb086638e576cdc8ecee6e93a1cd0e810a4abd4b11bd13ffe77e4a9461706"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/regression-01.json",
+      "root": "author_worktree",
+      "bytes": 9316,
+      "sha256": "71fe94b5df6480708f4708449a1fffb0c27ca6e9d3a219eba3663c13f871d15d"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/result.json",
+      "root": "author_worktree",
+      "bytes": 7041,
+      "sha256": "23e83b717fea7236c417253c74033d370bc10e498b4ce7b88db8b9fbe5e80362"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/result.md",
+      "root": "author_worktree",
+      "bytes": 2442,
+      "sha256": "542237b4bb66f02039b876f762f6623b4169e491db55f5ea1ce16afa724f90d4"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/source-adoption.json",
+      "root": "author_worktree",
+      "bytes": 4216,
+      "sha256": "4eb1052eee7869be85bbd5691e5b93e4f3d1847cb76cb6bcbf36f76404bd3569"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/unit-01.json",
+      "root": "author_worktree",
+      "bytes": 3024,
+      "sha256": "67817a98adf21877769537f243134d8ea1751becdb01e5a3b4066179f5c25499"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/unit-02.json",
+      "root": "author_worktree",
+      "bytes": 3136,
+      "sha256": "3039528a206b241ba3a4f3f80b301855ce27ac5f779244bfc6dbe67b810099a1"
+    },
+    {
+      "path": "packages/projects/export.ts",
+      "root": "author_worktree",
+      "bytes": 62345,
+      "sha256": "463e705b1caa81f212fa803aae14fc9d887688c879707cc1d6cbee6eb859ca49"
+    },
+    {
+      "path": "packages/projects/registry.ts",
+      "root": "author_worktree",
+      "bytes": 40380,
+      "sha256": "cd215f475f93470e3473edfc571ea639538ba3e83760f64a71b7aea8319ad8b1"
+    },
+    {
+      "path": "packages/projects/relocate.ts",
+      "root": "author_worktree",
+      "bytes": 11579,
+      "sha256": "bc15de1e812aed2444afc462022855c4845c81d5baed5b838d873ad5b3a19def"
+    },
+    {
+      "path": "packages/projects/test/project-memory-migration.test.mjs",
+      "root": "author_worktree",
+      "bytes": 58554,
+      "sha256": "c08bfcc1323ac941f1980825339ed76eee4de53f623efba0495ca4b2f91da5a3"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "root": "author_worktree",
+      "bytes": 6607,
+      "sha256": "581a5ab0ad2eb11bc61e306102001560fedaba5fc03cad5558a336a4ef74fdfd"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/manifest.json",
+      "root": "author_worktree",
+      "bytes": 4954,
+      "sha256": "5a12a5f11819766350b61e91889db1bd2321e842c379091dcc85b306abdfecd7"
+    },
+    {
+      "path": "author-manifest-readback-command.json",
+      "root": "review_directory",
+      "bytes": 1329,
+      "sha256": "7f0f6bcd0e529529b6dcb54e0536d0c92fb33ee741206bdbfb8824aebd21284a"
+    },
+    {
+      "path": "author-manifest-readback-rerun.json",
+      "root": "review_directory",
+      "bytes": 552,
+      "sha256": "16398cf3ae7d867fcbc66e0bfb80704a174a07054e468ad6066251b5ce2bc9df"
+    },
+    {
+      "path": "author-manifest-readback-after-command.json",
+      "root": "review_directory",
+      "bytes": 1335,
+      "sha256": "ffc9b13b112f7f14e130cc30229971849200b824f48866e1f0b9b9005cfec614"
+    },
+    {
+      "path": "author-manifest-readback-after-rerun.json",
+      "root": "review_directory",
+      "bytes": 552,
+      "sha256": "cef03ba115570cdba97a9d25b9de04ea1efe69dd8a29e41050855ee36eba824c"
+    },
+    {
+      "path": "build-review-command.json",
+      "root": "review_directory",
+      "bytes": 503,
+      "sha256": "493468927f7e4cd4be0992cde83f6c616f497d7fde6ce14aebe2a51d431fe9fa"
+    },
+    {
+      "path": "unit-rerun-command.json",
+      "root": "review_directory",
+      "bytes": 3132,
+      "sha256": "a887d9b8c3d817e67aeb04269f9129226ae8f245b1b8ccdc6babfa131fa018f4"
+    },
+    {
+      "path": "diff-check-command.json",
+      "root": "review_directory",
+      "bytes": 427,
+      "sha256": "e4980774c2ebf57f8df120db99cf0f9936cc44309b086a04d4cfb43b8bfc4b0a"
+    },
+    {
+      "path": "main-state-command.json",
+      "root": "review_directory",
+      "bytes": 711,
+      "sha256": "10cce4b5b9becb74bd8bbc7d870fbe17ebacaec940fc98a1241067c09249cad7"
+    },
+    {
+      "path": "native-source-readback-command.json",
+      "root": "review_directory",
+      "bytes": 1780,
+      "sha256": "fffacc684b3909c6f066a7da8ae6198302a59507947d80c706e6ca496f2b15cf"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "path": "AGENTS.md",
+      "root": "baseline_repository",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/02_计划执行书.md",
+      "root": "baseline_repository",
+      "bytes": 366530,
+      "sha256": "5f8fe397e4622c208e866827d7b528e3efacfd7912e74c602182c8465aa6d5b4"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U06.md",
+      "root": "baseline_repository",
+      "bytes": 2032,
+      "sha256": "81c35ace7e2f4369d3735bc43745c3d02db9c74a22fda61fc46e3d7972ec29b3"
+    },
+    {
+      "path": "docs/adr/P03-reuse.md",
+      "root": "baseline_repository",
+      "bytes": 11481,
+      "sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a"
+    },
+    {
+      "path": "evidence/P03/status.json",
+      "root": "baseline_repository",
+      "bytes": 6901,
+      "sha256": "379d9822280b2085038c5673b4c74a071a37b6aa131c82d9b0e2731cbc9a70f8"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 10143,
+      "sha256": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 218067,
+      "sha256": "7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37"
+    },
+    {
+      "path": "evidence/P03-U04/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 2260,
+      "sha256": "ebeb89a5cf16414bded874f6e78fc2d7f9250871ce8ec045493afcc8e457b2f7"
+    },
+    {
+      "path": "evidence/P03-U05/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 2271,
+      "sha256": "31a8c572563dc6611ce4956bed314635a4c2e3ff00b5bba873c907a28b19a871"
+    },
+    {
+      "path": "packages/projects/registry.ts",
+      "root": "baseline_repository",
+      "bytes": 20906,
+      "sha256": "e77c8ecd0c2e2ea08abca01f750e1c0839b937de5aa9a5a14b0358949d90304a"
+    },
+    {
+      "path": "packages/projects/test/registry.test.mjs",
+      "root": "baseline_repository",
+      "bytes": 22876,
+      "sha256": "3f35fa47e161eaaacddc5c65a7d5970f84d5d85e27f9ef3831ceb1daa83ffd9a"
+    },
+    {
+      "path": "packages/adapters/zcode/src/project-memory.ts",
+      "root": "baseline_repository",
+      "bytes": 32414,
+      "sha256": "edbe2414e3209aa93aac36bd4960ae93992ec4e433104aac89cb1e1b681267ab"
+    },
+    {
+      "path": "packages/adapters/zcode/test/project-memory.test.mjs",
+      "root": "baseline_repository",
+      "bytes": 31996,
+      "sha256": "c731bdcd75115d78bafc509074a244657002756737cb5f82613ac757dbafe0c5"
+    },
+    {
+      "path": "packages/storage/events/src/sqlite.ts",
+      "root": "baseline_repository",
+      "bytes": 2717,
+      "sha256": "c1cbb368c1feb4f3a5d87b0b5526ea7a761ba0a2de394ecf679767b817cc1e47"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "root": "baseline_repository",
+      "bytes": 2329,
+      "sha256": "2ace4bdf2714345dc24fa84b7f9f0003c4650d018cfe5b51b35d297c0c4f6e2b"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/memory/project-root.ts",
+      "root": "baseline_repository",
+      "bytes": 1106,
+      "sha256": "69ea16dc573f1e60e5579be494d02dc7735ab24821208071f304e5699c2d7f55"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/bootstrap/src/app/paths.ts",
+      "root": "baseline_repository",
+      "bytes": 1096,
+      "sha256": "b9ed5f5aa6ce158766bf6113a46465b385c989403e6f5829c4d9bef02237a919"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/packages/services/src/memory/projectMemoryStableRead.ts",
+      "root": "baseline_repository",
+      "bytes": 3570,
+      "sha256": "2ade3a41788b4c6d4a08ddf600e8052d589987f242ee7143042d9a49da76fa52"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/packages/services/src/memory/memoryService.ts",
+      "root": "baseline_repository",
+      "bytes": 7972,
+      "sha256": "7dcda54bcbd983331d84db6b634ec39e4c6980f29517f7872ca554aa319ecf7a"
+    }
+  ],
+  "boundary": "Independent exact-commit review pass only. Export/relocation is explicit and mapping-scoped; no global-memory, Native Core Read, Desktop, model, or unit-acceptance claim is implied."
+}

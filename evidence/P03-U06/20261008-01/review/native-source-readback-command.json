@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-c",
+    "import hashlib,json,pathlib,subprocess; r=pathlib.Path.cwd(); paths=[\"apps/zcode-cli/packages/core/src/memory/project-root.ts\",\"apps/zcode-cli/packages/bootstrap/src/app/paths.ts\",\"packages/services/src/memory/projectMemoryStableRead.ts\",\"packages/services/src/memory/memoryService.ts\"]; print(json.dumps({\"head\":subprocess.check_output([\"git\",\"rev-parse\",\"HEAD\"],cwd=r,text=True).strip(),\"status\":subprocess.check_output([\"git\",\"status\",\"--porcelain\"],cwd=r,text=True),\"files\":[{\"path\":p,\"bytes\":(r/p).stat().st_size,\"sha256\":hashlib.sha256((r/p).read_bytes()).hexdigest()} for p in paths]}))"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+  "started_at": "2026-10-08T11:56:17.781806+00:00",
+  "completed_at": "2026-10-08T11:56:17.932299+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 30,
+  "environment_overrides": {},
+  "stdout": "{\"head\": \"29628c9acdb81b703bbd4080c207a0e7ce5e276e\", \"status\": \"\", \"files\": [{\"path\": \"apps/zcode-cli/packages/core/src/memory/project-root.ts\", \"bytes\": 1106, \"sha256\": \"69ea16dc573f1e60e5579be494d02dc7735ab24821208071f304e5699c2d7f55\"}, {\"path\": \"apps/zcode-cli/packages/bootstrap/src/app/paths.ts\", \"bytes\": 1096, \"sha256\": \"b9ed5f5aa6ce158766bf6113a46465b385c989403e6f5829c4d9bef02237a919\"}, {\"path\": \"packages/services/src/memory/projectMemoryStableRead.ts\", \"bytes\": 3570, \"sha256\": \"2ade3a41788b4c6d4a08ddf600e8052d589987f242ee7143042d9a49da76fa52\"}, {\"path\": \"packages/services/src/memory/memoryService.ts\", \"bytes\": 7972, \"sha256\": \"7dcda54bcbd983331d84db6b634ec39e4c6980f29517f7872ca554aa319ecf7a\"}]}\r\n",
+  "stderr": ""
+}

@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-c",
+    "import json,pathlib,subprocess; r=pathlib.Path(r\"E:\\Xiadie\\Xiadie\"); print(json.dumps({\"head\":subprocess.check_output([\"git\",\"rev-parse\",\"HEAD\"],cwd=r,text=True).strip(),\"status\":subprocess.check_output([\"git\",\"status\",\"--porcelain\"],cwd=r,text=True)}))"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "started_at": "2026-10-08T11:54:38.481074+00:00",
+  "completed_at": "2026-10-08T11:54:39.257469+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 30,
+  "environment_overrides": {},
+  "stdout": "{\"head\": \"e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5\", \"status\": \"\"}\r\n",
+  "stderr": ""
+}
