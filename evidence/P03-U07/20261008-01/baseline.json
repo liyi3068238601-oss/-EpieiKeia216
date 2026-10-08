@@ -1,0 +1,38 @@
+{
+  "schema": "p03-unit-baseline/v1",
+  "task": "P03-U07",
+  "baseline_commit": "abc0bad7ed38b3f9ef442b2278e744d80bd03b3b",
+  "branch": "p03-u07",
+  "coordinator_branch": "p03-stage",
+  "prerequisites": [
+    {
+      "task": "P03-U06",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U06/20261008-01/acceptance.json",
+        "bytes": 2896,
+        "sha256": "2a0499ed079b97e0c62335eb26a1d5bc7e30395dfbbc7d7262a5664298f476b1"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P03-U07.md",
+    "bytes": 2807,
+    "sha256": "b2d4d41a1b7ff38be32b6cc9148099510e7891aa8a8864a5e87bce55de15bd59"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "packages/work/handoff-context.ts",
+    "packages/work/test/handoff-context.test.mjs",
+    "tsconfig.json",
+    "tools/run-tests.mjs",
+    "evidence/P03-U07/20261008-01"
+  ],
+  "test_mapping": "packages/work/test/handoff-context.test.mjs",
+  "author_status": "running",
+  "checked_at_utc": "2026-10-08T12:00:51.350543+00:00"
+}

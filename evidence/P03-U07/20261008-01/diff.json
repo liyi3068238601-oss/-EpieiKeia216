@@ -1,0 +1,66 @@
+{
+  "task": "P03-U07",
+  "baseline": "abc0bad7ed38b3f9ef442b2278e744d80bd03b3b",
+  "scope": [
+    "packages/work/handoff-context.ts",
+    "packages/work/test/handoff-context.test.mjs",
+    "tools/run-tests.mjs",
+    "tsconfig.json",
+    "evidence/P03-U07/20261008-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "abc0bad7ed38b3f9ef442b2278e744d80bd03b3b"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u07",
+      "exit_code": 0,
+      "stdout": " evidence/P03-U07/20261008-01/author-draft.md       |   15 +\n evidence/P03-U07/20261008-01/baseline.json         |   38 +\n evidence/P03-U07/20261008-01/build-01.json         |   16 +\n evidence/P03-U07/20261008-01/build-02.json         |   16 +\n evidence/P03-U07/20261008-01/build-03.json         |   16 +\n evidence/P03-U07/20261008-01/build-04.json         |   16 +\n .../20261008-01/execution-after-failed.json        |  863 ++++++++++++++\n .../20261008-01/execution-after-second-failed.json |  873 +++++++++++++++\n evidence/P03-U07/20261008-01/execution-after.json  |  873 +++++++++++++++\n .../20261008-01/execution-before-final.json        |  871 ++++++++++++++\n .../20261008-01/execution-before-third.json        |  871 ++++++++++++++\n evidence/P03-U07/20261008-01/execution-before.json |  861 ++++++++++++++\n evidence/P03-U07/20261008-01/native-readback.json  |   23 +\n evidence/P03-U07/20261008-01/regression-01.json    |   17 +\n evidence/P03-U07/20261008-01/result.json           |  172 +++\n evidence/P03-U07/20261008-01/result.md             |   15 +\n evidence/P03-U07/20261008-01/source-adoption.json  |  109 ++\n evidence/P03-U07/20261008-01/unit-01.json          |   16 +\n evidence/P03-U07/20261008-01/unit-02.json          |   16 +\n evidence/P03-U07/20261008-01/unit-03.json          |   16 +\n packages/work/handoff-context.ts                   | 1183 ++++++++++++++++++++\n packages/work/test/handoff-context.test.mjs        |  834 ++++++++++++++\n tools/run-tests.mjs                                |    3 +-\n tsconfig.json                                      |    2 +-\n 24 files changed, 7733 insertions(+), 2 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "abc0bad7ed38b3f9ef442b2278e744d80bd03b3b"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u07",
+      "exit_code": 0,
+      "stdout": "15\t0\tevidence/P03-U07/20261008-01/author-draft.md\n38\t0\tevidence/P03-U07/20261008-01/baseline.json\n16\t0\tevidence/P03-U07/20261008-01/build-01.json\n16\t0\tevidence/P03-U07/20261008-01/build-02.json\n16\t0\tevidence/P03-U07/20261008-01/build-03.json\n16\t0\tevidence/P03-U07/20261008-01/build-04.json\n863\t0\tevidence/P03-U07/20261008-01/execution-after-failed.json\n873\t0\tevidence/P03-U07/20261008-01/execution-after-second-failed.json\n873\t0\tevidence/P03-U07/20261008-01/execution-after.json\n871\t0\tevidence/P03-U07/20261008-01/execution-before-final.json\n871\t0\tevidence/P03-U07/20261008-01/execution-before-third.json\n861\t0\tevidence/P03-U07/20261008-01/execution-before.json\n23\t0\tevidence/P03-U07/20261008-01/native-readback.json\n17\t0\tevidence/P03-U07/20261008-01/regression-01.json\n172\t0\tevidence/P03-U07/20261008-01/result.json\n15\t0\tevidence/P03-U07/20261008-01/result.md\n109\t0\tevidence/P03-U07/20261008-01/source-adoption.json\n16\t0\tevidence/P03-U07/20261008-01/unit-01.json\n16\t0\tevidence/P03-U07/20261008-01/unit-02.json\n16\t0\tevidence/P03-U07/20261008-01/unit-03.json\n1183\t0\tpackages/work/handoff-context.ts\n834\t0\tpackages/work/test/handoff-context.test.mjs\n2\t1\ttools/run-tests.mjs\n1\t1\ttsconfig.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "abc0bad7ed38b3f9ef442b2278e744d80bd03b3b"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u07",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P03-U07/20261008-01/author-draft.md\nA\tevidence/P03-U07/20261008-01/baseline.json\nA\tevidence/P03-U07/20261008-01/build-01.json\nA\tevidence/P03-U07/20261008-01/build-02.json\nA\tevidence/P03-U07/20261008-01/build-03.json\nA\tevidence/P03-U07/20261008-01/build-04.json\nA\tevidence/P03-U07/20261008-01/execution-after-failed.json\nA\tevidence/P03-U07/20261008-01/execution-after-second-failed.json\nA\tevidence/P03-U07/20261008-01/execution-after.json\nA\tevidence/P03-U07/20261008-01/execution-before-final.json\nA\tevidence/P03-U07/20261008-01/execution-before-third.json\nA\tevidence/P03-U07/20261008-01/execution-before.json\nA\tevidence/P03-U07/20261008-01/native-readback.json\nA\tevidence/P03-U07/20261008-01/regression-01.json\nA\tevidence/P03-U07/20261008-01/result.json\nA\tevidence/P03-U07/20261008-01/result.md\nA\tevidence/P03-U07/20261008-01/source-adoption.json\nA\tevidence/P03-U07/20261008-01/unit-01.json\nA\tevidence/P03-U07/20261008-01/unit-02.json\nA\tevidence/P03-U07/20261008-01/unit-03.json\nA\tpackages/work/handoff-context.ts\nA\tpackages/work/test/handoff-context.test.mjs\nM\ttools/run-tests.mjs\nM\ttsconfig.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "abc0bad7ed38b3f9ef442b2278e744d80bd03b3b"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u07",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

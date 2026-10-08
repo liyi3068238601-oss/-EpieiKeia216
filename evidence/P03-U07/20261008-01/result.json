@@ -1,0 +1,172 @@
+{
+  "schema": "p03-u07-result/v1",
+  "task": "P03-U07",
+  "attempt_id": "20261008-01",
+  "baseline_commit": "abc0bad7ed38b3f9ef442b2278e744d80bd03b3b",
+  "at_utc": "2026-10-08T12:39:07.752777+00:00",
+  "author_status": "ready_for_review",
+  "independent_acceptance": "pending",
+  "implementation": [
+    {
+      "path": "packages/work/handoff-context.ts",
+      "bytes": 57756,
+      "sha256": "625ccc2667f3c3f22e298276e3e679b54c9b95863de3312d7a1e92e8abb2b046"
+    },
+    {
+      "path": "packages/work/test/handoff-context.test.mjs",
+      "bytes": 42071,
+      "sha256": "a70b3ae5c58678152e578f28b0a0ff30066d0328460a22e715b0edfbba667825"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "bytes": 6720,
+      "sha256": "7a2457865324e9ef7b6d1327bdf0bea5d727fedfc885c85e4d47e894d86df547"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 874,
+      "sha256": "c31a971b0077a2ba975ac38bb59c7bbfab0ed9101a357bb031f50f14eb6067ac"
+    }
+  ],
+  "verification": {
+    "build-01": {
+      "path": "evidence/P03-U07/20261008-01/build-01.json",
+      "bytes": 534,
+      "sha256": "461f3185d8173fcf72e3393bb2c6d8327adbabf1d7e6699f462bdc100baddd21"
+    },
+    "build-02": {
+      "path": "evidence/P03-U07/20261008-01/build-02.json",
+      "bytes": 534,
+      "sha256": "0000a750119b724580ecd3bb4033bc84b8dc629b9ba444ee9ab2f05b47c4e8a0"
+    },
+    "build-03": {
+      "path": "evidence/P03-U07/20261008-01/build-03.json",
+      "bytes": 534,
+      "sha256": "adced0fed1f7305b944c748f0a6cb31225684b25b873823704e8659deb2d192b"
+    },
+    "build-04": {
+      "path": "evidence/P03-U07/20261008-01/build-04.json",
+      "bytes": 534,
+      "sha256": "e146b69c39648b5eed9f5e2431323b50a99c72b7754be042c85a05ebcf59514f"
+    },
+    "execution-after-failed": {
+      "path": "evidence/P03-U07/20261008-01/execution-after-failed.json",
+      "bytes": 39709,
+      "sha256": "ab042c2a46668679c9b53692914529a2026c14628305900367af31feb5cf69fd"
+    },
+    "execution-after-second-failed": {
+      "path": "evidence/P03-U07/20261008-01/execution-after-second-failed.json",
+      "bytes": 40198,
+      "sha256": "a192ab64c1918d18898739503651747b0272fbfe967b63215670bdcab47ab719"
+    },
+    "execution-after": {
+      "path": "evidence/P03-U07/20261008-01/execution-after.json",
+      "bytes": 40198,
+      "sha256": "67e136579bbfdd938138bbab28c0642094055425272f5480526639c7cb950e62"
+    },
+    "execution-before-final": {
+      "path": "evidence/P03-U07/20261008-01/execution-before-final.json",
+      "bytes": 40090,
+      "sha256": "513f57be81eff7ed2e6417469222607bfb1c547ccdcdabcfaed8fc8f2c3bc553"
+    },
+    "execution-before-third": {
+      "path": "evidence/P03-U07/20261008-01/execution-before-third.json",
+      "bytes": 40090,
+      "sha256": "2464b2c8f7c3a2331b2bc3ab833614d945d070a84af74b21a78f0c5e30644f49"
+    },
+    "execution-before": {
+      "path": "evidence/P03-U07/20261008-01/execution-before.json",
+      "bytes": 39601,
+      "sha256": "f8c914a8abb6d0670d0c76d88792c5a0b4060dbbcb6d111b5cd60d900dc54241"
+    },
+    "native-readback": {
+      "path": "evidence/P03-U07/20261008-01/native-readback.json",
+      "bytes": 925,
+      "sha256": "35e4fc96280a1cb7936a8ac777b6c704764c32f09adb6bce71cb72c3bf3c72c8"
+    },
+    "regression-01": {
+      "path": "evidence/P03-U07/20261008-01/regression-01.json",
+      "bytes": 7603,
+      "sha256": "1e4b0734f7f79fb4f839caec66491958adfb58f7a58450794a7cfa026ba18508"
+    },
+    "unit-01": {
+      "path": "evidence/P03-U07/20261008-01/unit-01.json",
+      "bytes": 6496,
+      "sha256": "72d7c29e82e72b6bbfc43ab0ca393509694f89969dc5e560ad86c3662e80a953"
+    },
+    "unit-02": {
+      "path": "evidence/P03-U07/20261008-01/unit-02.json",
+      "bytes": 4488,
+      "sha256": "bde0e44296d8f4cfff18b4c1b00ce767183da49a0f5785df07ae2b32ef318a10"
+    },
+    "unit-03": {
+      "path": "evidence/P03-U07/20261008-01/unit-03.json",
+      "bytes": 3508,
+      "sha256": "fe5835522743b494274bb715029f80481c463741a57da7642529ee61665cea1a"
+    }
+  },
+  "test_reporting": {
+    "unit": "8 cases passed, zero failed/skipped, plus one outer file completion; do not sum streams.",
+    "regression": "22 top-level completions passed; separate reader child 43/43 and policy child 1/1. Do not sum overlapping streams.",
+    "platform_probe": "File-symlink creation returned EPERM. That probe did not execute its assertion although aggregate test skip count is zero; hardlink and lexical path negatives ran."
+  },
+  "runtime_boundary": {
+    "actual": [
+      "Fixed Node 24.14.0 and TypeScript build",
+      "Owned Git/SQLite/filesystem and U04 selected-topic reader",
+      "Pinned Native AgentRuntime, ToolRegistry, ToolExecutor and Core Read handler via a snapshot-only FileSystemPort"
+    ],
+    "mock": [
+      "Independent ZCode and DSH-mock receiver callbacks, same task/packet/provenance receipt"
+    ],
+    "not_run": [
+      "Native subagent runner or full createZCodeApp composition",
+      "Provider/model invocation",
+      "Actual DSH",
+      "Desktop"
+    ]
+  },
+  "verified_contracts": [
+    "Every item binds project UUID, actual Git HEAD, complete raw-source hash, applicable paths, cited ranges and sample time.",
+    "Explicit project sources only; excluded Life/personal/runtime/secret paths and foreign project mapping are rejected. No Life provider is connected.",
+    "Local notes remain experience-lead, including malicious self-described verified facts. Absence creates no note or directory.",
+    "Two actual mock deliveries preserve exact data and task identity; callback failure produces no successful receipt.",
+    "Final provider projection and executable registry are checked after factory creation and before/after calls. Persistent memory Write/Edit injection, hidden tools, MCP and dynamic Read/executor replacement fail closed.",
+    "Repository/shared-interface write attempts and path escapes are denied. Actual Native direct unregistered Write returns tool_not_found and source bytes remain unchanged.",
+    "Host result sink needs separate basename authorization, does not overwrite, audits hash/bytes and retains ambiguous output if audit fails."
+  ],
+  "failures_retained": {
+    "unit-01": "Three interface errors: Read optional fields were treated as required; U04 error was not normalized; dynamic projection drift used the initial-profile error code. Implementations fixed without dropping assertions.",
+    "unit-02": "One test expected uppercase TOOL_NOT_FOUND. Pinned contracts/errors/index.ts defines lower-case tool_not_found; the assertion was corrected to the actual contract.",
+    "format": "One redundant source EOF LF was normalized before final build-04 and unit-02/03."
+  },
+  "execution_binding": {
+    "record": {
+      "path": "evidence/P03-U07/20261008-01/execution-after.json",
+      "bytes": 40198,
+      "sha256": "67e136579bbfdd938138bbab28c0642094055425272f5480526639c7cb950e62"
+    },
+    "inputs": 172,
+    "unchanged": true,
+    "native_readback": {
+      "path": "evidence/P03-U07/20261008-01/native-readback.json",
+      "bytes": 925,
+      "sha256": "35e4fc96280a1cb7936a8ac777b6c704764c32f09adb6bce71cb72c3bf3c72c8"
+    },
+    "regression": "Regression-01 used the identical final product/compiled source. The later edit only corrected an unselected U07 test wire-value assertion."
+  },
+  "limits": {
+    "packet_bytes": 12000,
+    "source_file_bytes": 1048576,
+    "total_source_bytes": 1048576,
+    "item_excerpt_bytes": 32768,
+    "items": 64
+  },
+  "limitations": [
+    "The trusted runtime factory must connect Read to the supplied exact snapshots; arbitrary custom handlers or OS filesystems are not a general sandbox.",
+    "Source claims bind bytes, not independently verified meaning. Project-only manifests are host-approved; path filtering is not a natural-language privacy classifier.",
+    "Ordinary Native child profiles may inject RespondToCoordinator; the strict facade rejects undeclared tools until a trusted composition curates the registry.",
+    "No model behavior, Native child runner, app, live DSH or Desktop claim is made. Those integration boundaries remain for U09/U10."
+  ],
+  "rollback": "Revert this isolated unit commit. Synthetic fixtures and exclusive result outputs are retained; no production data, profile, key or Native memory was modified."
+}
