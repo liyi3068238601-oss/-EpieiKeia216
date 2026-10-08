@@ -1,0 +1,66 @@
+{
+  "task": "P03-U03",
+  "baseline": "1326a8b036d4695271d194f3bcb1611382433303",
+  "scope": [
+    "packages/projects/registry.ts",
+    "packages/projects/test",
+    "tsconfig.json",
+    "tools/run-tests.mjs",
+    "evidence/P03-U03/20261008-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "1326a8b036d4695271d194f3bcb1611382433303"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u03",
+      "exit_code": 0,
+      "stdout": " evidence/P03-U03/20261008-01/baseline.json         |  38 ++\n evidence/P03-U03/20261008-01/boundary-command.json |  14 +\n evidence/P03-U03/20261008-01/build-01-command.json |  16 +\n evidence/P03-U03/20261008-01/build-02-command.json |  16 +\n evidence/P03-U03/20261008-01/build-03-command.json |  16 +\n evidence/P03-U03/20261008-01/command-baseline.json |  31 ++\n evidence/P03-U03/20261008-01/diff.json             |  66 +++\n evidence/P03-U03/20261008-01/manifest.json         | 105 +++++\n evidence/P03-U03/20261008-01/result.json           |  47 +++\n evidence/P03-U03/20261008-01/result.md             |  16 +\n evidence/P03-U03/20261008-01/source-adoption.json  |  76 ++++\n .../20261008-01/source-binding-command.json        |  16 +\n evidence/P03-U03/20261008-01/unit-command.json     |  16 +\n packages/projects/registry.ts                      | 409 ++++++++++++++++++\n packages/projects/test/registry.test.mjs           | 469 +++++++++++++++++++++\n tools/run-tests.mjs                                |   3 +-\n tsconfig.json                                      |   2 +-\n 17 files changed, 1354 insertions(+), 2 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "1326a8b036d4695271d194f3bcb1611382433303"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u03",
+      "exit_code": 0,
+      "stdout": "38\t0\tevidence/P03-U03/20261008-01/baseline.json\n14\t0\tevidence/P03-U03/20261008-01/boundary-command.json\n16\t0\tevidence/P03-U03/20261008-01/build-01-command.json\n16\t0\tevidence/P03-U03/20261008-01/build-02-command.json\n16\t0\tevidence/P03-U03/20261008-01/build-03-command.json\n31\t0\tevidence/P03-U03/20261008-01/command-baseline.json\n66\t0\tevidence/P03-U03/20261008-01/diff.json\n105\t0\tevidence/P03-U03/20261008-01/manifest.json\n47\t0\tevidence/P03-U03/20261008-01/result.json\n16\t0\tevidence/P03-U03/20261008-01/result.md\n76\t0\tevidence/P03-U03/20261008-01/source-adoption.json\n16\t0\tevidence/P03-U03/20261008-01/source-binding-command.json\n16\t0\tevidence/P03-U03/20261008-01/unit-command.json\n409\t0\tpackages/projects/registry.ts\n469\t0\tpackages/projects/test/registry.test.mjs\n2\t1\ttools/run-tests.mjs\n1\t1\ttsconfig.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "1326a8b036d4695271d194f3bcb1611382433303"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u03",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P03-U03/20261008-01/baseline.json\nA\tevidence/P03-U03/20261008-01/boundary-command.json\nA\tevidence/P03-U03/20261008-01/build-01-command.json\nA\tevidence/P03-U03/20261008-01/build-02-command.json\nA\tevidence/P03-U03/20261008-01/build-03-command.json\nA\tevidence/P03-U03/20261008-01/command-baseline.json\nA\tevidence/P03-U03/20261008-01/diff.json\nA\tevidence/P03-U03/20261008-01/manifest.json\nA\tevidence/P03-U03/20261008-01/result.json\nA\tevidence/P03-U03/20261008-01/result.md\nA\tevidence/P03-U03/20261008-01/source-adoption.json\nA\tevidence/P03-U03/20261008-01/source-binding-command.json\nA\tevidence/P03-U03/20261008-01/unit-command.json\nA\tpackages/projects/registry.ts\nA\tpackages/projects/test/registry.test.mjs\nM\ttools/run-tests.mjs\nM\ttsconfig.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "1326a8b036d4695271d194f3bcb1611382433303"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u03",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
