@@ -1,0 +1,923 @@
+{
+  "schema": "p03-independent-review/v1",
+  "created_at_utc": "2026-10-08T08:42:50.607911+00:00",
+  "task": "P03-U01",
+  "decision": "pass",
+  "review_target": {
+    "author_commit": "bb923d6197a40199e9b4b95d00235a5cb4355594",
+    "baseline_commit": "ecc2aa40c92b4474a12c455ecb0460d47430ca5f",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01",
+    "attempt": "20261004-01",
+    "manifest_path": "evidence/P03-U01/20261004-01/manifest.json",
+    "manifest_sha256": "56c91f7f459b4d073a559ceae08f1841baa36a4d5cf2236608369ff8860bed98",
+    "manifest_files": 20,
+    "changed_paths": 21
+  },
+  "reviewer": "Codex independent readback",
+  "scope": "Independent read-only review of exact P03-U01 author commit, task scope, research report, fixed source evidence, provenance and NOT_RUN boundaries. No acceptance state was written.",
+  "checks": [
+    {
+      "id": "exact-commit-baseline-manifest-and-scope",
+      "status": "pass",
+      "detail": "Author commit bb923d6197a40199e9b4b95d00235a5cb4355594 is a direct child of baseline ecc2aa40c92b4474a12c455ecb0460d47430ca5f; root remains at that clean baseline and the author worktree is clean. Reviewer-run verify-author bound 20 files to 21 changed paths with no disk/Git mismatches. All changed files stay inside docs/research/P03 and evidence/P03-U01/20261004-01."
+    },
+    {
+      "id": "research-coverage-and-provisional-decisions",
+      "status": "pass",
+      "detail": "The report covers Native memory identity/index and runtime seams, Xiadie baseline implementation, parser candidates, ADR/handoff alternatives, licensing/install metadata, dated search terms and URLs, dependency/permission limits, candidate defaults and rollback. It keeps all adoption decisions provisional for U02 and contains no production code."
+    },
+    {
+      "id": "fresh-host-and-fixed-native-memory-findings",
+      "status": "pass",
+      "detail": "I inspected packages/adapters/zcode/src/host.ts:459-472 and packages/contracts/src/context.ts:33-53: preflight builds a per-turn nonce-bound packet, whose data partitions are state/evidence/content and carry no memory provider; packages/diagnostics/src/index.ts:63-64,157-159 labels memoryCandidates as reference annotations. tests/integration/P01/factory.mjs:376-383 disables Native memory and exposes only Read. Fixed Native source at commit 29628c9 confirms project-root.ts:8-22 derives a slug/hash from workspaceIdentity or normalized path; context.ts:66-70 loads the index during initialization; context-refresh.ts:15-35 reuses runtime.memoryIndexContent; MemoryService returns {content, updatedAt} at memoryService.ts:201-231 and stable reader decodes UTF-8 and returns mtime at projectMemoryStableRead.ts:10-58, with the stated 5 MiB bound. These facts support the provisional per-turn freshness gap and do not prove runtime behavior."
+    },
+    {
+      "id": "reviewer-tool-boundary-analysis",
+      "status": "pass",
+      "detail": "Static source supports the stated caveat: persistent-memory.ts:7-43 may add Write/Edit; permission-flow.ts:52-100 passes executionInput to permission checks; service.ts:283-319 selects raw file_path and matches the rule; rule-matching.ts:1-7 anchors wildcard matching; path-policy.ts:15-39 normalizes paths after this check and explicitly does not enforce workspaceRoot containment; Write/Edit handlers resolve through that path policy. The report labels the traversal example as static inference and defers final tool projection/executor denial to owned U02 fixtures."
+    },
+    {
+      "id": "source-pins-licenses-and-search-provenance",
+      "status": "pass",
+      "detail": "The author source manifest binds 104 input files and three preparation manifests. The 2026-10-08 resume readback records 104 checked inputs in groups 18/41/15/17/13, verifies all three preparation-manifest hashes, pins Native to 29628c9acdb81b703bbd4080c207a0e7ce5e276e as clean, and reports no mismatches. Pinned comparison identities and licenses align with the bound records: Marked 244941a, yaml ddb21b0, MADR 2475fe1, adr-tools b3279baf. Search date/queries and corrected 404 path are preserved; no claim is made that these dated pins represent later upstream versions."
+    },
+    {
+      "id": "commands-limitations-and-not-run",
+      "status": "pass",
+      "detail": "Command records preserve failures and retries (PowerShell script policy, missing Get-FileHash, early diff/path/whitespace checks) and subsequent successful helper/source-manifest/diff checks. Result and report distinguish inspection from execution and mark candidate tests, install/build, Native/product runtime and model use NOT_RUN. U01 is a research-only card; this is not a missing product test or a pass claim."
+    },
+    {
+      "id": "ready-for-review-state-and-baseline-metadata",
+      "status": "pass",
+      "detail": "result.md marks the committed author package ready_for_review and not accepted; review-time coordinator status remains running pending this independent review. Non-blocking historical metadata note: baseline.json says author_status=ready_for_review at 2026-10-04T13:11Z, before the research report was written; baseline-unit.py hard-codes that field. Treat it as a helper marker, not a live state observation. Exact commit, clean tree and current result state are independently bound."
+    }
+  ],
+  "reviewer_readback": {
+    "decision": "pass",
+    "author_verification": {
+      "path": ".runtime/P03/reviews/u01-20261008/author-verification.json",
+      "sha256": "7b7b801aee09ba2afd3a1ba374cdb845905d0dc3b161d98e1cf1717ed790f2ce",
+      "files": 20,
+      "changed_paths": 21,
+      "worktree_clean": true,
+      "mismatches": []
+    },
+    "author_verification_command": {
+      "path": ".runtime/P03/reviews/u01-20261008/author-verification-command.json",
+      "sha256": "7faa74226be6ac0e83e44f2e3fdd309526f5a387642a93944a8b7bdeafb4735c"
+    },
+    "author_source_readback": {
+      "path": "evidence/P03-U01/20261004-01/resume-source-readback.json",
+      "sha256": "9d95c73dfd9a06eaf36d509381bdc7af8f77edb72e136d11a4f6e96f015781e9",
+      "input_count": 104,
+      "preparation_manifests_verified": 3,
+      "mismatches": []
+    },
+    "author_source_readback_command": {
+      "path": "evidence/P03-U01/20261004-01/resume-source-readback-command.json",
+      "sha256": "ec6d627cfcd991917425a5e0dfe02e4c8abcb88c6c38fae511bcebb057a899ea",
+      "script_path": "E:/Xiadie/Xiadie/.runtime/P03/resume/u01-20261008/source-readback.py"
+    },
+    "reviewer_prior_source_readback": {
+      "path": ".runtime/P03/reviews/u01/source-readback.json",
+      "sha256": "418ead7185c0faa31527137305e1212e8050e51121d824741b4cf032850e41be",
+      "date": "2026-10-04",
+      "input_count": 104,
+      "preparation_manifests_verified": 3,
+      "mismatches": []
+    },
+    "source_basis": "Fixed-source code paths and line anchors are summarized in checks; contents are SHA-bound by source-manifest.json and the author artifact manifest."
+  },
+  "limitations": [
+    "This review is static and evidence-focused. No candidate tests, installation, build, Native/product runtime, model call, permission probe or U02 fixture was run.",
+    "Research conclusions are tied to Native ZCode commit 29628c9acdb81b703bbd4080c207a0e7ce5e276e and dated official source records from 2026-10-04; no later upstream claim is made.",
+    "Per-turn selected-source freshness, identity/legacy alias behavior, relocation and final executor write denial remain U02/U03 experiments as the report states.",
+    "The baseline helper author_status marker predates the report and is hard-coded; canonical status remains running until the coordinator processes the independent review."
+  ],
+  "artifacts": [
+    {
+      "path": "docs/research/P03/P03-U01.md",
+      "root": "author_worktree",
+      "bytes": 10495,
+      "sha256": "cfe17f6bd8f234d22407242b7fbf385636ca3c31afcf65de1577a8626f5e1007"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/baseline.json",
+      "root": "author_worktree",
+      "bytes": 1681,
+      "sha256": "551f7ef74cdb66726eac8b209116fc061b0e2d3a6b46117c6077a85aa087eda4"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/command-baseline-unit.json",
+      "root": "author_worktree",
+      "bytes": 812,
+      "sha256": "0ac5ca7b3e9e59ca631a54e17f8893c5758bd8978d4001a8f48855b9010c32e4"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/command-diff-check.json",
+      "root": "author_worktree",
+      "bytes": 911,
+      "sha256": "701cfa41eec7ce3594e208d0a5ff5f6d29e2611497fc199f705d468aba78c301"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/command-diff-unit-02.json",
+      "root": "author_worktree",
+      "bytes": 1180,
+      "sha256": "ef9cda655b0ca993a3174dafa2e5505b1826a989bf4e6f9af6cdc66f659664c4"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/command-diff-unit-03.json",
+      "root": "author_worktree",
+      "bytes": 610,
+      "sha256": "65223678165c107724c58136a1a6f539405d02f81d59f6e0a89e5fd77027c955"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/command-diff-unit.json",
+      "root": "author_worktree",
+      "bytes": 1145,
+      "sha256": "7367bffacadbebce7b2d44f6e9831fcc7063aafdbccf57f9f65da4f740237b5a"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/command-helper-cli-inventory-02.json",
+      "root": "author_worktree",
+      "bytes": 2865,
+      "sha256": "8463999f5ef07a5c9f72da1dacf02ecae23dd7e75381489a39b96e9798454b85"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/command-helper-cli-inventory.json",
+      "root": "author_worktree",
+      "bytes": 915,
+      "sha256": "1abbd8abcb74b7a6910ae9847b8015c93f48c02c9735cdd9dee0f58bf78c7ae8"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/command-source-manifest-02.json",
+      "root": "author_worktree",
+      "bytes": 734,
+      "sha256": "fff65eccd73383b35726eac05703bcd17557e924019a998355925f9fc4537d19"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/command-source-manifest.json",
+      "root": "author_worktree",
+      "bytes": 1183,
+      "sha256": "c84cda4ca5bc1807617a44a2321bab68ededec795018a3e16b8bb6c2caae5e2b"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/command-whitespace-fix.json",
+      "root": "author_worktree",
+      "bytes": 649,
+      "sha256": "04822df33a1f0c57857851f2e57b1c704715f215da0bfa6c296f1edd80a80982"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/diff-02.json",
+      "root": "author_worktree",
+      "bytes": 4939,
+      "sha256": "e68a07bf0388910a3259766ff60accbc3aa4b2c3a04449dc5ab680ea501351c0"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/diff.json",
+      "root": "author_worktree",
+      "bytes": 4200,
+      "sha256": "7d975c6e60589e1a386c53df97cb85370acf36ae3aa31f8365738ef7441ea292"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/helper-cli-inventory.ps1",
+      "root": "author_worktree",
+      "bytes": 410,
+      "sha256": "b42e194f23d3edefdbab76275788d0f5b32432e7f562a59b57ce85c4fc0ada3c"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/result.md",
+      "root": "author_worktree",
+      "bytes": 3688,
+      "sha256": "3287f31abfd1bec1bd353572f87bb8ad675d6b727f09c5ce98afda3c68f0c6cc"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/resume-source-readback-command.json",
+      "root": "author_worktree",
+      "bytes": 1086,
+      "sha256": "ec6d627cfcd991917425a5e0dfe02e4c8abcb88c6c38fae511bcebb057a899ea"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/resume-source-readback.json",
+      "root": "author_worktree",
+      "bytes": 25266,
+      "sha256": "9d95c73dfd9a06eaf36d509381bdc7af8f77edb72e136d11a4f6e96f015781e9"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/source-manifest.json",
+      "root": "author_worktree",
+      "bytes": 34905,
+      "sha256": "0a0fb989107f8ef9b252f27f015e46ffbb1ab0bcc4d111565eff0bd9d6bf54dc"
+    },
+    {
+      "path": "evidence/P03-U01/20261004-01/source-manifest.ps1",
+      "root": "author_worktree",
+      "bytes": 12616,
+      "sha256": "cdc4ddc5661ff6d2ed0a2078c2f1aca3009c3a4301fd66784d67de82cd55585c"
+    },
+    {
+      "path": "author-verification.json",
+      "root": "review_directory",
+      "bytes": 552,
+      "sha256": "7b7b801aee09ba2afd3a1ba374cdb845905d0dc3b161d98e1cf1717ed790f2ce"
+    },
+    {
+      "path": "author-verification-command.json",
+      "root": "review_directory",
+      "bytes": 1223,
+      "sha256": "7faa74226be6ac0e83e44f2e3fdd309526f5a387642a93944a8b7bdeafb4735c"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "path": "AGENTS.md",
+      "root": "author_worktree",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U01.md",
+      "root": "author_worktree",
+      "bytes": 3110,
+      "sha256": "481ad4396712dc964ab278d85518dd6ece49201bc9fdff18c5e19332e320c682"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U02.md",
+      "root": "author_worktree",
+      "bytes": 3099,
+      "sha256": "47b7725dc24f9821c6f1a12b59d7ecb4a8d49a0d24396dfffedc1d1ac5c04137"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/templates/handoff.md",
+      "root": "author_worktree",
+      "bytes": 568,
+      "sha256": "fb3dbc70617f4ddbad04764772c176d0834b0637ff9fc4f4ba9a4fb125e81e74"
+    },
+    {
+      "path": "docs/sources.lock.json",
+      "root": "author_worktree",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    {
+      "path": "packages/adapters/zcode/src/host.ts",
+      "root": "author_worktree",
+      "bytes": 41642,
+      "sha256": "71bfd252831db5216983bdea8361bd68e0a54296de5f9444cf1e15b908f0725b"
+    },
+    {
+      "path": "packages/contracts/src/context.ts",
+      "root": "author_worktree",
+      "bytes": 1801,
+      "sha256": "ffc855d2d496d97b25508fdbcad540d6c01ba755fe7d56837a5873c3f367d071"
+    },
+    {
+      "path": "packages/diagnostics/src/index.ts",
+      "root": "author_worktree",
+      "bytes": 50696,
+      "sha256": "cf26f480a4115f573321eac8af94d0745404584a3da0e5480727fe3bbe9e5c23"
+    },
+    {
+      "path": "packages/diagnostics/test/diagnostics.test.mjs",
+      "root": "author_worktree",
+      "bytes": 31841,
+      "sha256": "963bff3a7bb1efa531e819ed3d8c6e578ee4d713f572636b898b8b185605f572"
+    },
+    {
+      "path": "packages/context/src/index.ts",
+      "root": "author_worktree",
+      "bytes": 11781,
+      "sha256": "6fcc5b6ca892a0106a1063f15587db24633d799603846b55ddcab8fe77b50fd7"
+    },
+    {
+      "path": "packages/context/test/context.test.mjs",
+      "root": "author_worktree",
+      "bytes": 8934,
+      "sha256": "c64c2939d27dcaf16b988df740046d04c64133edfd099a1eab368e2c213dcf18"
+    },
+    {
+      "path": "tests/integration/P01/factory.mjs",
+      "root": "author_worktree",
+      "bytes": 19082,
+      "sha256": "c0758c684c7d43e8f6eafa146770214f5a00d7306294f8dadbdb81c7a4bbfc0e"
+    },
+    {
+      "path": "tests/integration/P01/factory.test.mjs",
+      "root": "author_worktree",
+      "bytes": 21018,
+      "sha256": "0cc5866ed2fac07bde3dcf13242ca3e9ea11dda033ba3ad8447170e702402a0a"
+    },
+    {
+      "path": "packages/application/test/native-projection.integration.test.mjs",
+      "root": "author_worktree",
+      "bytes": 12796,
+      "sha256": "d6886de8026243a18d3421ef3255ab0ce70f5c89b61d0faa3271804ff56d4446"
+    },
+    {
+      "path": "spikes/zcode-memory/README.md",
+      "root": "author_worktree",
+      "bytes": 2815,
+      "sha256": "bfd82f58b52b68cb8fe25f8396eff4e53cbf133d25fb51fae6f0756de0af577c"
+    },
+    {
+      "path": "spikes/zcode-memory/probe.mjs",
+      "root": "author_worktree",
+      "bytes": 24255,
+      "sha256": "5a44150ab792c8e3c960d972f30ae4ae4175214e07e4864825ed68f13604cc96"
+    },
+    {
+      "path": "evidence/P00-U08/20261001-01/result.md",
+      "root": "author_worktree",
+      "bytes": 7355,
+      "sha256": "11eccb9b2cf966a552b90ee00d2b2d4910e5ca282ecf5383f6026a290cbe6707"
+    },
+    {
+      "path": "evidence/P00-U08/20261001-01/runs/attempt-03/probe-results.json",
+      "root": "author_worktree",
+      "bytes": 25677,
+      "sha256": "ffba42f64994be01cd18a28c5a5081a913987c8aadf4718a61d639b7151f0bde"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/LICENSE",
+      "root": "baseline_repository",
+      "bytes": 11344,
+      "sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/package.json",
+      "root": "baseline_repository",
+      "bytes": 4172,
+      "sha256": "1c8de5f20a664c0dc3071ca4d58ae55f4282cb671c529d2ea5f2b0879638b64c"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/pnpm-workspace.yaml",
+      "root": "baseline_repository",
+      "bytes": 491,
+      "sha256": "f18a18233e82cda1dc40be61bf2ad1bc99de25de63ad0be64bc652761a638372"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/pnpm-lock.yaml",
+      "root": "baseline_repository",
+      "bytes": 652214,
+      "sha256": "7d40b0231089692a91eb39f73b212f7eae86ee9402c360139216cff577e9583c"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/package.json",
+      "root": "baseline_repository",
+      "bytes": 1968,
+      "sha256": "6c48017b05d8a7215c5bf7dea12f50edd1487bf5b8b22e11c21703d32e8f7742"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/package.json",
+      "root": "baseline_repository",
+      "bytes": 1366,
+      "sha256": "abf5a6c8715fe87ea4b5ef3a48b225f94980dc386fe2ccfe98844347aa16bcd8"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/packages/services/package.json",
+      "root": "baseline_repository",
+      "bytes": 1086,
+      "sha256": "71fef5a81918526e8cdda4d3309ef3528353d0a526a9418c306ec9f95641ad50"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/context/sections/memory.ts",
+      "root": "baseline_repository",
+      "bytes": 2725,
+      "sha256": "3af27495b85c9f189ded350a030beba4442711fad4b35267a91a7f2209ae018d"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts",
+      "root": "baseline_repository",
+      "bytes": 3579,
+      "sha256": "ba483db96ee90ec627890b4eff89c953dca378872cab0791728cfe1bee14405c"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/memory/index-content.ts",
+      "root": "baseline_repository",
+      "bytes": 2990,
+      "sha256": "09397af14b35c25822e901c44dc702c927b94b75c072a6f5cd595b7d9e9f4e71"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/subagent/persistent-memory-prompt.ts",
+      "root": "baseline_repository",
+      "bytes": 14856,
+      "sha256": "ed2298b5582d4be07676fef739ad50239e9b68c63ca4595bd54252cb867fa7c3"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/memory/project-root.ts",
+      "root": "baseline_repository",
+      "bytes": 1106,
+      "sha256": "69ea16dc573f1e60e5579be494d02dc7735ab24821208071f304e5699c2d7f55"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/memory/recall/manifest.ts",
+      "root": "baseline_repository",
+      "bytes": 4514,
+      "sha256": "26dc0b541bd06120f7002f62cbaa81524374f3fcd443d495ed9ec9a4c25ec7bb"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/methods/context.ts",
+      "root": "baseline_repository",
+      "bytes": 11568,
+      "sha256": "bcdb1b91fba68b8f29cb6bd16f4ab7536bd5003208a766aca338dde9cf1a5235"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/methods/context-refresh.ts",
+      "root": "baseline_repository",
+      "bytes": 2375,
+      "sha256": "729d721d285804c4c72fe98a9d83046dd256c730eb5b6e9b2cf398b4fff25c8a"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/packages/services/src/memory/memoryService.ts",
+      "root": "baseline_repository",
+      "bytes": 7972,
+      "sha256": "7dcda54bcbd983331d84db6b634ec39e4c6980f29517f7872ca554aa319ecf7a"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/packages/services/src/memory/projectMemoryStableRead.ts",
+      "root": "baseline_repository",
+      "bytes": 3570,
+      "sha256": "2ade3a41788b4c6d4a08ddf600e8052d589987f242ee7143042d9a49da76fa52"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/packages/services/src/paths.ts",
+      "root": "baseline_repository",
+      "bytes": 8613,
+      "sha256": "e20fbeb4e88e9021bd099a50ce8b2bbc90ff823eefb57253d1f1ea11b6f7d1df"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/packages/services/test/nonCliAcpRetirement.test.ts",
+      "root": "baseline_repository",
+      "bytes": 8620,
+      "sha256": "7313211a35a86c3e008f6b25ebe0b339a01915622f9e2fbb5be2f8eeeba9b74e"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/contracts/src/tools/agent.ts",
+      "root": "baseline_repository",
+      "bytes": 3860,
+      "sha256": "11f570e70ad5413af90e7582f68a441ce06a1f4e838123e20c7c163752d80046"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/contracts/src/interfaces/subagent.port.ts",
+      "root": "baseline_repository",
+      "bytes": 3784,
+      "sha256": "3e563f8dea2e210e5a2e2cf25bef7408ed66bf4a512590c3c0d6de02e8fd44e3"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/handlers/agent.ts",
+      "root": "baseline_repository",
+      "bytes": 12372,
+      "sha256": "e29decfaf6c16083368850f8e7f2285c821dd3c6b53b0cf1f5816fbf6fdf3aac"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/subagent/runner.ts",
+      "root": "baseline_repository",
+      "bytes": 68634,
+      "sha256": "acbd362bc6e0556c65cb27722ddb0f0ccf1f82328f7184725574e651cdb884e7"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime-task/registry.ts",
+      "root": "baseline_repository",
+      "bytes": 9147,
+      "sha256": "8f138a00926d188a0a336f12d87bf8af2f5402f7817179fae249b6c56b0681b9"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/subagent/completion-notification.ts",
+      "root": "baseline_repository",
+      "bytes": 1805,
+      "sha256": "2ca923e0b9f34a19ab69b369f7ee1d126f0d4bf7671d62d8b2e72e026b0b4346"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/agent-runtime.ts",
+      "root": "baseline_repository",
+      "bytes": 28327,
+      "sha256": "a2192a84dfae5dfaa46275e253d2815da8178e27d0f5e9ccd5e3f57e61d18877"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/methods/subagent.ts",
+      "root": "baseline_repository",
+      "bytes": 37303,
+      "sha256": "28a4cf9128c870ea4559cf95cf720fccba11103e98d1a1bf7748fbadb82ab7a7"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/helpers/tool-allowlist.ts",
+      "root": "baseline_repository",
+      "bytes": 6001,
+      "sha256": "87dc3a3659fb9169a96e5e810b8f78299e5e4aa369d302fe53eecef6602261c1"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/executor/call-runner.ts",
+      "root": "baseline_repository",
+      "bytes": 27045,
+      "sha256": "c607f378340a8779addc9bcf317a3c05b4fd5df2ecb4030d413add78594bccd9"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/permission/service.ts",
+      "root": "baseline_repository",
+      "bytes": 22583,
+      "sha256": "91dd95f080a72db2bb87543989b007a46bf0144a0b522fcd897b37c894d6d9e2"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/executor/permission-flow.ts",
+      "root": "baseline_repository",
+      "bytes": 15263,
+      "sha256": "ca3a65ca5d09eabb7d86cc75a3097da015b0741b9e807f8fda6a2ed11b8e5cf2"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/executor/memory-file-permission.ts",
+      "root": "baseline_repository",
+      "bytes": 2891,
+      "sha256": "97f5300d6c6045fe8ba21715f9d73f05ddf4468da7da315a415360f1e5a616dc"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/handlers/write.ts",
+      "root": "baseline_repository",
+      "bytes": 11485,
+      "sha256": "7053b107de25920867e88de4f758ef0f643be515a41d007398dfe40db49778ba"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/handlers/edit.ts",
+      "root": "baseline_repository",
+      "bytes": 20696,
+      "sha256": "55f45074e954f8c5f8d4e1a466d3d55a221627ab7892234e3d3d4808a4ebd90e"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/path-policy.ts",
+      "root": "baseline_repository",
+      "bytes": 2276,
+      "sha256": "d909dc9b448590d0dba4183de71eb39c1e8914c2f41c9147fab3d49f043f0cf2"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/adapters/src/fs/index.ts",
+      "root": "baseline_repository",
+      "bytes": 54902,
+      "sha256": "83292fa1b0aa694ebe411b11c06ddc541810e99f48ca6e72f04e27865524acb9"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/contracts/src/interfaces/permission.port.ts",
+      "root": "baseline_repository",
+      "bytes": 3534,
+      "sha256": "426cf9970c9d160f1ac601519c47939a540698ca7b5e7ad40737891f8dae34a4"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/permission/rule-matching.ts",
+      "root": "baseline_repository",
+      "bytes": 650,
+      "sha256": "f54f75589f97502177f50ea68be675b4bcc3adc2680e6bb833fa7dfb893ff991"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/executor/permission-suggestions.ts",
+      "root": "baseline_repository",
+      "bytes": 1450,
+      "sha256": "f4d36a3ab0143b20a0bf3db60b10a9361ab6d7c123395101e1f9db793b830f40"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/mcp/index.ts",
+      "root": "baseline_repository",
+      "bytes": 17803,
+      "sha256": "dc1040c3151f0f4ec16a3c63318ba7607a86fa4ac6b0dcf23b453dbfe5936d17"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/methods/mcp.ts",
+      "root": "baseline_repository",
+      "bytes": 6010,
+      "sha256": "1feb7328acfe55d833a0e19880f06a5b2f7da4cf3fb91da160bb8f6dcec11b86"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/package.json",
+      "root": "baseline_repository",
+      "bytes": 3398,
+      "sha256": "78e27dac3c5de404026c6f703b8c0adf1900f9067c8bd16fa83b058f0fb34aa9"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/LICENSE.md",
+      "root": "baseline_repository",
+      "bytes": 2942,
+      "sha256": "8e3a3f82f59a60958f56ca08f445647c32a4733dc7ca6c2c46f6eb898471ab9c"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/src/marked.ts",
+      "root": "baseline_repository",
+      "bytes": 3727,
+      "sha256": "11df34d11269aa25e5fb6a0ff679fc005cb8531ef6f0eac6327ad78f097c5199"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/src/Lexer.ts",
+      "root": "baseline_repository",
+      "bytes": 14213,
+      "sha256": "1d1a4614b0fdac4621198abb55d6b884bbb509616b3efc60821a1b2217a320ec"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/test/unit/Lexer.test.js",
+      "root": "baseline_repository",
+      "bytes": 47579,
+      "sha256": "330472fd79110d783e686888e00ce57eb771a78dd5bd852ddc3d55e04328b714"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/test/specs/new/html_comments.md",
+      "root": "baseline_repository",
+      "bytes": 591,
+      "sha256": "cda546226e7beb3e938d102eda69d5ad452d0ec31eec3f955d940e6838e26168"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/test/specs/new/html_comments.html",
+      "root": "baseline_repository",
+      "bytes": 689,
+      "sha256": "ec67ba3045dc0596a7bae1574d0f9526e8cff2446bcc7c206742d4f54f7d232f"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/package.json",
+      "root": "baseline_repository",
+      "bytes": 3351,
+      "sha256": "db29094da19fb69f9405720ccfdea02aa781c91df39515038275b14bbfff69a6"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/LICENSE",
+      "root": "baseline_repository",
+      "bytes": 751,
+      "sha256": "05acf00ef5ba06a2ed6e4b324087711e553bee113eca01beb5561745ded1444e"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/src/public-api.ts",
+      "root": "baseline_repository",
+      "bytes": 7289,
+      "sha256": "f2420c4e9d864f39cfbea2bc46bb063d6cd7f448756bf1ac06adda2db2735c0f"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/src/parse/parser.ts",
+      "root": "baseline_repository",
+      "bytes": 29415,
+      "sha256": "b956f76af39e83b59340539ad823d172081a93fda63748bfd3b62e4e6bcd5872"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/src/doc/Document.ts",
+      "root": "baseline_repository",
+      "bytes": 15949,
+      "sha256": "3291956f58cd8dd9da64038fadbb9b65c621d23cf85e39a0e78da98fd1f95773"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/src/nodes/Alias.ts",
+      "root": "baseline_repository",
+      "bytes": 4263,
+      "sha256": "c53cd10a7934773e9428131ee5de4313d61328672b6355c4406379ce1d414713"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/tests/doc/anchors.ts",
+      "root": "baseline_repository",
+      "bytes": 14820,
+      "sha256": "fe5a45fd07304841fb0f0fb3a0882f7237a37594a5a3b4aa999fb4d70164cde5"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/tests/doc/YAML-1.2.spec.ts",
+      "root": "baseline_repository",
+      "bytes": 43815,
+      "sha256": "c5934fd737e219ffcfa3a23f737b222ad5328e81210a9910ebc5f7caa759c40f"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/package.json",
+      "root": "baseline_repository",
+      "bytes": 794,
+      "sha256": "7c9b27c8e0fbd97d6fcfbf6bbc5f1d44609686c51726367e066df84598a25ffd"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/README.md",
+      "root": "baseline_repository",
+      "bytes": 5785,
+      "sha256": "45f73253b843c0c9d5eb351a4ab1e769466c74d2ac6fb0b3f746c2ea7c6e4015"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/LICENSE",
+      "root": "baseline_repository",
+      "bytes": 15,
+      "sha256": "cb9c3a276eb7991be197e401ae38d035f0f0efae425c21f499393f51c9b29ffd"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/LICENSE.MIT",
+      "root": "baseline_repository",
+      "bytes": 1090,
+      "sha256": "a2eef9f0961adab958f4cfa85f65c2864bab694620919cfda402382783bc0c8d"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/LICENSE.CC0-1.0",
+      "root": "baseline_repository",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/template/adr-template.md",
+      "root": "baseline_repository",
+      "bytes": 3316,
+      "sha256": "4903614bbae9aeb2aa811caeb9e156677ef1a993872af6ff8dcfb67b2266cae1"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/template/adr-template-minimal.md",
+      "root": "baseline_repository",
+      "bytes": 1029,
+      "sha256": "1ba5eb74f5925442b04dd9c2418ce332f923be8aeadc83e3c081f54f9c9ec28f"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/.github/workflows/lint.yaml",
+      "root": "baseline_repository",
+      "bytes": 1281,
+      "sha256": "ace6c5798c0472775e4ee12a3f76a32100f166be45e90cbc7b4623cc7f2482b7"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/.github/workflows/check-links.yaml",
+      "root": "baseline_repository",
+      "bytes": 1033,
+      "sha256": "248a94377e9d9fa343aee3fe58092594779db120b762e8a09b163393f8647b29"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/.github/workflows/pages.yaml",
+      "root": "baseline_repository",
+      "bytes": 1642,
+      "sha256": "8de7a799c5bcca839a767450906decd2b7d5c0aaeda9dc1a26c690e06bc8d14f"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/README.md",
+      "root": "baseline_repository",
+      "bytes": 1832,
+      "sha256": "2b9ad97a879f3d35504e6d1898523dadb1a590c164d7a182be90ccb02b1e2802"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/INSTALL.md",
+      "root": "baseline_repository",
+      "bytes": 2000,
+      "sha256": "7c34a31bbf5b4a879dea21c7ab75c6d951932274fba4efae9b719c6a9acd4602"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/LICENSE.txt",
+      "root": "baseline_repository",
+      "bytes": 888,
+      "sha256": "c87591d51d8fda69ab51a902d07e7418c814b77dfc0104ea0a6108702db59c2b"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/Makefile",
+      "root": "baseline_repository",
+      "bytes": 869,
+      "sha256": "982d1dee33b7f5f565421ba22eb5bee99ad064c6591bdea8dd6f29c6ca9789ee"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/src/adr-new",
+      "root": "baseline_repository",
+      "bytes": 3901,
+      "sha256": "92b10f94405f91761009492e5e0dc784adca2d7257e563a9dbaa30448abec384"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/src/template.md",
+      "root": "baseline_repository",
+      "bytes": 364,
+      "sha256": "68c7c24a9bb73419f823c818d7c08f888063eca9d0cdb80e96625b9faa088286"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/tests/project-specific-template.sh",
+      "root": "baseline_repository",
+      "bytes": 258,
+      "sha256": "76b849d01f89468559659f7ae647446a78f35fd17d4c56e97ea42cd335fff2d3"
+    },
+    {
+      "path": ".runtime/P03/preparation/native-source-review.md",
+      "root": "baseline_repository",
+      "bytes": 22866,
+      "sha256": "0f1db6888d17167d8e7fa51b9cec68f47bb2dd02f280834a213e0fb9787c9576"
+    },
+    {
+      "path": ".runtime/P03/preparation/root-runtime-memory-seam-notes.md",
+      "root": "baseline_repository",
+      "bytes": 10367,
+      "sha256": "481f468bce627812b7944b79b07614a6e52416fba72ca639ff6a2c208b884f86"
+    },
+    {
+      "path": ".runtime/P03/preparation/root-design-notes.md",
+      "root": "baseline_repository",
+      "bytes": 5524,
+      "sha256": "7295f666913def7d35f93b49eb5b84a92b451ab86cc9bdede178dd43edc9e39f"
+    },
+    {
+      "path": ".runtime/P03/preparation/root-legacy-key-followup.md",
+      "root": "baseline_repository",
+      "bytes": 1876,
+      "sha256": "b3ff3bfe4d5d3497c37b3622becd221138f2ea8883df27338e4006967545ced7"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/findings.md",
+      "root": "baseline_repository",
+      "bytes": 4556,
+      "sha256": "4d3db481694a4e48bb7e7122ecef82f23519036ca3fb0b8c3600f3f0ba420ee9"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/source-manifest.json",
+      "root": "baseline_repository",
+      "bytes": 57099,
+      "sha256": "684d3046dcda8792a5fac944367f78871d4388fced7a7eed8ef8c36889a189f8"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/report.md",
+      "root": "baseline_repository",
+      "bytes": 12816,
+      "sha256": "a4b1dc938f77a7e2853677c70026f42293d867e7571bf43c32e2fcade52baa1f"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/intake-log.json",
+      "root": "baseline_repository",
+      "bytes": 5338,
+      "sha256": "660ad7dc5db55ecc61b22a6210c29578e5a2d9ee151d0ce5a302913757540648"
+    },
+    {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/source-file-manifest.json",
+      "root": "baseline_repository",
+      "bytes": 73484,
+      "sha256": "7b30b97b0ea118d38a0b2bc21c65ab6ca09107e3bcdf40a1a8f65edf088286c7"
+    },
+    {
+      "path": ".runtime/P03/preparation/relocation-official-notes.md",
+      "root": "baseline_repository",
+      "bytes": 2064,
+      "sha256": "0757a5729c2f36fba4ac263fd868c5d9574f2fb1b2da1f117660ea30b70ed56d"
+    },
+    {
+      "path": ".runtime/P03/preparation/reviewer-permission-seam/preparation.md",
+      "root": "baseline_repository",
+      "bytes": 15641,
+      "sha256": "66b7bd46cb02a185fd5e52e44ac788bfebc2d890c34946a54139ee3a167a8cc6"
+    },
+    {
+      "path": ".runtime/P03/preparation/p03-u01-author/PREPARATION.md",
+      "root": "baseline_repository",
+      "bytes": 6484,
+      "sha256": "5aa1f15d7b70651330481ef1ea47668a2c4fe7b1f5d82222c4058487374affcb"
+    },
+    {
+      "path": ".runtime/P03/preparation/environment-prerequisites.json",
+      "root": "baseline_repository",
+      "bytes": 1126,
+      "sha256": "bed261e3b9390c405e5410a82c68bb5e26d1e3ce2738e91ae68968a772ce1f1c"
+    },
+    {
+      "path": "AGENTS.md",
+      "root": "baseline_repository",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U01.md",
+      "root": "baseline_repository",
+      "bytes": 3110,
+      "sha256": "481ad4396712dc964ab278d85518dd6ece49201bc9fdff18c5e19332e320c682"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/02_计划执行书.md",
+      "root": "baseline_repository",
+      "bytes": 366530,
+      "sha256": "5f8fe397e4622c208e866827d7b528e3efacfd7912e74c602182c8465aa6d5b4"
+    },
+    {
+      "path": "evidence/P03/status.json",
+      "root": "baseline_repository",
+      "bytes": 3283,
+      "sha256": "0a7f52a09cb69f9874d9025c9c05d05c47425c120ff81b4e6e7efc2a2533bda5"
+    },
+    {
+      "path": ".runtime/P03/coord/verify-author.py",
+      "root": "baseline_repository",
+      "bytes": 2672,
+      "sha256": "e82d66bdf461824dce0251e88ca6817669cb986a0277abe73cb1a4f3aabcfe6a"
+    },
+    {
+      "path": ".runtime/P03/coord/verify-review.py",
+      "root": "baseline_repository",
+      "bytes": 1574,
+      "sha256": "2948cff4a3b39c3ea567bc451e904bf2080af768827a3137260a57d9453b633f"
+    },
+    {
+      "path": ".runtime/P03/coord/accept-unit.py",
+      "root": "baseline_repository",
+      "bytes": 6467,
+      "sha256": "39a7377911746bbd5c21ef57d678495b3a2feaee2974f8f2ea59d26b007d1043"
+    },
+    {
+      "path": ".runtime/P03/resume/u01-20261008/source-readback.py",
+      "root": "baseline_repository",
+      "bytes": 2209,
+      "sha256": "298cbd084b8f0dcc408246ec44e905878c9b85d5c197b2b0c4763ddf296279bf"
+    },
+    {
+      "path": ".runtime/P03/reviews/u01/source-readback.py",
+      "root": "baseline_repository",
+      "bytes": 2209,
+      "sha256": "298cbd084b8f0dcc408246ec44e905878c9b85d5c197b2b0c4763ddf296279bf"
+    },
+    {
+      "path": ".runtime/P03/reviews/u01/source-readback.json",
+      "root": "baseline_repository",
+      "bytes": 25266,
+      "sha256": "418ead7185c0faa31527137305e1212e8050e51121d824741b4cf032850e41be"
+    },
+    {
+      "path": ".runtime/P03/reviews/u01/source-readback-command.json",
+      "root": "baseline_repository",
+      "bytes": 1027,
+      "sha256": "c91946e26b9730a505ed1af30c4544e1fcaed1f3038026e69dc549200a88ca0e"
+    }
+  ]
+}
