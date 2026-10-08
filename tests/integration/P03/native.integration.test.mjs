@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { randomUUID } from "node:crypto";
-import { mkdir } from "node:fs/promises";
+import { lstat, mkdir, realpath } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
@@ -26,14 +26,21 @@ const scenarios = [
 ];
 
 test("P03 U09 composes the accepted Host seam with pinned Native in isolated workers", async (t) => {
-  await mkdir(experimentRoot, { recursive: true });
+  const experimentPhysicalRoot = await assertPhysicalDirectory(experimentRoot);
   for (const [label, scenario] of scenarios) {
     await t.test(label, async () => {
       const fixtureRoot = path.join(experimentRoot, `u09-native-${randomUUID()}`);
+      const profile = path.join(fixtureRoot, "profile");
+      await mkdir(fixtureRoot, { recursive: false });
+      const fixturePhysicalRoot = await assertPhysicalDirectory(fixtureRoot, experimentPhysicalRoot);
+      await mkdir(profile, { recursive: false });
       const home = path.join(fixtureRoot, "profile", "home");
       const temp = path.join(fixtureRoot, "profile", "temp");
-      await mkdir(home, { recursive: true });
-      await mkdir(temp, { recursive: true });
+      await mkdir(home, { recursive: false });
+      await mkdir(temp, { recursive: false });
+      const profileReal = await assertPhysicalDirectory(profile, fixturePhysicalRoot);
+      await assertPhysicalDirectory(home, profileReal);
+      await assertPhysicalDirectory(temp, profileReal);
       const result = await runWorker(scenario, { fixtureRoot, home, temp });
       assert.equal(result.exitCode, 0,
         `Pinned Native scenario ${scenario} failed (exit=${result.exitCode}, timedOut=${result.timedOut}).\n${result.stdout}\n${result.stderr}`);
@@ -118,4 +125,26 @@ async function killOwnedTree(child) {
     killer.once("error", resolve);
     killer.once("close", resolve);
   });
+}
+
+async function assertPhysicalDirectory(directory, containmentRoot) {
+  const resolved = path.resolve(directory);
+  const details = await lstat(resolved);
+  assert.ok(details.isDirectory() && !details.isSymbolicLink(), `${resolved} must be a physical directory, not a link or junction`);
+  const physical = path.resolve(await realpath(resolved));
+  assert.equal(pathKey(physical), pathKey(resolved), `${resolved} resolves through a link, junction, or alias`);
+  if (containmentRoot !== undefined) {
+    assert.ok(isWithin(containmentRoot, physical), `${physical} escaped owned root ${containmentRoot}`);
+  }
+  return physical;
+}
+
+function isWithin(root, candidate) {
+  const relative = path.relative(pathKey(root), pathKey(candidate));
+  return relative === "" || (relative !== ".." && !relative.startsWith(`..${path.sep}`) && !path.isAbsolute(relative));
+}
+
+function pathKey(value) {
+  const resolved = path.resolve(value);
+  return process.platform === "win32" ? resolved.toLowerCase() : resolved;
 }

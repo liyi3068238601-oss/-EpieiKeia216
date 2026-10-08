@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { execFileSync, spawn, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { statSync, utimesSync, writeFileSync } from "node:fs";
-import { mkdir, readFile, realpath, writeFile } from "node:fs/promises";
+import { lstat, mkdir, readFile, realpath, writeFile } from "node:fs/promises";
 import http from "node:http";
 import os from "node:os";
 import path from "node:path";
@@ -25,15 +25,24 @@ const temp = path.join(profileRoot, "temp");
 assert.ok(fixtureRoot && path.isAbsolute(fixtureRoot), "outer runner must supply an absolute owned fixture root");
 assert.equal(path.dirname(path.resolve(fixtureRoot)), path.resolve(experimentRoot));
 assert.match(path.basename(fixtureRoot), /^u09-native-[0-9a-f-]{36}$/i);
+const experimentPhysicalRoot = await assertPhysicalDirectory(experimentRoot);
+const fixturePhysicalRoot = await assertPhysicalDirectory(fixtureRoot, experimentPhysicalRoot);
+const profilePhysicalRoot = await assertPhysicalDirectory(profileRoot, fixturePhysicalRoot);
+const homePhysicalRoot = await assertPhysicalDirectory(home, profilePhysicalRoot);
+const tempPhysicalRoot = await assertPhysicalDirectory(temp, profilePhysicalRoot);
 assert.ok(["same-hash-cache", "stat-range-race-recovery", "hook-nonzero", "hook-bad-json",
   "hook-missing-receipt", "hook-timeout", "cancel-recovery", "path-denials"].includes(scenario));
 assert.equal(process.versions.node, "24.14.0", "scenario worker must run under the pinned Node runtime");
 assert.equal(process.env.OPENAI_API_KEY, undefined);
 assert.equal(process.env.ANTHROPIC_API_KEY, undefined);
+assert.equal(pathKey(process.env.HOME), pathKey(homePhysicalRoot));
+assert.equal(pathKey(process.env.USERPROFILE), pathKey(homePhysicalRoot));
+assert.equal(pathKey(process.env.TEMP), pathKey(tempPhysicalRoot));
+assert.equal(pathKey(process.env.TMP), pathKey(tempPhysicalRoot));
 assert.equal(path.resolve(nativeSourceRoot), path.resolve(hostRoot, ".runtime", "P01", "desktop-source"));
 assert.equal(execFileSync("git", ["-C", nativeSourceRoot, "rev-parse", "HEAD"], { encoding: "utf8" }).trim(), PINNED_NATIVE_COMMIT);
 assert.equal(execFileSync("git", ["-C", nativeSourceRoot, "status", "--porcelain", "--untracked-files=no"], { encoding: "utf8" }).trim(), "");
-assert.equal(await realpath(os.tmpdir()), await realpath(temp), "Node temporary files stay under this scenario's owned profile");
+assert.equal(pathKey(await realpath(os.tmpdir())), pathKey(tempPhysicalRoot), "Node temporary files stay under this scenario's owned profile");
 
 const tsxApiUrl = pathToFileURL(path.join(nativeSourceRoot, "node_modules", "tsx", "dist", "esm", "api", "index.mjs")).href;
 const { register: registerTsx } = await import(tsxApiUrl);
@@ -126,14 +135,10 @@ async function createFixture(t, activeScenario, resultMetrics) {
   const foreignDirectory = path.join(root, "foreign");
   await Promise.all([
     mkdir(path.dirname(workspacePath), { recursive: true }),
-    mkdir(path.dirname(foreignWorkspacePath), { recursive: true }),
     mkdir(registryDirectory, { recursive: true }),
     mkdir(nativeStorageRoot, { recursive: true }),
     mkdir(noHooks, { recursive: true }),
     mkdir(foreignDirectory, { recursive: true }),
-    mkdir(profileRoot, { recursive: true }),
-    mkdir(home, { recursive: true }),
-    mkdir(temp, { recursive: true }),
   ]);
   await initializeGitFixture(root, noHooks, workspacePath);
   await initializeGitFixture(root, noHooks, foreignWorkspacePath);
@@ -868,4 +873,27 @@ async function waitFor(predicate, timeoutMs = 5000) {
     if (Date.now() >= deadline) throw new Error("Timed out waiting for the Native integration fixture");
     await new Promise((resolve) => setTimeout(resolve, 10));
   }
+}
+
+async function assertPhysicalDirectory(directory, containmentRoot) {
+  const resolved = path.resolve(directory);
+  const details = await lstat(resolved);
+  assert.ok(details.isDirectory() && !details.isSymbolicLink(),
+    `${resolved} must be a physical directory, not a link or junction`);
+  const physical = path.resolve(await realpath(resolved));
+  assert.equal(pathKey(physical), pathKey(resolved), `${resolved} resolves through a link, junction, or alias`);
+  if (containmentRoot !== undefined) {
+    assert.ok(isWithin(containmentRoot, physical), `${physical} escaped owned root ${containmentRoot}`);
+  }
+  return physical;
+}
+
+function isWithin(root, candidate) {
+  const relative = path.relative(pathKey(root), pathKey(candidate));
+  return relative === "" || (relative !== ".." && !relative.startsWith(`..${path.sep}`) && !path.isAbsolute(relative));
+}
+
+function pathKey(value) {
+  const resolved = path.resolve(value);
+  return process.platform === "win32" ? resolved.toLowerCase() : resolved;
 }

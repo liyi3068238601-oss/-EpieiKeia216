@@ -142,6 +142,22 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
   assert.equal(nodeVersion, "v24.14.0");
   const base = await buildDesktop(physicalSource, destination);
   const assemblyRoot = base.assemblyRoot;
+  const upstreamNoticeSourcePath = path.join(physicalSource, "NOTICE.md");
+  const upstreamNoticeCopyPath = path.join(assemblyRoot, "UPSTREAM-NOTICE.md");
+  const upstreamNoticeSourceBytes = await readFile(upstreamNoticeSourcePath);
+  const pinnedUpstreamNoticeBytes = execFileSync("git", ["-C", physicalSource, "show", `${SOURCE_PIN}:NOTICE.md`]);
+  assert.deepEqual(upstreamNoticeSourceBytes, pinnedUpstreamNoticeBytes,
+    "The Native root notice must match its pinned tracked bytes");
+  await cp(upstreamNoticeSourcePath, upstreamNoticeCopyPath, { errorOnExist: true });
+  const upstreamNoticeCopyBytes = await readFile(upstreamNoticeCopyPath);
+  assert.deepEqual(upstreamNoticeCopyBytes, upstreamNoticeSourceBytes,
+    "The candidate notice must preserve the pinned Native root notice byte-for-byte");
+  const upstreamNotice = {
+    source: { path: upstreamNoticeSourcePath, bytes: upstreamNoticeSourceBytes.byteLength,
+      sha256: digest(upstreamNoticeSourceBytes) },
+    copy: { path: path.relative(assemblyRoot, upstreamNoticeCopyPath).replaceAll("\\", "/"),
+      bytes: upstreamNoticeCopyBytes.byteLength, sha256: digest(upstreamNoticeCopyBytes) },
+  };
   const resources = path.join(assemblyRoot, "xiadie");
   await mkdir(resources);
   for (const name of ["dist", "assets", "plugins"]) {
@@ -292,6 +308,8 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
     "Repository inputs changed while building the candidate");
   const artifacts = await bindTree(assemblyRoot);
   const artifactByPath = new Map(artifacts.map((artifact) => [artifact.path, artifact]));
+  assert.deepEqual(artifactByPath.get(upstreamNotice.copy.path), upstreamNotice.copy,
+    "The owned Native notice copy must be bound in the candidate artifact closure");
   for (const file of betterSqlite.closedFiles) assert.deepEqual(artifactByPath.get(file.path), file,
     `Owned SQLite package file must be present in the full artifact closure: ${file.path}`);
   const betterSqlitePackagePrefix = path.relative(assemblyRoot, betterSqlite.packageRoot).replaceAll("\\", "/");
@@ -321,6 +339,7 @@ export async function buildCandidate({ source = DEFAULT_SOURCE, destination }) {
     deniedModel: "deepseek-v4-pro",
     protocolPatch: patchBinding,
     providerConfig: { source: await binding(providerSource), recipe: await binding(providerStagingFile), environment: provider.environment },
+    upstreamNotice,
     invocationContext: await binding(targetInvocation),
     invocationContextModuleCount: invocationInputs.length,
     sqliteRuntime: {

@@ -168,6 +168,27 @@ def main() -> int:
     def load_harness():
         harness = original_loader()
         relay_module.configure(harness)
+        harness.ALLOWED_DESCRIPTOR_KEYS = harness.ALLOWED_DESCRIPTOR_KEYS | {"upstreamNotice"}
+        original_verify = harness.verify_candidate
+
+        def verify_candidate(candidate_arg):
+            verified = original_verify(candidate_arg)
+            paths = verified["resolved_paths"]
+            assembly = Path(paths["assemblyRoot"])
+            descriptor = json.loads((assembly / "candidate-descriptor.json").read_bytes())
+            notice = descriptor.get("upstreamNotice")
+            source = Path(paths["sourceRoot"]) / "NOTICE.md"
+            copy = assembly / "UPSTREAM-NOTICE.md"
+            expected_copy = {**binding(copy), "path": "UPSTREAM-NOTICE.md"}
+            if (not isinstance(notice, dict) or set(notice) != {"source", "copy"} or
+                    notice["source"] != binding(source) or notice["copy"] != expected_copy or
+                    copy.read_bytes() != source.read_bytes() or
+                    expected_copy not in descriptor["artifacts"]):
+                raise harness.HarnessError("p03_upstream_notice_binding_invalid")
+            verified["p03_upstream_notice"] = notice
+            return verified
+
+        harness.verify_candidate = verify_candidate
         original_prompt = harness.scenario_prompt
         harness.scenario_prompt = lambda scenario: {
             "read_success": "请用 Read 读取本轮允许的项目记忆主题，并告诉我标记。",
