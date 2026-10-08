@@ -1,0 +1,46 @@
+{
+  "schema": "p03-u04-dependency-install/v1",
+  "installer": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\corepack\\v1\\pnpm\\10.33.2\\bin\\pnpm.cjs",
+    "bytes": 1102,
+    "sha256": "b276da51dc8ca5b0d3ee3371695b50fc8b3244b281b091c63a3f082a88dadeb9"
+  },
+  "node": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "bytes": 91380224,
+    "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+  },
+  "lock": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04\\pnpm-lock.yaml",
+    "bytes": 2329,
+    "sha256": "2ace4bdf2714345dc24fa84b7f9f0003c4650d018cfe5b51b35d297c0c4f6e2b"
+  },
+  "source_binary": {
+    "path": "E:\\Xiadie\\Xiadie\\node_modules\\.pnpm\\better-sqlite3@13.0.3\\node_modules\\better-sqlite3\\prebuilds\\win32-x64.node",
+    "bytes": 1989632,
+    "sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a"
+  },
+  "local_binary": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04\\node_modules\\.pnpm\\better-sqlite3@13.0.3\\node_modules\\better-sqlite3\\prebuilds\\win32-x64.node",
+    "bytes": 1989632,
+    "sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a"
+  },
+  "method": "Fresh isolated pnpm install, dependency scripts disabled; bundled better-sqlite3 13.0.3 win32-x64 N-API addon matches the accepted dependency. No copying/rebuilding or shared node_modules mutation.",
+  "sqlite_smoke": {
+    "argv": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "--input-type=module",
+      "-e",
+      "import Database from 'better-sqlite3'; const db=new Database(':memory:'); console.log(JSON.stringify(db.prepare('SELECT sqlite_version() AS version').get())); db.close();"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04",
+    "exit_code": 0,
+    "stdout": "{\"version\":\"3.53.4\"}\n",
+    "stderr": ""
+  },
+  "packages": [
+    "13.0.3",
+    "16.4.2",
+    "2.9.0"
+  ]
+}

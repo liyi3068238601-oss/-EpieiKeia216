@@ -30,13 +30,20 @@ async function main() {
   const { loadCharacter } = await import(loaderUrl.href);
   const { buildContextPacket, renderContextPacket } = await import(contextUrl.href);
   const character = loadCharacter(assetRoot);
+  const projectMemoryData = process.env.XIA_DIE_PROJECT_MEMORY_DATA === undefined
+    ? { state: [], evidence: [], content: [] }
+    : JSON.parse(process.env.XIA_DIE_PROJECT_MEMORY_DATA);
+  if (projectMemoryData === null || typeof projectMemoryData !== "object" ||
+      Object.keys(projectMemoryData).sort().join(",") !== "content,evidence,state") {
+    throw new Error("Project memory Hook data must contain exactly three data partitions");
+  }
   const packet = buildContextPacket(character, {
     scope: `zcode-session:${sessionId}`,
     version: `u06-turn:${nonce}`,
     max_tokens: 12_000,
-    state: [{ source_refs: ["trusted-host:per-turn-nonce"], value: { kind: "turn-binding", nonce } }],
-    evidence: [],
-    content: [],
+    state: [{ source_refs: ["trusted-host:per-turn-nonce"], value: { kind: "turn-binding", nonce } }, ...projectMemoryData.state],
+    evidence: projectMemoryData.evidence,
+    content: projectMemoryData.content,
   });
   const additionalContext = renderContextPacket(packet);
   const transcript = readBoundedTranscript(transcriptPath);

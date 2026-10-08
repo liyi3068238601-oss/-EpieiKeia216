@@ -1,0 +1,335 @@
+{
+  "schema": "p03-u04-source-adoption/v1",
+  "task": "P03-U04",
+  "attempt_id": "20261008-01",
+  "author_status": "ready_for_review",
+  "independent_acceptance": "pending",
+  "baseline": {
+    "commit": "4c5cbda3395cb2e89065fabec75d1d4437e079fe",
+    "branch": "p03-u04",
+    "baseline_record": {
+      "path": "evidence/P03-U04/20261008-01/baseline.json",
+      "sha256": "53ab292bdf152d9ee8c586bc21db7d1882f1961ed9511050550b1d78b1260185"
+    },
+    "prerequisite": {
+      "task": "P03-U03",
+      "status": "accepted",
+      "commit": "author2530a94",
+      "acceptance_path": "evidence/P03-U03/20261008-01/acceptance.json",
+      "acceptance_sha256": "7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37"
+    }
+  },
+  "scope": {
+    "mapping_path": "evidence/P03-U04/20261008-01/scope-remap.md",
+    "mapping_sha256": "8b950c8741a300e3bdabd269477f7a2a5dcf641aecc615a0cdae389bdef85e5c",
+    "source_layout": "The card's packages/adapters/zcode/project-memory.ts target maps to the existing packages/adapters/zcode/src/project-memory.ts layout.",
+    "additional_seams": [
+      {
+        "path": "packages/adapters/zcode/src/host.ts",
+        "reason": "The accepted U02 seam requires one bounded synchronous provider capture per admitted turn, ticket-owned snapshot lifetime, and receipt-correlated Read. When enabled, Host requires projectMemory plus projectMemoryReadPort, wraps the Native FileSystemPort before Native app creation, and verifies the snapshot project_id matches the port project."
+      },
+      {
+        "path": "plugins/xiadie/hooks/context.mjs",
+        "reason": "The actual Hook rebuilds the per-turn packet from trusted ticket data while preserving nonce, session, transcript, and receipt checks."
+      },
+      {
+        "path": "packages/adapters/zcode/src/project-memory-port.ts",
+        "reason": "Pinned Native Read can return file_unchanged from its session cache after stat if mtime and size match, bypassing range and Host source revalidation. This narrow port supplies a per-Read span revision and routes selected-memory stat/range through the current receipt-bound Host reader; unit-02 verifies automatic createNativeApp FileSystemPort wiring with a synthetic Native factory and delegate."
+      },
+      {
+        "path": "package.json, pnpm-lock.yaml, docs/licenses/",
+        "reason": "The accepted U02 parser probe found Marked and YAML unavailable in Xiadie; exact direct dependencies and retained licenses avoid handwritten Markdown/YAML parsers and absolute imports from reference checkouts."
+      }
+    ],
+    "boundary": "The actual Host automatically passes the decorated Native FileSystemPort at createNativeApp when enabled with matching projectMemory and projectMemoryReadPort. Unit-02 exercises this through a synthetic Native factory and FileSystem delegate, checks snapshot/project identity and live receipt correlation, and runs the installed Hook source in a fixed-Node child process. The Native core itself was not loaded; independent Native Read integration remains NOT_RUN for U09."
+  },
+  "adopted_sources": [
+    {
+      "name": "marked",
+      "version": "16.4.2",
+      "license": "MIT",
+      "package_specifier": "16.4.2",
+      "lock_integrity": "sha512-TI3V8YYWvkVf3KJe1dRkpnjs68JUPyEa5vjKrp1XEEJUAOaQc+Qj+L1qWbPd0SJuAdQkFU0h73sXXqwDYxsiDA==",
+      "used_apis": [
+        "Lexer.lex",
+        "walkTokens"
+      ],
+      "local_pinned_files": [
+        {
+          "path": "node_modules/marked/package.json",
+          "bytes": 3398,
+          "sha256": "78e27dac3c5de404026c6f703b8c0adf1900f9067c8bd16fa83b058f0fb34aa9"
+        },
+        {
+          "path": "node_modules/marked/lib/marked.esm.js",
+          "bytes": 40163,
+          "sha256": "6540aa2544be84b3abdd9424fa287120e9ed7c7600512dd92c097493121a5951"
+        },
+        {
+          "path": "node_modules/marked/lib/marked.d.ts",
+          "bytes": 25654,
+          "sha256": "7dcb8433fd192c5f9612bd13252c5390b25417e22d6a7c18039976b24603331e"
+        },
+        {
+          "path": "node_modules/marked/LICENSE.md",
+          "bytes": 2942,
+          "sha256": "8e3a3f82f59a60958f56ca08f445647c32a4733dc7ca6c2c46f6eb898471ab9c"
+        }
+      ],
+      "retained_license": {
+        "path": "docs/licenses/marked-LICENSE.txt",
+        "bytes": 2942,
+        "sha256": "8e3a3f82f59a60958f56ca08f445647c32a4733dc7ca6c2c46f6eb898471ab9c"
+      }
+    },
+    {
+      "name": "yaml",
+      "version": "2.9.0",
+      "license": "ISC",
+      "package_specifier": "2.9.0",
+      "lock_integrity": "sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==",
+      "used_apis": [
+        "parseDocument",
+        "visit",
+        "isAlias",
+        "Document.toJS({maxAliasCount:0})"
+      ],
+      "local_pinned_files": [
+        {
+          "path": "node_modules/yaml/package.json",
+          "bytes": 3254,
+          "sha256": "20b8b197cbd10dad245d45e463dfe58e4c8c25a47e24bc4256ad9ab58bf35683"
+        },
+        {
+          "path": "node_modules/yaml/dist/index.js",
+          "bytes": 1769,
+          "sha256": "2d58984e0ae80de4acbd8f009fab332f5ce77d9e1a5f138a3058a0ada6567fb9"
+        },
+        {
+          "path": "node_modules/yaml/dist/public-api.js",
+          "bytes": 4187,
+          "sha256": "9b318ac7b3a3751127c74f59dd1dd209230a70ca116000348b82faae189f72f0"
+        },
+        {
+          "path": "node_modules/yaml/dist/visit.js",
+          "bytes": 9253,
+          "sha256": "a757e3b924af184b25e2386d1678b1fe341805a516ebf9bccee219b47aebd5e7"
+        },
+        {
+          "path": "node_modules/yaml/dist/nodes/identity.js",
+          "bytes": 1794,
+          "sha256": "1a7cb042ae725ff68d05dc503efbbecbe65281f18b23dfc23f12d1749a440cfe"
+        },
+        {
+          "path": "node_modules/yaml/dist/index.d.ts",
+          "bytes": 1394,
+          "sha256": "9f85a1810d42f75e1abb4fc94be585aae1fdac8ae752c76b912d95aef61bf5de"
+        },
+        {
+          "path": "node_modules/yaml/dist/visit.d.ts",
+          "bytes": 5048,
+          "sha256": "e39090ffe9c45c59082c3746e2aa2546dc53e3c5eeb4ad83f8210be7e2e58022"
+        },
+        {
+          "path": "node_modules/yaml/dist/nodes/identity.d.ts",
+          "bytes": 1379,
+          "sha256": "a00362ee43d422bcd8239110b8b5da39f1122651a1809be83a518b1298fa6af8"
+        },
+        {
+          "path": "node_modules/yaml/LICENSE",
+          "bytes": 738,
+          "sha256": "5bba27375d93e9119f76c1015f7672cf9ad5f70952296e0842fb2243d6376869"
+        }
+      ],
+      "retained_license": {
+        "path": "docs/licenses/yaml-LICENSE.txt",
+        "bytes": 738,
+        "sha256": "5bba27375d93e9119f76c1015f7672cf9ad5f70952296e0842fb2243d6376869"
+      }
+    },
+    {
+      "name": "accepted P03-U03 ProjectRegistry",
+      "version": "accepted source at U04 baseline",
+      "path": "packages/projects/registry.ts",
+      "bytes": 20906,
+      "sha256": "e77c8ecd0c2e2ea08abca01f750e1c0839b937de5aa9a5a14b0358949d90304a",
+      "used_apis": [
+        "ProjectRegistry.resolveWorkspace",
+        "isTrustedProjectMapping"
+      ],
+      "reuse": "Read-only re-resolution and runtime brand; no registry/key algorithm copied into the reader."
+    },
+    {
+      "name": "accepted U02 Marked/YAML parser contract probe",
+      "path": "evidence/P03-U02/20261008-01/topology-service/parser-result.json",
+      "sha256": "2ddad5c1a95adfd89ad5d8e6ff95c86902a86451fa5f0a48a55bec38626c50ef",
+      "source_manifest_sha256": "684d3046dcda8792a5fac944367f78871d4388fced7a7eed8ef8c36889a189f8",
+      "result": "Eight API assertions passed; U02 probe selected exact pinned package versions, but was not itself the U04 reader or Host integration."
+    },
+    {
+      "name": "Pinned ZCode Native Read contract source",
+      "repository": "https://github.com/zai-org/ZCode.git",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "license": "Apache-2.0",
+      "inspection_record": {
+        "path": ".runtime/P03/reviews/u04-20261008/u04-native-read-bridge-precheck.md",
+        "sha256": "17db72409249ef96b67d9ff3e9bac7ba153c4bf3a32f221490ac1837ecfb251c"
+      },
+      "local_pinned_files": [
+        {
+          "path": "apps/zcode-cli/packages/core/src/tool/handlers/read.ts",
+          "sha256": "d3cebd63754aa4753832a1ab78d43ee3c8c00ce452972ebce2e24e1b81fa3712"
+        },
+        {
+          "path": "apps/zcode-cli/packages/core/src/tool/handlers/read-text.ts",
+          "sha256": "7604d873c456a6101c7d21c44597b912e2870d5bde258de977fee18e21310f88"
+        },
+        {
+          "path": "apps/zcode-cli/packages/contracts/src/interfaces/file-system.port.ts",
+          "sha256": "e0a511572634c5291ff9f86c27339dc4a4e71676e388147a22259c7c64fa2fe3"
+        },
+        {
+          "path": "apps/zcode-cli/packages/contracts/src/tracing/tracer.ts",
+          "sha256": "289402aa914dcd545718f92ccd90aebfb78d2429c72829561c31685bd6bdb1a5"
+        },
+        {
+          "path": "apps/zcode-cli/packages/adapters/src/fs/index.ts",
+          "sha256": "83292fa1b0aa694ebee411b11c06ddc541810e99f48ca6e72f04e27865524acb9"
+        },
+        {
+          "path": "apps/zcode-cli/packages/adapters/src/fs/text-range-reader.ts",
+          "bytes": 7251,
+          "sha256": "5d1ecd8a0f7d4e57aec85977ef32863fa2c4bac9d0fbc3b9e5e0377add676db4"
+        }
+      ],
+      "reuse": "Contract shape and observed stat-cache bypass inform the narrow adapter port; unit-02 checks automatic createNativeApp wiring with a synthetic Native factory and FileSystem delegate. No Native core Read was run."
+    }
+  ],
+  "dependency_install": {
+    "package_manager": "pnpm 10.33.2",
+    "package_json": {
+      "sha256": "411cdc989c38d4dbf63f6b3f99bdc3fc23a24c5d8a1dfe34e7ca08456b546a76",
+      "direct_dependencies": {
+        "marked": "16.4.2",
+        "yaml": "2.9.0"
+      }
+    },
+    "lockfile": {
+      "path": "pnpm-lock.yaml",
+      "bytes": 2329,
+      "sha256": "2ace4bdf2714345dc24fa84b7f9f0003c4650d018cfe5b51b35d297c0c4f6e2b"
+    },
+    "attempts": [
+      {
+        "record": "evidence/P03-U04/20261008-01/dependency-install-command.json",
+        "sha256": "e2ca745ea28739d59f37aac3a5652deef2a95d0c26213ff3d77dd0782344d0a1",
+        "exit_code": 1,
+        "failure": "ERR_PNPM_OUTDATED_LOCKFILE because the package manifest had gained marked@16.4.2 and yaml@2.9.0 before the lockfile was regenerated."
+      },
+      {
+        "record": "evidence/P03-U04/20261008-01/dependency-install-02-command.json",
+        "sha256": "88255267dc5ceffbc6c50c0154d9c8b271880c12ef5985e327d44bc69303b964",
+        "exit_code": 1,
+        "failure": "The no-frozen-lockfile pnpm install itself exited 0, but the coordinator then tried to copy a missing better_sqlite3.node from build/Release; the installed package supplied its win32-x64 N-API prebuild under prebuilds/."
+      },
+      {
+        "record": "evidence/P03-U04/20261008-01/dependency-install-03-command.json",
+        "sha256": "8431324bbf4525df2e1981b1f964247ee433f098843e514fb15301ccc1c96590",
+        "exit_code": 0,
+        "method": "Fresh isolated frozen-lockfile install with package scripts disabled."
+      }
+    ],
+    "successful_install_record": {
+      "path": "evidence/P03-U04/20261008-01/dependency-install.json",
+      "sha256": "726d8d80578d2438a9f6e088ebd96f3790fc6f2181fb44e614d3fd3cf17256e9",
+      "better_sqlite3_prebuild_source_and_local_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+      "sqlite_smoke_exit_code": 0
+    }
+  },
+  "commands": {
+    "baseline": {
+      "path": "evidence/P03-U04/20261008-01/baseline.json",
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04"
+    },
+    "build": {
+      "record": "evidence/P03-U04/20261008-01/build-04-command.json",
+      "sha256": "de07eb7aed9c77d8dda7e3f82f848aaa8413adb99454e3000f584607764b4e9e3",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04\\node_modules\\typescript\\bin\\tsc",
+        "--project",
+        "tsconfig.json"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04",
+      "started_at": "2026-10-08T10:38:19.565398+00:00",
+      "completed_at": "2026-10-08T10:38:22.031907+00:00",
+      "exit_code": 0
+    },
+    "contract": {
+      "record": "evidence/P03-U04/20261008-01/contract-command.json",
+      "sha256": "da7b5c535f065ac9723ebb309759d296102aeafefec2da827cef6f906d88e6d3",
+      "argv": [
+        "E:/Xiadie/Xiadie/.runtime/P01/desktop-build-evidence/toolchain/node-v24.14.0-win-x64/node.exe",
+        "tools/run-tests.mjs",
+        "contract",
+        "P01-U06"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04",
+      "exit_code": 0,
+      "observed": "Two existing P01-U06 contract tests passed; this is not a Native Read or U04 end-to-end test."
+    },
+    "unit": {
+      "record": "evidence/P03-U04/20261008-01/unit-02-command.json",
+      "sha256": "a5846b74750fb3a65c1eb7829d46d9d30d5434b6a10b568c359d9755d12d4010",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tools/run-tests.mjs",
+        "unit",
+        "P03-U04"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04",
+      "started_at": "2026-10-08T10:41:49.406570+00:00",
+      "completed_at": "2026-10-08T10:42:31.000119+00:00",
+      "exit_code": 0,
+      "selected_files": [
+        "packages/adapters/zcode/test/project-memory.test.mjs",
+        "packages/adapters/zcode/test/project-memory-host.test.mjs",
+        "packages/adapters/zcode/test/host.test.mjs",
+        "packages/adapters/zcode/test/transcript-host.test.mjs"
+      ],
+      "stdout_summary_blocks": [
+        {
+          "tests": 43,
+          "pass": 43,
+          "fail": 0
+        },
+        {
+          "tests": 21,
+          "pass": 21,
+          "fail": 0
+        }
+      ]
+    },
+    "preliminary_unit": {
+      "record": "evidence/P03-U04/20261008-01/unit-command.json",
+      "sha256": "18d2382ab21938bbf4262662b021ba668dde69e9feee3bb7f1452ad79770a082",
+      "exit_code": 0,
+      "note": "The first passing run used a direct synthetic FileSystem delegate and did not prove automatic createNativeApp wiring. Its original command/output remains preserved."
+    }
+  },
+  "test_boundary": {
+    "host_hook": "Actual Host with synthetic Git/memory fixtures; installed Hook source executed in a child process under fixed P01 Node. Native app/provider and model were fake; no real model was entered.",
+    "native_read_port": "Unit-02 exercised automatic createNativeApp FileSystemPort decoration with a synthetic Native factory and FileSystem delegate, selected-memory stat/range, live receipt correlation, workspace delegation, missing binding rejection, and cross-project snapshot rejection.",
+    "first_unit_run": "The recorded unit-01 command exited 0 but only exercised the port directly with a synthetic delegate; it did not prove automatic createNativeApp wiring. This preliminary run is retained as history.",
+    "final_validation": "PASS: build-04 and formal unit-02 exited 0. The Native core itself was not loaded; independent Native Read integration remains NOT_RUN for U09.",
+    "native_core_read": "NOT_RUN; independent end-to-end Native Read remains for U09.",
+    "real_model": "NOT_RUN",
+    "boundary_check": "NOT_RUN; no boundary-check command is present in the recorded U04 command set."
+  },
+  "limitations": [
+    "The selected-topic/index and parser byte/depth bounds are finite; oversized packet composition fails closed under the Host's 12000-byte UTF-8 upper bound rather than truncating.",
+    "Stable-handle and final hash checks detect observed changes but do not claim a filesystem-wide atomic snapshot against all concurrent writers.",
+    "General filesystem write sandboxing is not implemented or claimed by U04; U07 owns the broader handoff/reviewer write boundary.",
+    "Native Read end-to-end and real model behavior remain NOT_RUN."
+  ]
+}

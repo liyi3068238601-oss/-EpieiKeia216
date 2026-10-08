@@ -1,0 +1,63 @@
+{
+  "task": "P03-U04",
+  "attempt_id": "20261008-01",
+  "author_status": "ready_for_review",
+  "independent_acceptance": "pending",
+  "baseline_commit": "4c5cbda3395cb2e89065fabec75d1d4437e079fe",
+  "implementation": {
+    "reader": "Bounded synchronous raw-byte reader; immutable branded snapshots; exact project/workspace re-resolution; fatal UTF-8; bounded YAML frontmatter; Marked body-link authorization; explicit present/absent/unreadable/corrupt states.",
+    "packet_data": "Index and selected topic values include project_id and the capture-wide sampled_at; topic values include source_hash and experience-lead authority.",
+    "packet_budget": "Host composition enforces the 12000-byte UTF-8 upper bound and fails closed without truncation.",
+    "native_read_port": "When enabled with projectMemory and projectMemoryReadPort, Host automatically wraps Native FileSystemPort before createNativeApp, revalidates selected spans through the current receipt-bound reader, checks workspace and snapshot project identity, and delegates workspace files to Native FS.",
+    "native_source_binding": {
+      "repository_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "path": "apps/zcode-cli/packages/adapters/src/fs/text-range-reader.ts",
+      "bytes": 7251,
+      "sha256": "5d1ecd8a0f7d4e57aec85977ef32863fa2c4bac9d0fbc3b9e5e0377add676db4"
+    },
+    "parser_dependencies": [
+      { "name": "marked", "version": "16.4.2", "license": "MIT" },
+      { "name": "yaml", "version": "2.9.0", "license": "ISC" }
+    ]
+  },
+  "checks": {
+    "typescript_build": "pass: final build-04-command.json exit 0",
+    "contract_command": "pass: two existing P01-U06 checks; not U04 Native Read integration",
+    "unit_command": {
+      "status": "pass",
+      "record": "unit-02-command.json",
+      "exit_code": 0,
+      "stdout_summary_blocks": [
+        { "tests": 43, "pass": 43, "fail": 0 },
+        { "tests": 21, "pass": 21, "fail": 0 }
+      ],
+      "execution_boundary": "Actual Host with synthetic Git/memory fixtures; installed Hook source in a child process under fixed P01 Node; fake Native app/provider and model; synthetic FileSystem delegate for the Read bridge.",
+      "coverage": "Automatic createNativeApp FileSystemPort wiring, live receipt binding, missing-binding rejection, workspace delegation and cross-project snapshot rejection exercised through the synthetic Native factory."
+    },
+    "preliminary_unit_command": {
+      "status": "pass_but_wiring_gap",
+      "record": "unit-command.json",
+      "sha256": "18d2382ab21938bbf4262662b021ba668dde69e9feee3bb7f1452ad79770a082",
+      "note": "The bridge was exercised directly with a synthetic delegate; this did not prove automatic createNativeApp wiring. Retained as preliminary history."
+    },
+    "native_core_read": "NOT_RUN; independent actual Native Read integration belongs to U09",
+    "real_model": "NOT_RUN",
+    "boundary_check": "NOT_RUN; do not treat as pass"
+  },
+  "commands": [
+    { "path": "build-04-command.json", "bytes": 534, "sha256": "de07eb7aed9c77d8dda7e3f82f848aaa8413adb99454e3000f584607764b4e9e3" },
+    { "path": "build-03-command.json", "bytes": 534, "sha256": "aa0a5502655f58fb0184a2c045f69f33232a0c7ce07f7b0e39e153fba2ab9303" },
+    { "path": "contract-command.json", "bytes": 787, "sha256": "da7b5c535f065ac9723ebb309759d296102aeafefec2da827cef6f906d88e6d3" },
+    { "path": "unit-02-command.json", "bytes": 6101, "sha256": "a5846b74750fb3a65c1eb7829d46d9d30d5434b6a10b568c359d9755d12d4010" },
+    { "path": "unit-command.json", "bytes": 5872, "sha256": "18d2382ab21938bbf4262662b021ba668dde69e9feee3bb7f1452ad79770a082" },
+    { "path": "dependency-install-command.json", "bytes": 1687, "sha256": "e2ca745ea28739d59f37aac3a5652deef2a95d0c26213ff3d77dd0782344d0a1", "exit_code": 1 },
+    { "path": "dependency-install-02-command.json", "bytes": 2370, "sha256": "88255267dc5ceffbc6c50c0154d9c8b271880c12ef5985e327d44bc69303b964", "exit_code": 1 },
+    { "path": "dependency-install-03-command.json", "bytes": 3497, "sha256": "8431324bbf4525df2e1981b1f964247ee433f098843e514fb15301ccc1c96590", "exit_code": 0 }
+  ],
+  "limitations": [
+    "U04 validates the Native FileSystemPort bridge with a synthetic Native factory and delegate; the Native core actual Read integration remains NOT_RUN for U09.",
+    "No filesystem-wide atomic snapshot guarantee against all concurrent writers.",
+    "General filesystem write sandboxing is not implemented or claimed; U07 owns that boundary.",
+    "No Native core Read or real-model run; both remain NOT_RUN."
+  ]
+}
