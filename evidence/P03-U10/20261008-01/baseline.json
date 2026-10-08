@@ -1,0 +1,35 @@
+{
+  "schema": "p03-unit-baseline/v1",
+  "task": "P03-U10",
+  "baseline_commit": "f9b0a9d0d0df784daf601c717ea0f87b5a85c0f3",
+  "branch": "p03-u10",
+  "coordinator_branch": "p03-stage",
+  "prerequisites": [
+    {
+      "task": "P03-U09",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U09/20261008-01/acceptance.json",
+        "bytes": 3424,
+        "sha256": "de871569a8f714e08e67d2198f27bd13a76f81f7a1300867755e802c5aee0b90"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P03-U10.md",
+    "bytes": 3000,
+    "sha256": "46b4243d6f67d2965e492a0db3a2ea192208dee09baa0323d9ba92368a9cc4d7"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "docs/releases/0.3.0/",
+    "evidence/P03-U10/20261008-01/"
+  ],
+  "test_mapping": "tests/integration/P03/desktop.py actual fresh full + degradation; exact freeze/input/plan binding",
+  "author_status": "running",
+  "checked_at_utc": "2026-10-08T14:51:21.340971+00:00"
+}
