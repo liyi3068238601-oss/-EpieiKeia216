@@ -1,0 +1,51 @@
+{
+  "schema": "p03-unit-baseline/v1",
+  "task": "P03-U01",
+  "baseline_commit": "ecc2aa40c92b4474a12c455ecb0460d47430ca5f",
+  "branch": "p03-u01",
+  "coordinator_branch": "p03-stage",
+  "prerequisites": [
+    {
+      "task": "P02-U11",
+      "status": "accepted",
+      "G02": "pass",
+      "acceptance": {
+        "path": "evidence/P02-U11/20261004-02/acceptance.json",
+        "bytes": 5963,
+        "sha256": "50e2df900bdecf891a2ddbe94934409a4e5491769144e52c188e2e3545550fd5"
+      },
+      "review": {
+        "path": "evidence/P02-U11/20261004-02/review-final.json",
+        "bytes": 24062,
+        "sha256": "a9c6d25ed25f8173f5fa3065e46342b0010c6b038dcc76c346c9c94695638ae3"
+      },
+      "completion_audit": {
+        "path": "evidence/P02-completion/20261004-03/entry.json",
+        "bytes": 8499,
+        "sha256": "f282f2ec107a9da4cddabc725dd0e9f379e6a58aded53111abd29a12d56c2892"
+      },
+      "stage_entry": {
+        "path": "evidence/P03/entry.json",
+        "bytes": 2104,
+        "sha256": "4a565f66cb9975f1f36edcd23f7a5cba01f3893ada8d8e689d0a28b6ee4aa461"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P03-U01.md",
+    "bytes": 3110,
+    "sha256": "481ad4396712dc964ab278d85518dd6ece49201bc9fdff18c5e19332e320c682"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "docs/research/P03",
+    "evidence/P03-U01/20261004-01"
+  ],
+  "test_mapping": "NOT_RUN: research-only; no product test mapping",
+  "author_status": "ready_for_review",
+  "checked_at_utc": "2026-10-04T13:11:00.861049+00:00"
+}

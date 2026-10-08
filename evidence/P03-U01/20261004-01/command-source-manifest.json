@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\evidence\\P03-U01\\20261004-01\\source-manifest.ps1"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01",
+  "started_at": "2026-10-04T13:19:29.258687+00:00",
+  "completed_at": "2026-10-04T13:19:29.775279+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "Get-FileHash : The term 'Get-FileHash' is not recognized as the name of a cmdlet, function, script file, or operable pr\r\nogram. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.\r\nAt E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\evidence\\P03-U01\\20261004-01\\source-manifest.ps1:41 char:124\r\n+ ... ce '\\\\','/')); bytes=[long]$item.Length; sha256=(Get-FileHash -Algori ...\r\n+                                                      ~~~~~~~~~~~~\r\n    + CategoryInfo          : ObjectNotFound: (Get-FileHash:String) [], ParentContainsErrorRecordException\r\n    + FullyQualifiedErrorId : CommandNotFoundException\r\n \r\n"
+}

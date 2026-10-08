@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\evidence\\P03-U01\\20261004-01\\helper-cli-inventory.ps1"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01",
+  "started_at": "2026-10-04T13:19:21.312541+00:00",
+  "completed_at": "2026-10-04T13:19:22.179539+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "argv=py -3 E:\\Xiadie\\Xiadie\\.runtime\\P03\\coord\\baseline-unit.py --help\r\nusage: baseline-unit.py [-h] [--scope SCOPE] --test-mapping TEST_MAPPING\r\n                        [--attempt ATTEMPT]\r\n                        task worktree baseline\r\n\r\npositional arguments:\r\n  task\r\n  worktree\r\n  baseline\r\n\r\noptions:\r\n  -h, --help            show this help message and exit\r\n  --scope SCOPE\r\n  --test-mapping TEST_MAPPING\r\n  --attempt ATTEMPT\r\nexit_code=0\r\nargv=py -3 E:\\Xiadie\\Xiadie\\.runtime\\P03\\coord\\run-command.py --help\r\nusage: run-command.py [-h] --cwd CWD --output OUTPUT [--env ENV]\r\n                      [--timeout TIMEOUT] [--compact]\r\n                      ...\r\n\r\npositional arguments:\r\n  command\r\n\r\noptions:\r\n  -h, --help         show this help message and exit\r\n  --cwd CWD\r\n  --output OUTPUT\r\n  --env ENV\r\n  --timeout TIMEOUT\r\n  --compact          Print only record metadata; full logs remain archived\r\nexit_code=0\r\nargv=py -3 E:\\Xiadie\\Xiadie\\.runtime\\P03\\coord\\freeze-unit.py --help\r\nusage: freeze-unit.py [-h] [--expected-head EXPECTED_HEAD] [--update-manifest]\r\n                      [--attempt ATTEMPT]\r\n                      task baseline worktree scopes [scopes ...]\r\n\r\npositional arguments:\r\n  task\r\n  baseline\r\n  worktree\r\n  scopes\r\n\r\noptions:\r\n  -h, --help            show this help message and exit\r\n  --expected-head EXPECTED_HEAD\r\n  --update-manifest\r\n  --attempt ATTEMPT\r\nexit_code=0\r\nargv=py -3 E:\\Xiadie\\Xiadie\\.runtime\\P03\\coord\\diff-unit.py --help\r\nusage: diff-unit.py [-h] [--filename FILENAME] [--attempt ATTEMPT]\r\n                    task worktree baseline scopes [scopes ...]\r\n\r\npositional arguments:\r\n  task\r\n  worktree\r\n  baseline\r\n  scopes\r\n\r\noptions:\r\n  -h, --help           show this help message and exit\r\n  --filename FILENAME\r\n  --attempt ATTEMPT\r\nexit_code=0\r\nargv=py -3 E:\\Xiadie\\Xiadie\\.runtime\\P03\\coord\\verify-author.py --help\r\nusage: verify-author.py [-h] [--attempt ATTEMPT] [--output OUTPUT]\r\n                        task author baseline worktree\r\n\r\npositional arguments:\r\n  task\r\n  author\r\n  baseline\r\n  worktree\r\n\r\noptions:\r\n  -h, --help         show this help message and exit\r\n  --attempt ATTEMPT\r\n  --output OUTPUT\r\nexit_code=0\r\n",
+  "stderr": ""
+}

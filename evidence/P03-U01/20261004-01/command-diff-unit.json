@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "py",
+    "-3",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\coord\\diff-unit.py",
+    "P03-U01",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01",
+    "ecc2aa40c92b4474a12c455ecb0460d47430ca5f",
+    "docs/research/P03",
+    "evidence/P03-U01/20261004-01"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01",
+  "started_at": "2026-10-04T13:27:39.272939+00:00",
+  "completed_at": "2026-10-04T13:27:39.426664+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "fatal: pathspec 'docs/research/P03' did not match any files\nTraceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P03\\coord\\diff-unit.py\", line 13, in <module>\r\n    subprocess.run(['git', 'add', '--', *a.scopes], cwd=tree, check=True)\r\n  File \"C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\subprocess.py\", line 571, in run\r\n    raise CalledProcessError(retcode, process.args,\r\nsubprocess.CalledProcessError: Command '['git', 'add', '--', 'docs/research/P03', 'evidence/P03-U01/20261004-01']' returned non-zero exit status 128.\r\n"
+}
