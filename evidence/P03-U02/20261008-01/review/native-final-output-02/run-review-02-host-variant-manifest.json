@@ -1,0 +1,268 @@
+{
+  "schema": "p03-u02-host-variant/v1",
+  "inputs": [
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02\\dist\\packages\\adapters\\zcode\\src\\host.js",
+      "bytes": 34472,
+      "sha256": "71c52358d92446bb7cc8b0ce37b7c5f0b696acb2da883a4d2a049e093dd6e570"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02\\plugins\\xiadie\\hooks\\context.mjs",
+      "bytes": 4597,
+      "sha256": "f8d6bd19ab406bc296b6edc3193945f08c687cafd61ca871279042c14e5d966f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\20261008-01\\native-runtime\\run-review-02\\native-variant\\host.mjs",
+      "bytes": 70764,
+      "sha256": "9427a422fcd0123eb0ff715830408a4f183804e5340caa49f40b366c4b25d867"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\20261008-01\\native-runtime\\run-review-02\\native-variant\\context.mjs",
+      "bytes": 5015,
+      "sha256": "51aef7231791b1b3126114997d94c656999adb840e2429a12cfe4fcf9a29d10f"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\20261008-01\\native-runtime\\run-review-02\\native-variant\\host-variant-source.js",
+      "bytes": 35206,
+      "sha256": "623d9a7738e377b5f29aebc11158222ae21f95d1e08a7bd8bc272aebb3a9e60e"
+    }
+  ],
+  "tool": {
+    "name": "esbuild",
+    "version": "0.27.7"
+  },
+  "changes": [
+    "per-admission synchronous trusted data callback",
+    "validated packet data copied to ticket",
+    "trusted bounded Hook environment data",
+    "Hook reassembles same packet with original identity, nonce and transcript receipt checks"
+  ],
+  "limitations": [
+    "Isolated spike only; not production code",
+    "Bundle/import inputs recorded in metafile; actual Native validation belongs to caller"
+  ],
+  "metafile": {
+    "inputs": {
+      "dist/packages/contracts/src/context.js": {
+        "bytes": 117,
+        "imports": [],
+        "format": "esm"
+      },
+      "dist/packages/contracts/src/json-value.js": {
+        "bytes": 2694,
+        "imports": [],
+        "format": "esm"
+      },
+      "dist/packages/character/src/schema.js": {
+        "bytes": 3572,
+        "imports": [
+          {
+            "path": "dist/packages/contracts/src/json-value.js",
+            "kind": "import-statement",
+            "original": "../../contracts/src/json-value.js"
+          }
+        ],
+        "format": "esm"
+      },
+      "dist/packages/character/src/loader.js": {
+        "bytes": 5392,
+        "imports": [
+          {
+            "path": "node:fs",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:path",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:crypto",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "dist/packages/character/src/schema.js",
+            "kind": "import-statement",
+            "original": "./schema.js"
+          }
+        ],
+        "format": "esm"
+      },
+      "dist/packages/context/src/index.js": {
+        "bytes": 10346,
+        "imports": [
+          {
+            "path": "dist/packages/contracts/src/context.js",
+            "kind": "import-statement",
+            "original": "../../contracts/src/context.js"
+          },
+          {
+            "path": "dist/packages/character/src/loader.js",
+            "kind": "import-statement",
+            "original": "../../character/src/loader.js"
+          }
+        ],
+        "format": "esm"
+      },
+      "dist/packages/contracts/src/events.js": {
+        "bytes": 12261,
+        "imports": [
+          {
+            "path": "dist/packages/contracts/src/json-value.js",
+            "kind": "import-statement",
+            "original": "./json-value.js"
+          }
+        ],
+        "format": "esm"
+      },
+      "dist/packages/adapters/zcode/src/transcript.js": {
+        "bytes": 20809,
+        "imports": [
+          {
+            "path": "node:crypto",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:fs",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:path",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "dist/packages/contracts/src/events.js",
+            "kind": "import-statement",
+            "original": "../../../contracts/src/events.js"
+          }
+        ],
+        "format": "esm"
+      },
+      "dist/packages/adapters/zcode/src/p03-host-seam-experiment.js": {
+        "bytes": 35206,
+        "imports": [
+          {
+            "path": "node:crypto",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:fs",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:path",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "dist/packages/context/src/index.js",
+            "kind": "import-statement",
+            "original": "../../../context/src/index.js"
+          },
+          {
+            "path": "dist/packages/character/src/loader.js",
+            "kind": "import-statement",
+            "original": "../../../character/src/loader.js"
+          },
+          {
+            "path": "dist/packages/adapters/zcode/src/transcript.js",
+            "kind": "import-statement",
+            "original": "./transcript.js"
+          }
+        ],
+        "format": "esm"
+      }
+    },
+    "outputs": {
+      "../../experiments/20261008-01/native-runtime/run-review-02/native-variant/host.mjs": {
+        "imports": [
+          {
+            "path": "node:crypto",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:fs",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:path",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:fs",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:path",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:crypto",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:crypto",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:fs",
+            "kind": "import-statement",
+            "external": true
+          },
+          {
+            "path": "node:path",
+            "kind": "import-statement",
+            "external": true
+          }
+        ],
+        "exports": [
+          "createXiadieZCodeApp"
+        ],
+        "entryPoint": "dist/packages/adapters/zcode/src/p03-host-seam-experiment.js",
+        "inputs": {
+          "dist/packages/adapters/zcode/src/p03-host-seam-experiment.js": {
+            "bytesInOutput": 31287
+          },
+          "dist/packages/contracts/src/context.js": {
+            "bytesInOutput": 99
+          },
+          "dist/packages/character/src/loader.js": {
+            "bytesInOutput": 4684
+          },
+          "dist/packages/contracts/src/json-value.js": {
+            "bytesInOutput": 1994
+          },
+          "dist/packages/character/src/schema.js": {
+            "bytesInOutput": 3089
+          },
+          "dist/packages/context/src/index.js": {
+            "bytesInOutput": 9165
+          },
+          "dist/packages/adapters/zcode/src/transcript.js": {
+            "bytesInOutput": 18750
+          },
+          "dist/packages/contracts/src/events.js": {
+            "bytesInOutput": 1134
+          }
+        },
+        "bytes": 70764
+      }
+    }
+  }
+}

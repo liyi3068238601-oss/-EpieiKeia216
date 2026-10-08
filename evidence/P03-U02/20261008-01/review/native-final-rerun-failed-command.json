@@ -1,0 +1,32 @@
+{
+  "schema": "p03-review-command/v1",
+  "executable": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02\\spikes\\P03\\native-memory-runtime.mjs",
+    "run-review-01",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u02-20261008\\native-final-output"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "(node:17200) ExperimentalWarning: SQLite is an experimental feature and might change at any time\r\n(Use `node --trace-warnings ...` to show where the warning was created)\r\nnode:internal/fs/promises:637\r\n  return new FileHandle(await PromisePrototypeThen(\r\n                        ^\r\n\r\nError: ENOENT: no such file or directory, open 'E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02\\.runtime\\P03\\worktrees\\u02\\dist\\packages\\contracts\\src\\context.js'\r\n    at async open (node:internal/fs/promises:637:25)\r\n    at async readFile (node:internal/fs/promises:1269:14)\r\n    at async file:///E:/Xiadie/Xiadie/.runtime/P03/worktrees/u02/spikes/P03/native-memory-runtime.mjs:223:17 {\r\n  errno: -4058,\r\n  code: 'ENOENT',\r\n  syscall: 'open',\r\n  path: 'E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P03\\\\worktrees\\\\u02\\\\.runtime\\\\P03\\\\worktrees\\\\u02\\\\dist\\\\packages\\\\contracts\\\\src\\\\context.js'\r\n}\r\n\r\nNode.js v24.14.0\r\n",
+  "script": {
+    "sha256": "8bae0eed2b3b66bf08fdfe5e1da9cd82f74de63b79b54a33a968125aabf713ad",
+    "bytes": 54667,
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02\\spikes\\P03\\native-memory-runtime.mjs"
+  },
+  "node": {
+    "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+    "bytes": 91380224,
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe"
+  },
+  "stderrArtifact": {
+    "sha256": "ffa5a3725226cfb9136638d2c9a7a45a13ea524138ab6a8c357a06d1a152b245",
+    "bytes": 884,
+    "path": "native-final-rerun.stderr.txt"
+  },
+  "partialEvidenceOutput": "native-final-output",
+  "partialRuntimeRun": ".runtime/P03/experiments/20261008-01/native-runtime/run-review-01",
+  "nativeAssertionsStarted": false,
+  "failureCause": "Wrong cwd for esbuild metafile resolution: command ran from repository root instead of author worktree; no Native provider request/assertion was reached."
+}

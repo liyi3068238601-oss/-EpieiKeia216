@@ -10,8 +10,8 @@
   "G01": "pass",
   "G02": "pass",
   "G03": "pending",
-  "current_task": "P03-U02",
-  "next_task": "P03-U02",
+  "current_task": "P03-U03",
+  "next_task": "P03-U03",
   "next_stage_started": false,
   "tasks": [
     {
@@ -46,8 +46,25 @@
       "dependencies": [
         "P03-U01"
       ],
-      "status": "running",
-      "card_sha256": "47b7725dc24f9821c6f1a12b59d7ecb4a8d49a0d24396dfffedc1d1ac5c04137"
+      "status": "accepted",
+      "card_sha256": "47b7725dc24f9821c6f1a12b59d7ecb4a8d49a0d24396dfffedc1d1ac5c04137",
+      "author_commit": "e9314207347d33dd61cab941a8dca549c9575ca8",
+      "integration_commit": "964d08bfd626f438c8d161760f9aa7828831f15b",
+      "acceptance": {
+        "path": "evidence/P03-U02/20261008-01/acceptance.json",
+        "bytes": 10143,
+        "sha256": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd"
+      },
+      "review": {
+        "status": "pass",
+        "reviewer": "/root/p03_review_resume",
+        "reviewed_commit": "e9314207347d33dd61cab941a8dca549c9575ca8",
+        "evidence": {
+          "path": "evidence/P03-U02/20261008-01/review-final.json",
+          "bytes": 22514,
+          "sha256": "443960bdc4e572fb4030f9b8aede30516b55892b6e8a9f87ba6993fd771fb319"
+        }
+      }
     },
     {
       "id": "P03-U03",
@@ -55,7 +72,7 @@
       "dependencies": [
         "P03-U02"
       ],
-      "status": "not_started",
+      "status": "running",
       "card_sha256": "e5de922f3cfbe81928a09e181c31fad6d08056b63bcabe0239cca26bc4b543d5"
     },
     {

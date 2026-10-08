@@ -1,0 +1,57 @@
+{
+  "schema": "p03-u02-unit-review-readback/v1",
+  "status": "pass",
+  "authorCommit": "e9314207347d33dd61cab941a8dca549c9575ca8",
+  "baselineCommit": "c691a5b7a975ac4420f880c8233c7b0bb7893958",
+  "mainBaselineHead": "c691a5b7a975ac4420f880c8233c7b0bb7893958",
+  "mainBaselineClean": true,
+  "authorHead": "e9314207347d33dd61cab941a8dca549c9575ca8",
+  "authorTreeClean": true,
+  "baselineAncestor": true,
+  "changedPaths": 58,
+  "scopeAllowed": true,
+  "manifest": {
+    "sha256": "21dbe5f392b01c6ea1ad6100b5e32a118393425c397e338e34e08138b9f23ec5",
+    "boundFiles": 57,
+    "changedPaths": 58
+  },
+  "nativeIndependentRerun": {
+    "command": "native-final-rerun-02-command.json",
+    "exitCode": 0,
+    "nativeRequests": 20,
+    "readCalls": 10,
+    "hostProviderSamples": 12,
+    "hookRuns": 10,
+    "allHookNoncesMatched": true,
+    "packetBytesMin": 5478,
+    "packetBytesMax": 5574,
+    "sourceRace": "P03_MEMORY_SOURCE_CHANGED",
+    "invalidUtf8": "P03_MEMORY_INVALID_UTF8",
+    "acl": "denied with EPERM; icacls restore exited 0; content SHA-256 unchanged",
+    "write": "Native TOOL_NOT_FOUND for unregistered Write; filesystem sandbox NOT_RUN"
+  },
+  "nativeSourceBinding": {
+    "nativeCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "probeCommit": "fd87e1050a5202218f8c5b2411e1d01c0bbc1a07",
+    "inputs": 1181,
+    "trackedBlobs": 1180,
+    "generatedInputs": 1,
+    "compiledOutputs": 1163,
+    "runtimeEntrypoints": 6,
+    "mismatches": 0
+  },
+  "topologySubexperiment": {
+    "status": "pass",
+    "serviceAssertions": 14
+  },
+  "parserProbe": {
+    "status": "pass",
+    "checks": 8,
+    "dependenciesAvailableInXiadie": false
+  },
+  "reviewerHarnessCorrection": {
+    "firstAttempt": "failed before Native assertions due to repository-root cwd",
+    "correctedAttempt": "run-review-02 passed from exact author worktree cwd",
+    "firstFailureRetained": true
+  }
+}

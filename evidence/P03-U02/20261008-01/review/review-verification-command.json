@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    ".runtime/P03/coord/verify-review.py",
+    ".runtime/P03/reviews/u02-20261008/review-final.json",
+    "74b7a3daae2513d7e7eefea3a26c3e264eb65e8d"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "started_at": "2026-10-08T09:01:15.280643+00:00",
+  "completed_at": "2026-10-08T09:01:15.495749+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 180,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P03\\coord\\verify-review.py\", line 15, in <module>\r\n    assert not subprocess.check_output(['git', 'status', '--porcelain'], cwd=author_tree).strip()\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nAssertionError\r\n"
+}

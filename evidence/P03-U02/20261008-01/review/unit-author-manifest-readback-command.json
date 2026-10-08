@@ -1,0 +1,38 @@
+{
+  "schema": "p03-review-command/v1",
+  "executable": "C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "argv": [
+    "-X",
+    "utf8",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\coord\\verify-author.py",
+    "P03-U02",
+    "e9314207347d33dd61cab941a8dca549c9575ca8",
+    "c691a5b7a975ac4420f880c8233c7b0bb7893958",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02",
+    "--attempt",
+    "20261008-01",
+    "--output",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u02-20261008\\unit-author-manifest-readback.json"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "started_at_utc": "2026-10-08T09:36:00.7765482+00:00",
+  "completed_at_utc": "2026-10-08T09:36:01.1598385+00:00",
+  "exit_code": 0,
+  "stdout": "{\"verified_at_utc\": \"2026-10-08T09:36:01.150392+00:00\", \"task\": \"P03-U02\", \"author_commit\": \"e9314207347d33dd61cab941a8dca549c9575ca8\", \"baseline_commit\": \"c691a5b7a975ac4420f880c8233c7b0bb7893958\", \"worktree\": \"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P03\\\\worktrees\\\\u02\", \"worktree_clean\": true, \"files\": 57, \"changed_paths\": 58, \"manifest\": {\"path\": \"evidence/P03-U02/20261008-01/manifest.json\", \"bytes\": 14982, \"sha256\": \"21dbe5f392b01c6ea1ad6100b5e32a118393425c397e338e34e08138b9f23ec5\"}, \"disk_and_git_mismatches\": []}",
+  "stderr": "",
+  "verifier": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\coord\\verify-author.py",
+    "bytes": 2672,
+    "sha256": "e82d66bdf461824dce0251e88ca6817669cb986a0277abe73cb1a4f3aabcfe6a"
+  },
+  "result": {
+    "path": "unit-author-manifest-readback.json",
+    "bytes": 553,
+    "sha256": "cf0411eb90fdb5df635c3f01f02a4f8ea9794c70cc86571ac31f290c0147fe8a"
+  },
+  "stderrArtifact": {
+    "path": "unit-author-manifest-readback.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

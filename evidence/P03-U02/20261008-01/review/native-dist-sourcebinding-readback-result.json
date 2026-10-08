@@ -1,0 +1,98 @@
+{
+    "schema":  "p03-u02-native-sourcebinding-review-readback/v1",
+    "status":  "pass",
+    "probeCommit":  "fd87e1050a5202218f8c5b2411e1d01c0bbc1a07",
+    "probeTreeClean":  true,
+    "probeChangedPaths":  8,
+    "nativeSourceCommit":  "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "compileReport":  {
+                          "path":  "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02-source-probe\\evidence\\P03-U02\\20261008-01\\topology-service\\native-dist-compile-result.json",
+                          "sha256":  "9f6dea5d0203e40ce50830d39678a925dc28e945210d0b33c50997c1d15e6e15",
+                          "bytes":  1139312
+                      },
+    "sourceBindings":  {
+                           "path":  "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02-source-probe\\evidence\\P03-U02\\20261008-01\\topology-service\\native-dist-source-bindings-02.json",
+                           "sha256":  "7c5ffc487cfe510c930490e12d38ef69b41abb4154b44f4b2a0426c16e92e2d0",
+                           "bytes":  344084
+                       },
+    "compileCommand":  {
+                           "path":  "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02-source-probe\\evidence\\P03-U02\\20261008-01\\topology-service\\native-dist-compile-01-command.json",
+                           "sha256":  "7dcd20e9080cd18240fe5ebfbd462bb05d24b02f6a829ffb63024e22953f73ec",
+                           "bytes":  728
+                       },
+    "bindingCommand":  {
+                           "path":  "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02-source-probe\\evidence\\P03-U02\\20261008-01\\topology-service\\native-dist-bind-02-command.json",
+                           "sha256":  "eb3f67694be84ec151f2286ab42e75fbb6255c90c67cb54554eb1444ab8d5c8e",
+                           "bytes":  1192
+                       },
+    "bindingScript":  {
+                          "path":  "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02-source-probe\\spikes\\P03\\bind-native-dist-source.mjs",
+                          "sha256":  "10251e4b932fac4d73b29826d35488c651a5ead9ff75f6baad6ddd6c4fb48076",
+                          "bytes":  5149
+                      },
+    "compileScript":  {
+                          "path":  "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02-source-probe\\spikes\\P03\\verify-native-dist.mjs",
+                          "sha256":  "4baf4343d2f80ae20f319b92e6b869f7c17b41a8ce6075fda697db383899a062",
+                          "bytes":  5681
+                      },
+    "packageCount":  9,
+    "inputCount":  1181,
+    "trackedSourceInputsMatchedToCommitBlobs":  1180,
+    "generatedInputsRegeneratedAndChecked":  1,
+    "TypeScriptStandardLibrariesChecked":  57,
+    "compiledJavaScriptOutputsMatched":  1163,
+    "loadedRuntimeEntrypointsMatched":  6,
+    "loadedRuntimeEntrypoints":  [
+                                     {
+                                         "compiledMatch":  true,
+                                         "path":  "apps/zcode-cli/packages/bootstrap/dist/index.js",
+                                         "sha256":  "cfffe39e61575a3a6627e8a10153d4ed998d6e48fd774c0195f57f2282074202",
+                                         "bytes":  1731,
+                                         "run07Match":  true
+                                     },
+                                     {
+                                         "compiledMatch":  true,
+                                         "path":  "apps/zcode-cli/packages/contracts/dist/model/invocation-context.js",
+                                         "sha256":  "adf401be3fcfcaac63ca2318d67e0bc426f0bed4ea4d6bc4067d9db9dff8a9ef",
+                                         "bytes":  1227,
+                                         "run07Match":  true
+                                     },
+                                     {
+                                         "compiledMatch":  true,
+                                         "path":  "apps/zcode-cli/packages/contracts/dist/index.js",
+                                         "sha256":  "f62e72e9858e4f8e3ae365d23c062710ecbb168c5a4451836144fff3adef26bf",
+                                         "bytes":  3131,
+                                         "run07Match":  true
+                                     },
+                                     {
+                                         "compiledMatch":  true,
+                                         "path":  "apps/zcode-cli/packages/adapters/dist/model/runner.js",
+                                         "sha256":  "436b3a6f7d44e79f3c5f1c2f620e5d27031ca1ffb300601289020349ce66e873",
+                                         "bytes":  11993,
+                                         "run07Match":  true
+                                     },
+                                     {
+                                         "compiledMatch":  true,
+                                         "path":  "apps/zcode-cli/packages/adapters/dist/fs/index.js",
+                                         "sha256":  "219121ab85be5d66d936f0acec516248858edc9fda579176be151be7beca8dde",
+                                         "bytes":  53218,
+                                         "run07Match":  true
+                                     },
+                                     {
+                                         "compiledMatch":  true,
+                                         "path":  "apps/zcode-cli/packages/core/dist/memory/project-root.js",
+                                         "sha256":  "3d5bdb8239c073705d4eb0a6371b7462f329607b695ec5dca9f243b58c543d15",
+                                         "bytes":  988,
+                                         "run07Match":  true
+                                     }
+                                 ],
+    "independentPriorReadback":  {
+                                     "path":  "E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u02-20261008\\native-dist-readback-result.json",
+                                     "sha256":  "a7d246b4ce780486ada6e94fbdc0a4fa7c8b70ba4473c63c8a810c904a7c85f4",
+                                     "bytes":  8488
+                                 },
+    "mismatches":  [
+
+                   ],
+    "limitation":  "Source and generated JS provenance is byte-bound; TypeScript dependency installation provenance is bound by tool hashes/version, not reinstalled. No Electron rebuild is claimed."
+}

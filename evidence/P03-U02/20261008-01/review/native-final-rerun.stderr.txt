@@ -1,0 +1,17 @@
+(node:17200) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open 'E:\Xiadie\Xiadie\.runtime\P03\worktrees\u02\.runtime\P03\worktrees\u02\dist\packages\contracts\src\context.js'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1269:14)
+    at async file:///E:/Xiadie/Xiadie/.runtime/P03/worktrees/u02/spikes/P03/native-memory-runtime.mjs:223:17 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02\\.runtime\\P03\\worktrees\\u02\\dist\\packages\\contracts\\src\\context.js'
+}
+
+Node.js v24.14.0

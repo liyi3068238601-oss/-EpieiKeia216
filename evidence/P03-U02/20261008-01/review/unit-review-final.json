@@ -1,0 +1,491 @@
+{
+  "schema": "p03-independent-review/v1",
+  "created_at_utc": "2026-10-08T09:40:34.728893+00:00",
+  "task": "P03-U02",
+  "decision": "pass",
+  "unit_acceptance": "not_decided",
+  "review_target": {
+    "author_commit": "e9314207347d33dd61cab941a8dca549c9575ca8",
+    "baseline_commit": "c691a5b7a975ac4420f880c8233c7b0bb7893958",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02",
+    "attempt": "20261008-01; independent Native run-review-02; exact final commit review",
+    "changed_paths": 58
+  },
+  "reviewer": "Codex independent readback",
+  "scope": "Independent review of the complete P03-U02 research/spike commit against its exact baseline. This report records a review pass only; unit acceptance and coordinator state remain undecided.",
+  "checks": [
+    {
+      "id": "exact-commit-baseline-manifest-and-scope",
+      "status": "pass",
+      "detail": "Exact author commit e9314207347d33dd61cab941a8dca549c9575ca8 descends from baseline c691a5b7a975ac4420f880c8233c7b0bb7893958. The main checkout remains clean at the baseline, the author checkout is clean at the reviewed commit, and all 58 changed paths are within the task's spikes/P03, ADR, and evidence scope. Independent verify-author readback checked all 57 manifest-bound disk files and Git blobs with zero mismatches; manifest SHA-256 is 21dbe5f392b01c6ea1ad6100b5e32a118393425c397e338e34e08138b9f23ec5."
+    },
+    {
+      "id": "native-dist-source-and-runtime-identity",
+      "status": "pass",
+      "detail": "The pinned Native source is 29628c9acdb81b703bbd4080c207a0e7ce5e276e, clean. Independent readback rehashed all 1,181 build inputs and 1,163 generated/existing JavaScript outputs; 1,180 tracked inputs match Git blobs, the one generated input was regenerated and checked against 57 TypeScript libraries, and all six Native entrypoints loaded by the author run match compiled outputs. No mismatch was found. This supports the tested Native dist identity; it is not a full Electron rebuild or dependency reinstall."
+    },
+    {
+      "id": "native-seam-nonce-packet-and-failure-recovery",
+      "status": "pass",
+      "detail": "Fresh independent run-review-02 passed from the exact author worktree cwd and produced 20 Native loopback requests, 10 Read-bridge filesystem read records, 12 Host provider samples, and 10 successful Hook runs. Each Hook packet's nonce equals the admitted nonce; packet sizes were 5,478–5,574 UTF-8 bytes under the 12,000-byte limit. The changed V2 topic hash reached the current packet and a subsequent Native Read result. Source mutation failed with P03_MEMORY_SOURCE_CHANGED; invalid UTF-8 failed with P03_MEMORY_INVALID_UTF8 before a successful empty packet; ACL denial produced EPERM, ACL restore commands succeeded, and file SHA-256 remained unchanged. Outside-allowlist Read was rejected and cancellation aborted once. The Write probe proves Native's unregistered-tool TOOL_NOT_FOUND rejection only; low-level filesystem write sandboxing is NOT_RUN."
+    },
+    {
+      "id": "native-memoryservice-topology-and-relocation",
+      "status": "pass",
+      "detail": "The separately reviewed topology-service subexperiment passes 14 assertions against the pinned actual Native MemoryService route. It distinguishes same-name A/B repositories, linked worktrees, same-volume move, standalone copy, and cross-volume copy plus git worktree repair; it also covers ACL denial/recovery and demonstrates replacement-tolerant UTF-8 output and absent topic-frontmatter validation. These last two are contract gaps supporting the decision not to use that service result as raw-byte authority. Its prior review is explicitly topology-only, not U02 acceptance."
+    },
+    {
+      "id": "parser-api-contract-and-dependency-boundary",
+      "status": "pass",
+      "detail": "The independent parser rerun passes all eight Marked 16.4.2 and yaml 2.9.0 API checks, including Markdown token boundaries, YAML errors/aliases, and fatal UTF-8 ordering. Neither package resolves in Xiadie; the report correctly assigns exact direct dependency, lockfile, and license work to U04 rather than importing from the reference checkout."
+    },
+    {
+      "id": "adr-scope-and-not-run-boundaries",
+      "status": "pass",
+      "detail": "The ADR treats selected.md and 2 KiB as PoC fixture limits, maps the four read states to U04, and separates U05 source authority/provenance. It labels the globalThis snapshot as single-Host and requires per-Host/ticket-local state before production reuse. Model, installed application, credentials, Native A/B request isolation, and low-level write sandbox remain NOT_RUN/NOT_READ as appropriate; this research unit does not claim them."
+    },
+    {
+      "id": "review-harness-cwd-correction",
+      "status": "pass",
+      "detail": "The first independent runtime invocation failed before Native assertions because it ran from the repository root, doubling the author-worktree prefix in the esbuild input path. That command and stderr are retained. The reviewer corrected cwd to the exact author worktree and reran unchanged script bytes as run-review-02; it exited 0 and passed. The first failure is a reviewer harness invocation error, not a Native product failure."
+    }
+  ],
+  "reviewer_readback": {
+    "readback_record": "unit-review-readback.json",
+    "author_manifest": {
+      "record": "unit-author-manifest-readback.json",
+      "bound_files": 57,
+      "changed_paths": 58,
+      "mismatches": 0
+    },
+    "native_rerun": {
+      "command_record": "native-final-rerun-02-command.json",
+      "exit_code": 0,
+      "attempt_id": "run-review-02",
+      "native_requests": 20,
+      "read_bridge_reads": 10,
+      "host_provider_samples": 12,
+      "hook_runs": 10,
+      "packet_bytes_min": 5478,
+      "packet_bytes_max": 5574,
+      "max_packet_budget": 12000
+    },
+    "native_source_binding": {
+      "record": "native-dist-sourcebinding-readback-result.json",
+      "probe_commit": "fd87e1050a5202218f8c5b2411e1d01c0bbc1a07",
+      "inputs": 1181,
+      "tracked_git_blobs": 1180,
+      "regenerated_ignored_input": 1,
+      "typescript_libraries": 57,
+      "compiled_outputs": 1163,
+      "runtime_entrypoints": 6,
+      "mismatches": 0
+    },
+    "topology_service_assertions": 14,
+    "parser_checks": 8,
+    "first_harness_failure": "native-final-rerun-failed-command.json; wrong cwd, before assertions; retained"
+  },
+  "limitations": [
+    "This is a research/spike review on synthetic data and a local loopback provider. No production implementation or user memory/profile was changed.",
+    "The PoC uses a globalThis snapshot slot and is limited to a single Host. Production must bind snapshot state per Host/admission or use another proven ticket-local mechanism.",
+    "The Write probe demonstrates rejection of an unregistered Native tool only. Low-level filesystem write sandboxing is NOT_RUN.",
+    "Real-model behavior, installed ZCode/Desktop integration, Native A/B request isolation, credentials, and product tests are NOT_RUN or NOT_READ. This is expected for the research unit and does not block this review.",
+    "The independent source-to-dist check covers nine Native CLI packages and their actual loaded entrypoints. It does not claim a full Electron package rebuild or dependency reinstall.",
+    "Marked/yaml parser APIs were probed from the pinned source packages; those dependencies are absent from Xiadie's current dependency graph and remain U04 work.",
+    "The first reviewer runtime command used the wrong cwd and failed before any Native assertion. Its evidence is preserved alongside the successful corrected-cwd rerun."
+  ],
+  "artifacts": [
+    {
+      "path": "docs/adr/P03-reuse.md",
+      "root": "author_worktree",
+      "bytes": 11481,
+      "sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/baseline.json",
+      "root": "author_worktree",
+      "bytes": 1132,
+      "sha256": "5f7a7d95aa1b9311e05492a100f39226c9f4ccfd3fa7f49f3cdd3764739f4968"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/diff-02.json",
+      "root": "author_worktree",
+      "bytes": 13092,
+      "sha256": "d40b0f395cc83e301e2951ba927906dc8ac59c0912ec5317f02fb02201e16f3c"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/manifest.json",
+      "root": "author_worktree",
+      "bytes": 14982,
+      "sha256": "21dbe5f392b01c6ea1ad6100b5e32a118393425c397e338e34e08138b9f23ec5"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/result.md",
+      "root": "author_worktree",
+      "bytes": 9111,
+      "sha256": "c5f09fc70469bb945d93d7664e98734bc02fe508c391a753405a70ef50757faf"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/native-runtime/run-08-command.json",
+      "root": "author_worktree",
+      "bytes": 1243,
+      "sha256": "66b7c78c931b026dad3e20523257dc2c6118a9c82c8e41060409d426294701af"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/native-runtime/run-08-runtime-result.json",
+      "root": "author_worktree",
+      "bytes": 101944,
+      "sha256": "2fb2289c9f963ed548b7ef3a18015e187094b8fcd84de3f30ffa7e983d603c01"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/native-runtime/run-08-host-variant-manifest.json",
+      "root": "author_worktree",
+      "bytes": 8015,
+      "sha256": "03b785bc113a05f2186ec80cce90df675babc4dd1fc3ecb724923988acc20a5c"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/native-runtime/run-08-write-probe.json",
+      "root": "author_worktree",
+      "bytes": 4854,
+      "sha256": "5f925e563568bb95c13afc2d01d1c372b99976a78bb8d6b190594c6ff8885dcb"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/native-runtime/run-08-acl-commands.json",
+      "root": "author_worktree",
+      "bytes": 1740,
+      "sha256": "b360815a706fd206f10bc491ddd7e079017dd43a374c1f05ed6f98041e5f929b"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/native-runtime/run-08-tsc-build-command.json",
+      "root": "author_worktree",
+      "bytes": 533,
+      "sha256": "5a084c503f7ce3ae7397e5e5d03acafe2de8e2d5a46c4d40719370644626e81f"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/result.md",
+      "root": "author_worktree",
+      "bytes": 2720,
+      "sha256": "70ea4c802e37444b0137c493b3d4a95faa6dd10cb76d72d63467370c13af5b00"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/run-02/service-results.json",
+      "root": "author_worktree",
+      "bytes": 3892,
+      "sha256": "fa0899fb278700be74470de158b010013c3be12d52d16e335bbfbd88de96c4d1"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/run-02/summary.json",
+      "root": "author_worktree",
+      "bytes": 73031,
+      "sha256": "4d17d09b3dfcb48984ab041df0a23c5ddbdb852a9cfc158701369664ed01fb5d"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/parser-result.json",
+      "root": "author_worktree",
+      "bytes": 3443,
+      "sha256": "2ddad5c1a95adfd89ad5d8e6ff95c86902a86451fa5f0a48a55bec38626c50ef"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/parser-run-01-command.json",
+      "root": "author_worktree",
+      "bytes": 1091,
+      "sha256": "a8454aee55be74c583f819b6943c942b041ab6977378bcbd7ac601b7f60bb6c9"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/native-dist-compile-result.json",
+      "root": "author_worktree",
+      "bytes": 1139312,
+      "sha256": "9f6dea5d0203e40ce50830d39678a925dc28e945210d0b33c50997c1d15e6e15"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/native-dist-source-bindings-02.json",
+      "root": "author_worktree",
+      "bytes": 344084,
+      "sha256": "7c5ffc487cfe510c930490e12d38ef69b41abb4154b44f4b2a0426c16e92e2d0"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/native-dist-compile-01-command.json",
+      "root": "author_worktree",
+      "bytes": 728,
+      "sha256": "7dcd20e9080cd18240fe5ebfbd462bb05d24b02f6a829ffb63024e22953f73ec"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/topology-service/native-dist-bind-02-command.json",
+      "root": "author_worktree",
+      "bytes": 1192,
+      "sha256": "eb3f67694be84ec151f2286ab42e75fbb6255c90c67cb54554eb1444ab8d5c8e"
+    },
+    {
+      "path": "spikes/P03/native-memory-runtime.mjs",
+      "root": "author_worktree",
+      "bytes": 54667,
+      "sha256": "8bae0eed2b3b66bf08fdfe5e1da9cd82f74de63b79b54a33a968125aabf713ad"
+    },
+    {
+      "path": "spikes/P03/native-memory-reader.mjs",
+      "root": "author_worktree",
+      "bytes": 7160,
+      "sha256": "ac1c32b26f48c695e44761f0d9318493064c988ca1d29a1fd0047e43e4f8a231"
+    },
+    {
+      "path": "spikes/P03/topology-service.mjs",
+      "root": "author_worktree",
+      "bytes": 16940,
+      "sha256": "a1719604e43d3c208914aeff0e8c1b41152a1c8c716c9339e60a72f533908898"
+    },
+    {
+      "path": "spikes/P03/parser-contract.mjs",
+      "root": "author_worktree",
+      "bytes": 6233,
+      "sha256": "705557ea677662fe62a0e0efb5c4e5ef2f35883bc210c8528161cbd0b209ebe2"
+    },
+    {
+      "path": "spikes/P03/make-host-variant.mjs",
+      "root": "author_worktree",
+      "bytes": 5738,
+      "sha256": "9af43f4dc046c7e7148aaa2bddc6947b9e5d4797bdc79b846f633a78df6caa69"
+    },
+    {
+      "path": "spikes/P03/verify-native-dist.mjs",
+      "root": "author_worktree",
+      "bytes": 5681,
+      "sha256": "4baf4343d2f80ae20f319b92e6b869f7c17b41a8ce6075fda697db383899a062"
+    },
+    {
+      "path": "spikes/P03/bind-native-dist-source.mjs",
+      "root": "author_worktree",
+      "bytes": 5149,
+      "sha256": "10251e4b932fac4d73b29826d35488c651a5ead9ff75f6baad6ddd6c4fb48076"
+    },
+    {
+      "path": ".runtime/P03/experiments/u02-native-dist-20261008-01/result.json",
+      "root": "baseline_repository",
+      "bytes": 1139312,
+      "sha256": "9f6dea5d0203e40ce50830d39678a925dc28e945210d0b33c50997c1d15e6e15"
+    },
+    {
+      "path": ".runtime/P03/preparation/parser-source-review/source-manifest.json",
+      "root": "baseline_repository",
+      "bytes": 57099,
+      "sha256": "684d3046dcda8792a5fac944367f78871d4388fced7a7eed8ef8c36889a189f8"
+    },
+    {
+      "path": ".runtime/P03/worktrees/u02-source-probe/spikes/P03/verify-native-dist.mjs",
+      "root": "baseline_repository",
+      "bytes": 5681,
+      "sha256": "4baf4343d2f80ae20f319b92e6b869f7c17b41a8ce6075fda697db383899a062"
+    },
+    {
+      "path": ".runtime/P03/worktrees/u02-source-probe/spikes/P03/bind-native-dist-source.mjs",
+      "root": "baseline_repository",
+      "bytes": 5149,
+      "sha256": "10251e4b932fac4d73b29826d35488c651a5ead9ff75f6baad6ddd6c4fb48076"
+    },
+    {
+      "path": ".runtime/P03/worktrees/u02-source-probe/evidence/P03-U02/20261008-01/topology-service/native-dist-compile-result.json",
+      "root": "baseline_repository",
+      "bytes": 1139312,
+      "sha256": "9f6dea5d0203e40ce50830d39678a925dc28e945210d0b33c50997c1d15e6e15"
+    },
+    {
+      "path": ".runtime/P03/worktrees/u02-source-probe/evidence/P03-U02/20261008-01/topology-service/native-dist-source-bindings-02.json",
+      "root": "baseline_repository",
+      "bytes": 344084,
+      "sha256": "7c5ffc487cfe510c930490e12d38ef69b41abb4154b44f4b2a0426c16e92e2d0"
+    },
+    {
+      "path": ".runtime/P03/worktrees/u02-source-probe/evidence/P03-U02/20261008-01/topology-service/native-dist-compile-01-command.json",
+      "root": "baseline_repository",
+      "bytes": 728,
+      "sha256": "7dcd20e9080cd18240fe5ebfbd462bb05d24b02f6a829ffb63024e22953f73ec"
+    },
+    {
+      "path": ".runtime/P03/worktrees/u02-source-probe/evidence/P03-U02/20261008-01/topology-service/native-dist-bind-02-command.json",
+      "root": "baseline_repository",
+      "bytes": 1192,
+      "sha256": "eb3f67694be84ec151f2286ab42e75fbb6255c90c67cb54554eb1444ab8d5c8e"
+    },
+    {
+      "path": "unit-author-manifest-readback.json",
+      "root": "review_directory",
+      "bytes": 553,
+      "sha256": "cf0411eb90fdb5df635c3f01f02a4f8ea9794c70cc86571ac31f290c0147fe8a"
+    },
+    {
+      "path": "unit-author-manifest-readback-command.json",
+      "root": "review_directory",
+      "bytes": 1899,
+      "sha256": "b8030a95b684aa35522cac8ac7e81c7cb05a02a3333748944a85c0b1dfab6d0a"
+    },
+    {
+      "path": "unit-author-manifest-readback.stderr.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-final-output-02/run-review-02-runtime-result.json",
+      "root": "review_directory",
+      "bytes": 102204,
+      "sha256": "94c54afe5b3fb0c0c591cce57a1dd356a0e356d601a3df27eafec764f94809d5"
+    },
+    {
+      "path": "native-final-output-02/run-review-02-host-variant-manifest.json",
+      "root": "review_directory",
+      "bytes": 8043,
+      "sha256": "af9d7f4f118c26ba5e3c1d4b63f5968e0dac0d3299287a9be62d5089a327043a"
+    },
+    {
+      "path": "native-final-output-02/run-review-02-write-probe.json",
+      "root": "review_directory",
+      "bytes": 4861,
+      "sha256": "a7eba3e28749b8af93a53b95b00e5170c4ee7b874dd606f324b2885468cafe60"
+    },
+    {
+      "path": "native-final-output-02/run-review-02-acl-commands.json",
+      "root": "review_directory",
+      "bytes": 1768,
+      "sha256": "0a525d74acfc1552e34c04128b2a3260f86617060b434be29fda3bd0d97941df"
+    },
+    {
+      "path": "native-final-rerun-02-command.json",
+      "root": "review_directory",
+      "bytes": 3322,
+      "sha256": "d90b47ca344c0c44da8c34c890df10b59beed9f3c91ec2a2db41dacf4fbb8bf0"
+    },
+    {
+      "path": "native-final-rerun-02.stderr.txt",
+      "root": "review_directory",
+      "bytes": 171,
+      "sha256": "e2d0f06fd0cf0b11b5f1c4600dd9ccf18d3e0bb83eacc5fdc3f01dbcca743f0a"
+    },
+    {
+      "path": "native-final-rerun-failed-command.json",
+      "root": "review_directory",
+      "bytes": 2442,
+      "sha256": "3ff749b37efc146be7378d2665328090d30821e0991a0d54df5b668f515240f4"
+    },
+    {
+      "path": "native-final-rerun.stderr.txt",
+      "root": "review_directory",
+      "bytes": 884,
+      "sha256": "ffa5a3725226cfb9136638d2c9a7a45a13ea524138ab6a8c357a06d1a152b245"
+    },
+    {
+      "path": "native-dist-readback.ps1",
+      "root": "review_directory",
+      "bytes": 6570,
+      "sha256": "cea29c80189a047fe8fcf8e3e64b74c1ee7204c375db141f9584e853e83cc228"
+    },
+    {
+      "path": "native-dist-readback-result.json",
+      "root": "review_directory",
+      "bytes": 8488,
+      "sha256": "a7d246b4ce780486ada6e94fbdc0a4fa7c8b70ba4473c63c8a810c904a7c85f4"
+    },
+    {
+      "path": "native-dist-readback-command.json",
+      "root": "review_directory",
+      "bytes": 1220,
+      "sha256": "4d0d701f005e50309bed9d8c513eff2563a45125135e28037d6ddab6595c7697"
+    },
+    {
+      "path": "native-dist-readback.stderr.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-dist-sourcebinding-readback.ps1",
+      "root": "review_directory",
+      "bytes": 11465,
+      "sha256": "7af3874b4e69f7ebe3c4bfca60b5ae304921287c872a4777d68a5d7f845d2c94"
+    },
+    {
+      "path": "native-dist-sourcebinding-readback-result.json",
+      "root": "review_directory",
+      "bytes": 6513,
+      "sha256": "223d75ebec783eac522c26b8e4b4dd611ab53347e68caf7e3a2ad41885ac0051"
+    },
+    {
+      "path": "native-dist-sourcebinding-readback-command.json",
+      "root": "review_directory",
+      "bytes": 1482,
+      "sha256": "043eb61887d0dfeac55ff5b22ecb93afcb954b444f3fdc2adcbe9acad636fd02"
+    },
+    {
+      "path": "native-dist-sourcebinding-readback.stderr.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "parser-review-20261008-01.json",
+      "root": "review_directory",
+      "bytes": 3443,
+      "sha256": "2ddad5c1a95adfd89ad5d8e6ff95c86902a86451fa5f0a48a55bec38626c50ef"
+    },
+    {
+      "path": "parser-review-20261008-01-command.json",
+      "root": "review_directory",
+      "bytes": 1291,
+      "sha256": "fe36f0d33b16b2f963e212ffdfd8a8c7237b09244b137d6cbd9c94512fe42431"
+    },
+    {
+      "path": "parser-review-20261008-01.stderr.txt",
+      "root": "review_directory",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "review-final.json",
+      "root": "review_directory",
+      "bytes": 98012,
+      "sha256": "3c2f24c7ffd8d709df99e56dea868a153f3a757bae666eaf0c44f8691887947e"
+    },
+    {
+      "path": "topology-rerun-command.json",
+      "root": "review_directory",
+      "bytes": 883,
+      "sha256": "927a4a224f34b2cac89f8053b9bb67e730ee1adb52a0fd5db0e3c692747651fd"
+    },
+    {
+      "path": "unit-review-readback.json",
+      "root": "review_directory",
+      "bytes": 1948,
+      "sha256": "ed7dc96a83529fa57096e472c1dd7c679284b56d932ea515d519b4c5facd0565"
+    },
+    {
+      "path": "build-unit-review-final.py",
+      "root": "review_directory",
+      "bytes": 25045,
+      "sha256": "50beee2ac1c1c0d3b9eef9f5c75c02e9004804dc04986142f729e1437e4b8601"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "path": "AGENTS.md",
+      "root": "baseline_repository",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U02.md",
+      "root": "baseline_repository",
+      "bytes": 3099,
+      "sha256": "47b7725dc24f9821c6f1a12b59d7ecb4a8d49a0d24396dfffedc1d1ac5c04137"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/02_计划执行书.md",
+      "root": "baseline_repository",
+      "bytes": 366530,
+      "sha256": "5f8fe397e4622c208e866827d7b528e3efacfd7912e74c602182c8465aa6d5b4"
+    },
+    {
+      "path": "evidence/P03/status.json",
+      "root": "baseline_repository",
+      "bytes": 4006,
+      "sha256": "dea3534a3f42ceb894fcd9492f71b530cdf02aabda1f4dbaf1aab7edf5bf3224"
+    }
+  ]
+}

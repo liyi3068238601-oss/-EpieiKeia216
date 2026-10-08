@@ -1,0 +1,56 @@
+{
+  "schema": "p03-review-command/v1",
+  "executable": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02\\spikes\\P03\\native-memory-runtime.mjs",
+    "run-review-02",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u02-20261008\\native-final-output-02"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02",
+  "started_at_utc": "2026-10-08T09:34:33.4687918+00:00",
+  "completed_at_utc": "2026-10-08T09:34:39.6322150+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 60,
+  "stdout": "P03_U02_NATIVE_RUNTIME_RESULT {\"status\":\"pass\",\"attemptId\":\"20261008-01\",\"actualNativeRequests\":20,\"actualReadCalls\":10,\"hostProviderSamples\":12,\"loopbackPorts\":[55529],\"cancelledResponseCount\":1,\"oldMemoryHash\":\"93b4b7c8daa04c05c2d3f6546da5ae8fd336f00302711990f40a52c3069e18d8\",\"finalMemoryHash\":\"5d26ca95f8015a6771d588e2bf039937c4753e833b4b9024f6e8203476fa8b86\",\"reportPath\":\"E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P03\\\\reviews\\\\u02-20261008\\\\native-final-output-02\\\\run-review-02-runtime-result.json\"}",
+  "stderr": "(node:56388) ExperimentalWarning: SQLite is an experimental feature and might change at any time\r\n(Use `node --trace-warnings ...` to show where the warning was created)\r\n",
+  "reviewTarget": {
+    "nativeSourceCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "authorCommit": "e9314207347d33dd61cab941a8dca549c9575ca8",
+    "authorTreeClean": true
+  },
+  "script": {
+    "sha256": "8bae0eed2b3b66bf08fdfe5e1da9cd82f74de63b79b54a33a968125aabf713ad",
+    "bytes": 54667,
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02\\spikes\\P03\\native-memory-runtime.mjs"
+  },
+  "node": {
+    "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+    "bytes": 91380224,
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe"
+  },
+  "runtimeResult": {
+    "sha256": "94c54afe5b3fb0c0c591cce57a1dd356a0e356d601a3df27eafec764f94809d5",
+    "bytes": 102204,
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u02-20261008\\native-final-output-02\\run-review-02-runtime-result.json"
+  },
+  "hostVariantManifest": {
+    "sha256": "af9d7f4f118c26ba5e3c1d4b63f5968e0dac0d3299287a9be62d5089a327043a",
+    "bytes": 8043,
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u02-20261008\\native-final-output-02\\run-review-02-host-variant-manifest.json"
+  },
+  "writeProbe": {
+    "sha256": "a7eba3e28749b8af93a53b95b00e5170c4ee7b874dd606f324b2885468cafe60",
+    "bytes": 4861,
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u02-20261008\\native-final-output-02\\run-review-02-write-probe.json"
+  },
+  "aclCommands": {
+    "sha256": "0a525d74acfc1552e34c04128b2a3260f86617060b434be29fda3bd0d97941df",
+    "bytes": 1768,
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u02-20261008\\native-final-output-02\\run-review-02-acl-commands.json"
+  },
+  "stderrArtifact": {
+    "sha256": "e2d0f06fd0cf0b11b5f1c4600dd9ccf18d3e0bb83eacc5fdc3f01dbcca743f0a",
+    "bytes": 171,
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u02-20261008\\native-final-rerun-02.stderr.txt"
+  }
+}
