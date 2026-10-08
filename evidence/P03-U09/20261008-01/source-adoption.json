@@ -1,0 +1,564 @@
+{
+  "schema": "p03-u09-source-adoption-preparation/v1",
+  "task": "P03-U09",
+  "attempt_id": "20261008-01",
+  "record_state": "preparation/source-adoption",
+  "task_execution_state_observed": "running",
+  "acceptance_state": "NOT_RUN",
+  "checked_at_utc": "2026-10-08T14:01:42Z",
+  "baseline": {
+    "worktree": ".runtime/P03/worktrees/u09",
+    "branch": "p03-u09",
+    "commit": "84ccbbb3735f3022f9d2075b857cae610f6199c9",
+    "record": {
+      "path": "evidence/P03-U09/20261008-01/baseline.json",
+      "bytes": 2624,
+      "sha256_raw": "9de1e8d0bfa650303495108e051ca2974106aa4330fcbb97a9df6b91dc4bb5f2"
+    },
+    "scope_remap": "The baseline explicitly maps the corrective reader source to packages/adapters/zcode/src/project-memory.ts and the test selector to tools/run-tests.mjs. The root owns the selector edit."
+  },
+  "immutable_read_only_inputs": [
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U09.md",
+      "bytes": 3059,
+      "sha256_raw": "504a0ae5b2f7b08a65a98e8a9b2b97f38ce58c44437490282ee761804ec7d365",
+      "role": "authoritative U09 card; plan files were not modified"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/04_需求追踪矩阵.md",
+      "bytes": 27657,
+      "sha256_raw": "99ee9e66febd42aa4b11a10e783fc8b980df68002884dd874070c7110b829f2f",
+      "role": "R07, R08 and R24 definitions and stage traceability; read-only"
+    },
+    {
+      "path": "docs/policies/project-memory.md",
+      "bytes": 2752,
+      "sha256_raw": "97b2ddc420eb138a2675917d0c35e7576c07b504353f43c00726729045a53b10",
+      "role": "project-memory authority policy; read-only"
+    },
+    {
+      "path": "docs/adr/P03-reuse.md",
+      "bytes": 11481,
+      "sha256_raw": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a",
+      "role": "read-only reuse/design input; the document itself says author ready_for_review and not independently accepted"
+    },
+    {
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256_raw": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e",
+      "role": "locked-source record; read-only"
+    },
+    {
+      "path": "evidence/P03-U09/20261008-01/stage-input-audit.json",
+      "bytes": 80555,
+      "sha256_raw": "239d9fa622b8e3d0c11799a3c4ec481cd5d02460b2dcef6e6e133505d9c7e98f",
+      "role": "coordinator input readback; useful index only, not a substitute for the acceptance and review records listed below"
+    }
+  ],
+  "accepted_prior_units": [
+    {
+      "task": "P03-U01",
+      "status": "accepted",
+      "author_commit": "bb923d6197a40199e9b4b95d00235a5cb4355594",
+      "integration_commit": "150b53da1753fed4f1258bbf90c226e21b6da454",
+      "acceptance": {
+        "path": "evidence/P03-U01/20261004-01/acceptance.json",
+        "bytes": 1671,
+        "sha256_raw": "a1cce4b4623089e9395200b41a6402849d5553007435b094f553fb440a20c716"
+      },
+      "review": {
+        "path": "evidence/P03-U01/20261004-01/review-final.json",
+        "bytes": 39895,
+        "sha256_raw": "7107b08e2b5228d38be562ecd038126dfeb4b82968e2bee323aaa25a0402bc87",
+        "decision": "pass",
+        "reviewer": "Codex independent readback"
+      },
+      "product_paths": [],
+      "test_paths": [],
+      "research_paths": ["docs/research/P03/P03-U01.md", "evidence/P03-U01/20261004-01/source-manifest.json"],
+      "boundary": "Research and source inventory only; implementation tests were NOT_RUN in U01. The older result.md contains a pre-acceptance status; canonical acceptance/review artifacts above establish the later accepted state."
+    },
+    {
+      "task": "P03-U02",
+      "status": "accepted",
+      "author_commit": "e9314207347d33dd61cab941a8dca549c9575ca8",
+      "integration_commit": "964d08bfd626f438c8d161760f9aa7828831f15b",
+      "acceptance": {
+        "path": "evidence/P03-U02/20261008-01/acceptance.json",
+        "bytes": 10143,
+        "sha256_raw": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd"
+      },
+      "review": {
+        "path": "evidence/P03-U02/20261008-01/review-final.json",
+        "bytes": 22514,
+        "sha256_raw": "443960bdc4e572fb4030f9b8aede30516b55892b6e8a9f87ba6993fd771fb319",
+        "decision": "pass",
+        "reviewer": "Codex independent readback"
+      },
+      "product_paths": [],
+      "test_paths": [],
+      "experiment_paths": [
+        "evidence/P03-U02/20261008-01/topology-service/",
+        "evidence/P03-U02/20261008-01/native-runtime/"
+      ],
+      "boundary": "Owned synthetic isolated experiments and local-loopback Native integration support the later remaps; this attempt did not modify product files. The result.md author status is pre-acceptance history, not the current unit status."
+    },
+    {
+      "task": "P03-U03",
+      "status": "accepted",
+      "author_commit": "2530a944f9c4f403675378e843c44a11c9880681",
+      "integration_commit": "0fd6d87993e17e4f2ca97a33351f9f2dfe0c54ba",
+      "acceptance": {
+        "path": "evidence/P03-U03/20261008-01/acceptance.json",
+        "bytes": 218067,
+        "sha256_raw": "7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37"
+      },
+      "review": {
+        "path": "evidence/P03-U03/20261008-01/review-final.json",
+        "bytes": 18309,
+        "sha256_raw": "03ae6e259f0021f9cc19373ddb34634c82e596afc1d5c5e4a069443a4f33f93c",
+        "decision": "pass",
+        "reviewer": "Codex independent readback"
+      },
+      "product_paths": ["packages/projects/registry.ts"],
+      "test_paths": ["packages/projects/test/registry.test.mjs"],
+      "scope": "Project identity and Native path mapping with explicit aliases; this is identity metadata, not memory-content storage."
+    },
+    {
+      "task": "P03-U04",
+      "status": "accepted",
+      "author_commit": "326ee26a77f5b79a0220e86cc9edcaa5542bb5fd",
+      "integration_commit": "36850a0717dad3cd27d9a4b5cc1ae7f9bab354b6",
+      "acceptance": {
+        "path": "evidence/P03-U04/20261008-01/acceptance.json",
+        "bytes": 2260,
+        "sha256_raw": "ebeb89a5cf16414bded874f6e78fc2d7f9250871ce8ec045493afcc8e457b2f7"
+      },
+      "review": {
+        "path": "evidence/P03-U04/20261008-01/review-final.json",
+        "bytes": 10060,
+        "sha256_raw": "90f29aab894303731a3be667b9445daf4b60341075e26be8cc450820f5b284b3",
+        "decision": "pass",
+        "reviewer": "Codex independent readback"
+      },
+      "product_paths": [
+        "packages/adapters/zcode/src/project-memory.ts",
+        "packages/adapters/zcode/src/host.ts",
+        "plugins/xiadie/hooks/context.mjs"
+      ],
+      "test_paths": [
+        "packages/adapters/zcode/test/project-memory.test.mjs",
+        "packages/adapters/zcode/test/project-memory-host.test.mjs",
+        "packages/adapters/zcode/test/host.test.mjs",
+        "packages/adapters/zcode/test/transcript-host.test.mjs"
+      ],
+      "scope": "Bounded raw-byte reader, selected-topic contract, Host packet bridge and Native Read port binding; no general filesystem write sandbox claim."
+    },
+    {
+      "task": "P03-U05",
+      "status": "accepted",
+      "author_commit": "74a442909cb540360a82826a113adcac68d78818",
+      "integration_commit": "3d570fa5354209416b5081e9ca7f82bfa3e4476f",
+      "acceptance": {
+        "path": "evidence/P03-U05/20261008-01/acceptance.json",
+        "bytes": 2271,
+        "sha256_raw": "31a8c572563dc6611ce4956bed314635a4c2e3ff00b5bba873c907a28b19a871"
+      },
+      "review": {
+        "path": "evidence/P03-U05/20261008-01/review-final.json",
+        "bytes": 12399,
+        "sha256_raw": "05ae3cee9b43d2940c6d2f290b02b0c1012c06d769f39e696659c489de0f5989",
+        "decision": "pass",
+        "reviewer": "Codex independent reviewer (/root/p03_review_resume)"
+      },
+      "product_paths": ["docs/policies/project-memory.md", "templates/project-note.md"],
+      "test_paths": ["packages/projects/test/project-memory-policy.test.mjs"],
+      "scope": "Current source/tests and accepted evidence outrank memory; memory is experience-lead, with owner/progress unknown unless a verified business TaskLedger entity exists."
+    },
+    {
+      "task": "P03-U06",
+      "status": "accepted",
+      "author_commit": "5ff89f14b79370d63553ac10cec6adb57143964e",
+      "integration_commit": "27f4fab6ead14053f2bc8ff65415f126306566d2",
+      "acceptance": {
+        "path": "evidence/P03-U06/20261008-01/acceptance.json",
+        "bytes": 2896,
+        "sha256_raw": "2a0499ed079b97e0c62335eb26a1d5bc7e30395dfbbc7d7262a5664298f476b1"
+      },
+      "review": {
+        "path": "evidence/P03-U06/20261008-01/review-final.json",
+        "bytes": 19212,
+        "sha256_raw": "c231ac4d9836bb2af6ac1cd8dc59cf3879cdab7b827e9ba600660aa898b74536",
+        "decision": "pass",
+        "reviewer": "Codex independent reviewer (/root/p03_review_resume)"
+      },
+      "product_paths": [
+        "packages/projects/registry.ts",
+        "packages/projects/export.ts",
+        "packages/projects/relocate.ts"
+      ],
+      "test_paths": ["packages/projects/test/project-memory-migration.test.mjs"],
+      "scope": "Explicit memory export/import and traceable physical relocation; SQLite retains mapping/metadata history, not Native memory bytes."
+    },
+    {
+      "task": "P03-U07",
+      "status": "accepted",
+      "author_commit": "3ec0583ee1aefef66b58576c9700bac38c099a10",
+      "integration_commit": "f3d0cfcdbeda8406c4adde9fa4486ffa4deed3f0",
+      "acceptance": {
+        "path": "evidence/P03-U07/20261008-01/acceptance.json",
+        "bytes": 4041,
+        "sha256_raw": "89249727bb89199e936ec8a01276ce4aa5554a37669dedab4d3b448697ad200b"
+      },
+      "review": {
+        "path": "evidence/P03-U07/20261008-01/review-final.json",
+        "bytes": 23949,
+        "sha256_raw": "f70a48df6b7ed574c212d3a6496e08c751150b30e4c03fc6e7822353bebd3e99",
+        "decision": "pass",
+        "reviewer": "Codex independent reviewer (/root/p03_review_resume)"
+      },
+      "product_paths": ["packages/work/handoff-context.ts"],
+      "test_paths": ["packages/work/test/handoff-context.test.mjs"],
+      "scope": "Host-controlled handoff provenance and bounded access/write guards; actual Native worker tests reject undeclared writes, without claiming an OS-wide sandbox."
+    },
+    {
+      "task": "P03-U08",
+      "status": "accepted",
+      "author_commit": "035bb11b423f6e06da6cefc595ac1c936a548ca6",
+      "integration_commit": "39635a10a481da66c2038d629cac89c78b872514",
+      "acceptance": {
+        "path": "evidence/P03-U08/20261008-01/acceptance.json",
+        "bytes": 5969,
+        "sha256_raw": "e42ac293517ca88113f843527215e3984cc8c37c07dfa5d1a41a5a460f385f9e"
+      },
+      "review": {
+        "path": "evidence/P03-U08/20261008-01/review-final.json",
+        "bytes": 62842,
+        "sha256_raw": "f9ec51bd29a8f08d61db4a34aa098e346a1417d0fb63c55cdf0e4b4f6a547a2a",
+        "decision": "pass",
+        "reviewer": "Codex independent reviewer (/root/p03_u08_static_review)"
+      },
+      "product_paths": ["packages/projects/freshness.ts"],
+      "test_paths": ["packages/projects/test/freshness.test.mjs"],
+      "scope": "Freshness checks compare current Git/source observations; age alone does not expire a matching snapshot. Its history is evidence history, not a facts database."
+    }
+  ],
+  "coverage_mapping": [
+    {
+      "item": "G03-M1",
+      "item_type": "G03 Must local tracking label",
+      "criterion": "Project memory does not decay merely because time passes; current source evidence must be re-observed when relevant bytes or Git base change.",
+      "accepted_units": ["P03-U04", "P03-U05", "P03-U08"],
+      "product_paths": [
+        "packages/adapters/zcode/src/project-memory.ts",
+        "docs/policies/project-memory.md",
+        "packages/projects/freshness.ts"
+      ],
+      "test_paths": [
+        "packages/adapters/zcode/test/project-memory.test.mjs",
+        "packages/projects/test/project-memory-policy.test.mjs",
+        "packages/projects/test/freshness.test.mjs",
+        "tests/integration/P03/native.integration.test.mjs"
+      ],
+      "u09_state": "Prior unit evidence accepted; final U09 Native/destination integration remains NOT_RUN."
+    },
+    {
+      "item": "G03-M2",
+      "item_type": "G03 Must local tracking label",
+      "criterion": "Project identity and Native memory path remain traceable through physical directory relocation, with explicit aliases and rollback.",
+      "accepted_units": ["P03-U03", "P03-U06", "P03-U08"],
+      "product_paths": [
+        "packages/projects/registry.ts",
+        "packages/projects/export.ts",
+        "packages/projects/relocate.ts",
+        "packages/projects/freshness.ts"
+      ],
+      "test_paths": [
+        "packages/projects/test/registry.test.mjs",
+        "packages/projects/test/project-memory-migration.test.mjs",
+        "packages/projects/test/freshness.test.mjs",
+        "tests/integration/P03/native.integration.test.mjs"
+      ],
+      "u09_state": "Prior identity/relocation evidence accepted; final U09 end-to-end binding remains NOT_RUN."
+    },
+    {
+      "item": "G03-M3",
+      "item_type": "G03 Must local tracking label",
+      "criterion": "Native memory and application data have no competing write authority: registry metadata owns identity only, Native raw memory bytes own note content, and experience/history does not become an authoritative facts store.",
+      "accepted_units": ["P03-U03", "P03-U04", "P03-U05", "P03-U07", "P03-U08"],
+      "product_paths": [
+        "packages/projects/registry.ts",
+        "packages/adapters/zcode/src/project-memory.ts",
+        "packages/adapters/zcode/src/host.ts",
+        "packages/work/handoff-context.ts",
+        "packages/projects/freshness.ts"
+      ],
+      "test_paths": [
+        "packages/adapters/zcode/test/project-memory.test.mjs",
+        "packages/adapters/zcode/test/project-memory-host.test.mjs",
+        "packages/projects/test/project-memory-policy.test.mjs",
+        "packages/work/test/handoff-context.test.mjs",
+        "tests/integration/P03/native.integration.test.mjs",
+        "tests/integration/P03/reader-parent-acl.test.mjs"
+      ],
+      "u09_state": "Prior source/authority/guard units accepted; final U09 Native/destination test run remains NOT_RUN."
+    },
+    {
+      "item": "R07",
+      "item_type": "Requirement",
+      "criterion": "Project memory is an experience lead; current source and accepted tests govern code facts, and task owner/progress stays unknown without a verified business TaskLedger entity.",
+      "accepted_units": ["P03-U03", "P03-U04", "P03-U05", "P03-U07", "P03-U08"],
+      "product_paths": [
+        "docs/policies/project-memory.md",
+        "packages/adapters/zcode/src/project-memory.ts",
+        "packages/work/handoff-context.ts",
+        "packages/projects/freshness.ts"
+      ],
+      "test_paths": [
+        "packages/projects/test/project-memory-policy.test.mjs",
+        "packages/adapters/zcode/test/project-memory.test.mjs",
+        "packages/work/test/handoff-context.test.mjs",
+        "packages/projects/test/freshness.test.mjs",
+        "tests/integration/P03/native.integration.test.mjs"
+      ],
+      "u09_state": "P03-scoped coverage map only; R07 also applies to later stages and is not globally closed here."
+    },
+    {
+      "item": "R08",
+      "item_type": "Requirement",
+      "criterion": "Handoffs and delegated scopes are explicit, minimal, project-bound and evidence-backed; provenance hashes bind bytes, not semantic truth.",
+      "accepted_units": ["P03-U07", "P03-U08"],
+      "product_paths": [
+        "packages/work/handoff-context.ts",
+        "packages/projects/freshness.ts"
+      ],
+      "test_paths": [
+        "packages/work/test/handoff-context.test.mjs",
+        "packages/projects/test/freshness.test.mjs",
+        "tests/integration/P03/native.integration.test.mjs",
+        "tests/integration/P03/native.worker.mjs"
+      ],
+      "u09_state": "P03-scoped coverage map only; later R08 stage coverage remains open."
+    },
+    {
+      "item": "R24",
+      "item_type": "Requirement",
+      "criterion": "Backups, imports, relocation and recovery protect old project data, retain rollback points and do not silently overwrite the active mapping.",
+      "accepted_units": ["P03-U03", "P03-U06"],
+      "product_paths": [
+        "packages/projects/registry.ts",
+        "packages/projects/export.ts",
+        "packages/projects/relocate.ts"
+      ],
+      "test_paths": [
+        "packages/projects/test/project-memory-migration.test.mjs",
+        "packages/storage/backup/test/backup.test.mjs",
+        "tests/integration/P03/native.integration.test.mjs"
+      ],
+      "u09_state": "P03-scoped coverage map only; P02 backup acceptance is a reusable test pattern, not a substitute for U09 or later-stage evidence."
+    }
+  ],
+  "reuse_patterns": [
+    {
+      "name": "P01 Desktop transport and factory boundary",
+      "read_only_records": [
+        {
+          "path": "evidence/P01/transport-decision.json",
+          "bytes": 614,
+          "sha256_raw": "a527ab46e12bb3c70930e3ea4ea41135f15eceded8266887238c90847b78656b"
+        },
+        {
+          "path": "evidence/P01-U02/20261001-01/transport-gate-verification.json",
+          "bytes": 1307,
+          "sha256_raw": "2f8b5bb347165630c259da0fd9b5c25d4acf77407071c4a76117bec6446ea17f"
+        },
+        {
+          "path": "evidence/P01-U10/20261002-01/acceptance.json",
+          "bytes": 1436,
+          "sha256_raw": "a98f844a0a48514a16d1eccb65fcad381a498cef94d4eaa4de30e1ab526631ce"
+        },
+        {
+          "path": "evidence/P01-U10/20261002-01/review-final.json",
+          "bytes": 7641,
+          "sha256_raw": "7c37d7770793d0daaa952f6c61c7211bd0b1d8632d8dc9c4a29ff8326a57c404"
+        }
+      ],
+      "pattern_paths": [
+        "tests/integration/P01/factory.mjs",
+        "tests/integration/P01/factory-policy.mjs",
+        "tests/integration/P01/factory.test.mjs",
+        "tests/integration/P01/electron-network-guard.cjs"
+      ],
+      "adoption": "Reuse isolated transport/factory composition and explicit network/runtime boundary checks as a harness pattern; no credential or paid-model evidence is imported into U09."
+    },
+    {
+      "name": "P02 candidate builder, durable host, guards and Native worker",
+      "accepted_pattern_record": {
+        "path": "evidence/P02-U10/20261004-02/acceptance.json",
+        "bytes": 12539,
+        "sha256_raw": "62464f5cda5ab75e42aca9cd9cd1a4b45d5155ed0ef2aba08140fee01fcfe68d",
+        "author_commit": "d0952673ed6961cacfc38edf9c39256228c7dfc8",
+        "integration_commit": "2c5cee4653a21deea405523ac59f14f18c7bf50b"
+      },
+      "review": {
+        "path": "evidence/P02-U10/20261004-02/review-final.json",
+        "bytes": 25067,
+        "sha256_raw": "543c6c8f430adfdf2c051b3a58016a345a2a6e01e99cd8baebc95f5ec962cff5",
+        "decision": "pass"
+      },
+      "pattern_paths": [
+        "tests/integration/P02/build-candidate.mjs",
+        "tests/integration/P02/durable-host.mjs",
+        "tests/integration/P02/desktop-main-guard.cjs",
+        "tests/integration/P02/registry-write-guard.cjs",
+        "tests/integration/P02/native.worker.mjs",
+        "tests/integration/P02/native.integration.test.mjs",
+        "tests/integration/P02/desktop-side-effect-guard.test.py"
+      ],
+      "adoption": "Reuse the accepted isolated-candidate, worker, durable-host and side-effect-guard structure as a test pattern. It is not a claim that U09 exercised an installed app, paid model, DSH or portable installer."
+    }
+  ],
+  "native_source": {
+    "repository": "https://github.com/zai-org/ZCode",
+    "checkout": ".runtime/P01/desktop-source",
+    "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "working_tree_clean_at_readback": true,
+    "license": {
+      "identifier": "Apache-2.0",
+      "path": ".runtime/P01/desktop-source/LICENSE",
+      "bytes": 11344,
+      "sha256_raw": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b",
+      "observation": "Pinned checkout LICENSE begins Apache License Version 2.0."
+    },
+    "raw_hash_method": "PowerShell Get-FileHash SHA256 over the literal file bytes in the clean pinned checkout; these are raw file hashes, not Git LF-normalized blob hashes.",
+    "read_only": true,
+    "raw_refs": [
+      {
+        "id": "Z03",
+        "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/context/sections/memory.ts",
+        "bytes": 2725,
+        "sha256_raw": "3af27495b85c9f189ded350a030beba4442711fad4b35267a91a7f2209ae018d",
+        "role": "read-only source review"
+      },
+      {
+        "id": "Z04",
+        "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts",
+        "bytes": 3579,
+        "sha256_raw": "ba483db96ee90ec627890b4eff89c953dca378872cab0791728cfe1bee14405c",
+        "role": "read-only source review"
+      },
+      {
+        "id": "Z05",
+        "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/memory/index-content.ts",
+        "bytes": 2990,
+        "sha256_raw": "09397af14b35c25822e901c44dc702c927b94b75c072a6f5cd595b7d9e9f4e71",
+        "role": "read-only source review"
+      },
+      {
+        "id": "Z06",
+        "path": ".runtime/P01/desktop-source/packages/services/src/memory/memoryService.ts",
+        "bytes": 7972,
+        "sha256_raw": "7dcda54bcbd983331d84db6b634ec39e4c6980f29517f7872ca554aa319ecf7a",
+        "role": "read-only source review"
+      },
+      {
+        "id": "Z07",
+        "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/subagent/persistent-memory-prompt.ts",
+        "bytes": 14856,
+        "sha256_raw": "ed2298b5582d4be07676fef739ad50239e9b68c63ca4595bd54252cb867fa7c3",
+        "role": "read-only source review"
+      },
+      {
+        "id": "Native project-root resolver test helper",
+        "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/dist/memory/project-root.js",
+        "bytes": 988,
+        "sha256_raw": "3d5bdb8239c073705d4eb0a6371b7462f329607b695ec5dca9f243b58c543d15",
+        "role": "fixed Native path resolver helper imported by owned fixtures; read-only"
+      },
+      {
+        "id": "Native project-key resolver test helper",
+        "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/bootstrap/dist/app/paths.js",
+        "bytes": 980,
+        "sha256_raw": "b5ca2355a7975f781ada2d750c9a3789157bb027ae3395bd830b8647630265c9",
+        "role": "fixed Native project identity helper imported by owned fixtures; read-only"
+      }
+    ],
+    "decision": "Use Native only as a fixed, read-only reference/helper source. No Native or installed-profile memory is modified, and no source code is claimed as copied into the U09 implementation."
+  },
+  "authority_model": {
+    "registry_metadata": "Authoritative for project identity, workspace bindings, canonical Native key and revisions only; it does not own memory text or engineering facts.",
+    "native_memory_raw_bytes": "Authoritative bytes for the selected Native note source. U04 labels memory content experience-lead; frontmatter cannot elevate it to verified fact.",
+    "freshness_history": "U08 history is explicit verification history/append proposal, not a facts database. The P03 coordination status ledger is stage progress only, not business TaskLedger owner/progress evidence.",
+    "current_facts": "Use current checkout source, same-revision tests and accepted evidence. Missing business TaskLedger evidence leaves owner/progress unknown."
+  },
+  "current_u09_scope_and_paths": {
+    "corrective_product_paths": [
+      "packages/adapters/zcode/src/project-memory.ts",
+      "packages/projects/freshness.ts",
+      "packages/projects/registry.ts",
+      "packages/adapters/zcode/src/host.ts",
+      "tools/run-tests.mjs"
+    ],
+    "integration_test_and_candidate_paths": [
+      "tests/integration/P03/native.integration.test.mjs",
+      "tests/integration/P03/reader-parent-acl.test.mjs",
+      "tests/integration/P03/native.worker.mjs",
+      "tests/integration/P03/desktop.py",
+      "tests/integration/P03/build-candidate.mjs",
+      "tests/integration/P03/factory-entry.mjs",
+      "tests/integration/P03/project-memory-host.mjs",
+      "tests/integration/P03/memory-relay.py",
+      "tests/integration/P03/seed-memory.mjs"
+    ],
+    "selector_mapping_at_readback": "tools/run-tests.mjs maps P03-U09 integration selection to native.integration.test.mjs and reader-parent-acl.test.mjs; this file and selector remain writer-owned and must be rebound after they stop changing.",
+    "path_only_binding": "The U09 product/test paths above are deliberately not byte-bound in this preparation record because source, tests and selector are still changing."
+  },
+  "execution_boundary": {
+    "acl_initial_run": {
+      "status": "coordinator-reported: three real owned Windows ancestor ACL cases passed",
+      "diagnostic_correction": "The first stdout sampled the resolve counter after recovery and printed 4; the denied capture had separately asserted 2. The test now snapshots deniedResolveCalls before recovery and emits totalResolveCallsAfterRecovery after recovery.",
+      "final_selector_after_diagnostic_correction": "NOT_RUN",
+      "raw_stdout_artifact": null,
+      "note": "The report is coordination context only; root must bind the final rerun command and stdout before U09 review."
+    },
+    "native_destination_candidate": "Writer work remains in progress; final candidate build/integration result is NOT_RUN.",
+    "not_run_or_not_claimed": [
+      "P03-U09 final selector after the diagnostic correction",
+      "U09 final Native/destination integration acceptance",
+      "portable installer qualification",
+      "paid-model behavior",
+      "DSH integration",
+      "installed ZCode application behavior"
+    ]
+  },
+  "future_final_binding": {
+    "bind_only_after_all_source_writers_stop": true,
+    "required_paths": [
+      "packages/adapters/zcode/src/project-memory.ts",
+      "packages/projects/freshness.ts",
+      "packages/projects/registry.ts",
+      "packages/adapters/zcode/src/host.ts",
+      "tools/run-tests.mjs",
+      "tests/integration/P03/native.integration.test.mjs",
+      "tests/integration/P03/reader-parent-acl.test.mjs",
+      "tests/integration/P03/native.worker.mjs",
+      "tests/integration/P03/desktop.py",
+      "tests/integration/P03/build-candidate.mjs",
+      "tests/integration/P03/factory-entry.mjs",
+      "tests/integration/P03/project-memory-host.mjs",
+      "tests/integration/P03/memory-relay.py",
+      "tests/integration/P03/seed-memory.mjs"
+    ],
+    "required_evidence": [
+      "final author/integration commit and exact raw source/test/selector hashes",
+      "fixed toolchain, exact command, cwd, exit code and unabridged safe stdout/hash output",
+      "actual Native/destination candidate outcome and any retained failure/NOT_RUN boundary",
+      "independent reviewer binding to those exact immutable artifacts"
+    ]
+  },
+  "not_claimed": [
+    "This preparation/source-adoption record does not mark U09 ready_for_review, pass, accepted or G03 complete.",
+    "Accepted U01-U08 unit records do not by themselves establish U09 integration or close all G03 Musts.",
+    "P03-scoped R07/R08/R24 mapping does not close those requirements in later P08/P09/P14/P15/P16 stages."
+  ]
+}

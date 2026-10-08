@@ -1,0 +1,280 @@
+{
+  "schema": "p03-u09-result/v1",
+  "task": "P03-U09",
+  "attempt_id": "20261008-01",
+  "at_utc": "2026-10-08T14:21:21.689972+00:00",
+  "baseline_commit": "84ccbbb3735f3022f9d2075b857cae610f6199c9",
+  "material_commit": "d56d02f5b16bff2b98dcd1ca9c8adf1cf5bb420d",
+  "author_status": "ready_for_review",
+  "independent_acceptance": "pending",
+  "implementation": [
+    {
+      "path": "packages/adapters/zcode/src/project-memory.ts",
+      "bytes": 32845,
+      "sha256": "e42ae598401c80a89c84933f6927411e13150cfbe670fd8abeeca60abe0f7e8a"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "bytes": 7058,
+      "sha256": "3ed515b21f16fb83be3c067234c12ac3a14b158d026c1c6dcb04e3ac2c062504"
+    },
+    {
+      "path": "tests/integration/P03/build-candidate.mjs",
+      "bytes": 21918,
+      "sha256": "80625cd5683f3b0875db3291b9e106163113ec35381cfaf2707a07e9a3b024cc"
+    },
+    {
+      "path": "tests/integration/P03/desktop.py",
+      "bytes": 16456,
+      "sha256": "d37401fc386f405e15a80862424ed951722c267a6d6fc6916991cfdf1a375100"
+    },
+    {
+      "path": "tests/integration/P03/factory-entry.mjs",
+      "bytes": 1763,
+      "sha256": "9a4166f98e3855f47b3595eb6bbb394b871e0cbc7ab0d7b13911c149cb6ef3d1"
+    },
+    {
+      "path": "tests/integration/P03/memory-relay.py",
+      "bytes": 20868,
+      "sha256": "6372aa7d5d9fdc248e74e73d18551ffa7b3fffa6314fc91651471854d901e854"
+    },
+    {
+      "path": "tests/integration/P03/native.integration.test.mjs",
+      "bytes": 7091,
+      "sha256": "3358253cfeb66779b05931a334cebb27a988ef9f6cbc8352942974b232f4fdf8"
+    },
+    {
+      "path": "tests/integration/P03/native.worker.mjs",
+      "bytes": 46346,
+      "sha256": "699a617c645223ea11e9be0201fc165a6dde5e93138e6568ba086e926da2b50c"
+    },
+    {
+      "path": "tests/integration/P03/project-memory-host.mjs",
+      "bytes": 9265,
+      "sha256": "84babafb4004283fb504cd868add84eb9c8c1778be64b8610266c426bd28627d"
+    },
+    {
+      "path": "tests/integration/P03/reader-parent-acl-helper.ps1",
+      "bytes": 1189,
+      "sha256": "0c61e52634d9f78e9025d505d1c23581b04c1b7de1792f1a82f27176ea9d9fb6"
+    },
+    {
+      "path": "tests/integration/P03/reader-parent-acl.test.mjs",
+      "bytes": 13204,
+      "sha256": "7d26f7e9372bb39068d7d3088bd02b28a4880238a47b068f3cab9e3a4fd7627b"
+    },
+    {
+      "path": "tests/integration/P03/seed-memory.mjs",
+      "bytes": 17981,
+      "sha256": "41f47b50616faeff53633b54b37d31526d9844e4618779f221be6d701eb652e4"
+    }
+  ],
+  "verification": {
+    "build-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/build-01.json",
+      "bytes": 480,
+      "sha256": "0da3e7f6c241fdc68c616f7193a0fba5df39114cd8224e677f77a86b41dbf24f"
+    },
+    "build-final-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/build-final-01.json",
+      "bytes": 465,
+      "sha256": "c75460ecd00ccda9ec813de7f5aef3123c4ff64257efbc35c193617e1fd75631"
+    },
+    "candidate-build-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/candidate-build-01.json",
+      "bytes": 1395,
+      "sha256": "7e8ec37dd5238921db2b80da69515034ccafd6507c043f1175f440628bf40af6"
+    },
+    "candidate-build-02": {
+      "path": "evidence/P03-U09/20261008-01/commands/candidate-build-02.json",
+      "bytes": 3877,
+      "sha256": "cdf30d42d70d371ade0f7df8889b1f927e92461b12682c6121d7aa5925dd9075"
+    },
+    "candidate-build-03": {
+      "path": "evidence/P03-U09/20261008-01/commands/candidate-build-03.json",
+      "bytes": 3878,
+      "sha256": "9ae90eda3ae0b948e53be564d53fbbc286c0e53affcb979f142890c7f6b52830"
+    },
+    "desktop-full-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/desktop-full-01.json",
+      "bytes": 963,
+      "sha256": "5c185976910791778d5a68c21b4ec16fe1827f620289625881d3b3595301b626"
+    },
+    "inputs-after-desktop-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/inputs-after-desktop-01.json",
+      "bytes": 42364,
+      "sha256": "bd2414d1f81e2ceb4e4883d740c3331b271f1c53bc470656f4e14926eaa33f42"
+    },
+    "inputs-after-final-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/inputs-after-final-01.json",
+      "bytes": 42168,
+      "sha256": "57604e146574b7461eccaabf7fe0161227376cdb88f1659ca25dc886c4554f44"
+    },
+    "inputs-after-final-02": {
+      "path": "evidence/P03-U09/20261008-01/commands/inputs-after-final-02.json",
+      "bytes": 42364,
+      "sha256": "7a827e17fb4be53da809a5cf2314804f999c537c1a8969083b0c2cfcb827abaa"
+    },
+    "inputs-before-final-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/inputs-before-final-01.json",
+      "bytes": 42060,
+      "sha256": "6e6d7d5b4b0a06df10a17be4ac031395b9500746b7d17938d894d1261e8c6a2f"
+    },
+    "inputs-before-final-02": {
+      "path": "evidence/P03-U09/20261008-01/commands/inputs-before-final-02.json",
+      "bytes": 42256,
+      "sha256": "c6e6431dffbf9b3f2922af6aec10226124d69e1ad5e6ec5e20c2b577da7ac11d"
+    },
+    "integration-final-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/integration-final-01.json",
+      "bytes": 11835,
+      "sha256": "8edc1500c3cc3a8822288355bc2f83be772b55892dc7eef1bccb653026840bd7"
+    },
+    "integration-final-02": {
+      "path": "evidence/P03-U09/20261008-01/commands/integration-final-02.json",
+      "bytes": 11841,
+      "sha256": "ee3a2e7b722e04d9fe102e118f1fefc313e7adbac589325ebf89d25c25559c35"
+    },
+    "native-inputs-final-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/native-inputs-final-01.json",
+      "bytes": 925,
+      "sha256": "3dbc0ac55e18bbbc92c4462f83cd7973d08325f97d2b12b5607cd4af74e9205b"
+    },
+    "parent-acl-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/parent-acl-01.json",
+      "bytes": 2592,
+      "sha256": "945e725043eb661478238a6e6359e10049be37fd1513a405a01058fd06a27bd6"
+    },
+    "seed-preflight-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/seed-preflight-01.json",
+      "bytes": 4001,
+      "sha256": "052964662065e8abcddcaf28045205d72ab57fe3e2df38a654aac96208dbbcac"
+    },
+    "unit-regression-01": {
+      "path": "evidence/P03-U09/20261008-01/commands/unit-regression-01.json",
+      "bytes": 16937,
+      "sha256": "3c33d2fea557cc9531e46b9da47e07772f7b6dd9e73d6ef4c3db4464bab2ca6a"
+    }
+  },
+  "candidate": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u09-desktop-final-02\\candidate\\candidate-descriptor.json",
+    "bytes": 1348924,
+    "sha256": "7bcae89225d0ef46a42b80494702c780b781ddf0a1ce70bcb313771b579fb0eb"
+  },
+  "desktop_summary": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u09-desktop-final-02\\full\\summary.json",
+    "bytes": 88535,
+    "sha256": "0e17cffedb116222a83fb533f8a8c898e5811e7087cfb3eabd1db0703350f3b4"
+  },
+  "memory_audits": [
+    {
+      "scenario": "cancel_recovery",
+      "original": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u09-desktop-final-02\\full\\scenarios\\cancel_recovery\\profile\\p03-memory-audit.jsonl",
+      "archive": {
+        "path": "evidence/P03-U09/20261008-01/memory-audits/cancel_recovery.jsonl",
+        "bytes": 486,
+        "sha256": "03a589b9c4519e183e87a7bc53f5c38cd79990f0744bef3a84f4f74b12120a98"
+      },
+      "rows": 2
+    },
+    {
+      "scenario": "read_failure",
+      "original": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u09-desktop-final-02\\full\\scenarios\\read_failure\\profile\\p03-memory-audit.jsonl",
+      "archive": {
+        "path": "evidence/P03-U09/20261008-01/memory-audits/read_failure.jsonl",
+        "bytes": 448,
+        "sha256": "400b6808c7b5cf49736ab763b5aebdb8e3dbb045afecb50312d7d0f024bbe446"
+      },
+      "rows": 2
+    },
+    {
+      "scenario": "read_success",
+      "original": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u09-desktop-final-02\\full\\scenarios\\read_success\\profile\\p03-memory-audit.jsonl",
+      "archive": {
+        "path": "evidence/P03-U09/20261008-01/memory-audits/read_success.jsonl",
+        "bytes": 729,
+        "sha256": "bbfcf1d97d6ec807c80006ec643bb21b392d8bc23707b8283409e296805e54b2"
+      },
+      "rows": 3
+    }
+  ],
+  "g03_must_evidence": {
+    "no_natural_decay": "Accepted U08 actual Git/raw-reference three-year comparison; current remains experience-lead, not semantic truth. U04/U05 authority policy and U09 actual two-turn Read regression.",
+    "relocation_traceable": "Accepted U03/U06 actual Git/SQLite identity, Native UUID resolver, relocation/import/export rollback and raw-byte manifests; final related regression unchanged.",
+    "no_double_authority": "Registry holds identity metadata; reader/Host admit selected Native raw bytes only. Native memory writer/extraction flags false. All five fixture source hashes and exact primary/foreign file sets unchanged after each actual Desktop scenario. No second memory-content fact store."
+  },
+  "test_reporting": {
+    "integration": "8 Native + 3 ACL cases and 2 parent checks = 13 pass, zero fail/skip.",
+    "unit_streams": [
+      "ℹ tests 43",
+      "ℹ pass 43",
+      "ℹ fail 0",
+      "ℹ skipped 0",
+      "ℹ tests 9",
+      "ℹ pass 9",
+      "ℹ fail 0",
+      "ℹ skipped 0",
+      "ℹ tests 24",
+      "ℹ pass 24",
+      "ℹ fail 0",
+      "ℹ skipped 0",
+      "ℹ tests 1",
+      "ℹ pass 1",
+      "ℹ fail 0",
+      "ℹ skipped 0",
+      "ℹ tests 15",
+      "ℹ pass 14",
+      "ℹ fail 0",
+      "ℹ skipped 1",
+      "ℹ tests 8",
+      "ℹ pass 8",
+      "ℹ fail 0",
+      "ℹ skipped 0",
+      "ℹ tests 26",
+      "ℹ pass 26",
+      "ℹ fail 0",
+      "ℹ skipped 0"
+    ],
+    "unit_boundary": "Nested child streams and 26 outer file checks must not be summed. U03 registry 14 pass/1 file-symlink privilege skip; U07 separate file-symlink EPERM probe also unexecuted despite zero aggregate skip.",
+    "desktop": "Actual Electron 41.0.3 UI and Electron Node-mode Native CLI, success/denial/cancel-recovery; local loopback synthetic provider.",
+    "degradation": "U10 task, NOT_RUN in U09"
+  },
+  "correction": "During final capture revalidation preserve unreadable PERMISSION_DENIED/IO_ERROR and clear text/frontmatter/hash/size/time; other drift remains corrupt SOURCE_CHANGED.",
+  "preserved_attempts": {
+    "candidate-build-01": "ENOENT because new destination parent was missing. No assembly existed; parent created, builder rerun.",
+    "candidate-build-02": "Successful prior material candidate retained, superseded before app execution by exclusive fixture checks and Native NOTICE preservation.",
+    "integration-final-01": "13 passed before fixture ownership strengthening; final integration-final-02 supersedes it.",
+    "parent-acl-01": "Three cases passed, diagnostic count sampled after recovery was 4; final code reports denied=2 and total-after-recovery=4."
+  },
+  "boundaries": [
+    "Fixed Node/TypeScript and actual Native/Electron are distinct from the synthetic loopback model.",
+    "Hook nonzero/bad JSON/timeout use owned fault children; missing receipt is an explicit decorator after actual installed-hook execution.",
+    "Native cancel recovery closes/recreates Host/app in the same process using persisted session identity, not an OS process-restart claim.",
+    "Desktop cancellation proves fresh capture and recovery reply; actual recovery Read is independently covered by the Native worker.",
+    "Dynamic relay listener snapshots include real existing listeners. Inspector/CDP request is 0 with fixed port disabled; actual selected CDP port was not separately measured.",
+    "Mock-server inbound socket counts do not establish whole-process egress. Desktop retains the accepted instrumentation and scoped read-only profile/registry guards, not an OS sandbox.",
+    "The local candidate borrows one exact pinned dependency junction; it is not a portable installer or a complete distributable dependency closure.",
+    "No paid-model behavior, DSH, installed application, portable installer or U10 degradation was run here.",
+    "Native source checkout, production profiles, historical evidence and immutable v1.1 plan stayed read-only.",
+    "Relocation is demonstrated by accepted U03/U06 actual movement/rollback tests and the final related regression. U09 Native/Desktop runs use newly registered projects; post-relocation application end-to-end was NOT_RUN.",
+    "Production protection reads selected credential/config bytes only for raw size/SHA fingerprints, without parsing, logging contents or passing them to candidates.",
+    "Human visual acceptance and screenshots were NOT_RUN; actual UI evidence is rendered DOM/actions and Native process/tool correlation."
+  ],
+  "license": {
+    "native": "Apache-2.0; LICENSE plus pinned root NOTICE copied byte-identically and CLI third-party notices retained",
+    "upstream_notice": {
+      "source": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\NOTICE.md",
+        "bytes": 27721,
+        "sha256": "cca8e323ad7f3b12167b58fba7d14faf18a2cdc4fa890818058872f6215912bf"
+      },
+      "copy": {
+        "path": "UPSTREAM-NOTICE.md",
+        "bytes": 27721,
+        "sha256": "cca8e323ad7f3b12167b58fba7d14faf18a2cdc4fa890818058872f6215912bf"
+      }
+    },
+    "sqlite": "Owned official better-sqlite3 13.0.3 MIT package/lib/Windows N-API addon; complete owned package closure"
+  },
+  "rollback": "Revert isolated U09 commits only; preserve earlier candidates/command failures and synthetic fixtures. No production-data migration occurred."
+}
