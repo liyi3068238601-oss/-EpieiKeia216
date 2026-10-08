@@ -1,0 +1,68 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "cancel_recovery",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "cancel_recovery",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send",
+    "observed-streaming-partial-in-renderer",
+    "clicked-native-stop-button",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send"
+  ],
+  "user_visible_reply": "已恢复。",
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 45568,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u09-desktop-final-02\\full\\scenarios\\cancel_recovery\\profile\\process-working-directory",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u09-desktop-final-02\\full\\scenarios\\cancel_recovery\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u09-desktop-final-02\\full\\scenarios\\cancel_recovery\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u09-desktop-final-02\\full\\scenarios\\cancel_recovery\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 17496,
+        "parent_pid": 45568,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 54948,
+        "parent_pid": 45568,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 42124,
+        "parent_pid": 45568,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 27476,
+        "parent_pid": 45568,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 20000,
+        "parent_pid": 45568,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 55348,
+        "parent_pid": 27476,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": true
+}

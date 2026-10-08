@@ -1,0 +1,421 @@
+{
+  "native": [
+    {
+      "scenario": "same-hash-cache",
+      "fixtureId": "u09-native-fd64bcb0-fd5c-4d61-90f7-783e7431557c",
+      "runtime": "pinned-native-24.14.0",
+      "nativeCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "provider": "local-loopback-mock",
+      "fixtureRetained": true,
+      "outcome": "passed",
+      "listener": {
+        "address": "127.0.0.1",
+        "port": 61653,
+        "checkedBeforeNative": true,
+        "healthChecks": 1,
+        "portPreviouslyUnoccupied": true,
+        "priorListenerCountOnPort": 0
+      },
+      "nonLoopbackRequests": 0,
+      "nativeModelRequests": 4,
+      "nativeReadToolCalls": 2,
+      "memoryReaderCallbacks": 4,
+      "memoryReadErrorCodes": [],
+      "hookRuns": 2,
+      "hookProcesses": [
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        },
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        }
+      ],
+      "sourceHashCount": 1,
+      "listenerSnapshot": {
+        "file": "listeners-before.json",
+        "sha256": "6d5e78a250e9b7b37cae1fc5bf68d281c4b81e21e50d96c08a41656d4cc00b19",
+        "entryCount": 77
+      }
+    },
+    {
+      "scenario": "stat-range-race-recovery",
+      "fixtureId": "u09-native-79d76c39-b184-4d92-9a02-e16a37cfd4cd",
+      "runtime": "pinned-native-24.14.0",
+      "nativeCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "provider": "local-loopback-mock",
+      "fixtureRetained": true,
+      "outcome": "passed",
+      "listener": {
+        "address": "127.0.0.1",
+        "port": 62032,
+        "checkedBeforeNative": true,
+        "healthChecks": 1,
+        "portPreviouslyUnoccupied": true,
+        "priorListenerCountOnPort": 0
+      },
+      "nonLoopbackRequests": 0,
+      "nativeModelRequests": 6,
+      "nativeReadToolCalls": 3,
+      "memoryReaderCallbacks": 6,
+      "memoryReadErrorCodes": [
+        "SOURCE_CHANGED"
+      ],
+      "hookRuns": 3,
+      "hookProcesses": [
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        },
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        },
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        }
+      ],
+      "sourceHashCount": 2,
+      "listenerSnapshot": {
+        "file": "listeners-before.json",
+        "sha256": "6d5e78a250e9b7b37cae1fc5bf68d281c4b81e21e50d96c08a41656d4cc00b19",
+        "entryCount": 77
+      },
+      "race": {
+        "sameLength": true,
+        "sameMtimeMs": true,
+        "oldSizeBytes": 20,
+        "newSizeBytes": 20,
+        "oldMtimeMs": 1704164645000,
+        "newMtimeMs": 1704164645000
+      }
+    },
+    {
+      "scenario": "hook-nonzero",
+      "fixtureId": "u09-native-31d442b6-afb6-4782-8c6d-713a71e03196",
+      "runtime": "pinned-native-24.14.0",
+      "nativeCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "provider": "local-loopback-mock",
+      "fixtureRetained": true,
+      "outcome": "passed",
+      "listener": {
+        "address": "127.0.0.1",
+        "port": 62130,
+        "checkedBeforeNative": true,
+        "healthChecks": 1,
+        "portPreviouslyUnoccupied": true,
+        "priorListenerCountOnPort": 0
+      },
+      "nonLoopbackRequests": 0,
+      "nativeModelRequests": 0,
+      "nativeReadToolCalls": 0,
+      "memoryReaderCallbacks": 0,
+      "memoryReadErrorCodes": [],
+      "hookRuns": 1,
+      "hookProcesses": [
+        {
+          "kind": "nonzero",
+          "status": "failed",
+          "exitCode": 7,
+          "timedOut": false,
+          "cancelled": false
+        }
+      ],
+      "sourceHashCount": 0,
+      "listenerSnapshot": {
+        "file": "listeners-before.json",
+        "sha256": "6d5e78a250e9b7b37cae1fc5bf68d281c4b81e21e50d96c08a41656d4cc00b19",
+        "entryCount": 77
+      }
+    },
+    {
+      "scenario": "hook-bad-json",
+      "fixtureId": "u09-native-62b07f98-fe01-4d31-8779-e969e0ec486e",
+      "runtime": "pinned-native-24.14.0",
+      "nativeCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "provider": "local-loopback-mock",
+      "fixtureRetained": true,
+      "outcome": "passed",
+      "listener": {
+        "address": "127.0.0.1",
+        "port": 62185,
+        "checkedBeforeNative": true,
+        "healthChecks": 1,
+        "portPreviouslyUnoccupied": true,
+        "priorListenerCountOnPort": 0
+      },
+      "nonLoopbackRequests": 0,
+      "nativeModelRequests": 0,
+      "nativeReadToolCalls": 0,
+      "memoryReaderCallbacks": 0,
+      "memoryReadErrorCodes": [],
+      "hookRuns": 1,
+      "hookProcesses": [
+        {
+          "kind": "bad-json",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        }
+      ],
+      "sourceHashCount": 0,
+      "listenerSnapshot": {
+        "file": "listeners-before.json",
+        "sha256": "6d5e78a250e9b7b37cae1fc5bf68d281c4b81e21e50d96c08a41656d4cc00b19",
+        "entryCount": 77
+      }
+    },
+    {
+      "scenario": "hook-missing-receipt",
+      "fixtureId": "u09-native-23dbf064-fd32-4ced-964f-58492d9e8aa8",
+      "runtime": "pinned-native-24.14.0",
+      "nativeCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "provider": "local-loopback-mock",
+      "fixtureRetained": true,
+      "outcome": "passed",
+      "listener": {
+        "address": "127.0.0.1",
+        "port": 62262,
+        "checkedBeforeNative": true,
+        "healthChecks": 1,
+        "portPreviouslyUnoccupied": true,
+        "priorListenerCountOnPort": 0
+      },
+      "nonLoopbackRequests": 0,
+      "nativeModelRequests": 0,
+      "nativeReadToolCalls": 0,
+      "memoryReaderCallbacks": 0,
+      "memoryReadErrorCodes": [],
+      "hookRuns": 1,
+      "hookProcesses": [
+        {
+          "kind": "missing-receipt",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        }
+      ],
+      "sourceHashCount": 0,
+      "listenerSnapshot": {
+        "file": "listeners-before.json",
+        "sha256": "6d5e78a250e9b7b37cae1fc5bf68d281c4b81e21e50d96c08a41656d4cc00b19",
+        "entryCount": 77
+      }
+    },
+    {
+      "scenario": "hook-timeout",
+      "fixtureId": "u09-native-e2549997-a54b-4465-bdb1-09920a748f95",
+      "runtime": "pinned-native-24.14.0",
+      "nativeCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "provider": "local-loopback-mock",
+      "fixtureRetained": true,
+      "outcome": "passed",
+      "listener": {
+        "address": "127.0.0.1",
+        "port": 62493,
+        "checkedBeforeNative": true,
+        "healthChecks": 1,
+        "portPreviouslyUnoccupied": true,
+        "priorListenerCountOnPort": 0
+      },
+      "nonLoopbackRequests": 0,
+      "nativeModelRequests": 0,
+      "nativeReadToolCalls": 0,
+      "memoryReaderCallbacks": 0,
+      "memoryReadErrorCodes": [],
+      "hookRuns": 1,
+      "hookProcesses": [
+        {
+          "kind": "timeout",
+          "status": "timed_out",
+          "timedOut": true,
+          "cancelled": false
+        }
+      ],
+      "sourceHashCount": 0,
+      "listenerSnapshot": {
+        "file": "listeners-before.json",
+        "sha256": "6d5e78a250e9b7b37cae1fc5bf68d281c4b81e21e50d96c08a41656d4cc00b19",
+        "entryCount": 77
+      }
+    },
+    {
+      "scenario": "cancel-recovery",
+      "fixtureId": "u09-native-30c3b31e-f4b3-4956-ab6c-b10f8039baac",
+      "runtime": "pinned-native-24.14.0",
+      "nativeCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "provider": "local-loopback-mock",
+      "fixtureRetained": true,
+      "outcome": "passed",
+      "listener": {
+        "address": "127.0.0.1",
+        "port": 62651,
+        "checkedBeforeNative": true,
+        "healthChecks": 1,
+        "portPreviouslyUnoccupied": true,
+        "priorListenerCountOnPort": 0
+      },
+      "nonLoopbackRequests": 0,
+      "nativeModelRequests": 7,
+      "nativeReadToolCalls": 3,
+      "memoryReaderCallbacks": 6,
+      "memoryReadErrorCodes": [],
+      "hookRuns": 4,
+      "hookProcesses": [
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        },
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        },
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        },
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        }
+      ],
+      "sourceHashCount": 3,
+      "listenerSnapshot": {
+        "file": "listeners-before.json",
+        "sha256": "6d5e78a250e9b7b37cae1fc5bf68d281c4b81e21e50d96c08a41656d4cc00b19",
+        "entryCount": 77
+      }
+    },
+    {
+      "scenario": "path-denials",
+      "fixtureId": "u09-native-3867bee7-4f55-4cbd-b708-efabe0564227",
+      "runtime": "pinned-native-24.14.0",
+      "nativeCommit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "provider": "local-loopback-mock",
+      "fixtureRetained": true,
+      "outcome": "passed",
+      "listener": {
+        "address": "127.0.0.1",
+        "port": 64700,
+        "checkedBeforeNative": true,
+        "healthChecks": 1,
+        "portPreviouslyUnoccupied": true,
+        "priorListenerCountOnPort": 0
+      },
+      "nonLoopbackRequests": 0,
+      "nativeModelRequests": 6,
+      "nativeReadToolCalls": 3,
+      "memoryReaderCallbacks": 2,
+      "memoryReadErrorCodes": [
+        "READ_NOT_ADMITTED",
+        "READ_NOT_ADMITTED"
+      ],
+      "hookRuns": 3,
+      "hookProcesses": [
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        },
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        },
+        {
+          "kind": "installed-hook",
+          "status": "completed",
+          "exitCode": 0,
+          "timedOut": false,
+          "cancelled": false
+        }
+      ],
+      "sourceHashCount": 0,
+      "listenerSnapshot": {
+        "file": "listeners-before.json",
+        "sha256": "6aaba19aa5a5983cd7ce5008e601e2baf47c31ffa0c18ded96ecb35a7899833f",
+        "entryCount": 70
+      }
+    }
+  ],
+  "acl": [
+    {
+      "scenario": "memoryRoot",
+      "deniedKind": "unreadable",
+      "deniedCode": "PERMISSION_DENIED",
+      "originalDaclSha256": "2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db",
+      "restoredDaclSha256": "2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db",
+      "indexSha256": "ffc2d65e8659fafc4692a2a7dca49f99e3ed155cd1c6e6dd922a2a2abbe8a144",
+      "topicSha256": "91f2927fe59b17381d0da083b9683d2d8897f17c416039be716e4c9259ab3639",
+      "recoveredKind": "present",
+      "resolveCallsDuringDeniedCapture": 2,
+      "totalResolveCallsAfterRecovery": 4,
+      "denialApplied": true,
+      "contentCleared": true
+    },
+    {
+      "scenario": "memories",
+      "deniedKind": "unreadable",
+      "deniedCode": "PERMISSION_DENIED",
+      "originalDaclSha256": "2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db",
+      "restoredDaclSha256": "2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db",
+      "indexSha256": "ffc2d65e8659fafc4692a2a7dca49f99e3ed155cd1c6e6dd922a2a2abbe8a144",
+      "topicSha256": "91f2927fe59b17381d0da083b9683d2d8897f17c416039be716e4c9259ab3639",
+      "recoveredKind": "present",
+      "resolveCallsDuringDeniedCapture": 2,
+      "totalResolveCallsAfterRecovery": 4,
+      "denialApplied": true,
+      "contentCleared": true
+    },
+    {
+      "scenario": "projects",
+      "deniedKind": "unreadable",
+      "deniedCode": "PERMISSION_DENIED",
+      "originalDaclSha256": "2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db",
+      "restoredDaclSha256": "2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db",
+      "indexSha256": "ffc2d65e8659fafc4692a2a7dca49f99e3ed155cd1c6e6dd922a2a2abbe8a144",
+      "topicSha256": "91f2927fe59b17381d0da083b9683d2d8897f17c416039be716e4c9259ab3639",
+      "recoveredKind": "present",
+      "resolveCallsDuringDeniedCapture": 2,
+      "totalResolveCallsAfterRecovery": 4,
+      "denialApplied": true,
+      "contentCleared": true
+    }
+  ],
+  "boundary": "8 actual Native scenarios and 3 actual owned Windows ACL scenarios plus 2 parent checks = 13 Node tests. NonLoopbackRequests is the mock server inbound socket check, not an OS egress audit."
+}

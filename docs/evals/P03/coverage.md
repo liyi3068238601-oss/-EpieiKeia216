@@ -1,8 +1,8 @@
 # P03-U09 覆盖准备：G03、R07、R08、R24
 
-此文件是 U09 的准备性覆盖映射，不是结果或验收报告。计划卡、需求矩阵、P03 记忆政策、复用 ADR 和固定 Native checkout 均只读。精确 U01–U08 author commit、acceptance/review 原始字节大小与 SHA-256、U09 卡片/基线、Native 许可及七项 raw file hash 见 [source-adoption.json](../../../evidence/P03-U09/20261008-01/source-adoption.json)。
+此文件是 U09 的覆盖映射。最终作者执行结果见 `evidence/P03-U09/20261008-01/result.json`；独立验收仍为 pending。计划卡、需求矩阵、P03 记忆政策、复用 ADR 和固定 Native checkout 均只读。精确 U01–U08 author commit、acceptance/review 原始字节大小与 SHA-256、U09 卡片/基线、Native 许可及七项 raw file hash 见 [source-adoption.json](../../../evidence/P03-U09/20261008-01/source-adoption.json)。
 
-本映射逐项使用 U01–U08 的 canonical acceptance 与独立 review 记录。U01/U02 的旧 result 文档保留了提交时 `ready_for_review` 的历史措辞；后续 acceptance 和 review 才将这些单元接受。P03-U09 卡片仍是不可变计划输入；当前执行基线记为 `running`。U09 整体验收为 `NOT_RUN`。
+本映射逐项使用 U01–U08 的 canonical acceptance 与独立 review 记录。U01/U02 的旧 result 文档保留了提交时 `ready_for_review` 的历史措辞；后续 acceptance 和 review 才将这些单元接受。P03-U09 卡片仍是不可变计划输入；当前执行基线记为 `running`。U09 作者状态为 `ready_for_review`；独立验收为 pending。
 
 | 已接受单元 | author commit / integrated commit | canonical acceptance | independent review | 产品与测试路径 |
 | --- | --- | --- | --- | --- |
@@ -23,9 +23,9 @@
 
 | 项目 | 核验标准 | 已接受单元及当前产品/测试路径 | U09 当前边界 |
 | --- | --- | --- | --- |
-| G03-M1 | 时间经过本身不让项目记忆过期；需要按当前 Git base 与证据原始字节重验。 | U04/U05/U08；`packages/adapters/zcode/src/project-memory.ts`、`docs/policies/project-memory.md`、`packages/projects/freshness.ts`；测试 `packages/adapters/zcode/test/project-memory.test.mjs`、`packages/projects/test/project-memory-policy.test.mjs`、`packages/projects/test/freshness.test.mjs`，最终集成目标 `tests/integration/P03/native.integration.test.mjs`。 | 下层 unit 已接受；Native/destination 候选最终集成仍 `NOT_RUN`。 |
-| G03-M2 | 项目身份和 Native memory 路径在物理迁移后可追溯；导入/迁移有显式确认、回滚和不覆盖行为。 | U03/U06/U08；`packages/projects/registry.ts`、`export.ts`、`relocate.ts`、`freshness.ts`；测试 `packages/projects/test/registry.test.mjs`、`project-memory-migration.test.mjs`、`freshness.test.mjs`，最终集成目标 `tests/integration/P03/native.integration.test.mjs`。 | Registry 与 relocation 的下层测试已接受；U09 的最终端到端绑定仍 `NOT_RUN`。 |
-| G03-M3 | 不建立 Native 与应用的双写事实库：registry metadata 负责身份，Native MEMORY/topic 的原始字节负责笔记内容；经验与 freshness history 不升级为事实库。 | U03/U04/U05/U07/U08；`packages/projects/registry.ts`、`packages/adapters/zcode/src/project-memory.ts`、`packages/adapters/zcode/src/host.ts`、`packages/work/handoff-context.ts`、`packages/projects/freshness.ts`；测试 `packages/adapters/zcode/test/project-memory.test.mjs`、`project-memory-host.test.mjs`、`packages/projects/test/project-memory-policy.test.mjs`、`packages/work/test/handoff-context.test.mjs`，最终集成目标 `tests/integration/P03/native.integration.test.mjs` 与 `reader-parent-acl.test.mjs`。 | 下层 authority/guard tests 已接受；U09 的 Native/destination 测试最终重跑仍 `NOT_RUN`。 |
+| G03-M1 | 时间经过本身不让项目记忆过期；需要按当前 Git base 与证据原始字节重验。 | U04/U05/U08；`packages/adapters/zcode/src/project-memory.ts`、`docs/policies/project-memory.md`、`packages/projects/freshness.ts`；测试 `packages/adapters/zcode/test/project-memory.test.mjs`、`packages/projects/test/project-memory-policy.test.mjs`、`packages/projects/test/freshness.test.mjs`，最终集成目标 `tests/integration/P03/native.integration.test.mjs`。 | 下层 unit 已接受；最终 Native 与新 Desktop 候选已运行；精确结果见 result.json，独立验收 pending。 |
+| G03-M2 | 项目身份和 Native memory 路径在物理迁移后可追溯；导入/迁移有显式确认、回滚和不覆盖行为。 | U03/U06/U08；`packages/projects/registry.ts`、`export.ts`、`relocate.ts`、`freshness.ts`；测试 `packages/projects/test/registry.test.mjs`、`project-memory-migration.test.mjs`、`freshness.test.mjs`，最终集成目标 `tests/integration/P03/native.integration.test.mjs`。 | Registry 与 relocation 的下层测试已接受；迁移证据是 U03/U06 已接受实测及最终 U03–U08 回归；U09 只核验新注册 fixture 的 Native 绑定，移动后应用端到端 NOT_RUN。 |
+| G03-M3 | 不建立 Native 与应用的双写事实库：registry metadata 负责身份，Native MEMORY/topic 的原始字节负责笔记内容；经验与 freshness history 不升级为事实库。 | U03/U04/U05/U07/U08；`packages/projects/registry.ts`、`packages/adapters/zcode/src/project-memory.ts`、`packages/adapters/zcode/src/host.ts`、`packages/work/handoff-context.ts`、`packages/projects/freshness.ts`；测试 `packages/adapters/zcode/test/project-memory.test.mjs`、`project-memory-host.test.mjs`、`packages/projects/test/project-memory-policy.test.mjs`、`packages/work/test/handoff-context.test.mjs`，最终集成目标 `tests/integration/P03/native.integration.test.mjs` 与 `reader-parent-acl.test.mjs`。 | 下层 authority/guard tests 已接受；最终 U09 selector 与实际 Desktop 重跑通过，独立验收 pending。 |
 
 Authority 边界按 `docs/policies/project-memory.md` 和 U04/U05/U08 接受结果解释：registry metadata 只确立 project identity/workspace binding/revision；Native raw memory bytes 是被选中 note 内容的源；note 一律是 `experience-lead`，frontmatter 不能提升事实级别；U08 freshness history 是核验历史/append proposal。P03 coordination status ledger 仅记录阶段进度，不是业务 `TaskLedger`，不能据此填 owner/progress。
 
@@ -45,9 +45,4 @@ U09 Native 参考固定在 `.runtime/P01/desktop-source` commit `29628c9acdb81b7
 
 U09 baseline 已把 corrective reader scope 登记到 `packages/adapters/zcode/src/project-memory.ts`，并把 selector 登记到 `tools/run-tests.mjs`。当前路径映射是供后续最终绑定使用，不记录仍在变化的 U09 source/test/selector 字节哈希。最终 binder 需等所有 writer 停止后，再核实并绑定确切 commit、产品与测试 raw hash、selector、固定工具链、命令/cwd/exit code、真实 stdout/hash 记录与独立 reviewer。
 
-当前边界如下：
-
-- 协调方报告第一次真实 Windows ACL ancestor run 的三个 case 均通过。那次 JSON 诊断在恢复后读取累计 resolve 次数，显示 4；denied capture 自身断言为 2。诊断现已改为在恢复前保存 denied-call 数，并另外输出恢复后的总数。诊断修正后的最终 U09 selector 重跑仍为 `NOT_RUN`，原始 stdout 尚未在此记录中绑定。
-- Native/destination candidate 仍有 writer 在改，最终构建/集成是 `NOT_RUN`。
-- portable installer、paid model、DSH 与 installed ZCode application 均没有 U09 结果，本映射不声称它们通过。
-- 这份文档和 source-adoption 都是 preparation/source-adoption，不是 U09 `ready_for_review`、pass、accepted，也没有关闭 G03。
+当前执行边界：最终 Node selector 13 pass，相关 U03–U08 回归通过并保留 symlink 权限未测；新 Desktop 候选成功/拒绝/取消恢复已实测。精确 material commit、命令/cwd/exit、源/测试/工具链 hash、NOTICE 与 candidate closure、保留失败记录见 result.json 和 candidate-proof-index.json。模型是 loopback mock；付费模型、DSH、安装态、portable installer 未测，U10 三类降级尚未运行。source-adoption.json 是开工准备快照，其中 NOT_RUN 和 writer 状态按其原始时间解释；最终绑定以 result.json 为准。作者 ready_for_review，独立接受 pending，G03 尚未关闭。

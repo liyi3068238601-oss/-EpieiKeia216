@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "tests/integration/P03/reader-parent-acl.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u09",
+  "started_at": "2026-10-08T13:42:45.472910+00:00",
+  "completed_at": "2026-10-08T13:43:00.068297+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "▶ capture revalidation preserves unreadable ACL failures and clears unverified content\n  ✔ memoryRoot (3858.9904ms)\n  ✔ memories (3815.1133ms)\n  ✔ projects (3721.9062ms)\n✔ capture revalidation preserves unreadable ACL failures and clears unverified content (14463.1952ms)\nℹ {\"scenario\":\"memoryRoot\",\"deniedKind\":\"unreadable\",\"deniedCode\":\"PERMISSION_DENIED\",\"originalDaclSha256\":\"2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db\",\"restoredDaclSha256\":\"2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db\",\"indexSha256\":\"ffc2d65e8659fafc4692a2a7dca49f99e3ed155cd1c6e6dd922a2a2abbe8a144\",\"topicSha256\":\"91f2927fe59b17381d0da083b9683d2d8897f17c416039be716e4c9259ab3639\",\"recoveredKind\":\"present\",\"resolveCallsDuringDeniedCapture\":4,\"denialApplied\":true,\"contentCleared\":true}\nℹ {\"scenario\":\"memories\",\"deniedKind\":\"unreadable\",\"deniedCode\":\"PERMISSION_DENIED\",\"originalDaclSha256\":\"2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db\",\"restoredDaclSha256\":\"2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db\",\"indexSha256\":\"ffc2d65e8659fafc4692a2a7dca49f99e3ed155cd1c6e6dd922a2a2abbe8a144\",\"topicSha256\":\"91f2927fe59b17381d0da083b9683d2d8897f17c416039be716e4c9259ab3639\",\"recoveredKind\":\"present\",\"resolveCallsDuringDeniedCapture\":4,\"denialApplied\":true,\"contentCleared\":true}\nℹ {\"scenario\":\"projects\",\"deniedKind\":\"unreadable\",\"deniedCode\":\"PERMISSION_DENIED\",\"originalDaclSha256\":\"2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db\",\"restoredDaclSha256\":\"2fbee674b2b2f066cc44794a551164185ef6b092a9a687c4077c3228d8a270db\",\"indexSha256\":\"ffc2d65e8659fafc4692a2a7dca49f99e3ed155cd1c6e6dd922a2a2abbe8a144\",\"topicSha256\":\"91f2927fe59b17381d0da083b9683d2d8897f17c416039be716e4c9259ab3639\",\"recoveredKind\":\"present\",\"resolveCallsDuringDeniedCapture\":4,\"denialApplied\":true,\"contentCleared\":true}\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 14553.3759\n",
+  "stderr": ""
+}

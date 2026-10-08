@@ -1,0 +1,86 @@
+[
+  {
+    "request_index": 1,
+    "accepted": true,
+    "request_sha256": "ed1c4fc3b37b6f2e63ec5f7e555884a5cfede9866ae503301d5a078993484549",
+    "request_bytes": 15959,
+    "request_shape": {
+      "body_keys": [
+        "max_tokens",
+        "messages",
+        "model",
+        "stream",
+        "stream_options",
+        "thinking",
+        "tool_choice",
+        "tools"
+      ],
+      "stream_present": true,
+      "stream": "true",
+      "tools": "nonempty",
+      "tool_choice": "auto"
+    },
+    "model": "deepseek-flash",
+    "stream": true,
+    "auth_present": true,
+    "synthetic_auth_only": true,
+    "messages_count": 4,
+    "tool_names": [
+      "Read"
+    ],
+    "assistant_tool_call_ids": [],
+    "tool_result_ids": [],
+    "upstream_attempted": false,
+    "auxiliary_title": false,
+    "request_kind": "conversation",
+    "status": 200,
+    "tool_call_id": "p01-u10-read_success-read",
+    "tool_target": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u09-desktop-final-02\\full\\scenarios\\read_success\\profile\\storage\\cli\\memories\\projects\\project-ae3c3458f60ef3f5\\memory\\p03-topic.md"
+  },
+  {
+    "request_index": 2,
+    "accepted": true,
+    "request_sha256": "69b969aa358ede5c0e99d5d5efbce6aa42be787817123cddf7b4ef2103b3d623",
+    "request_bytes": 16576,
+    "request_shape": {
+      "body_keys": [
+        "max_tokens",
+        "messages",
+        "model",
+        "stream",
+        "stream_options",
+        "thinking",
+        "tool_choice",
+        "tools"
+      ],
+      "stream_present": true,
+      "stream": "true",
+      "tools": "nonempty",
+      "tool_choice": "auto"
+    },
+    "model": "deepseek-flash",
+    "stream": true,
+    "auth_present": true,
+    "synthetic_auth_only": true,
+    "messages_count": 6,
+    "tool_names": [
+      "Read"
+    ],
+    "assistant_tool_call_ids": [
+      "p01-u10-read_success-read"
+    ],
+    "tool_result_ids": [
+      "p01-u10-read_success-read"
+    ],
+    "upstream_attempted": false,
+    "auxiliary_title": false,
+    "request_kind": "conversation",
+    "correlated_tool_call_id": "p01-u10-read_success-read",
+    "tool_result_sha256": "06ca038f13701f8b6806e316f7af35ed4523fb0b2b2ca2779afef29a71ae3f10",
+    "tool_result_success_shape": true,
+    "p03_marker_present": true,
+    "p03_unselected_marker_present": false,
+    "p03_permission_denied": false,
+    "status": 200
+  }
+]

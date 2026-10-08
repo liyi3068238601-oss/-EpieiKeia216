@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "scenario": "read_success",
+  "profileRoot": "owned-profile-redacted",
+  "ledgerCount": 1,
+  "admission": "admitted",
+  "databases": [
+    {
+      "passed": true,
+      "databaseRelativePath": "plugin-storage/data/xiadie@xiadie-local/event-ledger.sqlite",
+      "databaseBytes": 114688,
+      "databaseSha256": "e9dbe7752a4af9b6e0220c90362decfd5a22fd85347dd4a8ffec66ca4ad61f68",
+      "admission": "admitted",
+      "admittedTurns": [
+        {
+          "scopeRefs": {
+            "session": "c889a7de48efdf0a8af9688860462385cfe233dded8b0dc5c8bd046799b6036a",
+            "turn": "a636829ec0bbefbdaca6988eda4f049fc13eb44015861786fa4b0ac73040b8b7",
+            "run": "c41b48df6d4fd257ae57d33ca07ee02f87de6e6b5ccd8852b7f67bd89f2fb839",
+            "task": "9f93026a51dfc37b58e00121f17dd620e147271492e0e3f7a0050c8730cf75d7"
+          },
+          "attemptRef": "91956dca1419324069b27e86526dcb42f68adb6e4ee02b127e9c0cedd5330089",
+          "lifecycle": "success",
+          "nativeEventCount": 6,
+          "transcriptEventCount": 1,
+          "captureCount": 1,
+          "nativeReceiptsVerified": true,
+          "transcriptReceiptsVerified": true,
+          "terminalReceiptVerified": true,
+          "diagnostics": {
+            "schemaVersion": 1,
+            "redactionPolicy": "turn-diagnostics-allowlist/v2",
+            "scopeRefs": {
+              "session": "c889a7de48efdf0a8af9688860462385cfe233dded8b0dc5c8bd046799b6036a",
+              "turn": "a636829ec0bbefbdaca6988eda4f049fc13eb44015861786fa4b0ac73040b8b7",
+              "run": "c41b48df6d4fd257ae57d33ca07ee02f87de6e6b5ccd8852b7f67bd89f2fb839",
+              "task": "9f93026a51dfc37b58e00121f17dd620e147271492e0e3f7a0050c8730cf75d7"
+            },
+            "attemptRef": "91956dca1419324069b27e86526dcb42f68adb6e4ee02b127e9c0cedd5330089",
+            "sourceVersion": {
+              "acceptedNative40Pin": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+              "adapter": "unknown",
+              "otherSourcePins": []
+            },
+            "evidenceReports": [],
+            "facts": [
+              {
+                "eventRef": "389626773bfd26f6f985238b56bfde69b79d8ec25fcc9a1f9709a341dda28c25",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 1,
+                "category": "runtime",
+                "nativeType": "turn_started",
+                "tool": null
+              },
+              {
+                "eventRef": "af25993a83a19eb1045542dfee74ea3c7d96c3b9df4dec20864dcb994ad1da4e",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 2,
+                "category": "runtime",
+                "nativeType": "hook_run_started",
+                "tool": null
+              },
+              {
+                "eventRef": "2ed1785361c789f21963416965fdb6bdeca3de6027c07d22026ceb922f92fc7a",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 3,
+                "category": "message",
+                "nativeType": null,
+                "tool": null
+              },
+              {
+                "eventRef": "c1f5a0f5865d5dd411927215e1438235fb14590ec17af52d973f1f7c23250cfd",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 4,
+                "category": "runtime",
+                "nativeType": "hook_run_completed",
+                "tool": null
+              },
+              {
+                "eventRef": "0719ae6ea1fa435fd9c4a551fc9d9b853a237ab976cec9082ba3efdb3efe98bd",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 5,
+                "category": "tool",
+                "nativeType": "tool_call_started",
+                "tool": {
+                  "name": "Read",
+                  "status": "started",
+                  "toolCallRef": "b62f194bf3a506e6acd9f0fb17cc15b239d04534b420a6fffec3a8ef858d7597"
+                }
+              },
+              {
+                "eventRef": "50636f11cae185e52aaea4af3406d2c153cabb28f8d2ecda533bdb1698cb61ce",
+                "operationRef": null,
+                "kind": "fact",
+                "commitSequence": 6,
+                "category": "tool",
+                "nativeType": "tool_call_result",
+                "tool": {
+                  "name": "other",
+                  "status": "result",
+                  "toolCallRef": "b62f194bf3a506e6acd9f0fb17cc15b239d04534b420a6fffec3a8ef858d7597"
+                }
+              },
+              {
+                "eventRef": "156541d6dc9ea4a30e863f7e659101e3cad9c1c11a6331f9942894874e5ed84f",
+                "operationRef": null,
+                "kind": "success",
+                "commitSequence": 7,
+                "category": "message",
+                "nativeType": "turn_complete",
+                "tool": null
+              }
+            ],
+            "observations": [
+              {
+                "eventRef": "389626773bfd26f6f985238b56bfde69b79d8ec25fcc9a1f9709a341dda28c25",
+                "observationRef": "7a8aec76db0e7841a241cc7d4b4b3fa1170b2817166c50652400130d225de22a",
+                "disposition": "accepted",
+                "commitSequence": 1,
+                "candidateHashRef": "ae865bccbb93ad159fc1c3a6c8efdf5c89cd3f2bbfc904c2fc4f056873a69b20"
+              },
+              {
+                "eventRef": "af25993a83a19eb1045542dfee74ea3c7d96c3b9df4dec20864dcb994ad1da4e",
+                "observationRef": "a8d9bd70dc5c8a20904891b5ded7a9347f0cb9c4f7b702a44c8e427f2ca03965",
+                "disposition": "accepted",
+                "commitSequence": 2,
+                "candidateHashRef": "137628436e1255afb519d3458d7c52f022069d7a784a9c70ade5986c4195a494"
+              },
+              {
+                "eventRef": "2ed1785361c789f21963416965fdb6bdeca3de6027c07d22026ceb922f92fc7a",
+                "observationRef": "e80d68d50ab95b7dc5ef6b72446f8a514aa1b0043ccc984c8795fda69e72fdf2",
+                "disposition": "accepted",
+                "commitSequence": 3,
+                "candidateHashRef": "f467d8543c872cc7d907976f8c29016b6188637a139e15025180c513c72be0a1"
+              },
+              {
+                "eventRef": "c1f5a0f5865d5dd411927215e1438235fb14590ec17af52d973f1f7c23250cfd",
+                "observationRef": "e737e557c92e0fef3b70e1b165067a24477aca3999b4fe1b816f950ad4e45f14",
+                "disposition": "accepted",
+                "commitSequence": 4,
+                "candidateHashRef": "d26c5aa35d0058d635693d4615262abbabf24e9106c8d9a60096b2e41041564e"
+              },
+              {
+                "eventRef": "0719ae6ea1fa435fd9c4a551fc9d9b853a237ab976cec9082ba3efdb3efe98bd",
+                "observationRef": "3a7fdff537cd2e7bb06710fc63e7aadadc48c7005b6aca06d68f9f14033bbff1",
+                "disposition": "accepted",
+                "commitSequence": 5,
+                "candidateHashRef": "b6b75e48ace23ab0c37aba460334a598322f3e7c2bceab7590a2aefbf02f3c56"
+              },
+              {
+                "eventRef": "50636f11cae185e52aaea4af3406d2c153cabb28f8d2ecda533bdb1698cb61ce",
+                "observationRef": "688219e791a5f68efc255af19762128a073b1f68b2f459a332e9f8119ad35d7b",
+                "disposition": "accepted",
+                "commitSequence": 6,
+                "candidateHashRef": "43dd18f1da17ca13c31d270f27c95b12fac31b28b370e46e430ee24e8cf9c8c0"
+              },
+              {
+                "eventRef": "156541d6dc9ea4a30e863f7e659101e3cad9c1c11a6331f9942894874e5ed84f",
+                "observationRef": "537aa55b03bf73cdac9a4b4849c1c2b1d50b437ed104a1a84290d330706af59f",
+                "disposition": "accepted",
+                "commitSequence": 7,
+                "candidateHashRef": "504716d4503fcafe597b3d5b30d3674350f72905b4433263f4cf7abb00a2442a"
+              }
+            ],
+            "captures": [
+              {
+                "eventRef": "2ed1785361c789f21963416965fdb6bdeca3de6027c07d22026ceb922f92fc7a",
+                "observationRef": "e80d68d50ab95b7dc5ef6b72446f8a514aa1b0043ccc984c8795fda69e72fdf2",
+                "hookEventName": "UserPromptSubmit",
+                "messageCount": 1,
+                "byteCounts": [
+                  75
+                ],
+                "snapshotSha256Ref": "9cf5e487a104f70ba0be9644335839143f559f314edda5fc40634582ee6c032b",
+                "rawSource": {
+                  "historicalSha256Ref": "074622dfd1a4ca2061d4b731ca8f39f8e0367cbfd3bda9b118d6067cd87624c4",
+                  "bytes": 141,
+                  "currentValidation": "NOT_VERIFIED"
+                }
+              }
+            ],
+            "memoryCandidates": [
+              {
+                "candidateRef": "f0ab0fc4f0c2f6765f9022baee4c42dac4614367c160f9da29a4b04d1174d77f",
+                "kind": "reference-annotation",
+                "sourceStatus": "matched",
+                "sources": [
+                  {
+                    "eventRef": "2ed1785361c789f21963416965fdb6bdeca3de6027c07d22026ceb922f92fc7a",
+                    "status": "matched"
+                  },
+                  {
+                    "eventRef": "50636f11cae185e52aaea4af3406d2c153cabb28f8d2ecda533bdb1698cb61ce",
+                    "status": "matched"
+                  }
+                ]
+              }
+            ],
+            "lifecycle": "success",
+            "terminalEventRef": "156541d6dc9ea4a30e863f7e659101e3cad9c1c11a6331f9942894874e5ed84f",
+            "codes": [],
+            "pageScan": {
+              "facts": "complete",
+              "observations": "complete"
+            },
+            "turnSeal": "unavailable"
+          }
+        }
+      ],
+      "nativeEventCount": 6,
+      "transcriptEventCount": 1,
+      "factCount": 7,
+      "observationCount": 7,
+      "backupRestore": null,
+      "temporarySourceBoundary": "Locator is historical provenance only; U09 currentValidation remains NOT_VERIFIED and no temporary source path was read."
+    }
+  ],
+  "admitted_turns": 1,
+  "backup_restore": null,
+  "passed": true,
+  "qualificationBoundary": "Electron UI uses the pinned fixed Node CLI; the durable host and SQLite ledger are in the wrapped CLI protocol process, while this ledger readback runs in a separate fixed-Node verifier process. The P02 wrapper binds actual CLI Better SQLite load sidecars to guarded CLI PIDs. P01 sidecar remains UI correlation evidence."
+}
