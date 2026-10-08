@@ -1,0 +1,109 @@
+{
+  "schema": "p03-u07-source-adoption/v1",
+  "task": "P03-U07",
+  "attempt": "20261008-01",
+  "baseline_commit": "abc0bad7ed38b3f9ef442b2278e744d80bd03b3b",
+  "author_status": "ready_for_review",
+  "independent_acceptance": "pending",
+  "prerequisite": {
+    "task": "P03-U06",
+    "path": "evidence/P03-U06/20261008-01/acceptance.json",
+    "status": "accepted",
+    "sha256": "2a0499ed079b97e0c62335eb26a1d5bc7e30395dfbbc7d7262a5664298f476b1"
+  },
+  "native_source": {
+    "repository": "https://github.com/zai-org/ZCode",
+    "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "license": "Apache-2.0",
+    "checkout": ".runtime/P01/desktop-source",
+    "read_only": true,
+    "references": [
+      {
+        "path": "apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts",
+        "bytes": 3579,
+        "sha256": "ba483db96ee90ec627890b4eff89c953dca378872cab0791728cfe1bee14405c"
+      },
+      {
+        "path": "apps/zcode-cli/packages/core/src/subagent/persistent-memory-prompt.ts",
+        "bytes": 14856,
+        "sha256": "ed2298b5582d4be07676fef739ad50239e9b68c63ca4595bd54252cb867fa7c3"
+      },
+      {
+        "path": "apps/zcode-cli/packages/core/src/runtime/agent-runtime.ts",
+        "bytes": 28327,
+        "sha256": "a2192a84dfae5dfaa46275e253d2815da8178e27d0f5e9ccd5e3f57e61d18877"
+      },
+      {
+        "path": "apps/zcode-cli/packages/core/src/tool/registry.ts",
+        "bytes": 5373,
+        "sha256": "398ba468423a00d395bab51cebcfacedcd94aa9c644d61be98eb385b52b4ad77"
+      },
+      {
+        "path": "apps/zcode-cli/packages/core/src/tool/handlers/read.ts",
+        "bytes": 17203,
+        "sha256": "d3cebd63754aa4753832a1ab78d43ee3c8c00ce452972ebce2e24e1b81fa3712"
+      },
+      {
+        "path": "apps/zcode-cli/packages/contracts/src/interfaces/file-system.port.ts",
+        "bytes": 9283,
+        "sha256": "e0a511572634c5291ff9f86c27339dc4a4e71676e388147a22259c7c64fa2fe3"
+      },
+      {
+        "path": "apps/zcode-cli/packages/adapters/src/fs/text-range-reader.ts",
+        "bytes": 7251,
+        "sha256": "5d1ecd8a0f7d4e57aec85977ef32863fa2c4bac9d0fbc3b9e5e0377add676db4"
+      },
+      {
+        "path": "apps/zcode-cli/packages/contracts/src/errors/index.ts",
+        "bytes": 4414,
+        "sha256": "0c38694061968ac8f65454bb6a894df6b4932618e1d7e52abeb067b9758275ad"
+      }
+    ]
+  },
+  "adopted": [
+    "Use the accepted ProjectRegistry branded workspace mapping, actual Git HEAD, and U04 selected-topic reader for project provenance; do not add a facts database or duplicate memory parser.",
+    "Model each handoff entry as a host task-manifest claim with raw-source SHA-256, source line ranges, applicability paths, project id, base commit and sample time. A hash binds bytes; it does not verify the claim's meaning.",
+    "Keep local memory entries experience-lead only. An absent U04 snapshot contributes no note; unreadable or corrupt source states fail with their original U04 code in the error message.",
+    "Disable persistent review memory and expose only Native Read over exact packet-bound file snapshots. The trusted runtime composition must bind Native FileSystemPort to the snapshot, not the OS filesystem.",
+    "Keep result output in a separate host-only sink with one explicitly authorized filename, exclusive creation, and a synchronous hash audit."
+  ],
+  "not_adopted": [
+    "No upstream source files, memory prompt, Native profile, or user data copied.",
+    "No persistent memory, Write/Edit, Shell/Bash, Glob/Grep, Skill, MCP, or general-purpose filesystem tool exposed to the reviewer.",
+    "No live DSH, real model, user profile, credentials, or production memory exercised."
+  ],
+  "code_origin": "New Xiadie implementation using accepted local interfaces and pinned Native ABI observations; no Native reference files edited.",
+  "scope_mapping": {
+    "packages/work/handoff-context.ts": "New bounded project-only packet builder, Read-only executor guard, snapshot read facade and separately authorized result sink. Includes explicit immutable-envelope delivery to trusted ZCode/DSH mock receiver ports.",
+    "packages/work/test/handoff-context.test.mjs": "Mapped by the test author to the existing Node unit runner and synthetic project/runtime fixtures.",
+    "tsconfig.json and tools/run-tests.mjs": "Shared test/build integration owned by coordinator/test author."
+  },
+  "boundary": "Accepted prerequisite reuse and exact source-adoption record; independent review and coordinator acceptance remain pending.",
+  "implementation_bindings": [
+    {
+      "path": "packages/work/handoff-context.ts",
+      "bytes": 57756,
+      "sha256": "625ccc2667f3c3f22e298276e3e679b54c9b95863de3312d7a1e92e8abb2b046"
+    },
+    {
+      "path": "packages/work/test/handoff-context.test.mjs",
+      "bytes": 42071,
+      "sha256": "a70b3ae5c58678152e578f28b0a0ff30066d0328460a22e715b0edfbba667825"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "bytes": 6720,
+      "sha256": "7a2457865324e9ef7b6d1327bdf0bea5d727fedfc885c85e4d47e894d86df547"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 874,
+      "sha256": "c31a971b0077a2ba975ac38bb59c7bbfab0ed9101a357bb031f50f14eb6067ac"
+    }
+  ],
+  "native_readback": {
+    "path": "evidence/P03-U07/20261008-01/native-readback.json",
+    "bytes": 925,
+    "sha256": "35e4fc96280a1cb7936a8ac777b6c704764c32f09adb6bce71cb72c3bf3c72c8"
+  }
+}
