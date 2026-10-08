@@ -1,0 +1,38 @@
+{
+  "schema": "p03-unit-baseline/v1",
+  "task": "P03-U05",
+  "baseline_commit": "f77adb3205c5c7a928f1624f5b6e85ad4876f53f",
+  "branch": "p03-u05",
+  "coordinator_branch": "p03-stage",
+  "prerequisites": [
+    {
+      "task": "P03-U04",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U04/20261008-01/acceptance.json",
+        "bytes": 2260,
+        "sha256": "ebeb89a5cf16414bded874f6e78fc2d7f9250871ce8ec045493afcc8e457b2f7"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P03-U05.md",
+    "bytes": 2072,
+    "sha256": "e869085114fcf44b90de9b8355f47859d8232aea07f1af8bf2111a05b4413e99"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "docs/policies/project-memory.md",
+    "templates/project-note.md",
+    "packages/projects/test/project-memory-policy.test.mjs",
+    "tools/run-tests.mjs",
+    "evidence/P03-U05/20261008-01"
+  ],
+  "test_mapping": "packages/projects/test/project-memory-policy.test.mjs",
+  "author_status": "running",
+  "checked_at_utc": "2026-10-08T10:50:33.318931+00:00"
+}
