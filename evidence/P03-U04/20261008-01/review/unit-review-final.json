@@ -1,0 +1,119 @@
+{
+  "schema": "p03-independent-review/v1",
+  "created_at_utc": "2026-10-08T10:48:00Z",
+  "task": "P03-U04",
+  "decision": "pass",
+  "unit_acceptance": "not_decided",
+  "review_target": {
+    "author_commit": "326ee26a77f5b79a0220e86cc9edcaa5542bb5fd",
+    "baseline_commit": "4c5cbda3395cb2e89065fabec75d1d4437e079fe",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04",
+    "attempt": "20261008-01; frozen exact commit with independent build, unit selector and Hook contract replay",
+    "changed_paths": 30
+  },
+  "reviewer": "Codex independent readback",
+  "scope": "Independent review of the complete P03-U04 implementation and evidence at the exact clean author commit. This is a review pass only; acceptance remains a coordinator decision.",
+  "checks": [
+    {
+      "id": "exact-commit-baseline-manifest-and-scope",
+      "status": "pass",
+      "detail": "The author commit is 326ee26a77f5b79a0220e86cc9edcaa5542bb5fd on baseline 4c5cbda3395cb2e89065fabec75d1d4437e079fe. The main checkout remained clean at the baseline and the author worktree remained clean at the frozen commit after reviewer build/tests. Independent verify-author readback checked 29 bound files against disk bytes and Git blobs, covering all 30 changed paths with zero mismatches; manifest SHA-256 is dd63a4b0ea6fd897caeae2c07ebe96673a72f0bf048ae18936e520217f7bdfdc."
+    },
+    {
+      "id": "memory-index-selected-topics-and-failure-states",
+      "status": "pass",
+      "detail": "Source review confirms trusted U03 mapping re-resolution, bounded physical-root/file reads, fatal UTF-8, exact-case and containment checks, raw-byte hashes, index-body Markdown link authorization, selected-topic-only reads, bounded YAML frontmatter, immutable per-reader snapshots, and revalidation before each admitted source read. The fresh reader suite passed all 43 nested assertions, including missing/empty index behavior, A/B isolation, unsafe links, ACL unreadability/recovery, source races, malformed metadata and invalid UTF-8. Unreadable/corrupt admission fails closed; it does not produce an empty-memory success."
+    },
+    {
+      "id": "host-hook-receipt-bound-native-filesystem-seam",
+      "status": "pass",
+      "detail": "The frozen Host automatically decorates appOptions.fileSystemPort before createNativeApp when project memory is enabled, requires the reader, trusted registered mapping, matching physical workspace and Native error factory, and rejects a snapshot for another project. The unit fixture captures the actual decorated port received by its Native factory: reads before a Hook receipt and reads with stale session/turn are denied; matching-receipt stat and range reach Host reader revalidation; workspace reads delegate. The range bridge also matches Native trailing-empty-line split semantics. Validation uses a synthetic Native factory/delegate; it does not imply the Native Core Read handler ran."
+    },
+    {
+      "id": "fresh-build-unit-and-hook-contract-replays",
+      "status": "pass",
+      "detail": "From the exact author worktree and fixed Node v24.14.0, an independent TypeScript build exited 0; the official P03-U04 selector exited 0 with 21/21 reported tests passing and the separate reader process reporting 43/43, zero failures or skips; the preserved P01-U06 Hook contract selector exited 0 with 2/2 tests passing. Independent git diff --check also exited 0. Command records and full test output are bound below."
+    },
+    {
+      "id": "dependency-and-license-scope",
+      "status": "pass",
+      "detail": "Marked 16.4.2 and yaml 2.9.0 are pinned as direct dependencies with lock entries and retained MIT/ISC license files; these paths are covered by the exact author manifest. The reviewer build resolved the dependencies. The author evidence records a successful isolated frozen-lockfile install and sqlite smoke."
+    },
+    {
+      "id": "native-core-read-real-model-and-boundary-scan",
+      "status": "not_run",
+      "detail": "Native Core end-to-end Read/cache behavior, a real model, desktop runtime, and an architecture boundary scan were not run. Native Core Read is explicitly deferred to U09; these statuses are not treated as passes or blockers for this bounded U04 adapter/Host unit."
+    }
+  ],
+  "reviewer_readback": {
+    "author_manifest": {
+      "record": "author-manifest-readback.json",
+      "bound_files": 29,
+      "changed_paths": 30,
+      "mismatches": 0,
+      "manifest_sha256": "dd63a4b0ea6fd897caeae2c07ebe96673a72f0bf048ae18936e520217f7bdfdc"
+    },
+    "fresh_build": {
+      "command_record": "build-review-command.json",
+      "exit_code": 0,
+      "node": "v24.14.0",
+      "typescript": "worktree node_modules/typescript/bin/tsc"
+    },
+    "official_selector": {
+      "command_record": "unit-rerun-command.json",
+      "exit_code": 0,
+      "reported_tests": 21,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "nested_reader_tests": 43,
+      "nested_reader_passed": 43,
+      "nested_reader_failed": 0
+    },
+    "hook_contract_selector": {
+      "command_record": "contract-rerun-command.json",
+      "exit_code": 0,
+      "selector": "contract P01-U06",
+      "passed": 2,
+      "failed": 0
+    },
+    "diff_check": {
+      "command_record": "diff-check-command.json",
+      "exit_code": 0
+    }
+  },
+  "limitations": [
+    "The current adapter/Host path is verified through a synthetic Native factory and FileSystem delegate; Native Core tool execution and its session cache integration remain NOT_RUN for U09.",
+    "No real model or desktop session was run, and no architecture boundary command was present. No claim is made for those surfaces.",
+    "The reviewer did not repeat the isolated dependency installation; the author commit binds its successful frozen-lockfile install and sqlite smoke record."
+  ],
+  "artifacts": [
+    {"path":"evidence/P03-U04/20261008-01/manifest.json","root":"author_worktree","bytes":7163,"sha256":"dd63a4b0ea6fd897caeae2c07ebe96673a72f0bf048ae18936e520217f7bdfdc"},
+    {"path":"evidence/P03-U04/20261008-01/result.json","root":"author_worktree","bytes":4566,"sha256":"f986d0e31029bf58c02569b5ace046427281c2fa7be1f4d39746d39568597497"},
+    {"path":"evidence/P03-U04/20261008-01/source-adoption.json","root":"author_worktree","bytes":16047,"sha256":"002d7dcc2a7a0bbd9125ecc5b6f7d9a61eff0278f5f29d890901804132959230"},
+    {"path":"evidence/P03-U04/20261008-01/baseline.json","root":"author_worktree","bytes":1446,"sha256":"53ab292bdf152d9ee8c586bc21db7d1882f1961ed9511050550b1d78b1260185"},
+    {"path":"packages/adapters/zcode/src/project-memory.ts","root":"author_worktree","bytes":32414,"sha256":"edbe2414e3209aa93aac36bd4960ae93992ec4e433104aac89cb1e1b681267ab"},
+    {"path":"packages/adapters/zcode/src/project-memory-port.ts","root":"author_worktree","bytes":6714,"sha256":"fe9044c1e8ef6149ff56e94ad1fc235fe744fb961a532a5ef82dfc50fc08d351"},
+    {"path":"packages/adapters/zcode/src/host.ts","root":"author_worktree","bytes":46052,"sha256":"2941b940b6412dcc8248a7a37f8bc5ac53901fca58b393c124869b4bab789df7"},
+    {"path":"plugins/xiadie/hooks/context.mjs","root":"author_worktree","bytes":5119,"sha256":"791613fe2ce79b41fa9ac308da182749b49b2d7c0d65f6cc4acc34147a096fab"},
+    {"path":"packages/adapters/zcode/test/project-memory.test.mjs","root":"author_worktree","bytes":31996,"sha256":"c731bdcd75115d78bafc509074a244657002756737cb5f82613ac757dbafe0c5"},
+    {"path":"packages/adapters/zcode/test/project-memory-host.test.mjs","root":"author_worktree","bytes":42053,"sha256":"6d5642beeaef438afa5692b4556ee6e915febd9b45fde19e807e60202de43a4f"},
+    {"path":"package.json","root":"author_worktree","bytes":998,"sha256":"411cdc989c38d4dbf63f6b3f99bdc3fc23a24c5d8a1dfe34e7ca08456b546a76"},
+    {"path":"pnpm-lock.yaml","root":"author_worktree","bytes":2329,"sha256":"2ace4bdf2714345dc24fa84b7f9f0003c4650d018cfe5b51b35d297c0c4f6e2b"},
+    {"path":"docs/licenses/marked-LICENSE.txt","root":"author_worktree","bytes":2942,"sha256":"8e3a3f82f59a60958f56ca08f445647c32a4733dc7ca6c2c46f6eb898471ab9c"},
+    {"path":"docs/licenses/yaml-LICENSE.txt","root":"author_worktree","bytes":738,"sha256":"5bba27375d93e9119f76c1015f7672cf9ad5f70952296e0842fb2243d6376869"},
+    {"path":"author-manifest-readback.json","root":"review_directory","bytes":552,"sha256":"c0f182ffff31c091d7732cc78c76ebe424c1638bff678d35663cbb8d6bdb4bed"},
+    {"path":"build-review-command.json","root":"review_directory","bytes":483,"sha256":"ef990fe003742b69291d109a93f6da5d4dce2b6fff15f90911115b53ecc2c174"},
+    {"path":"unit-rerun-command.json","root":"review_directory","bytes":6101,"sha256":"f658b0df6ef81ffbe8af68c9ce62f938a8a53ea3ed7f70fa42801667b2708bfb"},
+    {"path":"contract-rerun-command.json","root":"review_directory","bytes":796,"sha256":"865da7f168ac910f474870e3372fdd94c851a3233443f5e9d1526576322836b8"},
+    {"path":"diff-check-command.json","root":"review_directory","bytes":427,"sha256":"e3f1ef7aa56d5257754f82892dadb8bd7b557157a87926df688e375988759090"},
+    {"path":"u04-native-read-bridge-precheck.md","root":"review_directory","bytes":5584,"sha256":"17db72409249ef96b67d9ff3e9bac7ba153c4bf3a32f221490ac1837ecfb251c"}
+  ],
+  "immutable_inputs": [
+    {"path":"AGENTS.md","root":"baseline_repository","bytes":1971,"sha256":"ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"},
+    {"path":"planning/Xiadie_V2_v1.1/tasks/P03-U04.md","root":"baseline_repository","bytes":2965,"sha256":"451bc2361bb66516eb52e9bb1ceec4a568d6b7f04814a47def8d94b830b10440"},
+    {"path":"planning/Xiadie_V2_v1.1/02_计划执行书.md","root":"baseline_repository","bytes":366530,"sha256":"5f8fe397e4622c208e866827d7b528e3efacfd7912e74c602182c8465aa6d5b4"},
+    {"path":"evidence/P03-U03/20261008-01/acceptance.json","root":"baseline_repository","bytes":218067,"sha256":"7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37"},
+    {"path":"evidence/P03-U02/20261008-01/acceptance.json","root":"baseline_repository","bytes":10143,"sha256":"9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd"}
+  ]
+}
