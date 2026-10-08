@@ -1,0 +1,813 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+    "exit_code": 0,
+    "stdout": "29628c9acdb81b703bbd4080c207a0e7ce5e276e\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "-c",
+      "init.templateDir=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "init",
+      "-b",
+      "main"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "Initialized empty Git repository in E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git/\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "add",
+      "schema.mjs"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "commit",
+      "-m",
+      "owned current schema fixture"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "[main (root-commit) 04e8406] owned current schema fixture\n 1 file changed, 1 insertion(+)\n create mode 100644 schema.mjs\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "-c",
+      "init.templateDir=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "init",
+      "-b",
+      "main"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\B\\repo",
+    "exit_code": 0,
+    "stdout": "Initialized empty Git repository in E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/B/repo/.git/\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "add",
+      "schema.mjs"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\B\\repo",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "commit",
+      "-m",
+      "owned current schema fixture"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\B\\repo",
+    "exit_code": 0,
+    "stdout": "[main (root-commit) 04e8406] owned current schema fixture\n 1 file changed, 1 insertion(+)\n create mode 100644 schema.mjs\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "worktree",
+      "add",
+      "-b",
+      "fixture-one",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-one"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "HEAD is now at 04e8406 owned current schema fixture\n",
+    "stderr": "Preparing worktree (new branch 'fixture-one')\n"
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "worktree",
+      "add",
+      "-b",
+      "fixture-two",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-two"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "HEAD is now at 04e8406 owned current schema fixture\n",
+    "stderr": "Preparing worktree (new branch 'fixture-two')\n"
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--path-format=absolute",
+      "--git-common-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--absolute-git-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--show-toplevel"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "04e84066bef3c725daa1e456fae41c00b9752b31\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--path-format=absolute",
+      "--git-common-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-one",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--absolute-git-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-one",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git/worktrees/worktree-one\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--show-toplevel"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-one",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/worktree-one\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-one",
+    "exit_code": 0,
+    "stdout": "04e84066bef3c725daa1e456fae41c00b9752b31\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--path-format=absolute",
+      "--git-common-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-two",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--absolute-git-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-two",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git/worktrees/worktree-two\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--show-toplevel"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-two",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/worktree-two\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-two",
+    "exit_code": 0,
+    "stdout": "04e84066bef3c725daa1e456fae41c00b9752b31\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--path-format=absolute",
+      "--git-common-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\B\\repo",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/B/repo/.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--absolute-git-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\B\\repo",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/B/repo/.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--show-toplevel"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\B\\repo",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/B/repo\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\B\\repo",
+    "exit_code": 0,
+    "stdout": "04e84066bef3c725daa1e456fae41c00b9752b31\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "worktree",
+      "move",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-one",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-moved"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--path-format=absolute",
+      "--git-common-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-moved",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--absolute-git-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-moved",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git/worktrees/worktree-one\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--show-toplevel"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-moved",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/worktree-moved\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\worktree-moved",
+    "exit_code": 0,
+    "stdout": "04e84066bef3c725daa1e456fae41c00b9752b31\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--path-format=absolute",
+      "--git-common-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\copy\\repo",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/copy/repo/.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--absolute-git-dir"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\copy\\repo",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/copy/repo/.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--show-toplevel"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\copy\\repo",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/copy/repo\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\copy\\repo",
+    "exit_code": 0,
+    "stdout": "04e84066bef3c725daa1e456fae41c00b9752b31\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "worktree",
+      "repair",
+      "C:\\Users\\liyi\\AppData\\Local\\Temp\\xiadie-p03-u02-owned-f4FW4S\\worktree-two"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "repair: gitdir incorrect: E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git/worktrees/worktree-two/gitdir\n"
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--path-format=absolute",
+      "--git-common-dir"
+    ],
+    "cwd": "C:\\Users\\liyi\\AppData\\Local\\Temp\\xiadie-p03-u02-owned-f4FW4S\\worktree-two",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--absolute-git-dir"
+    ],
+    "cwd": "C:\\Users\\liyi\\AppData\\Local\\Temp\\xiadie-p03-u02-owned-f4FW4S\\worktree-two",
+    "exit_code": 0,
+    "stdout": "E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo/.git/worktrees/worktree-two\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "--show-toplevel"
+    ],
+    "cwd": "C:\\Users\\liyi\\AppData\\Local\\Temp\\xiadie-p03-u02-owned-f4FW4S\\worktree-two",
+    "exit_code": 0,
+    "stdout": "C:/Users/liyi/AppData/Local/Temp/xiadie-p03-u02-owned-f4FW4S/worktree-two\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "C:\\Users\\liyi\\AppData\\Local\\Temp\\xiadie-p03-u02-owned-f4FW4S\\worktree-two",
+    "exit_code": 0,
+    "stdout": "04e84066bef3c725daa1e456fae41c00b9752b31\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.hooksPath=E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\empty-template",
+      "-c",
+      "user.name=P03 synthetic fixture",
+      "-c",
+      "user.email=p03-fixture@example.invalid",
+      "worktree",
+      "list",
+      "--porcelain"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\A\\repo",
+    "exit_code": 0,
+    "stdout": "worktree E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/repo\nHEAD 04e84066bef3c725daa1e456fae41c00b9752b31\nbranch refs/heads/main\n\nworktree C:/Users/liyi/AppData/Local/Temp/xiadie-p03-u02-owned-f4FW4S/worktree-two\nHEAD 04e84066bef3c725daa1e456fae41c00b9752b31\nbranch refs/heads/fixture-two\n\nworktree E:/Xiadie/Xiadie/.runtime/P03/experiments/u02-topology-service-20261008-02/A/worktree-moved\nHEAD 04e84066bef3c725daa1e456fae41c00b9752b31\nbranch refs/heads/fixture-one\n\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u02-source-probe\\spikes\\P03\\topology-service.mjs",
+      "--service-worker",
+      "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02",
+    "exit_code": 0,
+    "stdout": "P03_SERVICE_PASS\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]
