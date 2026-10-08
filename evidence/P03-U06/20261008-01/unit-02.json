@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "tools/run-tests.mjs",
+    "unit",
+    "P03-U06"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u06",
+  "started_at": "2026-10-08T11:41:42.494333+00:00",
+  "completed_at": "2026-10-08T11:43:04.741051+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 240,
+  "environment_overrides": {},
+  "stdout": "✔ export round-trips the complete raw memory tree, mapping snapshot, and SHA manifest (624.7276ms)\n✔ missing Native memory exports an explicit absent manifest without creating memory (394.9372ms)\n✔ manifest and payload tampering invalidate an otherwise valid export (548.0455ms)\n✔ ordinary copies get a new UUID while an owner-confirmed bundle import preserves UUID with new Git identities (2466.0624ms)\n✔ confirmed same-machine main-workspace rename keeps project UUID and Native pointer (1065.8268ms)\n✔ linked-worktree relocation is refused before Git repair and accepted after repair (1879.9356ms)\n✔ same-name projects stay independent when one complete memory tree moves to a new Native root (928.5144ms)\n✔ existing export and Native targets return diffs and preserve every original byte (422.0009ms)\n✔ registry CAS rejects a second owner and a post-write verifier failure rolls SQLite back (386.5031ms)\n✔ copy, tree-race, verify, and metadata faults retain source and leave targets inactive (2924.6529ms)\n✔ non-throwing verify-hook edits to source, target, and import bundle abort metadata writes (2475.12ms)\n✔ relative Native storage targets are rejected before normalization (416.7834ms)\n▶ unsafe junctions, hard links, path depth, and file-size limits are rejected\n  ✔ junction below the memory root (399.3355ms)\n  ✔ hard-linked aliases (392.8238ms)\n  ✔ Unicode normalization aliases (379.4815ms)\n  ✔ maximum supported depth and 5 MiB file boundary (1651.7039ms)\n  ✔ one byte above the 5 MiB file cap (477.5973ms)\n  ✔ 1024-file and 64 MiB tree limits accept the boundary and reject the next byte or file (55744.9281ms)\n✔ unsafe junctions, hard links, path depth, and file-size limits are rejected (59047.3212ms)\n✔ more than 4096 empty memory directories is rejected before creating the export destination (4068.4515ms)\n✔ schema 1 migrates transactionally to schema 2 while preserving mappings and keeping memory outside SQLite (789.431ms)\n✔ schema-1 database with matching column names but missing accepted constraints is rejected without mutation (12.4922ms)\n✔ valid schema-1 database with an unexpected explicit index is rejected without migration (351.9459ms)\n✔ schema-1 database with a foreign-key orphan is rejected before migration without mutation (379.8076ms)\nℹ tests 24\nℹ suites 0\nℹ pass 24\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 79192.8506\n✔ packages\\projects\\test\\project-memory-migration.test.mjs (82108.1588ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 82115.4101\n",
+  "stderr": ""
+}

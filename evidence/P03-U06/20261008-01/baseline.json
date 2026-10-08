@@ -1,0 +1,39 @@
+{
+  "schema": "p03-unit-baseline/v1",
+  "task": "P03-U06",
+  "baseline_commit": "e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5",
+  "branch": "p03-u06",
+  "coordinator_branch": "p03-stage",
+  "prerequisites": [
+    {
+      "task": "P03-U05",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U05/20261008-01/acceptance.json",
+        "bytes": 2271,
+        "sha256": "31a8c572563dc6611ce4956bed314635a4c2e3ff00b5bba873c907a28b19a871"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P03-U06.md",
+    "bytes": 2032,
+    "sha256": "81c35ace7e2f4369d3735bc43745c3d02db9c74a22fda61fc46e3d7972ec29b3"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "packages/projects/registry.ts",
+    "packages/projects/export.ts",
+    "packages/projects/relocate.ts",
+    "packages/projects/test/project-memory-migration.test.mjs",
+    "tools/run-tests.mjs",
+    "evidence/P03-U06/20261008-01"
+  ],
+  "test_mapping": "packages/projects/test/project-memory-migration.test.mjs",
+  "author_status": "running",
+  "checked_at_utc": "2026-10-08T11:14:40.385663+00:00"
+}

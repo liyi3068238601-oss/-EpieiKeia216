@@ -1,0 +1,134 @@
+{
+  "schema": "p03-u06-result/v1",
+  "task": "P03-U06",
+  "attempt_id": "20261008-01",
+  "baseline_commit": "e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5",
+  "author_status": "ready_for_review",
+  "independent_acceptance": "pending",
+  "at_utc": "2026-10-08T11:48:08.033061+00:00",
+  "implementation": [
+    {
+      "path": "packages/projects/registry.ts",
+      "bytes": 40380,
+      "sha256": "cd215f475f93470e3473edfc571ea639538ba3e83760f64a71b7aea8319ad8b1"
+    },
+    {
+      "path": "packages/projects/export.ts",
+      "bytes": 62345,
+      "sha256": "463e705b1caa81f212fa803aae14fc9d887688c879707cc1d6cbee6eb859ca49"
+    },
+    {
+      "path": "packages/projects/relocate.ts",
+      "bytes": 11579,
+      "sha256": "bc15de1e812aed2444afc462022855c4845c81d5baed5b838d873ad5b3a19def"
+    },
+    {
+      "path": "packages/projects/test/project-memory-migration.test.mjs",
+      "bytes": 58554,
+      "sha256": "c08bfcc1323ac941f1980825339ed76eee4de53f623efba0495ca4b2f91da5a3"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "bytes": 6607,
+      "sha256": "581a5ab0ad2eb11bc61e306102001560fedaba5fc03cad5558a336a4ef74fdfd"
+    }
+  ],
+  "scope_remap": {
+    "packages/projects/registry.ts": "Extend the accepted mapping-only registry for relocation/import CAS and transactional metadata history; additive schema-1 to schema-2 migration. No knowledge bytes in SQLite.",
+    "packages/projects/test/project-memory-migration.test.mjs": "Map planned tests/units/P03-U06.test.ts to existing Node test framework and real owned Git/SQLite/filesystem fixtures.",
+    "tools/run-tests.mjs": "Add only the actual unit selector and all-suite entry."
+  },
+  "verification": {
+    "build-01": {
+      "path": "evidence/P03-U06/20261008-01/build-01.json",
+      "bytes": 1000,
+      "sha256": "5fd242d1618190a53fb05dffdbb37717b65d3750f6ca6247d371cfdd656b5452"
+    },
+    "build-02": {
+      "path": "evidence/P03-U06/20261008-01/build-02.json",
+      "bytes": 503,
+      "sha256": "38154169158413597e0e78b2bf8047a2a5cb3b88603ec05db529c2aacc9217ba"
+    },
+    "build-03": {
+      "path": "evidence/P03-U06/20261008-01/build-03.json",
+      "bytes": 503,
+      "sha256": "5592661e3ba0a91cc346cf830ecffb3b5593a8f70782da34e3aca58445170f5f"
+    },
+    "unit-01": {
+      "path": "evidence/P03-U06/20261008-01/unit-01.json",
+      "bytes": 3024,
+      "sha256": "67817a98adf21877769537f243134d8ea1751becdb01e5a3b4066179f5c25499"
+    },
+    "unit-02": {
+      "path": "evidence/P03-U06/20261008-01/unit-02.json",
+      "bytes": 3136,
+      "sha256": "3039528a206b241ba3a4f3f80b301855ce27ac5f779244bfc6dbe67b810099a1"
+    },
+    "regression-01": {
+      "path": "evidence/P03-U06/20261008-01/regression-01.json",
+      "bytes": 9316,
+      "sha256": "71fe94b5df6480708f4708449a1fffb0c27ca6e9d3a219eba3663c13f871d15d"
+    },
+    "execution-during": {
+      "path": "evidence/P03-U06/20261008-01/execution-during.json",
+      "bytes": 37937,
+      "sha256": "8d87aad40e52af471c3ab80d46f302aada5fb7514937e736a35bfe341cb71fb3"
+    },
+    "execution-after": {
+      "path": "evidence/P03-U06/20261008-01/execution-after.json",
+      "bytes": 38045,
+      "sha256": "15f7ce9fb0f025cd478e61a2b6f8695ff28f4f20c23c5e4823db8275af8a2fa8"
+    },
+    "build-04": {
+      "path": "evidence/P03-U06/20261008-01/build-04.json",
+      "bytes": 503,
+      "sha256": "70e0d425a2909e412461670d38b0cd40deaeeaf1f637c421073cdfb0c918e19b"
+    }
+  },
+  "test_reporting": {
+    "unit": "24 inner migration cases passed plus one outer file completion; these streams are not summed.",
+    "regression": "23 top-level completions passed, including separate reader/registry/policy child reports. Reader child 43/43; registry child 14 passed plus one directory-symlink privilege skip; policy child 1/1. Do not sum overlapping reports.",
+    "runtime": "Actual fixed Node 24.14.0, better-sqlite3 13.0.3 binding, owned filesystem/Git and pinned Native pure resolvers. No Native app/provider or Desktop is executed by this unit."
+  },
+  "supported_limits": {
+    "files": 1024,
+    "directories_excluding_root": 4096,
+    "directory_depth": 16,
+    "per_file_bytes": 5242880,
+    "total_bytes": 67108864
+  },
+  "verified_contracts": [
+    "Complete raw tree/hash/mapping round-trip, including unselected >32 KiB, nested binary/invalid metadata, empty and __proto__ directories.",
+    "Absent source is explicit and no MEMORY.md/native root is fabricated.",
+    "Ordinary copy gets new UUID; explicitly confirmed import observes new physical identities and keeps UUID.",
+    "Physical main/linked relocation keeps UUID/canonical Native key; linked move refuses unrepaired backlinks.",
+    "Independent same-name projects, stale CAS, existing-target diff/no-clobber and retained originals.",
+    "Mid-copy/post-copy/verify/metadata faults and non-throwing source/target/bundle edits leave old pointer active and partial target inactive.",
+    "Synchronous verification only; revision and persistent metadata history roll back together.",
+    "Schema-1 additive migration preserves every mapping field and raw Memory byte; same-column weak schema, extra index and FK orphan are rejected without altering database bytes/version.",
+    "Unsafe junction/hardlink/Unicode aliases and byte/file/depth/directory caps refuse before success."
+  ],
+  "failures_retained": {
+    "build-01": "Four IO TypeScript errors are archived; fixed before build-02/03 and final unit tests.",
+    "preformal_registry_diagnostic": "An early TypeScript literal-union widening diagnostic in the history return was fixed by the explicit generic record type before formal commands."
+  },
+  "execution_binding": {
+    "record": {
+      "path": "evidence/P03-U06/20261008-01/execution-after.json",
+      "bytes": 38045,
+      "sha256": "15f7ce9fb0f025cd478e61a2b6f8695ff28f4f20c23c5e4823db8275af8a2fa8"
+    },
+    "files": 163,
+    "unchanged": true,
+    "snapshot_timing": "The first snapshot was taken during the final run after all source writers stopped, then compared after completion; it is not described as a pre-run snapshot.",
+    "boundary": "P03 product/test sources, compiled JS, root pnpm/source locks and compiler entries; not the complete installed or native dependency closure."
+  },
+  "limitations": [
+    "No distributed cross-machine lock or filesystem transaction: partial owned copies are retained; the active registry metadata update is transactional.",
+    "Exports/old raw roots are inactive backups, not a second app-owned knowledge authority. Import into another machine/registry needs explicit owner confirmation.",
+    "Native Core Read/model/actual Desktop composition remains NOT_RUN here and belongs to U09/U10.",
+    "Windows symbolic directory creation is unavailable on this host; real junction/hardlink negatives executed."
+  ],
+  "rollback": "Revert isolated code commit. No production data moved. A failed metadata transaction retains the prior pointer and owned partial target; do not blindly delete/overwrite/retry it.",
+  "final_formatting_proof": "freeze-preflight-repair.json"
+}
