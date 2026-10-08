@@ -1,0 +1,83 @@
+{
+  "schema": "p03-unit-baseline/v1",
+  "task": "P03-U09",
+  "baseline_commit": "84ccbbb3735f3022f9d2075b857cae610f6199c9",
+  "branch": "p03-u09",
+  "coordinator_branch": "p03-stage",
+  "prerequisites": [
+    {
+      "task": "P03-U03",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U03/20261008-01/acceptance.json",
+        "bytes": 218067,
+        "sha256": "7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37"
+      }
+    },
+    {
+      "task": "P03-U04",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U04/20261008-01/acceptance.json",
+        "bytes": 2260,
+        "sha256": "ebeb89a5cf16414bded874f6e78fc2d7f9250871ce8ec045493afcc8e457b2f7"
+      }
+    },
+    {
+      "task": "P03-U05",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U05/20261008-01/acceptance.json",
+        "bytes": 2271,
+        "sha256": "31a8c572563dc6611ce4956bed314635a4c2e3ff00b5bba873c907a28b19a871"
+      }
+    },
+    {
+      "task": "P03-U06",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U06/20261008-01/acceptance.json",
+        "bytes": 2896,
+        "sha256": "2a0499ed079b97e0c62335eb26a1d5bc7e30395dfbbc7d7262a5664298f476b1"
+      }
+    },
+    {
+      "task": "P03-U07",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U07/20261008-01/acceptance.json",
+        "bytes": 4041,
+        "sha256": "89249727bb89199e936ec8a01276ce4aa5554a37669dedab4d3b448697ad200b"
+      }
+    },
+    {
+      "task": "P03-U08",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U08/20261008-01/acceptance.json",
+        "bytes": 5969,
+        "sha256": "e42ac293517ca88113f843527215e3984cc8c37c07dfa5d1a41a5a460f385f9e"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P03-U09.md",
+    "bytes": 3059,
+    "sha256": "504a0ae5b2f7b08a65a98e8a9b2b97f38ce58c44437490282ee761804ec7d365"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "tests/integration/P03/",
+    "docs/evals/P03/",
+    "packages/adapters/zcode/src/project-memory.ts",
+    "tools/run-tests.mjs",
+    "evidence/P03-U09/20261008-01/"
+  ],
+  "test_mapping": "tests/integration/P03/native.integration.test.mjs; tests/integration/P03/reader-parent-acl.test.mjs; tests/integration/P03/desktop.py (real fresh Electron candidate)",
+  "author_status": "running",
+  "checked_at_utc": "2026-10-08T13:35:44.691177+00:00"
+}

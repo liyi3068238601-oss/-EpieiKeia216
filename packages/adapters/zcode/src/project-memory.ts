@@ -660,6 +660,7 @@ export function createProjectMemoryReader(input: {
     }
 
     let changed = false;
+    let revalidationFailure: ReaderFailure | undefined;
     try {
       const current = mappingFor(input.registry, input.workspacePath);
       if (current.projectId !== initial.projectId || current.revision !== initial.revision ||
@@ -680,10 +681,17 @@ export function createProjectMemoryReader(input: {
           changed = bytesHash(currentRoot, "MEMORY.md", MAX_INDEX_BYTES) !== null;
         }
       }
-    } catch {
-      changed = true;
+    } catch (error) {
+      if (error instanceof ReaderFailure && error.kind === "unreadable") {
+        revalidationFailure = error;
+      } else {
+        changed = true;
+      }
     }
-    if (changed) {
+    if (revalidationFailure !== undefined) {
+      index = sourceFromFailure("MEMORY.md", revalidationFailure, null);
+      topics = selection.paths.map(relative => sourceFromFailure(relative, revalidationFailure!, null));
+    } else if (changed) {
       index = sourceFromFailure("MEMORY.md",
         new ReaderFailure("SOURCE_CHANGED", "Project memory changed during capture", "corrupt"));
       topics = selection.paths.map(relative => sourceFromFailure(relative,
