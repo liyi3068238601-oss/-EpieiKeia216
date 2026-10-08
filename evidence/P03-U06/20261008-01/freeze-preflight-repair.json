@@ -1,0 +1,39 @@
+{
+  "task": "P03-U06",
+  "observed_at_utc": "2026-10-08T11:50:25.013524+00:00",
+  "failed_preflight": {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5"
+    ],
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u06",
+    "exit_code": 2,
+    "stdout": "packages/projects/export.ts:1224: new blank line at EOF.\n",
+    "outcome": "Stopped before freeze/commit. No author acceptance was manufactured."
+  },
+  "change": "Only redundant terminal LF bytes removed from export.ts; no code tokens changed.",
+  "path": "packages/projects/export.ts",
+  "before_sha256": "eab0d8671a26a5f24cbb7d585a5c85f183e210da5e69cf916667a517cf9ae8f1",
+  "after_sha256": "463e705b1caa81f212fa803aae14fc9d887688c879707cc1d6cbee6eb859ca49",
+  "removed_terminal_lf_bytes": 1,
+  "compiled_before": {
+    "dist/packages/projects/registry.js": "eeeb87efe91574683e86d75e06fbec7c04bd6c2ecfa17cff249081563091df5b",
+    "dist/packages/projects/registry.d.ts": "53b77c468845920fcdcfed0093a100860ca8266f853613866e79eabd753db38d",
+    "dist/packages/projects/export.js": "1ec91f63362d1147cca39c5b6c086ffe409d40d027ccca314816b4a3b3157f03",
+    "dist/packages/projects/export.d.ts": "f389d3d22637cd4eeb14415469ec0e2d6a409e2b50be43ffbc0fa97bbe1baab1",
+    "dist/packages/projects/relocate.js": "2be888b69ebf6e13e7be93753e9c540dabc34ba6eefffbb8e62865a20c67e3f7",
+    "dist/packages/projects/relocate.d.ts": "fca068b89eb2dabd3c9afc3d147a6aecec48bd0116dc9d25f67f5e123473a74a"
+  },
+  "compiled_after": {
+    "dist/packages/projects/registry.js": "eeeb87efe91574683e86d75e06fbec7c04bd6c2ecfa17cff249081563091df5b",
+    "dist/packages/projects/registry.d.ts": "53b77c468845920fcdcfed0093a100860ca8266f853613866e79eabd753db38d",
+    "dist/packages/projects/export.js": "1ec91f63362d1147cca39c5b6c086ffe409d40d027ccca314816b4a3b3157f03",
+    "dist/packages/projects/export.d.ts": "f389d3d22637cd4eeb14415469ec0e2d6a409e2b50be43ffbc0fa97bbe1baab1",
+    "dist/packages/projects/relocate.js": "2be888b69ebf6e13e7be93753e9c540dabc34ba6eefffbb8e62865a20c67e3f7",
+    "dist/packages/projects/relocate.d.ts": "fca068b89eb2dabd3c9afc3d147a6aecec48bd0116dc9d25f67f5e123473a74a"
+  },
+  "compiled_js_and_declarations_unchanged": true
+}

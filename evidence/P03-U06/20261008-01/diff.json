@@ -1,0 +1,67 @@
+{
+  "task": "P03-U06",
+  "baseline": "e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5",
+  "scope": [
+    "packages/projects/registry.ts",
+    "packages/projects/export.ts",
+    "packages/projects/relocate.ts",
+    "packages/projects/test/project-memory-migration.test.mjs",
+    "tools/run-tests.mjs",
+    "evidence/P03-U06/20261008-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u06",
+      "exit_code": 0,
+      "stdout": " evidence/P03-U06/20261008-01/baseline.json         |   39 +\n evidence/P03-U06/20261008-01/build-01.json         |   16 +\n evidence/P03-U06/20261008-01/build-02.json         |   16 +\n evidence/P03-U06/20261008-01/build-03.json         |   16 +\n evidence/P03-U06/20261008-01/build-04.json         |   16 +\n evidence/P03-U06/20261008-01/execution-after.json  |  828 +++++++++++++\n evidence/P03-U06/20261008-01/execution-during.json |  826 +++++++++++++\n .../20261008-01/freeze-preflight-repair.json       |   39 +\n evidence/P03-U06/20261008-01/regression-01.json    |   18 +\n evidence/P03-U06/20261008-01/result.json           |  134 +++\n evidence/P03-U06/20261008-01/result.md             |   17 +\n evidence/P03-U06/20261008-01/source-adoption.json  |   88 ++\n evidence/P03-U06/20261008-01/unit-01.json          |   16 +\n evidence/P03-U06/20261008-01/unit-02.json          |   16 +\n packages/projects/export.ts                        | 1223 ++++++++++++++++++++\n packages/projects/registry.ts                      |  345 +++++-\n packages/projects/relocate.ts                      |  256 ++++\n .../test/project-memory-migration.test.mjs         | 1171 +++++++++++++++++++\n tools/run-tests.mjs                                |    3 +-\n 19 files changed, 5049 insertions(+), 34 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u06",
+      "exit_code": 0,
+      "stdout": "39\t0\tevidence/P03-U06/20261008-01/baseline.json\n16\t0\tevidence/P03-U06/20261008-01/build-01.json\n16\t0\tevidence/P03-U06/20261008-01/build-02.json\n16\t0\tevidence/P03-U06/20261008-01/build-03.json\n16\t0\tevidence/P03-U06/20261008-01/build-04.json\n828\t0\tevidence/P03-U06/20261008-01/execution-after.json\n826\t0\tevidence/P03-U06/20261008-01/execution-during.json\n39\t0\tevidence/P03-U06/20261008-01/freeze-preflight-repair.json\n18\t0\tevidence/P03-U06/20261008-01/regression-01.json\n134\t0\tevidence/P03-U06/20261008-01/result.json\n17\t0\tevidence/P03-U06/20261008-01/result.md\n88\t0\tevidence/P03-U06/20261008-01/source-adoption.json\n16\t0\tevidence/P03-U06/20261008-01/unit-01.json\n16\t0\tevidence/P03-U06/20261008-01/unit-02.json\n1223\t0\tpackages/projects/export.ts\n312\t33\tpackages/projects/registry.ts\n256\t0\tpackages/projects/relocate.ts\n1171\t0\tpackages/projects/test/project-memory-migration.test.mjs\n2\t1\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u06",
+      "exit_code": 0,
+      "stdout": "A\tevidence/P03-U06/20261008-01/baseline.json\nA\tevidence/P03-U06/20261008-01/build-01.json\nA\tevidence/P03-U06/20261008-01/build-02.json\nA\tevidence/P03-U06/20261008-01/build-03.json\nA\tevidence/P03-U06/20261008-01/build-04.json\nA\tevidence/P03-U06/20261008-01/execution-after.json\nA\tevidence/P03-U06/20261008-01/execution-during.json\nA\tevidence/P03-U06/20261008-01/freeze-preflight-repair.json\nA\tevidence/P03-U06/20261008-01/regression-01.json\nA\tevidence/P03-U06/20261008-01/result.json\nA\tevidence/P03-U06/20261008-01/result.md\nA\tevidence/P03-U06/20261008-01/source-adoption.json\nA\tevidence/P03-U06/20261008-01/unit-01.json\nA\tevidence/P03-U06/20261008-01/unit-02.json\nA\tpackages/projects/export.ts\nM\tpackages/projects/registry.ts\nA\tpackages/projects/relocate.ts\nA\tpackages/projects/test/project-memory-migration.test.mjs\nM\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u06",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

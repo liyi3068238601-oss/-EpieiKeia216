@@ -1,0 +1,88 @@
+{
+  "schema": "p03-u06-source-adoption/v1",
+  "task": "P03-U06",
+  "baseline_commit": "e7e8ae028e9ed90b2b46ba2a990604c6e5c801f5",
+  "author_status": "ready_for_review",
+  "independent_acceptance": "pending",
+  "prerequisite": {
+    "path": "evidence/P03-U05/20261008-01/acceptance.json",
+    "bytes": 2271,
+    "sha256": "31a8c572563dc6611ce4956bed314635a4c2e3ff00b5bba873c907a28b19a871"
+  },
+  "reuse_adr": {
+    "path": "docs/adr/P03-reuse.md",
+    "bytes": 11481,
+    "sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a"
+  },
+  "native_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "native_source_clean": true,
+  "native_references": [
+    {
+      "path": "apps/zcode-cli/packages/core/src/memory/project-root.ts",
+      "bytes": 1106,
+      "sha256": "69ea16dc573f1e60e5579be494d02dc7735ab24821208071f304e5699c2d7f55"
+    },
+    {
+      "path": "apps/zcode-cli/packages/bootstrap/src/app/paths.ts",
+      "bytes": 1096,
+      "sha256": "b9ed5f5aa6ce158766bf6113a46465b385c989403e6f5829c4d9bef02237a919"
+    },
+    {
+      "path": "packages/services/src/memory/projectMemoryStableRead.ts",
+      "bytes": 3570,
+      "sha256": "2ade3a41788b4c6d4a08ddf600e8052d589987f242ee7143042d9a49da76fa52"
+    },
+    {
+      "path": "packages/services/src/memory/memoryService.ts",
+      "bytes": 7972,
+      "sha256": "7dcda54bcbd983331d84db6b634ec39e4c6980f29517f7872ca554aa319ecf7a"
+    }
+  ],
+  "adopted": [
+    "Reuse accepted U03 physical Git identity/UUID registry and accepted P02 better-sqlite3 wrapper; no new database engine.",
+    "Use injected pinned Native canonical-memory and runtime-key helpers; do not copy their private key algorithms.",
+    "Archive complete supported raw tree separately from U04 selected-topic/packet bounds; invalid UTF8/frontmatter stays byte-identical.",
+    "Use mapping JSON snapshots rather than copying live SQLite/WAL files; SQLite Backup API reference confirms snapshot semantics, but no online database backup is required for this metadata-only export.",
+    "Source-machine paths/identities are provenance only. Explicit project/manifest confirmation is required before observing and binding the target workspace.",
+    "Exclusive copy and full hash rechecks precede one metadata transaction; its second verifier can roll back both pointer and relocation history. Keep source/partial destination bytes."
+  ],
+  "primary_references": [
+    "https://www.sqlite.org/backup.html",
+    "https://www.sqlite.org/lang_transaction.html"
+  ],
+  "code_origin": "New Xiadie implementation around accepted interfaces; no upstream source files, profiles or planning cards edited.",
+  "upstream_license": "Pinned Native Apache-2.0 reference/helper use; existing accepted SQLite dependency and license retained.",
+  "scope_remap": {
+    "packages/projects/registry.ts": "Extend the accepted mapping-only registry for relocation/import CAS and transactional metadata history; additive schema-1 to schema-2 migration. No knowledge bytes in SQLite.",
+    "packages/projects/test/project-memory-migration.test.mjs": "Map planned tests/units/P03-U06.test.ts to existing Node test framework and real owned Git/SQLite/filesystem fixtures.",
+    "tools/run-tests.mjs": "Add only the actual unit selector and all-suite entry."
+  },
+  "implementation_bindings": [
+    {
+      "path": "packages/projects/registry.ts",
+      "bytes": 40380,
+      "sha256": "cd215f475f93470e3473edfc571ea639538ba3e83760f64a71b7aea8319ad8b1"
+    },
+    {
+      "path": "packages/projects/export.ts",
+      "bytes": 62345,
+      "sha256": "463e705b1caa81f212fa803aae14fc9d887688c879707cc1d6cbee6eb859ca49"
+    },
+    {
+      "path": "packages/projects/relocate.ts",
+      "bytes": 11579,
+      "sha256": "bc15de1e812aed2444afc462022855c4845c81d5baed5b838d873ad5b3a19def"
+    },
+    {
+      "path": "packages/projects/test/project-memory-migration.test.mjs",
+      "bytes": 58554,
+      "sha256": "c08bfcc1323ac941f1980825339ed76eee4de53f623efba0495ca4b2f91da5a3"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "bytes": 6607,
+      "sha256": "581a5ab0ad2eb11bc61e306102001560fedaba5fc03cad5558a336a4ef74fdfd"
+    }
+  ],
+  "final_formatting_proof": "freeze-preflight-repair.json"
+}
