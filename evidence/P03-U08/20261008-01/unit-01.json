@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "tools/run-tests.mjs",
+    "unit",
+    "P03-U08"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u08",
+  "started_at": "2026-10-08T13:15:50.280815+00:00",
+  "completed_at": "2026-10-08T13:16:52.214565+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 240,
+  "environment_overrides": {},
+  "stdout": "✔ real registry/Git/raw-byte observations distinguish unchanged age, recheck and unknown (3492.9818ms)\nℹ Synthetic owned registry, real Git and raw file observations; no model, installed application, or production profile\n✔ Windows aliases, private files, non-NFC names and junction paths remain unknown (807.2011ms)\n✔ a real source write and Git commit before the final registry resolution cannot produce a mixed snapshot (950.8302ms)\nℹ Fault injection changes an owned synthetic repository before registry resolution #2; registry resolution, Git, and file reads are real, with no claim of an OS-scheduled race.\n✔ a raw-byte-only mutation at final registry resolution cannot produce a mixed snapshot (1050.9518ms)\nℹ Fault injection rewrites owned synthetic evidence before registry resolution #2 without committing; registry resolution, Git and raw-byte reads are real, with no claim of an OS-scheduled race.\n✔ an actual synthetic Windows ACL denial remains unknown and is restored (5204.2907ms)\n✔ only a real child-verified, exact Host acceptance appends immutable experience revisions (15318.5448ms)\nℹ Trusted Host is a synthetic callback backed by a real fixed-Node child checking synthetic Git and raw bytes; no model or installed app runs\n✔ history validation rejects malformed prefixes without consuming the receipt (9562.7447ms)\nℹ bad content hash is rejected as HISTORY_MISMATCH\nℹ null revision is rejected as HISTORY_MISMATCH\nℹ repeated revision ID is rejected as HISTORY_MISMATCH\nℹ wrong authority is rejected as HISTORY_MISMATCH\nℹ forward supersedes reference is rejected as HISTORY_MISMATCH\nℹ extra prefix metadata is rejected as HISTORY_MISMATCH\n✔ a source race during Host verification invalidates the observation before append (6826.829ms)\n✔ real registry relocation during Host verification invalidates unchanged byte evidence (3515.1083ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 46758.883\n✔ packages\\projects\\test\\freshness.test.mjs (61845.7705ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 61851.3119\n",
+  "stderr": ""
+}

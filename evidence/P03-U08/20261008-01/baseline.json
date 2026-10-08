@@ -1,0 +1,37 @@
+{
+  "schema": "p03-unit-baseline/v1",
+  "task": "P03-U08",
+  "baseline_commit": "5831ba60285536aaa9b8ef40770510f380cb6edf",
+  "branch": "p03-u08",
+  "coordinator_branch": "p03-stage",
+  "prerequisites": [
+    {
+      "task": "P03-U07",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U07/20261008-01/acceptance.json",
+        "bytes": 4041,
+        "sha256": "89249727bb89199e936ec8a01276ce4aa5554a37669dedab4d3b448697ad200b"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P03-U08.md",
+    "bytes": 2129,
+    "sha256": "a07051293a1c6090b7eef010a98469cbc3c90a179167e6fb142f5725b17da507"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "packages/projects/freshness.ts",
+    "packages/projects/test/freshness.test.mjs",
+    "tools/run-tests.mjs",
+    "evidence/P03-U08/20261008-01"
+  ],
+  "test_mapping": "packages/projects/test/freshness.test.mjs",
+  "author_status": "running",
+  "checked_at_utc": "2026-10-08T12:48:09.817637+00:00"
+}
