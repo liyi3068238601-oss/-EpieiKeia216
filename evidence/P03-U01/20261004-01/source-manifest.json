@@ -1,0 +1,811 @@
+{
+  "schema": "p03-u01-source-manifest/v1",
+  "task": "P03-U01",
+  "attempt": "20261004-01",
+  "captured_at_utc": "2026-10-04T13:20:19.8634663Z",
+  "author_worktree": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01",
+    "branch": "p03-u01",
+    "baseline_commit": "ecc2aa40c92b4474a12c455ecb0460d47430ca5f"
+  },
+  "native_checkout": {
+    "path": ".runtime/P01/desktop-source",
+    "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "license": "Apache-2.0",
+    "clean": true
+  },
+  "preparation_manifests": {
+    "parser_source_manifest": {
+      "path": ".runtime/P03/preparation/parser-source-review/source-manifest.json",
+      "sha256": "684d3046dcda8792a5fac944367f78871d4388fced7a7eed8ef8c36889a189f8",
+      "captured_at": "2026-10-04",
+      "packages": [
+        {
+          "name": "marked",
+          "version": "v16.4.2",
+          "commit": "244941a19225303f94aa60cb728373dc56e1dadf",
+          "tag_object": null,
+          "license": "MIT",
+          "engines": "node >=20",
+          "external_runtime_dependencies": 0,
+          "npm_sri": "sha512-TI3V8YYWvkVf3KJe1dRkpnjs68JUPyEa5vjKrp1XEEJUAOaQc+Qj+L1qWbPd0SJuAdQkFU0h73sXXqwDYxsiDA=="
+        },
+        {
+          "name": "yaml",
+          "version": "v2.9.0",
+          "commit": "ddb21b04cb889722cec8f89dc1b67f19d62d7f7d",
+          "tag_object": "c52c941ca37a82cb073364c1525abf86bfce2130",
+          "license": "ISC",
+          "engines": "node >=14.6",
+          "external_runtime_dependencies": 0,
+          "npm_sri": "sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA=="
+        }
+      ],
+      "installed": [
+        {
+          "name": "marked",
+          "files": 12,
+          "bytes": 430268.0,
+          "inventory_sha256": "11935475e9e7615463ea30e9e025ba0385aa936d94e630f0aeb8f43b0bb29ce1"
+        },
+        {
+          "name": "yaml",
+          "files": 233,
+          "bytes": 685953.0,
+          "inventory_sha256": "034fabb530d3f07c13911e835f177f177202793d64f95f88ff810ec09534fee4"
+        }
+      ]
+    },
+    "adr_source_manifest": {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/source-file-manifest.json",
+      "sha256": "7b30b97b0ea118d38a0b2bc21c65ab6ca09107e3bcdf40a1a8f65edf088286c7",
+      "captured_at_utc": "2026-10-04T06:40:01.983Z",
+      "repositories": [
+        {
+          "name": "MADR",
+          "url": "https://github.com/adr/madr",
+          "pinned_commit": "2475fe1973f66a12aaf58a91d8fa7b42c0f5ea3d",
+          "actual_commit": "2475fe1973f66a12aaf58a91d8fa7b42c0f5ea3d",
+          "clean": true,
+          "files": 64,
+          "checkout_blobs_all_match": true
+        },
+        {
+          "name": "adr-tools",
+          "url": "https://github.com/npryce/adr-tools",
+          "pinned_commit": "b3279baf9be2207d1a4f4bbd608fd0b591c72aee",
+          "actual_commit": "b3279baf9be2207d1a4f4bbd608fd0b591c72aee",
+          "clean": true,
+          "files": 92,
+          "checkout_blobs_all_match": true
+        },
+        {
+          "name": "Native ZCode runner contract files",
+          "url": "https://github.com/zai-org/ZCode",
+          "pinned_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+          "actual_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+          "clean": true,
+          "files": 8,
+          "checkout_blobs_all_match": true
+        }
+      ]
+    },
+    "official_intake": {
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/intake-log.json",
+      "sha256": "660ad7dc5db55ecc61b22a6210c29578e5a2d9ee151d0ce5a302913757540648",
+      "searches": [
+        {
+          "date": "2026-10-04",
+          "provider": "web search",
+          "queries": [
+            "site:github.com/adr/madr 4.0.0 adr-template-minimal.md license tests",
+            "site:github.com/npryce/adr-tools b3279baf9be2207d1a4f4bbd608fd0b591c72aee src/adr-new template tests license",
+            "site:github.com/zai-org/ZCode 29628c9 subagent runner result contract"
+          ],
+          "allowed_sources": "official GitHub repositories only"
+        }
+      ],
+      "pinned_sources": [
+        {
+          "name": "MADR",
+          "url": "https://github.com/adr/madr",
+          "commit": "2475fe1973f66a12aaf58a91d8fa7b42c0f5ea3d",
+          "tag": "4.0.0",
+          "tag_object": "61cc5891d9e160c0db8b18d5fd45f9123a7a1c21",
+          "peeled_tag_commit": "2475fe1973f66a12aaf58a91d8fa7b42c0f5ea3d",
+          "license": "MIT OR CC0-1.0"
+        },
+        {
+          "name": "adr-tools",
+          "url": "https://github.com/npryce/adr-tools",
+          "commit": "b3279baf9be2207d1a4f4bbd608fd0b591c72aee",
+          "tag": null,
+          "license": "GPL-3.0-or-later for tool; CC BY 4.0 for content added to a project, according to LICENSE.txt"
+        },
+        {
+          "name": "Native ZCode runner contract",
+          "url": "https://github.com/zai-org/ZCode",
+          "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+          "license": "Apache-2.0"
+        }
+      ],
+      "failed_or_corrected_lookups": [
+        {
+          "url": "https://raw.githubusercontent.com/npryce/adr-tools/b3279baf9be2207d1a4f4bbd608fd0b591c72aee/src/templates/template.md",
+          "outcome": "Web fetch returned 404 Not Found (reported as internal error with explicit 404).",
+          "resolution": "The actual built-in template is https://raw.githubusercontent.com/npryce/adr-tools/b3279baf9be2207d1a4f4bbd608fd0b591c72aee/src/template.md. The pinned commit tracks it; adr-new fallback and tests/project-specific-template.sh were read. The project override is <ADR-directory>/templates/template.md."
+        }
+      ]
+    }
+  },
+  "read_inputs": [
+    {
+      "group": "author-worktree",
+      "path": "AGENTS.md",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    {
+      "group": "author-worktree",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U01.md",
+      "bytes": 3110,
+      "sha256": "481ad4396712dc964ab278d85518dd6ece49201bc9fdff18c5e19332e320c682"
+    },
+    {
+      "group": "author-worktree",
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U02.md",
+      "bytes": 3099,
+      "sha256": "47b7725dc24f9821c6f1a12b59d7ecb4a8d49a0d24396dfffedc1d1ac5c04137"
+    },
+    {
+      "group": "author-worktree",
+      "path": "planning/Xiadie_V2_v1.1/templates/handoff.md",
+      "bytes": 568,
+      "sha256": "fb3dbc70617f4ddbad04764772c176d0834b0637ff9fc4f4ba9a4fb125e81e74"
+    },
+    {
+      "group": "author-worktree",
+      "path": "docs/sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    {
+      "group": "author-worktree",
+      "path": "packages/adapters/zcode/src/host.ts",
+      "bytes": 41642,
+      "sha256": "71bfd252831db5216983bdea8361bd68e0a54296de5f9444cf1e15b908f0725b"
+    },
+    {
+      "group": "author-worktree",
+      "path": "packages/contracts/src/context.ts",
+      "bytes": 1801,
+      "sha256": "ffc855d2d496d97b25508fdbcad540d6c01ba755fe7d56837a5873c3f367d071"
+    },
+    {
+      "group": "author-worktree",
+      "path": "packages/diagnostics/src/index.ts",
+      "bytes": 50696,
+      "sha256": "cf26f480a4115f573321eac8af94d0745404584a3da0e5480727fe3bbe9e5c23"
+    },
+    {
+      "group": "author-worktree",
+      "path": "packages/diagnostics/test/diagnostics.test.mjs",
+      "bytes": 31841,
+      "sha256": "963bff3a7bb1efa531e819ed3d8c6e578ee4d713f572636b898b8b185605f572"
+    },
+    {
+      "group": "author-worktree",
+      "path": "packages/context/src/index.ts",
+      "bytes": 11781,
+      "sha256": "6fcc5b6ca892a0106a1063f15587db24633d799603846b55ddcab8fe77b50fd7"
+    },
+    {
+      "group": "author-worktree",
+      "path": "packages/context/test/context.test.mjs",
+      "bytes": 8934,
+      "sha256": "c64c2939d27dcaf16b988df740046d04c64133edfd099a1eab368e2c213dcf18"
+    },
+    {
+      "group": "author-worktree",
+      "path": "tests/integration/P01/factory.mjs",
+      "bytes": 19082,
+      "sha256": "c0758c684c7d43e8f6eafa146770214f5a00d7306294f8dadbdb81c7a4bbfc0e"
+    },
+    {
+      "group": "author-worktree",
+      "path": "tests/integration/P01/factory.test.mjs",
+      "bytes": 21018,
+      "sha256": "0cc5866ed2fac07bde3dcf13242ca3e9ea11dda033ba3ad8447170e702402a0a"
+    },
+    {
+      "group": "author-worktree",
+      "path": "packages/application/test/native-projection.integration.test.mjs",
+      "bytes": 12796,
+      "sha256": "d6886de8026243a18d3421ef3255ab0ce70f5c89b61d0faa3271804ff56d4446"
+    },
+    {
+      "group": "author-worktree",
+      "path": "spikes/zcode-memory/README.md",
+      "bytes": 2815,
+      "sha256": "bfd82f58b52b68cb8fe25f8396eff4e53cbf133d25fb51fae6f0756de0af577c"
+    },
+    {
+      "group": "author-worktree",
+      "path": "spikes/zcode-memory/probe.mjs",
+      "bytes": 24255,
+      "sha256": "5a44150ab792c8e3c960d972f30ae4ae4175214e07e4864825ed68f13604cc96"
+    },
+    {
+      "group": "author-worktree",
+      "path": "evidence/P00-U08/20261001-01/result.md",
+      "bytes": 7355,
+      "sha256": "11eccb9b2cf966a552b90ee00d2b2d4910e5ca282ecf5383f6026a290cbe6707"
+    },
+    {
+      "group": "author-worktree",
+      "path": "evidence/P00-U08/20261001-01/runs/attempt-03/probe-results.json",
+      "bytes": 25677,
+      "sha256": "ffba42f64994be01cd18a28c5a5081a913987c8aadf4718a61d639b7151f0bde"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/LICENSE",
+      "bytes": 11344,
+      "sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/package.json",
+      "bytes": 4172,
+      "sha256": "1c8de5f20a664c0dc3071ca4d58ae55f4282cb671c529d2ea5f2b0879638b64c"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/pnpm-workspace.yaml",
+      "bytes": 491,
+      "sha256": "f18a18233e82cda1dc40be61bf2ad1bc99de25de63ad0be64bc652761a638372"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/pnpm-lock.yaml",
+      "bytes": 652214,
+      "sha256": "7d40b0231089692a91eb39f73b212f7eae86ee9402c360139216cff577e9583c"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/package.json",
+      "bytes": 1968,
+      "sha256": "6c48017b05d8a7215c5bf7dea12f50edd1487bf5b8b22e11c21703d32e8f7742"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/package.json",
+      "bytes": 1366,
+      "sha256": "abf5a6c8715fe87ea4b5ef3a48b225f94980dc386fe2ccfe98844347aa16bcd8"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/packages/services/package.json",
+      "bytes": 1086,
+      "sha256": "71fef5a81918526e8cdda4d3309ef3528353d0a526a9418c306ec9f95641ad50"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/context/sections/memory.ts",
+      "bytes": 2725,
+      "sha256": "3af27495b85c9f189ded350a030beba4442711fad4b35267a91a7f2209ae018d"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts",
+      "bytes": 3579,
+      "sha256": "ba483db96ee90ec627890b4eff89c953dca378872cab0791728cfe1bee14405c"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/memory/index-content.ts",
+      "bytes": 2990,
+      "sha256": "09397af14b35c25822e901c44dc702c927b94b75c072a6f5cd595b7d9e9f4e71"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/subagent/persistent-memory-prompt.ts",
+      "bytes": 14856,
+      "sha256": "ed2298b5582d4be07676fef739ad50239e9b68c63ca4595bd54252cb867fa7c3"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/memory/project-root.ts",
+      "bytes": 1106,
+      "sha256": "69ea16dc573f1e60e5579be494d02dc7735ab24821208071f304e5699c2d7f55"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/memory/recall/manifest.ts",
+      "bytes": 4514,
+      "sha256": "26dc0b541bd06120f7002f62cbaa81524374f3fcd443d495ed9ec9a4c25ec7bb"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/methods/context.ts",
+      "bytes": 11568,
+      "sha256": "bcdb1b91fba68b8f29cb6bd16f4ab7536bd5003208a766aca338dde9cf1a5235"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/methods/context-refresh.ts",
+      "bytes": 2375,
+      "sha256": "729d721d285804c4c72fe98a9d83046dd256c730eb5b6e9b2cf398b4fff25c8a"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/packages/services/src/memory/memoryService.ts",
+      "bytes": 7972,
+      "sha256": "7dcda54bcbd983331d84db6b634ec39e4c6980f29517f7872ca554aa319ecf7a"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/packages/services/src/memory/projectMemoryStableRead.ts",
+      "bytes": 3570,
+      "sha256": "2ade3a41788b4c6d4a08ddf600e8052d589987f242ee7143042d9a49da76fa52"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/packages/services/src/paths.ts",
+      "bytes": 8613,
+      "sha256": "e20fbeb4e88e9021bd099a50ce8b2bbc90ff823eefb57253d1f1ea11b6f7d1df"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/packages/services/test/nonCliAcpRetirement.test.ts",
+      "bytes": 8620,
+      "sha256": "7313211a35a86c3e008f6b25ebe0b339a01915622f9e2fbb5be2f8eeeba9b74e"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/contracts/src/tools/agent.ts",
+      "bytes": 3860,
+      "sha256": "11f570e70ad5413af90e7582f68a441ce06a1f4e838123e20c7c163752d80046"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/contracts/src/interfaces/subagent.port.ts",
+      "bytes": 3784,
+      "sha256": "3e563f8dea2e210e5a2e2cf25bef7408ed66bf4a512590c3c0d6de02e8fd44e3"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/handlers/agent.ts",
+      "bytes": 12372,
+      "sha256": "e29decfaf6c16083368850f8e7f2285c821dd3c6b53b0cf1f5816fbf6fdf3aac"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/subagent/runner.ts",
+      "bytes": 68634,
+      "sha256": "acbd362bc6e0556c65cb27722ddb0f0ccf1f82328f7184725574e651cdb884e7"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime-task/registry.ts",
+      "bytes": 9147,
+      "sha256": "8f138a00926d188a0a336f12d87bf8af2f5402f7817179fae249b6c56b0681b9"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/subagent/completion-notification.ts",
+      "bytes": 1805,
+      "sha256": "2ca923e0b9f34a19ab69b369f7ee1d126f0d4bf7671d62d8b2e72e026b0b4346"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/agent-runtime.ts",
+      "bytes": 28327,
+      "sha256": "a2192a84dfae5dfaa46275e253d2815da8178e27d0f5e9ccd5e3f57e61d18877"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/methods/subagent.ts",
+      "bytes": 37303,
+      "sha256": "28a4cf9128c870ea4559cf95cf720fccba11103e98d1a1bf7748fbadb82ab7a7"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/helpers/tool-allowlist.ts",
+      "bytes": 6001,
+      "sha256": "87dc3a3659fb9169a96e5e810b8f78299e5e4aa369d302fe53eecef6602261c1"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/executor/call-runner.ts",
+      "bytes": 27045,
+      "sha256": "c607f378340a8779addc9bcf317a3c05b4fd5df2ecb4030d413add78594bccd9"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/permission/service.ts",
+      "bytes": 22583,
+      "sha256": "91dd95f080a72db2bb87543989b007a46bf0144a0b522fcd897b37c894d6d9e2"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/executor/permission-flow.ts",
+      "bytes": 15263,
+      "sha256": "ca3a65ca5d09eabb7d86cc75a3097da015b0741b9e807f8fda6a2ed11b8e5cf2"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/executor/memory-file-permission.ts",
+      "bytes": 2891,
+      "sha256": "97f5300d6c6045fe8ba21715f9d73f05ddf4468da7da315a415360f1e5a616dc"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/handlers/write.ts",
+      "bytes": 11485,
+      "sha256": "7053b107de25920867e88de4f758ef0f643be515a41d007398dfe40db49778ba"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/handlers/edit.ts",
+      "bytes": 20696,
+      "sha256": "55f45074e954f8c5f8d4e1a466d3d55a221627ab7892234e3d3d4808a4ebd90e"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/path-policy.ts",
+      "bytes": 2276,
+      "sha256": "d909dc9b448590d0dba4183de71eb39c1e8914c2f41c9147fab3d49f043f0cf2"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/adapters/src/fs/index.ts",
+      "bytes": 54902,
+      "sha256": "83292fa1b0aa694ebe411b11c06ddc541810e99f48ca6e72f04e27865524acb9"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/contracts/src/interfaces/permission.port.ts",
+      "bytes": 3534,
+      "sha256": "426cf9970c9d160f1ac601519c47939a540698ca7b5e7ad40737891f8dae34a4"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/permission/rule-matching.ts",
+      "bytes": 650,
+      "sha256": "f54f75589f97502177f50ea68be675b4bcc3adc2680e6bb833fa7dfb893ff991"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/executor/permission-suggestions.ts",
+      "bytes": 1450,
+      "sha256": "f4d36a3ab0143b20a0bf3db60b10a9361ab6d7c123395101e1f9db793b830f40"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/mcp/index.ts",
+      "bytes": 17803,
+      "sha256": "dc1040c3151f0f4ec16a3c63318ba7607a86fa4ac6b0dcf23b453dbfe5936d17"
+    },
+    {
+      "group": "native-fixed-checkout",
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/methods/mcp.ts",
+      "bytes": 6010,
+      "sha256": "1feb7328acfe55d833a0e19880f06a5b2f7da4cf3fb91da160bb8f6dcec11b86"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/package.json",
+      "bytes": 3398,
+      "sha256": "78e27dac3c5de404026c6f703b8c0adf1900f9067c8bd16fa83b058f0fb34aa9"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/LICENSE.md",
+      "bytes": 2942,
+      "sha256": "8e3a3f82f59a60958f56ca08f445647c32a4733dc7ca6c2c46f6eb898471ab9c"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/src/marked.ts",
+      "bytes": 3727,
+      "sha256": "11df34d11269aa25e5fb6a0ff679fc005cb8531ef6f0eac6327ad78f097c5199"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/src/Lexer.ts",
+      "bytes": 14213,
+      "sha256": "1d1a4614b0fdac4621198abb55d6b884bbb509616b3efc60821a1b2217a320ec"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/test/unit/Lexer.test.js",
+      "bytes": 47579,
+      "sha256": "330472fd79110d783e686888e00ce57eb771a78dd5bd852ddc3d55e04328b714"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/test/specs/new/html_comments.md",
+      "bytes": 591,
+      "sha256": "cda546226e7beb3e938d102eda69d5ad452d0ec31eec3f955d940e6838e26168"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/marked-upstream/test/specs/new/html_comments.html",
+      "bytes": 689,
+      "sha256": "ec67ba3045dc0596a7bae1574d0f9526e8cff2446bcc7c206742d4f54f7d232f"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/package.json",
+      "bytes": 3351,
+      "sha256": "db29094da19fb69f9405720ccfdea02aa781c91df39515038275b14bbfff69a6"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/LICENSE",
+      "bytes": 751,
+      "sha256": "05acf00ef5ba06a2ed6e4b324087711e553bee113eca01beb5561745ded1444e"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/src/public-api.ts",
+      "bytes": 7289,
+      "sha256": "f2420c4e9d864f39cfbea2bc46bb063d6cd7f448756bf1ac06adda2db2735c0f"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/src/parse/parser.ts",
+      "bytes": 29415,
+      "sha256": "b956f76af39e83b59340539ad823d172081a93fda63748bfd3b62e4e6bcd5872"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/src/doc/Document.ts",
+      "bytes": 15949,
+      "sha256": "3291956f58cd8dd9da64038fadbb9b65c621d23cf85e39a0e78da98fd1f95773"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/src/nodes/Alias.ts",
+      "bytes": 4263,
+      "sha256": "c53cd10a7934773e9428131ee5de4313d61328672b6355c4406379ce1d414713"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/tests/doc/anchors.ts",
+      "bytes": 14820,
+      "sha256": "fe5a45fd07304841fb0f0fb3a0882f7237a37594a5a3b4aa999fb4d70164cde5"
+    },
+    {
+      "group": "parser-upstream-checkouts",
+      "path": ".runtime/P03/preparation/parser-source-review/yaml-upstream/tests/doc/YAML-1.2.spec.ts",
+      "bytes": 43815,
+      "sha256": "c5934fd737e219ffcfa3a23f737b222ad5328e81210a9910ebc5f7caa759c40f"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/package.json",
+      "bytes": 794,
+      "sha256": "7c9b27c8e0fbd97d6fcfbf6bbc5f1d44609686c51726367e066df84598a25ffd"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/README.md",
+      "bytes": 5785,
+      "sha256": "45f73253b843c0c9d5eb351a4ab1e769466c74d2ac6fb0b3f746c2ea7c6e4015"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/LICENSE",
+      "bytes": 15,
+      "sha256": "cb9c3a276eb7991be197e401ae38d035f0f0efae425c21f499393f51c9b29ffd"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/LICENSE.MIT",
+      "bytes": 1090,
+      "sha256": "a2eef9f0961adab958f4cfa85f65c2864bab694620919cfda402382783bc0c8d"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/LICENSE.CC0-1.0",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/template/adr-template.md",
+      "bytes": 3316,
+      "sha256": "4903614bbae9aeb2aa811caeb9e156677ef1a993872af6ff8dcfb67b2266cae1"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/template/adr-template-minimal.md",
+      "bytes": 1029,
+      "sha256": "1ba5eb74f5925442b04dd9c2418ce332f923be8aeadc83e3c081f54f9c9ec28f"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/.github/workflows/lint.yaml",
+      "bytes": 1281,
+      "sha256": "ace6c5798c0472775e4ee12a3f76a32100f166be45e90cbc7b4623cc7f2482b7"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/.github/workflows/check-links.yaml",
+      "bytes": 1033,
+      "sha256": "248a94377e9d9fa343aee3fe58092594779db120b762e8a09b163393f8647b29"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/madr/.github/workflows/pages.yaml",
+      "bytes": 1642,
+      "sha256": "8de7a799c5bcca839a767450906decd2b7d5c0aaeda9dc1a26c690e06bc8d14f"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/README.md",
+      "bytes": 1832,
+      "sha256": "2b9ad97a879f3d35504e6d1898523dadb1a590c164d7a182be90ccb02b1e2802"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/INSTALL.md",
+      "bytes": 2000,
+      "sha256": "7c34a31bbf5b4a879dea21c7ab75c6d951932274fba4efae9b719c6a9acd4602"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/LICENSE.txt",
+      "bytes": 888,
+      "sha256": "c87591d51d8fda69ab51a902d07e7418c814b77dfc0104ea0a6108702db59c2b"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/Makefile",
+      "bytes": 869,
+      "sha256": "982d1dee33b7f5f565421ba22eb5bee99ad064c6591bdea8dd6f29c6ca9789ee"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/src/adr-new",
+      "bytes": 3901,
+      "sha256": "92b10f94405f91761009492e5e0dc784adca2d7257e563a9dbaa30448abec384"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/src/template.md",
+      "bytes": 364,
+      "sha256": "68c7c24a9bb73419f823c818d7c08f888063eca9d0cdb80e96625b9faa088286"
+    },
+    {
+      "group": "adr-upstream-checkouts",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/sources/adr-tools/tests/project-specific-template.sh",
+      "bytes": 258,
+      "sha256": "76b849d01f89468559659f7ae647446a78f35fd17d4c56e97ea42cd335fff2d3"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/native-source-review.md",
+      "bytes": 22866,
+      "sha256": "0f1db6888d17167d8e7fa51b9cec68f47bb2dd02f280834a213e0fb9787c9576"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/root-runtime-memory-seam-notes.md",
+      "bytes": 10367,
+      "sha256": "481f468bce627812b7944b79b07614a6e52416fba72ca639ff6a2c208b884f86"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/root-design-notes.md",
+      "bytes": 5524,
+      "sha256": "7295f666913def7d35f93b49eb5b84a92b451ab86cc9bdede178dd43edc9e39f"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/root-legacy-key-followup.md",
+      "bytes": 1876,
+      "sha256": "b3ff3bfe4d5d3497c37b3622becd221138f2ea8883df27338e4006967545ced7"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/parser-source-review/findings.md",
+      "bytes": 4556,
+      "sha256": "4d3db481694a4e48bb7e7122ecef82f23519036ca3fb0b8c3600f3f0ba420ee9"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/parser-source-review/source-manifest.json",
+      "bytes": 57099,
+      "sha256": "684d3046dcda8792a5fac944367f78871d4388fced7a7eed8ef8c36889a189f8"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/report.md",
+      "bytes": 12816,
+      "sha256": "a4b1dc938f77a7e2853677c70026f42293d867e7571bf43c32e2fcade52baa1f"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/intake-log.json",
+      "bytes": 5338,
+      "sha256": "660ad7dc5db55ecc61b22a6210c29578e5a2d9ee151d0ce5a302913757540648"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/adr-handoff-comparison/source-file-manifest.json",
+      "bytes": 73484,
+      "sha256": "7b30b97b0ea118d38a0b2bc21c65ab6ca09107e3bcdf40a1a8f65edf088286c7"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/relocation-official-notes.md",
+      "bytes": 2064,
+      "sha256": "0757a5729c2f36fba4ac263fd868c5d9574f2fb1b2da1f117660ea30b70ed56d"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/reviewer-permission-seam/preparation.md",
+      "bytes": 15641,
+      "sha256": "66b7bd46cb02a185fd5e52e44ac788bfebc2d890c34946a54139ee3a167a8cc6"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/p03-u01-author/PREPARATION.md",
+      "bytes": 6484,
+      "sha256": "5aa1f15d7b70651330481ef1ea47668a2c4fe7b1f5d82222c4058487374affcb"
+    },
+    {
+      "group": "preparation-inputs",
+      "path": ".runtime/P03/preparation/environment-prerequisites.json",
+      "bytes": 1126,
+      "sha256": "bed261e3b9390c405e5410a82c68bb5e26d1e3ce2738e91ae68968a772ce1f1c"
+    }
+  ],
+  "inspected_but_not_executed": {
+    "tests": [
+      "Native services: packages/services/test/nonCliAcpRetirement.test.ts (contains list/readProjectMemoryFile smoke path)",
+      "Native core: no direct project-memory or persistent-memory test path was found in the pinned core package; checked source tree path inventory",
+      "marked: test/unit/Lexer.test.js and test/specs/new/html_comments.{md,html}",
+      "yaml: tests/doc/anchors.ts and tests/doc/YAML-1.2.spec.ts",
+      "adr-tools: tests/project-specific-template.sh and other test paths bound by the upstream file manifest",
+      "MADR: CI lint/check-links/pages workflows; no behavior test for the static templates",
+      "Xiadie: context, diagnostics, Native factory and P00-U08 source/evidence files listed in read_inputs"
+    ],
+    "installs": [
+      "Native package/workspace manifests, lockfile, package export maps and pinned source LICENSE inspected",
+      "marked/yaml pinned package metadata, source LICENSE and npm SRI checked in existing parser manifest; no install hook/runtime dependency was reported there",
+      "MADR package manifest and template/license source inspected; static use needs no installed tooling",
+      "adr-tools INSTALL.md, Makefile and LICENSE.txt inspected; Bash/POSIX setup and content license recorded"
+    ],
+    "run_tests": "NOT_RUN",
+    "install_or_build": "NOT_RUN",
+    "model_or_product_runtime": "NOT_RUN"
+  },
+  "search_record": {
+    "date": "2026-10-04",
+    "local_terms": [
+      "memoryCandidates|ContextPacket|preflight|memoryProvider|memoryReader|memory.enabled",
+      "workspaceIdentity|project-memory|memoryService|projectMemoryStableRead|persistent-memory|memoryIndexContent",
+      "marked Lexer HTML comments; yaml parseDocument errors warnings aliases",
+      "MADR 4.0.0 template license; adr-tools pinned template installation tests license; Git worktree move repair common-dir"
+    ],
+    "recorded_official_queries": [
+      "site:github.com/adr/madr 4.0.0 adr-template-minimal.md license tests",
+      "site:github.com/npryce/adr-tools b3279baf9be2207d1a4f4bbd608fd0b591c72aee src/adr-new template tests license",
+      "site:github.com/zai-org/ZCode 29628c9 subagent runner result contract"
+    ],
+    "direct_official_pages": [
+      "https://git-scm.com/docs/git-worktree",
+      "https://git-scm.com/docs/git-rev-parse",
+      "https://github.com/zai-org/ZCode/tree/29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "https://github.com/markedjs/marked/tree/244941a19225303f94aa60cb728373dc56e1dadf",
+      "https://github.com/eemeli/yaml/tree/ddb21b04cb889722cec8f89dc1b67f19d62d7f7d",
+      "https://github.com/adr/madr/tree/2475fe1973f66a12aaf58a91d8fa7b42c0f5ea3d",
+      "https://github.com/npryce/adr-tools/tree/b3279baf9be2207d1a4f4bbd608fd0b591c72aee"
+    ],
+    "note": "Reused the dated pinned-source audits; no broad web search or new checkout was performed for this author pass. Direct official Git documentation and pinned-source pages were opened on 2026-10-04."
+  }
+}

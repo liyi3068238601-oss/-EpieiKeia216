@@ -1,0 +1,63 @@
+{
+  "task": "P03-U01",
+  "baseline": "ecc2aa40c92b4474a12c455ecb0460d47430ca5f",
+  "scope": [
+    "docs/research/P03",
+    "evidence/P03-U01/20261004-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "ecc2aa40c92b4474a12c455ecb0460d47430ca5f"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01",
+      "exit_code": 0,
+      "stdout": " docs/research/P03/P03-U01.md                       |  47 ++\n evidence/P03-U01/20261004-01/baseline.json         |  51 ++\n .../P03-U01/20261004-01/command-baseline-unit.json |  26 +\n .../P03-U01/20261004-01/command-diff-check.json    |  17 +\n .../P03-U01/20261004-01/command-diff-unit-02.json  |  20 +\n .../P03-U01/20261004-01/command-diff-unit-03.json  |  20 +\n .../P03-U01/20261004-01/command-diff-unit.json     |  20 +\n .../command-helper-cli-inventory-02.json           |  18 +\n .../20261004-01/command-helper-cli-inventory.json  |  17 +\n .../20261004-01/command-source-manifest-02.json    |  18 +\n .../20261004-01/command-source-manifest.json       |  18 +\n .../20261004-01/command-whitespace-fix.json        |  16 +\n evidence/P03-U01/20261004-01/diff.json             |  63 ++\n .../P03-U01/20261004-01/helper-cli-inventory.ps1   |  11 +\n evidence/P03-U01/20261004-01/result.md             |  26 +\n .../resume-source-readback-command.json            |  16 +\n .../20261004-01/resume-source-readback.json        | 540 ++++++++++++++\n evidence/P03-U01/20261004-01/source-manifest.json  | 811 +++++++++++++++++++++\n evidence/P03-U01/20261004-01/source-manifest.ps1   |  83 +++\n 19 files changed, 1838 insertions(+)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "ecc2aa40c92b4474a12c455ecb0460d47430ca5f"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01",
+      "exit_code": 0,
+      "stdout": "47\t0\tdocs/research/P03/P03-U01.md\n51\t0\tevidence/P03-U01/20261004-01/baseline.json\n26\t0\tevidence/P03-U01/20261004-01/command-baseline-unit.json\n17\t0\tevidence/P03-U01/20261004-01/command-diff-check.json\n20\t0\tevidence/P03-U01/20261004-01/command-diff-unit-02.json\n20\t0\tevidence/P03-U01/20261004-01/command-diff-unit-03.json\n20\t0\tevidence/P03-U01/20261004-01/command-diff-unit.json\n18\t0\tevidence/P03-U01/20261004-01/command-helper-cli-inventory-02.json\n17\t0\tevidence/P03-U01/20261004-01/command-helper-cli-inventory.json\n18\t0\tevidence/P03-U01/20261004-01/command-source-manifest-02.json\n18\t0\tevidence/P03-U01/20261004-01/command-source-manifest.json\n16\t0\tevidence/P03-U01/20261004-01/command-whitespace-fix.json\n63\t0\tevidence/P03-U01/20261004-01/diff.json\n11\t0\tevidence/P03-U01/20261004-01/helper-cli-inventory.ps1\n26\t0\tevidence/P03-U01/20261004-01/result.md\n16\t0\tevidence/P03-U01/20261004-01/resume-source-readback-command.json\n540\t0\tevidence/P03-U01/20261004-01/resume-source-readback.json\n811\t0\tevidence/P03-U01/20261004-01/source-manifest.json\n83\t0\tevidence/P03-U01/20261004-01/source-manifest.ps1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "ecc2aa40c92b4474a12c455ecb0460d47430ca5f"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01",
+      "exit_code": 0,
+      "stdout": "A\tdocs/research/P03/P03-U01.md\nA\tevidence/P03-U01/20261004-01/baseline.json\nA\tevidence/P03-U01/20261004-01/command-baseline-unit.json\nA\tevidence/P03-U01/20261004-01/command-diff-check.json\nA\tevidence/P03-U01/20261004-01/command-diff-unit-02.json\nA\tevidence/P03-U01/20261004-01/command-diff-unit-03.json\nA\tevidence/P03-U01/20261004-01/command-diff-unit.json\nA\tevidence/P03-U01/20261004-01/command-helper-cli-inventory-02.json\nA\tevidence/P03-U01/20261004-01/command-helper-cli-inventory.json\nA\tevidence/P03-U01/20261004-01/command-source-manifest-02.json\nA\tevidence/P03-U01/20261004-01/command-source-manifest.json\nA\tevidence/P03-U01/20261004-01/command-whitespace-fix.json\nA\tevidence/P03-U01/20261004-01/diff.json\nA\tevidence/P03-U01/20261004-01/helper-cli-inventory.ps1\nA\tevidence/P03-U01/20261004-01/result.md\nA\tevidence/P03-U01/20261004-01/resume-source-readback-command.json\nA\tevidence/P03-U01/20261004-01/resume-source-readback.json\nA\tevidence/P03-U01/20261004-01/source-manifest.json\nA\tevidence/P03-U01/20261004-01/source-manifest.ps1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "ecc2aa40c92b4474a12c455ecb0460d47430ca5f"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

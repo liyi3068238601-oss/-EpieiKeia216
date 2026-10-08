@@ -1,0 +1,540 @@
+{
+  "schema": "p03-u01-root-source-readback/v1",
+  "at_utc": "2026-10-08T08:35:00.179326+00:00",
+  "source_manifest_sha256": "0a0fb989107f8ef9b252f27f015e46ffbb1ab0bcc4d111565eff0bd9d6bf54dc",
+  "input_count": 104,
+  "groups": {
+    "author-worktree": 18,
+    "native-fixed-checkout": 41,
+    "parser-upstream-checkouts": 15,
+    "adr-upstream-checkouts": 17,
+    "preparation-inputs": 13
+  },
+  "native_pin": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "native_clean": true,
+  "preparation_manifests_verified": 3,
+  "checked_files": [
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\AGENTS.md",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\planning\\Xiadie_V2_v1.1\\tasks\\P03-U01.md",
+      "bytes": 3110,
+      "sha256": "481ad4396712dc964ab278d85518dd6ece49201bc9fdff18c5e19332e320c682"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\planning\\Xiadie_V2_v1.1\\tasks\\P03-U02.md",
+      "bytes": 3099,
+      "sha256": "47b7725dc24f9821c6f1a12b59d7ecb4a8d49a0d24396dfffedc1d1ac5c04137"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\planning\\Xiadie_V2_v1.1\\templates\\handoff.md",
+      "bytes": 568,
+      "sha256": "fb3dbc70617f4ddbad04764772c176d0834b0637ff9fc4f4ba9a4fb125e81e74"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\docs\\sources.lock.json",
+      "bytes": 18354,
+      "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\packages\\adapters\\zcode\\src\\host.ts",
+      "bytes": 41642,
+      "sha256": "71bfd252831db5216983bdea8361bd68e0a54296de5f9444cf1e15b908f0725b"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\packages\\contracts\\src\\context.ts",
+      "bytes": 1801,
+      "sha256": "ffc855d2d496d97b25508fdbcad540d6c01ba755fe7d56837a5873c3f367d071"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\packages\\diagnostics\\src\\index.ts",
+      "bytes": 50696,
+      "sha256": "cf26f480a4115f573321eac8af94d0745404584a3da0e5480727fe3bbe9e5c23"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\packages\\diagnostics\\test\\diagnostics.test.mjs",
+      "bytes": 31841,
+      "sha256": "963bff3a7bb1efa531e819ed3d8c6e578ee4d713f572636b898b8b185605f572"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\packages\\context\\src\\index.ts",
+      "bytes": 11781,
+      "sha256": "6fcc5b6ca892a0106a1063f15587db24633d799603846b55ddcab8fe77b50fd7"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\packages\\context\\test\\context.test.mjs",
+      "bytes": 8934,
+      "sha256": "c64c2939d27dcaf16b988df740046d04c64133edfd099a1eab368e2c213dcf18"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\tests\\integration\\P01\\factory.mjs",
+      "bytes": 19082,
+      "sha256": "c0758c684c7d43e8f6eafa146770214f5a00d7306294f8dadbdb81c7a4bbfc0e"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\tests\\integration\\P01\\factory.test.mjs",
+      "bytes": 21018,
+      "sha256": "0cc5866ed2fac07bde3dcf13242ca3e9ea11dda033ba3ad8447170e702402a0a"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\packages\\application\\test\\native-projection.integration.test.mjs",
+      "bytes": 12796,
+      "sha256": "d6886de8026243a18d3421ef3255ab0ce70f5c89b61d0faa3271804ff56d4446"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\spikes\\zcode-memory\\README.md",
+      "bytes": 2815,
+      "sha256": "bfd82f58b52b68cb8fe25f8396eff4e53cbf133d25fb51fae6f0756de0af577c"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\spikes\\zcode-memory\\probe.mjs",
+      "bytes": 24255,
+      "sha256": "5a44150ab792c8e3c960d972f30ae4ae4175214e07e4864825ed68f13604cc96"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\evidence\\P00-U08\\20261001-01\\result.md",
+      "bytes": 7355,
+      "sha256": "11eccb9b2cf966a552b90ee00d2b2d4910e5ca282ecf5383f6026a290cbe6707"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u01\\evidence\\P00-U08\\20261001-01\\runs\\attempt-03\\probe-results.json",
+      "bytes": 25677,
+      "sha256": "ffba42f64994be01cd18a28c5a5081a913987c8aadf4718a61d639b7151f0bde"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\LICENSE",
+      "bytes": 11344,
+      "sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\package.json",
+      "bytes": 4172,
+      "sha256": "1c8de5f20a664c0dc3071ca4d58ae55f4282cb671c529d2ea5f2b0879638b64c"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\pnpm-workspace.yaml",
+      "bytes": 491,
+      "sha256": "f18a18233e82cda1dc40be61bf2ad1bc99de25de63ad0be64bc652761a638372"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\pnpm-lock.yaml",
+      "bytes": 652214,
+      "sha256": "7d40b0231089692a91eb39f73b212f7eae86ee9402c360139216cff577e9583c"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\package.json",
+      "bytes": 1968,
+      "sha256": "6c48017b05d8a7215c5bf7dea12f50edd1487bf5b8b22e11c21703d32e8f7742"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\package.json",
+      "bytes": 1366,
+      "sha256": "abf5a6c8715fe87ea4b5ef3a48b225f94980dc386fe2ccfe98844347aa16bcd8"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\packages\\services\\package.json",
+      "bytes": 1086,
+      "sha256": "71fef5a81918526e8cdda4d3309ef3528353d0a526a9418c306ec9f95641ad50"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\context\\sections\\memory.ts",
+      "bytes": 2725,
+      "sha256": "3af27495b85c9f189ded350a030beba4442711fad4b35267a91a7f2209ae018d"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\subagent\\persistent-memory.ts",
+      "bytes": 3579,
+      "sha256": "ba483db96ee90ec627890b4eff89c953dca378872cab0791728cfe1bee14405c"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\memory\\index-content.ts",
+      "bytes": 2990,
+      "sha256": "09397af14b35c25822e901c44dc702c927b94b75c072a6f5cd595b7d9e9f4e71"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\subagent\\persistent-memory-prompt.ts",
+      "bytes": 14856,
+      "sha256": "ed2298b5582d4be07676fef739ad50239e9b68c63ca4595bd54252cb867fa7c3"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\memory\\project-root.ts",
+      "bytes": 1106,
+      "sha256": "69ea16dc573f1e60e5579be494d02dc7735ab24821208071f304e5699c2d7f55"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\memory\\recall\\manifest.ts",
+      "bytes": 4514,
+      "sha256": "26dc0b541bd06120f7002f62cbaa81524374f3fcd443d495ed9ec9a4c25ec7bb"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\runtime\\methods\\context.ts",
+      "bytes": 11568,
+      "sha256": "bcdb1b91fba68b8f29cb6bd16f4ab7536bd5003208a766aca338dde9cf1a5235"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\runtime\\methods\\context-refresh.ts",
+      "bytes": 2375,
+      "sha256": "729d721d285804c4c72fe98a9d83046dd256c730eb5b6e9b2cf398b4fff25c8a"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\packages\\services\\src\\memory\\memoryService.ts",
+      "bytes": 7972,
+      "sha256": "7dcda54bcbd983331d84db6b634ec39e4c6980f29517f7872ca554aa319ecf7a"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\packages\\services\\src\\memory\\projectMemoryStableRead.ts",
+      "bytes": 3570,
+      "sha256": "2ade3a41788b4c6d4a08ddf600e8052d589987f242ee7143042d9a49da76fa52"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\packages\\services\\src\\paths.ts",
+      "bytes": 8613,
+      "sha256": "e20fbeb4e88e9021bd099a50ce8b2bbc90ff823eefb57253d1f1ea11b6f7d1df"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\packages\\services\\test\\nonCliAcpRetirement.test.ts",
+      "bytes": 8620,
+      "sha256": "7313211a35a86c3e008f6b25ebe0b339a01915622f9e2fbb5be2f8eeeba9b74e"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\contracts\\src\\tools\\agent.ts",
+      "bytes": 3860,
+      "sha256": "11f570e70ad5413af90e7582f68a441ce06a1f4e838123e20c7c163752d80046"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\contracts\\src\\interfaces\\subagent.port.ts",
+      "bytes": 3784,
+      "sha256": "3e563f8dea2e210e5a2e2cf25bef7408ed66bf4a512590c3c0d6de02e8fd44e3"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\tool\\handlers\\agent.ts",
+      "bytes": 12372,
+      "sha256": "e29decfaf6c16083368850f8e7f2285c821dd3c6b53b0cf1f5816fbf6fdf3aac"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\subagent\\runner.ts",
+      "bytes": 68634,
+      "sha256": "acbd362bc6e0556c65cb27722ddb0f0ccf1f82328f7184725574e651cdb884e7"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\runtime-task\\registry.ts",
+      "bytes": 9147,
+      "sha256": "8f138a00926d188a0a336f12d87bf8af2f5402f7817179fae249b6c56b0681b9"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\subagent\\completion-notification.ts",
+      "bytes": 1805,
+      "sha256": "2ca923e0b9f34a19ab69b369f7ee1d126f0d4bf7671d62d8b2e72e026b0b4346"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\runtime\\agent-runtime.ts",
+      "bytes": 28327,
+      "sha256": "a2192a84dfae5dfaa46275e253d2815da8178e27d0f5e9ccd5e3f57e61d18877"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\runtime\\methods\\subagent.ts",
+      "bytes": 37303,
+      "sha256": "28a4cf9128c870ea4559cf95cf720fccba11103e98d1a1bf7748fbadb82ab7a7"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\runtime\\helpers\\tool-allowlist.ts",
+      "bytes": 6001,
+      "sha256": "87dc3a3659fb9169a96e5e810b8f78299e5e4aa369d302fe53eecef6602261c1"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\tool\\executor\\call-runner.ts",
+      "bytes": 27045,
+      "sha256": "c607f378340a8779addc9bcf317a3c05b4fd5df2ecb4030d413add78594bccd9"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\permission\\service.ts",
+      "bytes": 22583,
+      "sha256": "91dd95f080a72db2bb87543989b007a46bf0144a0b522fcd897b37c894d6d9e2"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\tool\\executor\\permission-flow.ts",
+      "bytes": 15263,
+      "sha256": "ca3a65ca5d09eabb7d86cc75a3097da015b0741b9e807f8fda6a2ed11b8e5cf2"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\tool\\executor\\memory-file-permission.ts",
+      "bytes": 2891,
+      "sha256": "97f5300d6c6045fe8ba21715f9d73f05ddf4468da7da315a415360f1e5a616dc"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\tool\\handlers\\write.ts",
+      "bytes": 11485,
+      "sha256": "7053b107de25920867e88de4f758ef0f643be515a41d007398dfe40db49778ba"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\tool\\handlers\\edit.ts",
+      "bytes": 20696,
+      "sha256": "55f45074e954f8c5f8d4e1a466d3d55a221627ab7892234e3d3d4808a4ebd90e"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\tool\\path-policy.ts",
+      "bytes": 2276,
+      "sha256": "d909dc9b448590d0dba4183de71eb39c1e8914c2f41c9147fab3d49f043f0cf2"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\adapters\\src\\fs\\index.ts",
+      "bytes": 54902,
+      "sha256": "83292fa1b0aa694ebe411b11c06ddc541810e99f48ca6e72f04e27865524acb9"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\contracts\\src\\interfaces\\permission.port.ts",
+      "bytes": 3534,
+      "sha256": "426cf9970c9d160f1ac601519c47939a540698ca7b5e7ad40737891f8dae34a4"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\permission\\rule-matching.ts",
+      "bytes": 650,
+      "sha256": "f54f75589f97502177f50ea68be675b4bcc3adc2680e6bb833fa7dfb893ff991"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\tool\\executor\\permission-suggestions.ts",
+      "bytes": 1450,
+      "sha256": "f4d36a3ab0143b20a0bf3db60b10a9361ab6d7c123395101e1f9db793b830f40"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\mcp\\index.ts",
+      "bytes": 17803,
+      "sha256": "dc1040c3151f0f4ec16a3c63318ba7607a86fa4ac6b0dcf23b453dbfe5936d17"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\apps\\zcode-cli\\packages\\core\\src\\runtime\\methods\\mcp.ts",
+      "bytes": 6010,
+      "sha256": "1feb7328acfe55d833a0e19880f06a5b2f7da4cf3fb91da160bb8f6dcec11b86"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\marked-upstream\\package.json",
+      "bytes": 3398,
+      "sha256": "78e27dac3c5de404026c6f703b8c0adf1900f9067c8bd16fa83b058f0fb34aa9"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\marked-upstream\\LICENSE.md",
+      "bytes": 2942,
+      "sha256": "8e3a3f82f59a60958f56ca08f445647c32a4733dc7ca6c2c46f6eb898471ab9c"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\marked-upstream\\src\\marked.ts",
+      "bytes": 3727,
+      "sha256": "11df34d11269aa25e5fb6a0ff679fc005cb8531ef6f0eac6327ad78f097c5199"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\marked-upstream\\src\\Lexer.ts",
+      "bytes": 14213,
+      "sha256": "1d1a4614b0fdac4621198abb55d6b884bbb509616b3efc60821a1b2217a320ec"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\marked-upstream\\test\\unit\\Lexer.test.js",
+      "bytes": 47579,
+      "sha256": "330472fd79110d783e686888e00ce57eb771a78dd5bd852ddc3d55e04328b714"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\marked-upstream\\test\\specs\\new\\html_comments.md",
+      "bytes": 591,
+      "sha256": "cda546226e7beb3e938d102eda69d5ad452d0ec31eec3f955d940e6838e26168"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\marked-upstream\\test\\specs\\new\\html_comments.html",
+      "bytes": 689,
+      "sha256": "ec67ba3045dc0596a7bae1574d0f9526e8cff2446bcc7c206742d4f54f7d232f"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\yaml-upstream\\package.json",
+      "bytes": 3351,
+      "sha256": "db29094da19fb69f9405720ccfdea02aa781c91df39515038275b14bbfff69a6"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\yaml-upstream\\LICENSE",
+      "bytes": 751,
+      "sha256": "05acf00ef5ba06a2ed6e4b324087711e553bee113eca01beb5561745ded1444e"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\yaml-upstream\\src\\public-api.ts",
+      "bytes": 7289,
+      "sha256": "f2420c4e9d864f39cfbea2bc46bb063d6cd7f448756bf1ac06adda2db2735c0f"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\yaml-upstream\\src\\parse\\parser.ts",
+      "bytes": 29415,
+      "sha256": "b956f76af39e83b59340539ad823d172081a93fda63748bfd3b62e4e6bcd5872"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\yaml-upstream\\src\\doc\\Document.ts",
+      "bytes": 15949,
+      "sha256": "3291956f58cd8dd9da64038fadbb9b65c621d23cf85e39a0e78da98fd1f95773"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\yaml-upstream\\src\\nodes\\Alias.ts",
+      "bytes": 4263,
+      "sha256": "c53cd10a7934773e9428131ee5de4313d61328672b6355c4406379ce1d414713"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\yaml-upstream\\tests\\doc\\anchors.ts",
+      "bytes": 14820,
+      "sha256": "fe5a45fd07304841fb0f0fb3a0882f7237a37594a5a3b4aa999fb4d70164cde5"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\yaml-upstream\\tests\\doc\\YAML-1.2.spec.ts",
+      "bytes": 43815,
+      "sha256": "c5934fd737e219ffcfa3a23f737b222ad5328e81210a9910ebc5f7caa759c40f"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\madr\\package.json",
+      "bytes": 794,
+      "sha256": "7c9b27c8e0fbd97d6fcfbf6bbc5f1d44609686c51726367e066df84598a25ffd"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\madr\\README.md",
+      "bytes": 5785,
+      "sha256": "45f73253b843c0c9d5eb351a4ab1e769466c74d2ac6fb0b3f746c2ea7c6e4015"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\madr\\LICENSE",
+      "bytes": 15,
+      "sha256": "cb9c3a276eb7991be197e401ae38d035f0f0efae425c21f499393f51c9b29ffd"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\madr\\LICENSE.MIT",
+      "bytes": 1090,
+      "sha256": "a2eef9f0961adab958f4cfa85f65c2864bab694620919cfda402382783bc0c8d"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\madr\\LICENSE.CC0-1.0",
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\madr\\template\\adr-template.md",
+      "bytes": 3316,
+      "sha256": "4903614bbae9aeb2aa811caeb9e156677ef1a993872af6ff8dcfb67b2266cae1"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\madr\\template\\adr-template-minimal.md",
+      "bytes": 1029,
+      "sha256": "1ba5eb74f5925442b04dd9c2418ce332f923be8aeadc83e3c081f54f9c9ec28f"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\madr\\.github\\workflows\\lint.yaml",
+      "bytes": 1281,
+      "sha256": "ace6c5798c0472775e4ee12a3f76a32100f166be45e90cbc7b4623cc7f2482b7"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\madr\\.github\\workflows\\check-links.yaml",
+      "bytes": 1033,
+      "sha256": "248a94377e9d9fa343aee3fe58092594779db120b762e8a09b163393f8647b29"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\madr\\.github\\workflows\\pages.yaml",
+      "bytes": 1642,
+      "sha256": "8de7a799c5bcca839a767450906decd2b7d5c0aaeda9dc1a26c690e06bc8d14f"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\adr-tools\\README.md",
+      "bytes": 1832,
+      "sha256": "2b9ad97a879f3d35504e6d1898523dadb1a590c164d7a182be90ccb02b1e2802"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\adr-tools\\INSTALL.md",
+      "bytes": 2000,
+      "sha256": "7c34a31bbf5b4a879dea21c7ab75c6d951932274fba4efae9b719c6a9acd4602"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\adr-tools\\LICENSE.txt",
+      "bytes": 888,
+      "sha256": "c87591d51d8fda69ab51a902d07e7418c814b77dfc0104ea0a6108702db59c2b"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\adr-tools\\Makefile",
+      "bytes": 869,
+      "sha256": "982d1dee33b7f5f565421ba22eb5bee99ad064c6591bdea8dd6f29c6ca9789ee"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\adr-tools\\src\\adr-new",
+      "bytes": 3901,
+      "sha256": "92b10f94405f91761009492e5e0dc784adca2d7257e563a9dbaa30448abec384"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\adr-tools\\src\\template.md",
+      "bytes": 364,
+      "sha256": "68c7c24a9bb73419f823c818d7c08f888063eca9d0cdb80e96625b9faa088286"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\sources\\adr-tools\\tests\\project-specific-template.sh",
+      "bytes": 258,
+      "sha256": "76b849d01f89468559659f7ae647446a78f35fd17d4c56e97ea42cd335fff2d3"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\native-source-review.md",
+      "bytes": 22866,
+      "sha256": "0f1db6888d17167d8e7fa51b9cec68f47bb2dd02f280834a213e0fb9787c9576"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\root-runtime-memory-seam-notes.md",
+      "bytes": 10367,
+      "sha256": "481f468bce627812b7944b79b07614a6e52416fba72ca639ff6a2c208b884f86"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\root-design-notes.md",
+      "bytes": 5524,
+      "sha256": "7295f666913def7d35f93b49eb5b84a92b451ab86cc9bdede178dd43edc9e39f"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\root-legacy-key-followup.md",
+      "bytes": 1876,
+      "sha256": "b3ff3bfe4d5d3497c37b3622becd221138f2ea8883df27338e4006967545ced7"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\findings.md",
+      "bytes": 4556,
+      "sha256": "4d3db481694a4e48bb7e7122ecef82f23519036ca3fb0b8c3600f3f0ba420ee9"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\parser-source-review\\source-manifest.json",
+      "bytes": 57099,
+      "sha256": "684d3046dcda8792a5fac944367f78871d4388fced7a7eed8ef8c36889a189f8"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\report.md",
+      "bytes": 12816,
+      "sha256": "a4b1dc938f77a7e2853677c70026f42293d867e7571bf43c32e2fcade52baa1f"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\intake-log.json",
+      "bytes": 5338,
+      "sha256": "660ad7dc5db55ecc61b22a6210c29578e5a2d9ee151d0ce5a302913757540648"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\adr-handoff-comparison\\source-file-manifest.json",
+      "bytes": 73484,
+      "sha256": "7b30b97b0ea118d38a0b2bc21c65ab6ca09107e3bcdf40a1a8f65edf088286c7"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\relocation-official-notes.md",
+      "bytes": 2064,
+      "sha256": "0757a5729c2f36fba4ac263fd868c5d9574f2fb1b2da1f117660ea30b70ed56d"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\reviewer-permission-seam\\preparation.md",
+      "bytes": 15641,
+      "sha256": "66b7bd46cb02a185fd5e52e44ac788bfebc2d890c34946a54139ee3a167a8cc6"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\p03-u01-author\\PREPARATION.md",
+      "bytes": 6484,
+      "sha256": "5aa1f15d7b70651330481ef1ea47668a2c4fe7b1f5d82222c4058487374affcb"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\preparation\\environment-prerequisites.json",
+      "bytes": 1126,
+      "sha256": "bed261e3b9390c405e5410a82c68bb5e26d1e3ce2738e91ae68968a772ce1f1c"
+    }
+  ],
+  "mismatches": [],
+  "boundary": "Fixed source and related test/license/install metadata byte readback. No execution of source tests or product acceptance."
+}
