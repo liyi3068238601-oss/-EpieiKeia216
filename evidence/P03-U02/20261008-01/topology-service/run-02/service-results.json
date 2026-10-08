@@ -1,0 +1,111 @@
+{
+  "status": "pass",
+  "cases": [
+    {
+      "name": "two projects selected explicitly and raw frontmatter retained",
+      "status": "pass",
+      "a": {
+        "content": "---\nrecorded_at: 2023-10-08\n---\nA_OWNED_MEMORY schema=obsolete-v1\n",
+        "updatedAt": 1791449466482.6602
+      },
+      "b": {
+        "content": "---\nrecorded_at: 2023-10-08\n---\nB_OWNED_MEMORY schema=obsolete-v1\n",
+        "updatedAt": 1791449466482.6602
+      },
+      "responseKeys": [
+        "content",
+        "updatedAt"
+      ],
+      "rawByteHashProvided": false
+    },
+    {
+      "name": "actual service catalog",
+      "status": "pass",
+      "keys": [
+        "repo-5e92df6c1f374c3a",
+        "repo-9a1bc754fb0694d0"
+      ]
+    },
+    {
+      "name": "missing file",
+      "status": "pass",
+      "code": "ENOENT",
+      "message": "ENOENT: no such file or directory, lstat 'E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\profile\\.zcode\\cli\\memories\\projects\\repo-5e92df6c1f374c3a\\memory\\missing.md'"
+    },
+    {
+      "name": "relative escape",
+      "status": "pass",
+      "code": null,
+      "message": "Invalid Project Memory path"
+    },
+    {
+      "name": "absolute escape",
+      "status": "pass",
+      "code": null,
+      "message": "Invalid Project Memory path"
+    },
+    {
+      "name": "case alias",
+      "status": "pass",
+      "code": null,
+      "message": "Project Memory file name does not match exactly: SCHEMA.md"
+    },
+    {
+      "name": "invalid UTF-8 is replacement-decoded: required-contract gap",
+      "status": "pass",
+      "sourceHash": "33a1d3afad778984ae3a377d665d50b1ee7029b8fa4ca08abfff38afca41f305",
+      "textHash": "98416bd53ea5fdad16e282ecf61c333ffac4fc812bc9575c1344a3b865ea1b5c",
+      "result": {
+        "content": "A�(B",
+        "updatedAt": 1791449466644.362
+      }
+    },
+    {
+      "name": "broken frontmatter is not validated by service",
+      "status": "pass",
+      "kind": "text returned; product must validate separately"
+    },
+    {
+      "name": "native five MiB read limit",
+      "status": "pass",
+      "code": "PROJECT_MEMORY_PREVIEW_LIMIT_EXCEEDED",
+      "message": "Project Memory file exceeds the 5 MiB preview limit: schema.md"
+    },
+    {
+      "name": "actual owned-file ACL denies read",
+      "status": "pass",
+      "code": "EPERM",
+      "message": "EPERM: operation not permitted, open 'E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\profile\\.zcode\\cli\\memories\\projects\\repo-5e92df6c1f374c3a\\memory\\schema.md'"
+    },
+    {
+      "name": "recovery after ACL restoration",
+      "status": "pass",
+      "sourceHash": "d0f07b3a286c4c577de9fc5c2626c53f628d28b2bccc39a2a70586220ae1480f"
+    },
+    {
+      "name": "service sees changed file on next call",
+      "status": "pass"
+    },
+    {
+      "name": "junction workspace refused",
+      "status": "pass",
+      "code": null,
+      "message": "Project Memory directory is not a regular directory: E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\profile\\.zcode\\cli\\memories\\projects\\owned-junction-0123456789abcdef"
+    },
+    {
+      "name": "native index truncation is explicit",
+      "status": "pass",
+      "inputLines": 201,
+      "warning": true
+    }
+  ],
+  "sourcePin": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "process": {
+    "pid": 47420,
+    "node": "v24.14.0",
+    "executable": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "profile": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u02-topology-service-20261008-02\\profile"
+  },
+  "actualImplementation": "Bundled unmodified pinned createMemoryService; no mock filesystem",
+  "conclusion": "Use its stable-read/path design, but a strict raw-byte/hash and parse-state adapter is needed for U04."
+}
