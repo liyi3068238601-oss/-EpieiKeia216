@@ -1,0 +1,190 @@
+{
+  "schema": "p03-u05-source-adoption/v1",
+  "task": "P03-U05",
+  "attempt_id": "20261008-01",
+  "author_status": "ready_for_review",
+  "independent_acceptance": "pending",
+  "baseline": {
+    "commit": "f77adb3205c5c7a928f1624f5b6e85ad4876f53f",
+    "branch": "p03-u05",
+    "record": {
+      "path": "evidence/P03-U05/20261008-01/baseline.json",
+      "bytes": 1196,
+      "sha256": "9a72ad73039c8a58944928465d04d9dd636e19529f8ba659942903098577655b"
+    }
+  },
+  "status_source": {
+    "path": "evidence/P03/status.json",
+    "bytes": 6178,
+    "sha256": "2e0b2bd5bb3e8349e2cd9a1337931e0ac72565c723acb9c6352bd145afb9818a",
+    "observed": "P03-U04 is accepted and P03-U05 is running. This stage ledger has no business-task owner entity/evidence; owner and progress remain unknown unless a verified TaskLedger record exists."
+  },
+  "accepted_sources": [
+    {
+      "unit": "P03-U02",
+      "decision": "Engineering facts are established by verified current code, tests and accepted ADRs; TaskLedger is authoritative for owner/progress; experience notes remain leads until verified.",
+      "adr": {
+        "path": "docs/adr/P03-reuse.md",
+        "bytes": 11481,
+        "sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a",
+        "integration_commit": "964d08bfd626f438c8d161760f9aa7828831f15b"
+      },
+      "acceptance": {
+        "path": "evidence/P03-U02/20261008-01/acceptance.json",
+        "bytes": 10143,
+        "sha256": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd"
+      },
+      "ledger": {
+        "path": "evidence/P03/status.json",
+        "sha256": "2e0b2bd5bb3e8349e2cd9a1337931e0ac72565c723acb9c6352bd145afb9818a"
+      },
+      "status_metadata_note": "The merged ADR text still says ready_for_review and approval pending. Acceptance is established by the exact U02 acceptance record and canonical stage ledger, not that stale text."
+    },
+    {
+      "unit": "P03-U03",
+      "implementation": {
+        "path": "packages/projects/registry.ts",
+        "bytes": 20906,
+        "sha256": "e77c8ecd0c2e2ea08abca01f750e1c0839b937de5aa9a5a14b0358949d90304a",
+        "integration_commit": "0fd6d87993e17e4f2ca97a33351f9f2dfe0c54ba",
+        "relevant_api": [
+          "ProjectRegistry.registerWorkspace",
+          "ProjectRegistry.resolveWorkspace",
+          "isTrustedProjectMapping"
+        ]
+      },
+      "test": {
+        "path": "packages/projects/test/registry.test.mjs",
+        "bytes": 22876,
+        "sha256": "3f35fa47e161eaaacddc5c65a7d5970f84d5d85e27f9ef3831ceb1daa83ffd9a"
+      },
+      "acceptance": {
+        "path": "evidence/P03-U03/20261008-01/acceptance.json",
+        "bytes": 218067,
+        "sha256": "7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37"
+      },
+      "use": "Bind stale-memory fixtures to actual registered workspace identity and exercise the existing registry API and tests."
+    },
+    {
+      "unit": "P03-U04",
+      "reader": {
+        "path": "packages/adapters/zcode/src/project-memory.ts",
+        "bytes": 32414,
+        "sha256": "edbe2414e3209aa93aac36bd4960ae93992ec4e433104aac89cb1e1b681267ab",
+        "integration_commit": "36850a0717dad3cd27d9a4b5cc1ae7f9bab354b6",
+        "observed_data_contract": "Selected topic content carries a project-memory source reference and raw source_hash; its data value is marked authority=experience-lead, assigned by the reader rather than trusted from frontmatter."
+      },
+      "test": {
+        "path": "packages/adapters/zcode/test/project-memory.test.mjs",
+        "bytes": 31996,
+        "sha256": "c731bdcd75115d78bafc509074a244657002756737cb5f82613ac757dbafe0c5",
+        "coverage_note": "Covers selected-topic/source-hash and freshness behavior; does not assert the experience-lead field."
+      },
+      "acceptance": {
+        "path": "evidence/P03-U04/20261008-01/acceptance.json",
+        "bytes": 2260,
+        "sha256": "ebeb89a5cf16414bded874f6e78fc2d7f9250871ce8ec045493afcc8e457b2f7"
+      },
+      "card": {
+        "path": "planning/Xiadie_V2_v1.1/tasks/P03-U04.md",
+        "bytes": 2965,
+        "sha256": "451bc2361bb66516eb52e9bb1ceec4a568d6b7f04814a47def8d94b830b10440"
+      },
+      "limits": [
+        "U04 acceptance records Native core Read integration as NOT_RUN for U09.",
+        "U04 acceptance records real-model behavior as NOT_RUN."
+      ]
+    },
+    {
+      "topic": "ContextPacket instruction/data boundary",
+      "source": {
+        "path": "packages/context/src/index.ts",
+        "bytes": 11781,
+        "sha256": "6fcc5b6ca892a0106a1063f15587db24633d799603846b55ddcab8fe77b50fd7"
+      },
+      "test": {
+        "path": "packages/context/test/context.test.mjs",
+        "bytes": 8934,
+        "sha256": "c64c2939d27dcaf16b988df740046d04c64133edfd099a1eab368e2c213dcf18",
+        "observed_contract": "Hostile memory stays in data partitions and cannot create instruction records."
+      },
+      "use": "Use the existing data boundary to test source classification; it does not establish model judgment."
+    }
+  ],
+  "policy_basis": {
+    "task_card": {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U05.md",
+      "bytes": 2072,
+      "sha256": "e869085114fcf44b90de9b8355f47859d8232aea07f1af8bf2111a05b4413e99"
+    },
+    "agent_rules": {
+      "path": "AGENTS.md",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    "outputs": [
+      {
+        "path": "docs/policies/project-memory.md",
+        "bytes": 2752,
+        "sha256": "97b2ddc420eb138a2675917d0c35e7576c07b504353f43c00726729045a53b10"
+      },
+      {
+        "path": "templates/project-note.md",
+        "bytes": 729,
+        "sha256": "e3bf45a10958f296e39769ac216ba6993265cf71fc13eb0ae31edc67514e742d"
+      }
+    ],
+    "adopted_scope": [
+      "current source describes observed implementation",
+      "same-revision tests and recorded executions describe tested contract cases",
+      "accepted ADR describes adopted design decisions",
+      "memory is an experience lead with traceable pointers",
+      "stage/unit status comes from the P03 stage ledger and exact review/acceptance artifacts",
+      "business-task owner and progress require a verified TaskLedger entity/evidence; absence means unknown",
+      "AGENTS carries stable project rules and excludes personal life history"
+    ]
+  },
+  "formal_validation": {
+    "dependency_install": {
+      "record_path": ".runtime/P03/coord/stage-dependencies-f77adb3205c5.json",
+      "bytes": 2360,
+      "sha256": "fc66486745ead93c1fd62597681ad4a0ca13b2479dfbf85c1697a70c044dfce3",
+      "exit_code": 0,
+      "method": "Frozen-lockfile install with package scripts disabled.",
+      "sqlite_smoke": {
+        "exit_code": 0,
+        "sqlite_version": "3.53.4"
+      },
+      "profile_copied_into_evidence": false
+    },
+    "build": {
+      "record_path": "evidence/P03-U05/20261008-01/build-command.json",
+      "bytes": 503,
+      "sha256": "93d8a83cad259cf12a080ac1a3b33a11f1d8ef7a52751dcb96721d0c7c95ce74",
+      "exit_code": 0,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u05"
+    },
+    "unit_test": {
+      "test_path": "packages/projects/test/project-memory-policy.test.mjs",
+      "test_bytes": 13974,
+      "test_sha256": "03f100574ed4c50ec64bde888ffe98874a25c8e70a8edc04c884586be865be8b",
+      "runner_path": "tools/run-tests.mjs",
+      "runner_bytes": 6468,
+      "runner_sha256": "2e72caf8cb25c46ec4e7a2862ba7f90cf4b1b6e486c308a8934cf1a69eb82eaf",
+      "selector": "P03-U05",
+      "record_path": "evidence/P03-U05/20261008-01/unit-02-command.json",
+      "record_bytes": 2067,
+      "record_sha256": "47ce91bc18f7b04c4d4b13ffeb3687ae89bbee2c95f66ffca73f14321254097b",
+      "exit_code": 0,
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "boundary": "Actual current ProjectRegistry and U04 reader APIs on an isolated synthetic Git workspace and memory fixture; the test reads live stage acceptance receipts/ledger, checks raw forged frontmatter authority remains experience-lead, verifies source hash and builds the real ContextPacket with the note only in content. No AI model judgment is tested."
+    }
+  },
+  "not_claimed": [
+    "No general-purpose engineering fact engine is introduced.",
+    "No AI-model prioritization behavior is demonstrated."
+  ],
+  "freeze_preflight_repair": "freeze-preflight-failure.json; final output hashes above reflect LF-normalized files."
+}

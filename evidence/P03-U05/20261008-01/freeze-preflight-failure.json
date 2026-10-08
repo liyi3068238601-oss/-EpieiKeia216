@@ -1,0 +1,21 @@
+{
+  "schema": "p03-u05-freeze-preflight-failure/v1",
+  "recorded_at_utc": "2026-10-08T11:06:07.734535+00:00",
+  "baseline": "f77adb3205c5c7a928f1624f5b6e85ad4876f53f",
+  "partial_author_commit": "723fb7042783ac7dff1952308850de0bef7d201c",
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u05",
+  "observed_failures": [
+    {
+      "command": "diff-unit.py P03-U05 [declared scopes] --attempt 20261008-01",
+      "exit_code": 1,
+      "diagnostic": "git diff --cached --check returned exit 2: templates/project-note.md:28: new blank line at EOF."
+    },
+    {
+      "command": "freeze-unit.py P03-U05 [baseline and declared scopes] --attempt 20261008-01",
+      "exit_code": 1,
+      "diagnostic": "disk/index bytes differ: docs/policies/project-memory.md; Git eol=lf normalization changed CRLF disk bytes."
+    }
+  ],
+  "coordination_error": "The coordinator committed the staged paths despite the failed preflight. No manifest was created. Main remained unchanged; no rewrite or acceptance occurred.",
+  "repair": "Normalize the two author Markdown files to LF with a single terminal newline; refresh affected source-adoption output hashes and add a follow-up manifest commit. Product API and test behavior unchanged."
+}

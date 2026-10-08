@@ -1,0 +1,110 @@
+{
+  "task": "P03-U05",
+  "attempt_id": "20261008-01",
+  "author_status": "ready_for_review",
+  "independent_acceptance": "pending",
+  "baseline_commit": "f77adb3205c5c7a928f1624f5b6e85ad4876f53f",
+  "stage_ledger_snapshot": {
+    "path": "evidence/P03/status.json",
+    "sha256": "2e0b2bd5bb3e8349e2cd9a1337931e0ac72565c723acb9c6352bd145afb9818a",
+    "P03-U04": "accepted",
+    "P03-U05_at_test": "running",
+    "business_task_owner": "unknown; no verified TaskLedger entity/evidence"
+  },
+  "changed_paths": [
+    "docs/policies/project-memory.md",
+    "templates/project-note.md",
+    "packages/projects/test/project-memory-policy.test.mjs",
+    "tools/run-tests.mjs",
+    "evidence/P03-U05/20261008-01/source-adoption.json",
+    "evidence/P03-U05/20261008-01/result.md",
+    "evidence/P03-U05/20261008-01/result.json"
+  ],
+  "policy": {
+    "engineering_facts": "Revision-bound current source, tests and independently accepted ADRs; distinguish implementation behavior, tested contract and accepted design decisions.",
+    "memory": "Experience lead with traceable provenance; verify against current engineering evidence before relying on it.",
+    "stage_status_acceptance": "P03 stage/unit status comes from the stage ledger and its exact review/acceptance artifacts.",
+    "business_task_owner_progress": "Verified TaskLedger entity/evidence only; absent evidence means unknown.",
+    "agent_rules": "AGENTS.md holds stable project rules and excludes personal life history."
+  },
+  "verification": {
+    "dependency_install": {
+      "record_path": ".runtime/P03/coord/stage-dependencies-f77adb3205c5.json",
+      "bytes": 2360,
+      "sha256": "fc66486745ead93c1fd62597681ad4a0ca13b2479dfbf85c1697a70c044dfce3",
+      "exit_code": 0,
+      "method": "Frozen-lockfile install with scripts disabled.",
+      "sqlite_smoke": {
+        "exit_code": 0,
+        "version": "3.53.4"
+      },
+      "profile_copied_into_evidence": false
+    },
+    "build": {
+      "record_path": "evidence/P03-U05/20261008-01/build-command.json",
+      "record_bytes": 503,
+      "record_sha256": "93d8a83cad259cf12a080ac1a3b33a11f1d8ef7a52751dcb96721d0c7c95ce74",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "E:\\Xiadie\\Xiadie\\node_modules\\typescript\\bin\\tsc",
+        "--project",
+        "tsconfig.json"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u05",
+      "exit_code": 0
+    },
+    "unit": {
+      "record_path": "evidence/P03-U05/20261008-01/unit-02-command.json",
+      "record_bytes": 2067,
+      "record_sha256": "47ce91bc18f7b04c4d4b13ffeb3687ae89bbee2c95f66ffca73f14321254097b",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tools/run-tests.mjs",
+        "unit",
+        "P03-U05"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u05",
+      "exit_code": 0,
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "test_path": "packages/projects/test/project-memory-policy.test.mjs",
+      "test_bytes": 13974,
+      "test_sha256": "03f100574ed4c50ec64bde888ffe98874a25c8e70a8edc04c884586be865be8b",
+      "runner_path": "tools/run-tests.mjs",
+      "runner_sha256": "2e72caf8cb25c46ec4e7a2862ba7f90cf4b1b6e486c308a8934cf1a69eb82eaf",
+      "current_authority_inputs": {
+        "registry_source": "e77c8ecd0c2e2ea08abca01f750e1c0839b937de5aa9a5a14b0358949d90304a",
+        "registry_tests": "3f35fa47e161eaaacddc5c65a7d5970f84d5d85e27f9ef3831ceb1daa83ffd9a",
+        "reader_source": "edbe2414e3209aa93aac36bd4960ae93992ec4e433104aac89cb1e1b681267ab",
+        "reader_tests": "c731bdcd75115d78bafc509074a244657002756737cb5f82613ac757dbafe0c5",
+        "reuse_adr_design_input": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a",
+        "u02_acceptance": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd",
+        "u04_acceptance": "ebeb89a5cf16414bded874f6e78fc2d7f9250871ce8ec045493afcc8e457b2f7",
+        "u04_card": "451bc2361bb66516eb52e9bb1ceec4a568d6b7f04814a47def8d94b830b10440",
+        "u05_card": "e869085114fcf44b90de9b8355f47859d8232aea07f1af8bf2111a05b4413e99",
+        "live_P03_status": "2e0b2bd5bb3e8349e2cd9a1337931e0ac72565c723acb9c6352bd145afb9818a",
+        "u05_worktree_head": "f77adb3205c5c7a928f1624f5b6e85ad4876f53f"
+      },
+      "asserted_contract": [
+        "Actual current ProjectRegistry API resolves the registered synthetic workspace and project_id.",
+        "Actual U04 reader preserves the stale note bytes and source_hash but assigns experience-lead regardless of frontmatter authority=verified-fact.",
+        "The accepted U02/U04 receipts and task cards are checked against the live P03 stage ledger and hashes.",
+        "The built ContextPacket puts the stale note only in content, not instruction or evidence.",
+        "No business TaskLedger owner/progress entity or fields are fabricated."
+      ],
+      "execution_boundary": "Deterministic in-process registry/reader/ContextPacket fixture over an isolated synthetic Git workspace; no model call or real Native core Read."
+    }
+  },
+  "limitations": [
+    "This verifies deterministic source and data boundaries, not that an AI model will prioritize facts correctly.",
+    "The live P03 stage ledger has no business-task owner entity/evidence; owner remains unknown.",
+    "No real Native core Read or real-model behavior is claimed."
+  ],
+  "rollback": "Revert the isolated U05 commit; no production memory, global settings, planning baseline or upstream checkout is changed.",
+  "freeze_preflight_repair": {
+    "record": "freeze-preflight-failure.json",
+    "partial_author_commit": "723fb7042783ac7dff1952308850de0bef7d201c",
+    "status": "normalized Markdown before final manifest; root acceptance remains pending"
+  }
+}
