@@ -1,0 +1,43 @@
+{
+  "schema": "p03-unit-baseline/v1",
+  "task": "P03-U04",
+  "baseline_commit": "4c5cbda3395cb2e89065fabec75d1d4437e079fe",
+  "branch": "p03-u04",
+  "coordinator_branch": "p03-stage",
+  "prerequisites": [
+    {
+      "task": "P03-U03",
+      "status": "accepted",
+      "acceptance": {
+        "path": "evidence/P03-U03/20261008-01/acceptance.json",
+        "bytes": 218067,
+        "sha256": "7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37"
+      }
+    }
+  ],
+  "card": {
+    "path": "planning/Xiadie_V2_v1.1/tasks/P03-U04.md",
+    "bytes": 2965,
+    "sha256": "451bc2361bb66516eb52e9bb1ceec4a568d6b7f04814a47def8d94b830b10440"
+  },
+  "source_lock": {
+    "path": "docs/sources.lock.json",
+    "bytes": 18354,
+    "sha256": "009bed3ecc89b12602824ea5d136682d0373e11f3d066e6c2a860cb48afce02e"
+  },
+  "scope_mapping": [
+    "packages/adapters/zcode/src/project-memory.ts",
+    "packages/adapters/zcode/src/host.ts",
+    "packages/adapters/zcode/test/project-memory.test.mjs",
+    "packages/adapters/zcode/test/project-memory-host.test.mjs",
+    "plugins/xiadie/hooks/context.mjs",
+    "package.json",
+    "pnpm-lock.yaml",
+    "docs/licenses",
+    "tools/run-tests.mjs",
+    "evidence/P03-U04/20261008-01"
+  ],
+  "test_mapping": "packages/adapters/zcode/test/project-memory.test.mjs,packages/adapters/zcode/test/project-memory-host.test.mjs",
+  "author_status": "running",
+  "checked_at_utc": "2026-10-08T10:11:13.959030+00:00"
+}

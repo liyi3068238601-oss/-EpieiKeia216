@@ -1,0 +1,72 @@
+{
+  "task": "P03-U04",
+  "baseline": "4c5cbda3395cb2e89065fabec75d1d4437e079fe",
+  "scope": [
+    "packages/adapters/zcode/src/project-memory.ts",
+    "packages/adapters/zcode/src/project-memory-port.ts",
+    "packages/adapters/zcode/src/host.ts",
+    "packages/adapters/zcode/test/project-memory.test.mjs",
+    "packages/adapters/zcode/test/project-memory-host.test.mjs",
+    "plugins/xiadie/hooks/context.mjs",
+    "package.json",
+    "pnpm-lock.yaml",
+    "docs/licenses",
+    "tools/run-tests.mjs",
+    "evidence/P03-U04/20261008-01"
+  ],
+  "boundary": "Staged path/stat/check before adding this record and self-excluding manifest; exact final Git diff bound by author commit.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat",
+        "4c5cbda3395cb2e89065fabec75d1d4437e079fe"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04",
+      "exit_code": 0,
+      "stdout": " docs/licenses/marked-LICENSE.txt                   |   44 +\n docs/licenses/yaml-LICENSE.txt                     |   13 +\n evidence/P03-U04/20261008-01/baseline.json         |   43 +\n evidence/P03-U04/20261008-01/build-01-command.json |   16 +\n evidence/P03-U04/20261008-01/build-02-command.json |   16 +\n evidence/P03-U04/20261008-01/build-03-command.json |   16 +\n evidence/P03-U04/20261008-01/build-04-command.json |   16 +\n evidence/P03-U04/20261008-01/command-baseline.json |   43 +\n evidence/P03-U04/20261008-01/contract-command.json |   16 +\n .../20261008-01/dependency-install-02-command.json |   16 +\n .../20261008-01/dependency-install-03-command.json |   16 +\n .../20261008-01/dependency-install-command.json    |   16 +\n .../P03-U04/20261008-01/dependency-install.json    |   46 +\n evidence/P03-U04/20261008-01/result.json           |   63 ++\n evidence/P03-U04/20261008-01/result.md             |   13 +\n evidence/P03-U04/20261008-01/scope-remap.md        |    9 +\n evidence/P03-U04/20261008-01/source-adoption.json  |  335 +++++++\n evidence/P03-U04/20261008-01/unit-02-command.json  |   16 +\n evidence/P03-U04/20261008-01/unit-command.json     |   16 +\n package.json                                       |    4 +-\n packages/adapters/zcode/src/host.ts                |   65 +-\n packages/adapters/zcode/src/project-memory-port.ts |  105 ++\n packages/adapters/zcode/src/project-memory.ts      |  771 +++++++++++++++\n .../zcode/test/project-memory-host.test.mjs        | 1026 ++++++++++++++++++++\n .../adapters/zcode/test/project-memory.test.mjs    |  688 +++++++++++++\n plugins/xiadie/hooks/context.mjs                   |   13 +-\n pnpm-lock.yaml                                     |   20 +\n tools/run-tests.mjs                                |    3 +-\n 28 files changed, 3456 insertions(+), 8 deletions(-)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--numstat",
+        "4c5cbda3395cb2e89065fabec75d1d4437e079fe"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04",
+      "exit_code": 0,
+      "stdout": "44\t0\tdocs/licenses/marked-LICENSE.txt\n13\t0\tdocs/licenses/yaml-LICENSE.txt\n43\t0\tevidence/P03-U04/20261008-01/baseline.json\n16\t0\tevidence/P03-U04/20261008-01/build-01-command.json\n16\t0\tevidence/P03-U04/20261008-01/build-02-command.json\n16\t0\tevidence/P03-U04/20261008-01/build-03-command.json\n16\t0\tevidence/P03-U04/20261008-01/build-04-command.json\n43\t0\tevidence/P03-U04/20261008-01/command-baseline.json\n16\t0\tevidence/P03-U04/20261008-01/contract-command.json\n16\t0\tevidence/P03-U04/20261008-01/dependency-install-02-command.json\n16\t0\tevidence/P03-U04/20261008-01/dependency-install-03-command.json\n16\t0\tevidence/P03-U04/20261008-01/dependency-install-command.json\n46\t0\tevidence/P03-U04/20261008-01/dependency-install.json\n63\t0\tevidence/P03-U04/20261008-01/result.json\n13\t0\tevidence/P03-U04/20261008-01/result.md\n9\t0\tevidence/P03-U04/20261008-01/scope-remap.md\n335\t0\tevidence/P03-U04/20261008-01/source-adoption.json\n16\t0\tevidence/P03-U04/20261008-01/unit-02-command.json\n16\t0\tevidence/P03-U04/20261008-01/unit-command.json\n3\t1\tpackage.json\n62\t3\tpackages/adapters/zcode/src/host.ts\n105\t0\tpackages/adapters/zcode/src/project-memory-port.ts\n771\t0\tpackages/adapters/zcode/src/project-memory.ts\n1026\t0\tpackages/adapters/zcode/test/project-memory-host.test.mjs\n688\t0\tpackages/adapters/zcode/test/project-memory.test.mjs\n10\t3\tplugins/xiadie/hooks/context.mjs\n20\t0\tpnpm-lock.yaml\n2\t1\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-status",
+        "4c5cbda3395cb2e89065fabec75d1d4437e079fe"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04",
+      "exit_code": 0,
+      "stdout": "A\tdocs/licenses/marked-LICENSE.txt\nA\tdocs/licenses/yaml-LICENSE.txt\nA\tevidence/P03-U04/20261008-01/baseline.json\nA\tevidence/P03-U04/20261008-01/build-01-command.json\nA\tevidence/P03-U04/20261008-01/build-02-command.json\nA\tevidence/P03-U04/20261008-01/build-03-command.json\nA\tevidence/P03-U04/20261008-01/build-04-command.json\nA\tevidence/P03-U04/20261008-01/command-baseline.json\nA\tevidence/P03-U04/20261008-01/contract-command.json\nA\tevidence/P03-U04/20261008-01/dependency-install-02-command.json\nA\tevidence/P03-U04/20261008-01/dependency-install-03-command.json\nA\tevidence/P03-U04/20261008-01/dependency-install-command.json\nA\tevidence/P03-U04/20261008-01/dependency-install.json\nA\tevidence/P03-U04/20261008-01/result.json\nA\tevidence/P03-U04/20261008-01/result.md\nA\tevidence/P03-U04/20261008-01/scope-remap.md\nA\tevidence/P03-U04/20261008-01/source-adoption.json\nA\tevidence/P03-U04/20261008-01/unit-02-command.json\nA\tevidence/P03-U04/20261008-01/unit-command.json\nM\tpackage.json\nM\tpackages/adapters/zcode/src/host.ts\nA\tpackages/adapters/zcode/src/project-memory-port.ts\nA\tpackages/adapters/zcode/src/project-memory.ts\nA\tpackages/adapters/zcode/test/project-memory-host.test.mjs\nA\tpackages/adapters/zcode/test/project-memory.test.mjs\nM\tplugins/xiadie/hooks/context.mjs\nM\tpnpm-lock.yaml\nM\ttools/run-tests.mjs\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "4c5cbda3395cb2e89065fabec75d1d4437e079fe"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u04",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

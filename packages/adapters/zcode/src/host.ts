@@ -4,6 +4,9 @@ import path from "node:path";
 import { buildContextPacket, renderContextPacket } from "../../../context/src/index.js";
 import { APPROVED_CHARACTER, loadCharacter } from "../../../character/src/loader.js";
 import type { ContextPacket } from "../../../contracts/src/context.js";
+import { isJsonValue } from "../../../contracts/src/json-value.js";
+import type { ProjectMemoryData, ProjectMemoryReader, ProjectMemorySnapshot } from "./project-memory.js";
+import { createProjectMemoryReadPort, type ProjectMemoryReadPortOptions } from "./project-memory-port.js";
 
 import { captureTranscript, createTranscriptQueue, type TranscriptSink } from "./transcript.js";
 
@@ -139,6 +142,15 @@ export interface XiadieHostOptions {
   /** A local bounded writer; absence is explicitly unavailable, never saved. */
   readonly transcriptSink?: TranscriptSink;
   readonly transcriptMaxPending?: number;
+  /** Trusted project reader. Each admission keeps its own immutable snapshot. */
+  readonly projectMemory?: ProjectMemoryReader;
+  /** Required with projectMemory: Host installs the receipt-bound Native FS seam. */
+  readonly projectMemoryReadPort?: Omit<ProjectMemoryReadPortOptions<object>, "delegate" | "read">;
+}
+
+export interface ProjectMemoryReadCorrelation {
+  readonly sessionId: string;
+  readonly turnId: string;
 }
 
 export interface XiadieReceipt {
@@ -161,6 +173,8 @@ interface Ticket {
   readonly rendered: string;
   readonly packetSha256: string;
   readonly characterDigest: string;
+  readonly projectMemoryData: ProjectMemoryData;
+  readonly projectMemorySnapshot?: ProjectMemorySnapshot;
   receipt?: XiadieReceipt;
   compactTurnId?: string;
 }
@@ -186,6 +200,7 @@ export interface XiadieZCodeHost {
   readAdmissionFailures(): readonly XiadieAdmissionFailure[];
   readTranscriptDeliveries(): readonly XiadieTranscriptDelivery[];
   drainTranscripts(): Promise<readonly XiadieTranscriptDelivery[]>;
+  readProjectMemory(filename: string, correlation: ProjectMemoryReadCorrelation): ReturnType<ProjectMemoryReader["read"]>;
   close?(): Promise<void>;
 }
 
@@ -220,6 +235,20 @@ export async function createXiadieZCodeApp(input: XiadieHostOptions): Promise<Xi
   }
 
   const gate = createGate(input);
+  let projectFileSystem: object | undefined;
+  if (input.enabled && input.projectMemory) {
+    const binding = input.projectMemoryReadPort;
+    const delegate = input.appOptions.fileSystemPort;
+    const workingDirectory = input.appOptions.workingDirectory;
+    if (!binding || delegate === null || typeof delegate !== "object" ||
+        typeof binding.createError !== "function" || typeof workingDirectory !== "string" ||
+        realpathSync(workingDirectory) !== realpathSync(binding.workspacePath)) {
+      throw new Error("Project memory requires a trusted matching workspace, Native FS port and Read binding");
+    }
+    projectFileSystem = createProjectMemoryReadPort({ ...binding, delegate, read: gate.readProjectMemory });
+  } else if (input.enabled && input.projectMemoryReadPort) {
+    throw new Error("A project memory Read binding requires its project reader");
+  }
   const nativeAppOptions = input.enabled
     ? {
         ...input.appOptions,
@@ -233,6 +262,7 @@ export async function createXiadieZCodeApp(input: XiadieHostOptions): Promise<Xi
     ...nativeAppOptions,
     executionPort: gate.executionPort,
     modelAdapter: gate.modelAdapter,
+    ...(projectFileSystem === undefined ? {} : { fileSystemPort: projectFileSystem }),
   });
   let closing = false;
   let closePromise: Promise<void> | undefined;
@@ -323,6 +353,8 @@ export async function createXiadieZCodeApp(input: XiadieHostOptions): Promise<Xi
     }
   };
   const readAdmissionFailures = (): readonly XiadieAdmissionFailure[] => gate.readAdmissionFailures();
+  const readProjectMemory = (filename: string, correlation: ProjectMemoryReadCorrelation): ReturnType<ProjectMemoryReader["read"]> =>
+    gate.readProjectMemory(filename, correlation);
   const readTranscriptDeliveries = (): readonly XiadieTranscriptDelivery[] => gate.readTranscriptDeliveries();
   const drainTranscripts = async (): Promise<readonly XiadieTranscriptDelivery[]> => {
     await gate.drainTranscripts();
@@ -342,6 +374,7 @@ export async function createXiadieZCodeApp(input: XiadieHostOptions): Promise<Xi
   Object.defineProperties(facade, {
     readTranscriptDeliveries: { value: readTranscriptDeliveries },
     drainTranscripts: { value: drainTranscripts },
+    readProjectMemory: { value: readProjectMemory },
   });
   return {
     app: facade,
@@ -352,6 +385,7 @@ export async function createXiadieZCodeApp(input: XiadieHostOptions): Promise<Xi
     readAdmissionFailures,
     readTranscriptDeliveries,
     drainTranscripts,
+    readProjectMemory,
     close,
   };
 }
@@ -367,6 +401,7 @@ function createGate(input: XiadieHostOptions): {
   readTranscriptDeliveries(): readonly XiadieTranscriptDelivery[];
   drainTranscripts(): Promise<void>;
   closeTranscripts(): Promise<void>;
+  readProjectMemory(filename: string, correlation: ProjectMemoryReadCorrelation): ReturnType<ProjectMemoryReader["read"]>;
 } {
   let ticket: Ticket | undefined;
   const transcriptQueue = input.enabled && input.transcriptSink
@@ -461,13 +496,25 @@ function createGate(input: XiadieHostOptions): {
     try {
       const character = loadCharacter(input.assetsRoot!);
       const nonce = randomBytes(24).toString("base64url");
+      const projectMemorySnapshot = operation === "turn" ? input.projectMemory?.capture() : undefined;
+      if (projectMemorySnapshot && projectMemorySnapshot.project_id !== input.projectMemoryReadPort?.project.projectId) {
+        throw Object.assign(new Error("Project memory snapshot belongs to another project"), { code: "PROJECT_MISMATCH" });
+      }
+      if (projectMemorySnapshot !== undefined && projectMemorySnapshot.kind !== "present" && projectMemorySnapshot.kind !== "absent") {
+        throw Object.assign(new Error(`Project memory admission blocked: ${projectMemorySnapshot.code}`), { code: projectMemorySnapshot.code });
+      }
+      const projectMemoryData = projectMemorySnapshot?.data ?? { state: [], evidence: [], content: [] };
+      if (!isJsonValue(projectMemoryData) || projectMemoryData === null || typeof projectMemoryData !== "object" ||
+          Object.keys(projectMemoryData).sort().join(",") !== "content,evidence,state") {
+        throw new Error("Project memory must supply exactly three data partitions");
+      }
       const packet = buildContextPacket(character, {
         scope: `zcode-session:${sessionId}`,
         version: `u06-turn:${nonce}`,
         max_tokens: 12_000,
-        state: [{ source_refs: ["trusted-host:per-turn-nonce"], value: { kind: "turn-binding", nonce } }],
-        evidence: [],
-        content: [],
+        state: [{ source_refs: ["trusted-host:per-turn-nonce"], value: { kind: "turn-binding", nonce } }, ...projectMemoryData.state],
+        evidence: projectMemoryData.evidence,
+        content: projectMemoryData.content,
       });
       const rendered = renderContextPacket(packet);
       const next: Ticket = {
@@ -478,6 +525,8 @@ function createGate(input: XiadieHostOptions): {
         rendered,
         packetSha256: sha256(rendered),
         characterDigest: APPROVED_CHARACTER.contentSha256,
+        projectMemoryData: Object.freeze({ state: Object.freeze(packet.state.slice(2)), evidence: packet.evidence, content: packet.content }),
+        ...(projectMemorySnapshot === undefined ? {} : { projectMemorySnapshot }),
       };
       ticket = next;
       return next;
@@ -594,6 +643,15 @@ function createGate(input: XiadieHostOptions): {
     readTranscriptDeliveries,
     drainTranscripts: async () => { await transcriptQueue?.drain(); },
     closeTranscripts: async () => { await transcriptQueue?.close(); },
+    readProjectMemory: (filename, correlation) => {
+      if (!input.enabled || !input.projectMemory || !ticket?.projectMemorySnapshot || ticket.kind !== "turn" ||
+          !ticket.receipt || !correlation || typeof correlation.sessionId !== "string" || typeof correlation.turnId !== "string" ||
+          correlation.sessionId !== ticket.sessionId || correlation.sessionId !== ticket.receipt.sessionId ||
+          correlation.turnId !== ticket.receipt.turnId) {
+        throw Object.assign(new Error("Project memory Read has no matching current admission receipt"), { code: "READ_NOT_ADMITTED" });
+      }
+      return input.projectMemory.read(ticket.projectMemorySnapshot, filename);
+    },
   };
 }
 
@@ -689,6 +747,7 @@ function withTrustedHookEnv(request: XiadieExecutionRequest, input: XiadieHostOp
         XIA_DIE_TICKET_NONCE: ticket.nonce,
         XIA_DIE_HOOK_EVENT: String(event),
         XIA_DIE_PLUGIN_DATA_ROOT: input.dataRoot!,
+        XIA_DIE_PROJECT_MEMORY_DATA: JSON.stringify(ticket.projectMemoryData),
       },
     },
   };
