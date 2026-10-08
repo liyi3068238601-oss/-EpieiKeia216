@@ -1,0 +1,281 @@
+{
+  "schema": "p03-independent-review/v1",
+  "created_at_utc": "2026-10-08T11:09:27.0050606+00:00",
+  "task": "P03-U05",
+  "decision": "pass",
+  "unit_acceptance": "not_decided",
+  "reviewer": "Codex independent reviewer (/root/p03_review_resume)",
+  "scope": "Independent review of U05 at its clean, manifest-bound author commit. Review covers the policy/template, exact evidence scope, and deterministic data contract only.",
+  "review_target": {
+    "author_commit": "74a442909cb540360a82826a113adcac68d78818",
+    "baseline_commit": "f77adb3205c5c7a928f1624f5b6e85ad4876f53f",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u05",
+    "attempt": "20261008-01; final manifest-bound commit",
+    "changed_paths": 14
+  },
+  "checks": [
+    {
+      "id": "exact-commit-baseline-manifest-and-cleanliness",
+      "status": "pass",
+      "detail": "The main checkout remained clean at baseline f77adb3205c5c7a928f1624f5b6e85ad4876f53f. Author worktree is clean at 74a442909cb540360a82826a113adcac68d78818. Independent verify-author readback matched 13 manifest-bound files to disk bytes and Git blobs, covered all 14 changed paths with zero mismatches, and confirmed manifest SHA-256 a429f1735dd2cc2cbbff3c42c6f4306a66e8a7f3c7b77d4da649cd2569ced5c3. The earlier manifestless 723fb candidate was superseded by this follow-up; the preserved preflight record documents the correction, and no main checkout change or history rewrite occurred."
+    },
+    {
+      "id": "policy-template-and-authority-boundaries",
+      "status": "pass",
+      "detail": "The policy distinguishes current implementation, same-revision tested contract, and accepted design decisions. It labels memory as experience-lead, states that topic frontmatter cannot elevate authority, separates P03 stage/unit status from a business TaskLedger, and leaves owner/progress unknown without verified TaskLedger evidence. The template carries nullable project/source/verification provenance and does not store live status. AGENTS is limited to stable project rules; no generic facts engine or model-judgment claim is introduced."
+    },
+    {
+      "id": "stale-schema-reader-registry-and-context-data-contract",
+      "status": "pass",
+      "detail": "The selector uses an isolated synthetic Git workspace with the actual ProjectRegistry and Native key resolvers, actual U04 project-memory reader, accepted U02/U04 receipts, and the actual ContextPacket builder. A stale note with forged authority=verified-fact and obsolete project/owner/progress fields retains its raw topic hash and project-memory source reference, while the reader assigns experience-lead; the built packet keeps the canary only in content, not instruction or evidence. The test is deterministic source/data-contract evidence, not a claim that a model naturally prioritizes current facts."
+    },
+    {
+      "id": "independent-build-unit-selector-and-diff-check",
+      "status": "pass",
+      "detail": "On the exact author worktree using the fixed Node v24.14.0, the TypeScript build exited 0, official `tools/run-tests.mjs unit P03-U05` exited 0 with 1/1 passing, 0 failures and 0 skips, and `git diff --check` from baseline to author commit exited 0. Full command records are included."
+    },
+    {
+      "id": "product-runtime-and-model-boundary",
+      "status": "pass",
+      "detail": "The result explicitly leaves Native Core Read and real-model behavior NOT_RUN. Those are not asserted as product validation or as U05 acceptance evidence; they are outside this bounded policy/template/data-contract unit."
+    }
+  ],
+  "reviewer_readback": {
+    "author_manifest": {
+      "command_record": "author-manifest-readback-command.json",
+      "output_record": "author-manifest-readback-rerun.json",
+      "bound_files": 13,
+      "changed_paths": 14,
+      "mismatches": 0,
+      "manifest_sha256": "a429f1735dd2cc2cbbff3c42c6f4306a66e8a7f3c7b77d4da649cd2569ced5c3"
+    },
+    "fresh_build": {
+      "command_record": "build-review-command.json",
+      "exit_code": 0,
+      "node": "v24.14.0",
+      "argv": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe E:\\Xiadie\\Xiadie\\node_modules\\typescript\\bin\\tsc --project tsconfig.json"
+    },
+    "official_selector": {
+      "command_record": "unit-rerun-command.json",
+      "selector": "unit P03-U05",
+      "exit_code": 0,
+      "reported_tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "diff_check": {
+      "command_record": "diff-check-command.json",
+      "exit_code": 0,
+      "argv": "git diff --check f77adb3205c5c7a928f1624f5b6e85ad4876f53f HEAD"
+    }
+  },
+  "limitations": [
+    "No real Native Core Read invocation, desktop runtime or AI model judgment was run; the test uses real project modules in an in-process synthetic fixture.",
+    "No verified business TaskLedger entity/evidence exists in this snapshot; business-task owner/progress remain unknown.",
+    "The pass covers the frozen U05 documents, test mapping and deterministic data contract only; stage acceptance remains the coordinator decision."
+  ],
+  "artifacts": [
+    {
+      "path": "evidence/P03-U05/20261008-01/manifest.json",
+      "root": "author_worktree",
+      "bytes": 3286,
+      "sha256": "a429f1735dd2cc2cbbff3c42c6f4306a66e8a7f3c7b77d4da649cd2569ced5c3"
+    },
+    {
+      "path": "evidence/P03-U05/20261008-01/baseline.json",
+      "root": "author_worktree",
+      "bytes": 1196,
+      "sha256": "9a72ad73039c8a58944928465d04d9dd636e19529f8ba659942903098577655b"
+    },
+    {
+      "path": "evidence/P03-U05/20261008-01/build-command.json",
+      "root": "author_worktree",
+      "bytes": 503,
+      "sha256": "93d8a83cad259cf12a080ac1a3b33a11f1d8ef7a52751dcb96721d0c7c95ce74"
+    },
+    {
+      "path": "evidence/P03-U05/20261008-01/diff.json",
+      "root": "author_worktree",
+      "bytes": 3604,
+      "sha256": "fab8aa2bdce0bc9b8718ead30f9a97181fc5eb7e80efb3d811a3d2f89fe8c0a1"
+    },
+    {
+      "path": "evidence/P03-U05/20261008-01/freeze-preflight-failure.json",
+      "root": "author_worktree",
+      "bytes": 1229,
+      "sha256": "6d8b5757f88cc99f59d28f58671fafdcd7385f293279efc2fa0cfb3123b8b8d2"
+    },
+    {
+      "path": "evidence/P03-U05/20261008-01/result.json",
+      "root": "author_worktree",
+      "bytes": 5900,
+      "sha256": "34de2db4d3cba4a7bf628ffcf1b269aa7237bbd18cad7a74b97581f5083071f6"
+    },
+    {
+      "path": "evidence/P03-U05/20261008-01/result.md",
+      "root": "author_worktree",
+      "bytes": 2471,
+      "sha256": "8b3b4a9a7d8abf75ea165d010734e704edd94c0e0939efc59c7bfc69399e3ba1"
+    },
+    {
+      "path": "evidence/P03-U05/20261008-01/source-adoption.json",
+      "root": "author_worktree",
+      "bytes": 8446,
+      "sha256": "a6933f7662493fb8a86107971ba4e585e4a79f44682bd97513ab2498ad2c70ed"
+    },
+    {
+      "path": "evidence/P03-U05/20261008-01/unit-02-command.json",
+      "root": "author_worktree",
+      "bytes": 2067,
+      "sha256": "47ce91bc18f7b04c4d4b13ffeb3687ae89bbee2c95f66ffca73f14321254097b"
+    },
+    {
+      "path": "evidence/P03-U05/20261008-01/unit-command.json",
+      "root": "author_worktree",
+      "bytes": 2143,
+      "sha256": "8af430d57b4147589acf8b8271c0ca85be5b5abdca6801a21a11daff39b317c2"
+    },
+    {
+      "path": "docs/policies/project-memory.md",
+      "root": "author_worktree",
+      "bytes": 2752,
+      "sha256": "97b2ddc420eb138a2675917d0c35e7576c07b504353f43c00726729045a53b10"
+    },
+    {
+      "path": "templates/project-note.md",
+      "root": "author_worktree",
+      "bytes": 729,
+      "sha256": "e3bf45a10958f296e39769ac216ba6993265cf71fc13eb0ae31edc67514e742d"
+    },
+    {
+      "path": "packages/projects/test/project-memory-policy.test.mjs",
+      "root": "author_worktree",
+      "bytes": 13974,
+      "sha256": "03f100574ed4c50ec64bde888ffe98874a25c8e70a8edc04c884586be865be8b"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "root": "author_worktree",
+      "bytes": 6468,
+      "sha256": "2e72caf8cb25c46ec4e7a2862ba7f90cf4b1b6e486c308a8934cf1a69eb82eaf"
+    },
+    {
+      "path": "author-manifest-readback-rerun.json",
+      "root": "review_directory",
+      "bytes": 552,
+      "sha256": "6822154a7d1bf356b88074e49936be5e30512a8602db9c4b06815236ad7f4aa5"
+    },
+    {
+      "path": "author-manifest-readback-command.json",
+      "root": "review_directory",
+      "bytes": 1254,
+      "sha256": "7b8e34e90eb0e46ef7f319cf71ed068bba240b5b506f664e464095e8a6be006c"
+    },
+    {
+      "path": "build-review-command.json",
+      "root": "review_directory",
+      "bytes": 503,
+      "sha256": "4f010c1c2c557108962180b84c3ad64282a38b3d22f71af0ca31e1c1f3917825"
+    },
+    {
+      "path": "unit-rerun-command.json",
+      "root": "review_directory",
+      "bytes": 2069,
+      "sha256": "e77737a33ef42ed3f9581c4234668976c45171d804290bcd3e47bc1144d73308"
+    },
+    {
+      "path": "diff-check-command.json",
+      "root": "review_directory",
+      "bytes": 391,
+      "sha256": "3eb6c7eada0204fdf6cd93f1121d79cc9e60d90c07911484e1952809d6d1cd5e"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "path": "AGENTS.md",
+      "root": "baseline_repository",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    {
+      "path": "docs/adr/P03-reuse.md",
+      "root": "baseline_repository",
+      "bytes": 11481,
+      "sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a"
+    },
+    {
+      "path": "evidence/P03/status.json",
+      "root": "baseline_repository",
+      "bytes": 6178,
+      "sha256": "2e0b2bd5bb3e8349e2cd9a1337931e0ac72565c723acb9c6352bd145afb9818a"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 10143,
+      "sha256": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 218067,
+      "sha256": "7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37"
+    },
+    {
+      "path": "evidence/P03-U04/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 2260,
+      "sha256": "ebeb89a5cf16414bded874f6e78fc2d7f9250871ce8ec045493afcc8e457b2f7"
+    },
+    {
+      "path": "packages/projects/registry.ts",
+      "root": "baseline_repository",
+      "bytes": 20906,
+      "sha256": "e77c8ecd0c2e2ea08abca01f750e1c0839b937de5aa9a5a14b0358949d90304a"
+    },
+    {
+      "path": "packages/projects/test/registry.test.mjs",
+      "root": "baseline_repository",
+      "bytes": 22876,
+      "sha256": "3f35fa47e161eaaacddc5c65a7d5970f84d5d85e27f9ef3831ceb1daa83ffd9a"
+    },
+    {
+      "path": "packages/adapters/zcode/src/project-memory.ts",
+      "root": "baseline_repository",
+      "bytes": 32414,
+      "sha256": "edbe2414e3209aa93aac36bd4960ae93992ec4e433104aac89cb1e1b681267ab"
+    },
+    {
+      "path": "packages/adapters/zcode/test/project-memory.test.mjs",
+      "root": "baseline_repository",
+      "bytes": 31996,
+      "sha256": "c731bdcd75115d78bafc509074a244657002756737cb5f82613ac757dbafe0c5"
+    },
+    {
+      "path": "packages/context/src/index.ts",
+      "root": "baseline_repository",
+      "bytes": 11781,
+      "sha256": "6fcc5b6ca892a0106a1063f15587db24633d799603846b55ddcab8fe77b50fd7"
+    },
+    {
+      "path": "packages/context/test/context.test.mjs",
+      "root": "baseline_repository",
+      "bytes": 8934,
+      "sha256": "c64c2939d27dcaf16b988df740046d04c64133edfd099a1eab368e2c213dcf18"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U04.md",
+      "root": "baseline_repository",
+      "bytes": 2965,
+      "sha256": "451bc2361bb66516eb52e9bb1ceec4a568d6b7f04814a47def8d94b830b10440"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U05.md",
+      "root": "baseline_repository",
+      "bytes": 2072,
+      "sha256": "e869085114fcf44b90de9b8355f47859d8232aea07f1af8bf2111a05b4413e99"
+    }
+  ],
+  "boundary": "Independent review pass only; no acceptance, integration or next-stage decision is implied."
+}
