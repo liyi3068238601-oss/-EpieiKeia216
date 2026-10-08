@@ -1,0 +1,516 @@
+{
+  "schema": "p03-independent-review/v1",
+  "created_at_utc": "2026-10-08T12:47:13.8150075Z",
+  "task": "P03-U07",
+  "decision": "pass",
+  "unit_acceptance": "not_decided",
+  "reviewer": "Codex independent reviewer (/root/p03_review_resume)",
+  "scope": "Independent exact-commit review of the project-only handoff packet, U04 local-note provenance, read-only Native Read facade, separately authorized result sink and two mock deliveries. Does not imply unit acceptance or U09/U10 integration.",
+  "review_target": {
+    "author_commit": "3ec0583ee1aefef66b58576c9700bac38c099a10",
+    "baseline_commit": "abc0bad7ed38b3f9ef442b2278e744d80bd03b3b",
+    "author_worktree": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u07",
+    "attempt": "20261008-01; final manifest-bound commit",
+    "changed_paths": 26
+  },
+  "checks": [
+    {
+      "id": "exact-commit-manifest-and-clean-tree",
+      "status": "pass",
+      "detail": "The main checkout stayed clean at baseline abc0bad7ed38b3f9ef442b2278e744d80bd03b3b. The U07 author worktree is clean at exact commit 3ec0583ee1aefef66b58576c9700bac38c099a10. Independent verify-author readbacks before and after execution each found 25 manifest-bound files covering all 26 changed paths with zero disk/index/blob mismatches. Manifest SHA-256: 9bff8a9fcc5841b99f61c74234b61cde7166dc8f625e11158213d6a478d6463f."
+    },
+    {
+      "id": "project-only-packet-provenance-and-bounds",
+      "status": "pass",
+      "detail": "Static review and the selector bind each item to the trusted U03 project UUID, observed Git HEAD, selected raw-source hash/range, applicability paths and sample time. The builder separates applicability paths from readable source files, bounds the canonical packet to 12,000 UTF-8 bytes, and rejects unsafe/private/runtime/secret-bearing paths and stale file identities. Hashes bind bytes; they do not fact-check claim meaning."
+    },
+    {
+      "id": "U04-local-memory-remains-a-lead",
+      "status": "pass",
+      "detail": "The implementation re-reads U04-selected topics through the trusted reader and verifies the source hash before adding them. Tests keep a self-labeled verified_fact note at experience-lead authority, omit absent memory without creating files, and reject unreadable/corrupt or changed topics. No Life provider or other project is accessed."
+    },
+    {
+      "id": "Native-Read-is-bound-to-an-exact-snapshot",
+      "status": "pass",
+      "detail": "The tests execute the pinned Native AgentRuntime, registry, executor and Core Read handler over the exact admitted-file snapshot port. The exposed final projection and registry contain only Read; access to unlisted files, path escapes, Write/Edit and shell/plugin names is rejected, and repository/shared-interface hashes remain unchanged after denied attempts. The model/provider callback is not called."
+    },
+    {
+      "id": "persistent-memory-and-runtime-drift-fail-closed",
+      "status": "pass",
+      "detail": "The actual Native persistent-memory projector is shown to append Write/Edit, and the facade refuses that final projection. Hidden extra registry/MCP entries, replacement Read handler and runtime capability changes fail closed. This strict facade requires a trusted factory that binds Native Read to the supplied snapshot; it is not a general sandbox for arbitrary handlers."
+    },
+    {
+      "id": "two-independent-mock-receivers-get-the-same-packet",
+      "status": "pass",
+      "detail": "One task id and one branded packet are delivered through separate ZCode and DSH-mock receiver callbacks. Both parse and record one immutable envelope, compare required project/base/source facts and canonical bytes, preserve local-note lead authority, and exclude Life and machine memory paths. A failed callback yields no success receipt. These are mock endpoints, not live product integrations."
+    },
+    {
+      "id": "result-sink-is-separate-exclusive-and-audited",
+      "status": "pass",
+      "detail": "The result sink is separate from the reviewer tool profile and requires a host authorization callback for one basename. It uses exclusive physical-file creation, rejects overwrite/path escape, audits byte count and SHA-256, and retains ambiguous output after post-write audit failure without automatic retry. Tests exercise authorization, conflict and audit-failure branches."
+    },
+    {
+      "id": "independent-build-unit-selector-and-regression",
+      "status": "pass",
+      "detail": "A fresh TypeScript build under the fixed Node v24.14.0 exited 0. The official P03-U07 selector exited 0 with 8 inner cases passed, zero failed/skipped, plus one outer test-file completion; counts are not summed. The related U04/U05 selector exited 0 with 22 outer completions, and its nested U04 reader 43/43 and U05 policy 1/1 are reported separately."
+    },
+    {
+      "id": "pinned-Native-and-execution-input-readbacks",
+      "status": "pass",
+      "detail": "Read-only accepted-U02 readbacks before and after execution confirmed the clean Native checkout at 29628c9acdb81b703bbd4080c207a0e7ce5e276e, with 1,181 source/config inputs and 1,163 compiled JavaScript outputs matching accepted bindings and zero mismatches. The final U07 before-third/after records contain 172 identical binding tuples; an independent readback rehashed all 172 current files with zero mismatches. This is not a full installed dependency closure."
+    },
+    {
+      "id": "diff-post-run-integrity-and-preserved-failures",
+      "status": "pass",
+      "detail": "git diff --check from baseline to exact author commit exited 0. Both retained U07 failure records are manifest-bound; the final rerun passes without deleting permission checks. The source symlink creation probe returned EPERM and did not execute, despite the aggregate skip count being zero; hard-link and lexical path checks did run. Post-run verify-author remained clean."
+    }
+  ],
+  "reviewer_readback": {
+    "author_manifest_before": {
+      "command_record": "author-verify-before-command.json",
+      "output_record": "author-verify-before.json",
+      "bound_files": 25,
+      "changed_paths": 26,
+      "mismatches": 0,
+      "manifest_sha256": "9bff8a9fcc5841b99f61c74234b61cde7166dc8f625e11158213d6a478d6463f"
+    },
+    "fresh_build": {
+      "command_record": "build-review-command.json",
+      "exit_code": 0,
+      "node": "v24.14.0",
+      "argv": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u07\\node_modules\\typescript\\bin\\tsc --project tsconfig.json"
+    },
+    "official_selector": {
+      "command_record": "unit-rerun-command.json",
+      "selector": "unit P03-U07",
+      "exit_code": 0,
+      "inner_cases": 8,
+      "passed": 8,
+      "failed": 0,
+      "reported_skipped": 0,
+      "outer_file_completions": 1,
+      "note": "The Windows symlink-creation probe was explicitly skipped after EPERM; it is not a passing assertion."
+    },
+    "related_regression": {
+      "command_record": "regression-rerun-command.json",
+      "selector": "unit P03-U04 P03-U05",
+      "exit_code": 0,
+      "outer_test_completions": 22,
+      "u04_reader_child_passed": 43,
+      "u05_policy_child_passed": 1,
+      "note": "Nested reports are separately counted; do not sum."
+    },
+    "diff_check": {
+      "command_record": "diff-check-command.json",
+      "exit_code": 0,
+      "argv": "git diff --check abc0bad7ed38b3f9ef442b2278e744d80bd03b3b 3ec0583ee1aefef66b58576c9700bac38c099a10"
+    },
+    "author_manifest_after": {
+      "command_record": "author-verify-after-command.json",
+      "output_record": "author-verify-after.json",
+      "bound_files": 25,
+      "changed_paths": 26,
+      "mismatches": 0,
+      "manifest_sha256": "9bff8a9fcc5841b99f61c74234b61cde7166dc8f625e11158213d6a478d6463f"
+    },
+    "main_checkout": {
+      "record": "main-state-review.json",
+      "head": "abc0bad7ed38b3f9ef442b2278e744d80bd03b3b",
+      "clean": true
+    },
+    "pinned_native_readback": {
+      "before_command": "native-readback-command.json",
+      "before_record": "native-readback.json",
+      "after_command": "native-readback-after-command.json",
+      "after_record": "native-readback-after.json",
+      "commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+      "clean": true,
+      "source_inputs": 1181,
+      "compiled_outputs": 1163,
+      "mismatches": 0,
+      "note": "Compared to accepted U02 bindings; no Native rebuild, application or model run."
+    },
+    "execution_input_stability": {
+      "command_record": "execution-inputs-review-command.json",
+      "record": "execution-inputs-review.json",
+      "before_count": 172,
+      "after_count": 172,
+      "pair_digests_equal": true,
+      "current_files_checked": 172,
+      "mismatches": 0,
+      "boundary": "Only the declared U07 P03 execution input set; not the full installed dependency closure."
+    },
+    "preserved_author_failures": {
+      "unit01": "unit-01.json; three implementation failures retained and fixed before final commit",
+      "unit02": "unit-02.json; one expected Native error-code spelling corrected to pinned lower-case tool_not_found",
+      "final": "unit-03.json"
+    }
+  },
+  "limitations": [
+    "File symlink creation was denied by host policy (EPERM), so that probe did not execute; hard-link and lexical-path probes ran. Aggregate skip count zero does not make the symlink probe pass.",
+    "No Native subagent runner or full createZCodeApp composition, provider/model call, live DSH, application, or Desktop was run. Those integration boundaries remain for U09/U10.",
+    "The review facade depends on a trusted Native runtime factory binding Core Read to the supplied exact snapshot; ordinary Native child profiles may add coordinator tools, which require trusted composition curation.",
+    "Manifest source hashes bind bytes but do not independently verify semantic truth; path filtering is not a natural-language privacy classifier.",
+    "Accepted Native readback and the 172-entry U07 source/build input set do not claim a complete installed dependency closure."
+  ],
+  "rollback": "Revert this isolated unit commit if required. Tests used synthetic projects, owned runtime roots and synthetic result directories; production profiles, memory, credentials and user data were not changed.",
+  "artifacts": [
+    {
+      "path": "evidence/P03-U07/20261008-01/manifest.json",
+      "root": "author_worktree",
+      "bytes": 6193,
+      "sha256": "9bff8a9fcc5841b99f61c74234b61cde7166dc8f625e11158213d6a478d6463f"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/baseline.json",
+      "root": "author_worktree",
+      "bytes": 1165,
+      "sha256": "0b6f24d4c5c5495d0727d0e85854d6485cf3b1c080dd211798391a00795250a1"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/result.md",
+      "root": "author_worktree",
+      "bytes": 2351,
+      "sha256": "47b4dfc81574a6a285df06a6d4c7649f596c4f70d98fdc19936e582be2dbff36"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/result.json",
+      "root": "author_worktree",
+      "bytes": 8285,
+      "sha256": "f15f5c405aa2f45082c325c1bae778e72bbb892f9876e87f440d15349492fc61"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/source-adoption.json",
+      "root": "author_worktree",
+      "bytes": 5387,
+      "sha256": "3469cb6fa4a582342eba53ae7687107db18d320ce4d0c958c55d9ad8e205ed90"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/diff.json",
+      "root": "author_worktree",
+      "bytes": 5664,
+      "sha256": "dbae41eae8a055cf2fb35ceb61481f8b89e45d4e13abc35c19f99026284da9c3"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/build-04.json",
+      "root": "author_worktree",
+      "bytes": 534,
+      "sha256": "e146b69c39648b5eed9f5e2431323b50a99c72b7754be042c85a05ebcf59514f"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/unit-01.json",
+      "root": "author_worktree",
+      "bytes": 6496,
+      "sha256": "72d7c29e82e72b6bbfc43ab0ca393509694f89969dc5e560ad86c3662e80a953"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/unit-02.json",
+      "root": "author_worktree",
+      "bytes": 4488,
+      "sha256": "bde0e44296d8f4cfff18b4c1b00ce767183da49a0f5785df07ae2b32ef318a10"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/unit-03.json",
+      "root": "author_worktree",
+      "bytes": 3508,
+      "sha256": "fe5835522743b494274bb715029f80481c463741a57da7642529ee61665cea1a"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/regression-01.json",
+      "root": "author_worktree",
+      "bytes": 7603,
+      "sha256": "1e4b0734f7f79fb4f839caec66491958adfb58f7a58450794a7cfa026ba18508"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/native-readback.json",
+      "root": "author_worktree",
+      "bytes": 925,
+      "sha256": "35e4fc96280a1cb7936a8ac777b6c704764c32f09adb6bce71cb72c3bf3c72c8"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/execution-before-third.json",
+      "root": "author_worktree",
+      "bytes": 40090,
+      "sha256": "2464b2c8f7c3a2331b2bc3ab833614d945d070a84af74b21a78f0c5e30644f49"
+    },
+    {
+      "path": "evidence/P03-U07/20261008-01/execution-after.json",
+      "root": "author_worktree",
+      "bytes": 40198,
+      "sha256": "67e136579bbfdd938138bbab28c0642094055425272f5480526639c7cb950e62"
+    },
+    {
+      "path": "packages/work/handoff-context.ts",
+      "root": "author_worktree",
+      "bytes": 57756,
+      "sha256": "625ccc2667f3c3f22e298276e3e679b54c9b95863de3312d7a1e92e8abb2b046"
+    },
+    {
+      "path": "packages/work/test/handoff-context.test.mjs",
+      "root": "author_worktree",
+      "bytes": 42071,
+      "sha256": "a70b3ae5c58678152e578f28b0a0ff30066d0328460a22e715b0edfbba667825"
+    },
+    {
+      "path": "tools/run-tests.mjs",
+      "root": "author_worktree",
+      "bytes": 6720,
+      "sha256": "7a2457865324e9ef7b6d1327bdf0bea5d727fedfc885c85e4d47e894d86df547"
+    },
+    {
+      "path": "tsconfig.json",
+      "root": "author_worktree",
+      "bytes": 874,
+      "sha256": "c31a971b0077a2ba975ac38bb59c7bbfab0ed9101a357bb031f50f14eb6067ac"
+    },
+    {
+      "path": "author-verify-before-command.json",
+      "root": "review_directory",
+      "bytes": 1221,
+      "sha256": "18227f80230da9e28e65cac1a1efcb5136d7a8e2eb8873ebba3005c0d5ce5cbc"
+    },
+    {
+      "path": "author-verify-before.json",
+      "root": "review_directory",
+      "bytes": 552,
+      "sha256": "dca604b84f48ea00b3d0484184d3954db4fbc1618880b4ff48a640e15e758db9"
+    },
+    {
+      "path": "author-verify-after-command.json",
+      "root": "review_directory",
+      "bytes": 1220,
+      "sha256": "67e21ac28e4546a32fa3077a3baee2395fe3504ab25e7c82d440ac8c5b67fb68"
+    },
+    {
+      "path": "author-verify-after.json",
+      "root": "review_directory",
+      "bytes": 552,
+      "sha256": "2f96901878abe61896db6ca4391edbecf55710f73a6fcf3ef3b4cf4ed8801a53"
+    },
+    {
+      "path": "build-review-command.json",
+      "root": "review_directory",
+      "bytes": 534,
+      "sha256": "8d023b01edcdd84cf4726123aeb8323ba0e79f47686c626a1e5d8fe1e07ff0c2"
+    },
+    {
+      "path": "unit-rerun-command.json",
+      "root": "review_directory",
+      "bytes": 3505,
+      "sha256": "ca486f48b5c31316372e28d22c593974826eca8aee2465f9c59b43d2257202f7"
+    },
+    {
+      "path": "regression-rerun-command.json",
+      "root": "review_directory",
+      "bytes": 7600,
+      "sha256": "aa285dbc3f83ea8a97588ff4206b37c20d3ebd314bfe4a79f41144a829044956"
+    },
+    {
+      "path": "diff-check-command.json",
+      "root": "review_directory",
+      "bytes": 427,
+      "sha256": "34701974b77947b38cc35620ff91318e5222c66cd3c64411b9b132684b656e31"
+    },
+    {
+      "path": "native-readback-command.json",
+      "root": "review_directory",
+      "bytes": 1330,
+      "sha256": "0bcd5380d2478bc39f9e0896e09ca634f358daab5d76dca7af8688bcc37c555e"
+    },
+    {
+      "path": "native-readback.json",
+      "root": "review_directory",
+      "bytes": 925,
+      "sha256": "10201593ff434e03ec5e423fe48adc2f03fc1f18f4476bd9c89cccc8c071f649"
+    },
+    {
+      "path": "native-readback-after-command.json",
+      "root": "review_directory",
+      "bytes": 1336,
+      "sha256": "e7a11ccee5973ba1c3501dc0da4aead58d36aaff9eaff14889aa218675b9b03f"
+    },
+    {
+      "path": "native-readback-after.json",
+      "root": "review_directory",
+      "bytes": 925,
+      "sha256": "8321880186c360f94fbcf5b851c49b16a35b7869827aa7da4ad599d63c8f135f"
+    },
+    {
+      "path": "execution-inputs-review-command.json",
+      "root": "review_directory",
+      "bytes": 563,
+      "sha256": "cc8956c055051a6b51e94905d82188bde353265ed3041334c5879d94579c2478"
+    },
+    {
+      "path": "execution-inputs-review.json",
+      "root": "review_directory",
+      "bytes": 820,
+      "sha256": "857f679298e7b7e32628193b0f3e3c367aac7b70331d3b0766bcd2932e493e34"
+    },
+    {
+      "path": "main-state-review.json",
+      "root": "review_directory",
+      "bytes": 332,
+      "sha256": "27eb258c4f7879159547ee26138e7a667bffe8b13ad15a124cdb9545f3865be5"
+    },
+    {
+      "path": ".runtime/P03/worktrees/u02/evidence/P03-U02/20261008-01/topology-service/native-dist-source-bindings-02.json",
+      "root": "baseline_repository",
+      "bytes": 344084,
+      "sha256": "7c5ffc487cfe510c930490e12d38ef69b41abb4154b44f4b2a0426c16e92e2d0"
+    },
+    {
+      "path": ".runtime/P03/worktrees/u02/evidence/P03-U02/20261008-01/topology-service/native-dist-compile-result.json",
+      "root": "baseline_repository",
+      "bytes": 1139312,
+      "sha256": "9f6dea5d0203e40ce50830d39678a925dc28e945210d0b33c50997c1d15e6e15"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "path": "AGENTS.md",
+      "root": "baseline_repository",
+      "bytes": 1971,
+      "sha256": "ea26f8d686ba94234eb9f82602e5c340c5044a3f6b1d01d049c801f717016eb0"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/02_计划执行书.md",
+      "root": "baseline_repository",
+      "bytes": 366530,
+      "sha256": "5f8fe397e4622c208e866827d7b528e3efacfd7912e74c602182c8465aa6d5b4"
+    },
+    {
+      "path": "planning/Xiadie_V2_v1.1/tasks/P03-U07.md",
+      "root": "baseline_repository",
+      "bytes": 2807,
+      "sha256": "b2d4d41a1b7ff38be32b6cc9148099510e7891aa8a8864a5e87bce55de15bd59"
+    },
+    {
+      "path": "docs/adr/P03-reuse.md",
+      "root": "baseline_repository",
+      "bytes": 11481,
+      "sha256": "c76b754673312b035b07f9e18259bc1422f8eaa3d04fcd57b5ca37cac3a16a0a"
+    },
+    {
+      "path": "evidence/P03/status.json",
+      "root": "baseline_repository",
+      "bytes": 7624,
+      "sha256": "eb8281a61db973571a6317d494e9fe6bc3d0c181fb391cd74990756eafde3343"
+    },
+    {
+      "path": "evidence/P03-U02/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 10143,
+      "sha256": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd"
+    },
+    {
+      "path": "evidence/P03-U03/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 218067,
+      "sha256": "7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37"
+    },
+    {
+      "path": "evidence/P03-U04/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 2260,
+      "sha256": "ebeb89a5cf16414bded874f6e78fc2d7f9250871ce8ec045493afcc8e457b2f7"
+    },
+    {
+      "path": "evidence/P03-U05/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 2271,
+      "sha256": "31a8c572563dc6611ce4956bed314635a4c2e3ff00b5bba873c907a28b19a871"
+    },
+    {
+      "path": "evidence/P03-U06/20261008-01/acceptance.json",
+      "root": "baseline_repository",
+      "bytes": 2896,
+      "sha256": "2a0499ed079b97e0c62335eb26a1d5bc7e30395dfbbc7d7262a5664298f476b1"
+    },
+    {
+      "path": "packages/projects/registry.ts",
+      "root": "baseline_repository",
+      "bytes": 40380,
+      "sha256": "cd215f475f93470e3473edfc571ea639538ba3e83760f64a71b7aea8319ad8b1"
+    },
+    {
+      "path": "packages/adapters/zcode/src/project-memory.ts",
+      "root": "baseline_repository",
+      "bytes": 32414,
+      "sha256": "edbe2414e3209aa93aac36bd4960ae93992ec4e433104aac89cb1e1b681267ab"
+    },
+    {
+      "path": ".runtime/P03/worktrees/u02/evidence/P03-U02/20261008-01/topology-service/native-dist-source-bindings-02.json",
+      "root": "baseline_repository",
+      "bytes": 344084,
+      "sha256": "7c5ffc487cfe510c930490e12d38ef69b41abb4154b44f4b2a0426c16e92e2d0"
+    },
+    {
+      "path": ".runtime/P03/worktrees/u02/evidence/P03-U02/20261008-01/topology-service/native-dist-compile-result.json",
+      "root": "baseline_repository",
+      "bytes": 1139312,
+      "sha256": "9f6dea5d0203e40ce50830d39678a925dc28e945210d0b33c50997c1d15e6e15"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/runtime/agent-runtime.ts",
+      "root": "baseline_repository",
+      "bytes": 28327,
+      "sha256": "a2192a84dfae5dfaa46275e253d2815da8178e27d0f5e9ccd5e3f57e61d18877"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/dist/runtime/agent-runtime.js",
+      "root": "baseline_repository",
+      "bytes": 9263,
+      "sha256": "cdbec20335f23e8098faff9409eb05016a1ecc310ec69dfd2ac59f29e44b3c32"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/registry.ts",
+      "root": "baseline_repository",
+      "bytes": 5373,
+      "sha256": "398ba468423a00d395bab51cebcfacedcd94aa9c644d61be98eb385b52b4ad77"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/dist/tool/registry.js",
+      "root": "baseline_repository",
+      "bytes": 4762,
+      "sha256": "5624187844ff98a4e686b0ea346fc2d6db1ed6ce1ba098b3c828d207f1488aed"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/executor/impl.ts",
+      "root": "baseline_repository",
+      "bytes": 5643,
+      "sha256": "86cf255b7dad9c891dcfa21d3c90a5bd30d90f5517b032842e47dab622ea66ab"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/dist/tool/executor/impl.js",
+      "root": "baseline_repository",
+      "bytes": 5072,
+      "sha256": "bd47e74f6a85f71bd89d8247f534d12029cfd90fef250383c278a32b72c55557"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/tool/handlers/read.ts",
+      "root": "baseline_repository",
+      "bytes": 17203,
+      "sha256": "d3cebd63754aa4753832a1ab78d43ee3c8c00ce452972ebce2e24e1b81fa3712"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/dist/tool/handlers/read.js",
+      "root": "baseline_repository",
+      "bytes": 16783,
+      "sha256": "173490e56fe37b672c62546ac88491f5edaaf8ca9760a97e001378ecfb6a0c00"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts",
+      "root": "baseline_repository",
+      "bytes": 3579,
+      "sha256": "ba483db96ee90ec627890b4eff89c953dca378872cab0791728cfe1bee14405c"
+    },
+    {
+      "path": ".runtime/P01/desktop-source/apps/zcode-cli/packages/core/dist/subagent/persistent-memory.js",
+      "root": "baseline_repository",
+      "bytes": 2923,
+      "sha256": "16b097c223c91cff67c18a709bb32f19a49d1892fcb156cf5b80170dd19854c7"
+    }
+  ],
+  "boundary": "Independent exact-commit review pass only. Coordinator unit acceptance remains not_decided; no U09/U10 integration or model-behavior claim is made."
+}
