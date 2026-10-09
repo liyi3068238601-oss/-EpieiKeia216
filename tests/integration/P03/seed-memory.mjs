@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { lstat, mkdir, readFile, readdir, realpath, writeFile } from "node:fs/promises";
+import { lstat, mkdir, open, readFile, readdir, realpath, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { openProjectRegistry } from "../../../dist/packages/projects/registry.js";
@@ -278,6 +278,20 @@ async function seed(specPath, outputPath) {
   const foreignTopic = sourceFiles.find((entry) => pathKey(entry.path) === pathKey(path.join(foreignMemoryRoot, FOREIGN_TOPIC)));
   assert.ok(selectedTopic && unselectedTopic && foreignTopic);
 
+  // The parent creates this log once for all Native CLI processes in the
+  // scenario. Runtime Hosts may append only to its explicit physical identity.
+  const auditFilePath = path.join(profileRoot, "p03-memory-audit.jsonl");
+  const auditHandle = await open(auditFilePath, "wx", 0o600);
+  let auditIdentity;
+  try {
+    const info = await auditHandle.stat({ bigint: true });
+    assert.ok(info.isFile() && info.nlink === 1n);
+    assert.equal(pathKey(await realpath(auditFilePath)), pathKey(auditFilePath));
+    auditIdentity = { dev: String(info.dev), ino: String(info.ino) };
+  } finally {
+    await auditHandle.close();
+  }
+
   const receipt = {
     schemaVersion: 1,
     workspacePath,
@@ -300,6 +314,7 @@ async function seed(specPath, outputPath) {
     registryPath: registryRealPath,
     storageRoot,
     sourceFiles,
+    auditFile: { path: auditFilePath, identity: auditIdentity },
     nativeSourceCommit: NATIVE_PIN,
   };
   const receiptBytes = Buffer.from(`${JSON.stringify(receipt, null, 2)}\n`, "utf8");

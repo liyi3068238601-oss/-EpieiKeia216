@@ -18,6 +18,22 @@ function reject(code) {
   throw error;
 }
 
+function pinnedIdentity(value) {
+  if (value === undefined) return undefined;
+  if (value === null || typeof value !== "object" || Array.isArray(value)) {
+    reject("P03_MEMORY_AUDIT_PARENT_IDENTITY_INVALID");
+  }
+  const keys = Reflect.ownKeys(value);
+  if (keys.length !== 2 || !keys.includes("dev") || !keys.includes("ino")) {
+    reject("P03_MEMORY_AUDIT_PARENT_IDENTITY_INVALID");
+  }
+  const { dev, ino } = value;
+  if (typeof dev !== "bigint" || dev < 0n || typeof ino !== "bigint" || ino < 0n) {
+    reject("P03_MEMORY_AUDIT_PARENT_IDENTITY_INVALID");
+  }
+  return Object.freeze({ dev, ino });
+}
+
 function inside(root, candidate) {
   const relative = path.relative(root, candidate);
   return relative === "" || (relative !== ".." && !relative.startsWith(`..${path.sep}`) && !path.isAbsolute(relative));
@@ -64,7 +80,8 @@ function verifyDescriptor(descriptor, profileRoot, root, filename, expected) {
 }
 
 /** Open this Host's own append descriptor for the fixed profile audit log. */
-export function openProjectMemoryAudit(profileRoot) {
+export function openProjectMemoryAudit(profileRoot, parentIdentity) {
+  const pinned = pinnedIdentity(parentIdentity);
   const root = physicalRoot(profileRoot);
   const filename = path.join(root, FILENAME);
   const mapKey = key(filename);
@@ -72,9 +89,19 @@ export function openProjectMemoryAudit(profileRoot) {
   let descriptor;
   try {
     if (knownIdentity) {
+      if (pinned && !sameIdentity(knownIdentity, pinned)) reject("P03_MEMORY_AUDIT_IDENTITY_CHANGED");
       pathIdentity(filename, root, knownIdentity);
       descriptor = openSync(filename, APPEND_FLAGS);
       verifyDescriptor(descriptor, profileRoot, root, filename, knownIdentity);
+      return descriptor;
+    }
+
+    if (pinned) {
+      // The caller's receipt pins the parent's exclusive-created file across process boundaries.
+      pathIdentity(filename, root, pinned);
+      descriptor = openSync(filename, APPEND_FLAGS);
+      const identity = verifyDescriptor(descriptor, profileRoot, root, filename, pinned);
+      IDENTITIES.set(mapKey, Object.freeze(identity));
       return descriptor;
     }
 
