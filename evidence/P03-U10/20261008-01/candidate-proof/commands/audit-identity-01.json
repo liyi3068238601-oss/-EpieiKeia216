@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "tests/integration/P03/project-memory-audit.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+  "started_at": "2026-10-08T15:09:24.367491+00:00",
+  "completed_at": "2026-10-08T15:09:24.640177+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 90,
+  "environment_overrides": {},
+  "stdout": "✔ first open is single-link regular; a later Host reopens after close and appends without losing bytes (31.054ms)\n✔ simultaneous Hosts receive distinct append descriptors for the same inode (19.2304ms)\n✔ an existing audit file without this process's identity is refused with EEXIST and preserved (4.3103ms)\n✔ a renamed audit file replaced at its path is rejected without truncation or deletion (14.5895ms)\n✔ a hard-linked audit inode is refused when the platform permits creating a hard link (11.6723ms)\n﹣ a symlink replacement is rejected and left untouched when the platform permits creating it (11.0504ms) # symlink creation unavailable on this host (EPERM)\nℹ tests 6\nℹ suites 0\nℹ pass 5\nℹ fail 0\nℹ cancelled 0\nℹ skipped 1\nℹ todo 0\nℹ duration_ms 206.6338\n",
+  "stderr": ""
+}

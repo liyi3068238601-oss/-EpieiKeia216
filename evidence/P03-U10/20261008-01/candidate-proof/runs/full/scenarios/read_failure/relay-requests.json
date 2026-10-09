@@ -1,0 +1,86 @@
+[
+  {
+    "request_index": 1,
+    "accepted": true,
+    "request_sha256": "007ffbd1ceed784208c8e316f69ede7f9c1a9c4d80c0ef129485fc3719454fae",
+    "request_bytes": 15959,
+    "request_shape": {
+      "body_keys": [
+        "max_tokens",
+        "messages",
+        "model",
+        "stream",
+        "stream_options",
+        "thinking",
+        "tool_choice",
+        "tools"
+      ],
+      "stream_present": true,
+      "stream": "true",
+      "tools": "nonempty",
+      "tool_choice": "auto"
+    },
+    "model": "deepseek-flash",
+    "stream": true,
+    "auth_present": true,
+    "synthetic_auth_only": true,
+    "messages_count": 4,
+    "tool_names": [
+      "Read"
+    ],
+    "assistant_tool_call_ids": [],
+    "tool_result_ids": [],
+    "upstream_attempted": false,
+    "auxiliary_title": false,
+    "request_kind": "conversation",
+    "status": 200,
+    "tool_call_id": "p01-u10-read_failure-read",
+    "tool_target": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\full\\scenarios\\read_failure\\profile\\storage\\cli\\memories\\projects\\project-3d25eb341a9eb240\\memory\\p03-unselected.md"
+  },
+  {
+    "request_index": 2,
+    "accepted": true,
+    "request_sha256": "349ff13f225c4ff4d2797bb255cb4f19db34bbbdd08512484df088f1505e2348",
+    "request_bytes": 16473,
+    "request_shape": {
+      "body_keys": [
+        "max_tokens",
+        "messages",
+        "model",
+        "stream",
+        "stream_options",
+        "thinking",
+        "tool_choice",
+        "tools"
+      ],
+      "stream_present": true,
+      "stream": "true",
+      "tools": "nonempty",
+      "tool_choice": "auto"
+    },
+    "model": "deepseek-flash",
+    "stream": true,
+    "auth_present": true,
+    "synthetic_auth_only": true,
+    "messages_count": 6,
+    "tool_names": [
+      "Read"
+    ],
+    "assistant_tool_call_ids": [
+      "p01-u10-read_failure-read"
+    ],
+    "tool_result_ids": [
+      "p01-u10-read_failure-read"
+    ],
+    "upstream_attempted": false,
+    "auxiliary_title": false,
+    "request_kind": "conversation",
+    "correlated_tool_call_id": "p01-u10-read_failure-read",
+    "tool_result_sha256": "90581f5aacc3d7edc1e34e17f8d67a77535d1e4b2b1df78e837ff4ef2e15832c",
+    "tool_result_success_shape": true,
+    "p03_marker_present": false,
+    "p03_unselected_marker_present": false,
+    "p03_permission_denied": true,
+    "status": 200
+  }
+]

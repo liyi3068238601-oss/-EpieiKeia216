@@ -1,0 +1,63 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "offline",
+  "status": "failed",
+  "gate_mode": "enabled",
+  "flow": "offline",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password"
+  ],
+  "user_visible_reply": null,
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 32796,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\degradation\\scenarios\\offline\\profile\\process-working-directory",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\degradation\\scenarios\\offline\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\degradation\\scenarios\\offline\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\degradation\\scenarios\\offline\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 60156,
+        "parent_pid": 32796,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 57676,
+        "parent_pid": 32796,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 22644,
+        "parent_pid": 32796,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 39976,
+        "parent_pid": 32796,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 16404,
+        "parent_pid": 39976,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": false,
+  "failure_code": "ui_assertion_failed",
+  "failure_details": {
+    "name": "TimeoutError",
+    "code": "unknown",
+    "operator": null,
+    "message": "locator.waitFor: Timeout 25000ms exceeded.",
+    "stack": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('P01 U10 persisted assistant 58892303', { exact: true }) to be visible\u001b[22m\n\n    at inspectHistory (E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P02\\desktop-ui.mjs:251:66)\n    at async file:///E:/Xiadie/Xiadie/.runtime/P03/worktrees/u10/tests/integration/P02/desktop-ui.mjs:363:7",
+    "windows": 1
+  }
+}

@@ -1,0 +1,389 @@
+{
+  "schema": "p03-u10-author-freeze/v1",
+  "task": "P03-U10",
+  "attempt": "20261008-01",
+  "author_status": "ready_for_review",
+  "accepted": false,
+  "G03": "pending_independent_acceptance",
+  "canonical_acceptance_boundary": "Only canonical P03 status plus later independent acceptance establishes acceptance.",
+  "baseline_commit": "f9b0a9d0d0df784daf601c717ea0f87b5a85c0f3",
+  "worktree_head_at_generation": "1dde0ea4654e1e7cfde6085ddaee4017e59df2e1",
+  "material_commit": "1dde0ea4654e1e7cfde6085ddaee4017e59df2e1",
+  "source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+  "candidate": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\candidate\\candidate-descriptor.json",
+    "bytes": 1349293,
+    "sha256": "5c811b43971262da1aa955985ae95d3a9a2f72848528fa55cdf7ae37d84b8698"
+  },
+  "actual_suites": {
+    "full": {
+      "summary": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\full\\summary.json",
+        "bytes": 89428,
+        "sha256": "abf084901cc5cf1da3661bb7fb1b6347e025ebdffad15b7b59348b29dfadfc89"
+      },
+      "runner": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\full\\p03-desktop-runner.json",
+        "bytes": 3446,
+        "sha256": "833b3782650516d853997dd4a84dc36358b092b6385620e461398053e6db0a11"
+      },
+      "scenarios": [
+        "read_success",
+        "read_failure",
+        "cancel_recovery"
+      ],
+      "candidate_closure": {
+        "passed": true,
+        "owned_files_verified": 6732,
+        "descriptor_sha256": "5c811b43971262da1aa955985ae95d3a9a2f72848528fa55cdf7ae37d84b8698"
+      },
+      "execution_unchanged": true,
+      "credentials_used": false,
+      "real_model_requests": 0,
+      "external_model_requests": 0,
+      "DSH_started": false
+    },
+    "degradation": {
+      "summary": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\summary.json",
+        "bytes": 84020,
+        "sha256": "cbb7ac8c37b4a2552d1ceaac2516ff40b6129e966ebb71df5d0c25c264f08108"
+      },
+      "runner": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\p03-desktop-runner.json",
+        "bytes": 3446,
+        "sha256": "833b3782650516d853997dd4a84dc36358b092b6385620e461398053e6db0a11"
+      },
+      "scenarios": [
+        "no_key",
+        "no_dsh",
+        "offline"
+      ],
+      "candidate_closure": {
+        "passed": true,
+        "owned_files_verified": 6732,
+        "descriptor_sha256": "5c811b43971262da1aa955985ae95d3a9a2f72848528fa55cdf7ae37d84b8698"
+      },
+      "execution_unchanged": true,
+      "credentials_used": false,
+      "real_model_requests": 0,
+      "external_model_requests": 0,
+      "DSH_started": false
+    }
+  },
+  "accepted_prior_units": [
+    {
+      "task": "P03-U01",
+      "status": "accepted",
+      "author_commit": "bb923d6197a40199e9b4b95d00235a5cb4355594",
+      "integration_commit": "150b53da1753fed4f1258bbf90c226e21b6da454",
+      "acceptance": {
+        "path": "evidence/P03-U01/20261004-01/acceptance.json",
+        "bytes": 1671,
+        "sha256": "a1cce4b4623089e9395200b41a6402849d5553007435b094f553fb440a20c716"
+      },
+      "review": {
+        "path": "evidence/P03-U01/20261004-01/review-final.json",
+        "bytes": 39895,
+        "sha256": "7107b08e2b5228d38be562ecd038126dfeb4b82968e2bee323aaa25a0402bc87",
+        "decision": "pass"
+      }
+    },
+    {
+      "task": "P03-U02",
+      "status": "accepted",
+      "author_commit": "e9314207347d33dd61cab941a8dca549c9575ca8",
+      "integration_commit": "964d08bfd626f438c8d161760f9aa7828831f15b",
+      "acceptance": {
+        "path": "evidence/P03-U02/20261008-01/acceptance.json",
+        "bytes": 10143,
+        "sha256": "9f97ad50fefb287276e23c37ca1850380c9729619122be68053aaa3efcffdbcd"
+      },
+      "review": {
+        "path": "evidence/P03-U02/20261008-01/review-final.json",
+        "bytes": 22514,
+        "sha256": "443960bdc4e572fb4030f9b8aede30516b55892b6e8a9f87ba6993fd771fb319",
+        "decision": "pass"
+      }
+    },
+    {
+      "task": "P03-U03",
+      "status": "accepted",
+      "author_commit": "2530a944f9c4f403675378e843c44a11c9880681",
+      "integration_commit": "0fd6d87993e17e4f2ca97a33351f9f2dfe0c54ba",
+      "acceptance": {
+        "path": "evidence/P03-U03/20261008-01/acceptance.json",
+        "bytes": 218067,
+        "sha256": "7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37"
+      },
+      "review": {
+        "path": "evidence/P03-U03/20261008-01/review-final.json",
+        "bytes": 18309,
+        "sha256": "03ae6e259f0021f9cc19373ddb34634c82e596afc1d5c5e4a069443a4f33f93c",
+        "decision": "pass"
+      }
+    },
+    {
+      "task": "P03-U04",
+      "status": "accepted",
+      "author_commit": "326ee26a77f5b79a0220e86cc9edcaa5542bb5fd",
+      "integration_commit": "36850a0717dad3cd27d9a4b5cc1ae7f9bab354b6",
+      "acceptance": {
+        "path": "evidence/P03-U04/20261008-01/acceptance.json",
+        "bytes": 2260,
+        "sha256": "ebeb89a5cf16414bded874f6e78fc2d7f9250871ce8ec045493afcc8e457b2f7"
+      },
+      "review": {
+        "path": "evidence/P03-U04/20261008-01/review-final.json",
+        "bytes": 10060,
+        "sha256": "90f29aab894303731a3be667b9445daf4b60341075e26be8cc450820f5b284b3",
+        "decision": "pass"
+      }
+    },
+    {
+      "task": "P03-U05",
+      "status": "accepted",
+      "author_commit": "74a442909cb540360a82826a113adcac68d78818",
+      "integration_commit": "3d570fa5354209416b5081e9ca7f82bfa3e4476f",
+      "acceptance": {
+        "path": "evidence/P03-U05/20261008-01/acceptance.json",
+        "bytes": 2271,
+        "sha256": "31a8c572563dc6611ce4956bed314635a4c2e3ff00b5bba873c907a28b19a871"
+      },
+      "review": {
+        "path": "evidence/P03-U05/20261008-01/review-final.json",
+        "bytes": 12399,
+        "sha256": "05ae3cee9b43d2940c6d2f290b02b0c1012c06d769f39e696659c489de0f5989",
+        "decision": "pass"
+      }
+    },
+    {
+      "task": "P03-U06",
+      "status": "accepted",
+      "author_commit": "5ff89f14b79370d63553ac10cec6adb57143964e",
+      "integration_commit": "27f4fab6ead14053f2bc8ff65415f126306566d2",
+      "acceptance": {
+        "path": "evidence/P03-U06/20261008-01/acceptance.json",
+        "bytes": 2896,
+        "sha256": "2a0499ed079b97e0c62335eb26a1d5bc7e30395dfbbc7d7262a5664298f476b1"
+      },
+      "review": {
+        "path": "evidence/P03-U06/20261008-01/review-final.json",
+        "bytes": 19212,
+        "sha256": "c231ac4d9836bb2af6ac1cd8dc59cf3879cdab7b827e9ba600660aa898b74536",
+        "decision": "pass"
+      }
+    },
+    {
+      "task": "P03-U07",
+      "status": "accepted",
+      "author_commit": "3ec0583ee1aefef66b58576c9700bac38c099a10",
+      "integration_commit": "f3d0cfcdbeda8406c4adde9fa4486ffa4deed3f0",
+      "acceptance": {
+        "path": "evidence/P03-U07/20261008-01/acceptance.json",
+        "bytes": 4041,
+        "sha256": "89249727bb89199e936ec8a01276ce4aa5554a37669dedab4d3b448697ad200b"
+      },
+      "review": {
+        "path": "evidence/P03-U07/20261008-01/review-final.json",
+        "bytes": 23949,
+        "sha256": "f70a48df6b7ed574c212d3a6496e08c751150b30e4c03fc6e7822353bebd3e99",
+        "decision": "pass"
+      }
+    },
+    {
+      "task": "P03-U08",
+      "status": "accepted",
+      "author_commit": "035bb11b423f6e06da6cefc595ac1c936a548ca6",
+      "integration_commit": "39635a10a481da66c2038d629cac89c78b872514",
+      "acceptance": {
+        "path": "evidence/P03-U08/20261008-01/acceptance.json",
+        "bytes": 5969,
+        "sha256": "e42ac293517ca88113f843527215e3984cc8c37c07dfa5d1a41a5a460f385f9e"
+      },
+      "review": {
+        "path": "evidence/P03-U08/20261008-01/review-final.json",
+        "bytes": 62842,
+        "sha256": "f9ec51bd29a8f08d61db4a34aa098e346a1417d0fb63c55cdf0e4b4f6a547a2a",
+        "decision": "pass"
+      }
+    },
+    {
+      "task": "P03-U09",
+      "status": "accepted",
+      "author_commit": "7ceb6660381d31d267ee4fb0732879585469fa97",
+      "integration_commit": "01a651dd81ad2c677620aaf371925ce52d10690d",
+      "acceptance": {
+        "path": "evidence/P03-U09/20261008-01/acceptance.json",
+        "bytes": 3424,
+        "sha256": "de871569a8f714e08e67d2198f27bd13a76f81f7a1300867755e802c5aee0b90"
+      },
+      "review": {
+        "path": "evidence/P03-U09/20261008-01/review-final.json",
+        "bytes": 100644,
+        "sha256": "8befa0537e9ff9d13279191d7323c10991e80f8a60e4832654fef0e80e0171ed",
+        "decision": "pass"
+      }
+    }
+  ],
+  "M2_migration_evidence": {
+    "U03": {
+      "path": "evidence/P03-U03/20261008-01/acceptance.json",
+      "bytes": 218067,
+      "sha256": "7885c728bf8a346039212307bf8be4386422c2f3fc79be7f7860d82e58c5ec37"
+    },
+    "U06": {
+      "path": "evidence/P03-U06/20261008-01/acceptance.json",
+      "bytes": 2896,
+      "sha256": "2a0499ed079b97e0c62335eb26a1d5bc7e30395dfbbc7d7262a5664298f476b1"
+    }
+  },
+  "plan_read_only": {
+    "files_verified": 423,
+    "required_count": 423,
+    "mismatches": 0,
+    "audit": {
+      "path": "evidence/P03-U10/20261008-01/stage-input-audit.json",
+      "bytes": 81065,
+      "sha256": "b0fdf154448ff701aa58763ab540678f12580e70f834f2b0a32d85fea1d173be"
+    }
+  },
+  "qualification_scope_amendment": {
+    "path": "evidence/P03-U10/20261008-01/scope-amendment-02.json",
+    "bytes": 3568,
+    "sha256": "28010297e57f7473649840cfb933237f983b67d1e15fe1667d011c0dd492aaf7"
+  },
+  "preserved_failed_commands": [
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\commands\\u10\\desktop-degradation-01.json",
+      "bytes": 987,
+      "sha256": "73b906097f5cb1dd6af1ab4721145f70e26584b85d12f20e720e4db514adbd0c"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\commands\\u10\\desktop-degradation-02.json",
+      "bytes": 987,
+      "sha256": "45d2954b92df30ed679cd444c3be3edca8a5147d0239aa7e72af98ef3c3a3b98"
+    }
+  ],
+  "toolchain": {
+    "electron": {
+      "version": "41.0.3",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe",
+      "bytes": 222836736,
+      "sha256": "c3ff0b19217c3f3521bd392899cffa65b0f0c0aae500ee0291e85490a52327d4",
+      "role": "actual Desktop host; candidate CLI uses Electron Node mode"
+    },
+    "node": {
+      "version": "v24.14.0",
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+      "bytes": 91380224,
+      "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+      "role": "fixed Node tools/build runtime"
+    },
+    "typescript": {
+      "version": "6.0.2",
+      "package": {
+        "path": "E:\\Xiadie\\Xiadie\\node_modules\\.pnpm\\typescript@6.0.2\\node_modules\\typescript\\package.json",
+        "bytes": 3527,
+        "sha256": "bb6ee7e709ae60426e30b8d393df4d939ee61407794b4f053ce6338d6eaa8c63"
+      },
+      "compiler": {
+        "path": "E:\\Xiadie\\Xiadie\\node_modules\\.pnpm\\typescript@6.0.2\\node_modules\\typescript\\bin\\tsc",
+        "bytes": 45,
+        "sha256": "8d5fa5bd883fec0979fc2004f1fe1d99aef40570155d550eadc0b03b55513bf0"
+      }
+    }
+  },
+  "licenses": {
+    "native_license": {
+      "source": {
+        "path": "LICENSE",
+        "bytes": 11344,
+        "sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b"
+      },
+      "copy": {
+        "path": "UPSTREAM-LICENSE",
+        "bytes": 11344,
+        "sha256": "606c36baf38b973227273df12a74930e4b4137280eea835c5cd623aa4553c13b"
+      },
+      "byte_identical": true
+    },
+    "native_notice": {
+      "source": {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\NOTICE.md",
+        "bytes": 27721,
+        "sha256": "cca8e323ad7f3b12167b58fba7d14faf18a2cdc4fa890818058872f6215912bf"
+      },
+      "copy": {
+        "path": "UPSTREAM-NOTICE.md",
+        "bytes": 27721,
+        "sha256": "cca8e323ad7f3b12167b58fba7d14faf18a2cdc4fa890818058872f6215912bf"
+      },
+      "byte_identical": true
+    },
+    "native_cli_third_party_notices": {
+      "source": {
+        "path": "apps/zcode-cli/packages/cli/dist/THIRD-PARTY-NOTICES.md",
+        "bytes": 1978939,
+        "sha256": "874bf7c10bdcadd0df0b50fc782f39f077669c6e41bbdbccd868409cd714dec3"
+      },
+      "copy": {
+        "path": "apps/zcode-cli/packages/cli/dist/THIRD-PARTY-NOTICES.md",
+        "bytes": 1978939,
+        "sha256": "874bf7c10bdcadd0df0b50fc782f39f077669c6e41bbdbccd868409cd714dec3"
+      },
+      "byte_identical": true
+    },
+    "owned_better_sqlite": {
+      "package": "better-sqlite3",
+      "version": "13.0.3",
+      "license": "MIT",
+      "addon": {
+        "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/prebuilds/win32-x64.node",
+        "bytes": 1989632,
+        "sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a"
+      },
+      "license_file": {
+        "path": "apps/zcode-cli/packages/cli/dist/node_modules/better-sqlite3/LICENSE",
+        "bytes": 1078,
+        "sha256": "09856b52897c91ab67e7456ef43067019f31dfd3b87fda72e655736b1ebdee55"
+      }
+    }
+  },
+  "limitations": [
+    "运行环境边界：实际 Desktop 使用 Electron 41.0.3；候选 CLI 运行于 Electron Node mode。构建及工具使用固定 Node 24.14.0、TypeScript 6.0.2。",
+    "存储与分发边界：Native 使用 node:sqlite；Xiadie 自有 CLI 使用独立的 better-sqlite3 13.0.3 MIT addon。候选借用 junction，不能视为可移植安装包。",
+    "隔离与未运行项：本轮只验证 mock loopback 模型流量；付费模型、DSH、已安装应用、人类视觉验收和 whole-OS sandbox 均为 NOT_RUN。",
+    "M2 边界：已接受的 U03/U06 证据包含迁移 API 的实际验证，并由 U09 回归补充；迁移后 App 端到端验证为 NOT_RUN。",
+    "事实与业务状态边界：project/experience notes 只作线索，不等同事实。没有独立业务 TaskLedger 实体证据证明 owner 或 progress；本轮项目记忆组合未启用 Native writer，也未建立第二个事实数据库。",
+    "字节与语义边界：当前输入字节及 raw SHA-256 只能证明文件字节和运行前后状态一致，不能证明内容语义真实、获得许可，也不能证明真实模型遵循 facts priority、persona 或 memory policy。",
+    "来源限制：原始角色素材及原始 prompt 的来源、provenance 和许可均为 NOT_VERIFIED。",
+    "计划与许可边界：423 份 v1.1 计划文件只读核对。hash 标识精确字节，不代表许可或授权。",
+    "日志与权限边界：父进程以独占创建和固定物理身份授权同一隔离场景的 CLI 追加，并在启动前后核对回执与日志身份；仅凭既有文件存在仍拒绝。固定 Node 日志测试为 11 pass/1 symlink EPERM skip；既有 U03/U07 symlink 权限未测也保留。这是测试日志组合，不是任意既有 profile 的恢复声明。"
+  ],
+  "source_decision": {
+    "path": "evidence/P03-U10/20261008-01/source-decision.md",
+    "bytes": 2194,
+    "sha256": "ec59afab72558d768904e0e1bbc99c0332add390284bfd0e02517fac2f251b7f"
+  },
+  "rollback": {
+    "path": "evidence/P03-U10/20261008-01/rollback.md",
+    "bytes": 417,
+    "sha256": "629d58164e0c5b2ff8f34d6981feb46594a052c59ffedc80cafb370ce16521b8"
+  },
+  "command_index": {
+    "path": "evidence/P03-U10/20261008-01/command-index.json",
+    "bytes": 6318,
+    "sha256": "43ab80e56c708c1e60326b999d6fe00933da5d0b79e3ecb5e197562d97b3f34f"
+  },
+  "generation_script": {
+    "path": "evidence/P03-U10/20261008-01/generation-script.py",
+    "bytes": 40810,
+    "sha256": "b87d0b6d6299a368dbe1244876a4dce5a9402fe0db9cfc9ea775722ad5890fe2"
+  },
+  "freeze": {
+    "path": "docs/releases/0.3.0/freeze.json",
+    "bytes": 56353,
+    "sha256": "aae9547537fb5efd5c5c1668e65fd56735223564d37f5496f157437ac831e36e"
+  }
+}

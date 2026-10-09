@@ -1,0 +1,312 @@
+{
+  "scenario_id": "no_dsh",
+  "passed": true,
+  "exit_code": 0,
+  "model_requests": 1,
+  "expected_model_requests": 1,
+  "relay_records": [
+    {
+      "request_index": 1,
+      "accepted": true,
+      "request_sha256": "de51397a859e185dada6cc4d58ca157b34dd4f5c5e1eaf982cfaaeb071eefd01",
+      "request_bytes": 15925,
+      "request_shape": {
+        "body_keys": [
+          "max_tokens",
+          "messages",
+          "model",
+          "stream",
+          "stream_options",
+          "thinking",
+          "tool_choice",
+          "tools"
+        ],
+        "stream_present": true,
+        "stream": "true",
+        "tools": "nonempty",
+        "tool_choice": "auto"
+      },
+      "model": "deepseek-flash",
+      "stream": true,
+      "auth_present": true,
+      "synthetic_auth_only": true,
+      "messages_count": 4,
+      "tool_names": [
+        "Read"
+      ],
+      "assistant_tool_call_ids": [],
+      "tool_result_ids": [],
+      "upstream_attempted": false,
+      "auxiliary_title": false,
+      "request_kind": "conversation",
+      "status": 200
+    }
+  ],
+  "sidecar_correlation": {
+    "status": "verified",
+    "verified": true,
+    "turn_count": 1,
+    "completed_reply_turns": 1,
+    "visible_reply_matches": true,
+    "expected_reply_sha256": "649d77db577e56ffecfeacef9b350c2a45a3621212db715765e7b1c4fd20b63c",
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\u10-turn-projections.jsonl"
+  },
+  "actual_ui": {
+    "schema": "p01-u10-desktop-ui/v1",
+    "scenario_id": "no_dsh",
+    "status": "completed",
+    "gate_mode": "enabled",
+    "flow": "reply",
+    "ui_actions": [
+      "skipped-key-onboarding-with-empty-password",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "skipped-local-onboarding-step",
+      "filled-v4-composer-input",
+      "clicked-v4-composer-send"
+    ],
+    "user_visible_reply": "本地运行正常，没有启动 DSH。",
+    "error_banner": null,
+    "model_selection": {
+      "expected": "deepseek-flash",
+      "pro_item_available": null,
+      "selected": null
+    },
+    "desktop": {
+      "main_pid": 53504,
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\process-working-directory",
+      "home": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\home",
+      "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\userData",
+      "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\sessionData",
+      "visible": false,
+      "remote_debugging_port": "0",
+      "descendant_processes": [
+        {
+          "pid": 36296,
+          "parent_pid": 53504,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 16260,
+          "parent_pid": 53504,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 9692,
+          "parent_pid": 53504,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 45148,
+          "parent_pid": 53504,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 55064,
+          "parent_pid": 53504,
+          "name": "electron.exe"
+        },
+        {
+          "pid": 17204,
+          "parent_pid": 45148,
+          "name": "electron.exe"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "network_guard_records": 328,
+  "network_guard": {
+    "status": "verified",
+    "verified": true,
+    "main": {
+      "pid": 53504,
+      "guard_loaded": true,
+      "egress_canary_denied": true
+    },
+    "utility_guarded_pids": [
+      45148
+    ],
+    "cli_required": true,
+    "cli_spawned_pids": [
+      17204
+    ],
+    "cli_guarded_pids": [
+      17204
+    ],
+    "cli_descendants_verified": true
+  },
+  "process_evidence": {
+    "status": "verified",
+    "root_pid": 53504,
+    "descendants": [
+      {
+        "pid": 36296,
+        "parent_pid": 53504,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 16260,
+        "parent_pid": 53504,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 9692,
+        "parent_pid": 53504,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 45148,
+        "parent_pid": 53504,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 55064,
+        "parent_pid": 53504,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 17204,
+        "parent_pid": 45148,
+        "name": "electron.exe"
+      }
+    ],
+    "dsh_like_descendants": []
+  },
+  "profile": {
+    "portable_profile_decision": "no-key",
+    "native_provider_config": "synthetic-loopback-only",
+    "api_key_real": false,
+    "model_backend": "parent-owned-loopback",
+    "adapter_retry_test_override": {
+      "env": "ZCODE_MODEL_RETRY_MAX_RETRIES",
+      "value": "0"
+    }
+  },
+  "limitations": [
+    "network guard is process instrumentation, not an OS sandbox",
+    "visual acceptance NOT_RUN; UI validation uses actual rendered DOM and buttons"
+  ],
+  "p03_memory_composition": {
+    "passed": true,
+    "seed": {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\p03-memory-seed.json",
+      "bytes": 4342,
+      "sha256": "cece9f444d19633e377eabf9106af6ee0209dd5a541b156d128fe8215085bda6"
+    },
+    "readerAudit": {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\p03-memory-audit.jsonl",
+      "bytes": 243,
+      "sha256": "5d5f19b127ed5b4ba999fa49a84eae69415477b941d5651a6183d52725ddcdd8"
+    },
+    "captureCount": 1,
+    "readCount": 0,
+    "projectId": "8b499795-9e70-450f-adee-2ab0f25dc3cd",
+    "parentAuditIdentityUnchanged": true,
+    "parentAuditIdentity": {
+      "dev": "8477308550105779085",
+      "ino": "1407374885358664"
+    },
+    "selectedTopicSha256": "09e89418a370f50add0c464557bfa86eed47bf02c5160cc76435946666e32a03",
+    "sourceFilesUnchanged": [
+      {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\storage\\cli\\memories\\projects\\project-6f856be34e402bda\\memory\\MEMORY.md",
+        "bytes": 111,
+        "sha256": "2ec116ae95c2059c91db5eea6b47d038ea57da1d0982875a1cfd27722d21d654"
+      },
+      {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\storage\\cli\\memories\\projects\\project-6f856be34e402bda\\memory\\p03-topic.md",
+        "bytes": 120,
+        "sha256": "09e89418a370f50add0c464557bfa86eed47bf02c5160cc76435946666e32a03"
+      },
+      {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\storage\\cli\\memories\\projects\\project-6f856be34e402bda\\memory\\p03-unselected.md",
+        "bytes": 125,
+        "sha256": "6b1ddb84b6161679642bc7f883d7a849766ff90ee466dd3ac8b6423f0c86412b"
+      },
+      {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\storage\\cli\\memories\\projects\\project-8523960cfd9330c4\\memory\\MEMORY.md",
+        "bytes": 62,
+        "sha256": "aca23e12068ad6b7d6186847fbf8d5cc86652a2b47531b2e858b094d7e19d506"
+      },
+      {
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\storage\\cli\\memories\\projects\\project-8523960cfd9330c4\\memory\\p03-foreign.md",
+        "bytes": 125,
+        "sha256": "8693e3834359480eef17ec4d4bcded28e973b346360e294b5886e2044908b151"
+      }
+    ],
+    "observedMemoryRootsFileSetsUnchanged": true,
+    "listeners": {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\p03-listeners.json",
+      "bytes": 13050,
+      "sha256": "7928e5adb6c0b8f699ed97e000fc7e118fb4a288ef6053cba33bda920d3e01ca"
+    },
+    "relayPort": 61948,
+    "desktopInspectorRequest": "0",
+    "boundary": "Actual Electron and Native Read with accepted Host bridge; synthetic loopback model; no installed app or external model."
+  },
+  "ledger_verification": {
+    "passed": true,
+    "report_path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\ledger-verification.json",
+    "admission": "admitted",
+    "admitted_turns": 1,
+    "backup_restore": null
+  },
+  "sqlite_runtime_binding": {
+    "passed": true,
+    "status": "verified_actual_cli_load",
+    "probes": [
+      {
+        "pid": 17204,
+        "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\sqlite-runtime-probes\\17204.json",
+        "bytes": 655,
+        "sha256": "dd5ccd19bcde1004b12b04cfc26fb8b8d70e0b300afc32021b1d4ae4933f9008",
+        "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+        "package_version": "13.0.3",
+        "sqlite_version": "3.53.4"
+      }
+    ],
+    "cli_guarded_pids": [
+      17204
+    ],
+    "boundary": "Observed CLI load only; no-load routes do not qualify an addon load. Ledger readback is a separate process."
+  },
+  "sqlite_cli_runtime_alias": {
+    "passed": true,
+    "mechanism": "owned-profile-home-directory-junction",
+    "alias_entry": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+    "realpath": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\candidate\\apps\\zcode-cli\\packages\\cli\\dist\\zcode.cjs",
+    "entry_sha256": "c1bca8970040289578c7e78e09133653df52f295e375337b41be483066d55558",
+    "realpath_matches_candidate": true,
+    "p01_guard_expected_entry_matches_alias": true
+  },
+  "registry_write_guard": {
+    "passed": true,
+    "scope": "Electron main child_process.spawn reg.exe and guarded Electron app APIs",
+    "os_sandbox": false,
+    "request_count": 18,
+    "blocked_menu_request_count": 16,
+    "menu_install_group_count": 2,
+    "blocked_protocol_registration_count": 1,
+    "blocked_protocol_removal_count": 0,
+    "blocked_recent_document_clear_count": 1,
+    "main_pid": 53504,
+    "launcher_pid": 58624,
+    "main_process_snapshot_path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\main-process-runtime.json",
+    "main_process_snapshot_sha256": "667dac04d7d0a48dfcc5dc0c7ccd60486f0a4d484c569e021901ed1fb5d5c5d7",
+    "blocked_requests_sha256": "1c8f832e4c67299c2d7b50d2bd8933f12c7bbc4abbe4b9cd039336c822c95413",
+    "raw_requests_path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation\\scenarios\\no_dsh\\profile\\registry-write-guard.jsonl"
+  },
+  "candidate_artifact_closure": {
+    "before_scenario": {
+      "passed": true,
+      "owned_files_verified": 6732,
+      "descriptor_sha256": "5c811b43971262da1aa955985ae95d3a9a2f72848528fa55cdf7ae37d84b8698"
+    },
+    "after_scenario": {
+      "passed": true,
+      "owned_files_verified": 6732,
+      "descriptor_sha256": "5c811b43971262da1aa955985ae95d3a9a2f72848528fa55cdf7ae37d84b8698"
+    }
+  }
+}

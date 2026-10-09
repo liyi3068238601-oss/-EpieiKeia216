@@ -1,0 +1,39 @@
+[
+  {
+    "request_index": 1,
+    "accepted": true,
+    "request_sha256": "b6bd2033476e5b7ad545322f56a967d47d248a627b67ad8fcb2ae64e1372cd5b",
+    "request_bytes": 15942,
+    "request_shape": {
+      "body_keys": [
+        "max_tokens",
+        "messages",
+        "model",
+        "stream",
+        "stream_options",
+        "thinking",
+        "tool_choice",
+        "tools"
+      ],
+      "stream_present": true,
+      "stream": "true",
+      "tools": "nonempty",
+      "tool_choice": "auto"
+    },
+    "model": "deepseek-flash",
+    "stream": true,
+    "auth_present": true,
+    "synthetic_auth_only": true,
+    "messages_count": 4,
+    "tool_names": [
+      "Read"
+    ],
+    "assistant_tool_call_ids": [],
+    "tool_result_ids": [],
+    "upstream_attempted": false,
+    "auxiliary_title": false,
+    "request_kind": "conversation",
+    "status": 503,
+    "offline_reject": true
+  }
+]

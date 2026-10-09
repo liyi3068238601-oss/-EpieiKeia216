@@ -1,0 +1,69 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "no_key",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "no_key",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "opened-native-synthetic-history-in-renderer",
+    "clicked-new-conversation-task",
+    "filled-v4-composer-input",
+    "pressed-enter-with-send-disabled",
+    "opened-native-settings-page",
+    "verified-return-to-native-workspace"
+  ],
+  "user_visible_reply": null,
+  "error_banner": {
+    "visible": false,
+    "refused_by_disabled_control": true
+  },
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 37480,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\degradation\\scenarios\\no_key\\profile\\process-working-directory",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\degradation\\scenarios\\no_key\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\degradation\\scenarios\\no_key\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\degradation\\scenarios\\no_key\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 41788,
+        "parent_pid": 37480,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 8468,
+        "parent_pid": 37480,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 25176,
+        "parent_pid": 37480,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 49072,
+        "parent_pid": 37480,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 47912,
+        "parent_pid": 49072,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "no_key_send_button_enabled": false,
+  "settings_navigation": {
+    "back_click": "timed_out_after_unmount",
+    "settings_closed": true,
+    "workspace_visible": true
+  },
+  "passed": true
+}
