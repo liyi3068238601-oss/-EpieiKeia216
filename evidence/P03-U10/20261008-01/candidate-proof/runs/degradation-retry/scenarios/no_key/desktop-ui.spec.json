@@ -1,0 +1,414 @@
+{
+  "candidate": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\candidate",
+  "desktop": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\candidate\\packages\\desktop",
+  "electron": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe",
+  "playwright": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\playwright-core\\index.js",
+  "guard": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P02\\desktop-main-guard.cjs",
+  "workspace": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\workspace",
+  "out": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key",
+  "env": {
+    "PATH": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64;C:\\Program Files\\Git\\cmd;C:\\Windows\\System32",
+    "SYSTEMROOT": "C:\\Windows",
+    "WINDIR": "C:\\Windows",
+    "COMSPEC": "C:\\Windows\\system32\\cmd.exe",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
+    "HOME": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\home",
+    "USERPROFILE": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\home",
+    "APPDATA": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\home\\AppData\\Roaming",
+    "LOCALAPPDATA": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\home\\AppData\\Local",
+    "TEMP": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\temp",
+    "TMP": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\temp",
+    "ZCODE_DATA_BASE_DIR": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\data",
+    "ZCODE_STORAGE_DIR": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\storage",
+    "ZCODE_DESKTOP_HOME_DIR": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\home",
+    "ZCODE_DESKTOP_USER_DATA_DIR": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\userData",
+    "ZCODE_DESKTOP_SESSION_DATA_DIR": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\sessionData",
+    "ZCODE_DISABLE_FIXED_REMOTE_DEBUGGING_PORT": "1",
+    "ZCODE_ENDPOINT_ORIGIN": "http://127.0.0.1:50112",
+    "ZCODE_BASE_URL": "http://127.0.0.1:50112",
+    "ZCODE_PERSONAL_PROVIDER_CONFIG_FILE": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\data\\.zcode\\v2\\provider_config.json",
+    "ZCODE_BUILTIN_PROVIDER_CONFIG_FILE": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\config\\provider\\zcode-builtin.json",
+    "ZCODE_ENV": "test",
+    "NODE_ENV": "production",
+    "P01_U10_GATE_MODE": "enabled",
+    "P01_GUARD_LOG": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\network-guard.jsonl",
+    "P01_GUARD_WRAPPERS": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\utility-guards",
+    "P01_GUARD_PROCESS_ROLE": "browser",
+    "P01_GUARD_CLI_ENTRY": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\home\\.zcode\\server\\agents\\glm\\zcode.cjs",
+    "P01_GUARD_CLI_ENTRY_SHA256": "87c575b53d9ebd82c8f17e0dc1c7a76b8c7e62db83d6ace96ac460a8157f7f8c",
+    "P01_GUARD_ELECTRON_EXE": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-source\\node_modules\\electron\\dist\\electron.exe",
+    "P01_ALLOWED_HTTP_ORIGINS": "[\"http://127.0.0.1:50112\"]",
+    "P01_ALLOWED_IPC_PIPE_PREFIX": "\\\\.\\pipe\\p01-u10-929d6886-3927-4e7e-9ec2-5c76dd2c1595-",
+    "ZCODE_MODEL_RETRY_MAX_RETRIES": "0",
+    "P02_SQLITE_RUNTIME_PROBE_DIR": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\sqlite-runtime-probes",
+    "P02_REGISTRY_GUARD_LOG": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\registry-write-guard.jsonl",
+    "P02_MAIN_PROCESS_SNAPSHOT": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\main-process-runtime.json"
+  },
+  "scenario_id": "no_key",
+  "flow": "no_key",
+  "prompt": "请回复：不应发出无凭据模型请求。",
+  "model": "deepseek-flash",
+  "expected_reply": null,
+  "partial_reply": null,
+  "profile_paths": {
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\home",
+    "user_data": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\userData",
+    "session_data": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\sessionData"
+  },
+  "gate_mode": "enabled",
+  "relay_origin": "http://127.0.0.1:50112",
+  "occupied_ports_before": [
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 135,
+      "OwningProcess": 2068
+    },
+    {
+      "LocalAddress": "::",
+      "LocalPort": 135,
+      "OwningProcess": 2068
+    },
+    {
+      "LocalAddress": "172.20.35.26",
+      "LocalPort": 139,
+      "OwningProcess": 4
+    },
+    {
+      "LocalAddress": "172.26.192.1",
+      "LocalPort": 139,
+      "OwningProcess": 4
+    },
+    {
+      "LocalAddress": "198.18.0.1",
+      "LocalPort": 139,
+      "OwningProcess": 4
+    },
+    {
+      "LocalAddress": "::",
+      "LocalPort": 445,
+      "OwningProcess": 4
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 1042,
+      "OwningProcess": 43468
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 4001,
+      "OwningProcess": 3484
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 4301,
+      "OwningProcess": 3484
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 4310,
+      "OwningProcess": 3484
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5037,
+      "OwningProcess": 33532
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 5040,
+      "OwningProcess": 14576
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5283,
+      "OwningProcess": 3484
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 6850,
+      "OwningProcess": 41912
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 7778,
+      "OwningProcess": 6196
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 7897,
+      "OwningProcess": 21000
+    },
+    {
+      "LocalAddress": "::",
+      "LocalPort": 8000,
+      "OwningProcess": 9776
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 9012,
+      "OwningProcess": 14056
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 9013,
+      "OwningProcess": 14056
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 9210,
+      "OwningProcess": 3484
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 9410,
+      "OwningProcess": 31552
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 10000,
+      "OwningProcess": 24496
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 11001,
+      "OwningProcess": 6296
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 13030,
+      "OwningProcess": 6732
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 13031,
+      "OwningProcess": 6236
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 13032,
+      "OwningProcess": 6236
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 22112,
+      "OwningProcess": 6732
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 24830,
+      "OwningProcess": 6272
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 27339,
+      "OwningProcess": 4
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 28317,
+      "OwningProcess": 20972
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 31100,
+      "OwningProcess": 6800
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 31104,
+      "OwningProcess": 6800
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 31105,
+      "OwningProcess": 8920
+    },
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 42050,
+      "OwningProcess": 46860
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 49664,
+      "OwningProcess": 1956
+    },
+    {
+      "LocalAddress": "::",
+      "LocalPort": 49664,
+      "OwningProcess": 1956
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 49665,
+      "OwningProcess": 1856
+    },
+    {
+      "LocalAddress": "::",
+      "LocalPort": 49665,
+      "OwningProcess": 1856
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 49666,
+      "OwningProcess": 2908
+    },
+    {
+      "LocalAddress": "::",
+      "LocalPort": 49666,
+      "OwningProcess": 2908
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 49667,
+      "OwningProcess": 3272
+    },
+    {
+      "LocalAddress": "::",
+      "LocalPort": 49667,
+      "OwningProcess": 3272
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 49668,
+      "OwningProcess": 5728
+    },
+    {
+      "LocalAddress": "::",
+      "LocalPort": 49668,
+      "OwningProcess": 5728
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 49706,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 49714,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 49717,
+      "OwningProcess": 1928
+    },
+    {
+      "LocalAddress": "::",
+      "LocalPort": 49717,
+      "OwningProcess": 1928
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 49721,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 50051,
+      "OwningProcess": 6844
+    },
+    {
+      "LocalAddress": "::",
+      "LocalPort": 50052,
+      "OwningProcess": 6584
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 50071,
+      "OwningProcess": 9776
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 50100,
+      "OwningProcess": 6236
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 50112,
+      "OwningProcess": 43368
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 50923,
+      "OwningProcess": 6196
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 51100,
+      "OwningProcess": 12636
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 51927,
+      "OwningProcess": 6792
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 56240,
+      "OwningProcess": 35440
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 57100,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 60358,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 64454,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 64459,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 64462,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 64469,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 64475,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 64481,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 64486,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 64491,
+      "OwningProcess": 6368
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 64492,
+      "OwningProcess": 6368
+    }
+  ],
+  "history_markers": [
+    "P01 U10 synthetic history 7b292a24",
+    "P01 U10 persisted assistant 7b292a24"
+  ],
+  "cancel_file": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\cancel.request",
+  "cancel_observed_file": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\cancel-observed.json",
+  "process_working_directory": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation\\scenarios\\no_key\\profile\\process-working-directory"
+}

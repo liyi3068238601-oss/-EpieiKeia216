@@ -1,0 +1,86 @@
+{
+  "schema": "p03-desktop-composition-runner/v1",
+  "reusedRunner": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P02\\desktop.py",
+    "bytes": 40302,
+    "sha256": "ac098078bde59a92148298126ace6276320849adc332947db7a3367153996807"
+  },
+  "inputsBefore": [
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\desktop.py",
+      "bytes": 16456,
+      "sha256": "d37401fc386f405e15a80862424ed951722c267a6d6fc6916991cfdf1a375100"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\memory-relay.py",
+      "bytes": 20868,
+      "sha256": "6372aa7d5d9fdc248e74e73d18551ffa7b3fffa6314fc91651471854d901e854"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\seed-memory.mjs",
+      "bytes": 17981,
+      "sha256": "41f47b50616faeff53633b54b37d31526d9844e4618779f221be6d701eb652e4"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\factory-entry.mjs",
+      "bytes": 1763,
+      "sha256": "9a4166f98e3855f47b3595eb6bbb394b871e0cbc7ab0d7b13911c149cb6ef3d1"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\project-memory-host.mjs",
+      "bytes": 9265,
+      "sha256": "84babafb4004283fb504cd868add84eb9c8c1778be64b8610266c426bd28627d"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\build-candidate.mjs",
+      "bytes": 21918,
+      "sha256": "80625cd5683f3b0875db3291b9e106163113ec35381cfaf2707a07e9a3b024cc"
+    }
+  ],
+  "inputsAfter": [
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\desktop.py",
+      "bytes": 16456,
+      "sha256": "d37401fc386f405e15a80862424ed951722c267a6d6fc6916991cfdf1a375100"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\memory-relay.py",
+      "bytes": 20868,
+      "sha256": "6372aa7d5d9fdc248e74e73d18551ffa7b3fffa6314fc91651471854d901e854"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\seed-memory.mjs",
+      "bytes": 17981,
+      "sha256": "41f47b50616faeff53633b54b37d31526d9844e4618779f221be6d701eb652e4"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\factory-entry.mjs",
+      "bytes": 1763,
+      "sha256": "9a4166f98e3855f47b3595eb6bbb394b871e0cbc7ab0d7b13911c149cb6ef3d1"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\project-memory-host.mjs",
+      "bytes": 9265,
+      "sha256": "84babafb4004283fb504cd868add84eb9c8c1778be64b8610266c426bd28627d"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10\\tests\\integration\\P03\\build-candidate.mjs",
+      "bytes": 21918,
+      "sha256": "80625cd5683f3b0875db3291b9e106163113ec35381cfaf2707a07e9a3b024cc"
+    }
+  ],
+  "unchanged": true,
+  "scenariosFull": [
+    "read_success",
+    "read_failure",
+    "cancel_recovery"
+  ],
+  "degradation": [
+    "no_key",
+    "no_dsh",
+    "offline"
+  ],
+  "externalModelCalls": 0,
+  "boundary": "The unchanged P02 runner retains its historical schema names and ledger/registry/egress guards; P03 adds actual Native memory Read validation.",
+  "exitCode": 0
+}

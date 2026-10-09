@@ -1,14 +1,14 @@
-import { closeSync, constants, fstatSync, lstatSync, openSync, realpathSync, writeSync, fsyncSync } from "node:fs";
+import { closeSync, lstatSync, readFileSync, realpathSync, writeSync, fsyncSync } from "node:fs";
 import path from "node:path";
 import { createFileSystemError } from "@p01/native-filesystem-contracts";
 import { resolveProjectMemoryRoot } from "@p03/native-project-root";
 import { getCliStorageRoot, projectIdFromDirectory } from "@p03/native-paths";
+import { openProjectMemoryAudit } from "./project-memory-audit.mjs";
 import { openProjectRegistry, isTrustedProjectMapping } from "../../../dist/packages/projects/registry.js";
 import { createProjectMemoryReader } from "../../../dist/packages/adapters/zcode/src/project-memory.js";
 import { createDurableHost } from "../P02/durable-host.mjs";
 
 export const P03_SELECTED_TOPIC = "p03-topic.md";
-const AUDIT_FILENAME = "p03-memory-audit.jsonl";
 
 function key(value) {
   const resolved = path.resolve(value);
@@ -91,6 +91,28 @@ function validateOwnedBinding(input) {
   return { profileRoot, workspacePath, env, registryDirectory, registryPath, nativeStorageRoot };
 }
 
+function parentAuditIdentity(owned, project) {
+  // This fixed, owned fixture receipt is created by the parent before Electron
+  // starts. The parent retains its exact bytes and the audit identity for readback.
+  const receiptPath = path.join(path.dirname(owned.profileRoot), "p03-memory-seed.json");
+  const info = lstatSync(receiptPath, { bigint: true });
+  if (!info.isFile() || info.isSymbolicLink() || info.nlink !== 1n || info.size > 64n * 1024n ||
+      key(realpathSync(receiptPath)) !== key(receiptPath)) throw new Error("P03_AUDIT_OWNER_RECEIPT_INVALID");
+  const receipt = JSON.parse(readFileSync(receiptPath, "utf8"));
+  const owner = receipt.auditFile;
+  const identity = owner?.identity;
+  if (receipt.schemaVersion !== 1 || receipt.projectId !== project.projectId ||
+      key(receipt.workspacePath) !== key(owned.workspacePath) ||
+      !owner || Object.keys(owner).sort().join(",") !== "identity,path" ||
+      key(owner.path) !== key(path.join(owned.profileRoot, "p03-memory-audit.jsonl")) ||
+      !identity || Object.keys(identity).sort().join(",") !== "dev,ino" ||
+      typeof identity.dev !== "string" || typeof identity.ino !== "string" ||
+      !/^(0|[1-9][0-9]{0,38})$/u.test(identity.dev) || !/^(0|[1-9][0-9]{0,38})$/u.test(identity.ino)) {
+    throw new Error("P03_AUDIT_OWNER_RECEIPT_INVALID");
+  }
+  return { dev: BigInt(identity.dev), ino: BigInt(identity.ino) };
+}
+
 /**
  * P03 composition around the accepted P02 durable host. The harness owns and
  * seeds registry rows and Native memory; this runtime only resolves a row and
@@ -138,13 +160,7 @@ export async function createP03DurableHost(input) {
       workspacePath: owned.workspacePath,
       selectedTopics: () => [P03_SELECTED_TOPIC],
     });
-    const auditLogPath = path.join(owned.profileRoot, AUDIT_FILENAME);
-    resources.auditDescriptor = openSync(auditLogPath,
-      constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_APPEND | (constants.O_NOFOLLOW ?? 0), 0o600);
-    const auditInfo = fstatSync(resources.auditDescriptor);
-    if (!auditInfo.isFile() || key(realpathSync(auditLogPath)) !== key(auditLogPath) || !inside(owned.profileRoot, realpathSync(auditLogPath))) {
-      throw new Error("P03_MEMORY_AUDIT_PATH_INVALID");
-    }
+    resources.auditDescriptor = openProjectMemoryAudit(owned.profileRoot, parentAuditIdentity(owned, project));
 
     const auditedReader = Object.freeze({
       capture() {

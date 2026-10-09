@@ -1,0 +1,64 @@
+{
+  "schema": "p03-u10-qualification-scope-amendment/v2",
+  "task": "P03-U10",
+  "baseline_commit": "f9b0a9d0d0df784daf601c717ea0f87b5a85c0f3",
+  "initial_material_commit": "61d48d0233e9bbfac80a9b99c2506ccd80ceca55",
+  "prior_amendment": {
+    "path": "evidence/P03-U10/20261008-01/scope-amendment.json",
+    "bytes": 2584,
+    "sha256": "86c4d09c4a4f83504ecf1ea6c7997ff7602097161d885f7e729d7d885886a26b"
+  },
+  "preserved_failed_commands": [
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\commands\\u10\\desktop-degradation-01.json",
+      "bytes": 987,
+      "sha256": "73b906097f5cb1dd6af1ab4721145f70e26584b85d12f20e720e4db514adbd0c"
+    },
+    {
+      "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\commands\\u10\\desktop-degradation-02.json",
+      "bytes": 987,
+      "sha256": "45d2954b92df30ed679cd444c3be3edca8a5147d0239aa7e72af98ef3c3a3b98"
+    }
+  ],
+  "preserved_artifacts": [
+    {
+      "path": "evidence/P03-U10/20261008-01/preserved-attempts/retry-candidate-descriptor.json",
+      "bytes": 1349291,
+      "sha256": "e5d949a56906deaaddf2620fa7001a5fea1cfd95bbae97a362d874eb29bcee25"
+    },
+    {
+      "path": "evidence/P03-U10/20261008-01/preserved-attempts/retry-offline-ui-result.json",
+      "bytes": 2153,
+      "sha256": "73abe52998cc8ea7d1c0673dca0fbdfbaaa0a755939df4bbf9f74234bce1e9a0"
+    },
+    {
+      "path": "evidence/P03-U10/20261008-01/preserved-attempts/retry-offline-ledger-verification.json",
+      "bytes": 639,
+      "sha256": "92e06907f85c819aa88611f1a50be488c1e266bb84450023073e663993ef08a1"
+    },
+    {
+      "path": "evidence/P03-U10/20261008-01/preserved-attempts/retry-offline-error.txt",
+      "bytes": 557,
+      "sha256": "e03f00f695c6225c8dbcd8a7bb52c09dcdf67a84b5fb871b3d3f914aed6aeeb8"
+    },
+    {
+      "path": "evidence/P03-U10/20261008-01/preserved-attempts/retry-offline-cli-errors.json",
+      "bytes": 1833,
+      "sha256": "8df48f66170304fba3ffa1b4d4c24dcae1924fa724f276788099d7b6713b385c"
+    }
+  ],
+  "added_scopes": [
+    "tests/integration/P03/project-memory-host.mjs",
+    "tests/integration/P03/project-memory-audit.mjs",
+    "tests/integration/P03/project-memory-audit.test.mjs",
+    "tests/integration/P03/seed-memory.mjs",
+    "tests/integration/P03/desktop.py"
+  ],
+  "reason": "Same-process reopen restored history, but a second actual Native CLI has an empty local identity map and rejects the existing log before durable admission. SEND_FAILED and zero admitted turns are failed qualification, not offline degradation success.",
+  "implementation_boundary": "The owned parent seeder creates the empty log exclusively and stores exact Node BigInt dev/ino in its immutable receipt. Every CLI accepts append only with that explicit parent pin after physical single-link regular-file checks. Python independently pins its own dev/ino representation before and after. No unknown existing file adoption, truncation or deletion; no weakened history, loopback-503 or durable-turn assertions.",
+  "authorization_and_mapping": "Necessary qualification correction within the authorized complete-P03 goal; immutable task card and baseline remain unchanged. Added paths are only the owned P03 test harness, with preserved failed attempts. No Native source, production profile, global configuration or historical evidence change.",
+  "required_revalidation": "Commit corrected material, build a fresh candidate, run current full and degradation, bind unchanged executable inputs, freeze author evidence and obtain independent G03.",
+  "author_status": "running",
+  "accepted": false,
+  "G03": "pending"
+}

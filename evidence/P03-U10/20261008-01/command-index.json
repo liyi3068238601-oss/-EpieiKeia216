@@ -1,0 +1,176 @@
+{
+  "schema": "p03-u10-command-index/v1",
+  "commands": [
+    {
+      "path": "commands/audit-identity-01.json",
+      "bytes": 1275,
+      "sha256": "54c222e537efbddce43da278f51afc347a9fe2bd4b6eafeab3b6c00b17d94438",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "--test",
+        "tests/integration/P03/project-memory-audit.test.mjs"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/audit-identity-02.json",
+      "bytes": 1842,
+      "sha256": "ecbcd317abe81f63ef7805dbc81be30a9f06acb875cb7a605e09d1c16be41504",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "--test",
+        "tests/integration/P03/project-memory-audit.test.mjs"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/build-01.json",
+      "bytes": 480,
+      "sha256": "8f77b8c69d146314d7f4d15c98fd4a6d34e50cbe06dae31cc75f01a887c046e1",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/candidate-build-01.json",
+      "bytes": 3893,
+      "sha256": "29a149e8f9d12335b5bac0ab0e04a2de0b025c6be6d0ffed0979f56063c551c7",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tests/integration/P03/build-candidate.mjs",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\candidate"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/candidate-build-02.json",
+      "bytes": 3892,
+      "sha256": "a52c951235f06317c4e1c80ffcbf7547539cad3a580002ad780f657335f3ba51",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tests/integration/P03/build-candidate.mjs",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\candidate"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/candidate-build-03.json",
+      "bytes": 3892,
+      "sha256": "f30fbc054e50ee4ca5a897361b1722ff4c60e03715f99685db13d2a6bda9d089",
+      "argv": [
+        "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+        "tests/integration/P03/build-candidate.mjs",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\candidate"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/desktop-degradation-01.json",
+      "bytes": 987,
+      "sha256": "73b906097f5cb1dd6af1ab4721145f70e26584b85d12f20e720e4db514adbd0c",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "tests/integration/P03/desktop.py",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\candidate",
+        "--suite",
+        "degradation",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\degradation"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+      "exit_code": 1
+    },
+    {
+      "path": "commands/desktop-degradation-02.json",
+      "bytes": 987,
+      "sha256": "45d2954b92df30ed679cd444c3be3edca8a5147d0239aa7e72af98ef3c3a3b98",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "tests/integration/P03/desktop.py",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\candidate",
+        "--suite",
+        "degradation",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-02\\degradation"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+      "exit_code": 1
+    },
+    {
+      "path": "commands/desktop-degradation-03.json",
+      "bytes": 985,
+      "sha256": "bb4f87a926623709090a0f04c6fa51d43dde5445751d7801c4c201b4f039785c",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "tests/integration/P03/desktop.py",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\candidate",
+        "--suite",
+        "degradation",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\degradation"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/desktop-full-01.json",
+      "bytes": 977,
+      "sha256": "88719f0ebda610cefc529b350aa9888913be700e9bb8e3315935392f8bc7a87e",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "tests/integration/P03/desktop.py",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\candidate",
+        "--suite",
+        "full",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\full"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+      "exit_code": 0
+    },
+    {
+      "path": "commands/desktop-full-03.json",
+      "bytes": 977,
+      "sha256": "2ffc8c91bde4051b00d0236f98eaa771c64ccf68b59e417a4e647f5ba99aac25",
+      "argv": [
+        "python",
+        "-X",
+        "utf8",
+        "tests/integration/P03/desktop.py",
+        "--candidate",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\candidate",
+        "--suite",
+        "full",
+        "--output",
+        "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\full"
+      ],
+      "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10",
+      "exit_code": 0
+    }
+  ]
+}

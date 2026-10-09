@@ -1,0 +1,20 @@
+{
+  "mode": "mock",
+  "model": "deepseek-flash",
+  "scenario": {
+    "id": "read_failure",
+    "prompt": "请尝试读取未获授权的项目主题；若拒绝，说明未完成。",
+    "max_requests": 2,
+    "target": "missing.txt"
+  },
+  "profile_root": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\full\\scenarios\\read_failure\\profile",
+  "relay_origin": "http://127.0.0.1:58394",
+  "output_dir": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-01\\full\\scenarios\\read_failure",
+  "system_env": {
+    "COMSPEC": "C:\\Windows\\system32\\cmd.exe",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
+    "SYSTEMROOT": "C:\\Windows",
+    "WINDIR": "C:\\Windows",
+    "PATH": "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64;C:\\Program Files\\Git\\cmd;C:\\Windows\\System32"
+  }
+}

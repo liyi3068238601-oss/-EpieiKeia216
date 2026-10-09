@@ -103,6 +103,16 @@ def verify_memory(scenario: str, directory: Path, result: dict, seed_pin: dict) 
                 child.is_symlink() or child.is_junction() for child in children)):
             raise RuntimeError("p03_native_memory_file_set_changed")
     audit_file = profile / "p03-memory-audit.jsonl"
+    # Python and Node expose different Windows st_dev formats. The parent pins
+    # its own full device/inode pair before launch; Node's explicit owner pin is
+    # independently checked inside each CLI. Neither side compares rounded IDs.
+    if (audit_file.is_symlink() or audit_file.is_junction() or
+            audit_file.resolve(strict=True) != profile.resolve(strict=True) / "p03-memory-audit.jsonl"):
+        raise RuntimeError("p03_audit_path_changed")
+    audit_stat = audit_file.lstat()
+    actual_identity = {"dev": str(audit_stat.st_dev), "ino": str(audit_stat.st_ino)}
+    if audit_stat.st_nlink != 1 or actual_identity != seed_pin["auditIdentity"]:
+        raise RuntimeError("p03_parent_audit_identity_changed")
     audit = [json.loads(line) for line in audit_file.read_text(encoding="utf-8").splitlines()
              if line] if audit_file.is_file() else []
     fields = {"event", "projectId", "path", "kind", "code", "sampledAt", "hash", "size"}
@@ -149,6 +159,7 @@ def verify_memory(scenario: str, directory: Path, result: dict, seed_pin: dict) 
         raise RuntimeError("p03_desktop_fixed_inspector_not_disabled")
     return {"passed": True, "seed": binding(receipt_file), "readerAudit": binding(audit_file) if audit_file.is_file() else None,
             "captureCount": len(captures), "readCount": len(reads), "projectId": receipt["projectId"],
+            "parentAuditIdentityUnchanged": True, "parentAuditIdentity": actual_identity,
             "selectedTopicSha256": receipt["selectedTopicSha256"], "sourceFilesUnchanged": source_readback,
             "observedMemoryRootsFileSetsUnchanged": True,
             "listeners": binding(directory / "p03-listeners.json"), "relayPort": port,
@@ -222,8 +233,16 @@ def main() -> int:
             if command.get("exit_code") != 0 or not receipt_path.is_file():
                 raise harness.HarnessError("p03_memory_seed_failed")
             receipt = json.loads(receipt_path.read_bytes())
+            audit_file = Path(receipt["auditFile"]["path"])
+            audit_stat = audit_file.lstat()
+            if (audit_file != output / "profile" / "p03-memory-audit.jsonl" or
+                    audit_file.is_symlink() or audit_file.is_junction() or not audit_file.is_file() or
+                    audit_stat.st_nlink != 1 or audit_stat.st_size != 0 or
+                    str(audit_stat.st_ino) != receipt["auditFile"]["identity"]["ino"]):
+                raise harness.HarnessError("p03_parent_audit_seed_invalid")
             seed_pins[scenario] = {"binding": binding(receipt_path),
-                                   "receipt": json.loads(json.dumps(receipt))}
+                                   "receipt": json.loads(json.dumps(receipt)),
+                                   "auditIdentity": {"dev": str(audit_stat.st_dev), "ino": str(audit_stat.st_ino)}}
             relay.memory_target = receipt["selectedTopicPath"] if scenario == "read_success" else receipt["unselectedTopicPath"]
             if scenario == "read_failure":
                 spec["expected_reply"] = FAILURE_REPLY

@@ -1,0 +1,45 @@
+{
+  "schema": "p03-u10-qualification-scope-amendment/v1",
+  "task": "P03-U10",
+  "baseline_commit": "f9b0a9d0d0df784daf601c717ea0f87b5a85c0f3",
+  "initial_material_commit": "530ba9bd2c553ebaa67c8be68b2769350523408c",
+  "preserved_failed_command": {
+    "path": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\commands\\u10\\desktop-degradation-01.json",
+    "bytes": 987,
+    "sha256": "73b906097f5cb1dd6af1ab4721145f70e26584b85d12f20e720e4db514adbd0c"
+  },
+  "preserved_artifacts": [
+    {
+      "path": "evidence/P03-U10/20261008-01/preserved-attempts/initial-candidate-descriptor.json",
+      "bytes": 1348924,
+      "sha256": "87383d36036b8e01a1373453ebc5edaf27214b1b1310e90eb9d2018f2cb03b5b"
+    },
+    {
+      "path": "evidence/P03-U10/20261008-01/preserved-attempts/offline-ui-result.json",
+      "bytes": 2237,
+      "sha256": "8a63386600a3478c3e36835eee80d9b5b7ba483aad1ea7b4cf051caf65c11884"
+    },
+    {
+      "path": "evidence/P03-U10/20261008-01/preserved-attempts/offline-ledger-verification.json",
+      "bytes": 639,
+      "sha256": "92e06907f85c819aa88611f1a50be488c1e266bb84450023073e663993ef08a1"
+    },
+    {
+      "path": "evidence/P03-U10/20261008-01/preserved-attempts/offline-failure-window.txt",
+      "bytes": 609,
+      "sha256": "8240c87e302d9f4f49ce901da0fdd3e561f8c1e8ffb399e337e4dd2aa5346b3d"
+    }
+  ],
+  "added_scopes": [
+    "tests/integration/P03/project-memory-host.mjs",
+    "tests/integration/P03/project-memory-audit.mjs",
+    "tests/integration/P03/project-memory-audit.test.mjs"
+  ],
+  "reason": "Actual offline history resume creates another Host in the same CLI process; per-Host exclusive audit-file creation causes EEXIST before offline request. Correct the owned qualification logger lifecycle; do not weaken history or offline assertions.",
+  "implementation_boundary": "First log creation remains exclusive; only the same process registered physical single-link inode can be reopened for append. No unknown existing file adoption/truncation/deletion. Host still closes its own descriptor and fsyncs metadata rows.",
+  "authorization_and_mapping": "Necessary local qualification repair within the user-authorized complete-P03 goal; immutable task card and initial baseline stay unchanged, this file records the target-path mapping change. No product, Native source, P01/P02 history, user data or global configuration changes.",
+  "required_revalidation": "Commit corrected material; fresh candidate; current full+degradation and independent G03; preserve initial failed run.",
+  "author_status": "running",
+  "accepted": false,
+  "G03": "pending"
+}

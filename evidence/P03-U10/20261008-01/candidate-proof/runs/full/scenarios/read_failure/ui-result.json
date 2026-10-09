@@ -1,0 +1,64 @@
+{
+  "schema": "p01-u10-desktop-ui/v1",
+  "scenario_id": "read_failure",
+  "status": "completed",
+  "gate_mode": "enabled",
+  "flow": "reply",
+  "ui_actions": [
+    "skipped-key-onboarding-with-empty-password",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "skipped-local-onboarding-step",
+    "filled-v4-composer-input",
+    "clicked-v4-composer-send"
+  ],
+  "user_visible_reply": "未获准读取该主题，这一步未完成，我没有读到文件内容。",
+  "error_banner": null,
+  "model_selection": {
+    "expected": "deepseek-flash",
+    "pro_item_available": null,
+    "selected": null
+  },
+  "desktop": {
+    "main_pid": 60000,
+    "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\full\\scenarios\\read_failure\\profile\\process-working-directory",
+    "home": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\full\\scenarios\\read_failure\\profile\\home",
+    "userData": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\full\\scenarios\\read_failure\\profile\\userData",
+    "sessionData": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\experiments\\u10-desktop-final-03\\full\\scenarios\\read_failure\\profile\\sessionData",
+    "visible": false,
+    "remote_debugging_port": "0",
+    "descendant_processes": [
+      {
+        "pid": 5756,
+        "parent_pid": 60000,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 31832,
+        "parent_pid": 60000,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 35804,
+        "parent_pid": 60000,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 58784,
+        "parent_pid": 60000,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 50248,
+        "parent_pid": 60000,
+        "name": "electron.exe"
+      },
+      {
+        "pid": 36156,
+        "parent_pid": 58784,
+        "name": "electron.exe"
+      }
+    ]
+  },
+  "passed": true
+}
