@@ -1,0 +1,234 @@
+{
+  "schema": "p03-u10-independent-desktop-verification/v1",
+  "author_commit": "c157967d7440e0c9d3b2b60dedd64b67b6249e71",
+  "baseline_commit": "f9b0a9d0d0df784daf601c717ea0f87b5a85c0f3",
+  "candidate": {
+    "path": ".runtime/P03/experiments/u10-review-20261009/candidate",
+    "repository_commit": "c157967d7440e0c9d3b2b60dedd64b67b6249e71",
+    "native_source_commit": "29628c9acdb81b703bbd4080c207a0e7ce5e276e",
+    "node_version": "v24.14.0",
+    "descriptor_sha256": "629f13c94cc0428a27fa149ef782ba4d1feb580f8af5bfdc76a3bbceace3f6d2",
+    "owned_files_verified": 6732,
+    "repository_input_count": 129,
+    "sqlite": {
+      "package_version": "13.0.3",
+      "sqlite_version": "3.53.4",
+      "addon_sha256": "e21e5efd71fba66578e95b62554d9028064a80dafd7221bf8a8ef155de8d240a",
+      "license_sha256": "09856b52897c91ab67e7456ef43067019f31dfd3b87fda72e655736b1ebdee55"
+    }
+  },
+  "full": {
+    "suite": "full",
+    "passed": true,
+    "scenario_status": "passed",
+    "summary_evidence": {
+      "root": "baseline_repository",
+      "path": ".runtime/P03/experiments/u10-review-20261009/full/summary.json",
+      "bytes": 90567,
+      "sha256": "6a5b8364a6cccd76a9826bf53c14f562daabc6a237c54c45475b5724e80f62c6"
+    },
+    "scenario_count": 3,
+    "scenarios": [
+      {
+        "scenario_id": "read_success",
+        "passed": true,
+        "exit_code": 0,
+        "synthetic_loopback_model_requests": 2,
+        "ui_passed": true,
+        "ui_status": "completed",
+        "ui_flow": "reply",
+        "visible_error": false,
+        "error_code": null,
+        "memory_capture_count": 1,
+        "memory_read_count": 2,
+        "desktop_inspector_requests": "0",
+        "parent_audit_identity_unchanged": true,
+        "ledger_admission": "admitted",
+        "admitted_turns": 1
+      },
+      {
+        "scenario_id": "read_failure",
+        "passed": true,
+        "exit_code": 0,
+        "synthetic_loopback_model_requests": 2,
+        "ui_passed": true,
+        "ui_status": "completed",
+        "ui_flow": "reply",
+        "visible_error": false,
+        "error_code": null,
+        "memory_capture_count": 1,
+        "memory_read_count": 1,
+        "desktop_inspector_requests": "0",
+        "parent_audit_identity_unchanged": true,
+        "ledger_admission": "admitted",
+        "admitted_turns": 1
+      },
+      {
+        "scenario_id": "cancel_recovery",
+        "passed": true,
+        "exit_code": 0,
+        "synthetic_loopback_model_requests": 2,
+        "ui_passed": true,
+        "ui_status": "completed",
+        "ui_flow": "cancel_recovery",
+        "visible_error": false,
+        "error_code": null,
+        "memory_capture_count": 2,
+        "memory_read_count": 0,
+        "desktop_inspector_requests": "0",
+        "parent_audit_identity_unchanged": true,
+        "ledger_admission": "admitted",
+        "admitted_turns": 2
+      }
+    ],
+    "candidate_descriptor_sha256": "629f13c94cc0428a27fa149ef782ba4d1feb580f8af5bfdc76a3bbceace3f6d2",
+    "candidate_owned_files_verified": 6732,
+    "candidate_closure_passed": true,
+    "execution_inputs_unchanged": true,
+    "production_inputs_unchanged": true,
+    "registry_read_only": true,
+    "registry_unchanged_during_suite": true,
+    "real_credentials_used": false,
+    "real_model_requests": 0,
+    "external_model_requests": 0,
+    "dsh_started": false,
+    "dsh_process_tree_verified": true,
+    "human_visual_review": "NOT_RUN",
+    "visual_acceptance": "NOT_RUN",
+    "network_boundary": "instrumented Node/Electron paths plus a parent-owned dynamic loopback relay; not an OS sandbox"
+  },
+  "degradation": {
+    "suite": "degradation",
+    "passed": true,
+    "scenario_status": "passed",
+    "summary_evidence": {
+      "root": "baseline_repository",
+      "path": ".runtime/P03/experiments/u10-review-20261009/degradation/summary.json",
+      "bytes": 84198,
+      "sha256": "4218ba768b3156de58a6a974d885758ae8e65b7feaaaef521935b8846b3af02f"
+    },
+    "scenario_count": 3,
+    "scenarios": [
+      {
+        "scenario_id": "no_key",
+        "passed": true,
+        "exit_code": 0,
+        "synthetic_loopback_model_requests": 0,
+        "ui_passed": true,
+        "ui_status": "completed",
+        "ui_flow": "no_key",
+        "visible_error": false,
+        "error_code": null,
+        "memory_capture_count": 0,
+        "memory_read_count": 0,
+        "desktop_inspector_requests": "0",
+        "parent_audit_identity_unchanged": true,
+        "ledger_admission": "not_admitted",
+        "admitted_turns": 0
+      },
+      {
+        "scenario_id": "no_dsh",
+        "passed": true,
+        "exit_code": 0,
+        "synthetic_loopback_model_requests": 1,
+        "ui_passed": true,
+        "ui_status": "completed",
+        "ui_flow": "reply",
+        "visible_error": false,
+        "error_code": null,
+        "memory_capture_count": 1,
+        "memory_read_count": 0,
+        "desktop_inspector_requests": "0",
+        "parent_audit_identity_unchanged": true,
+        "ledger_admission": "admitted",
+        "admitted_turns": 1
+      },
+      {
+        "scenario_id": "offline",
+        "passed": true,
+        "exit_code": 0,
+        "synthetic_loopback_model_requests": 1,
+        "ui_passed": true,
+        "ui_status": "completed",
+        "ui_flow": "offline",
+        "visible_error": true,
+        "error_code": "model_request_failed",
+        "memory_capture_count": 1,
+        "memory_read_count": 0,
+        "desktop_inspector_requests": "0",
+        "parent_audit_identity_unchanged": true,
+        "ledger_admission": "admitted",
+        "admitted_turns": 1
+      }
+    ],
+    "candidate_descriptor_sha256": "629f13c94cc0428a27fa149ef782ba4d1feb580f8af5bfdc76a3bbceace3f6d2",
+    "candidate_owned_files_verified": 6732,
+    "candidate_closure_passed": true,
+    "execution_inputs_unchanged": true,
+    "production_inputs_unchanged": true,
+    "registry_read_only": true,
+    "registry_unchanged_during_suite": true,
+    "real_credentials_used": false,
+    "real_model_requests": 0,
+    "external_model_requests": 0,
+    "dsh_started": false,
+    "dsh_process_tree_verified": true,
+    "human_visual_review": "NOT_RUN",
+    "visual_acceptance": "NOT_RUN",
+    "network_boundary": "instrumented Node/Electron paths plus a parent-owned dynamic loopback relay; not an OS sandbox"
+  },
+  "offline_persistence": {
+    "ui_status": "completed",
+    "settings_navigation": {
+      "back_click": "completed",
+      "settings_closed": true,
+      "workspace_visible": true
+    },
+    "seeded_user_marker_present_before_and_after": true,
+    "seeded_assistant_marker_present_before_and_after": true,
+    "history_evidence": [
+      {
+        "root": "baseline_repository",
+        "path": ".runtime/P03/experiments/u10-review-20261009/degradation/scenarios/offline/ui-offline-history-before-offline.txt",
+        "bytes": 593,
+        "sha256": "672883961955651beb674a191732c283a4ec9b27b25c8759ea84c478f4f5eaf2"
+      },
+      {
+        "root": "baseline_repository",
+        "path": ".runtime/P03/experiments/u10-review-20261009/degradation/scenarios/offline/ui-offline-history-after-offline.txt",
+        "bytes": 683,
+        "sha256": "a0fe23f11cce7ad413a754e94d90c7d383cabe041a9f234a3617cccf4780d460"
+      }
+    ],
+    "settings_evidence": [
+      {
+        "root": "baseline_repository",
+        "path": ".runtime/P03/experiments/u10-review-20261009/degradation/scenarios/offline/ui-offline-settings.txt",
+        "bytes": 4412,
+        "sha256": "14703f0d982c88a1635d7267d1de0458b8d436d2da0d4a311827d56ba9cd969c"
+      },
+      {
+        "root": "baseline_repository",
+        "path": ".runtime/P03/experiments/u10-review-20261009/degradation/scenarios/offline/ui-offline-settings-return.txt",
+        "bytes": 724,
+        "sha256": "ec1fa4cf26541a8f456adba239e939d9367320421af629b18f3a0a52eaab26df"
+      }
+    ],
+    "actual_cli_child_count": 2,
+    "dsh_like_descendant_count": 0,
+    "offline_error_visible": true,
+    "offline_error_code": "model_request_failed"
+  },
+  "limits": {
+    "provider": "synthetic loopback Native provider only; no paid model",
+    "real_credentials_used": false,
+    "real_model_requests": 0,
+    "external_model_requests": 0,
+    "dsh_started": false,
+    "installed_zcode_used": false,
+    "post_move_app_e2e": "NOT_RUN",
+    "human_visual_review": "NOT_RUN",
+    "network_boundary": "instrumented Node/Electron paths and parent-owned dynamic loopback relay; not an OS sandbox",
+    "candidate_portability": "local development candidate, not a portable installer"
+  }
+}

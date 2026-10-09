@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "-X",
+    "utf8",
+    "E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u10-independent-20261009\\acceptance-reference-audit.py"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie",
+  "started_at": "2026-10-09T00:21:01.807658+00:00",
+  "completed_at": "2026-10-09T00:21:01.993988+00:00",
+  "exit_code": 1,
+  "timeout_seconds": 60,
+  "environment_overrides": {},
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u10-independent-20261009\\acceptance-reference-audit.py\", line 46, in <module>\r\n    actual=check_ref(ref,label)\r\n           ^^^^^^^^^^^^^^^^^^^^\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u10-independent-20261009\\acceptance-reference-audit.py\", line 15, in check_ref\r\n    actual = bind(ref['path'])\r\n             ^^^^^^^^^^^^^^^^^\r\n  File \"E:\\Xiadie\\Xiadie\\.runtime\\P03\\reviews\\u10-independent-20261009\\acceptance-reference-audit.py\", line 12, in bind\r\n    raw = p.read_bytes()\r\n          ^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1019, in read_bytes\r\n    with self.open(mode='rb') as f:\r\n         ^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\liyi\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pathlib.py\", line 1013, in open\r\n    return io.open(self, mode, buffering, encoding, errors, newline)\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nFileNotFoundError: [Errno 2] No such file or directory: 'E:\\\\Xiadie\\\\Xiadie\\\\.runtime\\\\P03\\\\worktrees\\\\u10-review-20261009\\\\apps\\\\zcode-cli\\\\packages\\\\adapters\\\\src\\\\storage\\\\session-store\\\\sqlite-session-store.ts'\r\n"
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "p03-u10-audit-identity-review/v1",
+  "source_bindings": [
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P03/project-memory-audit.mjs",
+      "bytes": 4882,
+      "sha256": "a6d8a66341bb4e01c720f7b59da20ef411e2b286285209d6222a192c80c68b63"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P03/project-memory-audit.test.mjs",
+      "bytes": 10295,
+      "sha256": "c7734d3bd2afb773533be83acfd0ba7bd3409b9c53d03e9873fc906a15cae7ed"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P03/project-memory-host.mjs",
+      "bytes": 10260,
+      "sha256": "4c26c545123063aa1c2d889e1eb7c64b7cdf44e9821e08f852ab8bb515d64a47"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P03/seed-memory.mjs",
+      "bytes": 18683,
+      "sha256": "ab7dde064812b5b0281f68ecadce5c3ed92cdd8ccdaff702e25ba3ed318adace"
+    },
+    {
+      "root": "author_worktree",
+      "path": "tests/integration/P03/desktop.py",
+      "bytes": 17914,
+      "sha256": "9e9f657e1a0c71e6cb02dd13e786f9dedf4ec322a9e34360ff116e5b8f56b1a4"
+    }
+  ],
+  "design": {
+    "fixed_log_name": "p03-memory-audit.jsonl",
+    "parent_seeder_exclusive_create": true,
+    "receipt_stores_node_dev_ino_decimal_strings": true,
+    "host_validates_receipt_project_workspace_and_exact_shape": true,
+    "node_create_is_exclusive_append_only": true,
+    "unknown_existing_file_refused_without_pin": true,
+    "path_descriptor_and_pin_identity_validated": true,
+    "no_truncate_or_delete_in_logger": true,
+    "python_parent_pins_its_own_full_dev_ino_pair": true,
+    "no_cross_runtime_dev_comparison": true,
+    "expected_multi_process_offline_cli_count": 2,
+    "offline_parent_identity_unchanged": true
+  },
+  "explicit_fixed_node_test": {
+    "exit_code": 0,
+    "tests": 12,
+    "pass": 11,
+    "fail": 0,
+    "skipped": 1,
+    "symlink_skip_reason": "symlink creation unavailable on this host (EPERM)"
+  }
+}

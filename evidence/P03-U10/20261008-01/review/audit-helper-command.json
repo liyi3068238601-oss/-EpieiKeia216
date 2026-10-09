@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "E:\\Xiadie\\Xiadie\\.runtime\\P01\\desktop-build-evidence\\toolchain\\node-v24.14.0-win-x64\\node.exe",
+    "--test",
+    "tests/integration/P03/project-memory-audit.test.mjs"
+  ],
+  "cwd": "E:\\Xiadie\\Xiadie\\.runtime\\P03\\worktrees\\u10-review-20261009",
+  "started_at": "2026-10-09T00:15:01.251598+00:00",
+  "completed_at": "2026-10-09T00:15:01.505099+00:00",
+  "exit_code": 0,
+  "timeout_seconds": 120,
+  "environment_overrides": {},
+  "stdout": "✔ first open is single-link regular; a later Host reopens after close and appends without losing bytes (13.7808ms)\n✔ simultaneous Hosts receive distinct append descriptors for the same inode (11.8948ms)\n✔ an existing audit file without this process's identity is refused with EEXIST and preserved (4.3495ms)\n✔ a parent-created audit file can be opened with its exact inode pin (11.6948ms)\n✔ a separate Node process can append only with the parent's explicit inode pin (54.5818ms)\n✔ a wrong parent inode pin is rejected without changing the existing bytes (5.8676ms)\n✔ parent identity pins require exactly nonnegative BigInt dev and ino (4.6258ms)\n✔ a renamed audit file replaced at its path is rejected without truncation or deletion (10.068ms)\n✔ a parent-pinned inode replaced at its path is rejected without changing either file (6.0989ms)\n✔ a hard-linked audit inode is refused when the platform permits creating a hard link (8.3086ms)\n✔ a parent-pinned hard-linked audit inode is refused when the platform permits creating a hard link (5.7761ms)\n﹣ a symlink replacement is rejected and left untouched when the platform permits creating it (5.6736ms) # symlink creation unavailable on this host (EPERM)\nℹ tests 12\nℹ suites 0\nℹ pass 11\nℹ fail 0\nℹ cancelled 0\nℹ skipped 1\nℹ todo 0\nℹ duration_ms 202.5324\n",
+  "stderr": ""
+}

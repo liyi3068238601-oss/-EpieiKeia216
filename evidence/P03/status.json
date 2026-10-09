@@ -6,12 +6,12 @@
   "project_root": "E:\\Xiadie\\Xiadie",
   "baseline_commit": "9ebda9ceacf24c6de3324d7882d84accde2d46cf",
   "goal": "Complete all original P03 units and G03, then ordinary remote backup; no P04 or public release.",
-  "stage_status": "running",
+  "stage_status": "completed",
   "G01": "pass",
   "G02": "pass",
-  "G03": "pending",
-  "current_task": "P03-U10",
-  "next_task": "P03-U10",
+  "G03": "pass",
+  "current_task": null,
+  "next_task": "P04-U01",
   "next_stage_started": false,
   "tasks": [
     {
@@ -259,13 +259,41 @@
       "dependencies": [
         "P03-U09"
       ],
-      "status": "running",
-      "card_sha256": "46b4243d6f67d2965e492a0db3a2ea192208dee09baa0323d9ba92368a9cc4d7"
+      "status": "accepted",
+      "card_sha256": "46b4243d6f67d2965e492a0db3a2ea192208dee09baa0323d9ba92368a9cc4d7",
+      "author_commit": "c157967d7440e0c9d3b2b60dedd64b67b6249e71",
+      "integration_commit": "2707eb9aa16d3cc5c97e6cde51984b0da9297a98",
+      "acceptance": {
+        "path": "evidence/P03-U10/20261008-01/acceptance.json",
+        "bytes": 6713,
+        "sha256": "8c7bcea987fb8afd6f5479afb74592422dea83fce0ac8b058d0a8127debafac0"
+      },
+      "review": {
+        "status": "pass",
+        "reviewer": "/root/p03_u10_independent",
+        "reviewed_commit": "c157967d7440e0c9d3b2b60dedd64b67b6249e71",
+        "evidence": {
+          "path": "evidence/P03-U10/20261008-01/review-final.json",
+          "bytes": 168802,
+          "sha256": "7fd0a0c4f2505a124779738968c3514f01c1b63d44fe61a1134832e5552f80df"
+        }
+      }
     }
   ],
   "prior_g02": {
     "path": "evidence/P02-U11/20261004-02/acceptance.json",
     "bytes": 5963,
     "sha256": "50e2df900bdecf891a2ddbe94934409a4e5491769144e52c188e2e3545550fd5"
+  },
+  "freeze": {
+    "product_version": "0.3.0",
+    "author_commit": "c157967d7440e0c9d3b2b60dedd64b67b6249e71",
+    "integration_commit": "2707eb9aa16d3cc5c97e6cde51984b0da9297a98",
+    "acceptance": {
+      "path": "evidence/P03-U10/20261008-01/acceptance.json",
+      "bytes": 6713,
+      "sha256": "8c7bcea987fb8afd6f5479afb74592422dea83fce0ac8b058d0a8127debafac0"
+    },
+    "scope": "Local development candidate; limitations and exact artifact hashes in docs/releases/0.3.0/"
   }
 }
